@@ -1,19 +1,24 @@
 import React, { useState } from "react";
+import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
+import { decryptSecret } from "../helpers";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const dispatch = useAuthDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [encryptedWallet, setEncryptedWallet] = useState("");
+  const [email, setEmail] = useState("bob@cryptonoob.com");
+  const [password, setPassword] = useState("123456789");
+  const [secret, setSecret] = useState("");
 
   const handleLogin = async () => {
     dispatch({ type: "AUTHENTICATING", payload: true });
-    // TO DO
-    // decrypt the wallet using the users password
-    const wallet = {};
+    console.log(`secret = `, secret);
+
+    const privateKey = await decryptSecret(secret, password);
+    console.log(`privateKey = `, privateKey);
+
+    let wallet = new ethers.Wallet(privateKey);
     console.log(`wallet = `, wallet);
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
@@ -28,6 +33,7 @@ export default function LoginForm() {
     });
     console.log(`jwt =`, jwt);
 
+    // TODO - do we want to persis the wallet used when signinup/logging in with email/password
     // dispatch({ type: "SET_BURNER", payload: wallet });
     dispatch({
       type: "SET_ADDRESS",
@@ -72,8 +78,8 @@ export default function LoginForm() {
         Wallet:
         <input
           type="text"
-          onChange={event => setEncryptedWallet(event.target.value)}
-          value={encryptedWallet}
+          onChange={event => setSecret(event.target.value)}
+          value={secret}
         />
       </label>
 
