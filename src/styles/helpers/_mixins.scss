@@ -1,0 +1,49 @@
+/* -----
+Text
+----- */
+@mixin header1-text {
+  color: $primary-highlight-color;
+  font-size: $extra-large-font-size;
+  font-weight: 300;
+  letter-spacing: $header-letter-spacing;
+  line-height: $extra-large-font-size;
+}
+
+@mixin header2-text {
+  font-size: $medium-font-size;
+  font-weight: bold;
+  letter-spacing: $header-letter-spacing;
+  line-height: $medium-line-height;
+  text-transform: uppercase;
+}
+
+@mixin headline-copy-text {
+  font-size: $large-font-size;
+  font-weight: 300;
+  line-height: $large-line-height;
+}
+
+@mixin copy-text {
+  font-size: $medium-font-size;
+  line-height: $large-line-height;
+}
+
+@mixin highlight-link-text {
+  color: $primary-highlight-color;
+  line-height: $medium-line-height;
+  text-decoration-line: underline;
+}
+
+@mixin lowlight-link-text {
+  color: $secondary-theme-color--light;
+  line-height: $medium-line-height;
+  text-decoration-line: underline;
+}
+
+@mixin label-text {
+  color: #bbbbbb;
+  font-size: $small-font-size;
+  font-weight: bold;
+  letter-spacing: $header-letter-spacing;
+  line-height: $small-line-height;
+}

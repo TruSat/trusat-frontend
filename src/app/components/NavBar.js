@@ -6,20 +6,14 @@ import { NavLink } from "react-router-dom";
 function NavBar(props) {
   const [selected, setSelected] = useState(props.location.pathname);
 
-  const selectedStyle = {
-    color: "white",
-    borderBottom: "1px solid yellow",
-    textDecoration: "none"
-  };
-
   return (
     <div className="nav-bar">
       <NavLink
         onClick={() => setSelected("/")}
-        style={
+        className={
           selected === "/"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
         }
         to="/"
       >
@@ -27,10 +21,10 @@ function NavBar(props) {
       </NavLink>
       <NavLink
         onClick={() => setSelected("/community")}
-        style={
+        className={
           selected === "/community"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
         }
         to="/community"
       >
@@ -38,10 +32,10 @@ function NavBar(props) {
       </NavLink>
       <NavLink
         onClick={() => setSelected("/observations")}
-        style={
+        className={
           selected === "/observations"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
         }
         to="/observations"
       >
@@ -50,10 +44,10 @@ function NavBar(props) {
       <SignUpModal />
       <NavLink
         onClick={() => setSelected("/submit")}
-        style={
+        className={
           selected === "/submit"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
         }
         to="/submit"
       >
@@ -63,10 +57,10 @@ function NavBar(props) {
       </NavLink>
       <NavLink
         onClick={() => setSelected("/account")}
-        style={
+        className={
           selected === "/account"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
         }
         to="/account"
       >
