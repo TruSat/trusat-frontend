@@ -3,7 +3,12 @@
   background: $secondary-theme-color;
   display: flex;
   justify-content: space-around;
-  padding: 0.5em 0.5em 0em 0.5em;
+  padding: 0.5em;
+}
+
+.nav-bar__logo {
+  color: $primary-text-color;
+  text-decoration: none;
 }
 
 .nav-bar__link--highlight {

@@ -9,6 +9,14 @@ function NavBar(props) {
   return (
     <div className="nav-bar">
       <NavLink
+        className="nav-bar__logo"
+        onClick={() => setSelected("/")}
+        to="/"
+      >
+        EARTH SPACE PROGRAM
+      </NavLink>
+
+      <NavLink
         onClick={() => setSelected("/")}
         className={
           selected === "/"
@@ -17,55 +25,54 @@ function NavBar(props) {
         }
         to="/"
       >
-        Orbit Predictions
+        WELCOME
       </NavLink>
       <NavLink
-        onClick={() => setSelected("/community")}
+        onClick={() => setSelected("/catalog")}
         className={
-          selected === "/community"
+          selected === "/catalog"
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        to="/community"
+        to="/catalog"
       >
-        Community
+        CATALOG
       </NavLink>
       <NavLink
-        onClick={() => setSelected("/observations")}
+        onClick={() => setSelected("/profile")}
         className={
-          selected === "/observations"
+          selected === "/profile"
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        to="/observations"
+        to="/profile"
       >
-        My Observations
+        MY PROFILE
+      </NavLink>
+
+      <NavLink
+        onClick={() => setSelected("/about")}
+        className={
+          selected === "/about"
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
+        }
+        to="/about"
+      >
+        ABOUT
+      </NavLink>
+      <NavLink
+        onClick={() => setSelected("/how")}
+        className={
+          selected === "/how"
+            ? "nav-bar__link--highlight"
+            : "nav-bar__link--lowlight"
+        }
+        to="/how"
+      >
+        HOW TO
       </NavLink>
       <SignUpModal />
-      <NavLink
-        onClick={() => setSelected("/submit")}
-        className={
-          selected === "/submit"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
-        }
-        to="/submit"
-      >
-        <span style={{ background: "white", color: "black", padding: "0.5em" }}>
-          +Submit Observation
-        </span>
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected("/account")}
-        className={
-          selected === "/account"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
-        }
-        to="/account"
-      >
-        AVATAR
-      </NavLink>
     </div>
   );
 }
