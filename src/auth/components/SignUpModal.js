@@ -23,11 +23,8 @@ export default function SignUpModal() {
       {showModal ? (
         renderModal()
       ) : (
-        <span
-          onClick={() => setShowModal(true)}
-          style={{ border: "1px solid white", padding: "0.5em" }}
-        >
-          Sign up
+        <span onClick={() => setShowModal(true)} className="modal__join-button">
+          JOIN
         </span>
       )}
     </React.Fragment>
