@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./auth/auth-context";
 import NavBar from "./app/components/NavBar";
-import OrbitPredictions from "./views/OrbitPredictions";
-import Community from "./views/Community";
-import Observations from "./views/Observations";
-import Submit from "./views/Submit";
-import AccountSettings from "./views/AccountSettings";
+import Catalog from "./views/Catalog";
+import Welcome from "./views/Welcome";
+import Profile from "./views/Profile";
+import About from "./views/About";
+import HowTo from "./views/HowTo";
 import ObjectInfo from "./views/ObjectInfo";
 
 export default function App() {
@@ -14,11 +14,11 @@ export default function App() {
     <AuthProvider>
       <Router>
         <NavBar />
-        <Route exact path="/" component={OrbitPredictions} />
-        <Route path="/community" component={Community} />
-        <Route path="/observations" component={Observations} />
-        <Route path="/submit" component={Submit} />
-        <Route path="/account" component={AccountSettings} />
+        <Route exact path="/" component={Welcome} />
+        <Route path="/catalog" component={Catalog} />
+        <Route path="/profile" component={Profile} />
+        <Route path="/about" component={About} />
+        <Route path="/how" component={HowTo} />
         <Route path="/object/:number" component={ObjectInfo} />
       </Router>
     </AuthProvider>
