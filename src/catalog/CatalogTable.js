@@ -56,7 +56,8 @@ const data = [
     object_type: "rocket body",
     object_purpose: "comms",
     time_last_tracked: "1565803593926", // timestamp
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   },
   {
     object_name: "abrixas rocket",
@@ -64,7 +65,8 @@ const data = [
     object_type: "satelitte",
     object_purpose: "military",
     time_last_tracked: "1565803593926",
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   },
   {
     object_name: "sl-27",
@@ -72,7 +74,8 @@ const data = [
     object_type: "rocket body",
     object_purpose: "comms",
     time_last_tracked: "8.01pm",
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   },
   {
     object_name: "abrixas rocket",
@@ -80,7 +83,8 @@ const data = [
     object_type: "satelitte",
     object_purpose: "military",
     time_last_tracked: "1565803593926",
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   },
   {
     object_name: "sl-27",
@@ -88,7 +92,8 @@ const data = [
     object_type: "rocket body",
     object_purpose: "comms",
     time_last_tracked: "1565803593926",
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   },
   {
     object_name: "abrixas rocket",
@@ -96,6 +101,7 @@ const data = [
     object_type: "satelitte",
     object_purpose: "military",
     time_last_tracked: "1565803593926",
-    user_last_tracked: "username"
+    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+    username_last_tracked: "username"
   }
 ];
