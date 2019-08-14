@@ -26,7 +26,7 @@ export default function PriorityObjectsTable() {
         <td>{priObj.object_type}</td>
         <td>{priObj.object_purpose}</td>
         <td>{priObj.time_last_tracked}</td>
-        <td>{priObj.user_last_tracked}</td>
+        <td>{priObj.username_last_tracked}</td>
       </tr>
     ));
   };
