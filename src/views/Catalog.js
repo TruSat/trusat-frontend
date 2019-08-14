@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 
 import LoginOptions from "../auth/components/LoginOptions";
 import AccountDetails from "../auth/components/AccountDetails";
-import PriorityObjectsTable from "../orbit-predictions/PriorityObjectsTable";
+import CatalogTable from "../catalog/CatalogTable";
 
 export default function Home() {
   const [isAppLoading, setIsAppLoading] = useState(true);
@@ -43,7 +43,7 @@ export default function Home() {
     <React.Fragment>
       {isAppLoading ? null : <LoginOptions />}
       {isAuth ? <AccountDetails /> : null}
-      <PriorityObjectsTable />
+      <CatalogTable />
     </React.Fragment>
   );
 }
