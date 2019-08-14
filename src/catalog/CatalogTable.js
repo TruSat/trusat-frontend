@@ -73,7 +73,7 @@ const data = [
     object_origin: "russia",
     object_type: "rocket body",
     object_purpose: "comms",
-    time_last_tracked: "8.01pm",
+    time_last_tracked: "1565803593926",
     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
     username_last_tracked: "username"
   },
