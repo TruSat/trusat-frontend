@@ -1,7 +1,9 @@
 .login-options__wrapper {
   align-items: center;
-  display: flex;
-  flex-direction: column;
+  background: $primary-text-color;
+  color: $primary-theme-color;
+  display: inline-block;
+  text-align: center;
 }
 
 .login-options__wrapper span {
