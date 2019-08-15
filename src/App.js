@@ -7,6 +7,8 @@ import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
 import About from "./views/About";
 import HowTo from "./views/HowTo";
+import LogIn from "./views/LogIn";
+import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
 
 export default function App() {
@@ -19,6 +21,8 @@ export default function App() {
         <Route path="/profile" component={Profile} />
         <Route path="/about" component={About} />
         <Route path="/how" component={HowTo} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
         <Route path="/object/:number" component={ObjectInfo} />
       </Router>
     </AuthProvider>
