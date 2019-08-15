@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useAuthDispatch, useAuthState } from "../auth/auth-context";
 import { ethers } from "ethers";
 
-import AccountDetails from "../auth/components/AccountDetails";
-
 export default function Home() {
   const [isAppLoading, setIsAppLoading] = useState(true);
   const { isAuth } = useAuthState();
@@ -37,5 +35,5 @@ export default function Home() {
     setIsAppLoading(false);
   }, [dispatch]);
 
-  return <React.Fragment>{isAuth ? <AccountDetails /> : null}</React.Fragment>;
+  return <React.Fragment>This the welcome page!</React.Fragment>;
 }
