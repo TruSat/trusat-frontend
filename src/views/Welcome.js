@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useAuthDispatch, useAuthState } from "../auth/auth-context";
 import { ethers } from "ethers";
 
-import LoginOptions from "../auth/components/LoginOptions";
 import AccountDetails from "../auth/components/AccountDetails";
 
 export default function Home() {
@@ -38,10 +37,5 @@ export default function Home() {
     setIsAppLoading(false);
   }, [dispatch]);
 
-  return (
-    <React.Fragment>
-      {isAppLoading ? null : <LoginOptions />}
-      {isAuth ? <AccountDetails /> : null}
-    </React.Fragment>
-  );
+  return <React.Fragment>{isAuth ? <AccountDetails /> : null}</React.Fragment>;
 }
