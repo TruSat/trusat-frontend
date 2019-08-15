@@ -5,6 +5,7 @@ import NavBar from "./app/components/NavBar";
 import Catalog from "./views/Catalog";
 import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
+import UserSettings from "./views/UserSettings";
 import About from "./views/About";
 import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
@@ -17,13 +18,14 @@ export default function App() {
       <Router>
         <NavBar />
         <Route exact path="/" component={Welcome} />
-        <Route path="/catalog" component={Catalog} />
-        <Route path="/profile" component={Profile} />
+        <Route exact path="/catalog" component={Catalog} />
+        <Route path="/catalog/object/:number" component={ObjectInfo} />
+        <Route exact path="/profile" component={Profile} />
+        <Route path="/profile/settings" component={UserSettings} />
         <Route path="/about" component={About} />
         <Route path="/how" component={HowTo} />
         <Route path="/login" component={LogIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="/object/:number" component={ObjectInfo} />
       </Router>
     </AuthProvider>
   );
