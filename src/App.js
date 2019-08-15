@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./auth/auth-context";
 import NavBar from "./app/components/NavBar";
 import Catalog from "./views/Catalog";
+import Submit from "./views/Submit";
 import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
 import UserSettings from "./views/UserSettings";
@@ -19,6 +20,7 @@ export default function App() {
         <NavBar />
         <Route exact path="/" component={Welcome} />
         <Route exact path="/catalog" component={Catalog} />
+        <Route path="/catalog/submit" component={Submit} />
         <Route path="/catalog/object/:number" component={ObjectInfo} />
         <Route exact path="/profile" component={Profile} />
         <Route path="/profile/settings" component={UserSettings} />
