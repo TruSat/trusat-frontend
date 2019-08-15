@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import {
   createWallet,
   retrieveNonce,
@@ -76,8 +77,12 @@ export default function SignupForm() {
       </label>
 
       <span onClick={handleSignup}>
-        {isAuthenticating ? `...Loading` : `Sign Up`}
+        {isAuthenticating ? `...Loading` : `Submit`}
       </span>
+
+      <label>
+        Already a member? <NavLink to="/login">Log in</NavLink>
+      </label>
     </form>
   );
 }

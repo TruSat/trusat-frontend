@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthState } from "../auth-context";
 
-import LoginForm from "./LoginForm";
+import SignupForm from "./SignupForm";
 
 import MetaMask from "./MetaMask";
 import Burner from "./Burner";
@@ -13,7 +13,7 @@ export default function LoginOptions() {
     <React.Fragment>
       {isAuth ? null : (
         <div className="login-options__wrapper">
-          <LoginForm />
+          <SignupForm />
           <div>
             <MetaMask />
             <Burner />

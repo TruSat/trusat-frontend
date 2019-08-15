@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
@@ -75,7 +76,7 @@ export default function LoginForm() {
       </label>
 
       <label>
-        Wallet:
+        Secret:
         <input
           type="text"
           onChange={event => setSecret(event.target.value)}
@@ -84,8 +85,15 @@ export default function LoginForm() {
       </label>
 
       <span onClick={handleLogin}>
-        {isAuthenticating ? `...Loading` : `Login`}
+        {isAuthenticating ? `...Loading` : `Log in`}
       </span>
+
+      <NavLink to="/signup">
+        <label>
+          Not a member yet?
+          <span>Sign up</span>
+        </label>
+      </NavLink>
     </form>
   );
 }
