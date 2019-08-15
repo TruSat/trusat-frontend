@@ -12,7 +12,8 @@ export default function PriorityObjectsTable() {
   //       `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/mostRecent`
   //     )
   //     .then(result => {
-  //       setPriorityObjects(result.data.community_observations);
+  //       // setPriorityObjects(result.data.community_observations);
+  //       console.log(result);
   //     })
   //     .catch(err => console.log(err));
   // }, [setPriorityObjects]);
