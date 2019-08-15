@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
@@ -66,6 +67,7 @@ export default function Observations() {
         <p>Observation Count = {data.observation_count}</p>
         <p>Avg. Quality Level = {data.avg_quality_level}</p>
         <p>Bio = {data.bio}</p>
+        <NavLink to="/profile/settings">Settings</NavLink>
       </section>
 
       <section style={{ margin: "1em" }}>
