@@ -6,18 +6,19 @@ import { useAuthState } from "../auth/auth-context";
 export default function Observations() {
   const { jwt } = useAuthState();
 
-  // const [userData, setUserData] = useState([]);
+  const [userData, setUserData] = useState([]);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(
-  //       `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/profile`
-  //     )
-  //     .then(result => {
-  //       setUserData(result.data.community_observations);
-  //     })
-  //     .catch(err => console.log(err));
-  // }, [setUserData]);
+  useEffect(() => {
+    axios
+      .get(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/profile`
+      )
+      .then(result => {
+        console.log(result);
+        // setUserData(result.data.community_observations);
+      })
+      .catch(err => console.log(err));
+  }, [setUserData]);
 
   const renderRows = () => {
     return data.objects_observed.map(obj => (
