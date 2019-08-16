@@ -11,7 +11,7 @@ export default function Observations() {
   // useEffect(() => {
   //   axios
   //     .get(
-  //       `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/mostRecent`
+  //       `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/profile`
   //     )
   //     .then(result => {
   //       setUserData(result.data.community_observations);
