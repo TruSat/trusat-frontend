@@ -74,7 +74,7 @@ and follow instructions to import into MetaMask
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <p>[Note to prompt user to go the full MetaMask route]</p>
 
-          {burner !== {} ? renderBurnerOptions() : null}
+          {authType === "burner" ? renderBurnerOptions() : null}
 
           <span>Get MetaMask</span>
         </section>
