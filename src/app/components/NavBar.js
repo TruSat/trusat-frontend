@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
-import SignUpModal from "../../auth/components/SignUpModal";
+// import SignUpModal from "../../auth/components/SignUpModal";
 import JoinButton from "../../auth/components/JoinButton";
 import { NavLink } from "react-router-dom";
 
