@@ -21,6 +21,7 @@ export default function LoginForm() {
 
     let wallet = new ethers.Wallet(privateKey);
     console.log(`wallet = `, wallet);
+    console.log(`address = `, wallet.signingKey.address);
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
     console.log(`nonce = ${nonce}`);
