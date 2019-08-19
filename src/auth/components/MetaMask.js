@@ -36,6 +36,7 @@ export default function MetaMask() {
     const publicAddress = web3._provider.selectedAddress;
 
     const nonce = await retrieveNonce(publicAddress);
+    console.log(`nonce = `, nonce);
 
     const nonceHash = ethers.utils.id(nonce);
 
@@ -46,7 +47,7 @@ export default function MetaMask() {
         publicAddress
       );
 
-      console.log(signedMessage);
+      console.log(`signed message =`, signedMessage);
 
       return handleAuthenticate({ publicAddress, signedMessage });
     } catch (error) {
