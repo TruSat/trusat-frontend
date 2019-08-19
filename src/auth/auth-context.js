@@ -42,6 +42,7 @@ function AuthProvider({ children }) {
     burner: {},
     jwt: {}
   });
+
   return (
     <AuthStateContext.Provider value={state}>
       <AuthDispatchContext.Provider value={dispatch}>
