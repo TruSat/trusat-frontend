@@ -3,22 +3,27 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
-export default function Observations() {
-  const { jwt } = useAuthState();
+export default function Profile() {
+  const { address, jwt } = useAuthState();
+  console.log(`address = `, address);
+  console.log(`jwt = `, jwt);
 
   const [userData, setUserData] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/profile`
-      )
-      .then(result => {
-        console.log(result);
-        // setUserData(result.data.community_observations);
-      })
-      .catch(err => console.log(err));
-  }, [setUserData]);
+    if (address) {
+      axios
+        .post(
+          `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/profile`,
+          JSON.stringify({ jwt: jwt, eth_addr: address })
+        )
+        .then(result => {
+          console.log(result);
+          // setUserData(result.data.community_observations);
+        })
+        .catch(err => console.log(err));
+    }
+  }, [address, jwt, setUserData]);
 
   const renderRows = () => {
     return data.objects_observed.map(obj => (
