@@ -133,9 +133,7 @@ const data = {
       object_type: "satelitte",
       object_primary_purpose: "military",
       object_secondary_purpose: "communications",
-      // TODO - ask mike about this number
-      // is this quality instead?
-      observation_count: "50",
+      observation_quality: "50", // the quality of this individual observation
       time_last_tracked: "1550398277",
       address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
       username_last_tracked: "username"
@@ -146,7 +144,7 @@ const data = {
       object_type: "satelitte",
       object_primary_purpose: "military",
       object_secondary_purpose: "communications",
-      observation_count: "50",
+      observation_quality: "50",
       time_last_tracked: "1550398277",
       address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
       username_last_tracked: "username"
@@ -157,7 +155,7 @@ const data = {
       object_type: "satelitte",
       object_primary_purpose: "military",
       object_secondary_purpose: "communications",
-      observation_count: "50",
+      observation_quality: "50",
       time_last_tracked: "1550398277",
       address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
       username_last_tracked: "username"
