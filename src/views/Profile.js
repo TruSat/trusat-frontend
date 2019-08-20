@@ -33,7 +33,7 @@ export default function Profile() {
         <td>{obj.object_primary_purpose}</td>
         <td>{obj.object_type}</td>
         <td>{obj.object_secondary_purpose}</td>
-        <td>{obj.observation_count}</td>
+        <td>{obj.observation_quality}</td>
         <td>{obj.time_last_tracked}</td>
         <td>{obj.username_last_tracked}</td>
       </tr>
@@ -68,11 +68,11 @@ export default function Profile() {
           src={data.user_image}
           alt="user avatar"
         />
-        <p>Location = {data.location}</p>
-        <p>Objects Tracked = {data.objects_tracked}</p>
+        <p>Location = {data.user_location}</p>
+        <p>Objects Tracked = {data.number_objects_tracked}</p>
         <p>Observation Count = {data.observation_count}</p>
-        <p>Avg. Quality Level = {data.avg_quality_level}</p>
-        <p>Bio = {data.bio}</p>
+        <p>Avg. Quality Level = {data.average_observation_quality}</p>
+        <p>Bio = {data.user_bio}</p>
         <NavLink to="/profile/settings">Settings</NavLink>
       </section>
 
@@ -86,7 +86,7 @@ export default function Profile() {
               <th>PURPOSE1</th>
               <th>TYPE</th>
               <th>PURPOSE2</th>
-              <th>OBSERVATION COUNT</th>
+              <th>OBSERVATION QUALITY</th>
               <th>LAST TIME TRACKED</th>
               <th>LAST USER TO TRACK</th>
             </tr>
@@ -116,16 +116,20 @@ export default function Profile() {
   );
 }
 
+// POST request
+// /profile
+// receives JWT and returns object
 const data = {
-  user_name: "Scott_Tilley",
+  username: "Scott_Tilley",
   user_image:
     "https://i.amz.mshcdn.com/KCJWkZNiwPyNXPcV0CN7yeL8G0A=/fit-in/1200x9600/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F784551%2F0e3defde-7d59-4d94-b094-51d187f930da.jpg",
-  location: "Brixton, UK",
+  user_location: "Brixton, UK",
   observation_count: "59000",
-  objects_tracked: "403",
-  avg_quality_level: "65%",
-  bio: "yada yada bio here...",
+  number_objects_tracked: "403",
+  average_observation_quality: "65", // a percentage value
+  user_bio: "yada yada bio here...",
   // objects they have tracked after we processes their observations (IODs submitted)
+  // maybe confirmed_observations is a better name?
   objects_observed: [
     {
       object_name: "SL-27 R/B",
