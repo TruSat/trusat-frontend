@@ -83,9 +83,9 @@ const object_history = {
           username: "Jim Smith",
           user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
           user_location: "Los Angeles, USA",
-          quality: "34",
-          time_difference: "1.42",
-          weight: "33"
+          observation_quality: "34",
+          observation_time_difference: "1.42",
+          observation_weight: "33"
         }
       ]
     },
