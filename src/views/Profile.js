@@ -124,6 +124,7 @@ const data = {
   user_image:
     "https://i.amz.mshcdn.com/KCJWkZNiwPyNXPcV0CN7yeL8G0A=/fit-in/1200x9600/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F784551%2F0e3defde-7d59-4d94-b094-51d187f930da.jpg",
   user_location: "Brixton, UK",
+  user_email: "scott@space-cadet.com", // not used in render but will be passed to the "settings" component to save us another query
   observation_count: "59000",
   number_objects_tracked: "403",
   average_observation_quality: "65", // a percentage value
