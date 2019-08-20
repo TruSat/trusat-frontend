@@ -132,6 +132,7 @@ const data = {
   // maybe confirmed_observations is a better name?
   objects_observed: [
     {
+      object_norad_number: "12345", // used to for routing to the object page for this given object
       object_name: "SL-27 R/B",
       object_origin: "france",
       object_type: "satelitte",
@@ -143,6 +144,7 @@ const data = {
       username_last_tracked: "username"
     },
     {
+      object_norad_number: "12345",
       object_name: "SL-27 R/B",
       object_origin: "france",
       object_type: "satelitte",
@@ -154,6 +156,7 @@ const data = {
       username_last_tracked: "username"
     },
     {
+      object_norad_number: "12345",
       object_name: "SL-27 R/B",
       object_origin: "france",
       object_type: "satelitte",
@@ -170,6 +173,7 @@ const data = {
     {
       time_submitted: "1550398277", // timestamp will be used to populate the date AND time fields in UI
       object_name: "SL-27 R/B",
+      object_norad_number: "12345", // again, not used for rendering, placing here to aid with routing to object info page
       right_ascension: "03:42:45",
       declanation: "12:32:53",
       brightness: "1.4",
@@ -178,6 +182,7 @@ const data = {
     {
       time_submitted: "1550398277",
       object_name: "SL-27 R/B",
+      object_norad_number: "12345",
       right_ascension: "03:42:45",
       declanation: "12:32:53",
       brightness: "1.4",
@@ -186,6 +191,7 @@ const data = {
     {
       time_submitted: "1550398277",
       object_name: "SL-27 R/B",
+      object_norad_number: "12345",
       right_ascension: "03:42:45",
       declanation: "12:32:53",
       brightness: "1.4",
