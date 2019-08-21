@@ -4,7 +4,7 @@ import CatalogNavBar from "../catalog/CatalogNavBar";
 import CatalogTable from "../catalog/CatalogTable";
 
 export default function Catalog() {
-  const [catalogFilter, setCatalogFilter] = useState("priorities");
+  const [catalogFilter, setCatalogFilter] = useState("priority");
   console.log(`catalog filter = `, catalogFilter);
 
   return (
@@ -34,7 +34,7 @@ export default function Catalog() {
         setCatalogFilter={setCatalogFilter}
       />
       {/* TODO - pass the catalog filter to the table for the api call */}
-      <CatalogTable />
+      <CatalogTable catalogFilter={catalogFilter} />
     </React.Fragment>
   );
 }

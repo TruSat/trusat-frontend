@@ -2,21 +2,28 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
-export default function PriorityObjectsTable() {
+export default function PriorityObjectsTable({ catalogFilter }) {
+  console.log(catalogFilter);
   const { jwt } = useAuthState();
   const [priorityObjects, setPriorityObjects] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/priority`
-      )
-      .then(result => {
-        setPriorityObjects(result.data.community_observations);
-        console.log(result.data.community_observations);
-      })
-      .catch(err => console.log(err));
-  }, [setPriorityObjects]);
+    if (catalogFilter) {
+      // TODO - ask Kenan should this be a post request, sending JWT?
+      // Or are we avoiding persinalized catalog for now?
+      axios
+        .get(
+          `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/${catalogFilter}`
+        )
+        .then(result => {
+          setPriorityObjects(result.data.community_observations);
+        })
+        .catch(err => {
+          console.log(err);
+          setPriorityObjects([]);
+        });
+    }
+  }, [catalogFilter, setPriorityObjects]);
 
   const renderRows = () => {
     return priorityObjects.map(priObj => (
@@ -27,6 +34,7 @@ export default function PriorityObjectsTable() {
         <td>{priObj.object_type}</td>
         <td>{priObj.object_purpose}</td>
         <td>{priObj.time_last_tracked}</td>
+        {/* TODO - this is currently returning email, should be username or eth address */}
         <td>{priObj.username_last_tracked}</td>
       </tr>
     ));
