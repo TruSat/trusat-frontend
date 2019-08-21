@@ -119,6 +119,7 @@ export default function Profile() {
 // POST request
 // /profile
 // receives JWT and returns object
+// This query is unique to an individual user
 const data = {
   username: "Scott_Tilley",
   user_image:
@@ -131,6 +132,7 @@ const data = {
   user_bio: "yada yada bio here...",
   // objects they have tracked after we processes their observations (IODs submitted)
   // maybe confirmed_observations is a better name?
+  // sorted by most recent
   objects_observed: [
     {
       object_norad_number: "12345", // used to for routing to the object page for this given object
@@ -170,33 +172,34 @@ const data = {
     }
   ],
   // essentially a full history of their IOD submissions
+  // sorted by most recent
+  // limit to 500 observations
   observation_history: [
     {
       time_submitted: "1550398277", // timestamp will be used to populate the date AND time fields in UI
       object_name: "SL-27 R/B",
       object_norad_number: "12345", // again, not used for rendering, placing here to aid with routing to object info page
-      right_ascension: "03:42:45",
-      declanation: "12:32:53",
-      brightness: "1.4",
-      conditions: "fair"
+      observation_quality: "34",
+      observation_time_difference: "1.42", // seconds - will be a plus or minus value
+      observation_weight: "30", // a percentage value
+      observation_iod: "12345 98 123A..."
     },
     {
       time_submitted: "1550398277",
       object_name: "SL-27 R/B",
       object_norad_number: "12345",
-      right_ascension: "03:42:45",
-      declanation: "12:32:53",
-      brightness: "1.4",
-      conditions: "fair"
+      observation_quality: "34",
+      observation_time_difference: "1.42",
+      observation_weight: "30",
+      observation_iod: "12345 98 123A..."
     },
     {
       time_submitted: "1550398277",
       object_name: "SL-27 R/B",
       object_norad_number: "12345",
-      right_ascension: "03:42:45",
-      declanation: "12:32:53",
-      brightness: "1.4",
-      conditions: "fair"
+      observation_quality: "34",
+      observation_time_difference: "1.42",
+      observation_iod: "12345 98 123A..."
     }
   ]
 };
