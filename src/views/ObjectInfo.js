@@ -1,7 +1,73 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useAuthState } from "../auth/auth-context";
 
 export default function ObjectInfo(props) {
-  return <div>This is an Object page for {props.match.params.number}</div>;
+  const { jwt } = useAuthState();
+  const noradNumber = props.match.params.number;
+  const [year, setYear] = useState("2019");
+
+  const [objectInfo, setObjectInfo] = useState({});
+  const [objectInfluence, setObjectInfluence] = useState([]);
+  const [objectHistory, setObjectHistory] = useState({});
+  const [useSightings, setUserSightings] = useState([]);
+  const [mostSigtings, setMostSightings] = useState({});
+
+  useEffect(() => {});
+
+  const getObjectInfo = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/info`,
+        JSON.stringify({ norad_number: noradNumber })
+      )
+      .then(result => {
+        console.log(result);
+        setObjectInfo(result.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getObjectInfluence = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/influence`,
+        JSON.stringify({ norad_number: noradNumber })
+      )
+      .then(result => {
+        console.log(result);
+        setObjectInfluence(result.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getObjectHistory = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/history`,
+        JSON.stringify({ norad_number: noradNumber, year: year })
+      )
+      .then(result => {
+        console.log(result);
+        setObjectInfluence(result.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  const getUserSightings = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/userSightings`,
+        JSON.stringify({ norad_number: noradNumber, jwt: jwt })
+      )
+      .then(result => {
+        console.log(result);
+        setObjectInfluence(result.data);
+      })
+      .catch(err => console.log(err));
+  };
+
+  return <div>This is an Object page for {noradNumber}</div>;
 }
 
 // POST REQUEST
