@@ -86,14 +86,14 @@ export const createSecret = (privateKey, password) => {
   // convert iv in bytes to a hex string
   const ivAsHex = aesjs.utils.hex.fromBytes(iv);
   // create secret string to email to user
-  const secret = `${salt},${ivAsHex},${encryptedPrivateKeyBytesAsHex}`;
+  const secret = `${salt}/${ivAsHex}/${encryptedPrivateKeyBytesAsHex}`;
 
   return secret;
 };
 
 export const decryptSecret = (secret, password) => {
   // split secret and obtain salt, iv and the encrypted privateKeyBytes as a hex string
-  const splitSecret = secret.split(",");
+  const splitSecret = secret.split("/");
   const salt = splitSecret[0];
   const iv = aesjs.utils.hex.toBytes(splitSecret[1]);
   const encryptedPrivateKeyBytesAsHex = splitSecret[2];
