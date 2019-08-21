@@ -60,7 +60,8 @@ export default function PriorityObjectsTable({ catalogFilter }) {
 
 // GET request
 // /catalog/priorities
-// objects in the database, sorted by priority
+// limit to 100
+// sorted by priority
 const priorities = [
   {
     object_norad_number: "12345", // This is not rendered but will be used to create the route for the "object view"
@@ -98,6 +99,7 @@ const priorities = [
 // /catalog/undisclosed
 // Same JSON structure as above
 // but only contains those objects that are not found in the public (government) dataset
+// limit to 100
 // Sorted by priority probably makes sense?
 const undisclosed = [{}];
 
@@ -105,6 +107,7 @@ const undisclosed = [{}];
 // /catalog/debris
 // Same JSON structure as above
 // but only contains those items that are described as "debris" - the "harder to find"s.
+// limit to 100
 // Sorted by priority probably makes sensse?
 const debris = [{}];
 
@@ -112,6 +115,7 @@ const debris = [{}];
 // /catalog/latest
 // Same JSON structure as above
 // Perhaps only "new" objects added to the database, maybe in the last month?
+// limit to 100
 // Need to ask Mike/Chris what is best here. By Latest maybe we can sort by highest confidence?
 const latest = [{}];
 
@@ -119,5 +123,6 @@ const latest = [{}];
 // /catalog/all
 // Same JSON structure as above
 // Every item in the database
+// limit to 100
 // Not sure what is best way to sort this?
 const all = [{}];
