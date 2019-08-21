@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
+import { request } from "http";
 
 export default function ObjectInfo(props) {
   const { jwt } = useAuthState();
@@ -66,6 +67,9 @@ export default function ObjectInfo(props) {
       })
       .catch(err => console.log(err));
   };
+
+  // TODO - complete this request
+  const getMostSightings = () => {};
 
   return <div>This is an Object page for {noradNumber}</div>;
 }
