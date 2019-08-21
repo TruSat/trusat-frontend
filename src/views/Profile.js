@@ -176,7 +176,7 @@ const data = {
   // limit to 500 observations
   observation_history: [
     {
-      time_submitted: "1550398277", // timestamp will be used to populate the date AND time fields in UI
+      observation_time: "1550398277", // timestamp will be used to populate the date AND time fields in UI
       object_name: "SL-27 R/B",
       object_norad_number: "12345", // again, not used for rendering, placing here to aid with routing to object info page
       observation_quality: "34",
@@ -185,7 +185,7 @@ const data = {
       observation_iod: "12345 98 123A..."
     },
     {
-      time_submitted: "1550398277",
+      observation_time: "1550398277",
       object_name: "SL-27 R/B",
       object_norad_number: "12345",
       observation_quality: "34",
@@ -194,7 +194,7 @@ const data = {
       observation_iod: "12345 98 123A..."
     },
     {
-      time_submitted: "1550398277",
+      observation_time: "1550398277",
       object_name: "SL-27 R/B",
       object_norad_number: "12345",
       observation_quality: "34",
