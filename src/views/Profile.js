@@ -51,10 +51,10 @@ export default function Profile() {
         <td>{observation.time_submitted}</td>
         <td>{observation.time_submitted}</td>
         <td>{observation.object_name}</td>
-        <td>{observation.right_ascension}</td>
-        <td>{observation.declanation}</td>
-        <td>{observation.brightness}</td>
-        <td>{observation.conditions}</td>
+        <td>{observation.observation_quality}</td>
+        <td>{observation.observation_time_difference}</td>
+        <td>{observation.observation_weight}</td>
+        <td>{observation.observation_iod}</td>
       </tr>
     ));
   };
@@ -102,11 +102,11 @@ export default function Profile() {
             <tr>
               <th>DATE</th>
               <th>TIME</th>
-              <th>NAME</th>
-              <th>R.ASCENSION</th>
-              <th>DECLANATION</th>
-              <th>BRIGHTNESS</th>
-              <th>CONDITIONS</th>
+              <th>OBJECT NAME</th>
+              <th>QUALITY</th>
+              <th>TIME DIFF</th>
+              <th>WEIGHT</th>
+              <th>IOD</th>
             </tr>
           </thead>
           <tbody>{renderObservationHistory()}</tbody>
@@ -199,6 +199,7 @@ const data = {
       object_norad_number: "12345",
       observation_quality: "34",
       observation_time_difference: "1.42",
+      observation_weight: "30",
       observation_iod: "12345 98 123A..."
     }
   ]
