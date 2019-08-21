@@ -9,9 +9,10 @@ export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const dispatch = useAuthDispatch();
   const [email, setEmail] = useState("bob@cryptonoob.com");
-  const [password, setPassword] = useState("123456789");
+  const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [secret, setSecret] = useState("");
 
+  // TO DO - error handling in the UI
   const handleLogin = async () => {
     dispatch({ type: "AUTHENTICATING", payload: true });
     console.log(`secret = `, secret);

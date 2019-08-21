@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import axios from "axios";
 import {
   createWallet,
   retrieveNonce,
@@ -12,8 +13,22 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 export default function SignupForm() {
   const { isAuthenticating } = useAuthState();
   const dispatch = useAuthDispatch();
-  const [email, setEmail] = useState("bob@cryptonoob.com");
-  const [password, setPassword] = useState("123456789");
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [password, setPassword] = useState("Zn48&NJFLPjr");
+
+  // TODO - error handling in the UI
+  const emailSecret = secret => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/email`,
+        JSON.stringify({ to: email, payload: secret })
+      )
+      .then(result => {
+        // TODO - ask kenan if this result should omit the secret in return for security reasons
+        console.log(result);
+      })
+      .catch(err => console.log(err));
+  };
 
   const handleSignup = async () => {
     dispatch({ type: "AUTHENTICATING", payload: true });
@@ -48,6 +63,7 @@ export default function SignupForm() {
     console.log(`address = `, wallet.address);
     console.log(`secret = `, secret);
     // TODO - email secret to the user
+    emailSecret(secret);
   };
 
   return (
