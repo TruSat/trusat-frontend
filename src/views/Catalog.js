@@ -5,7 +5,6 @@ import CatalogTable from "../catalog/CatalogTable";
 
 export default function Catalog() {
   const [catalogFilter, setCatalogFilter] = useState("priority");
-  console.log(`catalog filter = `, catalogFilter);
 
   return (
     <React.Fragment>
