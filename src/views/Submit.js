@@ -1,6 +1,11 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { NavLink } from "react-router-dom";
+import { useAuthState } from "../auth/auth-context";
 
 export default function Submit() {
+  const { jwt } = useAuthState();
+
   const [pastedIODs, setPastedIODs] = useState("");
 
   const [objectName, setObjectName] = useState("");
@@ -13,11 +18,30 @@ export default function Submit() {
   const [brightness, setBrightness] = useState("");
   const [conditions, setConditions] = useState("");
 
+  const handleSubmit = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/submitObservation`,
+        // iod - will be a single iod
+        // iods - will be a bunch of iods that will need to be parsed on backend
+        JSON.stringify({ jwt: jwt, iods: pastedIODs, iod: "" })
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => console.log(err));
+  };
+
+  // TODO
+  // This will concatenate all the data entered to the individual obervation fields and return an iod
+  // Need to ask chris how to form this
+  const createIOD = () => {};
+
   return (
     <React.Fragment>
       <h1>SUBMIT OBSERVATIONS</h1>
 
-      <section style={{ margin: "1em" }}>
+      <section style={{ border: "1px solid yellow", margin: "1em" }}>
         <label>
           <p>Submit preformatted data</p>
           <input
@@ -28,7 +52,7 @@ export default function Submit() {
         </label>
       </section>
 
-      <section style={{ margin: "1em" }}>
+      <section style={{ border: "1px solid yellow", margin: "1em" }}>
         <p>Or enter an individual observation</p>
 
         <div>
@@ -117,6 +141,13 @@ export default function Submit() {
           <button onClick={() => setConditions("bad")}>Bad</button>
           <button onClick={() => setConditions("terrible")}>Terrible</button>
         </div>
+      </section>
+
+      <section style={{ margin: "1em" }}>
+        <NavLink to="/catalog">
+          <button>CANCEL</button>
+        </NavLink>
+        <button onClick={handleSubmit}>SUBMIT</button>
       </section>
     </React.Fragment>
   );
