@@ -7,11 +7,11 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
     >
       <span
         className={
-          catalogFilter === "priority"
+          catalogFilter === "priorities"
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("priority")}
+        onClick={() => setCatalogFilter("priorities")}
       >
         PRIORITIES
       </span>
