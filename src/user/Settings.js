@@ -1,8 +1,21 @@
 import React from "react";
+import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
 export default function AccountDetails() {
   const { isAuth, authType, address, burner } = useAuthState();
+
+  const handleEdit = () => {
+    axios
+      .post(
+        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/editProfile`,
+        JSON.stringify({ username: username, email: email, bio: bio })
+      )
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => console.log(err));
+  };
 
   const burnWallet = () => {
     localStorage.clear();
