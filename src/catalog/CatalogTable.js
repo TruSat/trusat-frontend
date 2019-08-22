@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
+import Spinner from "../app/components/Spinner";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
 export default function CatalogTable({ catalogFilter }) {
-  console.log(catalogFilter);
   const { jwt } = useAuthState();
+  const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     if (catalogFilter) {
+      setShowTable(false);
       // TODO - ask Kenan should this be a post request, sending JWT?
       // Or are we avoiding persinalized catalog for now?
       axios
@@ -18,6 +20,7 @@ export default function CatalogTable({ catalogFilter }) {
         .then(result => {
           console.log(result);
           setTableData(result.data);
+          setShowTable(true);
         })
         .catch(err => {
           console.log(err);
@@ -41,7 +44,7 @@ export default function CatalogTable({ catalogFilter }) {
     ));
   };
 
-  return (
+  return showTable ? (
     <table>
       <thead>
         <tr>
@@ -56,6 +59,8 @@ export default function CatalogTable({ catalogFilter }) {
       </thead>
       <tbody>{renderRows()}</tbody>
     </table>
+  ) : (
+    <Spinner />
   );
 }
 
