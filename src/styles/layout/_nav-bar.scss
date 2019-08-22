@@ -18,8 +18,16 @@
   text-decoration: none;
 }
 
+.nav-bar__link--highlight:hover {
+  cursor: pointer;
+}
+
 .nav-bar__link--lowlight {
   color: #888888;
   padding-bottom: 0.5em;
   text-decoration: none;
+}
+
+.nav-bar__link--lowlight:hover {
+  cursor: pointer;
 }
