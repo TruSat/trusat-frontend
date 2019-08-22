@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import Spinner from "../app/components/Spinner";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
@@ -30,19 +31,21 @@ export default function CatalogTable({ catalogFilter }) {
   }, [catalogFilter, setTableData]);
 
   const renderRows = () => {
-    return tableData.map(priObj => (
-      <tr key={tableData.indexOf(priObj)}>
+    return tableData.map(obj => (
+      <tr key={tableData.indexOf(obj)}>
         {catalogFilter === "priorities" ? (
-          <td>{tableData.indexOf(priObj) + 1}</td>
+          <td>{tableData.indexOf(obj) + 1}</td>
         ) : null}
-
-        <td>{priObj.object_name}</td>
-        <td>{priObj.object_origin}</td>
-        <td>{priObj.object_type}</td>
-        <td>{priObj.object_purpose}</td>
-        <td>{priObj.time_last_tracked}</td>
-        {/* TODO - this is currently returning email, should be username or eth address */}
-        <td>{priObj.username_last_tracked}</td>
+        <td>
+          <NavLink to={`/object/${obj.object_norad_number}`}>
+            {obj.object_name}
+          </NavLink>
+        </td>
+        <td>{obj.object_origin}</td>
+        <td>{obj.object_type}</td>
+        <td>{obj.object_purpose}</td>
+        <td>{obj.time_last_tracked}</td>
+        <td>{obj.username_last_tracked}</td>
       </tr>
     ));
   };
