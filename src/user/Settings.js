@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
 export default function AccountDetails() {
   const { isAuth, authType, address, burner } = useAuthState();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
 
   const handleEdit = () => {
     axios
@@ -67,7 +70,7 @@ and follow instructions to import into MetaMask
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <h1>Account Settings</h1>
           <label>
-            Username <a>change</a>
+            Username <button>change</button>
             <p>username here...</p>
           </label>
           <label>
@@ -75,11 +78,11 @@ and follow instructions to import into MetaMask
             <p>{address}</p>
           </label>
           <label>
-            Email
+            Email <button>change</button>
             <p>email here...</p>
           </label>
           <label>
-            Bio
+            Bio <button>change</button>
             <p>Bio here...</p>
           </label>
         </section>
