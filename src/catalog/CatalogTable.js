@@ -9,8 +9,8 @@ export default function CatalogTable({ catalogFilter }) {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
+    setShowTable(false);
     if (catalogFilter) {
-      setShowTable(false);
       // TODO - ask Kenan should this be a post request, sending JWT?
       // Or are we avoiding persinalized catalog for now?
       axios
@@ -32,7 +32,10 @@ export default function CatalogTable({ catalogFilter }) {
   const renderRows = () => {
     return tableData.map(priObj => (
       <tr key={tableData.indexOf(priObj)}>
-        <td>{tableData.indexOf(priObj) + 1}</td>
+        {catalogFilter === "priorities" ? (
+          <td>{tableData.indexOf(priObj) + 1}</td>
+        ) : null}
+
         <td>{priObj.object_name}</td>
         <td>{priObj.object_origin}</td>
         <td>{priObj.object_type}</td>
@@ -48,7 +51,8 @@ export default function CatalogTable({ catalogFilter }) {
     <table>
       <thead>
         <tr>
-          <th>Priority</th>
+          {catalogFilter === "priorities" ? <th>Priority</th> : null}
+
           <th>Name</th>
           <th>Origin</th>
           <th>Type</th>
