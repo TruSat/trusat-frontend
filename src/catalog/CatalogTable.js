@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
-export default function PriorityObjectsTable({ catalogFilter }) {
+export default function CatalogTable({ catalogFilter }) {
   console.log(catalogFilter);
   const { jwt } = useAuthState();
-  const [priorityObjects, setPriorityObjects] = useState([]);
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     if (catalogFilter) {
@@ -13,22 +13,23 @@ export default function PriorityObjectsTable({ catalogFilter }) {
       // Or are we avoiding persinalized catalog for now?
       axios
         .get(
-          `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/${catalogFilter}`
+          `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/catalog/${catalogFilter}`
         )
         .then(result => {
-          setPriorityObjects(result.data.community_observations);
+          console.log(result);
+          setTableData(result.data);
         })
         .catch(err => {
           console.log(err);
-          setPriorityObjects([]);
+          setTableData([]);
         });
     }
-  }, [catalogFilter, setPriorityObjects]);
+  }, [catalogFilter, setTableData]);
 
   const renderRows = () => {
-    return priorityObjects.map(priObj => (
-      <tr key={priorityObjects.indexOf(priObj)}>
-        <td>{priorityObjects.indexOf(priObj) + 1}</td>
+    return tableData.map(priObj => (
+      <tr key={tableData.indexOf(priObj)}>
+        <td>{tableData.indexOf(priObj) + 1}</td>
         <td>{priObj.object_name}</td>
         <td>{priObj.object_origin}</td>
         <td>{priObj.object_type}</td>
