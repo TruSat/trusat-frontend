@@ -44,6 +44,7 @@ export default function Submit() {
       <section style={{ border: "1px solid yellow", margin: "1em" }}>
         <label>
           <p>Submit preformatted data</p>
+          {/* TODO - split inputted text into seperate lines, using the chracter length of an IOD as the charcter limit */}
           <input
             placeholder="Paste your data here"
             value={pastedIODs}
