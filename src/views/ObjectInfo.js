@@ -10,10 +10,9 @@ export default function ObjectInfo(props) {
   const [year, setYear] = useState("2019");
 
   const [objectInfo, setObjectInfo] = useState({});
-  const [objectInfluence, setObjectInfluence] = useState([]);
   const [objectHistory, setObjectHistory] = useState({});
-  const [userSightings, setUserSightings] = useState([]);
-  const [mostSigtings, setMostSightings] = useState({});
+  const [objectUserSightings, setObjectUserSightings] = useState([]);
+  // const [objectMostSigtings, setObjectMostSightings] = useState({});
 
   // observation filter options
   const [observationFilter, setObservationFilter] = useState("influence");
@@ -33,19 +32,6 @@ export default function ObjectInfo(props) {
       .catch(err => console.log(err));
   };
 
-  const getObjectInfluence = () => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/influence`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(result => {
-        console.log(result);
-        setObjectInfluence(result.data);
-      })
-      .catch(err => console.log(err));
-  };
-
   const getObjectHistory = () => {
     axios
       .post(
@@ -54,12 +40,12 @@ export default function ObjectInfo(props) {
       )
       .then(result => {
         console.log(result);
-        setObjectInfluence(result.data);
+        setObjectHistory(result.data);
       })
       .catch(err => console.log(err));
   };
 
-  const getUserSightings = () => {
+  const getObjectUserSightings = () => {
     axios
       .post(
         `https://api.consensys.space:8080/object/userSightings`,
@@ -71,13 +57,13 @@ export default function ObjectInfo(props) {
       )
       .then(result => {
         console.log(result);
-        setObjectInfluence(result.data);
+        setObjectUserSightings(result.data);
       })
       .catch(err => console.log(err));
   };
 
   // TODO - complete this request
-  const getMostSightings = () => {};
+  // const getObjectMostSightings = () => {};
 
   const renderHistoryTable = () => {
     return <div>This is the history table</div>;
@@ -156,7 +142,10 @@ export default function ObjectInfo(props) {
           <a href="null">Get Data</a>
         </div>
         {observationFilter === "influence" ? (
-          <InfluenceTable objectOrigin={object_info.object_origin} />
+          <InfluenceTable
+            noradNumber={noradNumber}
+            objectOrigin={object_info.object_origin}
+          />
         ) : null}
         {observationFilter === "history" ? renderHistoryTable() : null}
         {observationFilter === "userSightings"
