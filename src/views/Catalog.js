@@ -1,10 +1,18 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import CatalogNavBar from "../catalog/CatalogNavBar";
 import CatalogTable from "../catalog/CatalogTable";
 
 export default function Catalog() {
   const [catalogFilter, setCatalogFilter] = useState("priorities");
+
+  const downloadTles = () => {
+    axios
+      .get("https://www.celestrak.com/NORAD/elements/visual.txt")
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  };
 
   return (
     <React.Fragment>
@@ -25,6 +33,7 @@ export default function Catalog() {
           display: "inline-block",
           padding: "0.5em"
         }}
+        onClick={downloadTles}
       >
         Get data
       </span>
