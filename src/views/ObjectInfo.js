@@ -189,6 +189,10 @@ export default function ObjectInfo(props) {
           <a href="null">Get Data</a>
         </div>
         {observationFilter === "influence" ? renderInfluenceTable() : null}
+        {observationFilter === "history" ? renderHistoryTable() : null}
+        {observationFilter === "userSightings"
+          ? renderUserSightingsTable()
+          : null}
       </section>
     </React.Fragment>
   );
