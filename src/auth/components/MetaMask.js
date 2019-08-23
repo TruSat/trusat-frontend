@@ -61,7 +61,7 @@ export default function MetaMask() {
     Promise.resolve(
       axios
         .post(
-          "http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/login",
+          "https://api.consensys.space:8080/login",
           JSON.stringify({
             publicAddress: publicAddress,
             signedMessage: signedMessage

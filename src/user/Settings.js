@@ -11,7 +11,7 @@ export default function AccountDetails() {
   const handleEdit = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/editProfile`,
+        `https://api.consensys.space:8080/editProfile`,
         JSON.stringify({ username: username, email: email, bio: bio })
       )
       .then(result => {

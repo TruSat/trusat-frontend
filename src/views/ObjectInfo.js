@@ -19,7 +19,7 @@ export default function ObjectInfo(props) {
   const getObjectInfo = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/info`,
+        `https://api.consensys.space:8080/object/info`,
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
@@ -32,7 +32,7 @@ export default function ObjectInfo(props) {
   const getObjectInfluence = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/influence`,
+        `https://api.consensys.space:8080/object/influence`,
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
@@ -45,7 +45,7 @@ export default function ObjectInfo(props) {
   const getObjectHistory = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/history`,
+        `https://api.consensys.space:8080/object/history`,
         JSON.stringify({ norad_number: noradNumber, year: year })
       )
       .then(result => {
@@ -58,7 +58,7 @@ export default function ObjectInfo(props) {
   const getUserSightings = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/userSightings`,
+        `https://api.consensys.space:8080/object/userSightings`,
         JSON.stringify({
           norad_number: noradNumber,
           jwt: jwt,

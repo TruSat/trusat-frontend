@@ -12,7 +12,7 @@ export const createWallet = () => {
 export const retrieveNonce = async address => {
   return axios
     .post(
-      "http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/getNonce",
+      "https://api.consensys.space:8080/getNonce",
       JSON.stringify({ publicAddress: address })
     )
     .then(response => {
@@ -49,7 +49,7 @@ export const retrieveJwt = async ({ publicAddress, signedMessage }) => {
 
   return axios
     .post(
-      "http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/login",
+      "https://api.consensys.space:8080/login",
       JSON.stringify({
         publicAddress: publicAddress,
         signedMessage: signedMessage.signature

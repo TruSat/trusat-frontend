@@ -21,7 +21,7 @@ export default function Submit() {
   const handleSubmit = () => {
     axios
       .post(
-        `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/submitObservation`,
+        `https://api.consensys.space:8080/submitObservation`,
         // iod - will be a single iod
         // iods - will be a bunch of iods that will need to be parsed on backend
         JSON.stringify({ jwt: jwt, iods: pastedIODs, iod: "" })

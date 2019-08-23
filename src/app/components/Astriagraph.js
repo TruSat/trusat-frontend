@@ -8,7 +8,7 @@ export default function Astriagraph() {
     axios
       // TODO
       // Perhaps this will become a POST request so that we can re-render the visual when user changes the catalog filter
-      .get(`http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/tle`)
+      .get(`https://api.consensys.space:8080/tle`)
       .then(result => {
         console.log(result);
       })
