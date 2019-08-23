@@ -10,13 +10,13 @@ export default function Catalog() {
 
   useEffect(() => {
     axios
-      .get("https://api.consensys.space:8080/downloadTles")
+      .get(`https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`)
       .then(res => {
         console.log(res.data);
         setTleString(res.data);
       })
       .catch(err => console.log(err));
-  }, []);
+  }, [catalogFilter]);
 
   const downloadTles = () => {
     let textFile = null;
@@ -54,11 +54,11 @@ export default function Catalog() {
           padding: "0.5em"
         }}
         href={downloadTles()}
-        download="TLEs.txt"
+        download={`trusat_${catalogFilter}.txt`}
       >
         Get data
       </a>
-      <a />
+
       <CatalogNavBar
         catalogFilter={catalogFilter}
         setCatalogFilter={setCatalogFilter}
