@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import { request } from "http";
@@ -11,8 +12,11 @@ export default function ObjectInfo(props) {
   const [objectInfo, setObjectInfo] = useState({});
   const [objectInfluence, setObjectInfluence] = useState([]);
   const [objectHistory, setObjectHistory] = useState({});
-  const [useSightings, setUserSightings] = useState([]);
+  const [userSightings, setUserSightings] = useState([]);
   const [mostSigtings, setMostSightings] = useState({});
+
+  // observation filter options
+  const [observationFilter, setObservationFilter] = useState("influence");
 
   useEffect(() => {});
 
@@ -75,9 +79,50 @@ export default function ObjectInfo(props) {
   // TODO - complete this request
   const getMostSightings = () => {};
 
+  const renderInfluenceTable = () => {
+    return (
+      <table>
+        <thead>
+          <tr>
+            <th>DATE</th>
+            <th />
+            <th />
+            <th>USER</th>
+            <th>QUAlITY</th>
+            <th>TIME DIFF</th>
+            <th>WEIGHT</th>
+          </tr>
+        </thead>
+        <tbody>
+          {object_influence.map(obj => {
+            return (
+              <tr>
+                <td>{obj.observation_time}</td>
+                <td>{object_info.object_origin}</td>
+                <td>{obj.user_location}</td>
+                <td>{obj.username}</td>
+                <td>{obj.observation_quality}</td>
+                <td>{obj.time_difference}</td>
+                <td>{obj.weight}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    );
+  };
+
+  const renderHistoryTable = () => {
+    return <div>This is the history table</div>;
+  };
+
+  const renderUserSightingsTable = () => {
+    return <div>This is the user sightings table</div>;
+  };
+
   return (
     <React.Fragment>
-      <section>
+      <section style={{ margin: "1em" }}>
         <h1>{object_info.object_name}</h1>
         <div>
           <p>{object_info.object_origin}</p>
@@ -87,8 +132,63 @@ export default function ObjectInfo(props) {
         </div>
         <div>
           <p>NORAD# = {noradNumber}</p>
+          <p>
+            TRACKED BY {object_info.number_users_tracked} via{" "}
+            {object_info.oservation_count} OBSERVATIONS
+          </p>
+          <p>
+            LAST SEEN {object_info.time_last_tracked} BY{" "}
+            {object_info.username_last_tracked}
+          </p>
+          <p>QUALITY {object_info.observation_quality}</p>
           <p />
         </div>
+      </section>
+
+      <section style={{ margin: "1em" }}>
+        <h1>BACKGROUND</h1>
+        <p>{object_info.object_background}</p>
+        HOW TO SEE THIS SAT
+        <NavLink to="/how">Follow this tutorial</NavLink>
+        <a href={`${object_info.heavens_above_url}`}>
+          Deep link to Heavens Above
+        </a>
+      </section>
+
+      <section
+        style={{
+          margin: "1em"
+        }}
+      >
+        <h1>OBSERVATIONS</h1>
+        <div style={{ marginBottom: "1em" }}>
+          <span
+            style={{
+              marginRight: "1em"
+            }}
+            onClick={() => setObservationFilter("influence")}
+          >
+            Influence
+          </span>
+          <span
+            style={{
+              marginRight: "1em"
+            }}
+            onClick={() => setObservationFilter("history")}
+          >
+            History
+          </span>
+          <span
+            style={{
+              marginRight: "1em"
+            }}
+            onClick={() => setObservationFilter("userSightings")}
+          >
+            My sightings
+          </span>
+          <a href="null">Get Data</a>
+        </div>
+        {observationFilter === "influence" ? renderInfluenceTable() : null}
       </section>
     </React.Fragment>
   );
