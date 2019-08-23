@@ -12,7 +12,6 @@ export default function Catalog() {
     axios
       .get(`https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`)
       .then(res => {
-        console.log(res.data);
         setTleString(res.data);
       })
       .catch(err => console.log(err));
