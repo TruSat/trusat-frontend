@@ -75,7 +75,23 @@ export default function ObjectInfo(props) {
   // TODO - complete this request
   const getMostSightings = () => {};
 
-  return <div>This is an Object page for {noradNumber}</div>;
+  return (
+    <React.Fragment>
+      <section>
+        <h1>{object_info.object_name}</h1>
+        <div>
+          <p>{object_info.object_origin}</p>
+          <p>{object_info.object_primary_purpose}</p>
+          <p>{object_info.object_secondary_purpose}</p>
+          <p>{object_info.year_launched}</p>
+        </div>
+        <div>
+          <p>NORAD# = {noradNumber}</p>
+          <p />
+        </div>
+      </section>
+    </React.Fragment>
+  );
 }
 
 // POST REQUEST
