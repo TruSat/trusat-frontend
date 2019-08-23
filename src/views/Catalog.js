@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import CatalogNavBar from "../catalog/CatalogNavBar";
@@ -6,12 +6,32 @@ import CatalogTable from "../catalog/CatalogTable";
 
 export default function Catalog() {
   const [catalogFilter, setCatalogFilter] = useState("priorities");
+  const [tleString, setTleString] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("https://api.consensys.space:8080/downloadTles")
+      .then(res => {
+        console.log(res.data);
+        setTleString(res.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const downloadTles = () => {
-    axios
-      .get("https://www.celestrak.com/NORAD/elements/visual.txt")
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
+    let textFile = null;
+
+    const data = new Blob([tleString], { type: "text/plain" });
+
+    // If we are replacing a previously generated file we need to
+    // manually revoke the object URL to avoid memory leaks.
+    if (textFile !== null) {
+      window.URL.revokeObjectURL(textFile);
+    }
+
+    textFile = window.URL.createObjectURL(data);
+
+    return textFile;
   };
 
   return (
@@ -27,16 +47,18 @@ export default function Catalog() {
           Submit data
         </span>
       </NavLink>
-      <span
+      <a
         style={{
           border: "1px solid #5F5F5F",
           display: "inline-block",
           padding: "0.5em"
         }}
-        onClick={downloadTles}
+        href={downloadTles()}
+        download="TLEs.txt"
       >
         Get data
-      </span>
+      </a>
+      <a />
       <CatalogNavBar
         catalogFilter={catalogFilter}
         setCatalogFilter={setCatalogFilter}
