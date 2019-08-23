@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
 export default function AccountDetails() {
-  const { isAuth, authType, address, burner } = useAuthState();
+  const { isAuth, authType, jwt, address, burner } = useAuthState();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
@@ -12,7 +12,13 @@ export default function AccountDetails() {
     axios
       .post(
         `https://api.consensys.space:8080/editProfile`,
-        JSON.stringify({ username: username, email: email, bio: bio })
+        JSON.stringify({
+          jwt: jwt,
+          address: address,
+          username: username,
+          email: email,
+          bio: bio
+        })
       )
       .then(result => {
         console.log(result);
