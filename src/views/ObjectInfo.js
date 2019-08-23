@@ -4,7 +4,7 @@ import { useAuthState } from "../auth/auth-context";
 import { request } from "http";
 
 export default function ObjectInfo(props) {
-  const { jwt } = useAuthState();
+  const { address, jwt } = useAuthState();
   const noradNumber = props.match.params.number;
   const [year, setYear] = useState("2019");
 
@@ -59,7 +59,11 @@ export default function ObjectInfo(props) {
     axios
       .post(
         `http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/object/userSightings`,
-        JSON.stringify({ norad_number: noradNumber, jwt: jwt })
+        JSON.stringify({
+          norad_number: noradNumber,
+          jwt: jwt,
+          address: address
+        })
       )
       .then(result => {
         console.log(result);
@@ -106,7 +110,7 @@ const object_influence = [
     observation_time: "1550398277",
     username: "Leo Barhorst",
     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a", // always needed as a fallback in event the user has not not created a username
-    user_location: "Brooklyn, USA",
+    user_location: "Brooklyn, USA", // only available if the user has made it publicly available
     observation_quality: "34", // quality/accuracy of the individual observastion
     time_difference: "1.42", // this will be a positive or negative number in seconds
     weight: "33" // a percentage value
