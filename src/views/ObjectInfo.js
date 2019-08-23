@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
-import { request } from "http";
-import InfluenceTable from "../object/InfluenceTable";
+import InfluenceTable from "../object/components/InfluenceTable";
 
 export default function ObjectInfo(props) {
   const { address, jwt } = useAuthState();
