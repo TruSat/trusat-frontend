@@ -15,7 +15,7 @@ export default function Profile() {
       axios
         .post(
           `https://api.consensys.space:8080/profile`,
-          JSON.stringify({ jwt: jwt, eth_addr: address })
+          JSON.stringify({ jwt: jwt, address: address })
         )
         .then(result => {
           console.log(result);
