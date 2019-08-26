@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import Spinner from "../app/components/Spinner";
+import Spinner from "../../app/components/Spinner";
 import axios from "axios";
-import { useAuthState } from "../auth/auth-context";
+import { useAuthState } from "../../auth/auth-context";
 
 export default function CatalogTable({ catalogFilter }) {
   const { jwt } = useAuthState();
