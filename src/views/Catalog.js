@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
-import GetDataButton from "../catalog/components/GetDataButton";
+import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
 
 export default function Catalog() {
   const [catalogFilter, setCatalogFilter] = useState("priorities");
@@ -22,7 +22,7 @@ export default function Catalog() {
       </NavLink>
 
       {catalogFilter === "priorities" || catalogFilter === "all" ? (
-        <GetDataButton catalogFilter={catalogFilter} />
+        <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
       ) : null}
 
       <CatalogNavBar

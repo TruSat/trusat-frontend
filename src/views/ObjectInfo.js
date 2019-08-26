@@ -4,6 +4,7 @@ import axios from "axios";
 import InfluenceTable from "../object/components/InfluenceTable";
 import HistoryTable from "../object/components/HistoryTable";
 import UserSightingsTable from "../object/components/UserSightingsTable";
+import DownloadObjectTleButton from "../object/components/DownloadObjectTleButton";
 
 export default function ObjectInfo(props) {
   const noradNumber = props.match.params.number;
@@ -103,7 +104,7 @@ export default function ObjectInfo(props) {
           >
             My sightings
           </span>
-          <a href="null">Get Data</a>
+          <DownloadObjectTleButton noradNumber={noradNumber} />
         </div>
         {observationFilter === "influence" ? (
           <InfluenceTable

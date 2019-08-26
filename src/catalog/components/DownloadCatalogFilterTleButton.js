@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function GetDataButton({ catalogFilter }) {
+export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [tleString, setTleString] = useState("");
 
   useEffect(() => {
