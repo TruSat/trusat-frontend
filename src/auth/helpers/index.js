@@ -13,7 +13,7 @@ export const retrieveNonce = async address => {
   return axios
     .post(
       "https://api.consensys.space:8080/getNonce",
-      JSON.stringify({ publicAddress: address })
+      JSON.stringify({ address: address })
     )
     .then(response => {
       return response.data.nonce;
@@ -44,14 +44,14 @@ export const signMessage = async ({ nonce, wallet }) => {
   }
 };
 
-export const retrieveJwt = async ({ publicAddress, signedMessage }) => {
+export const retrieveJwt = async ({ address, signedMessage }) => {
   console.log(signedMessage);
 
   return axios
     .post(
       "https://api.consensys.space:8080/login",
       JSON.stringify({
-        publicAddress: publicAddress,
+        address: address,
         signedMessage: signedMessage.signature
       })
     )

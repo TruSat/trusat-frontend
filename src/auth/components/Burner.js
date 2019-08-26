@@ -24,7 +24,7 @@ export default function Burner() {
     console.log(`signed message = `, signedMessage);
 
     const jwt = await retrieveJwt({
-      publicAddress: wallet.signingKey.address,
+      address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
     console.log(`jwt =`, jwt);

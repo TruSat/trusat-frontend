@@ -33,23 +33,20 @@ export default function MetaMask() {
 
     const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
-    const publicAddress = web3._provider.selectedAddress;
+    const address = web3._provider.selectedAddress;
 
-    const nonce = await retrieveNonce(publicAddress);
+    const nonce = await retrieveNonce(address);
     console.log(`nonce = `, nonce);
 
     const nonceHash = ethers.utils.id(nonce);
 
     try {
       //a promise
-      const signedMessage = await web3.eth.personal.sign(
-        nonceHash,
-        publicAddress
-      );
+      const signedMessage = await web3.eth.personal.sign(nonceHash, address);
 
       console.log(`signed message =`, signedMessage);
 
-      return handleAuthenticate({ publicAddress, signedMessage });
+      return handleAuthenticate({ address, signedMessage });
     } catch (error) {
       dispatch({ type: "AUTHENTICATING", payload: false });
       alert(`You need to sign the message to be able to log in!`);
@@ -57,13 +54,13 @@ export default function MetaMask() {
   };
 
   // TODO utilize retrieve JWT function from helpers
-  const handleAuthenticate = async ({ publicAddress, signedMessage }) => {
+  const handleAuthenticate = async ({ address, signedMessage }) => {
     Promise.resolve(
       axios
         .post(
           "https://api.consensys.space:8080/login",
           JSON.stringify({
-            publicAddress: publicAddress,
+            address: address,
             signedMessage: signedMessage
           })
         )
@@ -76,7 +73,7 @@ export default function MetaMask() {
 
     dispatch({
       type: "SET_ADDRESS",
-      payload: publicAddress
+      payload: address
     });
     dispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
     dispatch({ type: "AUTHENTICATED", payload: true });
