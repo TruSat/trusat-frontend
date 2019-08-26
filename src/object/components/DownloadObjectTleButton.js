@@ -4,10 +4,14 @@ import axios from "axios";
 export default function DownloadObjectTleButton({ noradNumber }) {
   const [tleString, setTleString] = useState("");
 
+  // TODO error handling in the event we cant find TLE for a given norad number in our system
   useEffect(() => {
     console.log(`getting object ${noradNumber} TLE data!`);
     axios
-      .get(`https://api.consensys.space:8080/tle/trusat_${noradNumber}.txt`)
+      .post(
+        `https://api.consensys.space:8080/tle/object`,
+        JSON.stringify({ norad_number: noradNumber })
+      )
       .then(res => {
         setTleString(res.data);
       })
