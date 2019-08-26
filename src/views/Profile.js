@@ -3,8 +3,9 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 
-export default function Profile() {
-  const { address, jwt } = useAuthState();
+export default function Profile(props) {
+  const address = props.match.params.address;
+  const { jwt } = useAuthState();
   console.log(`address = `, address);
   console.log(`jwt = `, jwt);
 
@@ -48,8 +49,8 @@ export default function Profile() {
   const renderObservationHistory = () => {
     return data.observation_history.map(observation => (
       <tr key={data.observation_history.indexOf(observation)}>
-        <td>{observation.time_submitted}</td>
-        <td>{observation.time_submitted}</td>
+        <td>{observation.observation_time}</td>
+        <td>{observation.observation_time}</td>
         <td>{observation.object_name}</td>
         <td>{observation.observation_quality}</td>
         <td>{observation.observation_time_difference}</td>
