@@ -17,7 +17,10 @@ export default function AccountDetails() {
           address: address,
           username: username,
           email: email,
-          bio: bio
+          bio: bio,
+          // TODO - check if this boolean key makes sense with Kenan
+          // privacy by default? What can we expose and not expose in a private profile?
+          public: false
         })
       )
       .then(result => {
