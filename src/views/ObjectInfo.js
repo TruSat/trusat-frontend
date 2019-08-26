@@ -6,8 +6,8 @@ import HistoryTable from "../object/components/HistoryTable";
 import UserSightingsTable from "../object/components/UserSightingsTable";
 import DownloadObjectTleButton from "../object/components/DownloadObjectTleButton";
 
-export default function ObjectInfo(props) {
-  const noradNumber = props.match.params.number;
+export default function ObjectInfo({ match }) {
+  const noradNumber = match.params.number;
 
   const [objectInfo, setObjectInfo] = useState({});
 
