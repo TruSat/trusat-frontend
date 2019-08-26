@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 
@@ -6,7 +6,7 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
   const { jwt, address } = useAuthState();
   const [objectUserSightings, setObjectUserSightings] = useState([]);
 
-  const getObjectUserSightings = () => {
+  useEffect(() => {
     axios
       .post(
         `https://api.consensys.space:8080/object/userSightings`,
@@ -21,7 +21,7 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
         setObjectUserSightings(result.data);
       })
       .catch(err => console.log(err));
-  };
+  }, [jwt, address, noradNumber]);
 
   return (
     <table>

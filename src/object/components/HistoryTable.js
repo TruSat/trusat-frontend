@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function HistoryTable({ noradNumber, objectOrigin }) {
   const [objectHistory, setObjectHistory] = useState({});
   const [yearChosen, setYearChosen] = useState("2019");
 
-  const getObjectHistory = () => {
+  useEffect(() => {
     axios
       .post(
         `https://api.consensys.space:8080/object/history`,
@@ -16,7 +16,7 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
         setObjectHistory(result.data);
       })
       .catch(err => console.log(err));
-  };
+  }, [noradNumber, yearChosen]);
 
   return <div>This is the history table</div>;
 }

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function InfluenceTable({ noradNumber, objectOrigin }) {
   const [objectInfluence, setObjectInfluence] = useState([]);
 
-  const getObjectInfluence = () => {
+  useEffect(() => {
     axios
       .post(
         `https://api.consensys.space:8080/object/influence`,
@@ -15,7 +15,7 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
         setObjectInfluence(result.data);
       })
       .catch(err => console.log(err));
-  };
+  }, [noradNumber]);
 
   return (
     <table>
