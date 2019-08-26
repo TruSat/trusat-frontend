@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAuthDispatch } from "../../auth/auth-context";
+import { useAuthDispatch, useAuthState } from "../../auth/auth-context";
 import { ethers } from "ethers";
 import { withRouter } from "react-router-dom";
 // import SignUpModal from "../../auth/components/SignUpModal";
@@ -8,6 +8,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
   const [selected, setSelected] = useState(props.location.pathname);
+  const { address } = useAuthState();
   const dispatch = useAuthDispatch();
 
   useEffect(() => {
@@ -72,13 +73,13 @@ function NavBar(props) {
         CATALOG
       </NavLink>
       <NavLink
-        onClick={() => setSelected("/profile")}
+        onClick={() => setSelected(`/profile/${address}`)}
         className={
-          selected === "/profile"
+          selected === `/profile/${address}`
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        to="/profile"
+        to={`/profile/${address}`}
       >
         MY PROFILE
       </NavLink>

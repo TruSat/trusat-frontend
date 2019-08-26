@@ -22,7 +22,7 @@ export default function App() {
         <Route exact path="/catalog" component={Catalog} />
         <Route path="/catalog/submit" component={Submit} />
         <Route path="/object/:number" component={ObjectInfo} />
-        <Route exact path="/profile" component={Profile} />
+        <Route exact path="/profile/:address" component={Profile} />
         <Route path="/profile/settings" component={UserSettings} />
         <Route path="/about" component={About} />
         <Route path="/how" component={HowTo} />
