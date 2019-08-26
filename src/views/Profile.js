@@ -74,7 +74,7 @@ export default function Profile(props) {
         <p>Observation Count = {data.observation_count}</p>
         <p>Avg. Quality Level = {data.average_observation_quality}</p>
         <p>Bio = {data.user_bio}</p>
-        <NavLink to="/profile/settings">Settings</NavLink>
+        <NavLink to="/settings">Settings</NavLink>
       </section>
 
       <section style={{ margin: "1em" }}>
