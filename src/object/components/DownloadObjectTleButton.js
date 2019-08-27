@@ -4,7 +4,7 @@ import axios from "axios";
 export default function DownloadObjectTleButton({ noradNumber }) {
   const [tleString, setTleString] = useState("");
 
-  // TODO error handling in the event we cant find TLE for a given norad number in our system
+  // TODO - Dont show this button if the post request returns an empty string!
   useEffect(() => {
     // console.log(`getting object ${noradNumber} TLE data!`);
     axios
@@ -13,6 +13,7 @@ export default function DownloadObjectTleButton({ noradNumber }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(res => {
+        console.log(res);
         setTleString(res.data);
       })
       .catch(err => console.log(err));

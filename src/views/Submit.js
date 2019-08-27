@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useAuthState } from "../auth/auth-context";
+import MultipleObservationForm from "../submissions/components/MultipleObservationForm";
 
 export default function Submit() {
   const { jwt } = useAuthState();
@@ -24,7 +25,7 @@ export default function Submit() {
         `https://api.consensys.space:8080/submitObservation`,
         // iod - will be a single iod
         // iods - will be a bunch of iods that will need to be parsed on backend
-        JSON.stringify({ jwt: jwt, iods: pastedIODs, iod: "" })
+        JSON.stringify({ jwt: jwt, multiple: pastedIODs, single: "" })
       )
       .then(result => {
         console.log(result);
@@ -41,17 +42,10 @@ export default function Submit() {
     <React.Fragment>
       <h1>SUBMIT OBSERVATIONS</h1>
 
-      <section style={{ border: "1px solid yellow", margin: "1em" }}>
-        <label>
-          <p>Submit preformatted data</p>
-          {/* TODO - split inputted text into seperate lines, using the chracter length of an IOD as the charcter limit */}
-          <input
-            placeholder="Paste your data here"
-            value={pastedIODs}
-            onChange={event => setPastedIODs(event.target.value)}
-          />
-        </label>
-      </section>
+      <MultipleObservationForm
+        pastedIODs={pastedIODs}
+        setPastedIODs={setPastedIODs}
+      />
 
       <section style={{ border: "1px solid yellow", margin: "1em" }}>
         <p>Or enter an individual observation</p>
