@@ -11,7 +11,7 @@ export default function ObjectInfo({ match }) {
   // const [objectMostSigtings, setObjectMostSightings] = useState({});
 
   // observation filter options
-  const [observationFilter, setObservationFilter] = useState("influence");
+  const [observationFilter, setObservationFilter] = useState("history");
 
   // TODO - complete this request
   // const getObjectMostSightings = () => {};

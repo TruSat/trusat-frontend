@@ -30,7 +30,9 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
 const object_history = {
   2019: {
     december: {
-      5: [
+      // Number for the day date is the key and the value is an array of individual observations for this object on that day
+      // in this example, this object was only spotted on three days in december, 2019
+      18: [
         {
           observation_time: "1550398277",
           username: "Leo Barhorst",
@@ -49,8 +51,49 @@ const object_history = {
           observation_time_difference: "1.42",
           observation_weight: "33"
         }
+      ],
+      15: [
+        {
+          observation_time: "1550398277",
+          username: "Joe Bloggs",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Princeton, USA",
+          observation_quality: "10",
+          observation_time_difference: "1.42", // this will be a positive or negative number in seconds
+          observation_weight: "7" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
+        },
+        {
+          observation_time: "1550398277",
+          username: "Bill Quinn",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Belfast, UK",
+          observation_quality: "34",
+          observation_time_difference: "1.42",
+          observation_weight: "6"
+        }
+      ],
+      5: [
+        {
+          observation_time: "1550398277",
+          username: "Leo Barhorst",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Brooklyn, USA",
+          observation_quality: "34",
+          observation_time_difference: "1.42", // this will be a positive or negative number in seconds
+          observation_weight: "1" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
+        },
+        {
+          observation_time: "1550398277",
+          username: "Jim Smith",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Los Angeles, USA",
+          observation_quality: "34",
+          observation_time_difference: "1.42",
+          observation_weight: "1"
+        }
       ]
     },
+    // these will be populated same as the month of December shown above
     november: [{}],
     october: [{}],
     september: [{}],
