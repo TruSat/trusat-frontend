@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Info from "../object/components/Info";
 import InfluenceTable from "../object/components/InfluenceTable";
-import HistoryYearSelector from "../object/components/HistoryYearSelector";
+import HistoryYearDropdown from "../object/components/HistoryYearDropdown";
 import UserSightingsTable from "../object/components/UserSightingsTable";
 import DownloadObjectTleButton from "../object/components/DownloadObjectTleButton";
 
@@ -61,7 +61,7 @@ export default function ObjectInfo({ match }) {
         />
       ) : null}
       {observationFilter === "history" ? (
-        <HistoryYearSelector
+        <HistoryYearDropdown
           noradNumber={noradNumber}
           objectOrigin={object_info.object_origin}
         />

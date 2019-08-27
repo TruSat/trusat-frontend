@@ -12,7 +12,7 @@ export default function Info({ noradNumber }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        console.log(result);
+        // console.log(result);
         setObjectInfo(result.data);
       })
       .catch(err => console.log(err));

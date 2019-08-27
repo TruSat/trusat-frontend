@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HistoryMonthSelector from "./HistoryMonthSelector";
+import HistoryMonthDropdown from "./HistoryMonthDropdown";
 
 export default function HistoryTable({ noradNumber, objectOrigin }) {
   const [objectHistory, setObjectHistory] = useState({});
@@ -13,7 +13,7 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
         JSON.stringify({ norad_number: noradNumber, year: yearChosen })
       )
       .then(result => {
-        console.log(result);
+        // console.log(result);
         setObjectHistory(result.data);
       })
       .catch(err => console.log(err));
@@ -37,7 +37,10 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
         <div key={year} style={{ border: "1px solid white" }}>
           <h1 onClick={() => setYearChosen(year)}>{year}</h1>
           {yearChosen === year ? (
-            <HistoryMonthSelector monthData={object_history[year]} />
+            <HistoryMonthDropdown
+              objectOrigin={objectOrigin}
+              monthData={object_history[year]}
+            />
           ) : null}
         </div>
       );
@@ -122,61 +125,60 @@ const object_history = {
     // these will be populated same as the month of December shown above
     // november: [{}],
     // october: [{}],
-    september: [
-      {
-        28: [
-          {
-            observation_time: "1550398277",
-            username: "Leo Barhorst",
-            user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-            user_location: "Brooklyn, USA",
-            observation_quality: "34",
-            observation_time_difference: "1.42", // this will be a positive or negative number in seconds
-            observation_weight: "33" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
-          }
-        ],
-        10: [
-          {
-            observation_time: "1550398277",
-            username: "Joe Bloggs",
-            user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-            user_location: "Princeton, USA",
-            observation_quality: "10",
-            observation_time_difference: "1.42", // this will be a positive or negative number in seconds
-            observation_weight: "7" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
-          }
-        ],
-        2: [
-          {
-            observation_time: "1550398277",
-            username: "Leo Barhorst",
-            user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-            user_location: "Brooklyn, USA",
-            observation_quality: "34",
-            observation_time_difference: "1.42", // this will be a positive or negative number in seconds
-            observation_weight: "1" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
-          },
-          {
-            observation_time: "1550398277",
-            username: "Jim Smith",
-            user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-            user_location: "Los Angeles, USA",
-            observation_quality: "34",
-            observation_time_difference: "1.42",
-            observation_weight: "1"
-          },
-          {
-            observation_time: "1550398277",
-            username: "Bill Quinn",
-            user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-            user_location: "Belfast, UK",
-            observation_quality: "34",
-            observation_time_difference: "1.42",
-            observation_weight: "6"
-          }
-        ]
-      }
-    ],
+    september: {
+      28: [
+        {
+          observation_time: "1550398277",
+          username: "Leo Barhorst",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Brooklyn, USA",
+          observation_quality: "34",
+          observation_time_difference: "1.42", // this will be a positive or negative number in seconds
+          observation_weight: "33" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
+        }
+      ],
+      10: [
+        {
+          observation_time: "1550398277",
+          username: "Joe Bloggs",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Princeton, USA",
+          observation_quality: "10",
+          observation_time_difference: "1.42", // this will be a positive or negative number in seconds
+          observation_weight: "7" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
+        }
+      ],
+      2: [
+        {
+          observation_time: "1550398277",
+          username: "Leo Barhorst",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Brooklyn, USA",
+          observation_quality: "34",
+          observation_time_difference: "1.42", // this will be a positive or negative number in seconds
+          observation_weight: "1" // a percentage value- observations from a time further back will in theory have a much lower observation_weight
+        },
+        {
+          observation_time: "1550398277",
+          username: "Jim Smith",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Los Angeles, USA",
+          observation_quality: "34",
+          observation_time_difference: "1.42",
+          observation_weight: "1"
+        },
+        {
+          observation_time: "1550398277",
+          username: "Bill Quinn",
+          user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+          user_location: "Belfast, UK",
+          observation_quality: "34",
+          observation_time_difference: "1.42",
+          observation_weight: "6"
+        }
+      ]
+    }
+
     // august: [{}],
     // july: [{}],
     // june: [{}],
@@ -184,6 +186,6 @@ const object_history = {
     // april: [{}],
     // march: [{}],
     // february: [{}],
-    january: [{}]
+    // january: [{}]
   }
 };

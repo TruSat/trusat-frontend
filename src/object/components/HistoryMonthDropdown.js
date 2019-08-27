@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import MonthSelector from "./MonthSelector";
+import HistoryMonthTable from "./HistoryMonthTable";
 
-export default function HistoryMonthWrapper({ monthData }) {
+export default function HistoryMonthWrapper({ objectOrigin, monthData }) {
   const renderMonthChoices = () => {
     return Object.keys(monthData).map((keyName, index) => (
-      <MonthSelector monthName={keyName} monthData={monthData} />
+      <HistoryMonthTable
+        objectOrigin={objectOrigin}
+        monthName={keyName}
+        monthData={monthData}
+      />
     ));
   };
 
