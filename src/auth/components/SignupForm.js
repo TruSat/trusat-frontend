@@ -20,7 +20,7 @@ export default function SignupForm() {
   const emailSecret = secret => {
     axios
       .post(
-        `https://api.consensys.space:8080/email`,
+        `https://api.consensys.space:8080/emailSecret`,
         JSON.stringify({ to: email, payload: secret })
       )
       .then(result => {
