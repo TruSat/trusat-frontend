@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import HistoryMonthDropdown from "./HistoryMonthDropdown";
 
 export default function HistoryTable({ noradNumber, objectOrigin }) {
