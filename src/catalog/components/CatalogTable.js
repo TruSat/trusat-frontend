@@ -17,7 +17,6 @@ export default function CatalogTable({ catalogFilter }) {
       axios
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
-          console.log(result);
           setTableData(result.data);
           setShowTable(true);
         })
