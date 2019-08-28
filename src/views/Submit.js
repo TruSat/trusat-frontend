@@ -6,6 +6,7 @@ import MultipleObservationForm from "../submissions/components/MultipleObservati
 
 export default function Submit() {
   const { jwt } = useAuthState();
+  console.log(jwt);
 
   const [pastedIODs, setPastedIODs] = useState("");
 
@@ -31,6 +32,21 @@ export default function Submit() {
         console.log(result);
       })
       .catch(err => console.log(err));
+  };
+
+  const findObject = () => {
+    // TODO - fix race conditions where this only runs when 5 characters are entered
+    if (objectName.length >= 4) {
+      axios
+        .post(
+          `https://api.consensys.space:8080/findObject`,
+          JSON.stringify({ objectName: objectName })
+        )
+        .then(result => {
+          console.log(result);
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   // TODO
@@ -59,7 +75,10 @@ export default function Submit() {
         <input
           type="text"
           value={objectName}
-          onChange={event => setObjectName(event.target.value)}
+          onChange={async event => {
+            await setObjectName(event.target.value);
+            findObject();
+          }}
           placeholder="object name"
         />
         <div>
