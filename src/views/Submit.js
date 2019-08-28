@@ -166,3 +166,9 @@ export default function Submit() {
     </React.Fragment>
   );
 }
+
+// POST request
+// receives a searchterm of type string
+// returns an array of object names found in our database that include the search term
+// eg when they type "USA 18" an array will be returned like this one:
+const objects_found = ["USA 181", "USA 181 DEB"];
