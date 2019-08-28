@@ -4,10 +4,10 @@ import { useAuthState } from "../auth/auth-context";
 
 export default function AccountDetails() {
   const { isAuth, authType, jwt, address, burner } = useAuthState();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [bio, setBio] = useState("");
-  const [location, setLocation] = useState("");
+  const [username, setUsername] = useState("BobTheCryptoNoob");
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [bio, setBio] = useState("yada yada yada Im amazing");
+  const [location, setLocation] = useState("Brooklyn, NY");
 
   const submitEdit = () => {
     axios
@@ -80,22 +80,26 @@ and follow instructions to import into MetaMask
       <React.Fragment>
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <h1>Account Settings</h1>
-          <label>
+          <div style={{ margin: "1em" }}>
             Username <button onClick={() => submitEdit()}>change</button>
-            <p>username here...</p>
-          </label>
-          <label>
+            <p>{username}</p>
+          </div>
+          <label style={{ margin: "1em" }}>
             ETH address
             <p>{address}</p>
           </label>
-          <label>
+          <div style={{ margin: "1em" }}>
             Email <button>change</button>
             <p>email here...</p>
-          </label>
-          <label>
+          </div>
+          <div style={{ margin: "1em" }}>
+            Location <button>change</button>
+            <p>{location}</p>
+          </div>
+          <div style={{ margin: "1em" }}>
             Bio <button>change</button>
-            <p>Bio here...</p>
-          </label>
+            <p>{bio}</p>
+          </div>
         </section>
 
         <section style={{ border: "1px solid white", margin: "1em" }}>
