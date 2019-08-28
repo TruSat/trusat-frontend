@@ -34,7 +34,8 @@ export default function DownloadObjectTleButton({ noradNumber }) {
     return textFile;
   };
 
-  return (
+  // only show download option if system can find a TLE for this object
+  return tleString ? (
     <a
       style={{
         border: "1px solid #5F5F5F",
@@ -46,5 +47,5 @@ export default function DownloadObjectTleButton({ noradNumber }) {
     >
       Get data
     </a>
-  );
+  ) : null;
 }
