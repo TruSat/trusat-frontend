@@ -7,17 +7,19 @@ export default function AccountDetails() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [bio, setBio] = useState("");
+  const [location, setLocation] = useState("");
 
-  const handleEdit = () => {
+  const submitEdit = () => {
     axios
       .post(
         `https://api.consensys.space:8080/editProfile`,
         JSON.stringify({
           jwt: jwt,
           address: address,
-          username: username,
+          username: "bob the crypto noob",
           email: email,
           bio: bio,
+          location: location,
           // TODO - check if this boolean key makes sense with Kenan
           // privacy by default? What can we expose and not expose in a private profile?
           public: false
@@ -79,7 +81,7 @@ and follow instructions to import into MetaMask
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <h1>Account Settings</h1>
           <label>
-            Username <button>change</button>
+            Username <button onClick={() => submitEdit()}>change</button>
             <p>username here...</p>
           </label>
           <label>
