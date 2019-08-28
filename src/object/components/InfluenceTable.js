@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function InfluenceTable({ noradNumber, objectOrigin }) {
+  const [showTable, setShowTable] = useState(false);
   const [objectInfluence, setObjectInfluence] = useState([]);
 
   useEffect(() => {
@@ -11,13 +12,13 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        console.log(result);
         setObjectInfluence(result.data);
+        setShowTable(true);
       })
       .catch(err => console.log(err));
   }, [noradNumber]);
 
-  return (
+  return showTable ? (
     <table>
       <thead>
         <tr>
@@ -31,9 +32,9 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
         </tr>
       </thead>
       <tbody>
-        {object_influence.map(obj => {
+        {objectInfluence.map(obj => {
           return (
-            <tr key={object_influence.indexOf(obj)}>
+            <tr key={objectInfluence.indexOf(obj)}>
               <td>{obj.observation_time}</td>
               <td>{objectOrigin}</td>
               <td>{obj.user_location}</td>
@@ -46,7 +47,7 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
         })}
       </tbody>
     </table>
-  );
+  ) : null;
 }
 
 // POST request

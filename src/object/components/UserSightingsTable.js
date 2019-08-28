@@ -5,6 +5,7 @@ import { useAuthState } from "../../auth/auth-context";
 export default function UserSightingsTable({ noradNumber, objectOrigin }) {
   const { jwt, address } = useAuthState();
   const [objectUserSightings, setObjectUserSightings] = useState([]);
+  const [showTable, setShowTable] = useState(false);
 
   useEffect(() => {
     axios
@@ -19,11 +20,12 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
       .then(result => {
         console.log(result);
         setObjectUserSightings(result.data);
+        setShowTable(true);
       })
       .catch(err => console.log(err));
   }, [jwt, address, noradNumber]);
 
-  return (
+  return showTable ? (
     <table>
       <thead>
         <tr>
@@ -37,9 +39,9 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
         </tr>
       </thead>
       <tbody>
-        {user_sightings.map(obj => {
+        {objectUserSightings.map(obj => {
           return (
-            <tr key={user_sightings.indexOf(obj)}>
+            <tr key={objectUserSightings.indexOf(obj)}>
               <td>{obj.observation_time}</td>
               <td>{objectOrigin}</td>
               <td>{obj.user_location}</td>
@@ -52,7 +54,7 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
         })}
       </tbody>
     </table>
-  );
+  ) : null;
 }
 
 // POST request

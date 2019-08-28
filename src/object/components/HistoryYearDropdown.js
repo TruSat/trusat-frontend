@@ -5,6 +5,7 @@ import HistoryMonthDropdown from "./HistoryMonthDropdown";
 export default function HistoryTable({ noradNumber, objectOrigin }) {
   const [objectHistory, setObjectHistory] = useState({});
   const [yearChosen, setYearChosen] = useState("2019");
+  const [showTable, setShowTable] = useState(false);
 
   useEffect(() => {
     axios
@@ -13,8 +14,8 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
         JSON.stringify({ norad_number: noradNumber, year: yearChosen })
       )
       .then(result => {
-        // console.log(result);
         setObjectHistory(result.data);
+        setShowTable(true);
       })
       .catch(err => console.log(err));
   }, [noradNumber, yearChosen]);
@@ -33,17 +34,17 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
     ];
 
     return years.map(year => {
-      return (
+      return showTable ? (
         <div key={year} style={{ border: "1px solid white" }}>
           <h1 onClick={() => setYearChosen(year)}>{year}</h1>
           {yearChosen === year ? (
             <HistoryMonthDropdown
               objectOrigin={objectOrigin}
-              monthData={object_history[year]}
+              monthData={objectHistory[year]}
             />
           ) : null}
         </div>
-      );
+      ) : null;
     });
   };
 
