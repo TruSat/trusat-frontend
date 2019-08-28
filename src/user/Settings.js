@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
+import EditSettingInput from "./EditSettingInput";
 
 export default function AccountDetails() {
   const { isAuth, authType, jwt, address, burner } = useAuthState();
@@ -80,25 +81,46 @@ and follow instructions to import into MetaMask
       <React.Fragment>
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <h1>Account Settings</h1>
+
           <div style={{ margin: "1em" }}>
-            Username <button onClick={() => submitEdit()}>change</button>
-            <p>{username}</p>
+            Username{" "}
+            <EditSettingInput
+              setting={username}
+              setSetting={setUsername}
+              submitEdit={submitEdit}
+            />
           </div>
-          <label style={{ margin: "1em" }}>
+
+          <div>
             ETH address
             <p>{address}</p>
-          </label>
-          <div style={{ margin: "1em" }}>
-            Email <button>change</button>
-            <p>email here...</p>
           </div>
+
           <div style={{ margin: "1em" }}>
-            Location <button>change</button>
-            <p>{location}</p>
+            Email{" "}
+            <EditSettingInput
+              setting={email}
+              setSetting={setEmail}
+              submitEdit={submitEdit}
+            />
           </div>
+
           <div style={{ margin: "1em" }}>
-            Bio <button>change</button>
-            <p>{bio}</p>
+            Location{" "}
+            <EditSettingInput
+              setting={location}
+              setSetting={setLocation}
+              submitEdit={submitEdit}
+            />
+          </div>
+
+          <div style={{ margin: "1em" }}>
+            Bio{" "}
+            <EditSettingInput
+              setting={bio}
+              setSetting={setBio}
+              submitEdit={submitEdit}
+            />
           </div>
         </section>
 
