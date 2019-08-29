@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import EditSettingInput from "./EditSettingInput";
+import EditPrivacyInput from "./EditPrivacyInput";
 
 export default function AccountDetails() {
   const { isAuth, authType, jwt, address, burner } = useAuthState();
@@ -9,6 +10,7 @@ export default function AccountDetails() {
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [bio, setBio] = useState("yada yada yada Im amazing");
   const [location, setLocation] = useState("Brooklyn, NY");
+  const [publicProfile, setPublicProfile] = useState(false);
 
   const submitEdit = () => {
     axios
@@ -83,7 +85,7 @@ and follow instructions to import into MetaMask
     window.location.reload();
   };
 
-  return isAuth ? (
+  return (
     <section>
       <React.Fragment>
         <section style={{ border: "1px solid white", margin: "1em" }}>
@@ -129,6 +131,20 @@ and follow instructions to import into MetaMask
               submitEdit={submitEdit}
             />
           </div>
+
+          <div style={{ margin: "1em" }}>
+            Privacy Settings
+            <EditPrivacyInput
+              setting={publicProfile}
+              setSetting={setPublicProfile}
+              submitEdit={submitEdit}
+            />
+            {publicProfile ? (
+              <p>Your profile is Public</p>
+            ) : (
+              <p>Your profile is Private</p>
+            )}
+          </div>
         </section>
 
         <section style={{ border: "1px solid white", margin: "1em" }}>
@@ -155,5 +171,5 @@ and follow instructions to import into MetaMask
         </section>
       </React.Fragment>
     </section>
-  ) : null;
+  );
 }
