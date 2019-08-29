@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 export default function EditPrivacyInput({ setting, setSetting, submitEdit }) {
   const [showOptions, setShowOptions] = useState(false);
+  console.log(`setting = `, setting);
 
   return showOptions ? (
     <div>
@@ -10,8 +11,9 @@ export default function EditPrivacyInput({ setting, setSetting, submitEdit }) {
         <input
           type="radio"
           name="privacySetting"
-          onClick={() => setSetting(true)}
+          onChange={() => setSetting(true)}
           value="public"
+          checked={setting}
         ></input>
       </label>
 
@@ -20,8 +22,9 @@ export default function EditPrivacyInput({ setting, setSetting, submitEdit }) {
         <input
           type="radio"
           name="privacySetting"
-          onClick={() => setSetting(false)}
+          onChange={() => setSetting(false)}
           value="private"
+          checked={!setting}
         ></input>
       </label>
 

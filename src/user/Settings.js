@@ -19,7 +19,7 @@ export default function AccountDetails() {
         JSON.stringify({
           jwt: jwt,
           address: address,
-          username: "bob the crypto noob",
+          username: username,
           email: email,
           bio: bio,
           location: location,
