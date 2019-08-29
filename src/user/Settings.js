@@ -85,7 +85,7 @@ and follow instructions to import into MetaMask
     window.location.reload();
   };
 
-  return (
+  return isAuth ? (
     <section>
       <React.Fragment>
         <section style={{ border: "1px solid white", margin: "1em" }}>
@@ -171,5 +171,5 @@ and follow instructions to import into MetaMask
         </section>
       </React.Fragment>
     </section>
-  );
+  ) : null;
 }
