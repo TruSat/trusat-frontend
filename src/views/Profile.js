@@ -6,10 +6,11 @@ import { useAuthState } from "../auth/auth-context";
 export default function Profile({ match }) {
   const address = match.params.address;
   const { jwt } = useAuthState();
-  console.log(`address = `, address);
-  console.log(`jwt = `, jwt);
+  // console.log(`address = `, address);
+  // console.log(`jwt = `, jwt);
 
   const [userData, setUserData] = useState([]);
+  const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
     if (address) {
@@ -19,16 +20,17 @@ export default function Profile({ match }) {
           JSON.stringify({ jwt: jwt, address: address })
         )
         .then(result => {
-          console.log(result);
-          // setUserData(result.data.community_observations);
+          console.log(result.data);
+          setUserData(result.data);
+          setShowProfile(true);
         })
         .catch(err => console.log(err));
     }
   }, [address, jwt, setUserData]);
 
   const renderRows = () => {
-    return data.objects_observed.map(obj => (
-      <tr key={data.objects_observed.indexOf(obj)}>
+    return userData.objects_observed.map(obj => (
+      <tr key={userData.objects_observed.indexOf(obj)}>
         <td>{obj.object_name}</td>
         <td>{obj.object_origin}</td>
         <td>{obj.object_primary_purpose}</td>
@@ -47,8 +49,8 @@ export default function Profile({ match }) {
   // };
 
   const renderObservationHistory = () => {
-    return data.observation_history.map(observation => (
-      <tr key={data.observation_history.indexOf(observation)}>
+    return userData.observation_history.map(observation => (
+      <tr key={userData.observation_history.indexOf(observation)}>
         <td>{observation.observation_time}</td>
         <td>{observation.observation_time}</td>
         <td>{observation.object_name}</td>
@@ -60,20 +62,20 @@ export default function Profile({ match }) {
     ));
   };
 
-  return (
+  return showProfile ? (
     <div style={{ textAlign: "center" }}>
       <section style={{ margin: "1em" }}>
-        <h1 style={{ fontWeight: "bold" }}>{data.user_name}</h1>
+        <h1 style={{ fontWeight: "bold" }}>{userData.user_name}</h1>
         <img
           style={{ height: "auto", width: "120px" }}
-          src={data.user_image}
+          src={userData.user_image}
           alt="user avatar"
         />
-        <p>Location = {data.user_location}</p>
-        <p>Objects Tracked = {data.number_objects_tracked}</p>
-        <p>Observation Count = {data.observation_count}</p>
-        <p>Avg. Quality Level = {data.average_observation_quality}</p>
-        <p>Bio = {data.user_bio}</p>
+        <p>Location = {userData.user_location}</p>
+        <p>Objects Tracked = {userData.number_objects_tracked}</p>
+        <p>Observation Count = {userData.observation_count}</p>
+        <p>Avg. Quality Level = {userData.average_observation_quality}</p>
+        <p>Bio = {userData.user_bio}</p>
         <NavLink to="/settings">Settings</NavLink>
       </section>
 
@@ -114,7 +116,7 @@ export default function Profile({ match }) {
         </table>
       </section>
     </div>
-  );
+  ) : null;
 }
 
 // POST request
