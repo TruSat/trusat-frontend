@@ -124,7 +124,7 @@ export default function Profile({ match }) {
 // receives JWT and returns object
 // This query is unique to an individual user
 const data = {
-  username: "Scott_Tilley",
+  user_name: "Scott_Tilley",
   user_image:
     "https://i.amz.mshcdn.com/KCJWkZNiwPyNXPcV0CN7yeL8G0A=/fit-in/1200x9600/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F784551%2F0e3defde-7d59-4d94-b094-51d187f930da.jpg",
   user_location: "Brixton, UK",
