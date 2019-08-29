@@ -2,7 +2,6 @@ import React, { useState } from "react";
 
 export default function EditPrivacyInput({ setting, setSetting, submitEdit }) {
   const [showOptions, setShowOptions] = useState(false);
-  console.log(`setting = `, setting);
 
   return showOptions ? (
     <div>

@@ -4,9 +4,7 @@ import axios from "axios";
 export default function DownloadObjectTleButton({ noradNumber }) {
   const [tleString, setTleString] = useState("");
 
-  // TODO - Dont show this button if the post request returns an empty string!
   useEffect(() => {
-    // console.log(`getting object ${noradNumber} TLE data!`);
     axios
       .post(
         `https://api.consensys.space:8080/tle/object`,

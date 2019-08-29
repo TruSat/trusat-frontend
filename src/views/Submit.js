@@ -6,7 +6,6 @@ import MultipleObservationForm from "../submissions/components/MultipleObservati
 
 export default function Submit() {
   const { jwt } = useAuthState();
-  console.log(jwt);
 
   const [pastedIODs, setPastedIODs] = useState("");
 
@@ -20,7 +19,7 @@ export default function Submit() {
   const [brightness, setBrightness] = useState("");
   const [conditions, setConditions] = useState("");
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     axios
       .post(
         `https://api.consensys.space:8080/submitObservation`,

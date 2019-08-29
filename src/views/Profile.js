@@ -6,9 +6,6 @@ import { useAuthState } from "../auth/auth-context";
 export default function Profile({ match }) {
   const address = match.params.address;
   const { jwt } = useAuthState();
-  // console.log(`address = `, address);
-  // console.log(`jwt = `, jwt);
-
   const [userData, setUserData] = useState([]);
   const [showProfile, setShowProfile] = useState(false);
 

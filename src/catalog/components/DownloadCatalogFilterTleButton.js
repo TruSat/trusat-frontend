@@ -6,7 +6,6 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
 
   useEffect(() => {
     if (catalogFilter === "priorities" || catalogFilter === "all") {
-      console.log("getting TLE data!");
       axios
         .get(`https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`)
         .then(res => {

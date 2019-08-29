@@ -9,8 +9,6 @@ export default function HistoryMonthTable({
 }) {
   const [showTable, setShowTable] = useState(false);
 
-  console.log(yearNumber, monthNumber);
-
   useEffect(() => {
     axios
       .post(
