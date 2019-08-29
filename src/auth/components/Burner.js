@@ -41,8 +41,8 @@ export default function Burner() {
 
     // add private key and jwt to local storage
     const privateKey = wallet.signingKey.privateKey;
-    localStorage.setItem("mvp-private-key", privateKey);
-    localStorage.setItem("mvp-jwt", jwt);
+    localStorage.setItem("trusat-private-key", privateKey);
+    localStorage.setItem("trusat-jwt", jwt);
   };
 
   return (

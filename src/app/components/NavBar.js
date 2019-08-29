@@ -14,16 +14,21 @@ function NavBar(props) {
   useEffect(() => {
     // get jwt from local storage, utilized for all login options
     const retrieveJwt = () => {
-      if (localStorage.getItem("mvp-jwt")) {
-        const jwt = localStorage.getItem("mvp-jwt");
+      if (localStorage.getItem("trusat-jwt")) {
+        const jwt = localStorage.getItem("trusat-jwt");
         dispatch({ type: "SET_JWT", payload: jwt });
         dispatch({ type: "AUTHENTICATED", payload: true });
+      }
+      // TODO - move this to its own function?
+      if (localStorage.getItem("trusat-address")) {
+        const address = localStorage.getItem("trusat-address");
+        dispatch({ type: "SET_ADDRESS", payload: address });
       }
     };
     // get burner wallet from local storage, utilized for burner login only
     const retrieveWallet = () => {
-      if (localStorage.getItem("mvp-private-key")) {
-        const privateKey = localStorage.getItem("mvp-private-key");
+      if (localStorage.getItem("trusat-private-key")) {
+        const privateKey = localStorage.getItem("trusat-private-key");
         const wallet = new ethers.Wallet(privateKey);
 
         dispatch({ type: "SET_BURNER", payload: wallet });

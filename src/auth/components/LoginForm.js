@@ -47,8 +47,9 @@ export default function LoginForm() {
     dispatch({ type: "AUTHENTICATED", payload: true });
     dispatch({ type: "AUTHENTICATING", payload: false });
 
-    // add jwt to local storage
-    localStorage.setItem("mvp-jwt", jwt);
+    // add jwt and address to local storage
+    localStorage.setItem("trusat-jwt", jwt);
+    localStorage.setItem("trusat-address", wallet.signingKey.address);
   };
 
   return (
