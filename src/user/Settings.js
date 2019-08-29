@@ -76,7 +76,14 @@ and follow instructions to import into MetaMask
     );
   };
 
-  return (
+  const signOut = () => {
+    localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-address");
+    localStorage.removeItem("trusat-private-key");
+    window.location.reload();
+  };
+
+  return isAuth ? (
     <section>
       <React.Fragment>
         <section style={{ border: "1px solid white", margin: "1em" }}>
@@ -132,11 +139,21 @@ and follow instructions to import into MetaMask
           <span>Get MetaMask</span>
         </section>
 
-        <section style={{ border: "1px solid white", margin: "1em" }}>
+        <section
+          style={{
+            alignItems: "center",
+            display: "flex",
+            flexDirection: "column",
+            border: "1px solid white",
+            margin: "1em"
+          }}
+        >
           Got more than one station?
-          <a>Email us</a> and we'll combine into one account
+          <a href="help@trusat.net">Email us</a> and we'll combine into one
+          account
+          <button onClick={signOut}>Sign out</button>
         </section>
       </React.Fragment>
     </section>
-  );
+  ) : null;
 }
