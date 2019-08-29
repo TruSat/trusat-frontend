@@ -30,7 +30,7 @@ export default function HistoryMonthTable({
   const renderDayRows = () => {
     return object_month_history.map(day => {
       return day.observations.map(observation => (
-        <tr>
+        <tr key={day.observations.indexOf(observation)}>
           <td>{day.date}</td>
           <td>{objectOrigin}</td>
           <td>{observation.user_location}</td>
