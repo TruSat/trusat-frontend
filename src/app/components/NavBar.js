@@ -16,7 +16,6 @@ function NavBar(props) {
     const retrieveJwt = () => {
       if (localStorage.getItem("trusat-jwt")) {
         const jwt = localStorage.getItem("trusat-jwt");
-        console.log(`jwt found =`, jwt);
         dispatch({ type: "SET_JWT", payload: jwt });
         dispatch({ type: "AUTHENTICATED", payload: true });
       }
