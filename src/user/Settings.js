@@ -3,9 +3,10 @@ import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import EditSettingInput from "./EditSettingInput";
 import EditPrivacyInput from "./EditPrivacyInput";
+import BurnerOptions from "./BurnerOptions";
 
 export default function AccountDetails() {
-  const { isAuth, authType, jwt, address, burner } = useAuthState();
+  const { isAuth, authType, jwt, address } = useAuthState();
   const [username, setUsername] = useState("BobTheCryptoNoob");
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [bio, setBio] = useState("yada yada yada Im amazing");
@@ -32,50 +33,6 @@ export default function AccountDetails() {
         console.log(result);
       })
       .catch(err => console.log(err));
-  };
-
-  const burnWallet = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
-
-  const exportWallet = () => {
-    alert(`
-Copy your private key: 
-
-${burner.signingKey.privateKey}
-
-and follow instructions to import into MetaMask
-    `);
-  };
-
-  const renderBurnerOptions = () => {
-    return (
-      <React.Fragment>
-        <button
-          style={{
-            border: "1px solid black",
-            display: "inline-block",
-            margin: "1em",
-            padding: "1em"
-          }}
-          onClick={burnWallet}
-        >
-          BURN WALLET
-        </button>
-        <button
-          style={{
-            border: "1px solid black",
-            display: "inline-block",
-            margin: "1em",
-            padding: "1em"
-          }}
-          onClick={exportWallet}
-        >
-          EXPORT WALLET
-        </button>
-      </React.Fragment>
-    );
   };
 
   const signOut = () => {
@@ -150,7 +107,7 @@ and follow instructions to import into MetaMask
         <section style={{ border: "1px solid white", margin: "1em" }}>
           <p>[Note to prompt user to go the full MetaMask route]</p>
 
-          {authType === "burner" ? renderBurnerOptions() : null}
+          {authType === "burner" ? <BurnerOptions /> : null}
 
           <span>Get MetaMask</span>
         </section>
