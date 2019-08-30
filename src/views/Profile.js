@@ -11,6 +11,13 @@ export default function Profile({ match }) {
   const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
+    console.log(`jwt =`, jwt);
+    console.log(`address =`, address);
+
+    // TODO
+    // this endpoint needs to work when it only receives address
+    // this way users who dont have a jwt in localtorage can view a profile
+    // the profile will render appropriately according to the provacy settings
     if (jwt && address) {
       axios
         .post(
