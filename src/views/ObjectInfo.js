@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import Info from "../object/components/Info";
-import InfluenceTable from "../object/components/InfluenceTable";
-import HistoryYearDropdown from "../object/components/HistoryYearDropdown";
-import UserSightingsTable from "../object/components/UserSightingsTable";
-import DownloadObjectTleButton from "../object/components/DownloadObjectTleButton";
+import Info from "../objects/components/Info";
+import InfluenceTable from "../objects/components/InfluenceTable";
+import HistoryYearDropdown from "../objects/components/HistoryYearDropdown";
+import UserSightingsTable from "../objects/components/UserSightingsTable";
+import DownloadObjectTleButton from "../objects/components/DownloadObjectTleButton";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
