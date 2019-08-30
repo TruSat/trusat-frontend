@@ -4,6 +4,7 @@ import axios from "axios";
 
 export default function Info({ noradNumber }) {
   const [objectInfo, setObjectInfo] = useState({});
+  console.log(`norad number =`, noradNumber);
 
   useEffect(() => {
     axios
@@ -12,7 +13,7 @@ export default function Info({ noradNumber }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        console.log(result);
+        console.log(result.data);
         setObjectInfo(result.data);
       })
       .catch(err => console.log(err));
@@ -47,7 +48,7 @@ export default function Info({ noradNumber }) {
 
       <section style={{ margin: "1em" }}>
         <h1>BACKGROUND</h1>
-        <p>{objectInfo.object_background}</p>
+        <p>background = {objectInfo.object_background}</p>
         HOW TO SEE THIS SAT
         <NavLink to="/how">Follow this tutorial</NavLink>
         <a href={`${objectInfo.heavens_above_url}`}>
