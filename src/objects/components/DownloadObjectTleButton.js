@@ -11,6 +11,7 @@ export default function DownloadObjectTleButton({ noradNumber }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(res => {
+        console.log(`tle data found = `, res.data);
         setTleString(res.data);
       })
       .catch(err => console.log(err));
