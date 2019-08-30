@@ -7,11 +7,14 @@ import BurnerOptions from "./BurnerOptions";
 
 export default function AccountDetails() {
   const { isAuth, authType, jwt, address } = useAuthState();
-  const [username, setUsername] = useState("BobTheCryptoNoob");
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
-  const [bio, setBio] = useState("yada yada yada Im amazing");
-  const [location, setLocation] = useState("Brooklyn, NY");
-  const [publicProfile, setPublicProfile] = useState(false);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [bio, setBio] = useState("");
+  const [location, setLocation] = useState("");
+  const [publicUsername, setPublicUsername] = useState(false);
+  const [publicLocation, setPublicLocation] = useState(false);
+
+  const publicProfile = true;
 
   const submitEdit = () => {
     axios
@@ -26,7 +29,8 @@ export default function AccountDetails() {
           location: location,
           // TODO - check if this boolean key makes sense with Kenan
           // privacy by default? What can we expose and not expose in a private profile?
-          public: false
+          public_username: publicUsername,
+          public_location: publicLocation
         })
       )
       .then(result => {
@@ -92,9 +96,9 @@ export default function AccountDetails() {
           <div style={{ margin: "1em" }}>
             Privacy Settings
             <EditPrivacyInput
-              setting={publicProfile}
-              setSetting={setPublicProfile}
-              submitEdit={submitEdit}
+            // setting={publicProfile}
+            // setSetting={setPublicProfile}
+            // submitEdit={submitEdit}
             />
             {publicProfile ? (
               <p>Your profile is Public</p>
