@@ -17,6 +17,7 @@ export default function CatalogTable({ catalogFilter }) {
       axios
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
+          console.log(result.data);
           setTableData(result.data);
           setShowTable(true);
         })
@@ -28,6 +29,8 @@ export default function CatalogTable({ catalogFilter }) {
   }, [catalogFilter, setTableData]);
 
   const renderRows = () => {
+    console.log(`table date type =`, typeof tableData);
+
     return tableData.map(obj => (
       <tr key={tableData.indexOf(obj)}>
         {catalogFilter === "priorities" ? (
