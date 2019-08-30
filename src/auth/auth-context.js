@@ -40,7 +40,7 @@ function AuthProvider({ children }) {
     email: "",
     address: "",
     burner: {},
-    jwt: {}
+    jwt: ""
   });
 
   return (

@@ -11,7 +11,7 @@ export default function Profile({ match }) {
   const [showProfile, setShowProfile] = useState(false);
 
   useEffect(() => {
-    if (address) {
+    if (jwt && address) {
       axios
         .post(
           `https://api.consensys.space:8080/profile`,
