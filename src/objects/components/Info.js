@@ -23,34 +23,34 @@ export default function Info({ noradNumber }) {
   return (
     <React.Fragment>
       <section style={{ margin: "1em" }}>
-        <h1>{object_info.object_name}</h1>
+        <h1>{objectInfo.object_name}</h1>
         <div>
-          <p>{object_info.object_origin}</p>
-          <p>{object_info.object_primary_purpose}</p>
-          <p>{object_info.object_secondary_purpose}</p>
-          <p>{object_info.year_launched}</p>
+          <p>{objectInfo.object_origin}</p>
+          <p>{objectInfo.object_primary_purpose}</p>
+          <p>{objectInfo.object_secondary_purpose}</p>
+          <p>{objectInfo.year_launched}</p>
         </div>
         <div>
           <p>NORAD# = {noradNumber}</p>
           <p>
-            TRACKED BY {object_info.number_users_tracked} via{" "}
-            {object_info.oservation_count} OBSERVATIONS
+            TRACKED BY {objectInfo.number_users_tracked} via{" "}
+            {objectInfo.oservation_count} OBSERVATIONS
           </p>
           <p>
-            LAST SEEN {object_info.time_last_tracked} BY{" "}
-            {object_info.username_last_tracked}
+            LAST SEEN {objectInfo.time_last_tracked} BY{" "}
+            {objectInfo.username_last_tracked}
           </p>
-          <p>QUALITY {object_info.observation_quality}</p>
+          <p>QUALITY {objectInfo.observation_quality}</p>
           <p />
         </div>
       </section>
 
       <section style={{ margin: "1em" }}>
         <h1>BACKGROUND</h1>
-        <p>{object_info.object_background}</p>
+        <p>{objectInfo.object_background}</p>
         HOW TO SEE THIS SAT
         <NavLink to="/how">Follow this tutorial</NavLink>
-        <a href={`${object_info.heavens_above_url}`}>
+        <a href={`${objectInfo.heavens_above_url}`}>
           Deep link to Heavens Above
         </a>
       </section>
