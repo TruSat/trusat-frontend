@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
+import Blockie from "react-blockies";
 
 export default function Profile({ match }) {
   const address = match.params.address;
@@ -63,10 +64,13 @@ export default function Profile({ match }) {
     <div style={{ textAlign: "center" }}>
       <section style={{ margin: "1em" }}>
         <h1 style={{ fontWeight: "bold" }}>{userData.user_name}</h1>
-        <img
-          style={{ height: "auto", width: "120px" }}
-          src={userData.user_image}
-          alt="user avatar"
+        <Blockie
+          seed={address}
+          size={20}
+          scale={3}
+          // color="#dfe"
+          // bgColor="#ffe"
+          // spotColor="#abc"
         />
         <p>Location = {userData.user_location}</p>
         <p>Objects Tracked = {userData.number_objects_tracked}</p>
