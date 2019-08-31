@@ -19,13 +19,13 @@ export default function HistoryMonthTable({
         `https://api.consensys.space:8080/object/history`,
         JSON.stringify({
           norad_number: noradNumber,
-          year: "2019",
-          month: "7"
+          year: yearNumber,
+          month: monthNumber
         })
       )
       .then(result => {
         console.log(result.data);
-        setObjectHistory(result.data.observation);
+        setObjectHistory(result.data);
         setShowTable(true);
       })
       .catch(err => console.log(err));
