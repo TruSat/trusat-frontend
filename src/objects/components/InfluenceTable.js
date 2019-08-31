@@ -37,7 +37,7 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
           return (
             <tr key={objectInfluence.indexOf(obj)}>
               <td>{obj.observation_time}</td>
-              <td>{objectOrigin}</td>
+              <td>{obj.object_origin}</td>
               <td>{obj.user_location}</td>
               <td>{obj.username}</td>
               <td>{obj.observation_quality}</td>

@@ -3,36 +3,43 @@ import axios from "axios";
 
 export default function HistoryMonthTable({
   noradNumber,
-  objectOrigin,
   yearNumber,
   monthNumber
 }) {
   const [showTable, setShowTable] = useState(false);
+  const [objectHistory, setObjectHistory] = useState([]);
 
+  console.log(`month number =`, monthNumber);
+  console.log(`year number =`, yearNumber);
+
+  // todo -race condition problem here
   useEffect(() => {
     axios
       .post(
         `https://api.consensys.space:8080/object/history`,
         JSON.stringify({
           norad_number: noradNumber,
-          year: yearNumber,
-          month: monthNumber
+          year: "2019",
+          month: "7"
         })
       )
       .then(result => {
-        console.log(result);
-        // setObjectHistory(result.data);
+        console.log(result.data);
+        setObjectHistory(result.data.observation);
         setShowTable(true);
       })
       .catch(err => console.log(err));
   }, [noradNumber, yearNumber, monthNumber]);
 
   const renderDayRows = () => {
-    return object_month_history.map(day => {
-      return day.observations.map(observation => (
-        <tr key={day.observations.indexOf(observation)}>
+    // todo - this is coming through as undefined.
+    console.log(`object history =`, objectHistory);
+
+    return objectHistory.map(day => {
+      return day.observation.map(observation => (
+        <tr key={day.observation.indexOf(observation)}>
           <td>{day.date}</td>
-          <td>{objectOrigin}</td>
+          <td>{observation.object_or}</td>
           <td>{observation.user_location}</td>
           <td>{observation.username}</td>
           <td>{observation.observation_quality}</td>
