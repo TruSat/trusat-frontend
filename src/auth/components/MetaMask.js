@@ -68,6 +68,7 @@ export default function MetaMask() {
           console.log(response.data);
           localStorage.setItem("trusat-jwt", response.data.jwt);
           localStorage.setItem("trusat-address", address);
+          dispatch({ type: "SET_JWT", payload: response.data.jwt });
         })
         .catch(error => console.log(error))
     );

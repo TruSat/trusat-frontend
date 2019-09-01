@@ -12,6 +12,7 @@ import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
+import MetamaskImport from "./views/MetamaskImport";
 
 export default function App() {
   return (
@@ -23,7 +24,8 @@ export default function App() {
         <Route path="/catalog/submit" component={Submit} />
         <Route path="/object/:number" component={ObjectInfo} />
         <Route path="/profile/:address" component={Profile} />
-        <Route path="/settings" component={UserSettings} />
+        <Route exact path="/settings" component={UserSettings} />
+        <Route path="/settings/security" component={MetamaskImport} />
         <Route path="/about" component={About} />
         <Route path="/how" component={HowTo} />
         <Route path="/login" component={LogIn} />
