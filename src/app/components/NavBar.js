@@ -67,13 +67,13 @@ function NavBar(props) {
         WELCOME
       </NavLink>
       <NavLink
-        onClick={() => setSelected("/catalog")}
+        onClick={() => setSelected(`/catalog/priorities`)}
         className={
-          selected === "/catalog"
+          selected === "/catalog/priorities"
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        to="/catalog"
+        to="/catalog/priorities"
       >
         CATALOG
       </NavLink>

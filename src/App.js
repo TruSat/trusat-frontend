@@ -20,8 +20,8 @@ export default function App() {
       <Router>
         <NavBar />
         <Route exact path="/" component={Welcome} />
-        <Route exact path="/catalog" component={Catalog} />
-        <Route path="/catalog/submit" component={Submit} />
+        <Route path="/catalog/:catalogFilter" component={Catalog} />
+        <Route path="/submit" component={Submit} />
         <Route path="/object/:number" component={ObjectInfo} />
         <Route path="/profile/:address" component={Profile} />
         <Route exact path="/settings" component={UserSettings} />

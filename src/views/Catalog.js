@@ -4,13 +4,13 @@ import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
 
-export default function Catalog() {
-  const [catalogFilter, setCatalogFilter] = useState("priorities");
+export default function Catalog({ match }) {
+  const catalogFilter = match.params.catalogFilter;
   const [range, setRange] = useState({ start: 0, end: 20 });
 
   return (
     <React.Fragment>
-      <NavLink style={{ color: "white" }} to="/catalog/submit">
+      <NavLink style={{ color: "white" }} to="/submit">
         <span
           style={{
             border: "1px solid #5F5F5F",
@@ -26,11 +26,7 @@ export default function Catalog() {
         <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
       ) : null}
 
-      <CatalogNavBar
-        catalogFilter={catalogFilter}
-        setCatalogFilter={setCatalogFilter}
-        setRange={setRange}
-      />
+      <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
       <CatalogTable
         catalogFilter={catalogFilter}
         range={range}

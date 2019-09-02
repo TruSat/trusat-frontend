@@ -1,10 +1,7 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
-export default function CatalogNavBar({
-  catalogFilter,
-  setCatalogFilter,
-  setRange
-}) {
+function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
   return (
     <div
       style={{ display: "flex", justifyContent: "space-around", margin: "1em" }}
@@ -17,7 +14,7 @@ export default function CatalogNavBar({
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
-          setCatalogFilter("priorities");
+          history.push("/catalog/priorities");
         }}
       >
         PRIORITIES
@@ -30,7 +27,7 @@ export default function CatalogNavBar({
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
-          setCatalogFilter("undisclosed");
+          history.push("/catalog/undisclosed");
         }}
       >
         UNDISCLOSED
@@ -43,7 +40,7 @@ export default function CatalogNavBar({
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
-          setCatalogFilter("debris");
+          history.push("/catalog/debris");
         }}
       >
         DEBRIS
@@ -56,7 +53,7 @@ export default function CatalogNavBar({
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
-          setCatalogFilter("latest");
+          history.push("/catalog/latest");
         }}
       >
         LATEST
@@ -69,7 +66,7 @@ export default function CatalogNavBar({
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
-          setCatalogFilter("all");
+          history.push("/catalog/all");
         }}
       >
         ALL
@@ -77,3 +74,5 @@ export default function CatalogNavBar({
     </div>
   );
 }
+
+export default withRouter(CatalogNavBar);
