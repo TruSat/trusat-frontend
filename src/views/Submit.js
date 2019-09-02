@@ -28,14 +28,14 @@ export default function Submit() {
   const [conditions, setConditions] = useState("");
 
   const handleSubmit = async () => {
-    console.log(pastedIODs);
+    const arrayOfIODs = pastedIODs.split("\n");
 
     axios
       .post(
         `https://api.consensys.space:8080/submitObservation`,
         // iod - will be a single iod
         // iods - will be a bunch of iods that will need to be parsed on backend
-        JSON.stringify({ jwt: jwt, multiple: [pastedIODs], single: {} })
+        JSON.stringify({ jwt: jwt, multiple: arrayOfIODs, single: {} })
       )
       .then(result => {
         console.log(result);
