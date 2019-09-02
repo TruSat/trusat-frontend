@@ -8,7 +8,7 @@ import { decryptSecret } from "../helpers";
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const dispatch = useAuthDispatch();
-  const [email, setEmail] = useState("bob@cryptonoob.com");
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [secret, setSecret] = useState("");
 
