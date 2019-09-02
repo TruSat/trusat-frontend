@@ -4,11 +4,10 @@ import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 
-export default function CatalogTable({ catalogFilter }) {
+export default function CatalogTable({ catalogFilter, range, setRange }) {
   // const { jwt } = useAuthState();
   const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
-  const [range, setRange] = useState({ start: 0, end: 20 });
 
   useEffect(() => {
     setShowTable(false);

@@ -1,6 +1,10 @@
 import React from "react";
 
-export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
+export default function CatalogNavBar({
+  catalogFilter,
+  setCatalogFilter,
+  setRange
+}) {
   return (
     <div
       style={{ display: "flex", justifyContent: "space-around", margin: "1em" }}
@@ -11,7 +15,10 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("priorities")}
+        onClick={() => {
+          setRange({ start: 0, end: 20 });
+          setCatalogFilter("priorities");
+        }}
       >
         PRIORITIES
       </span>
@@ -21,7 +28,10 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("undisclosed")}
+        onClick={() => {
+          setRange({ start: 0, end: 20 });
+          setCatalogFilter("undisclosed");
+        }}
       >
         UNDISCLOSED
       </span>
@@ -31,7 +41,10 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("debris")}
+        onClick={() => {
+          setRange({ start: 0, end: 20 });
+          setCatalogFilter("debris");
+        }}
       >
         DEBRIS
       </span>
@@ -41,7 +54,10 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("latest")}
+        onClick={() => {
+          setRange({ start: 0, end: 20 });
+          setCatalogFilter("latest");
+        }}
       >
         LATEST
       </span>
@@ -51,7 +67,10 @@ export default function CatalogNavBar({ catalogFilter, setCatalogFilter }) {
             ? "nav-bar__link--highlight"
             : "nav-bar__link--lowlight"
         }
-        onClick={() => setCatalogFilter("all")}
+        onClick={() => {
+          setRange({ start: 0, end: 20 });
+          setCatalogFilter("all");
+        }}
       >
         ALL
       </span>

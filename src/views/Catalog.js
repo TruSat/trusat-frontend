@@ -6,6 +6,7 @@ import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalo
 
 export default function Catalog() {
   const [catalogFilter, setCatalogFilter] = useState("priorities");
+  const [range, setRange] = useState({ start: 0, end: 20 });
 
   return (
     <React.Fragment>
@@ -28,8 +29,13 @@ export default function Catalog() {
       <CatalogNavBar
         catalogFilter={catalogFilter}
         setCatalogFilter={setCatalogFilter}
+        setRange={setRange}
       />
-      <CatalogTable catalogFilter={catalogFilter} />
+      <CatalogTable
+        catalogFilter={catalogFilter}
+        range={range}
+        setRange={setRange}
+      />
     </React.Fragment>
   );
 }
