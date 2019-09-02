@@ -27,7 +27,7 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
           <th />
           <th />
           <th>USER</th>
-          <th>QUAlITY</th>
+          <th>QUALITY</th>
           <th>TIME DIFF</th>
           <th>WEIGHT</th>
         </tr>
