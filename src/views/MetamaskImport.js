@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { useAuthState } from "../auth/auth-context";
-import { decryptSecret } from "../auth/helpers";
-import { create } from "domain";
+import { useAuthState, useAuthDispatch } from "../auth/auth-context";
+import { decryptSecret, retrieveNonce } from "../auth/helpers";
+import { ethers } from "ethers";
+import Web3 from "web3";
+import axios from "axios";
 
 export default function MetamaskImport() {
   const [step, setStep] = useState(1);
-
-  const [metamaskFound, setMetamaskFound] = useState(false);
 
   const [secret, setSecret] = useState(
     "3235776040/74bef427ec535b0640b9f2476560a6e0/98cc58cc57fbbdc33fc23983066ad421239a65304847a6fc68f2e2eb07bf32d273a7d8203cca1f457c42880ea2671fbf15f2fdec25e96858d922f4e25d34294b1ececdadab32f42b5858fc4d27f50303"
@@ -15,28 +15,60 @@ export default function MetamaskImport() {
   const [privateKey, setPrivateKey] = useState("");
 
   const { authType } = useAuthState();
-  console.log(`authType =`, authType);
+  const dispatch = useAuthDispatch();
 
-  const getPrivateKey = () => {
-    const privateKeyFromSecret = decryptSecret(secret, password);
+  const handleMessageSign = async () => {
+    dispatch({ type: "AUTHENTICATING", payload: true });
 
-    setPrivateKey(privateKeyFromSecret);
+    const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
-    console.log(`private key =`, privateKey);
+    const address = web3._provider.selectedAddress;
 
-    setStep(3);
+    const nonce = await retrieveNonce(address);
+    console.log(`nonce = `, nonce);
+
+    const nonceHash = ethers.utils.id(nonce);
+
+    try {
+      //a promise
+      const signedMessage = await web3.eth.personal.sign(nonceHash, address);
+
+      console.log(`signed message =`, signedMessage);
+
+      return handleAuthenticate({ address, signedMessage });
+    } catch (error) {
+      dispatch({ type: "AUTHENTICATING", payload: false });
+      alert(`You need to sign the message to be able to log in!`);
+    }
   };
 
-  const copyPrivateKeyButton = () => {
-    return (
-      <button
-        onClick={() => {
-          navigator.clipboard.writeText(privateKey);
-        }}
-      >
-        copy
-      </button>
+  // TODO utilize retrieve JWT function from helpers
+  const handleAuthenticate = async ({ address, signedMessage }) => {
+    Promise.resolve(
+      axios
+        .post(
+          "https://api.consensys.space:8080/login",
+          JSON.stringify({
+            address: address,
+            signedMessage: signedMessage
+          })
+        )
+        .then(response => {
+          console.log(response.data);
+          localStorage.setItem("trusat-jwt", response.data.jwt);
+          localStorage.setItem("trusat-address", address);
+          dispatch({ type: "SET_JWT", payload: response.data.jwt });
+        })
+        .catch(error => console.log(error))
     );
+
+    dispatch({
+      type: "SET_ADDRESS",
+      payload: address
+    });
+    dispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+    dispatch({ type: "AUTHENTICATED", payload: true });
+    dispatch({ type: "AUTHENTICATING", payload: false });
   };
 
   return (
@@ -91,8 +123,13 @@ export default function MetamaskImport() {
               display: "inline-block"
             }}
             onClick={() => {
-              setStep(2);
-              setMetamaskFound(true);
+              // if metamask plugin IS found
+              if (window.ethereum) {
+                setStep(2);
+                // if metamask plugin ISN'T found
+              } else {
+                alert("You do not have the MetaMask plugin installed!");
+              }
             }}
           >
             I've installed MetaMask
@@ -144,7 +181,10 @@ export default function MetamaskImport() {
               padding: "0.5em",
               display: "inline-block"
             }}
-            onClick={() => getPrivateKey()}
+            onClick={() => {
+              setPrivateKey(decryptSecret(secret, password));
+              setStep(3);
+            }}
           >
             NEXT
           </span>
@@ -179,7 +219,10 @@ export default function MetamaskImport() {
               copy
             </button>
           </div>
-          <p>2. Click on your avatar in MetaMask</p>
+          <p>
+            2. Login to MetaMask if you haven't already done so and click on
+            your avatar
+          </p>
           <p>3. Select "import account"</p>
           <p>4. Paste in your private key</p>
           <span
@@ -188,7 +231,10 @@ export default function MetamaskImport() {
               padding: "0.5em",
               display: "inline-block"
             }}
-            onClick={() => setStep(4)}
+            onClick={async () => {
+              window.ethereum.enable().catch(console.error);
+              setStep(4);
+            }}
           >
             I've imported my private key to MetaMask
           </span>
@@ -212,7 +258,8 @@ export default function MetamaskImport() {
           <p>
             MetaMask should have prompted you to confirm the connection. This is
             to confirm that you trust TruSat before going any further. Click
-            "connect" in MetaMask.
+            "connect" in MetaMask. If the request to connect doesn't appear, you
+            may be already connected and can proceed to next step.
           </p>
           {/* // TODO - this button needs to pop metamask up to show the sign message request */}
           <span
@@ -221,7 +268,10 @@ export default function MetamaskImport() {
               padding: "0.5em",
               display: "inline-block"
             }}
-            onClick={() => setStep(5)}
+            onClick={() => {
+              handleMessageSign();
+              setStep(5);
+            }}
           >
             I've confirmed connection in MetaMask
           </span>
@@ -237,7 +287,7 @@ export default function MetamaskImport() {
               : { marginTop: "1em" }
           }
         >
-          Step 5: Sign [message]
+          Step 5: Sign message
         </h2>
       ) : null}
       {step === 5 && authType !== "metamask" ? (
@@ -251,8 +301,12 @@ export default function MetamaskImport() {
       {authType === "metamask" ? (
         <div>
           <p>
-            Congrats you have now successfully migrated your account to
-            MetaMask!
+            Congrats you have now successfully migrated your account to MetaMask
+            and signed in! From now, choose the option to sign in to TruSat
+            using the MetaMask option. Its will be as simple as signing a
+            message to verify your identity from now on! If you wish to take
+            your TruSat identity with you to other browsers, you can read more
+            on our FAQ page
           </p>
         </div>
       ) : null}

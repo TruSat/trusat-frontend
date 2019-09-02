@@ -4,6 +4,7 @@ import { retrieveNonce, retrieveJwt } from "../helpers/";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";
+import { handleMetamaskConnect } from "../helpers";
 
 export default function MetaMask() {
   const { isAuthenticating } = useAuthState();
@@ -11,26 +12,14 @@ export default function MetaMask() {
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
-      handleMessageSign();
+      dispatch({ type: "AUTHENTICATING", payload: true });
+      handleMetamaskMessageSign();
     } else {
       handleMetamaskConnect();
     }
   };
 
-  const handleMetamaskConnect = () => {
-    // user has metamask but they are not signed in to the plugin
-    if (window.ethereum.selectedAddress === undefined) {
-      alert("Please sign in to MetaMask plugin and try again!");
-      window.ethereum.enable().catch(console.error);
-      // metamask plugin not found
-    } else {
-      alert("You do not have the MetaMask plugin installed!");
-    }
-  };
-
-  const handleMessageSign = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
-
+  const handleMetamaskMessageSign = async () => {
     const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
     const address = web3._provider.selectedAddress;
@@ -46,7 +35,7 @@ export default function MetaMask() {
 
       console.log(`signed message =`, signedMessage);
 
-      return handleAuthenticate({ address, signedMessage });
+      return handleMetamaskAuthenticate({ address, signedMessage });
     } catch (error) {
       dispatch({ type: "AUTHENTICATING", payload: false });
       alert(`You need to sign the message to be able to log in!`);
@@ -54,7 +43,7 @@ export default function MetaMask() {
   };
 
   // TODO utilize retrieve JWT function from helpers
-  const handleAuthenticate = async ({ address, signedMessage }) => {
+  const handleMetamaskAuthenticate = async ({ address, signedMessage }) => {
     Promise.resolve(
       axios
         .post(

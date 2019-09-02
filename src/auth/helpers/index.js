@@ -21,6 +21,17 @@ export const retrieveNonce = async address => {
     .catch(error => console.log(error));
 };
 
+export const handleMetamaskConnect = () => {
+  // user has metamask but they are not signed in to the plugin
+  if (window.ethereum.selectedAddress === undefined) {
+    alert("Please sign in to MetaMask plugin and try again!");
+    window.ethereum.enable().catch(console.error);
+    // metamask plugin not found
+  } else {
+    alert("You do not have the MetaMask plugin installed!");
+  }
+};
+
 export const signMessage = async ({ nonce, wallet }) => {
   // hash the nonce
   const nonceHash = ethers.utils.id(nonce);
