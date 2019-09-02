@@ -8,6 +8,7 @@ export default function CatalogTable({ catalogFilter }) {
   // const { jwt } = useAuthState();
   const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
+  const [range, setRange] = useState({ start: 0, end: 20 });
 
   useEffect(() => {
     setShowTable(false);
@@ -28,8 +29,11 @@ export default function CatalogTable({ catalogFilter }) {
   }, [catalogFilter, setTableData]);
 
   const renderRows = () => {
-    return tableData.map(obj => (
-      <tr key={tableData.indexOf(obj)}>
+    const { start, end } = range;
+    const rangeData = tableData.slice(start, end);
+
+    return rangeData.map(obj => (
+      <tr key={rangeData.indexOf(obj)}>
         {catalogFilter === "priorities" ? (
           <td>{tableData.indexOf(obj) + 1}</td>
         ) : null}
@@ -48,21 +52,55 @@ export default function CatalogTable({ catalogFilter }) {
   };
 
   return showTable ? (
-    <table>
-      <thead>
-        <tr>
-          {catalogFilter === "priorities" ? <th>Priority</th> : null}
+    <React.Fragment>
+      <table>
+        <thead>
+          <tr>
+            {catalogFilter === "priorities" ? <th>Priority</th> : null}
 
-          <th>Name</th>
-          <th>Origin</th>
-          <th>Type</th>
-          <th>Purpose</th>
-          <th>Last Time Tracked</th>
-          <th>Last User to Track</th>
-        </tr>
-      </thead>
-      <tbody>{renderRows()}</tbody>
-    </table>
+            <th>Name</th>
+            <th>Origin</th>
+            <th>Type</th>
+            <th>Purpose</th>
+            <th>Last Time Tracked</th>
+            <th>Last User to Track</th>
+          </tr>
+        </thead>
+        <tbody>{renderRows()}</tbody>
+      </table>
+
+      <div style={{ margin: "1em", textAlign: "center" }}>
+        <p>
+          {range.start}-
+          {range.end > tableData.length ? tableData.length : range.end} of{" "}
+          {tableData.length}
+        </p>
+        <button
+          onClick={() => {
+            if (range.start !== 0) {
+              setRange(currentRange => ({
+                start: currentRange.start - 20,
+                end: currentRange.end - 20
+              }));
+            }
+          }}
+        >
+          Left
+        </button>
+        <button
+          onClick={() => {
+            if (range.end < tableData.length) {
+              setRange(currentRange => ({
+                start: currentRange.start + 20,
+                end: currentRange.end + 20
+              }));
+            }
+          }}
+        >
+          Right
+        </button>
+      </div>
+    </React.Fragment>
   ) : (
     <Spinner />
   );
