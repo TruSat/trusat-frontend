@@ -13,7 +13,7 @@
 
 .nav-bar__link-wrapper--highlight {
   color: $primary-text-color;
-  border-bottom: 1px solid $primary-highlight-color;
+  border-bottom: 3px solid $primary-highlight-color;
   display: flex;
   align-items: center;
   height: 3.5em;
@@ -24,6 +24,7 @@
 }
 
 .nav-bar__link-wrapper--lowlight {
+  border-bottom: 3px solid $secondary-theme-color;
   color: #888888;
 }
 

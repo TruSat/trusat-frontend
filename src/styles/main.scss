@@ -9,3 +9,56 @@
 @import "./components/signup-modal";
 @import "./layout/login-options";
 @import "./components/table";
+
+/* ----------
+ASTRIAGRAPH
+---------- */
+
+.astriagraph__wrapper {
+  background: grey;
+  height: 200px;
+  text-align: center;
+  width: 100%;
+}
+
+/* ----------
+CATALOG
+---------- */
+.catalog__wrapper {
+  margin: 1em 4em;
+}
+
+.catalog__header {
+  @include header1-text;
+  margin: 0.5em 0;
+}
+
+.catalog-nav-bar__wrapper {
+  border-bottom: 1px solid $primary-text-color;
+  display: flex;
+  margin: 1em;
+}
+
+.catalog-nav-bar__link--highlight {
+  border-bottom: 4px solid $primary-highlight-color;
+  color: $primary-text-color;
+  margin-right: 2em;
+  padding-bottom: 0.5em;
+  text-decoration: none;
+}
+
+.catalog-nav-bar__link--highlight:hover {
+  cursor: pointer;
+}
+
+.catalog-nav-bar__link--lowlight {
+  border-bottom: 4px solid $primary-theme-color;
+  color: #888888;
+  margin-right: 2em;
+  padding-bottom: 0.5em;
+  text-decoration: none;
+}
+
+.catalog-nav-bar__link--lowlight:hover {
+  cursor: pointer;
+}

@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 export default function Astriagraph() {
-  const [tles, setTles] = useState([]);
+  // const [tles, setTles] = useState([]);
 
-  useEffect(() => {
-    axios
-      // TODO
-      // Perhaps this will become a POST request so that we can re-render the visual when user changes the catalog filter
-      .get(`https://api.consensys.space:8080/astriagraph`)
-      .then(result => {
-        console.log(result);
-      })
-      .catch(err => console.log(err));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     // TODO
+  //     // Perhaps this will become a POST request so that we can re-render the visual when user changes the catalog filter
+  //     .get(`https://api.consensys.space:8080/astriagraph`)
+  //     .then(result => {
+  //       console.log(result);
+  //     })
+  //     .catch(err => console.log(err));
+  // }, []);
 
-  return <div>This is the Astriagraph visual</div>;
+  return (
+    <div className="astriagraph__wrapper">This is the Astriagraph visual</div>
+  );
 }
 
 // TODO

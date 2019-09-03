@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Astriagraph from "../app/components/Astriagraph";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
@@ -9,7 +10,9 @@ export default function Catalog({ match }) {
   const [range, setRange] = useState({ start: 0, end: 20 });
 
   return (
-    <React.Fragment>
+    <div className="catalog__wrapper">
+      <Astriagraph />
+      <h1 className="catalog__header">CATALOG</h1>
       <NavLink style={{ color: "white" }} to="/submit">
         <span
           style={{
@@ -32,6 +35,6 @@ export default function Catalog({ match }) {
         range={range}
         setRange={setRange}
       />
-    </React.Fragment>
+    </div>
   );
 }

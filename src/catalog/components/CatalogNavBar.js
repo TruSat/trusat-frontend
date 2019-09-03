@@ -3,14 +3,12 @@ import { withRouter } from "react-router-dom";
 
 function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
   return (
-    <div
-      style={{ display: "flex", justifyContent: "space-around", margin: "1em" }}
-    >
+    <div className="catalog-nav-bar__wrapper">
       <span
         className={
           catalogFilter === "priorities"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
@@ -19,11 +17,12 @@ function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
       >
         PRIORITIES
       </span>
+
       <span
         className={
           catalogFilter === "undisclosed"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
@@ -32,11 +31,12 @@ function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
       >
         UNDISCLOSED
       </span>
+
       <span
         className={
           catalogFilter === "debris"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
@@ -45,11 +45,12 @@ function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
       >
         DEBRIS
       </span>
+
       <span
         className={
           catalogFilter === "latest"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
@@ -58,11 +59,12 @@ function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
       >
         LATEST
       </span>
+
       <span
         className={
           catalogFilter === "all"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
