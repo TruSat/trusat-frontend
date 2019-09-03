@@ -19,12 +19,16 @@ function NavBar(props) {
         dispatch({ type: "SET_JWT", payload: jwt });
         dispatch({ type: "AUTHENTICATED", payload: true });
       }
-      // TODO - move this to its own function?
+    };
+
+    // get address from local storage
+    const retrieveAddress = () => {
       if (localStorage.getItem("trusat-address")) {
         const address = localStorage.getItem("trusat-address");
         dispatch({ type: "SET_ADDRESS", payload: address });
       }
     };
+
     // get burner wallet from local storage, utilized for burner login only
     const retrieveWallet = () => {
       if (localStorage.getItem("trusat-private-key")) {
@@ -40,6 +44,7 @@ function NavBar(props) {
       }
     };
     retrieveJwt();
+    retrieveAddress();
     retrieveWallet();
     // ToDO - create an app context to handle a shared 'app' state for things like loading state
     // setIsAppLoading(false);
@@ -52,65 +57,109 @@ function NavBar(props) {
         onClick={() => setSelected("/")}
         to="/"
       >
-        EARTH SPACE PROGRAM
+        TRUSAT
       </NavLink>
 
-      <NavLink
-        onClick={() => setSelected("/")}
+      <div
         className={
           selected === "/"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/"
       >
-        WELCOME
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected(`/catalog/priorities`)}
+        <NavLink
+          onClick={() => setSelected("/")}
+          className={
+            selected === "/"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/"
+        >
+          WELCOME
+        </NavLink>
+      </div>
+
+      <div
         className={
           selected === "/catalog/priorities"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/catalog/priorities"
       >
-        CATALOG
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected(`/profile/${address}`)}
+        <NavLink
+          onClick={() => setSelected(`/catalog/priorities`)}
+          className={
+            selected === "/catalog/priorities"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/catalog/priorities"
+        >
+          CATALOG
+        </NavLink>
+      </div>
+
+      <div
         className={
           selected === `/profile/${address}`
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to={`/profile/${address}`}
       >
-        MY PROFILE
-      </NavLink>
+        <NavLink
+          onClick={() => setSelected(`/profile/${address}`)}
+          className={
+            selected === `/profile/${address}`
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to={`/profile/${address}`}
+        >
+          MY PROFILE
+        </NavLink>
+      </div>
 
-      <NavLink
-        onClick={() => setSelected("/about")}
+      <div
         className={
           selected === "/about"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/about"
       >
-        ABOUT
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected("/how")}
+        <NavLink
+          onClick={() => setSelected("/about")}
+          className={
+            selected === "/about"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/about"
+        >
+          ABOUT
+        </NavLink>
+      </div>
+
+      <div
         className={
           selected === "/how"
-            ? "nav-bar__link--highlight"
-            : "nav-bar__link--lowlight"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/how"
       >
-        HOW TO
-      </NavLink>
+        <NavLink
+          onClick={() => setSelected("/how")}
+          className={
+            selected === "/how"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/how"
+        >
+          HOW TO
+        </NavLink>
+      </div>
+
       {/* <SignUpModal /> */}
 
       <NavLink onClick={() => setSelected("/join")} to="/login">

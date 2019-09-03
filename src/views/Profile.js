@@ -5,6 +5,7 @@ import { useAuthState } from "../auth/auth-context";
 import Blockie from "react-blockies";
 
 export default function Profile({ match }) {
+  // TODO - add if statement to use address found in auth state before using the match address
   const address = match.params.address;
   const { jwt } = useAuthState();
   const [userData, setUserData] = useState([]);

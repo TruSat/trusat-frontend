@@ -1,5 +1,5 @@
 import React from "react";
 
 export default function JoinButton() {
-  return <span className="modal__join-button">JOIN</span>;
+  return <span className="nav-bar__join-button">JOIN</span>;
 }
