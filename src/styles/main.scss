@@ -33,13 +33,17 @@ CATALOG
   margin: 0.5em 0;
 }
 
+.catalog__filter-description {
+  margin: 1em 0;
+}
+
 /* ----------
 CATALOG NAV BAR
 ---------- */
 .catalog-nav-bar__wrapper {
   border-bottom: 1px solid $primary-text-color;
   display: flex;
-  margin: 1em;
+  margin: 1em 0;
 }
 
 .catalog-nav-bar__link--highlight {

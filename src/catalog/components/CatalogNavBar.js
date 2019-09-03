@@ -1,7 +1,9 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-function CatalogNavBar({ catalogFilter, setCatalogFilter, setRange, history }) {
+function CatalogNavBar({ catalogFilter, setRange, history }) {
+  console.log(catalogFilter);
+
   return (
     <div className="catalog-nav-bar__wrapper">
       <span

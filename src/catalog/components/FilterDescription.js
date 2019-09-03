@@ -11,5 +11,9 @@ export default function FilterDescription({ catalogFilter }) {
     all: "Mike needs to complete this copy"
   };
 
-  return <p>{filterDescriptions.priorities}</p>;
+  return (
+    <p className="catalog__filter-description">
+      {filterDescriptions.priorities}
+    </p>
+  );
 }
