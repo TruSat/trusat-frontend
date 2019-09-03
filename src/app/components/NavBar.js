@@ -8,7 +8,6 @@ import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
   const [selected, setSelected] = useState(props.location.pathname);
-  console.log(`selected =`, selected);
 
   const { address } = useAuthState();
   const dispatch = useAuthDispatch();
