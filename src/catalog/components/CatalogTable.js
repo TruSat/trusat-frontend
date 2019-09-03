@@ -15,7 +15,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
       // TODO - ask Kenan should this be a post request, sending JWT?
       // Or are we avoiding persinalized catalog for now?
       axios
-        .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
+        .get(`https://api.consensys.space:443/catalog/${catalogFilter}`)
         .then(result => {
           setTableData(result.data);
           setShowTable(true);

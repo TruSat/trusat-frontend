@@ -15,28 +15,33 @@ export default function Catalog({ match }) {
       <Astriagraph />
       <h1 className="catalog__header">CATALOG</h1>
       <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
-      <FilterDescription catalogFilter={catalogFilter} />
-      <NavLink style={{ color: "white" }} to="/submit">
-        <span
-          style={{
-            border: "1px solid #5F5F5F",
-            display: "inline-block",
-            padding: "0.5em"
-          }}
-        >
-          Submit data
-        </span>
-      </NavLink>
+      <section>
+        <div className="catalog__description-table-wrapper">
+          <FilterDescription catalogFilter={catalogFilter} />
+          <CatalogTable
+            catalogFilter={catalogFilter}
+            range={range}
+            setRange={setRange}
+          />
+        </div>
+        <div className="catalog__button-link-wrapper">
+          <NavLink style={{ color: "white" }} to="/submit">
+            <span
+              style={{
+                border: "1px solid #5F5F5F",
+                display: "inline-block",
+                padding: "0.5em"
+              }}
+            >
+              Submit data
+            </span>
+          </NavLink>
 
-      {catalogFilter === "priorities" || catalogFilter === "all" ? (
-        <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
-      ) : null}
-
-      <CatalogTable
-        catalogFilter={catalogFilter}
-        range={range}
-        setRange={setRange}
-      />
+          {catalogFilter === "priorities" || catalogFilter === "all" ? (
+            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          ) : null}
+        </div>
+      </section>
     </div>
   );
 }
