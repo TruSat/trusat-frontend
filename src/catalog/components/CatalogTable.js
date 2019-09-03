@@ -70,7 +70,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
 
       <div style={{ margin: "1em", textAlign: "center" }}>
         <p>
-          {range.start}-
+          {range.start + 1}-
           {range.end > tableData.length ? tableData.length : range.end} of{" "}
           {tableData.length}
         </p>
