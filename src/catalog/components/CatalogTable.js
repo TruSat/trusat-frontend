@@ -135,7 +135,9 @@ const priorities = [
     object_name: "sl-27",
     object_origin: "russia",
     object_type: "rocket body",
-    object_purpose: "comms",
+    object_primary_purpose: "military",
+    object_secondary_purpose: "communications",
+    object_observation_quality: "66",
     time_last_tracked: "1565803593926", // timestamp
     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
     username_last_tracked: "username"
@@ -145,7 +147,9 @@ const priorities = [
     object_name: "abrixas rocket",
     object_origin: "usa",
     object_type: "satelitte",
-    object_purpose: "military",
+    object_primary_purpose: "military",
+    object_secondary_purpose: "communications",
+    object_observation_quality: "66",
     time_last_tracked: "1565803593926",
     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
     username_last_tracked: "username"
@@ -155,7 +159,9 @@ const priorities = [
     object_name: "sl-27",
     object_origin: "russia",
     object_type: "rocket body",
-    object_purpose: "comms",
+    object_primary_purpose: "military",
+    object_secondary_purpose: "communications",
+    object_observation_quality: "66",
     time_last_tracked: "1565803593926",
     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
     username_last_tracked: "username"
