@@ -58,7 +58,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
   return showTable ? (
     <React.Fragment>
       <table>
-        <thead>
+        {/* <thead>
           <tr>
             {catalogFilter === "priorities" ? <th>Priority</th> : null}
 
@@ -69,7 +69,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             <th>Last Time Tracked</th>
             <th>Last User to Track</th>
           </tr>
-        </thead>
+        </thead> */}
         <tbody>{renderRows()}</tbody>
       </table>
 
