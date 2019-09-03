@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function FilterDescription({ catalogFilter }) {
+  console.log(catalogFilter);
+
   const filterDescriptions = {
     priorities:
       "This is a hitlist of satellites most in need of amateur observations.Higher priority sats include recent launches, changes in orbit, orlesser known orbits",
@@ -13,7 +15,7 @@ export default function FilterDescription({ catalogFilter }) {
 
   return (
     <p className="catalog__filter-description">
-      {filterDescriptions.priorities}
+      {filterDescriptions.catalogFilter}
     </p>
   );
 }

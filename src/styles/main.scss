@@ -15,9 +15,13 @@ ASTRIAGRAPH
 ---------- */
 
 .astriagraph__wrapper {
-  background: grey;
-  height: 200px;
-  text-align: center;
+  align-items: center;
+  background: $primary-theme-color;
+  border: 2px solid white;
+  border-style: dotted;
+  display: flex;
+  justify-content: center;
+  height: 300px;
   width: 100%;
 }
 
@@ -25,7 +29,7 @@ ASTRIAGRAPH
 CATALOG
 ---------- */
 .catalog__wrapper {
-  margin: 1em 4em;
+  margin: 0em 4em;
 }
 
 .catalog__header {
@@ -35,6 +39,23 @@ CATALOG
 
 .catalog__filter-description {
   margin: 1em 0;
+}
+
+.catalog__content-wrapper {
+  border: 1px solid red;
+  display: flex;
+}
+
+.catalog__description-table-wrapper {
+  border: 1px solid yellow;
+  width: 70%;
+}
+
+.catalog__button-link-wrapper {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
 }
 
 /* ----------

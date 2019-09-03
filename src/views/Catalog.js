@@ -15,7 +15,7 @@ export default function Catalog({ match }) {
       <Astriagraph />
       <h1 className="catalog__header">CATALOG</h1>
       <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
-      <section>
+      <section className="catalog__content-wrapper">
         <div className="catalog__description-table-wrapper">
           <FilterDescription catalogFilter={catalogFilter} />
           <CatalogTable
@@ -25,6 +25,10 @@ export default function Catalog({ match }) {
           />
         </div>
         <div className="catalog__button-link-wrapper">
+          {catalogFilter === "priorities" || catalogFilter === "all" ? (
+            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          ) : null}
+
           <NavLink style={{ color: "white" }} to="/submit">
             <span
               style={{
@@ -36,10 +40,8 @@ export default function Catalog({ match }) {
               Submit data
             </span>
           </NavLink>
-
-          {catalogFilter === "priorities" || catalogFilter === "all" ? (
-            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
-          ) : null}
+          <NavLink to="/how">How can I see these stats?</NavLink>
+          <NavLink to="/how">How are sats prioritized?</NavLink>
         </div>
       </section>
     </div>
