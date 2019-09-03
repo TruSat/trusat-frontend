@@ -8,6 +8,8 @@ import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
   const [selected, setSelected] = useState(props.location.pathname);
+  console.log(`selected =`, selected);
+
   const { address } = useAuthState();
   const dispatch = useAuthDispatch();
 
@@ -82,7 +84,7 @@ function NavBar(props) {
 
       <div
         className={
-          selected === "/catalog/priorities"
+          selected.includes("catalog")
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
@@ -90,7 +92,7 @@ function NavBar(props) {
         <NavLink
           onClick={() => setSelected(`/catalog/priorities`)}
           className={
-            selected === "/catalog/priorities"
+            selected.includes("catalog")
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
