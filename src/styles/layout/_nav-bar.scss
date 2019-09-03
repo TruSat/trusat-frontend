@@ -1,6 +1,7 @@
 .nav-bar {
   align-items: center;
   background: $secondary-theme-color;
+  border: 3px solid $secondary-theme-color;
   display: flex;
   height: 3.5em;
   justify-content: space-around;

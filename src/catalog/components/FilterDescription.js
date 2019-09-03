@@ -5,7 +5,7 @@ export default function FilterDescription({ catalogFilter }) {
     {
       filter: "priorities",
       copy:
-        "This is a hitlist of satellites most in need of amateur observations.Higher priority sats include recent launches, changes in orbit, orlesser known orbits"
+        "This is a hitlist of satellites most in need of amateur observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits"
     },
     { filter: "undisclosed", copy: "bla bla undisclosed." },
     { filter: "debris", copy: "bla bla debris." },
