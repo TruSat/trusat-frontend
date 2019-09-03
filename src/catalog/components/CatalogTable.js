@@ -27,51 +27,66 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     }
   }, [catalogFilter, setTableData]);
 
-  const renderRows = () => {
+  const renderTable = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
 
     return rangeData.map(obj => (
-      <tr key={rangeData.indexOf(obj)}>
-        {catalogFilter === "priorities" ? (
-          <td>{tableData.indexOf(obj) + 1}</td>
-        ) : null}
-        <td>
-          <NavLink to={`/object/${obj.object_norad_number}`}>
-            {obj.object_name}
-          </NavLink>
-        </td>
-        <td>
-          <img
-            src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
-            alt={`${obj.object_origin} flag`}
-          />
-        </td>
-        <td>{obj.object_type}</td>
-        <td>{obj.object_purpose}</td>
-        <td>{obj.time_last_tracked}</td>
-        <td>{obj.username_last_tracked}</td>
-      </tr>
+      <NavLink
+        style={{ color: "white", textDecoration: "none" }}
+        to={`/object/${obj.object_norad_number}`}
+      >
+        <div className="catalog-table__row" key={rangeData.indexOf(obj)}>
+          {catalogFilter === "priorities" ? (
+            <div
+              style={{
+                display: "flex",
+                width: "20%",
+                textDecoration: "none"
+              }}
+            >
+              <p>
+                {tableData.indexOf(obj) + 1}
+                {`. ${obj.object_name}`}
+              </p>
+            </div>
+          ) : (
+            <p style={{ display: "flex", width: "20%" }}>{obj.object_name}</p>
+          )}
+
+          <div style={{ display: "flex", width: "25%" }}>
+            <p>
+              <img
+                src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
+                alt={`${obj.object_origin} flag `}
+              />
+            </p>
+            {` `}
+            <p>{obj.object_purpose}</p>
+          </div>
+
+          <p style={{ width: "15%" }}>{obj.object_type}</p>
+
+          <div
+            style={{
+              display: "flex",
+              width: "40%"
+            }}
+          >
+            <p>
+              {`last spotted `}
+              {obj.time_last_tracked} {` by `}
+              {obj.username_last_tracked}
+            </p>
+          </div>
+        </div>
+      </NavLink>
     ));
   };
 
   return showTable ? (
     <React.Fragment>
-      <table>
-        {/* <thead>
-          <tr>
-            {catalogFilter === "priorities" ? <th>Priority</th> : null}
-
-            <th>Name</th>
-            <th>Origin</th>
-            <th>Type</th>
-            <th>Purpose</th>
-            <th>Last Time Tracked</th>
-            <th>Last User to Track</th>
-          </tr>
-        </thead> */}
-        <tbody>{renderRows()}</tbody>
-      </table>
+      {renderTable()}
 
       <div style={{ margin: "1em", textAlign: "center" }}>
         <p>

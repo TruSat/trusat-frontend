@@ -114,3 +114,13 @@ CATALOG NAV BAR
 .catalog-nav-bar__link--lowlight:hover {
   cursor: pointer;
 }
+
+/* ----------
+CATALOG TABLE
+---------- */
+.catalog-table__row {
+  border: 1px solid $primary-text-color;
+  display: flex;
+  justify-content: space-between;
+  padding: 1em;
+}
