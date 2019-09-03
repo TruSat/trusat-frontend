@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useAuthDispatch, useAuthState } from "../../auth/auth-context";
 import { ethers } from "ethers";
 import { withRouter } from "react-router-dom";
-// import SignUpModal from "../../auth/components/SignUpModal";
 import JoinButton from "../../auth/components/JoinButton";
 import { NavLink } from "react-router-dom";
 
@@ -160,8 +159,6 @@ function NavBar(props) {
           HOW TO
         </NavLink>
       </div>
-
-      {/* <SignUpModal /> */}
 
       <NavLink onClick={() => setSelected("/join")} to="/login">
         <JoinButton />

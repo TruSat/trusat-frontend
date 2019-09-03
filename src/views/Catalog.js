@@ -30,18 +30,16 @@ export default function Catalog({ match }) {
           ) : null}
 
           <NavLink style={{ color: "white" }} to="/submit">
-            <span
-              style={{
-                border: "1px solid #5F5F5F",
-                display: "inline-block",
-                padding: "0.5em"
-              }}
-            >
-              Submit data
-            </span>
+            <span className="catalog__button">Submit data</span>
           </NavLink>
-          <NavLink to="/how">How can I see these stats?</NavLink>
-          <NavLink to="/how">How are sats prioritized?</NavLink>
+
+          <div className="catalog__link-text-wrapper"></div>
+          <NavLink className="catalog__link-text" to="/how">
+            How can I see these stats?
+          </NavLink>
+          <NavLink className="catalog__link-text" to="/how">
+            How are sats prioritized?
+          </NavLink>
         </div>
       </section>
     </div>

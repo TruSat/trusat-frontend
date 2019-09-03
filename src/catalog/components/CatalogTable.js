@@ -41,7 +41,12 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             {obj.object_name}
           </NavLink>
         </td>
-        <td>{obj.object_origin}</td>
+        <td>
+          <img
+            src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
+            alt={`${obj.object_origin} flag`}
+          />
+        </td>
         <td>{obj.object_type}</td>
         <td>{obj.object_purpose}</td>
         <td>{obj.time_last_tracked}</td>

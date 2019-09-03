@@ -33,16 +33,12 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   return (
     // only give option to download if user chooses "priorities" or "all" as a catalog filter
     tleString ? (
-      <a href={downloadTles()} download={`trusat_${catalogFilter}.txt`}>
-        <span
-          style={{
-            border: "1px solid #5F5F5F",
-            display: "inline-block",
-            padding: "0.5em"
-          }}
-        >
-          Get data
-        </span>
+      <a
+        className="catalog__link"
+        href={downloadTles()}
+        download={`trusat_${catalogFilter}.txt`}
+      >
+        <span className="catalog__button">Get data</span>
       </a>
     ) : null
   );

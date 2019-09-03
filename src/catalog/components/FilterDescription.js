@@ -1,25 +1,26 @@
 import React from "react";
 
 export default function FilterDescription({ catalogFilter }) {
-  console.log(catalogFilter);
-
   const filterDescriptions = [
     {
-      descriptionName: "priorities",
-      descriptionCopy:
+      filter: "priorities",
+      copy:
         "This is a hitlist of satellites most in need of amateur observations.Higher priority sats include recent launches, changes in orbit, orlesser known orbits"
     },
-    { descriptionName: "undisclosed", descriptionCopy: "bla bla undisclosed." },
-    { descriptionName: "debris", descriptionCopy: "bla bla debris." },
-    { descriptionName: "latest", descriptionCopy: "bla bla latest" },
-    { descriptionName: "all", descriptionCopy: "bla bla all." }
+    { filter: "undisclosed", copy: "bla bla undisclosed." },
+    { filter: "debris", copy: "bla bla debris." },
+    { filter: "latest", copy: "bla bla latest" },
+    { filter: "all", copy: "bla bla all." }
   ];
 
   return filterDescriptions.map(description => {
-    if (description.descriptionName === catalogFilter) {
+    if (description.filter === catalogFilter) {
       return (
-        <p className="catalog__filter-description">
-          {description.descriptionCopy}
+        <p
+          key={`${description.filter} copy`}
+          className="catalog__filter-description"
+        >
+          {description.copy}
         </p>
       );
     }
