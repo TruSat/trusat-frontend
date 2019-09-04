@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAuthDispatch, useAuthState } from "../../auth/auth-context";
 import { ethers } from "ethers";
 import { withRouter } from "react-router-dom";
@@ -6,8 +6,6 @@ import JoinButton from "../../auth/components/JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  const [selected, setSelected] = useState(props.location.pathname);
-
   const { address } = useAuthState();
   const dispatch = useAuthDispatch();
 
@@ -52,25 +50,20 @@ function NavBar(props) {
 
   return (
     <div className="nav-bar">
-      <NavLink
-        className="nav-bar__logo"
-        onClick={() => setSelected("/")}
-        to="/"
-      >
+      <NavLink className="nav-bar__logo" to="/">
         TRUSAT
       </NavLink>
 
       <div
         className={
-          selected === "/"
+          props.location.pathname === "/"
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
-          onClick={() => setSelected("/")}
           className={
-            selected === "/"
+            props.location.pathname === "/"
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
@@ -82,15 +75,14 @@ function NavBar(props) {
 
       <div
         className={
-          selected.includes("catalog")
+          props.location.pathname.includes("catalog")
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
-          onClick={() => setSelected(`/catalog/priorities`)}
           className={
-            selected.includes("catalog")
+            props.location.pathname.includes("catalog")
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
@@ -102,15 +94,14 @@ function NavBar(props) {
 
       <div
         className={
-          selected === `/profile/${address}`
+          props.location.pathname === `/profile/${address}`
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
-          onClick={() => setSelected(`/profile/${address}`)}
           className={
-            selected === `/profile/${address}`
+            props.location.pathname === `/profile/${address}`
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
@@ -122,15 +113,14 @@ function NavBar(props) {
 
       <div
         className={
-          selected === "/about"
+          props.location.pathname === "/about"
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
-          onClick={() => setSelected("/about")}
           className={
-            selected === "/about"
+            props.location.pathname === "/about"
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
@@ -142,15 +132,14 @@ function NavBar(props) {
 
       <div
         className={
-          selected === "/how"
+          props.location.pathname === "/how"
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
-          onClick={() => setSelected("/how")}
           className={
-            selected === "/how"
+            props.location.pathname === "/how"
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
@@ -160,7 +149,7 @@ function NavBar(props) {
         </NavLink>
       </div>
 
-      <NavLink onClick={() => setSelected("/join")} to="/login">
+      <NavLink to="/login">
         <JoinButton />
       </NavLink>
     </div>

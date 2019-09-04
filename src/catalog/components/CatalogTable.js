@@ -33,10 +33,11 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
 
     return rangeData.map(obj => (
       <NavLink
+        key={rangeData.indexOf(obj)}
         style={{ color: "white", textDecoration: "none" }}
         to={`/object/${obj.object_norad_number}`}
       >
-        <div className="catalog-table__row" key={rangeData.indexOf(obj)}>
+        <div className="catalog-table__row">
           {catalogFilter === "priorities" ? (
             <div
               style={{
