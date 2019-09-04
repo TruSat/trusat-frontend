@@ -327,3 +327,83 @@ BURGER MENU
 .bm-overlay {
   background: rgba(0, 0, 0, 0.3);
 }
+
+/* ----------
+SIGN UP
+---------- */
+.sign-up__wrapper {
+  margin: 4em;
+}
+
+.sign-up__header {
+  @include header1-text;
+}
+
+/* ----------
+SIGN UP OPTIONS
+---------- */
+.sign-up-options__email-metamask-wrapper {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3em;
+}
+
+/* ----------
+SIGN UP FORM 
+---------- */
+.sign-up-form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.sign-up-form__label {
+  margin: 0.5em 0;
+}
+
+.sign-up-form__input {
+  align-self: flex-start;
+  background: black;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  color: $primary-text-color;
+  margin-bottom: 1em;
+  padding: 1em;
+  width: 100%;
+}
+
+.sign-up-form__button-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.sign-up-form__button--black {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  display: inline-block;
+  padding: 0.5em;
+  margin-right: 1em;
+  width: 45%;
+}
+
+.sign-up-form__button--white {
+  background: $primary-text-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  padding: 0.5em;
+  width: 45%;
+}
+
+.sign-up-form__link-to-login-wrapper {
+  margin-top: 1em;
+}
+
+/* ----------
+METAMASK
+---------- */

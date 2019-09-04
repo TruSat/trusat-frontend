@@ -69,37 +69,41 @@ export default function SignupForm() {
 
   return (
     <form
-      className="email-form"
+      className="sign-up-form"
       name="auth-form"
       onSubmit={event => event.preventDefault()}
     >
-      <label>
-        Email:
-        <input
-          required
-          type="email"
-          onChange={event => setEmail(event.target.value)}
-          value={email}
-        />
-      </label>
+      <label className="sign-up-form__label">Email</label>
+      <input
+        className="sign-up-form__input"
+        required
+        type="email"
+        onChange={event => setEmail(event.target.value)}
+        value={email}
+      />
 
-      <label>
-        Password:
-        <input
-          required
-          type="password"
-          onChange={event => setPassword(event.target.value)}
-          value={password}
-        />
-      </label>
+      <label className="sign-up-form__label">Password</label>
+      <input
+        className="sign-up-form__input"
+        required
+        type="password"
+        onChange={event => setPassword(event.target.value)}
+        value={password}
+      />
 
-      <span onClick={handleSignup}>
-        {isAuthenticating ? `...Loading` : `Submit`}
-      </span>
+      <div className="sign-up-form__button-wrapper">
+        <span className="sign-up-form__button--black">Cancel</span>
+        <span className="sign-up-form__button--white" onClick={handleSignup}>
+          {isAuthenticating ? `...Loading` : `Sign Up`}
+        </span>
+      </div>
 
-      <label>
-        Already a member? <NavLink to="/login">Log in</NavLink>
-      </label>
+      <div className="sign-up-form__link-to-login-wrapper">
+        <p>Already a member?</p>
+        <NavLink style={{ color: "white", marginTop: "1em" }} to="/login">
+          Log in
+        </NavLink>
+      </div>
     </form>
   );
 }
