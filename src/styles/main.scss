@@ -159,14 +159,45 @@ TABLE
 PROFILE
 ---------- */
 .profile__wrapper {
-  margin: 0em 4em;
+  margin: 3em 4em;
 }
 
-.profile__info-wrapper {
+.profile__header-wrapper {
   border: 1px solid $secondary-theme-color--light;
   border-left: none;
   border-right: none;
-  margin-top: 3em;
+  display: flex;
+  padding: 1em 0;
+}
+
+.profile__header-info-wrapper {
+  margin-left: 1em;
+  height: 100%;
+  width: 100%;
+}
+
+.profile__header-username {
+  @include header1-text;
+  margin-left: none;
+  padding-left: none;
+}
+
+.profile__header-info-data-wrapper {
+  display: flex;
+  margin-left: 0.25em;
+}
+
+.profile__header-info-data-key {
+  align-items: center;
+  display: flex;
+  font-size: 10px;
+  margin-right: 3em;
+  color: #afafaf;
+}
+
+.profile__header-info-data-value {
+  color: $primary-text-color;
+  font-size: $small-font-size;
 }
 
 .profile__bio-wrapper {
