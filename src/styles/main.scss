@@ -43,17 +43,14 @@ CATALOG
 }
 
 .catalog__content-wrapper {
-  // border: 1px solid red;
   display: flex;
 }
 
 .catalog__description-table-wrapper {
-  // border: 1px solid yellow;
   width: 80%;
 }
 
 .catalog__button-link-wrapper {
-  // border: 1px solid blue;
   display: flex;
   flex-direction: column;
   padding-left: 1em;
@@ -117,7 +114,7 @@ CATALOG NAV BAR
 /* ----------
 TABLE
 ---------- */
-.table__wrapper:last-child {
+.table__wrapper {
   border-bottom: 1px solid $primary-text-color;
 }
 

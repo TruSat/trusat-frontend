@@ -4,6 +4,7 @@ import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import Blockie from "react-blockies";
 import ObjectBadge from "../assets/ObjectBadge.svg";
+import Spinner from "../app/components/Spinner";
 
 export default function Profile({ match }) {
   // TODO - add if statement to use address found in auth state before using the match address
@@ -209,7 +210,9 @@ export default function Profile({ match }) {
         </table>
       </section>
     </div>
-  ) : null;
+  ) : (
+    <Spinner />
+  );
 }
 
 // POST request
