@@ -136,19 +136,55 @@ CATALOG TABLE
 
 .catalog-table__center-wrapper {
   border: 1px solid red;
+  display: flex;
   width: 15%;
 }
 
 .catalog-table__spotted-by-wrapper {
   border: 1px solid red;
-
+  display: flex;
   width: 40%;
-}
-
-.catalog-table__large-text {
 }
 
 .catalog-table__small-text {
   font-size: $small-font-size;
   line-height: $small-line-height;
+}
+
+/* ---------- 
+PROFILE
+---------- */
+.profile__wrapper {
+  margin: 0em 4em;
+}
+
+.profile__info-wrapper {
+  border: 1px solid $secondary-theme-color--light;
+  border-left: none;
+  border-right: none;
+  margin-top: 3em;
+}
+
+.profile__bio-wrapper {
+  margin-top: 2em;
+}
+
+.profile__background-header {
+  @include header2-text;
+}
+
+.profile__objects-tracked-wrapper {
+  margin-top: 3em;
+}
+
+.profile__sub-heading {
+  @include header2-text;
+  border: 1px solid $secondary-theme-color--light;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 1em;
+}
+
+.profile__your-observations-wrapper {
+  margin-top: 3em;
 }

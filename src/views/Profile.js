@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import Blockie from "react-blockies";
+import ObjectBadge from "../assets/ObjectBadge.svg";
 
 export default function Profile({ match }) {
   // TODO - add if statement to use address found in auth state before using the match address
@@ -34,18 +35,50 @@ export default function Profile({ match }) {
     }
   }, [address, jwt, setUserData]);
 
-  const renderRows = () => {
-    return userData.objects_observed.map(obj => (
-      <tr key={userData.objects_observed.indexOf(obj)}>
-        <td>{obj.object_name}</td>
-        <td>{obj.object_origin}</td>
-        <td>{obj.object_primary_purpose}</td>
-        <td>{obj.object_type}</td>
-        <td>{obj.object_secondary_purpose}</td>
-        <td>{obj.observation_quality}</td>
-        <td>{obj.time_last_tracked}</td>
-        <td>{obj.username_last_tracked}</td>
-      </tr>
+  const renderObjectsTrackedTable = () => {
+    return data.objects_observed.map(obj => (
+      <NavLink
+        key={data.objects_observed.indexOf(obj)}
+        style={{ color: "white", textDecoration: "none" }}
+        to={`/object/${obj.object_norad_number}`}
+      >
+        <div className="catalog-table__row">
+          <div className="catalog-table__badge-name-wrapper">
+            <img
+              style={{ marginLeft: "-35px" }}
+              src={ObjectBadge}
+              alt="Object Badge"
+            ></img>
+            <p> {obj.object_name}</p>
+          </div>
+
+          <div className="catalog-table__center-wrapper">
+            <img
+              className="catalog-table__small-text"
+              src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
+              alt={`${obj.object_origin} flag `}
+            />
+            <p className="catalog-table__small-text">
+              {obj.object_primary_purpose}
+            </p>
+          </div>
+
+          <div className="catalog-table__center-wrapper">
+            <p className="catalog-table__small-text">{obj.object_type}</p>
+            <p className="catalog-table__small-text">
+              {obj.object_secondary_purpose}
+            </p>
+          </div>
+
+          <div className="catalog-table__spotted-by-wrapper">
+            <p className="catalog-table__small-text">
+              {`last spotted `}
+              {obj.time_last_tracked} {` by `}
+              {obj.username_last_tracked}
+            </p>
+          </div>
+        </div>
+      </NavLink>
     ));
   };
 
@@ -54,9 +87,9 @@ export default function Profile({ match }) {
   //   return `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
   // };
 
-  const renderObservationHistory = () => {
-    return userData.observation_history.map(observation => (
-      <tr key={userData.observation_history.indexOf(observation)}>
+  const renderObservationHistoryTable = () => {
+    return data.observation_history.map(observation => (
+      <tr key={data.observation_history.indexOf(observation)}>
         <td>{observation.observation_time}</td>
         <td>{observation.observation_time}</td>
         <td>{observation.object_name}</td>
@@ -69,9 +102,9 @@ export default function Profile({ match }) {
   };
 
   return showProfile ? (
-    <div style={{ textAlign: "center" }}>
-      <section style={{ margin: "1em" }}>
-        <h1 style={{ fontWeight: "bold" }}>{userData.user_name}</h1>
+    <div className="profile__wrapper">
+      <section className="profile__info-wrapper">
+        <h1 style={{ fontWeight: "bold" }}>{data.user_name}</h1>
         <Blockie
           seed={address}
           size={20}
@@ -80,49 +113,27 @@ export default function Profile({ match }) {
           // bgColor="#ffe"
           // spotColor="#abc"
         />
-        <p>Location = {userData.user_location}</p>
-        <p>Objects Tracked = {userData.number_objects_tracked}</p>
-        <p>Observation Count = {userData.observation_count}</p>
-        <p>Avg. Quality Level = {userData.average_observation_quality}</p>
-        <p>Bio = {userData.user_bio}</p>
+        <p>Location = {data.user_location}</p>
+        <p>Objects Tracked = {data.number_objects_tracked}</p>
+        <p>Observation Count = {data.observation_count}</p>
+        <p>Avg. Quality Level = {data.average_observation_quality}</p>
+
         <NavLink to="/settings">Settings</NavLink>
       </section>
 
-      <section style={{ margin: "1em" }}>
-        <h1 style={{ fontWeight: "bold" }}>OBJECTS TRACKED</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>NAME</th>
-              <th>ORIGIN</th>
-              <th>PURPOSE1</th>
-              <th>TYPE</th>
-              <th>PURPOSE2</th>
-              <th>OBSERVATION QUALITY</th>
-              <th>LAST TIME TRACKED</th>
-              <th>LAST USER TO TRACK</th>
-            </tr>
-          </thead>
-          <tbody>{renderRows()}</tbody>
-        </table>
+      <section className="profile__bio-wrapper">
+        <h2 className="profile__background-header">BACKGROUND</h2>
+        <p>{data.user_bio}</p>
       </section>
 
-      <section style={{ margin: "1em" }}>
-        <h1 style={{ fontWeight: "bold" }}>YOUR OBSERVATIONS</h1>
-        <table>
-          <thead>
-            <tr>
-              <th>DATE</th>
-              <th>TIME</th>
-              <th>OBJECT NAME</th>
-              <th>QUALITY</th>
-              <th>TIME DIFF</th>
-              <th>WEIGHT</th>
-              <th>IOD</th>
-            </tr>
-          </thead>
-          <tbody>{renderObservationHistory()}</tbody>
-        </table>
+      <section className="profile__objects-tracked-wrapper">
+        <h2 className="profile__sub-heading">OBJECTS TRACKED</h2>
+        {renderObjectsTrackedTable()}
+      </section>
+
+      <section className="profile__your-observations-wrapper">
+        <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
+        {renderObservationHistoryTable()}
       </section>
     </div>
   ) : null;
@@ -133,7 +144,7 @@ export default function Profile({ match }) {
 // receives JWT and returns object
 // This query is unique to an individual user
 const data = {
-  user_name: "Scott_Tilley",
+  user_name: "Scott Tilley",
   user_image:
     "https://i.amz.mshcdn.com/KCJWkZNiwPyNXPcV0CN7yeL8G0A=/fit-in/1200x9600/https%3A%2F%2Fblueprint-api-production.s3.amazonaws.com%2Fuploads%2Fcard%2Fimage%2F784551%2F0e3defde-7d59-4d94-b094-51d187f930da.jpg",
   user_location: "Brixton, UK",

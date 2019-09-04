@@ -61,8 +61,6 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
               alt={`${obj.object_origin} flag `}
             />
-
-            {` `}
             <p className="catalog-table__small-text">{obj.object_purpose}</p>
           </div>
 
