@@ -19,7 +19,7 @@ export default function App() {
   return (
     <AuthProvider>
       <Router>
-        <BurgerMenu right />
+        <BurgerMenu left />
         <NavBar />
         <Route exact path="/" component={Welcome} />
         <Route path="/catalog/:catalogFilter" component={Catalog} />

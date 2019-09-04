@@ -280,8 +280,14 @@ BURGER MENU
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
-  top: 36px;
+  left: 20px;
+  top: 20px;
+}
+
+@media (min-width: 600px) {
+  .bm-burger-button {
+    display: none;
+  }
 }
 
 /* Color/shape of burger icon bars */

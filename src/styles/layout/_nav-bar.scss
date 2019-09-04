@@ -1,58 +1,64 @@
 .nav-bar {
-  align-items: center;
-  background: $secondary-theme-color;
-  border: 3px solid $secondary-theme-color;
-  display: flex;
-  height: 3.5em;
-  justify-content: space-around;
+  display: none;
 }
 
-.nav-bar__logo {
-  color: $primary-text-color;
-  text-decoration: none;
-}
+@media (min-width: 600px) {
+  .nav-bar {
+    align-items: center;
+    background: $secondary-theme-color;
+    border: 3px solid $secondary-theme-color;
+    display: flex;
+    height: 3.5em;
+    justify-content: space-around;
+  }
 
-.nav-bar__link-wrapper--highlight {
-  color: $primary-text-color;
-  border-bottom: 3px solid $primary-highlight-color;
-  display: flex;
-  align-items: center;
-  height: 3.5em;
-}
+  .nav-bar__logo {
+    color: $primary-text-color;
+    text-decoration: none;
+  }
 
-.nav-bar__link-wrapper--highlight:hover {
-  cursor: pointer;
-}
+  .nav-bar__link-wrapper--highlight {
+    color: $primary-text-color;
+    border-bottom: 3px solid $primary-highlight-color;
+    display: flex;
+    align-items: center;
+    height: 3.5em;
+  }
 
-.nav-bar__link-wrapper--lowlight {
-  border-bottom: 3px solid $secondary-theme-color;
-  color: #888888;
-}
+  .nav-bar__link-wrapper--highlight:hover {
+    cursor: pointer;
+  }
 
-.nav-bar__link-wrapper--lowlight:hover {
-  cursor: pointer;
-}
+  .nav-bar__link-wrapper--lowlight {
+    border-bottom: 3px solid $secondary-theme-color;
+    color: #888888;
+  }
 
-.nav-bar__link--highlight {
-  color: $primary-text-color;
-  text-decoration: none;
-}
+  .nav-bar__link-wrapper--lowlight:hover {
+    cursor: pointer;
+  }
 
-.nav-bar__link--lowlight {
-  color: #888888;
-  text-decoration: none;
-}
+  .nav-bar__link--highlight {
+    color: $primary-text-color;
+    text-decoration: none;
+  }
 
-.nav-bar__join-button {
-  background: $primary-highlight-color;
-  border-radius: 4px;
-  color: $primary-theme-color;
-  line-height: 14px;
-  font-weight: bold;
-  font-size: 12px;
-  padding: 1em 3em;
-}
+  .nav-bar__link--lowlight {
+    color: #888888;
+    text-decoration: none;
+  }
 
-.nav-bar__join-button:hover {
-  cursor: pointer;
+  .nav-bar__join-button {
+    background: $primary-highlight-color;
+    border-radius: 4px;
+    color: $primary-theme-color;
+    line-height: 14px;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 1em 3em;
+  }
+
+  .nav-bar__join-button:hover {
+    cursor: pointer;
+  }
 }
