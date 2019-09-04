@@ -11,6 +11,7 @@
     "pbkdf2": "^3.0.17",
     "react": "^16.8.6",
     "react-blockies": "^1.4.1",
+    "react-burger-menu": "^2.6.11",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",

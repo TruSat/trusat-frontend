@@ -13,11 +13,13 @@ import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
 import MetamaskImport from "./views/MetamaskImport";
+import BurgerMenu from "./app/components/BurgerMenu";
 
 export default function App() {
   return (
     <AuthProvider>
       <Router>
+        <BurgerMenu right />
         <NavBar />
         <Route exact path="/" component={Welcome} />
         <Route path="/catalog/:catalogFilter" component={Catalog} />
