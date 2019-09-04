@@ -38,8 +38,8 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         style={{ color: "white", textDecoration: "none" }}
         to={`/object/${obj.object_norad_number}`}
       >
-        <div className="catalog-table__row">
-          <div className="catalog-table__badge-name-wrapper">
+        <div className="table__row">
+          <div className="table__badge-name-wrapper">
             <img
               style={{ marginLeft: "-35px" }}
               src={ObjectBadge}
@@ -47,29 +47,31 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             ></img>
             {catalogFilter === "priorities" ? (
               <p>
+                &nbsp;
                 {tableData.indexOf(obj) + 1}
-                {`. ${obj.object_name}`}
+                &nbsp;
+                {obj.object_name}
               </p>
             ) : (
-              <p> {obj.object_name}</p>
+              <p>&nbsp;{obj.object_name}</p>
             )}
           </div>
 
-          <div className="catalog-table__center-wrapper">
+          <div className="table__center-wrapper">
             <img
               className="catalog-table__small-text"
               src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
               alt={`${obj.object_origin} flag `}
             />
-            <p className="catalog-table__small-text">{obj.object_purpose}</p>
+            <p className="table__small-text">{obj.object_purpose}</p>
           </div>
 
-          <div className="catalog-table__center-wrapper">
-            <p className="catalog-table__small-text">{obj.object_type}</p>
+          <div className="table__center-wrapper">
+            <p className="table__small-text">{obj.object_type}</p>
           </div>
 
-          <div className="catalog-table__spotted-by-wrapper">
-            <p className="catalog-table__small-text">
+          <div className="table__spotted-by-wrapper">
+            <p className="table__small-text">
               {`last spotted `}
               {obj.time_last_tracked} {` by `}
               {obj.username_last_tracked}

@@ -8,7 +8,6 @@
 @import "./layout/nav-bar";
 @import "./components/signup-modal";
 @import "./layout/login-options";
-@import "./components/table";
 
 /* ----------
 ASTRIAGRAPH
@@ -116,9 +115,9 @@ CATALOG NAV BAR
 }
 
 /* ----------
-CATALOG TABLE
+TABLE
 ---------- */
-.catalog-table__row {
+.table__row {
   align-items: center;
   border: 1px solid $primary-text-color;
   display: flex;
@@ -126,7 +125,7 @@ CATALOG TABLE
   padding: 1em;
 }
 
-.catalog-table__badge-name-wrapper {
+.table__badge-name-wrapper {
   align-items: center;
   border: 1px solid red;
   display: flex;
@@ -134,19 +133,19 @@ CATALOG TABLE
   text-decoration: none;
 }
 
-.catalog-table__center-wrapper {
+.table__center-wrapper {
   border: 1px solid red;
   display: flex;
   width: 15%;
 }
 
-.catalog-table__spotted-by-wrapper {
+.table__spotted-by-wrapper {
   border: 1px solid red;
   display: flex;
   width: 40%;
 }
 
-.catalog-table__small-text {
+.table__small-text {
   font-size: $small-font-size;
   line-height: $small-line-height;
 }
@@ -187,4 +186,28 @@ PROFILE
 
 .profile__your-observations-wrapper {
   margin-top: 3em;
+}
+
+table {
+  width: 100%;
+}
+
+.profile__observations-table-header {
+  border-bottom: 1px solid #363636;
+  padding: 1em;
+}
+
+.profile__observations-table-header-row td {
+  color: #919191;
+  font-size: $small-font-size;
+  padding-bottom: 0.5em;
+}
+
+.profile__observations-table-body {
+  border-top: 1px solid #363636;
+  border-bottom: 1px solid #363636;
+}
+
+.profile__obervations-table-body-row td {
+  padding: 0.5em 0;
 }

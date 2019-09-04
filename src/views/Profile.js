@@ -42,36 +42,32 @@ export default function Profile({ match }) {
         style={{ color: "white", textDecoration: "none" }}
         to={`/object/${obj.object_norad_number}`}
       >
-        <div className="catalog-table__row">
-          <div className="catalog-table__badge-name-wrapper">
+        <div className="table__row">
+          <div className="table__badge-name-wrapper">
             <img
               style={{ marginLeft: "-35px" }}
               src={ObjectBadge}
               alt="Object Badge"
             ></img>
-            <p> {obj.object_name}</p>
+            <p>&nbsp;{obj.object_name}</p>
           </div>
 
-          <div className="catalog-table__center-wrapper">
+          <div className="table__center-wrapper">
             <img
-              className="catalog-table__small-text"
+              className="table__small-text"
               src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
               alt={`${obj.object_origin} flag `}
             />
-            <p className="catalog-table__small-text">
-              {obj.object_primary_purpose}
-            </p>
+            <p className="table__small-text">{obj.object_primary_purpose}</p>
           </div>
 
-          <div className="catalog-table__center-wrapper">
-            <p className="catalog-table__small-text">{obj.object_type}</p>
-            <p className="catalog-table__small-text">
-              {obj.object_secondary_purpose}
-            </p>
+          <div className="table__center-wrapper">
+            <p className="table__small-text">{obj.object_type}</p>
+            <p className="table__small-text">{obj.object_secondary_purpose}</p>
           </div>
 
-          <div className="catalog-table__spotted-by-wrapper">
-            <p className="catalog-table__small-text">
+          <div className="table__spotted-by-wrapper">
+            <p className="table__small-text">
               {`last spotted `}
               {obj.time_last_tracked} {` by `}
               {obj.username_last_tracked}
@@ -89,14 +85,18 @@ export default function Profile({ match }) {
 
   const renderObservationHistoryTable = () => {
     return data.observation_history.map(observation => (
-      <tr key={data.observation_history.indexOf(observation)}>
-        <td>{observation.observation_time}</td>
-        <td>{observation.observation_time}</td>
+      <tr
+        key={data.observation_history.indexOf(observation)}
+        className="profile__obervations-table-body-row"
+      >
+        <td className="table__small-text">{observation.observation_time}</td>
         <td>{observation.object_name}</td>
-        <td>{observation.observation_quality}</td>
-        <td>{observation.observation_time_difference}</td>
-        <td>{observation.observation_weight}</td>
-        <td>{observation.observation_iod}</td>
+        <td className="table__small-text">{observation.observation_quality}</td>
+        <td className="table__small-text">
+          {observation.observation_time_difference}
+        </td>
+        <td className="table__small-text">{observation.observation_weight}</td>
+        <td className="table__small-text">{observation.observation_iod}</td>
       </tr>
     ));
   };
@@ -133,7 +133,21 @@ export default function Profile({ match }) {
 
       <section className="profile__your-observations-wrapper">
         <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
-        {renderObservationHistoryTable()}
+        <table>
+          <thead className="profile__observations-table-header">
+            <tr className="profile__observations-table-header-row">
+              <td>DATE</td>
+              <td>OBJECT</td>
+              <td>QUALITY</td>
+              <td>TIME DIFF</td>
+              <td>WEIGHT</td>
+              <td>IOD</td>
+            </tr>
+          </thead>
+          <tbody className="profile__observations-table-body">
+            {renderObservationHistoryTable()}
+          </tbody>
+        </table>
       </section>
     </div>
   ) : null;
@@ -205,7 +219,8 @@ const data = {
       observation_quality: "34",
       observation_time_difference: "1.42", // seconds - will be a plus or minus value
       observation_weight: "30", // a percentage value
-      observation_iod: "12345 98 123A..."
+      observation_iod:
+        "28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S"
     },
     {
       observation_time: "1550398277",
@@ -214,7 +229,8 @@ const data = {
       observation_quality: "34",
       observation_time_difference: "1.42",
       observation_weight: "30",
-      observation_iod: "12345 98 123A..."
+      observation_iod:
+        "28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S"
     },
     {
       observation_time: "1550398277",
@@ -223,7 +239,30 @@ const data = {
       observation_quality: "34",
       observation_time_difference: "1.42",
       observation_weight: "30",
-      observation_iod: "12345 98 123A..."
+      observation_iod:
+        "28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S"
     }
   ]
 };
+
+{
+  /* <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
+        <div className="profile__observation-table-header-wrapper">
+          <div className="profile__observation-table-left-wrapper">
+            <p className="profile__observation-table-date-text">DATE</p>
+            &nbsp;
+            <p className="profile__observation-table-object-name-text">
+              OBJECT
+            </p>
+          </div>
+
+          <div className="profile__observation-table-right-wrapper">
+            <p className="profile__observation-table-quality-text">QUALITY</p>
+            <p className="profile__observation-table-time-difference-text">
+              TIME DIFF
+            </p>
+            <p className="profile__observation-table-weight-text">WEIGHT</p>
+            <p className="profile__observation-table-iod-text">IOD</p>
+          </div>
+        </div> */
+}
