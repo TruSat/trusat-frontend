@@ -128,12 +128,12 @@ export default function Profile({ match }) {
 
       <section className="profile__objects-tracked-wrapper">
         <h2 className="profile__sub-heading">OBJECTS TRACKED</h2>
-        {renderObjectsTrackedTable()}
+        <div className="table__wrapper">{renderObjectsTrackedTable()}</div>
       </section>
 
       <section className="profile__your-observations-wrapper">
         <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
-        <table>
+        <table className="profile__obervations-table">
           <thead className="profile__observations-table-header">
             <tr className="profile__observations-table-header-row">
               <td>DATE</td>

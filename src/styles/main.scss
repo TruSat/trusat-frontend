@@ -117,6 +117,9 @@ CATALOG NAV BAR
 /* ----------
 TABLE
 ---------- */
+.table__wrapper:last-child {
+}
+
 .table__row {
   align-items: center;
   border: 1px solid $primary-text-color;
@@ -182,25 +185,27 @@ PROFILE
   border-left: none;
   border-right: none;
   margin-bottom: 1em;
+  padding: 0.5em 0;
 }
 
 .profile__your-observations-wrapper {
   margin-top: 3em;
 }
 
-table {
+.profile__obervations-table {
   width: 100%;
 }
 
 .profile__observations-table-header {
   border-bottom: 1px solid #363636;
-  padding: 1em;
+  padding: 0.5em;
 }
 
 .profile__observations-table-header-row td {
   color: #919191;
   font-size: $small-font-size;
-  padding-bottom: 0.5em;
+  padding: 0.5em;
+  padding-left: 0;
 }
 
 .profile__observations-table-body {
@@ -209,5 +214,6 @@ table {
 }
 
 .profile__obervations-table-body-row td {
-  padding: 0.5em 0;
+  padding: 0.5em;
+  padding-left: 0;
 }
