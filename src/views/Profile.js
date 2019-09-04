@@ -36,9 +36,9 @@ export default function Profile({ match }) {
   }, [address, jwt, setUserData]);
 
   const renderObjectsTrackedTable = () => {
-    return data.objects_observed.map(obj => (
+    return userData.objects_observed.map(obj => (
       <NavLink
-        key={data.objects_observed.indexOf(obj)}
+        key={userData.objects_observed.indexOf(obj)}
         style={{ color: "white", textDecoration: "none" }}
         to={`/object/${obj.object_norad_number}`}
       >
@@ -49,7 +49,8 @@ export default function Profile({ match }) {
               src={ObjectBadge}
               alt="Object Badge"
             ></img>
-            <p>&nbsp;{obj.object_name}</p>
+            &nbsp;
+            <p>{obj.object_name}</p>
           </div>
 
           <div className="table__center-wrapper">
@@ -58,13 +59,25 @@ export default function Profile({ match }) {
               src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
               alt={`${obj.object_origin} flag `}
             />
-            <p className="table__small-text">{obj.object_primary_purpose}</p>
+            &nbsp;
+            <p className="table__small-text">
+              {obj.object_primary_purpose ? obj.object_primary_purpose : "?"}
+            </p>
           </div>
 
           <div className="table__center-wrapper">
-            <p className="table__small-text">{obj.object_type}</p>
-            <p className="table__small-text">{obj.object_secondary_purpose}</p>
+            <p className="table__small-text">
+              {obj.object_type ? obj.object_type : "?"}
+            </p>
+            &nbsp;
+            <p className="table__small-text">
+              {obj.object_secondary_purpose
+                ? obj.object_secondary_purpose
+                : null}
+            </p>
           </div>
+
+          <p className="table__small-text">{obj.observation_quality}</p>
 
           <div className="table__spotted-by-wrapper">
             <p className="table__small-text">
@@ -84,9 +97,9 @@ export default function Profile({ match }) {
   // };
 
   const renderObservationHistoryTable = () => {
-    return data.observation_history.map(observation => (
+    return userData.observation_history.map(observation => (
       <tr
-        key={data.observation_history.indexOf(observation)}
+        key={userData.observation_history.indexOf(observation)}
         className="profile__obervations-table-body-row"
       >
         <td className="table__small-text">{observation.observation_time}</td>
@@ -104,7 +117,7 @@ export default function Profile({ match }) {
   return showProfile ? (
     <div className="profile__wrapper">
       <section className="profile__info-wrapper">
-        <h1 style={{ fontWeight: "bold" }}>{data.user_name}</h1>
+        <h1 style={{ fontWeight: "bold" }}>{userData.user_name}</h1>
         <Blockie
           seed={address}
           size={20}
@@ -113,17 +126,17 @@ export default function Profile({ match }) {
           // bgColor="#ffe"
           // spotColor="#abc"
         />
-        <p>Location = {data.user_location}</p>
-        <p>Objects Tracked = {data.number_objects_tracked}</p>
-        <p>Observation Count = {data.observation_count}</p>
-        <p>Avg. Quality Level = {data.average_observation_quality}</p>
+        <p>Location = {userData.user_location}</p>
+        <p>Objects Tracked = {userData.number_objects_tracked}</p>
+        <p>Observation Count = {userData.observation_count}</p>
+        <p>Avg. Quality Level = {userData.average_observation_quality}</p>
 
         <NavLink to="/settings">Settings</NavLink>
       </section>
 
       <section className="profile__bio-wrapper">
         <h2 className="profile__background-header">BACKGROUND</h2>
-        <p>{data.user_bio}</p>
+        <p>{userData.user_bio}</p>
       </section>
 
       <section className="profile__objects-tracked-wrapper">
