@@ -118,11 +118,13 @@ CATALOG NAV BAR
 TABLE
 ---------- */
 .table__wrapper:last-child {
+  border-bottom: 1px solid $primary-text-color;
 }
 
 .table__row {
   align-items: center;
   border: 1px solid $primary-text-color;
+  border-bottom: none;
   display: flex;
   justify-content: space-between;
   padding: 1em;

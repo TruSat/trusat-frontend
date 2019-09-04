@@ -19,6 +19,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
           setTableData(result.data);
+          console.log(result.data);
           setShowTable(true);
         })
         .catch(err => {
@@ -28,14 +29,17 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     }
   }, [catalogFilter, setTableData]);
 
-  const renderTable = () => {
+  const renderCatalogTable = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
 
     return rangeData.map(obj => (
       <NavLink
         key={rangeData.indexOf(obj)}
-        style={{ color: "white", textDecoration: "none" }}
+        style={{
+          color: "white",
+          textDecoration: "none"
+        }}
         to={`/object/${obj.object_norad_number}`}
       >
         <div className="table__row">
@@ -63,11 +67,14 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
               alt={`${obj.object_origin} flag `}
             />
-            <p className="table__small-text">{obj.object_purpose}</p>
+            &nbsp;
+            <p className="table__small-text">{obj.object_primary_purpose}</p>
           </div>
 
           <div className="table__center-wrapper">
             <p className="table__small-text">{obj.object_type}</p>
+            &nbsp;
+            <p className="table__small-text"> {obj.object_secondary_purpose}</p>
           </div>
 
           <div className="table__spotted-by-wrapper">
@@ -84,7 +91,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
 
   return showTable ? (
     <React.Fragment>
-      {renderTable()}
+      <div className="table__wrapper">{renderCatalogTable()}</div>
 
       <div style={{ margin: "1em", textAlign: "center" }}>
         <p>
