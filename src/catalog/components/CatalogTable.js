@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
+import ObjectBadge from "../../assets/ObjectBadge.svg";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   // const { jwt } = useAuthState();
@@ -38,43 +39,39 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         to={`/object/${obj.object_norad_number}`}
       >
         <div className="catalog-table__row">
-          {catalogFilter === "priorities" ? (
-            <div
-              style={{
-                display: "flex",
-                width: "20%",
-                textDecoration: "none"
-              }}
-            >
+          <div className="catalog-table__badge-name-wrapper">
+            <img
+              style={{ marginLeft: "-35px" }}
+              src={ObjectBadge}
+              alt="Object Badge"
+            ></img>
+            {catalogFilter === "priorities" ? (
               <p>
                 {tableData.indexOf(obj) + 1}
                 {`. ${obj.object_name}`}
               </p>
-            </div>
-          ) : (
-            <p style={{ display: "flex", width: "20%" }}>{obj.object_name}</p>
-          )}
-
-          <div style={{ display: "flex", width: "25%" }}>
-            <p>
-              <img
-                src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
-                alt={`${obj.object_origin} flag `}
-              />
-            </p>
-            {` `}
-            <p>{obj.object_purpose}</p>
+            ) : (
+              <p> {obj.object_name}</p>
+            )}
           </div>
 
-          <p style={{ width: "15%" }}>{obj.object_type}</p>
+          <div className="catalog-table__center-wrapper">
+            <img
+              className="catalog-table__small-text"
+              src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
+              alt={`${obj.object_origin} flag `}
+            />
 
-          <div
-            style={{
-              display: "flex",
-              width: "40%"
-            }}
-          >
-            <p>
+            {` `}
+            <p className="catalog-table__small-text">{obj.object_purpose}</p>
+          </div>
+
+          <div className="catalog-table__center-wrapper">
+            <p className="catalog-table__small-text">{obj.object_type}</p>
+          </div>
+
+          <div className="catalog-table__spotted-by-wrapper">
+            <p className="catalog-table__small-text">
               {`last spotted `}
               {obj.time_last_tracked} {` by `}
               {obj.username_last_tracked}
