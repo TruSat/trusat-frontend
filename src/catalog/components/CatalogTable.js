@@ -77,7 +77,11 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             <p className="table__small-text"> {obj.object_secondary_purpose}</p>
           </div>
 
-          <p className="table__small-text">{obj.object_observation_quality}</p>
+          <div className="table__quality-wrapper">
+            <p className="table__small-text">
+              {obj.object_observation_quality}
+            </p>
+          </div>
 
           <div className="table__spotted-by-wrapper">
             <p className="table__small-text">

@@ -141,6 +141,12 @@ TABLE
   width: 15%;
 }
 
+.table__quality-wrapper {
+  border: 1px solid red;
+  display: flex;
+  width: 5%;
+}
+
 .table__spotted-by-wrapper {
   border: 1px solid red;
   display: flex;

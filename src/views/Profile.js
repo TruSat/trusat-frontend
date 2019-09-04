@@ -78,7 +78,9 @@ export default function Profile({ match }) {
             </p>
           </div>
 
-          <p className="table__small-text">{obj.observation_quality}</p>
+          <div className="table__quality-wrapper">
+            <p className="table__small-text">{obj.observation_quality}</p>
+          </div>
 
           <div className="table__spotted-by-wrapper">
             <p className="table__small-text">
