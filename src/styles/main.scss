@@ -32,21 +32,33 @@ APP
 ASTRIAGRAPH
 ---------- */
 .astriagraph__wrapper {
-  align-items: center;
-  background: $primary-theme-color;
-  border: 2px solid grey;
-  border-style: dotted;
-  display: flex;
-  justify-content: center;
-  height: 300px;
-  width: 100%;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .astriagraph__wrapper {
+    align-items: center;
+    background: $primary-theme-color;
+    border: 2px solid grey;
+    border-style: dotted;
+    display: flex;
+    justify-content: center;
+    height: 300px;
+    width: 100%;
+  }
 }
 
 /* ----------
 CATALOG
 ---------- */
 .catalog__wrapper {
-  margin: 0em 4em;
+  margin: 0em 1em;
+}
+
+@media (min-width: 600px) {
+  .catalog__wrapper {
+    margin: 0em 4em;
+  }
 }
 
 .catalog__header {
@@ -100,9 +112,15 @@ CATALOG
 CATALOG NAV BAR
 ---------- */
 .catalog-nav-bar__wrapper {
-  border-bottom: 1px solid $secondary-theme-color--light;
-  display: flex;
-  margin: 1em 0 2em 0;
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .catalog-nav-bar__wrapper {
+    border-bottom: 1px solid $secondary-theme-color--light;
+    display: flex;
+    margin: 1em 0 2em 0;
+  }
 }
 
 .catalog-nav-bar__link--highlight {
@@ -278,7 +296,6 @@ BURGER MENU
 /* Individual item */
 .bm-item {
   display: inline-block;
-
   /* Our sidebar item styling */
   text-decoration: none;
   margin-bottom: 10px;
@@ -298,7 +315,7 @@ BURGER MENU
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 20px;
+  right: 20px;
   top: 20px;
 }
 
@@ -310,7 +327,7 @@ BURGER MENU
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: #373a47;
+  background: white;
 }
 
 /* Position and sizing of clickable cross button */

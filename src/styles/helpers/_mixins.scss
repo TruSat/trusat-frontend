@@ -1,12 +1,25 @@
 /* -----
 Text
 ----- */
+// the biggest "yellow" headers in the app
 @mixin header1-text {
   color: $primary-highlight-color;
-  font-size: $extra-large-font-size;
+  font-style: normal;
   font-weight: 300;
-  letter-spacing: $header-letter-spacing;
-  line-height: $extra-large-font-size;
+  font-size: 42px;
+  line-height: 49px;
+  letter-spacing: 0.06em;
+}
+
+// subheader that sits under header1-text
+@media (min-width: 600px) {
+  @mixin header1-text {
+    color: $primary-highlight-color;
+    font-size: $extra-large-font-size;
+    font-weight: 300;
+    letter-spacing: $header-letter-spacing;
+    line-height: $extra-large-font-size;
+  }
 }
 
 @mixin header2-text {
@@ -18,9 +31,19 @@ Text
 }
 
 @mixin headline-copy-text {
-  font-size: $large-font-size;
-  font-weight: 300;
-  line-height: $large-line-height;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 133%;
+}
+
+@media (min-width: 600px) {
+  @mixin headline-copy-text {
+    font-size: $large-font-size;
+    font-weight: 300;
+    line-height: $large-line-height;
+  }
 }
 
 @mixin copy-text {
