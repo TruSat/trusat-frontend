@@ -5,6 +5,7 @@ import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
 import FilterDescription from "../catalog/components/FilterDescription";
+import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 
 export default function Catalog({ match }) {
   const catalogFilter = match.params.catalogFilter;
@@ -14,6 +15,7 @@ export default function Catalog({ match }) {
     <div className="catalog__wrapper">
       <Astriagraph />
       <h1 className="catalog__header">CATALOG</h1>
+      <CatalogNavDropdown />
       <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
       <section className="catalog__content-wrapper">
         <div className="catalog__description-table-wrapper">

@@ -6,22 +6,21 @@ Text
   color: $primary-highlight-color;
   font-style: normal;
   font-weight: 300;
-  font-size: 42px;
+  font-size: $extra-large-font-size;
   line-height: 49px;
-  letter-spacing: 0.06em;
+  letter-spacing: $header-letter-spacing;
+}
+
+@mixin header1-text--desktop {
+  color: $primary-highlight-color;
+  font-style: normal;
+  font-weight: 300;
+  font-size: $extra-large-font-size--desktop;
+  line-height: 49px;
+  letter-spacing: $header-letter-spacing--desktop;
 }
 
 // subheader that sits under header1-text
-@media (min-width: 600px) {
-  @mixin header1-text {
-    color: $primary-highlight-color;
-    font-size: $extra-large-font-size;
-    font-weight: 300;
-    letter-spacing: $header-letter-spacing;
-    line-height: $extra-large-font-size;
-  }
-}
-
 @mixin header2-text {
   font-size: $medium-font-size;
   font-weight: bold;

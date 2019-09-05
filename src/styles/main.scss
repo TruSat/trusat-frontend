@@ -32,19 +32,19 @@ APP
 ASTRIAGRAPH
 ---------- */
 .astriagraph__wrapper {
-  display: none;
+  align-items: center;
+  background: $primary-theme-color;
+  border: 2px solid grey;
+  border-style: dotted;
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
 }
 
 @media (min-width: 600px) {
   .astriagraph__wrapper {
-    align-items: center;
-    background: $primary-theme-color;
-    border: 2px solid grey;
-    border-style: dotted;
-    display: flex;
-    justify-content: center;
     height: 300px;
-    width: 100%;
   }
 }
 
@@ -64,6 +64,13 @@ CATALOG
 .catalog__header {
   @include header1-text;
   margin: 0.5em 0;
+}
+
+@media (min-width: 600px) {
+  .catalog__header {
+    @include header1-text--desktop;
+    margin: 0.5em 0;
+  }
 }
 
 .catalog__filter-description {
@@ -106,6 +113,19 @@ CATALOG
 .catalog__link-text {
   color: $primary-text-color;
   margin-bottom: 1em;
+}
+
+/* ----------
+CATALOG NAV DROPDOWN
+---------- */
+.catalog-nav-dropdown__wrapper {
+  border: 1px solid red;
+}
+
+@media (min-width: 600px) {
+  .catalog-nav-dropdown__wrapper {
+    display: none;
+  }
 }
 
 /* ----------
