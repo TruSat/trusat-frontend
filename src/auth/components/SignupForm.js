@@ -11,10 +11,12 @@ import {
 import { useAuthState, useAuthDispatch } from "../auth-context";
 
 export default function SignupForm() {
-  const { isAuthenticating } = useAuthState();
+  const { isAuthenticating, isAuth } = useAuthState();
   const dispatch = useAuthDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
+  const [understandMessage, setUnderstandMessage] = useState(false);
+  const [retypedPassword, setRetypedPassword] = useState("");
 
   // TODO - error handling in the UI
   const emailSecret = secret => {
@@ -29,6 +31,9 @@ export default function SignupForm() {
       })
       .catch(err => console.log(err));
   };
+
+  // TO DO - add Formik to take care of this
+  const handleFormValidation = () => {};
 
   const handleSignup = async () => {
     dispatch({ type: "AUTHENTICATING", payload: true });
@@ -89,6 +94,29 @@ export default function SignupForm() {
         type="password"
         onChange={event => setPassword(event.target.value)}
         value={password}
+      />
+
+      <div className="sign-up-form__checkbox-and-message-wrapper">
+        <input
+          required
+          type="checkbox"
+          checked={understandMessage}
+          onChange={() => setUnderstandMessage(!understandMessage)}
+        ></input>
+        <p>
+          I understand I cannot change this password in the future, and that
+          TruSat cannot restore this passsword for me. I've saved it somewhere
+          safe.
+        </p>
+      </div>
+
+      <label className="sign-up-form__label">Retype password to confirm</label>
+      <input
+        className="sign-up-form__input"
+        required
+        type="password"
+        onChange={event => setRetypedPassword(event.target.value)}
+        value={retypedPassword}
       />
 
       <div className="sign-up-form__button-wrapper">

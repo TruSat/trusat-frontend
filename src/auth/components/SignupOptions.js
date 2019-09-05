@@ -9,9 +9,12 @@ export default function LoginOptions() {
   return (
     <React.Fragment>
       {isAuth ? null : (
-        <div className="sign-up-options__email-metamask-wrapper">
+        <div className="sign-up-options__wrapper">
           <SignupForm />
-          <MetaMask />
+          <div className="sign-up-options__metamask-button-wrapper">
+            <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
+            <MetaMask />
+          </div>
         </div>
       )}
     </React.Fragment>

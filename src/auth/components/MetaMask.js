@@ -7,6 +7,9 @@ import axios from "axios";
 import { handleMetamaskConnect } from "../helpers";
 
 export default function MetaMask() {
+  // used for text render on the button
+  const pathname = window.location.pathname;
+
   const { isAuthenticating } = useAuthState();
   const dispatch = useAuthDispatch();
 
@@ -72,8 +75,12 @@ export default function MetaMask() {
   };
 
   return (
-    <span className="metamask-button" onClick={handleClick}>
-      {isAuthenticating ? "Loading..." : "MetaMask"}
+    <span className="app__metamask-button" onClick={handleClick}>
+      {isAuthenticating
+        ? "Loading..."
+        : pathname === "/signup"
+        ? "Sign up with MetaMask"
+        : "Sign in with MetaMask"}
     </span>
   );
 }

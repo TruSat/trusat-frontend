@@ -10,6 +10,22 @@
 @import "./layout/login-options";
 
 /* ----------
+APP
+---------- */
+.app__metamask-button {
+  align-self: flex-start;
+  background: $primary-text-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  padding: 0.5em 2em;
+}
+
+.app__metamask-button:hover {
+  cursor: pointer;
+}
+
+/* ----------
 ASTRIAGRAPH
 ---------- */
 
@@ -342,11 +358,17 @@ SIGN UP
 /* ----------
 SIGN UP OPTIONS
 ---------- */
-.sign-up-options__email-metamask-wrapper {
-  border: 1px solid red;
+.sign-up-options__wrapper {
   display: flex;
-  justify-content: space-between;
   margin-top: 3em;
+}
+
+.sign-up-options__metamask-button-wrapper {
+  margin-left: 10em;
+}
+
+.sign-up-options__metamask-button-wrapper-text {
+  margin-bottom: 1em;
 }
 
 /* ----------
@@ -359,6 +381,8 @@ SIGN UP FORM
 }
 
 .sign-up-form__label {
+  font-size: 14px;
+  font-weight: 600;
   margin: 0.5em 0;
 }
 
@@ -372,6 +396,12 @@ SIGN UP FORM
   margin-bottom: 1em;
   padding: 1em;
   width: 100%;
+}
+
+.sign-up-form__checkbox-and-message-wrapper {
+  display: flex;
+  align-items: flex-start;
+  margin: 0.5em 0;
 }
 
 .sign-up-form__button-wrapper {
