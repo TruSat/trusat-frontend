@@ -695,3 +695,8 @@ SECURITY SETTINGS
   margin-bottom: 1em;
   padding: 0.5em 0;
 }
+
+.security-settings__info-text {
+  @include headline-copy-text;
+  margin-bottom: 1em;
+}
