@@ -4,6 +4,7 @@ import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
+import { renderFlag } from "../../app/helpers";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   // const { jwt } = useAuthState();
@@ -28,34 +29,6 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         });
     }
   }, [catalogFilter, setTableData]);
-
-  // receives country code
-  const createFlag = code => {
-    if (!code) {
-      return <p>?</p>;
-    } else if (!code.includes("/")) {
-      return (
-        <img
-          className="catalog-table__small-text"
-          src={`https://www.countryflags.io/${code}/flat/32.png`}
-          alt={`${code} flag `}
-        />
-      );
-    } else if (code.includes("/")) {
-      const sharedCodes = code.split("/");
-
-      return sharedCodes.map(sharedCode => {
-        return (
-          <img
-            key={sharedCode}
-            className="catalog-table__small-text"
-            src={`https://www.countryflags.io/${sharedCode}/flat/32.png`}
-            alt={`${sharedCode} flag `}
-          />
-        );
-      });
-    }
-  };
 
   const renderCatalogTable = () => {
     const { start, end } = range;
@@ -90,7 +63,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </div>
 
           <div className="table__center-wrapper">
-            {createFlag(obj.object_origin)}
+            {renderFlag(obj.object_origin)}
             &nbsp;
             <p className="table__small-text">{obj.object_primary_purpose}</p>
           </div>
