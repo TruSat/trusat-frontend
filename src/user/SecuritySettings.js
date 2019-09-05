@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function PrivacySettings() {
+export default function SecuritySettings() {
   return (
-    <section style={{ border: "1px solid white", margin: "1em" }}>
-      <h1>DATA SECURITY</h1>
+    <section className="security-settings__wrapper">
+      <h2 className="security-settings__heading">DATA SECURITY</h2>
       <p>
         Call to action about why you'd want to connect a wallet, and what
         features it will unlock for you

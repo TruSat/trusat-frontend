@@ -41,7 +41,7 @@ export default function ProfileSettings() {
   return isAuth ? (
     <section className="profile-settings__wrapper">
       <div className="profile-settings__profile-wrapper">
-        <h2 className="profile-settings__sub-header">
+        <h2 className="profile-settings__heading">
           <p>PROFILE</p>
           <p
             className="profile-settings__edit-button-text"
@@ -106,7 +106,7 @@ export default function ProfileSettings() {
       </div>
 
       <div className="profile-settings__observation-wrapper">
-        <h2 className="profile-settings__sub-header">OBSERVATION STATIONS</h2>
+        <h2 className="profile-settings__heading">OBSERVATION STATIONS</h2>
       </div>
     </section>
   ) : null;

@@ -2,8 +2,8 @@ import React from "react";
 
 export default function PrivacySettings() {
   return (
-    <div className="privacy-settings__wrapper">
-      <h2 className="privacy-settings__header">PRIVACY</h2>
+    <section className="privacy-settings__wrapper">
+      <h2 className="privacy-settings__heading">PRIVACY</h2>
       <div className="privacy-settings__setting-wrapper">
         <input type="checkbox" className="privacy-settings__checkbox"></input>
         <label className="privacy-settings__checkbox-label">
@@ -20,6 +20,6 @@ export default function PrivacySettings() {
       <p className="privacy-settings__remove-text">
         Remove my current and historical data from the system
       </p>
-    </div>
+    </section>
   );
 }

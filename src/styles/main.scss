@@ -591,7 +591,7 @@ PROFILE SETTINGS
   justify-content: space-between;
 }
 
-.profile-settings__sub-header {
+.profile-settings__heading {
   @include header2-text;
   border: 1px solid $secondary-theme-color--light;
   border-left: none;
@@ -627,7 +627,6 @@ PROFILE SETTINGS
 
 .profile-settings__setting-wrapper {
   display: flex;
-  margin-bottom: 1em;
 }
 
 .profile-settings__setting-label {
@@ -647,10 +646,10 @@ PROFILE SETTINGS
 PRIVACY SETTINGS
 ---------- */
 .privacy-settings__wrapper {
-  margin-top: 1em;
+  margin-top: 3em;
 }
 
-.privacy-settings__header {
+.privacy-settings__heading {
   @include header2-text;
   border: 1px solid $secondary-theme-color--light;
   border-left: none;
@@ -677,4 +676,22 @@ PRIVACY SETTINGS
   color: #a5a5a5;
   line-height: 19px;
   text-decoration-line: underline;
+}
+
+/* ----------
+SECURITY SETTINGS
+---------- */
+.security-settings__wrapper {
+  margin-top: 3em;
+}
+
+.security-settings__heading {
+  @include header2-text;
+  border: 1px solid $secondary-theme-color--light;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
 }
