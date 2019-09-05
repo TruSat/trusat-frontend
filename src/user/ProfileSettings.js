@@ -8,12 +8,11 @@ import SecuritySettings from "./SecuritySettings";
 
 export default function AccountDetails() {
   const { isAuth, authType, jwt, address } = useAuthState();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [bio, setBio] = useState("");
-  const [location, setLocation] = useState("");
-  const [publicUsername, setPublicUsername] = useState(false);
-  const [publicLocation, setPublicLocation] = useState(false);
+  const [showEditInputs, setShowEditInputs] = useState(false);
+  const [username, setUsername] = useState("Leo Barhorst");
+  const [email, setEmail] = useState("leo@gmail.com");
+  const [bio, setBio] = useState("I'm amazing");
+  const [location, setLocation] = useState("holland");
 
   const publicProfile = true;
 
@@ -27,9 +26,7 @@ export default function AccountDetails() {
           username: username,
           email: email,
           bio: bio,
-          location: location,
-          public_username: publicUsername,
-          public_location: publicLocation
+          location: location
         })
       )
       .then(result => {
@@ -48,47 +45,55 @@ export default function AccountDetails() {
   return isAuth ? (
     <section className="profile-settings__wrapper">
       <div className="profile-settings__profile-wrapper">
-        <h2 className="profile-settings__sub-header">PROFILE</h2>
+        <h2 className="profile-settings__sub-header">
+          <p>PROFILE</p>
+          <p
+            className="profile-settings__edit-button-text"
+            onClick={() => setShowEditInputs(true)}
+          >
+            edit
+          </p>
+        </h2>
 
-        <div style={{ margin: "1em" }}>
-          Username{" "}
-          <EditSettingInput
-            setting={username}
-            setSetting={setUsername}
-            submitEdit={submitEdit}
-          />
+        <div className="profile-settings__setting-wrapper">
+          <label className="profile-settings__setting-label">USERNAME</label>
+          {showEditInputs ? (
+            <EditSettingInput setting={username} setSetting={setUsername} />
+          ) : (
+            <p>{username}</p>
+          )}
         </div>
 
-        <div>
-          ETH address
+        <div className="profile-settings__setting-wrapper">
+          <label className="profile-settings__setting-label">ETH ADDRESS</label>
           <p>{address}</p>
         </div>
 
-        <div style={{ margin: "1em" }}>
-          Email{" "}
-          <EditSettingInput
-            setting={email}
-            setSetting={setEmail}
-            submitEdit={submitEdit}
-          />
+        <div className="profile-settings__setting-wrapper">
+          <label className="profile-settings__setting-label">EMAIL</label>
+          {showEditInputs ? (
+            <EditSettingInput setting={email} setSetting={setEmail} />
+          ) : (
+            <p>{email}</p>
+          )}
         </div>
 
-        <div style={{ margin: "1em" }}>
-          Location{" "}
-          <EditSettingInput
-            setting={location}
-            setSetting={setLocation}
-            submitEdit={submitEdit}
-          />
+        <div className="profile-settings__setting-wrapper">
+          <label className="profile-settings__setting-label">LOCATION</label>
+          {showEditInputs ? (
+            <EditSettingInput setting={location} setSetting={setLocation} />
+          ) : (
+            <p>{location}</p>
+          )}
         </div>
 
-        <div style={{ margin: "1em" }}>
-          Bio{" "}
-          <EditSettingInput
-            setting={bio}
-            setSetting={setBio}
-            submitEdit={submitEdit}
-          />
+        <div className="profile-settings__setting-wrapper">
+          <label className="profile-settings__setting-label">BIO</label>
+          {showEditInputs ? (
+            <EditSettingInput setting={bio} setSetting={setBio} />
+          ) : (
+            <p>{bio}</p>
+          )}
         </div>
       </div>
 

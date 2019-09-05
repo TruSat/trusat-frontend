@@ -548,8 +548,23 @@ PROFILE SETTINGS
   border: 1px solid $secondary-theme-color--light;
   border-left: none;
   border-right: none;
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 1em;
   padding: 0.5em 0;
+}
+
+.profile-settings__edit-button-text {
+  color: #a5a5a5;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: underline;
+}
+
+.profile-settings__edit-button-text:hover {
+  cursor: pointer;
 }
 
 .profile-settings__profile-wrapper {
@@ -560,4 +575,17 @@ PROFILE SETTINGS
 .profile-settings__observation-wrapper {
   margin-top: 1em;
   width: 48%;
+}
+
+.profile-settings__setting-wrapper {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.profile-settings__setting-label {
+  font-size: 10px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: #afafaf;
+  margin-right: 1em;
 }
