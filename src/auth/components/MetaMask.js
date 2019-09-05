@@ -75,7 +75,7 @@ export default function MetaMask() {
   };
 
   return (
-    <span className="app__metamask-button" onClick={handleClick}>
+    <span className="app__button--white" onClick={handleClick}>
       {isAuthenticating
         ? "Loading..."
         : pathname === "/signup"

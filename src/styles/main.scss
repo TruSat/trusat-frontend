@@ -12,7 +12,7 @@
 /* ----------
 APP
 ---------- */
-.app__metamask-button {
+.app__button--white {
   align-self: flex-start;
   background: $primary-text-color;
   border-radius: 4px;
@@ -432,6 +432,14 @@ SIGN UP FORM
 
 .sign-up-form__link-to-login-wrapper {
   margin-top: 1em;
+}
+
+/* ----------
+SIGNUP SUCCESS
+---------- */
+.sign-up-success__message-text {
+  @include copy-text;
+  margin-bottom: 1em;
 }
 
 /* ----------
