@@ -85,7 +85,9 @@ export default function LoginForm() {
       />
 
       <div className="email-form__button-wrapper">
-        <span className="email-form__button--black">Cancel</span>
+        <NavLink style={{ textDecoration: "none", color: "white" }} to="/">
+          <span className="email-form__button--black">Cancel</span>
+        </NavLink>
         <span className="email-form__button--white" onClick={handleLogin}>
           {isAuthenticating ? `...Loading` : `Log in`}
         </span>
