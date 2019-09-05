@@ -29,6 +29,34 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     }
   }, [catalogFilter, setTableData]);
 
+  // receives country code
+  const createFlag = code => {
+    if (!code) {
+      return <p>?</p>;
+    } else if (!code.includes("/")) {
+      return (
+        <img
+          className="catalog-table__small-text"
+          src={`https://www.countryflags.io/${code}/flat/32.png`}
+          alt={`${code} flag `}
+        />
+      );
+    } else if (code.includes("/")) {
+      const sharedCodes = code.split("/");
+
+      return sharedCodes.map(sharedCode => {
+        return (
+          <img
+            key={sharedCode}
+            className="catalog-table__small-text"
+            src={`https://www.countryflags.io/${sharedCode}/flat/32.png`}
+            alt={`${sharedCode} flag `}
+          />
+        );
+      });
+    }
+  };
+
   const renderCatalogTable = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
@@ -62,11 +90,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </div>
 
           <div className="table__center-wrapper">
-            <img
-              className="catalog-table__small-text"
-              src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
-              alt={`${obj.object_origin} flag `}
-            />
+            {createFlag(obj.object_origin)}
             &nbsp;
             <p className="table__small-text">{obj.object_primary_purpose}</p>
           </div>
