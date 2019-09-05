@@ -16,7 +16,7 @@ export default function HistoryMonthDropdown({
     { name: "May", number: 5 },
     { name: "June", number: 6 },
     { name: "July", number: 7 },
-    { name: "August", nunber: 8 },
+    { name: "August", number: 8 },
     { name: "September", number: 9 },
     { name: "October", number: 10 },
     { name: "November", number: 11 },
