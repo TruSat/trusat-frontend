@@ -6,7 +6,7 @@ import Catalog from "./views/Catalog";
 import Submit from "./views/Submit";
 import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
-import UserSettings from "./views/UserSettings";
+import AccountSettings from "./views/AccountSettings";
 import About from "./views/About";
 import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
@@ -26,7 +26,7 @@ export default function App() {
         <Route path="/submit" component={Submit} />
         <Route path="/object/:number" component={ObjectInfo} />
         <Route path="/profile/:address" component={Profile} />
-        <Route exact path="/settings" component={UserSettings} />
+        <Route exact path="/settings" component={AccountSettings} />
         <Route path="/settings/security" component={MetamaskImport} />
         <Route path="/about" component={About} />
         <Route path="/how" component={HowTo} />

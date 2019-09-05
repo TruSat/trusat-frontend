@@ -525,5 +525,39 @@ LOG IN OPTIONS
 }
 
 /* ----------
-METAMASK
+ACCOUNT SETTINGS
 ---------- */
+.account-settings__wrapper {
+  margin: 3em 4em;
+}
+
+.account-settings__header {
+  @include header1-text;
+}
+
+/* ----------
+PROFILE SETTINGS
+---------- */
+.profile-settings__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile-settings__sub-header {
+  @include header2-text;
+  border: 1px solid $secondary-theme-color--light;
+  border-left: none;
+  border-right: none;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+}
+
+.profile-settings__profile-wrapper {
+  margin-top: 1em;
+  width: 48%;
+}
+
+.profile-settings__observation-wrapper {
+  margin-top: 1em;
+  width: 48%;
+}
