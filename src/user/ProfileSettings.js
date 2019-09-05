@@ -1,20 +1,16 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import EditSettingInput from "./EditSettingInput";
-import EditPrivacyInput from "./EditPrivacyInput";
-import SecuritySettings from "./SecuritySettings";
 
-export default function AccountDetails() {
+// TODO make the profile info from API call on /profile available and rendered here
+export default function ProfileSettings() {
   const { isAuth, authType, jwt, address } = useAuthState();
   const [showEditInputs, setShowEditInputs] = useState(false);
   const [username, setUsername] = useState("Leo Barhorst");
   const [email, setEmail] = useState("leo@gmail.com");
   const [bio, setBio] = useState("I'm amazing");
   const [location, setLocation] = useState("holland");
-
-  const publicProfile = true;
 
   const submitEdit = () => {
     axios
@@ -95,6 +91,18 @@ export default function AccountDetails() {
             <p>{bio}</p>
           )}
         </div>
+
+        {showEditInputs ? (
+          <div className="profile-settings__button-wrapper">
+            <span
+              className="app__black-button--small"
+              onClick={() => setShowEditInputs(false)}
+            >
+              Cancel
+            </span>
+            <span className="app__black-button--small">Save</span>
+          </div>
+        ) : null}
       </div>
 
       <div className="profile-settings__observation-wrapper">

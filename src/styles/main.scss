@@ -28,6 +28,54 @@ APP
   cursor: pointer;
 }
 
+.app__white-button--small {
+  align-self: flex-start;
+  background: $primary-text-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 1em 3em;
+}
+
+.app__white-button--small:hover {
+  cursor: pointer;
+}
+
+.app__button--black {
+  align-self: flex-start;
+  background: $primary-theme-color;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  color: $primary-text-color;
+  display: inline-block;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 1em 3em;
+}
+
+.app__button--white:hover {
+  cursor: pointer;
+}
+
+.app__black-button--small {
+  align-self: flex-start;
+  background: $primary-theme-color;
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  color: $primary-text-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 1em 3em;
+}
+
+.app__black-button--small:hover {
+  cursor: pointer;
+}
+
 /* ----------
 ASTRIAGRAPH
 ---------- */
@@ -588,4 +636,45 @@ PROFILE SETTINGS
   letter-spacing: 0.04em;
   color: #afafaf;
   margin-right: 1em;
+}
+
+.profile-settings__button-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
+/* ----------
+PRIVACY SETTINGS
+---------- */
+.privacy-settings__wrapper {
+  margin-top: 1em;
+}
+
+.privacy-settings__header {
+  @include header2-text;
+  border: 1px solid $secondary-theme-color--light;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 0.5em 0;
+}
+
+.privacy-settings__setting-wrapper {
+  margin: 1em 0;
+}
+
+.privacy-settings__setting-checkbox {
+}
+
+.privacy-settings__setting-label {
+  font-size: 20px;
+  line-height: 23px;
+}
+
+.privacy-settings__remove-text {
+  color: #a5a5a5;
+  line-height: 19px;
+  text-decoration-line: underline;
 }
