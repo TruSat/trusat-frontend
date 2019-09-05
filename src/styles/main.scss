@@ -374,37 +374,38 @@ SIGN UP OPTIONS
 /* ----------
 SIGN UP FORM 
 ---------- */
-.sign-up-form {
+.email-form {
   display: flex;
   flex-direction: column;
   width: 300px;
 }
 
-.sign-up-form__label {
+.email-form__label {
   font-size: 14px;
   font-weight: 600;
   margin: 0.5em 0;
 }
 
-.sign-up-form__input {
+.email-form__input {
   align-self: flex-start;
   background: black;
   box-sizing: border-box;
   border-radius: 4px;
   border: 1px solid #cccccc;
   color: $primary-text-color;
+  font-size: $medium-font-size;
   margin-bottom: 1em;
   padding: 1em;
   width: 100%;
 }
 
-.sign-up-form__checkbox-and-message-wrapper {
+.email-form__checkbox-and-message-wrapper {
   display: flex;
   align-items: flex-start;
-  margin: 0.5em 0;
+  margin: 0.5em 0 0.5em 0;
 }
 
-.sign-up-form__button-wrapper {
+.email-form__button-wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -412,7 +413,7 @@ SIGN UP FORM
   text-align: center;
 }
 
-.sign-up-form__button--black {
+.email-form__button--black {
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   display: inline-block;
@@ -421,7 +422,7 @@ SIGN UP FORM
   width: 45%;
 }
 
-.sign-up-form__button--white {
+.email-form__button--white {
   background: $primary-text-color;
   border-radius: 4px;
   color: $primary-theme-color;
@@ -430,7 +431,7 @@ SIGN UP FORM
   width: 45%;
 }
 
-.sign-up-form__link-to-login-wrapper {
+.email-form__link-to-login-wrapper {
   margin-top: 1em;
 }
 
@@ -439,6 +440,33 @@ SIGNUP SUCCESS
 ---------- */
 .sign-up-success__message-text {
   @include copy-text;
+  margin-bottom: 1em;
+}
+
+/* ----------
+LOG IN
+---------- */
+.log-in__wrapper {
+  margin: 4em;
+}
+
+.log-in__header {
+  @include header1-text;
+}
+
+/* ----------
+LOG IN OPTIONS
+---------- */
+.log-in-options__wrapper {
+  display: flex;
+  margin-top: 3em;
+}
+
+.log-in-options__metamask-button-wrapper {
+  margin-left: 10em;
+}
+
+.log-in-options__metamask-button-wrapper-text {
   margin-bottom: 1em;
 }
 

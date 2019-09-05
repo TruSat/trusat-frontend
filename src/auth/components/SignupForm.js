@@ -74,29 +74,29 @@ export default function SignupForm() {
 
   return (
     <form
-      className="sign-up-form"
+      className="email-form"
       name="auth-form"
       onSubmit={event => event.preventDefault()}
     >
-      <label className="sign-up-form__label">Email</label>
+      <label className="email-form__label">Email</label>
       <input
-        className="sign-up-form__input"
+        className="email-form__input"
         required
         type="email"
         onChange={event => setEmail(event.target.value)}
         value={email}
       />
 
-      <label className="sign-up-form__label">Password</label>
+      <label className="email-form__label">Password</label>
       <input
-        className="sign-up-form__input"
+        className="email-form__input"
         required
         type="password"
         onChange={event => setPassword(event.target.value)}
         value={password}
       />
 
-      <div className="sign-up-form__checkbox-and-message-wrapper">
+      <div className="email-form__checkbox-and-message-wrapper">
         <input
           required
           type="checkbox"
@@ -110,23 +110,23 @@ export default function SignupForm() {
         </p>
       </div>
 
-      <label className="sign-up-form__label">Retype password to confirm</label>
+      <label className="email-form__label">Retype password to confirm</label>
       <input
-        className="sign-up-form__input"
+        className="email-form__input"
         required
         type="password"
         onChange={event => setRetypedPassword(event.target.value)}
         value={retypedPassword}
       />
 
-      <div className="sign-up-form__button-wrapper">
-        <span className="sign-up-form__button--black">Cancel</span>
-        <span className="sign-up-form__button--white" onClick={handleSignup}>
+      <div className="email-form__button-wrapper">
+        <span className="email-form__button--black">Cancel</span>
+        <span className="email-form__button--white" onClick={handleSignup}>
           {isAuthenticating ? `...Loading` : `Sign Up`}
         </span>
       </div>
 
-      <div className="sign-up-form__link-to-login-wrapper">
+      <div className="email-form__link-to-login-wrapper">
         <p>Already a member?</p>
         <NavLink style={{ color: "white", marginTop: "1em" }} to="/login">
           Log in

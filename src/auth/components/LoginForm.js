@@ -55,48 +55,48 @@ export default function LoginForm() {
   return (
     <form
       className="email-form"
-      name="auth-form"
+      name="email-form"
       onSubmit={event => event.preventDefault()}
     >
-      <label>
-        Email:
-        <input
-          required
-          type="email"
-          onChange={event => setEmail(event.target.value)}
-          value={email}
-        />
-      </label>
+      <label className="email-form__label">Email</label>
+      <input
+        required
+        type="email"
+        className="email-form__input"
+        onChange={event => setEmail(event.target.value)}
+        value={email}
+      />
 
-      <label>
-        Password:
-        <input
-          required
-          type="password"
-          onChange={event => setPassword(event.target.value)}
-          value={password}
-        />
-      </label>
+      <label className="email-form__label">Password</label>
+      <input
+        required
+        type="password"
+        className="email-form__input"
+        onChange={event => setPassword(event.target.value)}
+        value={password}
+      />
 
-      <label>
-        Secret:
-        <input
-          type="text"
-          onChange={event => setSecret(event.target.value)}
-          value={secret}
-        />
-      </label>
+      <label className="email-form__label">Secret code</label>
+      <input
+        type="text"
+        className="email-form__input"
+        onChange={event => setSecret(event.target.value)}
+        value={secret}
+      />
 
-      <span onClick={handleLogin}>
-        {isAuthenticating ? `...Loading` : `Log in`}
-      </span>
+      <div className="email-form__button-wrapper">
+        <span className="email-form__button--black">Cancel</span>
+        <span className="email-form__button--white" onClick={handleLogin}>
+          {isAuthenticating ? `...Loading` : `Log in`}
+        </span>
+      </div>
 
-      <NavLink to="/signup">
-        <label>
-          Not a member yet?
-          <span>Sign up</span>
-        </label>
-      </NavLink>
+      <div className="email-form__link-to-login-wrapper">
+        <p>Dont' have an account?</p>
+        <NavLink style={{ color: "white", marginTop: "1em" }} to="/signup">
+          Sign up
+        </NavLink>
+      </div>
     </form>
   );
 }
