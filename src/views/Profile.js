@@ -5,6 +5,7 @@ import { useAuthState } from "../auth/auth-context";
 import Blockie from "react-blockies";
 import ObjectBadge from "../assets/ObjectBadge.svg";
 import Spinner from "../app/components/Spinner";
+import { renderFlag } from "../app/helpers";
 
 export default function Profile({ match }) {
   // TODO - add if statement to use address found in auth state before using the match address
@@ -55,11 +56,7 @@ export default function Profile({ match }) {
           </div>
 
           <div className="table__center-wrapper">
-            <img
-              className="table__small-text"
-              src={`https://www.countryflags.io/${obj.object_origin}/flat/32.png`}
-              alt={`${obj.object_origin} flag `}
-            />
+            {renderFlag(obj.object_origin)}
             &nbsp;
             <p className="table__small-text">
               {obj.object_primary_purpose ? obj.object_primary_purpose : "?"}
@@ -308,25 +305,3 @@ const data = {
     }
   ]
 };
-
-{
-  /* <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
-        <div className="profile__observation-table-header-wrapper">
-          <div className="profile__observation-table-left-wrapper">
-            <p className="profile__observation-table-date-text">DATE</p>
-            &nbsp;
-            <p className="profile__observation-table-object-name-text">
-              OBJECT
-            </p>
-          </div>
-
-          <div className="profile__observation-table-right-wrapper">
-            <p className="profile__observation-table-quality-text">QUALITY</p>
-            <p className="profile__observation-table-time-difference-text">
-              TIME DIFF
-            </p>
-            <p className="profile__observation-table-weight-text">WEIGHT</p>
-            <p className="profile__observation-table-iod-text">IOD</p>
-          </div>
-        </div> */
-}

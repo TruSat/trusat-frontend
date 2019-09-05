@@ -20,7 +20,6 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
           setTableData(result.data);
-          console.log(result.data);
           setShowTable(true);
         })
         .catch(err => {
