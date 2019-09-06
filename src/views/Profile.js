@@ -1,41 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { useAuthState } from "../auth/auth-context";
 import Blockie from "react-blockies";
 import ObjectBadge from "../assets/ObjectBadge.svg";
 import Spinner from "../app/components/Spinner";
 import { renderFlag } from "../app/helpers";
+import { useUserState } from "../user/user-context";
 
-export default function Profile({ match }) {
+export default function Profile() {
   // TODO - add if statement to use address found in auth state before using the match address
-  const address = match.params.address;
-  const { jwt } = useAuthState();
-  const [userData, setUserData] = useState([]);
-  const [showProfile, setShowProfile] = useState(false);
 
-  useEffect(() => {
-    console.log(`jwt =`, jwt);
-    console.log(`address =`, address);
-
-    // TODO
-    // this endpoint needs to work when it only receives address
-    // this way users who dont have a jwt in localtorage can view a profile
-    // the profile will render appropriately according to the provacy settings
-    if (jwt && address) {
-      axios
-        .post(
-          `https://api.consensys.space:8080/profile`,
-          JSON.stringify({ jwt: jwt, address: address })
-        )
-        .then(result => {
-          console.log(result.data);
-          setUserData(result.data);
-          setShowProfile(true);
-        })
-        .catch(err => console.log(err));
-    }
-  }, [address, jwt, setUserData]);
+  const { userData, showUserProfile } = useUserState();
+  console.log(userData);
 
   const renderObjectsTrackedTable = () => {
     return userData.objects_observed.map(obj => (
@@ -91,11 +66,6 @@ export default function Profile({ match }) {
     ));
   };
 
-  // const convertTimestamp = timestamp => {
-  //   const dateObj = new Date(timestamp * 1000);
-  //   return `${dateObj.getMonth() + 1}/${dateObj.getDate()}`;
-  // };
-
   const renderObservationHistoryTable = () => {
     return userData.observation_history.map(observation => (
       <tr
@@ -114,11 +84,11 @@ export default function Profile({ match }) {
     ));
   };
 
-  return showProfile ? (
+  return showUserProfile ? (
     <div className="profile__wrapper">
       <section className="profile__header-wrapper">
         <Blockie
-          seed={address}
+          seed={userData.user_address}
           size={30}
           scale={3}
           // color="#dfe"

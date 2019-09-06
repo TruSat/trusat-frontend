@@ -583,6 +583,11 @@ ACCOUNT SETTINGS
   @include header1-text;
 }
 
+.account-settings__button-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+
 /* ----------
 PROFILE SETTINGS
 ---------- */
@@ -635,11 +640,6 @@ PROFILE SETTINGS
   letter-spacing: 0.04em;
   color: #afafaf;
   margin-right: 1em;
-}
-
-.profile-settings__button-wrapper {
-  display: flex;
-  justify-content: space-around;
 }
 
 /* ----------

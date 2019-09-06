@@ -1,5 +1,5 @@
 import React from "react";
-import { useAuthState } from "../auth/auth-context";
+import { useAuthState } from "../../auth/auth-context";
 
 export default function BurnerOptions() {
   const { burner } = useAuthState();
