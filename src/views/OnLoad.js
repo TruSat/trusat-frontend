@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuthDispatch } from "../auth/auth-context";
 import { useUserDispatch } from "../user/user-context";
 import { ethers } from "ethers";
+import jwt_decode from "jwt-decode";
 
 export default function OnLoad() {
   const authDispatch = useAuthDispatch();
@@ -16,8 +17,7 @@ export default function OnLoad() {
         authDispatch({ type: "SET_JWT", payload: jwt });
         authDispatch({ type: "AUTHENTICATED", payload: true });
 
-        const address = localStorage.getItem("trusat-address");
-        // authDispatch({ type: "SET_ADDRESS", payload: address });
+        const { address } = jwt_decode(jwt);
 
         axios
           .post(
