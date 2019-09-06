@@ -5,6 +5,7 @@ import { decryptSecret, retrieveNonce } from "../auth/helpers";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";
+import CircleCheck from "../assets/CircleCheck.svg";
 
 export default function MetamaskImport() {
   const [step, setStep] = useState(1);
@@ -70,36 +71,27 @@ export default function MetamaskImport() {
   };
 
   return (
-    <section style={{ margin: "1em" }}>
-      <h1>CONNECT TO METAMASK</h1>
-      <p>
-        Call to action for why you'd want to connect a wallet, and what benefits
-        and features it will unlock for you
-      </p>
-
+    <section className="metamask-import__wrapper">
       {/* STEP ONE */}
       {/* TODO - do not show step one if they have already installed metamask */}
       <h2
-        style={
-          step > 1 ? { color: "green", marginTop: "1em" } : { marginTop: "1em" }
+        className={
+          step > 1
+            ? "metamask-import__step-header--done"
+            : "metamask-import__step-header--todo"
         }
       >
+        {step > 1 ? <img src={CircleCheck} alt="circled check"></img> : null}
         Step 1: Get MetaMask
       </h2>
       {step === 1 ? (
-        <div style={{ border: "1px solid red", marginTop: "1em" }}>
-          <p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">
             You'll need MetaMask to secure your account. MetaMask is a browser
             extension that acts as a secure vault for your private and valuable
             information stored on the blockchain
           </p>
-          <span
-            style={{
-              border: "1px solid white",
-              padding: "0.5em",
-              display: "inline-block"
-            }}
-          >
+          <span className="app__black-button--small">
             <a
               href="https://metamask.io"
               target="_blank"
@@ -108,18 +100,14 @@ export default function MetamaskImport() {
               Get MetaMask
             </a>
           </span>
-          <p>
+          <p className="metamask-import__copy">
             It will take a few steps to get up, but its worth it- by installing
             MetaMask, you'll upgrade your regular web browser so that you can
             access the decentralized web
           </p>
-          {/* TO DO - this button should check if they have metamask installed */}
+
           <span
-            style={{
-              border: "1px solid white",
-              padding: "0.5em",
-              display: "inline-block"
-            }}
+            className="app__white-button--small"
             onClick={() => {
               // if metamask plugin IS found
               if (window.ethereum) {
@@ -138,18 +126,19 @@ export default function MetamaskImport() {
       {/* STEP TWO */}
       {step >= 2 ? (
         <h2
-          style={
+          className={
             step > 2
-              ? { color: "green", marginTop: "1em" }
-              : { marginTop: "1em" }
+              ? "metamask-import__step-header--done"
+              : "metamask-import__step-header--todo"
           }
         >
+          {step > 2 ? <img src={CircleCheck} alt="circled check"></img> : null}
           Step 2: Retrieve your secret
         </h2>
       ) : null}
       {step === 2 ? (
-        <div style={{ border: "1px solid orange", marginTop: "1em" }}>
-          <p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">
             We need to make sure its really you. Please enter the secret we
             emailed you when you first signed up for TruSat and the password you
             created for your account
@@ -174,11 +163,7 @@ export default function MetamaskImport() {
           </div>{" "}
           {/* TODO - next button will decrypt the secret and return private key, then mpve to step 3 */}
           <span
-            style={{
-              border: "1px solid white",
-              padding: "0.5em",
-              display: "inline-block"
-            }}
+            className="app__white-button--small"
             onClick={() => {
               setPrivateKey(decryptSecret(secret, password));
               setStep(3);
@@ -192,19 +177,22 @@ export default function MetamaskImport() {
       {/* STEP THREE */}
       {step >= 3 ? (
         <h2
-          style={
+          className={
             step > 3
-              ? { color: "green", marginTop: "1em" }
-              : { marginTop: "1em" }
+              ? "metamask-import__step-header--done"
+              : "metamask-import__step-header--todo"
           }
         >
+          {step > 3 ? <img src={CircleCheck} alt="circled check"></img> : null}
           Step 3: Transfer your private key
         </h2>
       ) : null}
       {step === 3 ? (
-        <div style={{ border: "1px solid yellow", marginTop: "1em" }}>
-          <p>Now MetaMask needs to make sure its really you.</p>
-          <p>1. Copy your private key:</p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">
+            Now MetaMask needs to make sure its really you.
+          </p>
+          <p className="metamask-import__copy">1. Copy your private key:</p>
           {/* TODO - this needs to obscure the private key until they click it, then
           offer ability to copy it with a click */}
           <div style={{ display: "flex" }}>
@@ -217,18 +205,14 @@ export default function MetamaskImport() {
               copy
             </button>
           </div>
-          <p>
+          <p className="metamask-import__copy">
             2. Login to MetaMask if you haven't already done so and click on
             your avatar
           </p>
-          <p>3. Select "import account"</p>
-          <p>4. Paste in your private key</p>
+          <p className="metamask-import__copy">3. Select "import account"</p>
+          <p className="metamask-import__copy">4. Paste in your private key</p>
           <span
-            style={{
-              border: "1px solid white",
-              padding: "0.5em",
-              display: "inline-block"
-            }}
+            className="app__white-button--small"
             onClick={async () => {
               window.ethereum.enable().catch(console.error);
               setStep(4);
@@ -242,18 +226,19 @@ export default function MetamaskImport() {
       {/* STEP FOUR */}
       {step >= 4 ? (
         <h2
-          style={
+          className={
             step > 4
-              ? { color: "green", marginTop: "1em" }
-              : { marginTop: "1em" }
+              ? "metamask-import__step-header--done"
+              : "metamask-import__step-header--todo"
           }
         >
+          {step > 4 ? <img src={CircleCheck} alt="circled check"></img> : null}
           Step 4: Connect TruSat to MetaMask
         </h2>
       ) : null}
       {step === 4 ? (
-        <div style={{ border: "1px solid yellow", marginTop: "1em" }}>
-          <p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">
             MetaMask should have prompted you to confirm the connection. This is
             to confirm that you trust TruSat before going any further. Click
             "connect" in MetaMask. If the request to connect doesn't appear, you
@@ -261,11 +246,7 @@ export default function MetamaskImport() {
           </p>
           {/* // TODO - this button needs to pop metamask up to show the sign message request */}
           <span
-            style={{
-              border: "1px solid white",
-              padding: "0.5em",
-              display: "inline-block"
-            }}
+            className="app__white-button--small"
             onClick={() => {
               handleMessageSign();
               setStep(5);
@@ -279,26 +260,31 @@ export default function MetamaskImport() {
       {/* STEP FIVE */}
       {step >= 5 ? (
         <h2
-          style={
+          className={
             authType === "metamask"
-              ? { color: "green", marginTop: "1em" }
-              : { marginTop: "1em" }
+              ? "metamask-import__step-header--done"
+              : "metamask-import__step-header--todo"
           }
         >
+          {authType === "metamask" ? (
+            <img src={CircleCheck} alt="circled check"></img>
+          ) : null}
           Step 5: Sign message
         </h2>
       ) : null}
       {step === 5 && authType !== "metamask" ? (
-        <div style={{ border: "1px solid yellow", marginTop: "1em" }}>
-          <p>last step!</p>
-          <p>Click the "sign" button in MetaMask to sign into TruSat</p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">last step!</p>
+          <p className="metamask-import__copy">
+            Click the "sign" button in MetaMask to sign into TruSat
+          </p>
         </div>
       ) : null}
 
       {/* The success message */}
       {authType === "metamask" ? (
-        <div>
-          <p>
+        <div className="metamask-import__copy-wrapper">
+          <p className="metamask-import__copy">
             Congrats you have now successfully migrated your account to MetaMask
             and signed in! From now, choose the option to sign in to TruSat
             using the MetaMask option. Its will be as simple as signing a

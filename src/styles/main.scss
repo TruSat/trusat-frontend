@@ -717,3 +717,33 @@ SECURITY SETTINGS
   @include headline-copy-text;
   margin-bottom: 1em;
 }
+
+/* ----------
+METAMAST IMPORT
+---------- */
+.metamask-import__wrapper {
+  margin-top: 1em;
+}
+
+.metamask-import__step-header--todo {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+}
+
+.metamask-import__step-header--done {
+  color: #a5a5a5;
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 37px;
+}
+
+.metamask-import__copy-wrapper {
+  margin-top: 1em;
+  width: 75%;
+}
+
+.metamask-import__copy {
+  font-size: 24px;
+  line-height: 133%;
+}
