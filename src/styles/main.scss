@@ -632,6 +632,7 @@ PROFILE SETTINGS
 
 .profile-settings__setting-wrapper {
   display: flex;
+  margin: 0.5em 0;
 }
 
 .profile-settings__setting-label {
@@ -640,6 +641,9 @@ PROFILE SETTINGS
   letter-spacing: 0.04em;
   color: #afafaf;
   margin-right: 1em;
+}
+
+.edit-profile-settings-input {
 }
 
 /* ----------
@@ -658,6 +662,15 @@ PRIVACY SETTINGS
   justify-content: space-between;
   margin-bottom: 1em;
   padding: 0.5em 0;
+}
+
+.privacy-settings__edit-button-text {
+  color: #a5a5a5;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  text-decoration: underline;
 }
 
 .privacy-settings__setting-wrapper {

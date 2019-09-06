@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function EditSettingInput({ setting, setSetting }) {
+export default function EditProfileSettingInput({ setting, setSetting }) {
   return (
     <div>
       <input
+        className="edit-profile-settings-input"
         onChange={event => setSetting(event.target.value)}
         value={setting}
       ></input>

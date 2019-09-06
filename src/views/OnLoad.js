@@ -9,22 +9,33 @@ export default function OnLoad() {
   const userDispatch = useUserDispatch();
 
   useEffect(() => {
-    let jwt;
-    let address;
-
     // get jwt from local storage, utilized for all login options
     const retrieveJwt = () => {
       if (localStorage.getItem("trusat-jwt")) {
-        jwt = localStorage.getItem("trusat-jwt");
+        const jwt = localStorage.getItem("trusat-jwt");
         authDispatch({ type: "SET_JWT", payload: jwt });
         authDispatch({ type: "AUTHENTICATED", payload: true });
+
+        axios
+          .post(
+            `https://api.consensys.space:8080/profile`,
+            JSON.stringify({
+              jwt: jwt,
+              address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+            })
+          )
+          .then(result => {
+            userDispatch({ type: "SET_USER_DATA", payload: result.data });
+            userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+          })
+          .catch(err => console.log(err));
       }
     };
 
     // get address from local storage
     const retrieveAddress = () => {
       if (localStorage.getItem("trusat-address")) {
-        address = localStorage.getItem("trusat-address");
+        const address = localStorage.getItem("trusat-address");
         authDispatch({ type: "SET_ADDRESS", payload: address });
       }
     };
@@ -48,19 +59,6 @@ export default function OnLoad() {
     retrieveWallet();
 
     // TODO - pull this inside the retreieve jwt function and take address from returned result
-    axios
-      .post(
-        `https://api.consensys.space:8080/profile`,
-        JSON.stringify({
-          jwt: jwt,
-          address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
-        })
-      )
-      .then(result => {
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
-      })
-      .catch(err => console.log(err));
 
     // ToDO - create an app context to handle a shared 'app' state for things like loading state
     // setIsAppLoading(false);

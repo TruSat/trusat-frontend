@@ -1,18 +1,45 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
+import Spinner from "../app/components/Spinner";
 import { useUserState } from "../user/user-context";
 
 export default function UserSettings() {
   const { jwt, address } = useAuthState();
-  const [showEditInputs, setShowEditInputs] = useState(false);
+  const { userData, showUserProfile } = useUserState();
+  // profile settings
+  const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
+  //privacy settings
+  const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
+  const [newPublicUsername, setNewPublicUsername] = useState(false);
+  const [newPublicLocation, setNewPublicLocation] = useState(false);
+
+  console.log(userData);
+
+  useEffect(() => {
+    const {
+      user_name,
+      email,
+      user_location,
+      user_bio,
+      public_username,
+      public_location
+    } = userData;
+
+    setNewUsername(user_name);
+    setNewEmail(email);
+    setNewLocation(user_location);
+    setNewLocation(user_bio);
+    // setNewPublicUsername(public_username);
+    // setNewPublicLocation(public_location)
+  }, [userData]);
 
   const submitEdit = () => {
     axios
@@ -24,7 +51,9 @@ export default function UserSettings() {
           username: newUsername,
           email: newEmail,
           bio: newBio,
-          location: newLocation
+          location: newLocation,
+          publicUsername: newPublicUsername,
+          publicLocation: newPublicLocation
         })
       )
       .then(result => {
@@ -33,10 +62,12 @@ export default function UserSettings() {
       .catch(err => console.log(err));
   };
 
-  return (
+  return showUserProfile ? (
     <div className="account-settings__wrapper">
       <h1 className="account-settings__header">ACCOUNT SETTINGS</h1>
       <ProfileSettings
+        showEditProfileInputs={showEditProfileInputs}
+        setShowEditProfileInputs={setShowEditProfileInputs}
         newUsername={newUsername}
         setNewUsername={setNewUsername}
         newEmail={newEmail}
@@ -45,20 +76,35 @@ export default function UserSettings() {
         setNewLocation={setNewLocation}
         newBio={newBio}
         setNewBio={setNewBio}
-        showEditInputs={showEditInputs}
-        setShowEditInputs={setShowEditInputs}
       />
-      <PrivacySettings />
+      <PrivacySettings
+        showEditPrivacyInputs={showEditPrivacyInputs}
+        setShowEditPrivacyInputs={setShowEditPrivacyInputs}
+        newPublicUsername={newPublicUsername}
+        setNewPublicUsername={setNewPublicUsername}
+        newPublicLocation={newPublicLocation}
+        setNewPublicLocation={setNewPublicLocation}
+      />
 
-      {showEditInputs ? (
+      {showEditProfileInputs === true || showEditPrivacyInputs === true ? (
         <div className="account-settings__button-wrapper">
           <span
             className="app__black-button--small"
-            onClick={() => setShowEditInputs(false)}
+            onClick={() => {
+              setShowEditProfileInputs(false);
+              setShowEditPrivacyInputs(false);
+            }}
           >
             Cancel
           </span>
-          <span className="app__black-button--small" onClick={() => submitEdit}>
+          <span
+            className="app__black-button--small"
+            onClick={() => {
+              submitEdit();
+              setShowEditProfileInputs(false);
+              setShowEditPrivacyInputs(false);
+            }}
+          >
             Save
           </span>
         </div>
@@ -66,5 +112,7 @@ export default function UserSettings() {
 
       <SecuritySettings />
     </div>
+  ) : (
+    <Spinner />
   );
 }

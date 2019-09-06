@@ -1,6 +1,6 @@
 import React from "react";
 import { useUserState } from "../../user/user-context";
-import EditSettingInput from "./EditSettingInput";
+import EditProfileSettingInput from "./EditProfileSettingInput";
 
 // TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({
@@ -12,8 +12,8 @@ export default function ProfileSettings({
   setNewBio,
   newLocation,
   setNewLocation,
-  showEditInputs,
-  setShowEditInputs
+  showEditProfileInputs,
+  setShowEditProfileInputs
 }) {
   const { userData } = useUserState();
 
@@ -24,7 +24,7 @@ export default function ProfileSettings({
           <p>PROFILE</p>
           <p
             className="profile-settings__edit-button-text"
-            onClick={() => setShowEditInputs(true)}
+            onClick={() => setShowEditProfileInputs(true)}
           >
             edit
           </p>
@@ -32,8 +32,8 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">USERNAME</label>
-          {showEditInputs ? (
-            <EditSettingInput
+          {showEditProfileInputs ? (
+            <EditProfileSettingInput
               setting={newUsername}
               setSetting={setNewUsername}
             />
@@ -49,8 +49,11 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">EMAIL</label>
-          {showEditInputs ? (
-            <EditSettingInput setting={newEmail} setSetting={setNewEmail} />
+          {showEditProfileInputs ? (
+            <EditProfileSettingInput
+              setting={newEmail}
+              setSetting={setNewEmail}
+            />
           ) : (
             <p>{userData.user_email}</p>
           )}
@@ -58,8 +61,8 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">LOCATION</label>
-          {showEditInputs ? (
-            <EditSettingInput
+          {showEditProfileInputs ? (
+            <EditProfileSettingInput
               setting={newLocation}
               setSetting={setNewLocation}
             />
@@ -70,8 +73,8 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">BIO</label>
-          {showEditInputs ? (
-            <EditSettingInput setting={newBio} setSetting={setNewBio} />
+          {showEditProfileInputs ? (
+            <EditProfileSettingInput setting={newBio} setSetting={setNewBio} />
           ) : (
             <p>{userData.user_bio}</p>
           )}
