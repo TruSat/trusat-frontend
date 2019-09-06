@@ -1,5 +1,6 @@
 import React from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
+import { useUserDispatch } from "../../user/user-context";
 import { retrieveNonce, retrieveJwt } from "../helpers/";
 import { ethers } from "ethers";
 import Web3 from "web3";
@@ -11,11 +12,12 @@ export default function MetaMask() {
   const pathname = window.location.pathname;
 
   const { isAuthenticating } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
-      dispatch({ type: "AUTHENTICATING", payload: true });
+      authDispatch({ type: "AUTHENTICATING", payload: true });
       handleMetamaskMessageSign();
     } else {
       handleMetamaskConnect();
@@ -40,14 +42,16 @@ export default function MetaMask() {
 
       return handleMetamaskAuthenticate({ address, signedMessage });
     } catch (error) {
-      dispatch({ type: "AUTHENTICATING", payload: false });
+      authDispatch({ type: "AUTHENTICATING", payload: false });
       alert(`You need to sign the message to be able to log in!`);
     }
   };
 
   // TODO utilize retrieve JWT function from helpers
   const handleMetamaskAuthenticate = async ({ address, signedMessage }) => {
-    Promise.resolve(
+    let jwt;
+
+    await Promise.resolve(
       axios
         .post(
           "https://api.consensys.space:8080/login",
@@ -58,20 +62,32 @@ export default function MetaMask() {
         )
         .then(response => {
           console.log(response.data);
+          jwt = response.data.jwt;
           localStorage.setItem("trusat-jwt", response.data.jwt);
           localStorage.setItem("trusat-address", address);
-          dispatch({ type: "SET_JWT", payload: response.data.jwt });
+          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         })
         .catch(error => console.log(error))
     );
 
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: address
-    });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
+    // TODO make this call an app helper
+    axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: address
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+      })
+      .catch(err => console.log(err));
+
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
   return (

@@ -2,19 +2,22 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
+import { useUserDispatch } from "../../user/user-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
 import { decryptSecret } from "../helpers";
+import axios from "axios";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [secret, setSecret] = useState("");
 
   // TO DO - error handling in the UI
   const handleLogin = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: true });
     console.log(`secret = `, secret);
 
     const privateKey = await decryptSecret(secret, password);
@@ -36,18 +39,25 @@ export default function LoginForm() {
     });
     console.log(`jwt =`, jwt);
 
-    // TODO - do we want to persis the wallet used when signinup/logging in with email/password
-    // dispatch({ type: "SET_BURNER", payload: wallet });
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: wallet.signingKey.address
-    });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    dispatch({ type: "SET_JWT", payload: jwt });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
+    axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: wallet.signingKey.address
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+      })
+      .catch(err => console.log(err));
 
-    // add jwt and address to local storage
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+    authDispatch({ type: "SET_JWT", payload: jwt });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
+
     localStorage.setItem("trusat-jwt", jwt);
     localStorage.setItem("trusat-address", wallet.signingKey.address);
   };

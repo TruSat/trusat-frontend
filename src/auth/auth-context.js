@@ -17,9 +17,6 @@ function authReducer(state, action) {
     case "SET_EMAIL": {
       return { ...state, email: action.payload };
     }
-    case "SET_ADDRESS": {
-      return { ...state, address: action.payload };
-    }
     case "SET_BURNER": {
       return { ...state, burner: action.payload };
     }
@@ -38,7 +35,6 @@ function AuthProvider({ children }) {
     isAuth: false,
     authType: "",
     email: "",
-    address: "",
     burner: {},
     jwt: ""
   });

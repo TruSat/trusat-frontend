@@ -9,10 +9,12 @@ import {
   createSecret
 } from "../helpers/";
 import { useAuthState, useAuthDispatch } from "../auth-context";
+import { useUserDispatch } from "../../user/user-context";
 
 export default function SignupForm() {
   const { isAuthenticating, isAuth } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [understandMessage, setUnderstandMessage] = useState(false);
@@ -36,7 +38,7 @@ export default function SignupForm() {
   const handleFormValidation = () => {};
 
   const handleSignup = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: true });
 
     const wallet = await createWallet();
 
@@ -52,14 +54,10 @@ export default function SignupForm() {
 
     // TODO - do we want to persis the wallet used when signinup/logging in with email/password
     // dispatch({ type: "SET_BURNER", payload: wallet });
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: wallet.signingKey.address
-    });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    dispatch({ type: "SET_JWT", payload: jwt });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+    authDispatch({ type: "SET_JWT", payload: jwt });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
 
     // add jwt and address to local storage
     localStorage.setItem("trusat-jwt", jwt);
@@ -70,6 +68,20 @@ export default function SignupForm() {
     console.log(`secret = `, secret);
     // TODO - email secret to the user
     emailSecret(secret);
+
+    axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: wallet.signingKey.address
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+      })
+      .catch(err => console.log(err));
   };
 
   return (

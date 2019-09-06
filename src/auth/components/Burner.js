@@ -30,10 +30,10 @@ export default function Burner() {
     console.log(`jwt =`, jwt);
 
     dispatch({ type: "SET_BURNER", payload: wallet });
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: wallet.signingKey.address
-    });
+    // dispatch({
+    //   type: "SET_ADDRESS",
+    //   payload: wallet.signingKey.address
+    // });
     dispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
     dispatch({ type: "SET_JWT", payload: jwt });
     dispatch({ type: "AUTHENTICATED", payload: true });
