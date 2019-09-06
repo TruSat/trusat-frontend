@@ -1,5 +1,4 @@
 import React from "react";
-import { useUserState } from "../user-context";
 
 export default function PrivacySettings({
   showEditPrivacyInputs,
@@ -9,10 +8,6 @@ export default function PrivacySettings({
   newPublicLocation,
   setNewPublicLocation
 }) {
-  // TODO - pull public_location and public_username from userDtata and use that value to render the checkboxes values and the tick or x symbols using checked field
-  const { userData } = useUserState();
-  console.log(newPublicLocation);
-
   return (
     <section className="privacy-settings__wrapper">
       <h2 className="privacy-settings__heading">

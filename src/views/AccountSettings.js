@@ -37,8 +37,8 @@ export default function UserSettings() {
     setNewEmail(email);
     setNewLocation(user_location);
     setNewLocation(user_bio);
-    // setNewPublicUsername(public_username);
-    // setNewPublicLocation(public_location)
+    setNewPublicUsername(public_username);
+    setNewPublicLocation(public_location);
   }, [userData]);
 
   const submitEdit = () => {
