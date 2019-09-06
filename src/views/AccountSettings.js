@@ -8,7 +8,7 @@ import Spinner from "../app/components/Spinner";
 import { useUserState } from "../user/user-context";
 
 export default function UserSettings() {
-  const { jwt, address } = useAuthState();
+  const { jwt } = useAuthState();
   const { userData, showUserProfile } = useUserState();
   // profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
@@ -36,7 +36,7 @@ export default function UserSettings() {
     setNewUsername(user_name);
     setNewEmail(email);
     setNewLocation(user_location);
-    setNewLocation(user_bio);
+    setNewBio(user_bio);
     setNewPublicUsername(public_username);
     setNewPublicLocation(public_location);
   }, [userData]);
@@ -47,7 +47,7 @@ export default function UserSettings() {
         `https://api.consensys.space:8080/editProfile`,
         JSON.stringify({
           jwt: jwt,
-          address: address,
+          address: userData.user_address,
           username: newUsername,
           email: newEmail,
           bio: newBio,

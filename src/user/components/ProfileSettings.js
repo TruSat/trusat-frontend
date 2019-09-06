@@ -55,7 +55,7 @@ export default function ProfileSettings({
               setSetting={setNewEmail}
             />
           ) : (
-            <p>{userData.user_email}</p>
+            <p>{userData.email}</p>
           )}
         </div>
 
