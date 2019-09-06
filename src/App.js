@@ -14,11 +14,14 @@ import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
 import MetamaskImport from "./views/MetamaskImport";
 import BurgerMenu from "./app/components/BurgerMenu";
+import OnLoad from "./views/OnLoad";
 
 export default function App() {
   return (
     <AuthProvider>
       <Router>
+        {/* TODO - create a better component to handle the "on Load" functions */}
+        <OnLoad />
         <BurgerMenu left />
         <NavBar />
         <Route exact path="/" component={Welcome} />
