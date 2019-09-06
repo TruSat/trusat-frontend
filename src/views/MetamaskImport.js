@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
+import { useUserDispatch } from "../user/user-context";
 import { decryptSecret, retrieveNonce } from "../auth/helpers";
 import { ethers } from "ethers";
 import Web3 from "web3";
@@ -15,10 +16,11 @@ export default function MetamaskImport() {
   const [privateKey, setPrivateKey] = useState("");
 
   const { authType } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
 
   const handleMessageSign = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: true });
 
     const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
@@ -37,7 +39,7 @@ export default function MetamaskImport() {
 
       return handleAuthenticate({ address, signedMessage });
     } catch (error) {
-      dispatch({ type: "AUTHENTICATING", payload: false });
+      authDispatch({ type: "AUTHENTICATING", payload: false });
       alert(`You need to sign the message to be able to log in!`);
     }
   };
@@ -56,19 +58,15 @@ export default function MetamaskImport() {
         .then(response => {
           console.log(response.data);
           localStorage.setItem("trusat-jwt", response.data.jwt);
-          localStorage.setItem("trusat-address", address);
-          dispatch({ type: "SET_JWT", payload: response.data.jwt });
+          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         })
         .catch(error => console.log(error))
     );
+    userDispatch({ type: "SET_USER_ADDRESS", payload: address });
 
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: address
-    });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
   return (

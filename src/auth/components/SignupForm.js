@@ -61,7 +61,6 @@ export default function SignupForm() {
 
     // add jwt and address to local storage
     localStorage.setItem("trusat-jwt", jwt);
-    localStorage.setItem("trusat-address", wallet.signingKey.address);
 
     const secret = createSecret(wallet.signingKey.privateKey, password);
     console.log(`address = `, wallet.address);
@@ -79,6 +78,10 @@ export default function SignupForm() {
       )
       .then(result => {
         userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({
+          type: "SET_USER_ADDRESS",
+          payload: wallet.signingKey.address
+        });
         userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
       })
       .catch(err => console.log(err));

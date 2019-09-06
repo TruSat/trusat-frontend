@@ -64,7 +64,6 @@ export default function MetaMask() {
           console.log(response.data);
           jwt = response.data.jwt;
           localStorage.setItem("trusat-jwt", response.data.jwt);
-          localStorage.setItem("trusat-address", address);
           authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         })
         .catch(error => console.log(error))
@@ -81,6 +80,7 @@ export default function MetaMask() {
       )
       .then(result => {
         userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({ type: "SET_USER_ADDRESS", payload: address });
         userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
       })
       .catch(err => console.log(err));

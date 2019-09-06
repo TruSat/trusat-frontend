@@ -9,7 +9,7 @@ import { useUserState } from "../user/user-context";
 
 export default function UserSettings() {
   const { jwt } = useAuthState();
-  const { userData, showUserProfile } = useUserState();
+  const { userAddress, userData, showUserProfile } = useUserState();
   // profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
   const [newUsername, setNewUsername] = useState("");
@@ -20,8 +20,6 @@ export default function UserSettings() {
   const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
   const [newPublicUsername, setNewPublicUsername] = useState(false);
   const [newPublicLocation, setNewPublicLocation] = useState(false);
-
-  console.log(userData);
 
   useEffect(() => {
     const {
@@ -47,7 +45,7 @@ export default function UserSettings() {
         `https://api.consensys.space:8080/editProfile`,
         JSON.stringify({
           jwt: jwt,
-          address: userData.user_address,
+          address: userAddress,
           username: newUsername,
           email: newEmail,
           bio: newBio,
