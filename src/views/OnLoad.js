@@ -16,12 +16,15 @@ export default function OnLoad() {
         authDispatch({ type: "SET_JWT", payload: jwt });
         authDispatch({ type: "AUTHENTICATED", payload: true });
 
+        const address = localStorage.getItem("trusat-address");
+        // authDispatch({ type: "SET_ADDRESS", payload: address });
+
         axios
           .post(
             `https://api.consensys.space:8080/profile`,
             JSON.stringify({
               jwt: jwt,
-              address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+              address: address
             })
           )
           .then(result => {
@@ -29,14 +32,6 @@ export default function OnLoad() {
             userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
           })
           .catch(err => console.log(err));
-      }
-    };
-
-    // get address from local storage
-    const retrieveAddress = () => {
-      if (localStorage.getItem("trusat-address")) {
-        const address = localStorage.getItem("trusat-address");
-        authDispatch({ type: "SET_ADDRESS", payload: address });
       }
     };
 
@@ -55,7 +50,6 @@ export default function OnLoad() {
       }
     };
     retrieveJwt();
-    retrieveAddress();
     retrieveWallet();
 
     // TODO - pull this inside the retreieve jwt function and take address from returned result

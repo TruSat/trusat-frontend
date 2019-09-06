@@ -1,11 +1,11 @@
 import React from "react";
-import { useAuthState } from "../../auth/auth-context";
+import { useUserState } from "../../user/user-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "../../auth/components/JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  const { address } = useAuthState();
+  const { userData } = useUserState();
 
   return (
     <div className="nav-bar">
@@ -53,18 +53,18 @@ function NavBar(props) {
 
       <div
         className={
-          props.location.pathname === `/profile/${address}`
+          props.location.pathname === `/profile/${userData.user_address}`
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
           className={
-            props.location.pathname === `/profile/${address}`
+            props.location.pathname === `/profile/${userData.user_address}`
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
-          to={`/profile/${address}`}
+          to={`/profile/${userData.user_address}`}
         >
           MY PROFILE
         </NavLink>
