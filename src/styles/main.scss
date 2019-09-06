@@ -584,8 +584,12 @@ ACCOUNT SETTINGS
 }
 
 .account-settings__button-wrapper {
+  margin-top: 2em;
   display: flex;
-  justify-content: space-around;
+}
+
+.account-settings__cancel-button {
+  margin-right: 1em;
 }
 
 /* ----------

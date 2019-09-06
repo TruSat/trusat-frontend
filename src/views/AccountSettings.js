@@ -89,7 +89,7 @@ export default function UserSettings() {
       {showEditProfileInputs === true || showEditPrivacyInputs === true ? (
         <div className="account-settings__button-wrapper">
           <span
-            className="app__black-button--small"
+            className="app__white-button--small account-settings__cancel-button"
             onClick={() => {
               setShowEditProfileInputs(false);
               setShowEditPrivacyInputs(false);
