@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Astriagraph from "../app/components/Astriagraph";
 import Info from "../objects/components/Info";
 import InfluenceTable from "../objects/components/InfluenceTable";
 import HistoryYearDropdown from "../objects/components/HistoryYearDropdown";
@@ -28,7 +29,9 @@ export default function ObjectInfo({ match }) {
   }, [noradNumber, objectsDispatch]);
 
   return showObjectView ? (
-    <div>
+    <div className="object__wrapper">
+      <Astriagraph />
+
       <Info noradNumber={noradNumber} />
 
       <section

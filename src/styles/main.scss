@@ -849,3 +849,58 @@ SECRET FORM
   padding: 1em;
   width: 100%;
 }
+
+/* ----------
+OBJECT VIEW
+---------- */
+.object__wrapper {
+  margin: 0em 4em;
+}
+
+/* ----------
+OBJECT INFO 
+---------- */
+.object-info__header-section-wrapper {
+  border: 1px solid #ffffff;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+  padding: 1em 0;
+}
+
+.object-info__badge {
+  margin-top: -30px;
+  margin-left: -25px;
+}
+
+.object-info__header {
+  @include header1-text;
+}
+
+.object-info__origin-year-wrapper,
+.object-info__tracking-numbers-wrapper,
+.object-info__last-seen-wrapper,
+.object-info__quality-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.object-info__small-text {
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.object-info__small-text--grey {
+  color: #afafaf;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  line-height: 20px;
+}
+
+.object-info__background-section-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin: 2em 0;
+}
