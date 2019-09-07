@@ -1,25 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
+import { useObjectsState } from "../objects-context";
 
 export default function Info({ noradNumber }) {
-  const [objectInfo, setObjectInfo] = useState({});
-  console.log(`norad number =`, noradNumber);
-
-  useEffect(() => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/info`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(result => {
-        console.log(result.data);
-        setObjectInfo(result.data);
-      })
-      .catch(err => console.log(err));
-  }, [noradNumber]);
-
-  useEffect(() => {});
+  const { objectInfo } = useObjectsState();
 
   return (
     <React.Fragment>

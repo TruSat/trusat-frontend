@@ -1,23 +1,34 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import Info from "../objects/components/Info";
 import InfluenceTable from "../objects/components/InfluenceTable";
 import HistoryYearDropdown from "../objects/components/HistoryYearDropdown";
 import UserSightingsTable from "../objects/components/UserSightingsTable";
 import DownloadObjectTleButton from "../objects/components/DownloadObjectTleButton";
+import { useObjectsDispatch } from "../objects/objects-context";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
-
-  // const [objectMostSigtings, setObjectMostSightings] = useState({});
-
-  // observation filter options
+  const objectsDispatch = useObjectsDispatch();
   const [observationFilter, setObservationFilter] = useState("history");
+  const [showObjectView, setShowObjectView] = useState(false);
 
-  // TODO - complete this request
-  // const getObjectMostSightings = () => {};
+  useEffect(() => {
+    axios
+      .post(
+        `https://api.consensys.space:8080/object/info`,
+        JSON.stringify({ norad_number: noradNumber })
+      )
+      .then(result => {
+        console.log(result.data);
+        objectsDispatch({ type: "SET_OBJECT_INFO", payload: result.data });
+        setShowObjectView(true);
+      })
+      .catch(err => console.log(err));
+  }, [noradNumber, objectsDispatch]);
 
-  return (
-    <React.Fragment>
+  return showObjectView ? (
+    <div>
       <Info noradNumber={noradNumber} />
 
       <section
@@ -55,33 +66,24 @@ export default function ObjectInfo({ match }) {
         </div>
       </section>
       {observationFilter === "influence" ? (
-        <InfluenceTable
-          noradNumber={noradNumber}
-          objectOrigin={object_info.object_origin}
-        />
+        <InfluenceTable noradNumber={noradNumber} />
       ) : null}
       {observationFilter === "history" ? (
-        <HistoryYearDropdown
-          noradNumber={noradNumber}
-          objectOrigin={object_info.object_origin}
-        />
+        <HistoryYearDropdown noradNumber={noradNumber} />
       ) : null}
       {observationFilter === "userSightings" ? (
-        <UserSightingsTable
-          noradNumber={noradNumber}
-          objectOrigin={object_info.object_origin}
-        />
+        <UserSightingsTable noradNumber={noradNumber} />
       ) : null}
-    </React.Fragment>
-  );
+    </div>
+  ) : null;
 }
 
 // POST REQUEST
 // /objectInfo
 // receives Norad Number and returns an object.
-const object_info = {
-  object_origin: "russia"
-};
+// const object_info = {
+//   object_origin: "russia"
+// };
 
 // POST request
 // /objectMostSightings

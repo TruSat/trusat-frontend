@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { AuthProvider } from "./auth/auth-context";
 import { UserProvider } from "./user/user-context";
+import { ObjectsProvider } from "./objects/objects-context";
 import NavBar from "./app/components/NavBar";
 import Catalog from "./views/Catalog";
 import Submit from "./views/Submit";
@@ -29,7 +30,9 @@ export default function App() {
           <Route exact path="/" component={Welcome} />
           <Route path="/catalog/:catalogFilter" component={Catalog} />
           <Route path="/submit" component={Submit} />
-          <Route path="/object/:number" component={ObjectInfo} />
+          <ObjectsProvider>
+            <Route path="/object/:number" component={ObjectInfo} />
+          </ObjectsProvider>
           <Route path="/profile/:address" component={Profile} />
           <Route exact path="/settings" component={AccountSettings} />
           <Route path="/settings/metamask" component={MetamaskImport} />
