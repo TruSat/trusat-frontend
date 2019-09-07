@@ -5,7 +5,7 @@ import JoinButton from "../../auth/components/JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  const { userData } = useUserState();
+  const { userAddress } = useUserState();
 
   return (
     <div className="nav-bar">
@@ -51,24 +51,27 @@ function NavBar(props) {
         </NavLink>
       </div>
 
-      <div
-        className={
-          props.location.pathname === `/profile/${userData.user_address}`
-            ? "nav-bar__link-wrapper--highlight"
-            : "nav-bar__link-wrapper--lowlight"
-        }
-      >
-        <NavLink
+      {/* // My Profile button only rendered when user is logged in */}
+      {userAddress ? (
+        <div
           className={
-            props.location.pathname === `/profile/${userData.user_address}`
-              ? "nav-bar__link--highlight"
-              : "nav-bar__link--lowlight"
+            props.location.pathname === `/profile/${userAddress}`
+              ? "nav-bar__link-wrapper--highlight"
+              : "nav-bar__link-wrapper--lowlight"
           }
-          to={`/profile/${userData.user_address}`}
         >
-          MY PROFILE
-        </NavLink>
-      </div>
+          <NavLink
+            className={
+              props.location.pathname === `/profile/${userAddress}`
+                ? "nav-bar__link--highlight"
+                : "nav-bar__link--lowlight"
+            }
+            to={`/profile/${userAddress}`}
+          >
+            MY PROFILE
+          </NavLink>
+        </div>
+      ) : null}
 
       <div
         className={
