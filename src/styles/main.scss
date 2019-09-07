@@ -87,8 +87,6 @@ ASTRIAGRAPH
 .astriagraph__wrapper {
   align-items: center;
   background: $primary-theme-color;
-  border: 2px solid grey;
-  border-bottom: none;
   display: flex;
   justify-content: center;
   height: 100px;
@@ -613,6 +611,7 @@ PROFILE SETTINGS
 .profile-settings__wrapper {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .profile-settings__heading {
@@ -690,6 +689,10 @@ PRIVACY SETTINGS
   font-size: 16px;
   line-height: 19px;
   text-decoration: underline;
+}
+
+.privacy-settings__edit-button-text:hover {
+  cursor: pointer;
 }
 
 .privacy-settings__setting-wrapper {
@@ -903,4 +906,16 @@ OBJECT INFO
   display: flex;
   justify-content: space-between;
   margin: 2em 0;
+}
+
+.object-info__sub-header {
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 19px;
+}
+
+.object-info__link-text {
+  color: #afafaf;
+  line-height: 19px;
+  text-decoration-line: underline;
 }

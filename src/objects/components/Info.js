@@ -78,15 +78,29 @@ export default function Info({ noradNumber }) {
       </section>
 
       <section className="object-info__background-section-wrapper">
-        <h1>BACKGROUND</h1>
-        <p>background = {objectInfo.object_background}</p>
-        HOW TO SEE THIS SAT
-        <NavLink className="app__nav-link" to="/how">
-          Follow this tutorial
-        </NavLink>
-        <a href={`${objectInfo.heavens_above_url}`}>
-          Deep link to Heavens Above
-        </a>
+        {objectInfo.object_background ? (
+          <div>
+            <h2 className="object-info__sub-header">BACKGROUND</h2>
+            <p>background = {objectInfo.object_background}</p>
+          </div>
+        ) : null}
+
+        <div>
+          <h2 className="object-info__sub-header">HOW TO SEE THIS SAT</h2>
+          <NavLink className="app__nav-link" to="/how">
+            <p className="object-info__link-text">Follow this tutorial</p>
+          </NavLink>
+          {objectInfo.heavens_above_url ? (
+            <a
+              className="object-info__link-text"
+              target="_blank"
+              rel="noopener noreferrer"
+              href={objectInfo.heavens_above_url}
+            >
+              More info at Heavens Above
+            </a>
+          ) : null}
+        </div>
       </section>
     </React.Fragment>
   );
