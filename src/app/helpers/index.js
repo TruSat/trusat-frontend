@@ -2,7 +2,7 @@ import React from "react";
 
 export const renderFlag = code => {
   if (!code) {
-    return <p className="table__small-text">?</p>;
+    return <p className="table__small-text">Origin Unknown</p>;
   } else if (!code.includes("/")) {
     return (
       <img
