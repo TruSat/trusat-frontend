@@ -15,7 +15,7 @@ export default function LogIn() {
       </h1>
       {isAuth ? (
         <div className="login__success-wrapper">
-          <NavLink to={`/profile/${userAddress}`}>
+          <NavLink className="app__nav-link" to={`/profile/${userAddress}`}>
             <span className="app__button--white">Go to Profile</span>
           </NavLink>
         </div>

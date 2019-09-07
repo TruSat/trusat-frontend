@@ -35,10 +35,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     return rangeData.map(obj => (
       <NavLink
         key={rangeData.indexOf(obj)}
-        style={{
-          color: "white",
-          textDecoration: "none"
-        }}
+        className="app__nav-link"
         to={`/object/${obj.object_norad_number}`}
       >
         <div className="table__row">

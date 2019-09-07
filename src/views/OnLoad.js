@@ -43,8 +43,8 @@ export default function OnLoad() {
         const wallet = new ethers.Wallet(privateKey);
 
         authDispatch({ type: "SET_BURNER", payload: wallet });
-        authDispatch({
-          type: "SET_ADDRESS",
+        userDispatch({
+          type: "SET_USER_ADDRESS",
           payload: wallet.signingKey.address
         });
         authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });

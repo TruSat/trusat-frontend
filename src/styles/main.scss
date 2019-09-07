@@ -12,6 +12,11 @@
 /* ----------
 APP
 ---------- */
+.app__nav-link {
+  color: $primary-text-color;
+  text-decoration: none;
+}
+
 .app__button--white {
   align-self: flex-start;
   background: $primary-text-color;
@@ -530,6 +535,12 @@ SIGN UP FORM
 }
 
 .email-form__link-to-login-wrapper {
+  margin-top: 1em;
+}
+
+.email-form__sign-up-text,
+.email-form__log-in-text {
+  text-decoration: underline;
   margin-top: 1em;
 }
 

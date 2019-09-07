@@ -50,7 +50,9 @@ export default function Info({ noradNumber }) {
         <h1>BACKGROUND</h1>
         <p>background = {objectInfo.object_background}</p>
         HOW TO SEE THIS SAT
-        <NavLink to="/how">Follow this tutorial</NavLink>
+        <NavLink className="app__nav-link" to="/how">
+          Follow this tutorial
+        </NavLink>
         <a href={`${objectInfo.heavens_above_url}`}>
           Deep link to Heavens Above
         </a>

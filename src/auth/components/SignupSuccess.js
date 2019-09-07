@@ -13,7 +13,7 @@ export default function SignupSuccess() {
         You can start by picking a username
       </p>
 
-      <NavLink to={`/profile/${userAddress}`}>
+      <NavLink className="app__nav-link" to={`/profile/${userAddress}`}>
         <span className="app__button--white">Go to Profile</span>
       </NavLink>
     </div>

@@ -135,7 +135,7 @@ export default function SignupForm() {
       />
 
       <div className="email-form__button-wrapper">
-        <NavLink style={{ textDecoration: "none", color: "white" }} to="/">
+        <NavLink className="app__nav-link" to="/">
           <span className="email-form__button--black">Cancel</span>
         </NavLink>
 
@@ -146,8 +146,8 @@ export default function SignupForm() {
 
       <div className="email-form__link-to-login-wrapper">
         <p>Already a member?</p>
-        <NavLink style={{ color: "white", marginTop: "1em" }} to="/login">
-          Log in
+        <NavLink className="app__nav-link" to="/login">
+          <p className="email-form__log-in-text">Log in</p>
         </NavLink>
       </div>
     </form>

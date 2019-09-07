@@ -6,11 +6,21 @@ export default function BurgerMenu(props) {
   return (
     // Pass on our props
     <Menu {...props}>
-      <NavLink to="/">Home</NavLink>
-      <NavLink to="/catalog">Catalog</NavLink>
-      <NavLink to="/profile">My Profile</NavLink>
-      <NavLink to="/about">About</NavLink>
-      <NavLink to="/how">How</NavLink>
+      <NavLink className="app__nav-link" to="/">
+        Home
+      </NavLink>
+      <NavLink className="app__nav-link" to="/catalog">
+        Catalog
+      </NavLink>
+      <NavLink className="app__nav-link" to="/profile">
+        My Profile
+      </NavLink>
+      <NavLink className="app__nav-link" to="/about">
+        About
+      </NavLink>
+      <NavLink className="app__nav-link" to="/how">
+        How
+      </NavLink>
     </Menu>
   );
 }

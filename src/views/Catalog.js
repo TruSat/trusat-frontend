@@ -31,16 +31,16 @@ export default function Catalog({ match }) {
             <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
           ) : null}
 
-          <NavLink style={{ color: "white" }} to="/submit">
+          <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button">Submit data</span>
           </NavLink>
 
           <div className="catalog__link-text-wrapper"></div>
           <NavLink className="catalog__link-text" to="/how">
-            How can I see these stats?
+            <p>How can I see these stats?</p>
           </NavLink>
-          <NavLink className="catalog__link-text" to="/how">
-            How are sats prioritized?
+          <NavLink to="/how">
+            <p className="catalog__link-text">How are sats prioritized?</p>
           </NavLink>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import React from "react";
 import { useUserState } from "../../user/user-context";
 import { withRouter } from "react-router-dom";
-import JoinButton from "../../auth/components/JoinButton";
+import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
@@ -111,9 +111,12 @@ function NavBar(props) {
         </NavLink>
       </div>
 
-      <NavLink to="/login">
-        <JoinButton />
-      </NavLink>
+      {/* Show Join button when user is not logged in */}
+      {!userAddress ? (
+        <NavLink className="app__nav-link" to="/login">
+          <JoinButton />
+        </NavLink>
+      ) : null}
     </div>
   );
 }

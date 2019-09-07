@@ -10,7 +10,7 @@ export default function SecuritySettings() {
         features it will unlock for you
       </p>
 
-      <NavLink to="/settings/security">
+      <NavLink className="app__nav-link" to="/settings/security">
         <span className="app__white-button--small">
           Secure your account with MetaMask
         </span>

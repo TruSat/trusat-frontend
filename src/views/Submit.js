@@ -167,7 +167,7 @@ export default function Submit() {
       </section>
 
       <section style={{ margin: "1em" }}>
-        <NavLink to="/catalog">
+        <NavLink className="app__nav-link" to="/catalog">
           <button>CANCEL</button>
         </NavLink>
         <button onClick={handleSubmit}>SUBMIT</button>

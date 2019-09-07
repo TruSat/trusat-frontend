@@ -14,7 +14,7 @@ export default function Profile() {
     return userData.objects_observed.map(obj => (
       <NavLink
         key={userData.objects_observed.indexOf(obj)}
-        style={{ color: "white", textDecoration: "none" }}
+        className="app__nav-link"
         to={`/object/${obj.object_norad_number}`}
       >
         <div className="table__row">
