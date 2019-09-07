@@ -8,8 +8,14 @@ export default function LoginOptions() {
       <div className="log-in-options__wrapper">
         <LoginForm />
         <div className="log-in-options__metamask-button-wrapper">
-          <p className="log-in-options__metamask-button-wrapper-text">Or:</p>
-          <MetaMask />
+          {window.ethereum ? (
+            <React.Fragment>
+              <p className="log-in-options__metamask-button-wrapper-text">
+                Or:
+              </p>
+              <MetaMask />
+            </React.Fragment>
+          ) : null}
         </div>
       </div>
     </React.Fragment>

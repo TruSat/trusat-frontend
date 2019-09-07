@@ -12,8 +12,14 @@ export default function LoginOptions() {
         <div className="sign-up-options__wrapper">
           <SignupForm />
           <div className="sign-up-options__metamask-button-wrapper">
-            <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
-            <MetaMask />
+            {window.ethereum ? (
+              <React.Fragment>
+                <p className="sign-up-options__metamask-button-wrapper-text">
+                  Or:
+                </p>
+                <MetaMask />
+              </React.Fragment>
+            ) : null}
           </div>
         </div>
       )}
