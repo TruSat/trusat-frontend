@@ -41,7 +41,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         <div className="table__row">
           <div className="table__badge-name-wrapper">
             <img
-              style={{ marginLeft: "-35px" }}
+              className="table__object-badge"
               src={ObjectBadge}
               alt="Object Badge"
             ></img>

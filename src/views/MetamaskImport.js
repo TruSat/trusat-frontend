@@ -84,16 +84,25 @@ export default function MetamaskImport() {
         it will unlock for you
       </h2>
       {/* STEP ONE */}
-      <h2
-        className={
-          step > 1
-            ? "metamask-import__step-header--done"
-            : "metamask-import__step-header--todo"
-        }
-      >
-        {step > 1 ? <img src={CircleCheck} alt="circled check"></img> : null}
-        Step 1: Get MetaMask
-      </h2>
+      <div className="metamask-import__step-header-wrapper">
+        {step > 1 ? (
+          <img
+            className="metamask-import__circle-check"
+            src={CircleCheck}
+            alt="circled check"
+          ></img>
+        ) : null}
+        <h2
+          className={
+            step > 1
+              ? "metamask-import__step-header--done"
+              : "metamask-import__step-header--todo"
+          }
+        >
+          Step 1: Get MetaMask
+        </h2>
+      </div>
+
       {step === 1 ? (
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
@@ -145,18 +154,28 @@ export default function MetamaskImport() {
       ) : null}
 
       {/* STEP TWO */}
+
       {step >= 2 ? (
-        <h2
-          className={
-            step > 2
-              ? "metamask-import__step-header--done"
-              : "metamask-import__step-header--todo"
-          }
-        >
-          {step > 2 ? <img src={CircleCheck} alt="circled check"></img> : null}
-          Step 2: Retrieve your secret
-        </h2>
+        <div className="metamask-import__step-header-wrapper">
+          {step > 2 ? (
+            <img
+              className="metamask-import__circle-check"
+              src={CircleCheck}
+              alt="circled check"
+            ></img>
+          ) : null}
+          <h2
+            className={
+              step > 2
+                ? "metamask-import__step-header--done"
+                : "metamask-import__step-header--todo"
+            }
+          >
+            Step 2: Retrieve your secret
+          </h2>
+        </div>
       ) : null}
+
       {step === 2 ? (
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
@@ -205,17 +224,26 @@ export default function MetamaskImport() {
 
       {/* STEP THREE */}
       {step >= 3 ? (
-        <h2
-          className={
-            step > 3
-              ? "metamask-import__step-header--done"
-              : "metamask-import__step-header--todo"
-          }
-        >
-          {step > 3 ? <img src={CircleCheck} alt="circled check"></img> : null}
-          Step 3: Transfer your private key
-        </h2>
+        <div className="metamask-import__step-header-wrapper">
+          {step > 3 ? (
+            <img
+              className="metamask-import__circle-check"
+              src={CircleCheck}
+              alt="circled check"
+            ></img>
+          ) : null}
+          <h2
+            className={
+              step > 3
+                ? "metamask-import__step-header--done"
+                : "metamask-import__step-header--todo"
+            }
+          >
+            Step 3: Transfer your private key
+          </h2>
+        </div>
       ) : null}
+
       {step === 3 ? (
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
@@ -240,7 +268,7 @@ export default function MetamaskImport() {
           </p>
           <p className="metamask-import__copy">3. Select "import account"</p>
           <p className="metamask-import__copy">4. Paste in your private key</p>
-          <div>
+          <div className="metamask-import__button-wrapper">
             <span
               className="app__black-button--small metamask-import__back-button"
               onClick={() => {
@@ -264,17 +292,26 @@ export default function MetamaskImport() {
 
       {/* STEP FOUR */}
       {step >= 4 ? (
-        <h2
-          className={
-            step > 4
-              ? "metamask-import__step-header--done"
-              : "metamask-import__step-header--todo"
-          }
-        >
-          {step > 4 ? <img src={CircleCheck} alt="circled check"></img> : null}
-          Step 4: Connect TruSat to MetaMask
-        </h2>
+        <div className="metamask-import__step-header-wrapper">
+          {step > 4 ? (
+            <img
+              className="metamask-import__circle-check"
+              src={CircleCheck}
+              alt="circled check"
+            ></img>
+          ) : null}
+          <h2
+            className={
+              step > 4
+                ? "metamask-import__step-header--done"
+                : "metamask-import__step-header--todo"
+            }
+          >
+            Step 4: Connect TruSat to MetaMask
+          </h2>
+        </div>
       ) : null}
+
       {step === 4 ? (
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
@@ -307,20 +344,28 @@ export default function MetamaskImport() {
       ) : null}
 
       {/* STEP FIVE */}
-      {step >= 5 ? (
-        <h2
-          className={
-            authType === "metamask"
-              ? "metamask-import__step-header--done"
-              : "metamask-import__step-header--todo"
-          }
-        >
+
+      {step >= 4 ? (
+        <div className="metamask-import__step-header-wrapper">
           {authType === "metamask" ? (
-            <img src={CircleCheck} alt="circled check"></img>
+            <img
+              className="metamask-import__circle-check"
+              src={CircleCheck}
+              alt="circled check"
+            ></img>
           ) : null}
-          Step 5: Sign message
-        </h2>
+          <h2
+            className={
+              authType === "metamask"
+                ? "metamask-import__step-header--done"
+                : "metamask-import__step-header--todo"
+            }
+          >
+            Step 5: Sign the message
+          </h2>
+        </div>
       ) : null}
+
       {step === 5 && authType !== "metamask" ? (
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">last step!</p>

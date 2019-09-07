@@ -244,6 +244,10 @@ TABLE
   text-decoration: none;
 }
 
+.table__object-badge {
+  margin-left: -35px;
+}
+
 .table__center-wrapper {
   // border: 1px solid red;
   display: flex;
@@ -730,7 +734,7 @@ SECURITY SETTINGS
 }
 
 /* ----------
-METAMAST IMPORT
+METAMASK IMPORT
 ---------- */
 .metamask-import__wrapper {
   margin: 3em 4em;
@@ -752,6 +756,10 @@ METAMAST IMPORT
   margin: 0.5em 0em 1em 0em;
 }
 
+.metamask-import__step-header-wrapper {
+  display: flex;
+}
+
 .metamask-import__step-header--todo {
   font-weight: bold;
   font-size: 32px;
@@ -763,6 +771,10 @@ METAMAST IMPORT
   font-weight: bold;
   font-size: 32px;
   line-height: 37px;
+}
+
+.metamask-import__circle-check {
+  margin-left: -1.3em;
 }
 
 .metamask-import__copy-wrapper {
@@ -782,7 +794,7 @@ METAMAST IMPORT
 }
 
 .metamask-import__button-wrapper {
-  margin: 1em 0;
+  margin: 2em 0;
 }
 
 .metamask-import__link-text--black {
