@@ -13,8 +13,8 @@ import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
-import MetamaskImport from "./views/MetamaskImport";
 import BurgerMenu from "./app/components/BurgerMenu";
+import MetamaskImport from "./views/MetamaskImport";
 import OnLoad from "./views/OnLoad";
 
 export default function App() {
@@ -32,7 +32,7 @@ export default function App() {
           <Route path="/object/:number" component={ObjectInfo} />
           <Route path="/profile/:address" component={Profile} />
           <Route exact path="/settings" component={AccountSettings} />
-          <Route path="/settings/security" component={MetamaskImport} />
+          <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/about" component={About} />
           <Route path="/how" component={HowTo} />
           <Route path="/login" component={LogIn} />

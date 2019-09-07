@@ -6,6 +6,7 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";
 import CircleCheck from "../assets/CircleCheck.svg";
+import { NavLink } from "react-router-dom";
 
 export default function MetamaskImport() {
   const [step, setStep] = useState(1);
@@ -72,8 +73,17 @@ export default function MetamaskImport() {
 
   return (
     <section className="metamask-import__wrapper">
+      <NavLink className="app__nav-link" to="/settings">
+        <p className="metamask-import__link-to-account-text">
+          Account Settings
+        </p>
+      </NavLink>
+      <h1 className="metamask-import__main-header">CONNECT TO METAMASK</h1>
+      <h2 className="metamask-import__sub-header">
+        Call to action for why you'd want to connect a wallet, and what benefits
+        it will unlock for you
+      </h2>
       {/* STEP ONE */}
-      {/* TODO - do not show step one if they have already installed metamask */}
       <h2
         className={
           step > 1

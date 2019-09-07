@@ -733,7 +733,23 @@ SECURITY SETTINGS
 METAMAST IMPORT
 ---------- */
 .metamask-import__wrapper {
-  margin-top: 1em;
+  margin: 3em 4em;
+}
+
+.metamask-import__link-to-account-text {
+  color: #a5a5a5;
+  font-size: 12px;
+  line-height: 133%;
+}
+
+.metamask-import__main-header {
+  @include header1-text;
+}
+
+.metamask-import__sub-header {
+  font-size: 32px;
+  line-height: 133%;
+  margin: 0.5em 0em 1em 0em;
 }
 
 .metamask-import__step-header--todo {
