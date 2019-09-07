@@ -464,7 +464,7 @@ SIGN UP OPTIONS
 }
 
 /* ----------
-SIGN UP FORM 
+EMAIL FORM 
 ---------- */
 .email-form {
   display: flex;
@@ -757,4 +757,67 @@ METAMAST IMPORT
 .metamask-import__copy {
   font-size: 24px;
   line-height: 133%;
+  margin: 0.5em 0;
+}
+
+.metamask-import__link-text--white {
+  color: $primary-text-color;
+  text-decoration: none;
+}
+
+.metamask-import__button-wrapper {
+  margin: 1em 0;
+}
+
+.metamask-import__link-text--black {
+  color: $primary-theme-color;
+  text-decoration: none;
+}
+
+.metamask-import__back-button {
+  margin-right: 1em;
+}
+
+.metamask-import__private-key-wrapper {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  padding: 1em;
+}
+
+.metamas-import__private-key-text {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 23px;
+}
+
+/* ----------
+SECRET FORM
+---------- */
+.secret-form__wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.secret-form__label {
+  color: #afafaf;
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.5em;
+}
+
+.secret-form__input {
+  border: 1px solid #ffffff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  align-self: flex-start;
+  background: black;
+  box-sizing: border-box;
+  color: $primary-text-color;
+  margin-bottom: 1em;
+  padding: 1em;
+  width: 100%;
 }

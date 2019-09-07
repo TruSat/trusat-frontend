@@ -91,8 +91,19 @@ export default function MetamaskImport() {
             extension that acts as a secure vault for your private and valuable
             information stored on the blockchain
           </p>
-          <span className="app__black-button--small">
+          <span
+            className={
+              window.ethereum
+                ? "app__black-button--small"
+                : "app__white-button--small"
+            }
+          >
             <a
+              className={
+                window.ethereum
+                  ? "metamask-import__link-text--white"
+                  : "metamask-import__link-text--black"
+              }
               href="https://metamask.io"
               target="_blank"
               rel="noopener noreferrer"
@@ -143,34 +154,42 @@ export default function MetamaskImport() {
             emailed you when you first signed up for TruSat and the password you
             created for your account
           </p>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <label>
-              SECRET
-              <input
-                type="text"
-                value={secret}
-                onChange={event => setSecret(event.target.value)}
-              ></input>
-            </label>
-            <label>
-              PASSWORD
-              <input
-                type="password"
-                value={password}
-                onChange={event => setPassword(event.target.value)}
-              ></input>
-            </label>
+          <div className="secret-form__wrapper">
+            <label className="secret-form__label">SECRET</label>
+            <input
+              className="secret-form__input"
+              type="text"
+              value={secret}
+              onChange={event => setSecret(event.target.value)}
+            ></input>
+            <label className="secret-form__label">PASSWORD</label>
+            <input
+              className="secret-form__input"
+              type="password"
+              value={password}
+              onChange={event => setPassword(event.target.value)}
+            ></input>
           </div>{" "}
           {/* TODO - next button will decrypt the secret and return private key, then mpve to step 3 */}
-          <span
-            className="app__white-button--small"
-            onClick={() => {
-              setPrivateKey(decryptSecret(secret, password));
-              setStep(3);
-            }}
-          >
-            NEXT
-          </span>
+          <div className="metamask-import__button-wrapper">
+            <span
+              className="app__black-button--small metamask-import__back-button"
+              onClick={() => {
+                setStep(1);
+              }}
+            >
+              BACK
+            </span>
+            <span
+              className="app__white-button--small"
+              onClick={() => {
+                setPrivateKey(decryptSecret(secret, password));
+                setStep(3);
+              }}
+            >
+              NEXT
+            </span>
+          </div>
         </div>
       ) : null}
 
@@ -195,8 +214,8 @@ export default function MetamaskImport() {
           <p className="metamask-import__copy">1. Copy your private key:</p>
           {/* TODO - this needs to obscure the private key until they click it, then
           offer ability to copy it with a click */}
-          <div style={{ display: "flex" }}>
-            <p>{privateKey}</p>
+          <div className="metamask-import__private-key-wrapper">
+            <p className="metamask-import__private-key-text">{privateKey}</p>
             <button
               onClick={() => {
                 navigator.clipboard.writeText(privateKey);
@@ -211,15 +230,25 @@ export default function MetamaskImport() {
           </p>
           <p className="metamask-import__copy">3. Select "import account"</p>
           <p className="metamask-import__copy">4. Paste in your private key</p>
-          <span
-            className="app__white-button--small"
-            onClick={async () => {
-              window.ethereum.enable().catch(console.error);
-              setStep(4);
-            }}
-          >
-            I've imported my private key to MetaMask
-          </span>
+          <div>
+            <span
+              className="app__black-button--small metamask-import__back-button"
+              onClick={() => {
+                setStep(2);
+              }}
+            >
+              BACK
+            </span>
+            <span
+              className="app__white-button--small"
+              onClick={async () => {
+                window.ethereum.enable().catch(console.error);
+                setStep(4);
+              }}
+            >
+              I've imported my private key to MetaMask
+            </span>
+          </div>
         </div>
       ) : null}
 
@@ -245,15 +274,25 @@ export default function MetamaskImport() {
             may be already connected and can proceed to next step.
           </p>
           {/* // TODO - this button needs to pop metamask up to show the sign message request */}
-          <span
-            className="app__white-button--small"
-            onClick={() => {
-              handleMessageSign();
-              setStep(5);
-            }}
-          >
-            I've confirmed connection in MetaMask
-          </span>
+          <div className="metamask-import__button-wrapper">
+            <span
+              className="app__black-button--small metamask-import__back-button"
+              onClick={() => {
+                setStep(3);
+              }}
+            >
+              BACK
+            </span>
+            <span
+              className="app__white-button--small"
+              onClick={() => {
+                handleMessageSign();
+                setStep(5);
+              }}
+            >
+              I've confirmed connection in MetaMask
+            </span>
+          </div>
         </div>
       ) : null}
 
@@ -286,11 +325,16 @@ export default function MetamaskImport() {
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
             Congrats you have now successfully migrated your account to MetaMask
-            and signed in! From now, choose the option to sign in to TruSat
-            using the MetaMask option. Its will be as simple as signing a
-            message to verify your identity from now on! If you wish to take
-            your TruSat identity with you to other browsers, you can read more
-            on our FAQ page
+            and signed in!
+          </p>
+          <p className="metamask-import__copy">
+            In future, choose the option to sign in to TruSat using the MetaMask
+            option. Its will be as simple as signing a message to verify your
+            identity from now on!
+          </p>
+          <p className="metamask-import__copy">
+            If you wish to take your TruSat identity with you to other browsers,
+            you can read more on our FAQ page
           </p>
         </div>
       ) : null}
