@@ -6,15 +6,12 @@ import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { renderFlag } from "../../app/helpers";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
-  // const { jwt } = useAuthState();
   const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
     setShowTable(false);
     if (catalogFilter) {
-      // TODO - ask Kenan should this be a post request, sending JWT?
-      // Or are we avoiding persinalized catalog for now?
       axios
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
