@@ -929,6 +929,7 @@ OBJECT OBSERVATIONS NAV
 
 .object-observations__filter-table-wrapper {
   display: inline-block;
+  margin-bottom: 3em;
 }
 
 .object-observations__nav {
@@ -1031,7 +1032,6 @@ HISTORY YEAR DROPDOWN
 ----------- */
 .history-year-dropdown {
   border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 2em;
 }
 
 .history-year-dropdown__row {
