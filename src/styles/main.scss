@@ -931,22 +931,42 @@ OBJECT OBSERVATIONS NAV
   align-items: center;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 1em;
 }
 
-.object-observations__nav-link-wrapper {
+.object-observations__nav-links-wrapper {
   display: flex;
 }
 
-.object-observations__nav-link {
+.object-observations__nav-link-wrapper--lowlight {
+  border-bottom: 3px solid $primary-theme-color;
+  padding-bottom: 0.5em;
+  margin-right: 2em;
+}
+
+.object-observations__nav-link-wrapper--highlight {
+  border-bottom: 3px solid $primary-text-color;
+  padding-bottom: 0.5em;
+  margin-right: 2em;
+}
+
+.object-observations__nav-link--lowlight {
   color: #afafaf;
   font-size: 16px;
   line-height: 19px;
-  margin-right: 2em;
+
   text-decoration-line: underline;
 }
 
-.object-observations__nav-link:hover {
+.object-observations__nav-link--highlight {
+  color: $primary-text-color;
+  font-size: 16px;
+  line-height: 19px;
+
+  text-decoration-line: underline;
+}
+
+.object-observations__nav-link--lowlight:hover,
+.object-observations__nav-link--hightlight:hover {
   cursor: pointer;
 }
 

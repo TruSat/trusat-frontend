@@ -3,15 +3,25 @@ import DownloadObjectTleButton from "./DownloadObjectTleButton";
 import { useObjectsState, useObjectsDispatch } from "../objects-context";
 
 export default function ObservationsFilter() {
-  const { observationFilter } = useObjectsState;
+  const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
 
   return (
     <section className="object-observations__nav">
-      <div className="object-observations__nav-link-wrapper">
-        <div>
+      <div className="object-observations__nav-links-wrapper">
+        <div
+          className={
+            observationFilter === "influence"
+              ? "object-observations__nav-link-wrapper--highlight"
+              : "object-observations__nav-link-wrapper--lowlight"
+          }
+        >
           <span
-            className="object-observations__nav-link"
+            className={
+              observationFilter === "influence"
+                ? "object-observations__nav-link--highlight"
+                : "object-observations__nav-link--lowlight"
+            }
             onClick={() =>
               objectsDispatch({
                 type: "SET_OBSERVATION_FILTER",
@@ -23,9 +33,19 @@ export default function ObservationsFilter() {
           </span>
         </div>
 
-        <div>
+        <div
+          className={
+            observationFilter === "history"
+              ? "object-observations__nav-link-wrapper--highlight"
+              : "object-observations__nav-link-wrapper--lowlight"
+          }
+        >
           <span
-            className="object-observations__nav-link"
+            className={
+              observationFilter === "history"
+                ? "object-observations__nav-link--highlight"
+                : "object-observations__nav-link--lowlight"
+            }
             onClick={() =>
               objectsDispatch({
                 type: "SET_OBSERVATION_FILTER",
@@ -37,9 +57,19 @@ export default function ObservationsFilter() {
           </span>
         </div>
 
-        <div>
+        <div
+          className={
+            observationFilter === "mySightings"
+              ? "object-observations__nav-link-wrapper--highlight"
+              : "object-observations__nav-link-wrapper--lowlight"
+          }
+        >
           <span
-            className="object-observations__nav-link"
+            className={
+              observationFilter === "mySightings"
+                ? "object-observations__nav-link--highlight"
+                : "object-observations__nav-link--lowlight"
+            }
             onClick={() =>
               objectsDispatch({
                 type: "SET_OBSERVATION_FILTER",
