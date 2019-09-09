@@ -965,7 +965,6 @@ OBJECT OBSERVATIONS NAV
   color: $primary-text-color;
   font-size: 16px;
   line-height: 19px;
-
   text-decoration-line: underline;
 }
 
@@ -1030,10 +1029,13 @@ OBJECT INFLUENCE TABLE
 /* ----------
 HISTORY YEAR DROPDOWN 
 ----------- */
+.history-year-dropdown {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 2em;
+}
+
 .history-year-dropdown__row {
-  border: 1px solid #363636;
-  border-left: none;
-  border-right: none;
+  border-top: 1px solid $primary-text-color;
   padding: 0.5em 0;
 }
 
@@ -1052,14 +1054,13 @@ HISTORY YEAR DROPDOWN
 HISTROY MONTH DROPDOWN
 ---------- */
 .history-month-dropdown {
+  border-bottom: 1px solid #363636;
   display: flex;
   flex-direction: column;
 }
 
 .history-month-dropdown__row {
-  border: 1px solid #363636;
-  border-left: none;
-  border-right: none;
+  border-top: 1px solid #363636;
   padding: 0.5em 0;
 }
 
