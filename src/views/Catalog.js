@@ -29,19 +29,15 @@ export default function Catalog({ match }) {
       <Astriagraph />
       <h1 className="catalog__header">CATALOG</h1>
       <CatalogNavDropdown />
-      <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
+      <CatalogNavBar setRange={setRange} />
       <section className="catalog__content-wrapper">
         <div className="catalog__description-table-wrapper">
-          <FilterDescription catalogFilter={catalogFilter} />
-          <CatalogTable
-            catalogFilter={catalogFilter}
-            range={range}
-            setRange={setRange}
-          />
+          <FilterDescription />
+          <CatalogTable range={range} setRange={setRange} />
         </div>
         <div className="catalog__button-link-wrapper">
           {catalogFilter === "priorities" || catalogFilter === "all" ? (
-            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+            <DownloadCatalogFilterTleButton />
           ) : null}
 
           <NavLink className="app__nav-link" to="/submit">

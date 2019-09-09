@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useCatalogState } from "../catalog-context";
 
-export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
+export default function DownloadCatalogFilterTleButton() {
+  const { catalogFilter } = useCatalogState();
   const [tleString, setTleString] = useState("");
 
   useEffect(() => {
