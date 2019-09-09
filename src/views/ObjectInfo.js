@@ -26,7 +26,13 @@ export default function ObjectInfo({ match }) {
       )
       .then(result => {
         console.log(result.data);
+        objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
         objectsDispatch({ type: "SET_OBJECT_INFO", payload: result.data });
+        objectsDispatch({
+          type: "SET_OBJECT_ORIGIN",
+          payload: result.data.object_origin
+        });
+
         setShowObjectView(true);
       })
       .catch(err => console.log(err));
@@ -36,21 +42,15 @@ export default function ObjectInfo({ match }) {
     <div className="object__wrapper">
       <Astriagraph />
 
-      <Info noradNumber={noradNumber} />
+      <Info />
 
       <h1 className="object-observations__header">OBSERVATIONS</h1>
 
-      <ObservationsFilter noradNumber={noradNumber} />
+      <ObservationsFilter />
 
-      {observationFilter === "influence" ? (
-        <InfluenceTable noradNumber={noradNumber} />
-      ) : null}
-      {observationFilter === "history" ? (
-        <HistoryYearDropdown noradNumber={noradNumber} />
-      ) : null}
-      {observationFilter === "mySightings" ? (
-        <UserSightingsTable noradNumber={noradNumber} />
-      ) : null}
+      {observationFilter === "influence" ? <InfluenceTable /> : null}
+      {observationFilter === "history" ? <HistoryYearDropdown /> : null}
+      {observationFilter === "mySightings" ? <UserSightingsTable /> : null}
     </div>
   ) : null;
 }

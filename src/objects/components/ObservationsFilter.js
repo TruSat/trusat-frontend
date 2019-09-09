@@ -2,7 +2,7 @@ import React from "react";
 import DownloadObjectTleButton from "./DownloadObjectTleButton";
 import { useObjectsState, useObjectsDispatch } from "../objects-context";
 
-export default function ObservationsFilter({ noradNumber }) {
+export default function ObservationsFilter() {
   const { observationFilter } = useObjectsState;
   const objectsDispatch = useObjectsDispatch();
 
@@ -52,7 +52,7 @@ export default function ObservationsFilter({ noradNumber }) {
         </div>
       </div>
 
-      <DownloadObjectTleButton noradNumber={noradNumber} />
+      <DownloadObjectTleButton />
     </section>
   );
 }

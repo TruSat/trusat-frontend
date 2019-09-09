@@ -1,11 +1,7 @@
 import React, { useState } from "react";
 import HistoryMonthTable from "./HistoryMonthTable";
 
-export default function HistoryMonthDropdown({
-  noradNumber,
-  objectOrigin,
-  yearNumber
-}) {
+export default function HistoryMonthDropdown({ yearNumber }) {
   const [monthChosen, setMonthChosen] = useState("April");
 
   const months = [
@@ -28,17 +24,20 @@ export default function HistoryMonthDropdown({
       {months.map(month => {
         return (
           <div key={month.name} className="history-month-dropdown__row">
-            <h1
-              onClick={() => {
-                setMonthChosen(month.name);
-              }}
-            >
-              <p className="history-month-dropdown__month-text">{month.name}</p>
-            </h1>
+            {monthChosen === month.name ? null : (
+              <h1
+                onClick={() => {
+                  setMonthChosen(month.name);
+                }}
+              >
+                <p className="history-month-dropdown__month-text">
+                  {month.name}
+                </p>
+              </h1>
+            )}
+
             {monthChosen === month.name ? (
               <HistoryMonthTable
-                noradNumber={noradNumber}
-                objectOrigin={objectOrigin}
                 yearNumber={yearNumber}
                 monthName={month.name}
                 monthNumber={month.number}

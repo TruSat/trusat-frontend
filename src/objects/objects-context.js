@@ -8,6 +8,9 @@ function objectsReducer(state, action) {
     case "SET_NORAD_NUMBER": {
       return { ...state, noradNumber: action.payload };
     }
+    case "SET_OBJECT_ORIGIN": {
+      return { ...state, objectOrigin: action.payload };
+    }
     case "SET_OBJECT_INFO": {
       return { ...state, objectInfo: action.payload };
     }
@@ -23,6 +26,7 @@ function objectsReducer(state, action) {
 function ObjectsProvider({ children }) {
   const [state, dispatch] = React.useReducer(objectsReducer, {
     noradNumber: "",
+    objectOrigin: "",
     objectInfo: {},
     observationFilter: "history"
   });

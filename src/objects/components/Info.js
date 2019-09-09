@@ -4,8 +4,8 @@ import ObjectBadgeLarge from "../../assets/ObjectBadgeLarge.svg";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers";
 
-export default function Info({ noradNumber }) {
-  const { objectInfo } = useObjectsState();
+export default function Info() {
+  const { noradNumber, objectInfo } = useObjectsState();
 
   return (
     <React.Fragment>

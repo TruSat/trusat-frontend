@@ -2,10 +2,12 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useUserState } from "../../user/user-context";
+import { useObjectsState } from "../objects-context";
 
-export default function UserSightingsTable({ noradNumber, objectOrigin }) {
+export default function UserSightingsTable() {
   const { jwt } = useAuthState();
   const { userAddress } = useUserState();
+  const { noradNumber, objectOrigin } = useObjectsState();
   const [objectUserSightings, setObjectUserSightings] = useState([]);
   const [showTable, setShowTable] = useState(false);
 
@@ -45,7 +47,7 @@ export default function UserSightingsTable({ noradNumber, objectOrigin }) {
           return (
             <tr key={objectUserSightings.indexOf(obj)}>
               <td>{obj.observation_time}</td>
-              <td>{obj.object_origin}</td>
+              <td>{objectOrigin}</td>
               <td>{obj.user_location}</td>
               <td>{obj.username}</td>
               <td>{obj.observation_quality}</td>

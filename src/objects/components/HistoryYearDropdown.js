@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import HistoryMonthDropdown from "./HistoryMonthDropdown";
 
-export default function HistoryTable({ noradNumber, objectOrigin }) {
+export default function HistoryTable() {
   const [yearChosen, setYearChosen] = useState("2019");
   const [showMonthDropdown, setShowMonthDropdown] = useState(true);
 
@@ -30,11 +30,7 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
             <p className="history-year-dropdown__year-text">{year}</p>
           </h1>
           {yearChosen === year && showMonthDropdown === true ? (
-            <HistoryMonthDropdown
-              objectOrigin={objectOrigin}
-              noradNumber={noradNumber}
-              yearNumber={yearChosen}
-            />
+            <HistoryMonthDropdown yearNumber={yearChosen} />
           ) : null}
         </div>
       );

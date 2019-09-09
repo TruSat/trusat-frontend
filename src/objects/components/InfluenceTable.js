@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { renderFlag } from "../../app/helpers";
+import { useObjectsState } from "../objects-context";
 
-export default function InfluenceTable({ noradNumber }) {
+export default function InfluenceTable() {
+  const { noradNumber } = useObjectsState();
   const [showTable, setShowTable] = useState(false);
   const [objectInfluence, setObjectInfluence] = useState([]);
 

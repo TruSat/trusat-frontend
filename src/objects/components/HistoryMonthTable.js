@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { renderFlag } from "../../app/helpers";
+import { useObjectsState } from "../objects-context";
 
 export default function HistoryMonthTable({
-  noradNumber,
   yearNumber,
   monthName,
   monthNumber
 }) {
+  const { noradNumber } = useObjectsState();
   const [showTable, setShowTable] = useState(false);
   const [objectHistory, setObjectHistory] = useState([]);
 
@@ -37,12 +39,16 @@ export default function HistoryMonthTable({
           className="history-month-table__body-row"
         >
           <td>{day.date}</td>
-          <td>{observation.object_or}</td>
+          <td>{renderFlag(observation.object_origin)}</td>
           <td>{observation.user_location}</td>
-          <td>{observation.username}</td>
+          <td>
+            {observation.username
+              ? observation.username
+              : observation.user_address}
+          </td>
           <td>{observation.observation_quality}</td>
           <td>{observation.observation_time_difference}</td>
-          <td>{observation.observation_weight}</td>
+          <td>{observation.observation_weight}%</td>
         </tr>
       ));
     });

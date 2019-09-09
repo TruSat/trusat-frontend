@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useObjectsState } from "../objects-context";
 
-export default function DownloadObjectTleButton({ noradNumber }) {
+export default function DownloadObjectTleButton() {
+  const { noradNumber } = useObjectsState();
   const [tleString, setTleString] = useState("");
 
   useEffect(() => {
