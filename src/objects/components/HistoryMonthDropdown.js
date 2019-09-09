@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HistoryMonthTable from "./HistoryMonthTable";
 
 export default function HistoryMonthDropdown({ yearNumber }) {
-  const [monthChosen, setMonthChosen] = useState("April");
+  const [monthChosen, setMonthChosen] = useState("");
 
   const months = [
     { name: "JAN", number: 1 },
