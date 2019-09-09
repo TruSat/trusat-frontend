@@ -5,7 +5,6 @@ import { ethers } from "ethers";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import { useUserDispatch } from "./user/user-context";
-import { useCatalogDispatch } from "./catalog/catalog-context";
 import { ObjectsProvider } from "./objects/objects-context";
 import NavBar from "./app/components/NavBar";
 import Catalog from "./views/Catalog";
@@ -24,7 +23,6 @@ import MetamaskImport from "./views/MetamaskImport";
 export default function App() {
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
-  const catalogDispatch = useCatalogDispatch();
 
   useEffect(() => {
     // get jwt from local storage
@@ -72,17 +70,7 @@ export default function App() {
     if (localStorage.getItem("trusat-jwt")) {
       retrieveJwt();
     }
-
-    // get data for catalog view, passing in default of "priorities"
-    axios
-      .get(`https://api.consensys.space:8080/catalog/priorities`)
-      .then(result => {
-        catalogDispatch({ type: "SET_CATALOG_DATA", payload: result.data });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  }, [authDispatch, userDispatch, catalogDispatch]);
+  }, [authDispatch, userDispatch]);
 
   return (
     <Router>

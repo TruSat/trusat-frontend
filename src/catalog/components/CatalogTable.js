@@ -13,18 +13,16 @@ export default function CatalogTable({ range, setRange }) {
 
   useEffect(() => {
     setShowTable(false);
-    if (catalogFilter) {
-      axios
-        .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
-        .then(result => {
-          setTableData(result.data);
-          setShowTable(true);
-        })
-        .catch(err => {
-          console.log(err);
-          setTableData([]);
-        });
-    }
+    axios
+      .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
+      .then(result => {
+        setTableData(result.data);
+        setShowTable(true);
+      })
+      .catch(err => {
+        console.log(err);
+        setTableData([]);
+      });
   }, [catalogFilter, setTableData]);
 
   const renderCatalogTable = () => {

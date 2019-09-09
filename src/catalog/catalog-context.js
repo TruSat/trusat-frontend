@@ -19,8 +19,7 @@ function catalogReducer(state, action) {
 
 function CatalogProvider({ children }) {
   const [state, dispatch] = React.useReducer(catalogReducer, {
-    catalogFilter: "priorities",
-    catalogData: []
+    catalogFilter: "priorities"
   });
 
   return (
