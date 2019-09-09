@@ -34,11 +34,7 @@ export default function DownloadObjectTleButton({ noradNumber }) {
   // only show download option if system can find a TLE for this object
   return tleString ? (
     <a
-      style={{
-        border: "1px solid #5F5F5F",
-        display: "inline-block",
-        padding: "0.5em"
-      }}
+      className="object-observation__get-data-link "
       href={downloadTles()}
       download={`trusat_${noradNumber}.txt`}
     >

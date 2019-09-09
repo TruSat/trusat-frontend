@@ -19,7 +19,7 @@ export const renderFlag = code => {
         <img
           key={sharedCode}
           className="catalog-table__small-text"
-          src={`https://www.countryflags.io/${sharedCode}/flat/32.png`}
+          src={`https://www.countryflags.io/${sharedCode}/flat/16.png`}
           alt={`${sharedCode} flag `}
         />
       );

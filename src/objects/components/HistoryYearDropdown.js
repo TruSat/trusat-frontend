@@ -20,14 +20,14 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
 
     return years.map(year => {
       return (
-        <div key={year} style={{ border: "1px solid red" }}>
+        <div key={year} className="history-year-dropdown__row">
           <h1
             onClick={() => {
               setYearChosen(year);
               setShowMonthDropdown(!showMonthDropdown);
             }}
           >
-            {year}
+            <p className="history-year-dropdown__year-text">{year}</p>
           </h1>
           {yearChosen === year && showMonthDropdown === true ? (
             <HistoryMonthDropdown
@@ -41,5 +41,5 @@ export default function HistoryTable({ noradNumber, objectOrigin }) {
     });
   };
 
-  return <section style={{ margin: "1em" }}>{renderYearChoices()}</section>;
+  return <section>{renderYearChoices()}</section>;
 }

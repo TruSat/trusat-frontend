@@ -928,10 +928,14 @@ OBJECT OBSERVATIONS NAV
 }
 
 .object-observations__nav {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
 }
 
 .object-observations__nav-link-wrapper {
-  margin-bottom: 1em;
+  display: flex;
 }
 
 .object-observations__nav-link {
@@ -946,6 +950,14 @@ OBJECT OBSERVATIONS NAV
   cursor: pointer;
 }
 
+.object-observation__get-data-link {
+  color: #afafaf;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: right;
+  text-decoration-line: underline;
+}
+
 /* ----------
 OBJECT INFLUENCE TABLE
 ---------- */
@@ -958,9 +970,6 @@ OBJECT INFLUENCE TABLE
   border-right: none;
 }
 
-.object-influence-table__header-row {
-}
-
 .object-influence-table__header-row th {
   color: #919191;
   font-size: $small-font-size;
@@ -969,16 +978,10 @@ OBJECT INFLUENCE TABLE
   text-align: left;
 }
 
-.object-influence-table__body {
-  border-top: 1px solid #363636;
-  border-bottom: 1px solid #363636;
-}
-
 .object-influence-table__body-row td {
   font-size: 12px;
   line-height: 27px;
   padding-right: 2em;
-  vertical-align: middle;
 }
 
 /* ----------
@@ -1021,6 +1024,27 @@ SUBMIT
   font-size: 18px;
   line-height: 21px;
   text-decoration-line: underline;
+}
+
+/* ----------
+HISTORY YEAR DROPDOWN 
+----------- */
+.history-year-dropdown__row {
+  border: 1px solid #363636;
+  border-left: none;
+  border-right: none;
+  padding: 0.5em 0;
+}
+
+.history-year-dropdown__row:hover {
+  cursor: pointer;
+}
+
+.history-year-dropdown__year-text {
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.04em;
+  line-height: 19px;
 }
 
 /* ----------

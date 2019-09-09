@@ -5,8 +5,14 @@ const ObjectsDispatchContext = React.createContext();
 
 function objectsReducer(state, action) {
   switch (action.type) {
+    case "SET_NORAD_NUMBER": {
+      return { ...state, noradNumber: action.payload };
+    }
     case "SET_OBJECT_INFO": {
       return { ...state, objectInfo: action.payload };
+    }
+    case "SET_OBSERVATION_FILTER": {
+      return { ...state, observationFilter: action.payload };
     }
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
@@ -16,7 +22,9 @@ function objectsReducer(state, action) {
 
 function ObjectsProvider({ children }) {
   const [state, dispatch] = React.useReducer(objectsReducer, {
-    objectInfo: {}
+    noradNumber: "",
+    objectInfo: {},
+    observationFilter: "history"
   });
 
   return (
