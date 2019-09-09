@@ -6,9 +6,22 @@ import CatalogTable from "../catalog/components/CatalogTable";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
 import FilterDescription from "../catalog/components/FilterDescription";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
+import {
+  useCatalogState,
+  useCatalogDispatch
+} from "../catalog/catalog-context";
 
 export default function Catalog({ match }) {
-  const catalogFilter = match.params.catalogFilter;
+  const { catalogFilter } = useCatalogState();
+  const catalogDispatch = useCatalogDispatch();
+
+  if (match.params.catalogFilter !== catalogFilter) {
+    catalogDispatch({
+      type: "SET_CATALOG_FILTER",
+      payload: match.params.catalogFilter
+    });
+  }
+
   const [range, setRange] = useState({ start: 0, end: 20 });
 
   return (

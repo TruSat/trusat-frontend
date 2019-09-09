@@ -1,11 +1,13 @@
 import React from "react";
 import { useUserState } from "../../user/user-context";
+import { useCatalogState } from "../../catalog/catalog-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
   const { userAddress } = useUserState();
+  const { catalogFilter } = useCatalogState();
 
   return (
     <div className="nav-bar">
@@ -45,7 +47,7 @@ function NavBar(props) {
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
-          to="/catalog/priorities"
+          to={`/catalog/${catalogFilter}`}
         >
           CATALOG
         </NavLink>

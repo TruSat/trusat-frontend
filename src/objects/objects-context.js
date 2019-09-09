@@ -28,7 +28,7 @@ function ObjectsProvider({ children }) {
     noradNumber: "",
     objectOrigin: "",
     objectInfo: {},
-    observationFilter: "history"
+    observationFilter: "influence"
   });
 
   return (

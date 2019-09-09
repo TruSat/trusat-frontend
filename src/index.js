@@ -3,13 +3,16 @@ import ReactDOM from "react-dom";
 import "./styles/main.scss";
 import { AuthProvider } from "../src/auth/auth-context";
 import { UserProvider } from "../src/user/user-context";
+import { CatalogProvider } from "../src/catalog/catalog-context";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <AuthProvider>
     <UserProvider>
-      <App />
+      <CatalogProvider>
+        <App />
+      </CatalogProvider>
     </UserProvider>
   </AuthProvider>,
 

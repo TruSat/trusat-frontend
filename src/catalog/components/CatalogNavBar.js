@@ -1,7 +1,11 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
+import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
-function CatalogNavBar({ catalogFilter, setRange, history }) {
+function CatalogNavBar({ setRange, history }) {
+  const { catalogFilter } = useCatalogState();
+  const catalogDispatch = useCatalogDispatch();
+
   return (
     <div className="catalog-nav-bar__wrapper">
       <span
@@ -12,6 +16,10 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
+          catalogDispatch({
+            type: "SET_CATALOG_FILTER",
+            payload: "priorities"
+          });
           history.push("/catalog/priorities");
         }}
       >
@@ -26,6 +34,10 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
+          catalogDispatch({
+            type: "SET_CATALOG_FILTER",
+            payload: "undisclosed"
+          });
           history.push("/catalog/undisclosed");
         }}
       >
@@ -40,6 +52,10 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
+          catalogDispatch({
+            type: "SET_CATALOG_FILTER",
+            payload: "debris"
+          });
           history.push("/catalog/debris");
         }}
       >
@@ -54,6 +70,10 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
+          catalogDispatch({
+            type: "SET_CATALOG_FILTER",
+            payload: "latest"
+          });
           history.push("/catalog/latest");
         }}
       >
@@ -68,6 +88,10 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 20 });
+          catalogDispatch({
+            type: "SET_CATALOG_FILTER",
+            payload: "all"
+          });
           history.push("/catalog/all");
         }}
       >
