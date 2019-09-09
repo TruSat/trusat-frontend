@@ -35,13 +35,13 @@ export default function UserSightingsTable() {
     <table className="user-sightings-table">
       <thead className="user-sightings-table__header">
         <tr className="user-sightings-table__header-row">
-          <th>DATE</th>
+          <th className="user-sightings-table__header-text">DATE</th>
           <th />
           <th />
-          <th>USER</th>
-          <th>QUAlITY</th>
-          <th>TIME DIFF</th>
-          <th>WEIGHT</th>
+          <th className="user-sightings-table__header-text">USER</th>
+          <th className="user-sightings-table__header-text">QUAlITY</th>
+          <th className="user-sightings-table__header-text">TIME DIFF</th>
+          <th className="user-sightings-table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody>

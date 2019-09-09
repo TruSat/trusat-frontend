@@ -970,10 +970,18 @@ OBJECT INFLUENCE TABLE
   border-right: none;
 }
 
-.object-influence-table__header-row th {
+.object-influence-table__header-text {
   color: #919191;
   font-size: $small-font-size;
-  padding: 0.5em 1em 0.5em 0em;
+  padding: 0.5em 2em 0.5em 0em;
+  padding-left: 0;
+  text-align: left;
+}
+
+.object-influence-table__header-weight-text {
+  color: #919191;
+  font-size: $small-font-size;
+  padding-right: none;
   padding-left: 0;
   text-align: left;
 }
@@ -1062,7 +1070,7 @@ HISTORY MONTH TABLE
   font-size: $small-font-size;
   padding: 0.5em;
   text-align: left;
-  padding: 0.5em 1em 0.5em 0em;
+  padding: 0.5em 2em 0.5em 0em;
 }
 
 .history-month-table__header-weight-text {
@@ -1096,11 +1104,17 @@ USER SIGHTINGS TABLE
   border-right: none;
 }
 
-.user-sightings-table__header-row th {
+.user-sightings-table__header-text {
   color: #919191;
   font-size: $small-font-size;
-  padding: 0.5em;
-  padding-left: 0;
+  padding: 0.5em 2em 0.5em 0em;
+  text-align: left;
+}
+
+.user-sightings-table__header-weight-text {
+  color: #919191;
+  font-size: $small-font-size;
+  padding-right: none;
   text-align: left;
 }
 

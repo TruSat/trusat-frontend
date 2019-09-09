@@ -29,13 +29,13 @@ export default function InfluenceTable() {
     <table className="object-influence-table">
       <thead className="object-influence-table__header">
         <tr className="object-influence-table__header-row">
-          <th>DATE</th>
+          <th className="object-influence-table__header-text">DATE</th>
           <th />
           <th />
-          <th>USER</th>
-          <th>QUALITY</th>
-          <th>TIME DIFF</th>
-          <th>WEIGHT</th>
+          <th className="object-influence-table__header-text">USER</th>
+          <th className="object-influence-table__header-text">QUALITY</th>
+          <th className="object-influence-table__header-text">TIME DIFF</th>
+          <th className="object-influence-table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody className="object-influence-table__body">
