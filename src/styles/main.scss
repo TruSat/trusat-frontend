@@ -1048,6 +1048,67 @@ HISTORY YEAR DROPDOWN
 }
 
 /* ----------
+HISTROY MONTH DROPDOWN
+---------- */
+.history-month-dropdown {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-month-dropdown__row {
+  border: 1px solid #363636;
+  border-left: none;
+  border-right: none;
+  padding: 0.5em 0;
+}
+
+.history-month-dropdown__row:hover {
+  cursor: pointer;
+}
+
+.history-month-dropdown__month-text {
+  color: #929292;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 12px;
+}
+
+/* ----------
+HISTORY MONTH TABLE 
+---------- */
+.history-month-table {
+}
+
+.history-month-table__header {
+  border: 1px solid $primary-text-color;
+  border-left: none;
+  border-right: none;
+}
+
+.history-month-table__header-row {
+  color: #919191;
+  font-size: $small-font-size;
+  padding-left: 0;
+  text-align: left;
+}
+
+.history-month-table__header-text {
+  padding: 0.5em 0;
+}
+
+.history-month-table__month-text {
+  color: white;
+  font-weight: bold;
+}
+
+.history-month-table__body-row td {
+  font-size: 12px;
+  line-height: 27px;
+  padding-right: 2em;
+}
+
+/* ----------
 MULTIPLE OBSERVATION FORM
 ---------- */
 .multiple-observation-form {

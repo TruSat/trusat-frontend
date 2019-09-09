@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import HistoryMonthDropdown from "./HistoryMonthDropdown";
 
 export default function HistoryTable({ noradNumber, objectOrigin }) {
-  const [yearChosen, setYearChosen] = useState("");
-  const [showMonthDropdown, setShowMonthDropdown] = useState(false);
+  const [yearChosen, setYearChosen] = useState("2019");
+  const [showMonthDropdown, setShowMonthDropdown] = useState(true);
 
   const renderYearChoices = () => {
     const years = [

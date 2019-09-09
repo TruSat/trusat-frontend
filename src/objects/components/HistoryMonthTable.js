@@ -4,13 +4,11 @@ import axios from "axios";
 export default function HistoryMonthTable({
   noradNumber,
   yearNumber,
+  monthName,
   monthNumber
 }) {
   const [showTable, setShowTable] = useState(false);
   const [objectHistory, setObjectHistory] = useState([]);
-
-  console.log(`month number =`, monthNumber);
-  console.log(`year number =`, yearNumber);
 
   // todo -race condition problem here
   useEffect(() => {
@@ -32,12 +30,12 @@ export default function HistoryMonthTable({
   }, [noradNumber, yearNumber, monthNumber]);
 
   const renderDayRows = () => {
-    // todo - this is coming through as undefined.
-    console.log(`object history =`, objectHistory);
-
     return objectHistory.map(day => {
       return day.observation.map(observation => (
-        <tr key={day.observation.indexOf(observation)}>
+        <tr
+          key={day.observation.indexOf(observation)}
+          className="history-month-table__body-row"
+        >
           <td>{day.date}</td>
           <td>{observation.object_or}</td>
           <td>{observation.user_location}</td>
@@ -51,16 +49,16 @@ export default function HistoryMonthTable({
   };
 
   return showTable ? (
-    <table>
-      <thead>
-        <tr>
-          <th>DATE</th>
+    <table className="history-month-table">
+      <thead className="history-month-table__header">
+        <tr className="history-month-table__header-row">
+          <th className="history-month-table__month-text">{monthName}</th>
           <th />
           <th />
-          <th>USER</th>
-          <th>QUALITY</th>
-          <th>TIME DIFF</th>
-          <th>WEIGHT</th>
+          <th className="history-month-table__header-text">USER</th>
+          <th className="history-month-table__header-text">QUALITY</th>
+          <th className="history-month-table__header-text">TIME DIFF</th>
+          <th className="history-month-table__header-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody>{renderDayRows()}</tbody>
