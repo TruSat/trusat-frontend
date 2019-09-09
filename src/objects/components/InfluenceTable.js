@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { renderFlag } from "../../app/helpers";
 
-export default function InfluenceTable({ noradNumber, objectOrigin }) {
+export default function InfluenceTable({ noradNumber }) {
   const [showTable, setShowTable] = useState(false);
   const [objectInfluence, setObjectInfluence] = useState([]);
 
@@ -20,9 +21,9 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
   }, [noradNumber]);
 
   return showTable ? (
-    <table>
-      <thead>
-        <tr>
+    <table className="object-influence-table">
+      <thead className="object-influence-table__header">
+        <tr className="object-influence-table__header-row">
           <th>DATE</th>
           <th />
           <th />
@@ -32,14 +33,19 @@ export default function InfluenceTable({ noradNumber, objectOrigin }) {
           <th>WEIGHT</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody className="object-influence-table__body">
         {objectInfluence.map(obj => {
           return (
-            <tr key={objectInfluence.indexOf(obj)}>
+            <tr
+              key={objectInfluence.indexOf(obj)}
+              className="object-influence-table__body-row"
+            >
               <td>{obj.observation_time}</td>
-              <td>{obj.object_origin}</td>
-              <td>{obj.user_location}</td>
-              <td>{obj.username}</td>
+              <td>{renderFlag(obj.object_origin)}</td>
+              <td>
+                {obj.user_location ? obj.user_location : "undisclosed location"}
+              </td>
+              <td>{obj.username ? obj.username : obj.user_address}</td>
               <td>{obj.observation_quality}</td>
               <td>{obj.observation_time_difference}</td>
               <td>{obj.observation_weight}</td>

@@ -7,7 +7,7 @@ export const renderFlag = code => {
     return (
       <img
         className="catalog-table__small-text"
-        src={`https://www.countryflags.io/${code}/flat/32.png`}
+        src={`https://www.countryflags.io/${code}/flat/16.png`}
         alt={`${code} flag `}
       />
     );

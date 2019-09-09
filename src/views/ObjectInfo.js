@@ -11,7 +11,7 @@ import { useObjectsDispatch } from "../objects/objects-context";
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
   const objectsDispatch = useObjectsDispatch();
-  const [observationFilter, setObservationFilter] = useState("history");
+  const [observationFilter, setObservationFilter] = useState("influence");
   const [showObjectView, setShowObjectView] = useState(false);
 
   useEffect(() => {
@@ -34,33 +34,24 @@ export default function ObjectInfo({ match }) {
 
       <Info noradNumber={noradNumber} />
 
-      <section
-        style={{
-          margin: "1em"
-        }}
-      >
-        <h1>OBSERVATIONS</h1>
-        <div style={{ marginBottom: "1em" }}>
+      <h1 className="object-observations__header">OBSERVATIONS</h1>
+
+      <section className="object-observations__nav">
+        <div className="object-observations__nav-link-wrapper">
           <span
-            style={{
-              marginRight: "1em"
-            }}
+            className="object-observations__nav-link"
             onClick={() => setObservationFilter("influence")}
           >
             Influence
           </span>
           <span
-            style={{
-              marginRight: "1em"
-            }}
+            className="object-observations__nav-link"
             onClick={() => setObservationFilter("history")}
           >
             History
           </span>
           <span
-            style={{
-              marginRight: "1em"
-            }}
+            className="object-observations__nav-link"
             onClick={() => setObservationFilter("userSightings")}
           >
             My sightings

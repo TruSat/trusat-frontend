@@ -918,6 +918,70 @@ OBJECT INFO
 }
 
 /* ----------
+OBJECT OBSERVATIONS NAV
+---------- */
+.object-observations__header {
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 19px;
+  margin-bottom: 0.5em;
+}
+
+.object-observations__nav {
+}
+
+.object-observations__nav-link-wrapper {
+  margin-bottom: 1em;
+}
+
+.object-observations__nav-link {
+  color: #afafaf;
+  font-size: 16px;
+  line-height: 19px;
+  margin-right: 2em;
+  text-decoration-line: underline;
+}
+
+.object-observations__nav-link:hover {
+  cursor: pointer;
+}
+
+/* ----------
+OBJECT INFLUENCE TABLE
+---------- */
+.object-influence-table {
+}
+
+.object-influence-table__header {
+  border: 1px solid $primary-text-color;
+  border-left: none;
+  border-right: none;
+}
+
+.object-influence-table__header-row {
+}
+
+.object-influence-table__header-row th {
+  color: #919191;
+  font-size: $small-font-size;
+  padding: 0.5em;
+  padding-left: 0;
+  text-align: left;
+}
+
+.object-influence-table__body {
+  border-top: 1px solid #363636;
+  border-bottom: 1px solid #363636;
+}
+
+.object-influence-table__body-row td {
+  font-size: 12px;
+  line-height: 27px;
+  padding-right: 2em;
+  vertical-align: middle;
+}
+
+/* ----------
 SUBMIT
 ----------- */
 .submit__wrapper {
