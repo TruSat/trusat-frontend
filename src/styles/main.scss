@@ -106,18 +106,15 @@ CATALOG
   margin: 0em 1em;
 }
 
-@media (min-width: 600px) {
-  .catalog__wrapper {
-    margin: 0em 4em;
-  }
-}
-
 .catalog__header {
   @include header1-text;
   margin: 0.5em 0;
 }
 
 @media (min-width: 600px) {
+  .catalog__wrapper {
+    margin: 0em 4em;
+  }
   .catalog__header {
     @include header1-text--desktop;
     margin: 0.5em 0;
