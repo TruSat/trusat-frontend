@@ -44,11 +44,10 @@ export default function Catalog({ match }) {
             <span className="catalog__button">Submit data</span>
           </NavLink>
 
-          <div className="catalog__link-text-wrapper"></div>
-          <NavLink className="catalog__link-text" to="/how">
-            <p>How can I see these stats?</p>
+          <NavLink className="app__nav-link" to="/how">
+            <p className="catalog__link-text">How can I see these stats?</p>
           </NavLink>
-          <NavLink to="/how">
+          <NavLink className="app__nav-link" to="/how">
             <p className="catalog__link-text">How are sats prioritized?</p>
           </NavLink>
         </div>

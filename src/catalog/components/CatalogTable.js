@@ -6,7 +6,7 @@ import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { renderFlag } from "../../app/helpers";
 import { useCatalogState } from "../catalog-context";
 
-export default function CatalogTable({ range, setRange }) {
+export default function CatalogTable({ match, range, setRange }) {
   const { catalogFilter } = useCatalogState();
   const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
