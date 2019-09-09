@@ -13,6 +13,8 @@ import {
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
+  console.log(noradNumber);
+
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
 
@@ -25,7 +27,6 @@ export default function ObjectInfo({ match }) {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        console.log(result.data);
         objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
         objectsDispatch({ type: "SET_OBJECT_INFO", payload: result.data });
         objectsDispatch({

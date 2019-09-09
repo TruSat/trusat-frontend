@@ -3,6 +3,7 @@ import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useUserState } from "../../user/user-context";
 import { useObjectsState } from "../objects-context";
+import { renderFlag } from "../../app/helpers/";
 
 export default function UserSightingsTable() {
   const { jwt } = useAuthState();
@@ -18,7 +19,8 @@ export default function UserSightingsTable() {
         JSON.stringify({
           norad_number: noradNumber,
           jwt: jwt,
-          address: userAddress
+          // address: userAddress,
+          address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
         })
       )
       .then(result => {
@@ -30,9 +32,9 @@ export default function UserSightingsTable() {
   }, [jwt, userAddress, noradNumber]);
 
   return showTable ? (
-    <table>
-      <thead>
-        <tr>
+    <table className="user-sightings-table">
+      <thead className="user-sightings-table__header">
+        <tr className="user-sightings-table__header-row">
           <th>DATE</th>
           <th />
           <th />
@@ -45,14 +47,31 @@ export default function UserSightingsTable() {
       <tbody>
         {objectUserSightings.map(obj => {
           return (
-            <tr key={objectUserSightings.indexOf(obj)}>
-              <td>{obj.observation_time}</td>
-              <td>{objectOrigin}</td>
-              <td>{obj.user_location}</td>
-              <td>{obj.username}</td>
-              <td>{obj.observation_quality}</td>
-              <td>{obj.observation_time_difference}</td>
-              <td>{obj.observation_weight}</td>
+            <tr
+              key={objectUserSightings.indexOf(obj)}
+              className="user-sightings-table__body-row"
+            >
+              <td className="user-sightings-table__table-data">
+                {obj.observation_time}
+              </td>
+              <td className="user-sightings-table__table-data">
+                {renderFlag(objectOrigin)}
+              </td>
+              <td className="user-sightings-table__table-data">
+                {obj.user_location ? obj.user_location : "undisclosed location"}
+              </td>
+              <td className="user-sightings-table__table-data">
+                {obj.username ? obj.username : obj.user_address}
+              </td>
+              <td className="user-sightings-table__table-data">
+                {obj.observation_quality}
+              </td>
+              <td className="user-sightings-table__table-data">
+                {obj.observation_time_difference}
+              </td>
+              <td className="user-sightings-table__weight-data">
+                {obj.observation_weight}
+              </td>
             </tr>
           );
         })}

@@ -8,7 +8,7 @@ export default function HistoryMonthTable({
   monthName,
   monthNumber
 }) {
-  const { noradNumber } = useObjectsState();
+  const { noradNumber, objectOrigin } = useObjectsState();
   const [showTable, setShowTable] = useState(false);
   const [objectHistory, setObjectHistory] = useState([]);
 
@@ -38,17 +38,27 @@ export default function HistoryMonthTable({
           key={day.observation.indexOf(observation)}
           className="history-month-table__body-row"
         >
-          <td>{day.date}</td>
-          <td>{renderFlag(observation.object_origin)}</td>
-          <td>{observation.user_location}</td>
-          <td>
+          <td className="history-month-table__table-data">{day.date}</td>
+          <td className="history-month-table__table-data">
+            {renderFlag(objectOrigin)}
+          </td>
+          <td className="history-month-table__table-data">
+            {observation.user_location}
+          </td>
+          <td className="history-month-table__table-data">
             {observation.username
               ? observation.username
               : observation.user_address}
           </td>
-          <td>{observation.observation_quality}</td>
-          <td>{observation.observation_time_difference}</td>
-          <td>{observation.observation_weight}%</td>
+          <td className="history-month-table__table-data">
+            {observation.observation_quality}
+          </td>
+          <td className="history-month-table__table-data">
+            {observation.observation_time_difference}
+          </td>
+          <td className="history-month-table__weight-data">
+            {observation.observation_weight}%
+          </td>
         </tr>
       ));
     });
@@ -64,7 +74,7 @@ export default function HistoryMonthTable({
           <th className="history-month-table__header-text">USER</th>
           <th className="history-month-table__header-text">QUALITY</th>
           <th className="history-month-table__header-text">TIME DIFF</th>
-          <th className="history-month-table__header-text">WEIGHT</th>
+          <th className="history-month-table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody>{renderDayRows()}</tbody>

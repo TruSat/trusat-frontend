@@ -4,7 +4,10 @@ import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 
 export default function InfluenceTable() {
-  const { noradNumber } = useObjectsState();
+  const { noradNumber, objectOrigin } = useObjectsState();
+
+  console.log(`objectOrigin =`, objectOrigin);
+
   const [showTable, setShowTable] = useState(false);
   const [objectInfluence, setObjectInfluence] = useState([]);
 
@@ -42,15 +45,27 @@ export default function InfluenceTable() {
               key={objectInfluence.indexOf(obj)}
               className="object-influence-table__body-row"
             >
-              <td>{obj.observation_time}</td>
-              <td>{renderFlag(obj.object_origin)}</td>
-              <td>
+              <td className="object-influence-table__table-data">
+                {obj.observation_time}
+              </td>
+              <td className="object-influence-table__table-data">
+                {renderFlag(objectOrigin)}
+              </td>
+              <td className="object-influence-table__table-data">
                 {obj.user_location ? obj.user_location : "undisclosed location"}
               </td>
-              <td>{obj.username ? obj.username : obj.user_address}</td>
-              <td>{obj.observation_quality}</td>
-              <td>{obj.observation_time_difference}</td>
-              <td>{obj.observation_weight}</td>
+              <td className="object-influence-table__table-data">
+                {obj.username ? obj.username : obj.user_address}
+              </td>
+              <td className="object-influence-table__table-data">
+                {obj.observation_quality}
+              </td>
+              <td className="object-influence-table__table-data">
+                {obj.observation_time_difference}
+              </td>
+              <td className="object-influence-table__weight-data">
+                {obj.observation_weight}
+              </td>
             </tr>
           );
         })}
