@@ -82,7 +82,9 @@ export default function ObservationsFilter() {
         </div>
       </div>
 
-      <DownloadObjectTleButton />
+      <div className="object-observations__get-data-link-wrapper">
+        <DownloadObjectTleButton />
+      </div>
     </section>
   );
 }

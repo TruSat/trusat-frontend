@@ -927,6 +927,10 @@ OBJECT OBSERVATIONS NAV
   margin-bottom: 0.5em;
 }
 
+.object-observations__filter-table-wrapper {
+  display: inline-block;
+}
+
 .object-observations__nav {
   align-items: center;
   display: flex;
@@ -970,7 +974,12 @@ OBJECT OBSERVATIONS NAV
   cursor: pointer;
 }
 
-.object-observation__get-data-link {
+.object-observations__get-data-link-wrapper {
+  border-bottom: 3px solid $primary-theme-color;
+  padding-bottom: 0.5em;
+}
+
+.object-observations__get-data-link {
   color: #afafaf;
   font-size: 16px;
   line-height: 19px;

@@ -47,11 +47,13 @@ export default function ObjectInfo({ match }) {
 
       <h1 className="object-observations__header">OBSERVATIONS</h1>
 
-      <ObservationsFilter />
+      <div className="object-observations__filter-table-wrapper">
+        <ObservationsFilter />
 
-      {observationFilter === "influence" ? <InfluenceTable /> : null}
-      {observationFilter === "history" ? <HistoryYearDropdown /> : null}
-      {observationFilter === "mySightings" ? <UserSightingsTable /> : null}
+        {observationFilter === "influence" ? <InfluenceTable /> : null}
+        {observationFilter === "history" ? <HistoryYearDropdown /> : null}
+        {observationFilter === "mySightings" ? <UserSightingsTable /> : null}
+      </div>
     </div>
   ) : null;
 }
