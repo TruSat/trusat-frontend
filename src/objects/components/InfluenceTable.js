@@ -6,8 +6,6 @@ import { useObjectsState } from "../objects-context";
 export default function InfluenceTable() {
   const { noradNumber, objectOrigin } = useObjectsState();
 
-  console.log(`objectOrigin =`, objectOrigin);
-
   const [showTable, setShowTable] = useState(false);
   const [objectInfluence, setObjectInfluence] = useState([]);
 
@@ -26,46 +24,40 @@ export default function InfluenceTable() {
   }, [noradNumber]);
 
   return showTable ? (
-    <table className="object-influence-table">
-      <thead className="object-influence-table__header">
-        <tr className="object-influence-table__header-row">
-          <th className="object-influence-table__header-text">DATE</th>
-          <th />
-          <th />
-          <th className="object-influence-table__header-text">USER</th>
-          <th className="object-influence-table__header-text">QUALITY</th>
-          <th className="object-influence-table__header-text">TIME DIFF</th>
-          <th className="object-influence-table__header-weight-text">WEIGHT</th>
+    <table className="table">
+      <thead className="table__header">
+        <tr className="table__header-row">
+          <th className="table__header-text">DATE</th>
+          <th className="table__header-text">TRACKED BY</th>
+          <th className="table__header-text">LOCATION</th>
+          <th className="table__header-text">QUALITY</th>
+          <th className="table__header-text">TIME DIFF</th>
+          <th className="table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
-      <tbody className="object-influence-table__body">
+      <tbody className="table__body">
         {objectInfluence.map(obj => {
           return (
-            <tr
-              key={objectInfluence.indexOf(obj)}
-              className="object-influence-table__body-row"
-            >
-              <td className="object-influence-table__table-data">
-                {obj.observation_time}
-              </td>
-              <td className="object-influence-table__table-data">
-                {renderFlag(objectOrigin)}
-              </td>
-              <td className="object-influence-table__table-data">
-                {obj.user_location ? obj.user_location : "undisclosed location"}
-              </td>
-              <td className="object-influence-table__table-data">
+            <tr key={objectInfluence.indexOf(obj)} className="table__body-row">
+              <td className="table__table-data">{obj.observation_time}</td>
+              <td className="table__table-data">
                 {obj.username ? obj.username : obj.user_address}
               </td>
-              <td className="object-influence-table__table-data">
-                {obj.observation_quality}
+              <td className="table__table-data">
+                <div style={{ display: "flex" }}>
+                  {renderFlag(objectOrigin)}
+                  &nbsp;
+                  {obj.user_location
+                    ? obj.user_location
+                    : "undisclosed location"}
+                </div>
               </td>
-              <td className="object-influence-table__table-data">
+
+              <td className="table__table-data">{obj.observation_quality}</td>
+              <td className="table__table-data">
                 {obj.observation_time_difference}
               </td>
-              <td className="object-influence-table__weight-data">
-                {obj.observation_weight}
-              </td>
+              <td className="table__weight-data">{obj.observation_weight}</td>
             </tr>
           );
         })}

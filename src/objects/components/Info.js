@@ -6,6 +6,7 @@ import { renderFlag } from "../../app/helpers";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
+  console.log(objectInfo);
 
   return (
     <React.Fragment>
@@ -17,87 +18,78 @@ export default function Info() {
         ></img>
         <div>
           <h1 className="object-info__header">{objectInfo.object_name}</h1>
-          <div className="object-info__origin-year-wrapper">
-            {renderFlag(objectInfo.object_origin)}
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.object_purpose}
-            </p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.object_secondary_purpose}
-            </p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.year_launched}
-            </p>
-          </div>
-        </div>
+          <div className="object-info__header-info-wrapper">
+            <div className="object-info__header-info-wrapper--with-margin">
+              <p className="object-info__small-text">
+                {objectInfo.number_users_tracked}
+              </p>
+              &nbsp;
+              <p className="object-info__small-text--grey">OBSERVERS</p>
+              &nbsp;
+              <p className="object-info__small-text">
+                {objectInfo.observation_quality}
+              </p>
+              &nbsp;
+              <p className="object-info__small-text--grey">CONFIDENCE</p>
+            </div>
+            <div className="object-info__header-info-wrapper--with-margin">
+              <p className="object-info__small-text--grey">LAST SEEN</p>
+              &nbsp;
+              <p className="object-info__small-text">
+                {objectInfo.time_last_tracked}
+              </p>
+              &nbsp;
+              <p className="object-info__small-text--grey">BY</p>
+              &nbsp;
+              <p className="object-info__small-text">
+                {objectInfo.username_last_tracked}
+              </p>
+            </div>
 
-        <div>
-          <p className="object-info__small-text">{noradNumber}</p>
-
-          <div className="object-info__tracking-numbers-wrapper">
-            <p className="object-info__small-text--grey">TRACKED BY</p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.number_users_tracked}
-            </p>
-            &nbsp;
-            <p className="object-info__small-text--grey">VIA</p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.oservation_count}
-            </p>
-            &nbsp;
-            <p className="object-info__small-text--grey">OBSERVATIONS</p>
-          </div>
-
-          <div className="object-info__last-seen-wrapper">
-            <p className="object-info__small-text--grey">LAST SEEN</p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.time_last_tracked}
-            </p>
-            &nbsp;
-            <p className="object-info__small-text--grey">BY</p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.username_last_tracked}
-            </p>
-          </div>
-
-          <div className="object-info__quality-wrapper">
-            <p className="object-info__small-text--grey">QUALITY</p>
-            &nbsp;
-            <p className="object-info__small-text">
-              {objectInfo.observation_quality}
-            </p>
+            <div className="object-info__header-info-wrapper">
+              <p className="object-info__small-text--grey">NORAD#</p>
+              &nbsp;
+              <p className="object-info__small-text">{noradNumber}</p>
+            </div>
           </div>
         </div>
       </section>
 
       <section className="object-info__background-section-wrapper">
-        {objectInfo.object_background ? (
-          <div>
-            <h2 className="object-info__sub-header">BACKGROUND</h2>
-            <p>background = {objectInfo.object_background}</p>
+        <div className="object-info__background-wrapper">
+          <h2 className="object-info__section-title">BACKGROUND</h2>
+          <div className="object-info__origin-launched-wrapper">
+            <div className="object-info__origin-wrapper">
+              <p className="object-info__info-label">ORIGIN</p>
+              <p>{renderFlag(objectInfo.object_origin)}</p>
+            </div>
+            <div className="object-info__launched-wrapper">
+              <p className="object-info__info-label">LAUNCHED</p>
+              <p>{objectInfo.year_launched}</p>
+            </div>
           </div>
-        ) : null}
+          {objectInfo.object_background ? (
+            <div className="object-info__purpose-wrapper">
+              <p className="object-info__info-label">PURPOSE</p>
+              <p>{objectInfo.object_background}</p>
+            </div>
+          ) : null}
+        </div>
 
-        <div>
-          <h2 className="object-info__sub-header">HOW TO SEE THIS SAT</h2>
+        <div className="object-info__how-to-wrapper">
+          <h2 className="object-info__section-title">HOW TO SEE IT</h2>
           <NavLink className="app__nav-link" to="/how">
             <p className="object-info__link-text">Follow this tutorial</p>
           </NavLink>
           {objectInfo.heavens_above_url ? (
             <a
-              className="object-info__link-text"
               target="_blank"
               rel="noopener noreferrer"
               href={objectInfo.heavens_above_url}
             >
-              More info at Heavens Above
+              <p className="object-info__link-text">
+                More info at Heavens Above
+              </p>
             </a>
           ) : null}
         </div>

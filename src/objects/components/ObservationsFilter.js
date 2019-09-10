@@ -31,7 +31,7 @@ export default function ObservationsFilter() {
               })
             }
           >
-            Influence
+            INFLUENCE
           </span>
         </div>
 
@@ -55,7 +55,7 @@ export default function ObservationsFilter() {
               })
             }
           >
-            History
+            HISTORY
           </span>
         </div>
 
@@ -80,14 +80,10 @@ export default function ObservationsFilter() {
                 })
               }
             >
-              My sightings
+              MY OBSERVATIONS
             </span>
           </div>
         ) : null}
-      </div>
-
-      <div className="object-observations__get-data-link-wrapper">
-        <DownloadObjectTleButton />
       </div>
     </section>
   );

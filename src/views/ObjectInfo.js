@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import Astriagraph from "../app/components/Astriagraph";
 import Info from "../objects/components/Info";
 import InfluenceTable from "../objects/components/InfluenceTable";
 import HistoryYearDropdown from "../objects/components/HistoryYearDropdown";
@@ -43,11 +42,12 @@ export default function ObjectInfo({ match }) {
     <div className="object__wrapper">
       <Info />
 
-      <h1 className="object-observations__header">OBSERVATIONS</h1>
-
       <div className="object-observations__filter-table-wrapper">
         <ObservationsFilter />
-
+        <p className="object-observation__filter-explainer">
+          This is a line where we'd explain what {observationFilter} is and how
+          it works. We can also link out to PoSat docs.
+        </p>
         {observationFilter === "influence" ? <InfluenceTable /> : null}
         {observationFilter === "history" ? <HistoryYearDropdown /> : null}
         {observationFilter === "mySightings" ? <UserSightingsTable /> : null}
