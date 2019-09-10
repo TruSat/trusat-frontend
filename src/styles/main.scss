@@ -51,7 +51,7 @@ APP
 .app__button--black {
   align-self: flex-start;
   background: $primary-theme-color;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   color: $primary-text-color;
   display: inline-block;
@@ -107,7 +107,7 @@ CATALOG
 }
 
 .catalog__header {
-  @include header1-text;
+  @include view-title;
   margin: 0.5em 0;
 }
 
@@ -116,13 +116,13 @@ CATALOG
     margin: 0em 4em;
   }
   .catalog__header {
-    @include header1-text--desktop;
+    @include view-title--desktop;
     margin: 0.5em 0;
   }
 }
 
 .catalog__filter-description {
-  @include headline-copy-text;
+  @include body-text--large-desktop;
   margin-bottom: 2em;
   width: 90%;
 }
@@ -146,12 +146,20 @@ CATALOG
   color: $primary-text-color;
 }
 
+.catalog__button-wrapper {
+  display: flex;
+}
+
 .catalog__button {
   border: 1px solid #5f5f5f;
   border-radius: 4px;
   display: inline-block;
   margin-bottom: 1em;
   padding: 0.5em;
+}
+
+.catalog__get-data-button {
+  margin-right: 1em;
 }
 
 .catalog__link-text-wrapper {
@@ -162,6 +170,13 @@ CATALOG
   color: $primary-text-color;
   margin-bottom: 1em;
   text-decoration: underline;
+}
+
+.catalog__how-to-text {
+  font-weight: $bold-weight;
+  font-size: $large-font-size;
+  line-height: $medium-line-height;
+  margin-bottom: 1em;
 }
 
 /* ----------
@@ -186,7 +201,7 @@ CATALOG NAV BAR
 
 @media (min-width: 600px) {
   .catalog-nav-bar__wrapper {
-    border-bottom: 1px solid $secondary-theme-color--light;
+    border-bottom: 1px solid $secondary-theme-color;
     display: flex;
     margin: 1em 0 2em 0;
   }
@@ -206,7 +221,7 @@ CATALOG NAV BAR
 
 .catalog-nav-bar__link--lowlight {
   border-bottom: 4px solid $primary-theme-color;
-  color: #888888;
+  color: $secondary-theme-color;
   margin-right: 2em;
   padding-bottom: 0.5em;
   text-decoration: none;
@@ -241,7 +256,6 @@ TABLE
 }
 
 .table__object-badge {
-  margin-left: -35px;
 }
 
 .table__center-wrapper {
@@ -275,7 +289,7 @@ PROFILE
 }
 
 .profile__header-wrapper {
-  border: 1px solid $secondary-theme-color--light;
+  border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
   display: flex;
@@ -289,7 +303,7 @@ PROFILE
 }
 
 .profile__header-username {
-  @include header1-text;
+  @include view-title--desktop;
   margin-left: none;
   padding-left: none;
 }
@@ -302,9 +316,9 @@ PROFILE
 .profile__header-info-data-key {
   align-items: center;
   display: flex;
-  font-size: 10px;
+  font-size: $extra-small-font-size;
   margin-right: 3em;
-  color: #afafaf;
+  color: $secondary-theme-color;
 }
 
 .profile__header-info-data-value {
@@ -317,7 +331,7 @@ PROFILE
 }
 
 .profile__background-header {
-  @include header2-text;
+  @include section-title;
 }
 
 .profile__objects-tracked-wrapper {
@@ -325,8 +339,8 @@ PROFILE
 }
 
 .profile__sub-heading {
-  @include header2-text;
-  border: 1px solid $secondary-theme-color--light;
+  @include section-title;
+  border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
   margin-bottom: 1em;
@@ -347,7 +361,7 @@ PROFILE
 }
 
 .profile__observations-table-header-row td {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding: 0.5em;
   padding-left: 0;
@@ -444,7 +458,7 @@ SIGN UP
 }
 
 .sign-up__header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 /* ----------
@@ -473,8 +487,8 @@ EMAIL FORM
 }
 
 .email-form__label {
-  font-size: 14px;
-  font-weight: 600;
+  font-size: $small-font-size;
+  font-weight: $regular-weight;
   margin: 0.5em 0;
 }
 
@@ -509,9 +523,9 @@ EMAIL FORM
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   display: inline-block;
-  font-size: 20px;
+  font-size: $medium-font-size;
   font-weight: 500;
-  line-height: 23px;
+  line-height: $medium-line-height;
   padding: 1em 2em;
 }
 
@@ -524,9 +538,9 @@ EMAIL FORM
   border-radius: 4px;
   color: $primary-theme-color;
   display: inline-block;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 23px;
+  font-size: $medium-font-size;
+  font-weight: $light-weight;
+  line-height: $medium-line-height;
   padding: 1em 2em;
 }
 
@@ -548,7 +562,7 @@ EMAIL FORM
 SIGNUP SUCCESS
 ---------- */
 .sign-up-success__message-text {
-  @include copy-text;
+  @include body-text--medium;
   margin-bottom: 1em;
 }
 
@@ -560,7 +574,7 @@ LOG IN
 }
 
 .log-in__header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 .login__success-wrapper {
@@ -591,7 +605,7 @@ ACCOUNT SETTINGS
 }
 
 .account-settings__header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 .account-settings__button-wrapper {
@@ -613,8 +627,8 @@ PROFILE SETTINGS
 }
 
 .profile-settings__heading {
-  @include header2-text;
-  border: 1px solid $secondary-theme-color--light;
+  @include section-title;
+  border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
   display: flex;
@@ -624,11 +638,11 @@ PROFILE SETTINGS
 }
 
 .profile-settings__edit-button-text {
-  color: #a5a5a5;
+  color: $secondary-theme-color;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: $small-font-size;
+  line-height: $medium-line-height;
   text-decoration: underline;
 }
 
@@ -652,10 +666,9 @@ PROFILE SETTINGS
 }
 
 .profile-settings__setting-label {
-  font-size: 10px;
-  line-height: 20px;
-  letter-spacing: 0.04em;
-  color: #afafaf;
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+  line-height: $medium-line-height;
   margin-right: 1em;
 }
 
@@ -670,8 +683,8 @@ PRIVACY SETTINGS
 }
 
 .privacy-settings__heading {
-  @include header2-text;
-  border: 1px solid $secondary-theme-color--light;
+  @include section-title;
+  border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
   display: flex;
@@ -684,8 +697,8 @@ PRIVACY SETTINGS
   color: #a5a5a5;
   font-style: normal;
   font-weight: normal;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: $small-font-size;
+  line-height: $medium-line-height;
   text-decoration: underline;
 }
 
@@ -701,8 +714,8 @@ PRIVACY SETTINGS
 }
 
 .privacy-settings__setting-label {
-  font-size: 20px;
-  line-height: 23px;
+  font-size: $medium-font-size;
+  line-height: $medium-line-height;
 }
 
 .privacy-settings__remove-text {
@@ -719,8 +732,8 @@ SECURITY SETTINGS
 }
 
 .security-settings__heading {
-  @include header2-text;
-  border: 1px solid $secondary-theme-color--light;
+  @include section-title;
+  border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
   display: flex;
@@ -730,7 +743,7 @@ SECURITY SETTINGS
 }
 
 .security-settings__info-text {
-  @include headline-copy-text;
+  @include body-text--large-desktop;
   margin-bottom: 1em;
 }
 
@@ -743,17 +756,15 @@ METAMASK IMPORT
 
 .metamask-import__link-to-account-text {
   color: #a5a5a5;
-  font-size: 12px;
-  line-height: 133%;
+  font-size: $extra-small-font-size;
 }
 
 .metamask-import__main-header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 .metamask-import__sub-header {
-  font-size: 32px;
-  line-height: 133%;
+  font-size: $extra-large-font-size;
   margin: 0.5em 0em 1em 0em;
 }
 
@@ -763,15 +774,13 @@ METAMASK IMPORT
 
 .metamask-import__step-header--todo {
   font-weight: bold;
-  font-size: 32px;
-  line-height: 37px;
+  font-size: $extra-large-font-size;
 }
 
 .metamask-import__step-header--done {
-  color: #a5a5a5;
+  color: $secondary-theme-color;
   font-weight: bold;
-  font-size: 32px;
-  line-height: 37px;
+  font-size: $extra-small-font-size;
 }
 
 .metamask-import__circle-check {
@@ -784,8 +793,7 @@ METAMASK IMPORT
 }
 
 .metamask-import__copy {
-  font-size: 24px;
-  line-height: 133%;
+  font-size: $large-font-size;
   margin: 0.5em 0;
 }
 
@@ -808,7 +816,7 @@ METAMASK IMPORT
 }
 
 .metamask-import__private-key-wrapper {
-  border: 1px solid #ffffff;
+  border: 1px solid $primary-text-color;
   border-radius: 4px;
   display: inline-flex;
   flex-wrap: wrap;
@@ -817,8 +825,7 @@ METAMASK IMPORT
 
 .metamas-import__private-key-text {
   font-weight: 500;
-  font-size: 20px;
-  line-height: 23px;
+  font-size: $medium-font-size;
 }
 
 /* ----------
@@ -831,10 +838,8 @@ SECRET FORM
 }
 
 .secret-form__label {
-  color: #afafaf;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 0.04em;
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
   margin-bottom: 0.5em;
 }
 
@@ -877,7 +882,7 @@ OBJECT INFO
 }
 
 .object-info__header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 .object-info__origin-year-wrapper,
@@ -889,15 +894,12 @@ OBJECT INFO
 }
 
 .object-info__small-text {
-  font-size: 12px;
-  line-height: 14px;
+  font-size: $extra-small-font-size;
 }
 
 .object-info__small-text--grey {
   color: #afafaf;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  line-height: 20px;
+  font-size: $extra-small-font-size;
 }
 
 .object-info__background-section-wrapper {
@@ -913,7 +915,7 @@ OBJECT INFO
 }
 
 .object-info__link-text {
-  color: #afafaf;
+  color: $secondary-theme-color;
   line-height: 19px;
   text-decoration-line: underline;
 }
@@ -956,17 +958,14 @@ OBJECT OBSERVATIONS NAV
 }
 
 .object-observations__nav-link--lowlight {
-  color: #afafaf;
-  font-size: 16px;
-  line-height: 19px;
-
+  color: $secondary-theme-color;
+  font-size: $small-font-size;
   text-decoration-line: underline;
 }
 
 .object-observations__nav-link--highlight {
   color: $primary-text-color;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: $small-font-size;
   text-decoration-line: underline;
 }
 
@@ -981,9 +980,8 @@ OBJECT OBSERVATIONS NAV
 }
 
 .object-observations__get-data-link {
-  color: #afafaf;
-  font-size: 16px;
-  line-height: 19px;
+  color: $secondary-theme-color;
+  font-size: $small-font-size;
   text-align: right;
   text-decoration-line: underline;
 }
@@ -1001,7 +999,7 @@ OBJECT INFLUENCE TABLE
 }
 
 .object-influence-table__header-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding: 0.5em 2em 0.5em 0em;
   padding-left: 0;
@@ -1009,7 +1007,7 @@ OBJECT INFLUENCE TABLE
 }
 
 .object-influence-table__header-weight-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding-right: none;
   padding-left: 0;
@@ -1017,14 +1015,12 @@ OBJECT INFLUENCE TABLE
 }
 
 .object-influence-table__table-data {
-  font-size: 12px;
-  line-height: 27px;
+  font-size: $extra-small-font-size;
   padding-right: 2em;
 }
 
 .object-influence-table__weight-data {
-  font-size: 12px;
-  line-height: 27px;
+  font-size: $extra-small-font-size;
   padding-right: none;
 }
 
@@ -1046,9 +1042,7 @@ HISTORY YEAR DROPDOWN
 
 .history-year-dropdown__year-text {
   font-weight: bold;
-  font-size: 16px;
-  letter-spacing: 0.04em;
-  line-height: 19px;
+  font-size: $small-font-size;
 }
 
 /* ----------
@@ -1070,8 +1064,8 @@ HISTROY MONTH DROPDOWN
 }
 
 .history-month-dropdown__month-text {
-  color: #929292;
-  font-size: 10px;
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
   font-weight: bold;
   letter-spacing: 0.04em;
   line-height: 12px;
@@ -1097,7 +1091,7 @@ HISTORY MONTH TABLE
 }
 
 .history-month-table__header-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding: 0.5em;
   text-align: left;
@@ -1105,21 +1099,19 @@ HISTORY MONTH TABLE
 }
 
 .history-month-table__header-weight-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding-right: none;
   text-align: left;
 }
 
 .history-month-table__table-data {
-  font-size: 12px;
-  line-height: 27px;
+  font-size: $extra-small-font-size;
   padding-right: 2em;
 }
 
 .history-month-table__weight-data {
-  font-size: 12px;
-  line-height: 27px;
+  font-size: $extra-small-font-size;
   padding-right: none;
 }
 
@@ -1136,27 +1128,27 @@ USER SIGHTINGS TABLE
 }
 
 .user-sightings-table__header-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding: 0.5em 2em 0.5em 0em;
   text-align: left;
 }
 
 .user-sightings-table__header-weight-text {
-  color: #919191;
+  color: $secondary-theme-color;
   font-size: $small-font-size;
   padding-right: none;
   text-align: left;
 }
 
 .user-sightings-table__table-data {
-  font-size: 12px;
+  font-size: $extra-small-font-size;
   line-height: 27px;
   padding-right: 2em;
 }
 
 .user-sightings-table__weight-data {
-  font-size: 12px;
+  font-size: $extra-small-font-size;
   line-height: 27px;
   padding-right: none;
 }
@@ -1169,7 +1161,7 @@ SUBMIT
 }
 
 .submit__header {
-  @include header1-text;
+  @include view-title--desktop;
 }
 
 .submit__sub-header {
@@ -1197,9 +1189,8 @@ SUBMIT
 }
 
 .submit__link-text {
-  color: #a5a5a5;
-  font-size: 18px;
-  line-height: 21px;
+  color: $secondary-theme-color;
+  font-size: $medium-font-size;
   text-decoration-line: underline;
 }
 
@@ -1208,7 +1199,7 @@ MULTIPLE OBSERVATION FORM
 ---------- */
 .multiple-observation-form {
   background: #1f1f1f;
-  border: 1px solid #c4c4c4;
+  border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $primary-text-color;

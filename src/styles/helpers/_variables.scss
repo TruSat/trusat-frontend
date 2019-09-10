@@ -1,21 +1,28 @@
 /* -----
 COLORS
 ----- */
-$primary-theme-color: #000000;
-$secondary-theme-color: #2d2d2d;
-$secondary-theme-color--light: #afafaf;
+$primary-theme-color: #1f1f1f;
+$secondary-theme-color: #a5a5a5;
 $primary-text-color: #ffffff;
+$tertiary-color: #4f4f4f;
 $primary-highlight-color: #ffbd3c;
-$secondary-highlight-color: #2c50a3;
-
 /*
 FONT SIZES
 */
-$small-font-size: 12px;
-$medium-font-size: 16px;
+$extra-small-font-size: 12px;
+$small-font-size: 16px;
+$medium-font-size: 20px;
 $large-font-size: 24px;
-$extra-large-font-size: 48px;
-$extra-large-font-size--desktop: 76px;
+$extra-large-font-size: 36px;
+$extra-extra-large-font-size: 76px;
+
+/* -----
+FONT WEIGHT
+----- */
+$thin-weight: 100;
+$light-weight: 200;
+$regular-weight: 600;
+$bold-weight: bold;
 
 /*
 LINE HEIGHTS
@@ -29,5 +36,6 @@ $extra-large-line-height--desktop: 66px;
 /*
 LETTER SPACING
 */
-$header-letter-spacing: 0.06em;
-$header-letter-spacing--desktop: 0.04em;
+$standard-spacing: 0;
+$tight-spacing: -2%;
+$wide-spacing: 4%;

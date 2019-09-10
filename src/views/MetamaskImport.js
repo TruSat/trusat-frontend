@@ -78,7 +78,7 @@ export default function MetamaskImport() {
           Account Settings
         </p>
       </NavLink>
-      <h1 className="metamask-import__main-header">CONNECT TO METAMASK</h1>
+      <h1 className="metamask-import__main-header">Connect to MetaMask</h1>
       <h2 className="metamask-import__sub-header">
         Call to action for why you'd want to connect a wallet, and what benefits
         it will unlock for you

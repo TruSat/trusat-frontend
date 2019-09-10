@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { renderFlag } from "../../app/helpers";
-import { useCatalogState } from "../catalog-context";
 
-export default function CatalogTable({ match, range, setRange }) {
-  const { catalogFilter } = useCatalogState();
+function CatalogTable({ match, range, setRange }) {
+  const catalogFilter = match.params.catalogFilter;
   const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
 
@@ -39,21 +38,18 @@ export default function CatalogTable({ match, range, setRange }) {
       >
         <div className="table__row">
           <div className="table__badge-name-wrapper">
+            {catalogFilter === "priorities" ? (
+              <p>
+                {tableData.indexOf(obj) + 1}
+                &nbsp;
+              </p>
+            ) : null}
             <img
               className="table__object-badge"
               src={ObjectBadge}
               alt="Object Badge"
             ></img>
-            {catalogFilter === "priorities" ? (
-              <p>
-                &nbsp;
-                {tableData.indexOf(obj) + 1}
-                &nbsp;
-                {obj.object_name}
-              </p>
-            ) : (
-              <p>&nbsp;{obj.object_name}</p>
-            )}
+            <p>&nbsp;{obj.object_name}</p>
           </div>
 
           <div className="table__center-wrapper">
@@ -201,3 +197,5 @@ const latest = [{}];
 // limit to 100
 // Not sure what is best way to sort this?
 const all = [{}];
+
+export default withRouter(CatalogTable);

@@ -41,8 +41,6 @@ export default function ObjectInfo({ match }) {
 
   return showObjectView ? (
     <div className="object__wrapper">
-      <Astriagraph />
-
       <Info />
 
       <h1 className="object-observations__header">OBSERVATIONS</h1>

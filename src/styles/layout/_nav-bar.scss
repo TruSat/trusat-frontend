@@ -5,8 +5,8 @@
 @media (min-width: 600px) {
   .nav-bar {
     align-items: center;
-    background: $secondary-theme-color;
-    border: 3px solid $secondary-theme-color;
+    background: #2d2d2d;
+    border: 3px solid #2d2d2d;
     display: flex;
     height: 3.5em;
     justify-content: space-around;
@@ -30,7 +30,7 @@
   }
 
   .nav-bar__link-wrapper--lowlight {
-    border-bottom: 3px solid $secondary-theme-color;
+    border-bottom: 3px solid #2d2d2d;
     color: #888888;
   }
 

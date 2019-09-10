@@ -7,15 +7,7 @@ import MultipleObservationForm from "../submissions/components/MultipleObservati
 export default function Submit() {
   const { jwt } = useAuthState();
 
-  const [
-    pastedIODs,
-    setPastedIODs
-  ] = useState(`28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S
-28537 05 004A   4353 G 20190324193959728 56 75 0852089+468562 16 S
-28537 05 004A   4353 G 20190324194001008 56 75 0853326+465278 16 S
-28537 05 004A   4353 G 20190324194001888 56 75 0854298+463051 16 S
-28537 05 004A   4353 G 20190324194037131 56 75 0926071+373796 16 S
-28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S`);
+  const [pastedIODs, setPastedIODs] = useState(``);
 
   const handleSubmit = async () => {
     const arrayOfIODs = pastedIODs.split("\n");
@@ -23,8 +15,6 @@ export default function Submit() {
     axios
       .post(
         `https://api.consensys.space:8080/submitObservation`,
-        // iod - will be a single iod
-        // iods - will be a bunch of iods that will need to be parsed on backend
         JSON.stringify({ jwt: jwt, multiple: arrayOfIODs, single: {} })
       )
       .then(result => {
@@ -35,7 +25,7 @@ export default function Submit() {
 
   return (
     <div className="submit__wrapper">
-      <h1 className="submit__header">SUBMIT OBSERVATIONS</h1>
+      <h1 className="submit__header">Submit Observations</h1>
       <p className="submit__sub-header">Submit preformatted data</p>
 
       <div className="submit__form-button-wrapper">

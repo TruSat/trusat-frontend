@@ -2,69 +2,60 @@
 Text
 ----- */
 // the biggest "yellow" headers in the app
-@mixin header1-text {
+@mixin view-title {
   color: $primary-highlight-color;
-  font-style: normal;
-  font-weight: 300;
+  letter-spacing: $tight-spacing;
   font-size: $extra-large-font-size;
-  line-height: 49px;
-  letter-spacing: $header-letter-spacing;
+  font-weight: $light-weight;
 }
 
-@mixin header1-text--desktop {
+@mixin view-title--desktop {
   color: $primary-highlight-color;
-  font-style: normal;
-  font-weight: 300;
-  font-size: $extra-large-font-size--desktop;
-  line-height: 49px;
-  letter-spacing: $header-letter-spacing--desktop;
+  letter-spacing: $tight-spacing;
+  font-size: $extra-extra-large-font-size;
+  font-weight: $thin-weight;
 }
 
-// subheader that sits under header1-text
-@mixin header2-text {
+@mixin section-title {
+  color: $primary-text-color;
   font-size: $medium-font-size;
-  font-weight: bold;
-  letter-spacing: $header-letter-spacing;
-  line-height: $medium-line-height;
+  font-weight: $bold-weight;
 }
 
-@mixin headline-copy-text {
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 133%;
-}
-
-@media (min-width: 600px) {
-  @mixin headline-copy-text {
-    font-size: $large-font-size;
-    font-weight: 300;
-    line-height: $large-line-height;
-  }
-}
-
-@mixin copy-text {
+@mixin body-text--large {
+  color: $primary-text-color;
   font-size: $medium-font-size;
-  line-height: $large-line-height;
+  font-weight: $regular-weight;
 }
 
-@mixin highlight-link-text {
-  color: $primary-highlight-color;
-  line-height: $medium-line-height;
-  text-decoration-line: underline;
+@mixin body-text--large-desktop {
+  color: $primary-text-color;
+  font-size: $large-font-size;
+  font-weight: $light-weight;
 }
 
-@mixin lowlight-link-text {
-  color: $secondary-theme-color--light;
-  line-height: $medium-line-height;
-  text-decoration-line: underline;
+@mixin body-text--medium {
+  color: $primary-text-color;
+  font-size: $small-font-size;
+  font-weight: $regular-weight;
+}
+
+@mixin body-text--small {
+  color: $primary-text-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
 }
 
 @mixin label-text {
-  color: #bbbbbb;
-  font-size: $small-font-size;
-  font-weight: bold;
-  letter-spacing: $header-letter-spacing;
-  line-height: $small-line-height;
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
+  letter-spacing: $wide-spacing;
+}
+
+@mixin label-text--highlight {
+  color: $primary-text-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
+  letter-spacing: $wide-spacing;
 }

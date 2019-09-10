@@ -40,7 +40,9 @@ export default function DownloadCatalogFilterTleButton() {
         href={downloadTles()}
         download={`trusat_${catalogFilter}.txt`}
       >
-        <span className="catalog__button">Get data</span>
+        <span className="catalog__button catalog__get-data-button">
+          Get data
+        </span>
       </a>
     ) : null
   );

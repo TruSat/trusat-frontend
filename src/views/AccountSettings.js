@@ -62,7 +62,7 @@ export default function UserSettings() {
 
   return showUserProfile ? (
     <div className="account-settings__wrapper">
-      <h1 className="account-settings__header">ACCOUNT SETTINGS</h1>
+      <h1 className="account-settings__header">Account Settings</h1>
       <ProfileSettings
         showEditProfileInputs={showEditProfileInputs}
         setShowEditProfileInputs={setShowEditProfileInputs}

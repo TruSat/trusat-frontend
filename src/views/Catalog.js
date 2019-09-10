@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Astriagraph from "../app/components/Astriagraph";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
@@ -26,8 +25,7 @@ export default function Catalog({ match }) {
 
   return (
     <div className="catalog__wrapper">
-      <Astriagraph />
-      <h1 className="catalog__header">CATALOG</h1>
+      <h1 className="catalog__header">Catalog</h1>
       <CatalogNavDropdown />
       <CatalogNavBar setRange={setRange} />
       <section className="catalog__content-wrapper">
@@ -36,19 +34,26 @@ export default function Catalog({ match }) {
           <CatalogTable range={range} setRange={setRange} />
         </div>
         <div className="catalog__button-link-wrapper">
-          {catalogFilter === "priorities" || catalogFilter === "all" ? (
-            <DownloadCatalogFilterTleButton />
-          ) : null}
+          <h2 className="catalog__how-to-text">HOW TO PARTICIPATE</h2>
+          <div className="catalog__button-wrapper">
+            {catalogFilter === "priorities" || catalogFilter === "all" ? (
+              <DownloadCatalogFilterTleButton />
+            ) : null}
 
-          <NavLink className="app__nav-link" to="/submit">
-            <span className="catalog__button">Submit data</span>
-          </NavLink>
+            <NavLink className="app__nav-link" to="/submit">
+              <span className="catalog__button">Submit data</span>
+            </NavLink>
+          </div>
 
           <NavLink className="app__nav-link" to="/how">
-            <p className="catalog__link-text">How can I see these stats?</p>
+            <p className="catalog__link-text">
+              Follow tutorial for sat-tracking
+            </p>
           </NavLink>
           <NavLink className="app__nav-link" to="/how">
-            <p className="catalog__link-text">How are sats prioritized?</p>
+            <p className="catalog__link-text">
+              Improve how sats are prioritized
+            </p>
           </NavLink>
         </div>
       </section>

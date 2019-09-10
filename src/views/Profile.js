@@ -9,6 +9,7 @@ import { useUserState } from "../user/user-context";
 export default function Profile() {
   // TODO - add if statement to use address found in auth state before using the match address
   const { userData, showUserProfile } = useUserState();
+  console.log(userData);
 
   const renderObjectsTrackedTable = () => {
     return userData.objects_observed.map(obj => (
