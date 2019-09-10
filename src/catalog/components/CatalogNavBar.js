@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withRouter } from "react-router-dom";
+import axios from "axios";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 function CatalogNavBar({ setRange, history }) {
   const { catalogFilter } = useCatalogState();
   const catalogDispatch = useCatalogDispatch();
+
+  const updateTableData = () => {
+    catalogDispatch({ type: "SET_SHOW_TABLE", payload: false });
+
+    axios
+      .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
+      .then(result => {
+        catalogDispatch({ type: "SET_TABLE_DATA", payload: result.data });
+        catalogDispatch({ type: "SET_SHOW_TABLE", payload: true });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div className="catalog-nav-bar__wrapper">
@@ -20,6 +35,7 @@ function CatalogNavBar({ setRange, history }) {
             type: "SET_CATALOG_FILTER",
             payload: "priorities"
           });
+          updateTableData();
           history.push("/catalog/priorities");
         }}
       >
@@ -38,6 +54,7 @@ function CatalogNavBar({ setRange, history }) {
             type: "SET_CATALOG_FILTER",
             payload: "undisclosed"
           });
+          updateTableData();
           history.push("/catalog/undisclosed");
         }}
       >
@@ -56,6 +73,7 @@ function CatalogNavBar({ setRange, history }) {
             type: "SET_CATALOG_FILTER",
             payload: "debris"
           });
+          updateTableData();
           history.push("/catalog/debris");
         }}
       >
@@ -74,6 +92,7 @@ function CatalogNavBar({ setRange, history }) {
             type: "SET_CATALOG_FILTER",
             payload: "latest"
           });
+          updateTableData();
           history.push("/catalog/latest");
         }}
       >
@@ -92,6 +111,7 @@ function CatalogNavBar({ setRange, history }) {
             type: "SET_CATALOG_FILTER",
             payload: "all"
           });
+          updateTableData();
           history.push("/catalog/all");
         }}
       >
