@@ -40,7 +40,7 @@ export default function App() {
           `https://api.consensys.space:8080/profile`,
           JSON.stringify({
             jwt: jwt,
-            address: address
+            address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
           })
         )
         .then(result => {

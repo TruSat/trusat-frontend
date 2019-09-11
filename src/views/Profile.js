@@ -11,74 +11,59 @@ export default function Profile() {
   const { userData, showUserProfile } = useUserState();
   console.log(userData);
 
-  const renderObjectsTrackedTable = () => {
+  const renderObjectsCollectedRows = () => {
     return userData.objects_observed.map(obj => (
-      <NavLink
-        key={userData.objects_observed.indexOf(obj)}
-        className="app__nav-link"
-        to={`/object/${obj.object_norad_number}`}
+      <tr
+        key={userData.observation_history.indexOf(obj)}
+        className="table__body-row profile-table__body-row"
       >
-        <div className="table__row">
-          <div className="table__badge-name-wrapper">
-            <img
-              style={{ marginLeft: "-35px" }}
-              src={ObjectBadge}
-              alt="Object Badge"
-            ></img>
-            &nbsp;
-            <p>{obj.object_name}</p>
-          </div>
-
-          <div className="table__center-wrapper">
-            {renderFlag(obj.object_origin)}
-            &nbsp;
-            <p className="table__small-text">
-              {obj.object_primary_purpose ? obj.object_primary_purpose : "?"}
+        <td className="table__table-data">
+          <NavLink
+            key={userData.objects_observed.indexOf(obj)}
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            <div className="profile-table__data-wrapper">
+              <img src={ObjectBadge} alt="Object Badge"></img>
+              &nbsp;
+              <p>{obj.object_name}</p>
+            </div>
+          </NavLink>
+        </td>
+        <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
+        <td className="table__table-data">
+          {obj.object_primary_purpose ? (
+            <p>
+              {obj.object_primary_purpose}&nbsp;
+              {obj.object_secondary_purpose}
             </p>
-          </div>
-
-          <div className="table__center-wrapper">
-            <p className="table__small-text">
-              {obj.object_type ? obj.object_type : "?"}
-            </p>
-            &nbsp;
-            <p className="table__small-text">
-              {obj.object_secondary_purpose
-                ? obj.object_secondary_purpose
-                : null}
-            </p>
-          </div>
-
-          <div className="table__quality-wrapper">
-            <p className="table__small-text">{obj.observation_quality}</p>
-          </div>
-
-          <div className="table__spotted-by-wrapper">
-            <p className="table__small-text">
-              {`last spotted `}
-              {obj.time_last_tracked} {` by `}
-              {obj.username_last_tracked}
-            </p>
-          </div>
-        </div>
-      </NavLink>
+          ) : (
+            <p>purpose unknown</p>
+          )}
+        </td>
+        <td className="table__table-data">{obj.observation_quality}</td>
+        <td className="table__table-data">
+          {obj.username_last_tracked
+            ? obj.username_last_tracked
+            : obj.address_last_tracked}
+        </td>
+      </tr>
     ));
   };
 
-  const renderObservationHistoryTable = () => {
+  const renderYourObservationsRows = () => {
     return userData.observation_history.map(observation => (
       <tr
         key={userData.observation_history.indexOf(observation)}
-        className="profile__obervations-table-body-row"
+        className="table__body-row"
       >
-        <td className="table__small-text">{observation.observation_time}</td>
-        <td>{observation.object_name}</td>
-        <td className="table__small-text">{observation.observation_quality}</td>
-        <td className="table__small-text">
+        <td className="table__table-data">{observation.observation_time}</td>
+        <td className="table__table-data">{observation.object_name}</td>
+        <td className="table__table-data">{observation.observation_quality}</td>
+        <td className="table__table-data">
           {observation.observation_time_difference}
         </td>
-        <td className="table__small-text">{observation.observation_weight}</td>
-        <td className="table__small-text">{observation.observation_iod}</td>
+        <td className="table__table-data">{observation.observation_weight}</td>
       </tr>
     ));
   };
@@ -155,26 +140,34 @@ export default function Profile() {
       </section>
 
       <section className="profile__objects-tracked-wrapper">
-        <h2 className="profile__sub-heading">OBJECTS TRACKED</h2>
-        <div className="table__wrapper">{renderObjectsTrackedTable()}</div>
+        <h2 className="profile__sub-heading">OBJECTS COLLECTED</h2>
+        <table className="table">
+          <thead className="table__header">
+            <tr>
+              <td className="table__header-text">OBJECT</td>
+              <td className="table__header-text">ORIGIN</td>
+              <td className="table__header-text">PURPOSE</td>
+              <td className="table__header-text">CONFIDENCE</td>
+              <td className="table__header-text">LAST SEEN BY</td>
+            </tr>
+          </thead>
+          <tbody className="table__body">{renderObjectsCollectedRows()}</tbody>
+        </table>
       </section>
 
       <section className="profile__your-observations-wrapper">
         <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
-        <table className="profile__obervations-table">
-          <thead className="profile__observations-table-header">
-            <tr className="profile__observations-table-header-row">
-              <td>DATE</td>
-              <td>OBJECT</td>
-              <td>QUALITY</td>
-              <td>TIME DIFF</td>
-              <td>WEIGHT</td>
-              <td>IOD</td>
+        <table className="table">
+          <thead className="table__header">
+            <tr>
+              <td className="table__header-text">DATE</td>
+              <td className="table__header-text">OBJECT NAME</td>
+              <td className="table__header-text">QUALITY</td>
+              <td className="table__header-text">TIME DIFF</td>
+              <td className="table__header-text">WEIGHT</td>
             </tr>
           </thead>
-          <tbody className="profile__observations-table-body">
-            {renderObservationHistoryTable()}
-          </tbody>
+          <tbody className="table__body">{renderYourObservationsRows()}</tbody>
         </table>
       </section>
     </div>

@@ -117,7 +117,7 @@ TABLE
 
 .table__table-data {
   font-size: $extra-small-font-size;
-  padding: 1em 2em 0em 0em;
+  padding: 0.5em 2em 0.5em 0em;
 }
 
 .table__weight-data {
@@ -347,41 +347,29 @@ PROFILE
 
 .profile__sub-heading {
   @include section-title;
-  border: 1px solid $secondary-theme-color;
-  border-left: none;
-  border-right: none;
-  margin-bottom: 1em;
-  padding: 0.5em 0;
+  border-bottom: 1px solid $primary-text-color;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.25em;
 }
 
 .profile__your-observations-wrapper {
   margin-top: 3em;
 }
 
-.profile__obervations-table {
-  width: 100%;
+/* ----------
+PROFILE TABLE 
+---------- */
+.profile-table__body-row {
+  border-bottom: 1px solid $tertiary-color;
 }
 
-.profile__observations-table-header {
-  border-bottom: 1px solid #363636;
-  padding: 0.5em;
+.profile-table__data-wrapper {
+  align-items: center;
+  display: flex;
 }
 
-.profile__observations-table-header-row td {
-  color: $secondary-theme-color;
-  font-size: $small-font-size;
-  padding: 0.5em;
-  padding-left: 0;
-}
-
-.profile__observations-table-body {
-  border-top: 1px solid #363636;
-  border-bottom: 1px solid #363636;
-}
-
-.profile__obervations-table-body-row td {
-  padding: 0.5em;
-  padding-left: 0;
+.profile-table__purpose-text {
+  display: flex;
 }
 
 /* ----------
@@ -918,6 +906,7 @@ OBJECT INFO
 }
 
 .object-info__section-title {
+  @include section-title;
   border-bottom: 1px solid $primary-text-color;
   margin-bottom: 0.5em;
   padding-bottom: 0.5em;

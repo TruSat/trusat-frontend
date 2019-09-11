@@ -34,9 +34,9 @@ function CatalogTable({ match, range, setRange }) {
     return rangeData.map(obj => (
       <tr
         key={rangeData.indexOf(obj)}
-        className="table-__body-row catalog-table__body-row"
+        className="table__body-row catalog-table__body-row"
       >
-        <td className="table__table-data catalog-table__table-data">
+        <td className="table__table-data">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -57,16 +57,10 @@ function CatalogTable({ match, range, setRange }) {
             </div>
           </NavLink>
         </td>
-        <td className="table__table-data">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            {renderFlag(obj.object_origin)}
-          </div>
-        </td>
+        <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
 
         <td className="table__table-data">
-          <div style={{ display: "flex" }}>
-            {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
-          </div>
+          {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
         </td>
         <td className="table__table-data">{obj.object_observation_quality}%</td>
         <td className="table__weight-data">
@@ -78,7 +72,7 @@ function CatalogTable({ match, range, setRange }) {
 
   return showTable ? (
     <React.Fragment>
-      <div className="table__wrapper">
+      <div>
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
