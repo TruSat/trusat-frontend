@@ -31,14 +31,14 @@ export default function VerifyClaimAccount({ match }) {
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
       <form className="email-form">
-        <label className="email-form__label">PASSWORD</label>
+        <label className="email-form__label">NEW PASSWORD</label>
         <input
           className="email-form__input"
           type="password"
           onChange={event => setPassword(event.target.value)}
           value={password}
         ></input>
-        <label className="email-form__label">RE-ENTER PASSWORD</label>
+        <label className="email-form__label">RE-ENTER NEW PASSWORD</label>
         <input
           className="email-form__input"
           type="password"
