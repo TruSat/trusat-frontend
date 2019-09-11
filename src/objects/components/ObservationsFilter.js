@@ -1,5 +1,4 @@
 import React from "react";
-import DownloadObjectTleButton from "./DownloadObjectTleButton";
 import { useUserState } from "../../user/user-context";
 import { useObjectsState, useObjectsDispatch } from "../objects-context";
 

@@ -28,14 +28,12 @@ export default function Catalog({ match }) {
     <div className="catalog__wrapper">
       <h1 className="catalog__header">Catalog</h1>
       <CatalogNavDropdown />
-      <CatalogNavBar setRange={setRange} />
-      <HowToParticipate />
-      <section className="catalog__content-wrapper">
-        <div className="catalog__description-table-wrapper">
-          <FilterDescription />
-          <CatalogTable range={range} setRange={setRange} />
-        </div>
-      </section>
+      <div className="catalog__nav-bar-how-to-wrapper">
+        <CatalogNavBar setRange={setRange} />
+        <HowToParticipate />
+      </div>
+
+      <CatalogTable range={range} setRange={setRange} />
     </div>
   );
 }

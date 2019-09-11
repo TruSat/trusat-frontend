@@ -7,7 +7,7 @@ export default function HowToParticipate() {
   const { catalogFilter } = useCatalogState();
 
   return (
-    <div className="catalog__button-link-wrapper">
+    <div className="catalog__how-to-wrapper">
       <h2 className="catalog__how-to-text">HOW TO PARTICIPATE</h2>
       <div className="catalog__button-wrapper">
         {catalogFilter === "priorities" || catalogFilter === "all" ? (
