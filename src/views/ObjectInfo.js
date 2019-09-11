@@ -10,6 +10,7 @@ import {
   useObjectsDispatch
 } from "../objects/objects-context";
 import HowToSeeIt from "../objects/components/HowToSeeIt";
+import FilterDescription from "../objects/components/FilterDescription";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
@@ -43,12 +44,8 @@ export default function ObjectInfo({ match }) {
     <div className="object__wrapper">
       <div className="object-observations__filter-table-wrapper">
         <Info />
-
         <ObservationsFilter />
-        <p className="object-observation__filter-explainer">
-          This is a line where we'd explain what {observationFilter} is and how
-          it works. We can also link out to PoSat docs.
-        </p>
+        <FilterDescription />
         {observationFilter === "influence" ? <InfluenceTable /> : null}
         {observationFilter === "history" ? <HistoryYearDropdown /> : null}
         {observationFilter === "mySightings" ? <UserSightingsTable /> : null}

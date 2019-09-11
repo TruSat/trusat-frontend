@@ -19,6 +19,8 @@ import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
 import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
+import ClaimAccount from "./views/ClaimAccount";
+import VerifyClaimAccount from "./views/VerifyClaimAccount";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -91,6 +93,8 @@ export default function App() {
       <Route path="/how" component={HowTo} />
       <Route path="/login" component={LogIn} />
       <Route path="/signup" component={SignUp} />
+      <Route exact path="/claim" component={ClaimAccount} />
+      <Route path="/claim/:jwt" component={VerifyClaimAccount} />
     </Router>
   );
 }

@@ -9,12 +9,22 @@ export default function FilterDescription() {
     {
       filter: "priorities",
       copy:
-        "This is a hitlist of satellites most in need of amateur observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits"
+        "This is a hitlist of satellites most in need of amateur observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
     },
-    { filter: "undisclosed", copy: "bla bla undisclosed." },
-    { filter: "debris", copy: "bla bla debris." },
-    { filter: "latest", copy: "bla bla latest" },
-    { filter: "all", copy: "bla bla all." }
+    {
+      filter: "undisclosed",
+      copy: "The classified satellites of the TruSat catalog."
+    },
+    {
+      filter: "debris",
+      copy:
+        "Old satellites, spent rocket stages, and the fragments from their disintegration and collisions."
+    },
+    {
+      filter: "latest",
+      copy: "The most recently tracked objects in the catalog."
+    },
+    { filter: "all", copy: "All objects of the TruSat catalog." }
   ];
 
   return filterDescriptions.map(description => {

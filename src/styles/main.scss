@@ -1108,3 +1108,30 @@ MULTIPLE OBSERVATION FORM
   padding: 1em;
   resize: none;
 }
+
+/* ----------
+CLAIM ACCOUNT
+---------- */
+.claim-account__wrapper {
+  margin: 2em 4em;
+}
+
+.claim-account__header {
+  @include view-title--desktop;
+}
+
+.claim-account__message {
+  @include body-text--large-desktop;
+  margin-top: 1em;
+}
+
+/* ----------
+VERIFY CLAIM ACCOUNT
+----------- */
+.verify-claim-account__wrapper {
+  margin: 2em 4em;
+}
+
+.verify-claim-account__header {
+  @include view-title--desktop;
+}
