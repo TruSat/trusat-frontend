@@ -3,7 +3,6 @@ import axios from "axios";
 import { createWallet, createSecret } from "../auth/helpers";
 
 export default function VerifyClaimAccount({ match }) {
-  console.log(match.params.jwt);
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [showMessage, setShowMessage] = useState(false);
