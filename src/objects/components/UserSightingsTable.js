@@ -4,6 +4,7 @@ import { useAuthState } from "../../auth/auth-context";
 import { useUserState } from "../../user/user-context";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers/";
+import { shortenAddress } from "../../app/helpers";
 
 export default function UserSightingsTable() {
   const { jwt } = useAuthState();
@@ -58,7 +59,7 @@ export default function UserSightingsTable() {
                 {obj.user_location ? obj.user_location : "undisclosed location"}
               </td>
               <td className="table__table-data">
-                {obj.username ? obj.username : obj.user_address}
+                {obj.username ? obj.username : shortenAddress(obj.user_address)}
               </td>
               <td className="table__table-data">{obj.observation_quality}</td>
               <td className="table__table-data">

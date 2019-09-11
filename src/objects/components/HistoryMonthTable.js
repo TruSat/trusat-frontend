@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
+import { shortenAddress } from "../../app/helpers";
 
 export default function HistoryMonthTable({
   yearNumber,
@@ -44,7 +45,7 @@ export default function HistoryMonthTable({
           <td className="table__table-data">
             {observation.username
               ? observation.username
-              : observation.user_address}
+              : shortenAddress(observation.user_address)}
           </td>
           <td className="table__table-data">
             {observation.observation_quality}
