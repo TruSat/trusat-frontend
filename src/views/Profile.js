@@ -156,18 +156,31 @@ export default function Profile() {
 
       <section className="profile__objects-tracked-wrapper">
         <h2 className="profile__sub-heading">OBJECTS COLLECTED</h2>
-        <table className="table">
-          <thead className="table__header">
-            <tr>
-              <td className="table__header-text">OBJECT</td>
-              <td className="table__header-text">ORIGIN</td>
-              <td className="table__header-text">PURPOSE</td>
-              <td className="table__header-text">CONFIDENCE</td>
-              <td className="table__header-text">LAST SEEN BY</td>
-            </tr>
-          </thead>
-          <tbody className="table__body">{renderObjectsCollectedRows()}</tbody>
-        </table>
+        {userData.objects_observed.length !== 0 ? (
+          <table className="table">
+            <thead className="table__header">
+              <tr>
+                <td className="table__header-text">OBJECT</td>
+                <td className="table__header-text">ORIGIN</td>
+                <td className="table__header-text">PURPOSE</td>
+                <td className="table__header-text">CONFIDENCE</td>
+                <td className="table__header-text">LAST SEEN BY</td>
+              </tr>
+            </thead>
+            <tbody className="table__body">
+              {renderObjectsCollectedRows()}
+            </tbody>
+          </table>
+        ) : (
+          <div>
+            <NavLink className="app__nav-link" to="/how">
+              <p className="profile__none-yet-text">None yet</p>
+              <span className="app__yellow-button--small">
+                How to track Satellites
+              </span>
+            </NavLink>
+          </div>
+        )}
       </section>
 
       <section className="profile__your-observations-wrapper">

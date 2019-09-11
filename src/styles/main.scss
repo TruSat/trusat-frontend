@@ -81,6 +81,21 @@ APP
   cursor: pointer;
 }
 
+.app__yellow-button--small {
+  align-self: flex-start;
+  background: $primary-highlight-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 0.5em 2em;
+}
+
+.app__yellow-buttton--small:hover {
+  cursor: pointer;
+}
+
 .app__tooltip {
   background: $primary-highlight-color;
   color: $primary-text-color;
@@ -359,6 +374,12 @@ PROFILE
 
 .profile__your-observations-wrapper {
   margin-top: 3em;
+}
+
+.profile__none-yet-text {
+  @include body-text--large-desktop;
+  color: $secondary-theme-color;
+  margin: 0.5em 0;
 }
 
 /* ----------
