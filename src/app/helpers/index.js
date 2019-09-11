@@ -30,8 +30,8 @@ export const renderFlag = code => {
 
 export const shortenAddress = address => {
   return (
-    <div>
-      <p data-tip={address}>{address.substring(0, 5)}...</p>
+    <div data-tip={address}>
+      {`${address.substring(0, 5)}...`}
       <ReactTooltip type="info" />
     </div>
   );

@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
-import { renderFlag } from "../../app/helpers";
+import { renderFlag, shortenAddress } from "../../app/helpers";
 
 function CatalogTable({ match, range, setRange }) {
   const catalogFilter = match.params.catalogFilter;
@@ -64,7 +64,9 @@ function CatalogTable({ match, range, setRange }) {
         </td>
         <td className="table__table-data">{obj.object_observation_quality}%</td>
         <td className="table__weight-data">
-          {obj.username ? obj.username_last_tracked : obj.address_last_tracked}
+          {obj.username
+            ? obj.username_last_tracked
+            : shortenAddress(obj.address_last_tracked)}
         </td>
       </tr>
     ));
