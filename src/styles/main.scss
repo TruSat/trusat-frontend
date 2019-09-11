@@ -118,11 +118,13 @@ TABLE
 .table__table-data {
   font-size: $extra-small-font-size;
   padding: 0.5em 2em 0.5em 0em;
+  vertical-align: middle;
 }
 
 .table__weight-data {
   font-size: $extra-small-font-size;
   padding-right: none;
+  vertical-align: middle;
 }
 
 /* ----------
