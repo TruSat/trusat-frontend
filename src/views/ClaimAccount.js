@@ -10,7 +10,7 @@ export default function ClaimAccount() {
       .post(
         `https://api.consensys.space:8080/claimAccount`,
         JSON.stringify({
-          email: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+          email: email
         })
       )
       .then(result => {
@@ -19,9 +19,6 @@ export default function ClaimAccount() {
       })
       .catch(err => console.log(err));
   };
-
-  // /verifyClaimAccount
-  // takes in encryptedWallet, address, and secret needed to verify (is taken from the URL)
   return (
     <div className="claim-account__wrapper">
       <h1 className="claim-account__header">Claim Account</h1>
