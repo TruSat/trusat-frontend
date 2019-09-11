@@ -234,52 +234,62 @@ CATALOG NAV BAR
 /* ----------
 TABLE
 ---------- */
-// .table__wrapper {
-//   border-bottom: 1px solid $primary-text-color;
-// }
+.table {
+  width: 100%;
+}
 
-// .table__row {
-//   align-items: center;
-//   border: 1px solid $primary-text-color;
-//   border-bottom: none;
-//   display: flex;
-//   justify-content: space-between;
-//   padding: 1em;
-// }
+.table__header {
+  border-bottom: 1px solid $secondary-theme-color;
+}
 
-// .table__badge-name-wrapper {
-//   align-items: center;
-//   // border: 1px solid red;
-//   display: flex;
-//   width: 20%;
-//   text-decoration: none;
-// }
+.table__header-text {
+  @include label-text;
+  padding: 0.5em 2em 1em 0em;
+  text-align: left;
+}
 
-// .table__object-badge {
-// }
+// used in HistoryMonthTable
+.table__month-text {
+  @include label-text--highlight;
+  text-align: left;
+}
 
-// .table__center-wrapper {
-//   // border: 1px solid red;
-//   display: flex;
-//   width: 15%;
-// }
+.table__header-weight-text {
+  @include label-text;
+  padding-right: none;
+  padding-left: 0;
+  text-align: left;
+}
 
-// .table__quality-wrapper {
-//   // border: 1px solid red;
-//   display: flex;
-//   width: 5%;
-// }
+.table__body-row:first-of-type td {
+  padding-top: 1em;
+}
 
-// .table__spotted-by-wrapper {
-//   // border: 1px solid red;
-//   display: flex;
-//   width: 40%;
-// }
+.table__table-data {
+  font-size: $extra-small-font-size;
+  padding: 1em 2em 0em 0em;
+}
 
-// .table__small-text {
-//   font-size: $small-font-size;
-//   line-height: $small-line-height;
-// }
+.table__weight-data {
+  font-size: $extra-small-font-size;
+  padding-right: none;
+}
+
+/* ----------
+CATALOG TABLE
+---------- */
+.catalog-table__object-data-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.catalog-table__body-row {
+  border-bottom: 1px solid $tertiary-color;
+}
+
+.catalog-table__table-data {
+  padding: 0em 2em 0em 0em;
+}
 
 /* ---------- 
 PROFILE
@@ -1005,50 +1015,6 @@ OBJECT OBSERVATIONS NAV
 .object-observation__filter-explainer {
   @include body-text--large-desktop;
   margin-bottom: 2em;
-}
-
-/* ----------
-TABLE
----------- */
-.table {
-  width: 100%;
-}
-
-.table__header {
-  border-bottom: 1px solid $secondary-theme-color;
-}
-
-.table__header-text {
-  @include label-text;
-  padding: 0.5em 2em 1em 0em;
-  text-align: left;
-}
-
-// used in HistoryMonthTable
-.table__month-text {
-  @include label-text--highlight;
-  text-align: left;
-}
-
-.table__header-weight-text {
-  @include label-text;
-  padding-right: none;
-  padding-left: 0;
-  text-align: left;
-}
-
-.table__body-row:first-of-type td {
-  padding-top: 1em;
-}
-
-.table__table-data {
-  font-size: $extra-small-font-size;
-  padding: 1em 2em 0em 0em;
-}
-
-.table__weight-data {
-  font-size: $extra-small-font-size;
-  padding-right: none;
 }
 
 /* ----------

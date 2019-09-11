@@ -29,62 +29,69 @@ function CatalogTable({ match, range, setRange }) {
   const renderCatalogTable = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
+    console.log(rangeData);
 
     return rangeData.map(obj => (
-      <NavLink
+      <tr
         key={rangeData.indexOf(obj)}
-        className="app__nav-link"
-        to={`/object/${obj.object_norad_number}`}
+        className="table-__body-row catalog-table__body-row"
       >
-        <div className="table__row">
-          <div className="table__badge-name-wrapper">
-            {catalogFilter === "priorities" ? (
-              <p>
-                {tableData.indexOf(obj) + 1}
-                &nbsp;
-              </p>
-            ) : null}
-            <img
-              className="table__object-badge"
-              src={ObjectBadge}
-              alt="Object Badge"
-            ></img>
-            <p>&nbsp;{obj.object_name}</p>
-          </div>
-
-          <div className="table__center-wrapper">
+        <td className="table__table-data catalog-table__table-data">
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            <div className="catalog-table__object-data-wrapper">
+              {catalogFilter === "priorities" ? (
+                <p>
+                  {tableData.indexOf(obj) + 1}
+                  &nbsp;
+                </p>
+              ) : null}
+              <img
+                className="table__object-badge"
+                src={ObjectBadge}
+                alt="Object Badge"
+              ></img>
+              <p>&nbsp;{obj.object_name}</p>
+            </div>
+          </NavLink>
+        </td>
+        <td className="table__table-data">
+          <div style={{ display: "flex", alignItems: "center" }}>
             {renderFlag(obj.object_origin)}
-            &nbsp;
-            <p className="table__small-text">{obj.object_primary_purpose}</p>
           </div>
+        </td>
 
-          <div className="table__center-wrapper">
-            <p className="table__small-text">{obj.object_type}</p>
-            &nbsp;
-            <p className="table__small-text"> {obj.object_secondary_purpose}</p>
+        <td className="table__table-data">
+          <div style={{ display: "flex" }}>
+            {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
           </div>
-
-          <div className="table__quality-wrapper">
-            <p className="table__small-text">
-              {obj.object_observation_quality}
-            </p>
-          </div>
-
-          <div className="table__spotted-by-wrapper">
-            <p className="table__small-text">
-              {`last spotted `}
-              {obj.time_last_tracked} {` by `}
-              {obj.username_last_tracked}
-            </p>
-          </div>
-        </div>
-      </NavLink>
+        </td>
+        <td className="table__table-data">{obj.object_observation_quality}%</td>
+        <td className="table__weight-data">
+          {obj.username ? obj.username_last_tracked : obj.address_last_tracked}
+        </td>
+      </tr>
     ));
   };
 
   return showTable ? (
     <React.Fragment>
-      <div className="table__wrapper">{renderCatalogTable()}</div>
+      <div className="table__wrapper">
+        <table className="table">
+          <thead className="table__header">
+            <tr className="table__header-row">
+              <th className="table__header-text">OBJECT</th>
+              <th className="table__header-text">ORIGIN</th>
+              <th className="table__header-text">PURPOSE</th>
+              <th className="table__header-text">CONFIDENCE</th>
+              <th className="table__header-text">LAST SEEN BY</th>
+            </tr>
+          </thead>
+          <tbody className="table__body">{renderCatalogTable()}</tbody>
+        </table>
+      </div>
 
       <div style={{ margin: "1em", textAlign: "center" }}>
         <p>
