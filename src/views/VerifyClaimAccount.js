@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { createWallet, createSecret } from "../auth/helpers";
 
 export default function VerifyClaimAccount({ match }) {
   console.log(match.params.jwt);
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
-  // /verifyClaimAccount
-  // takes in encryptedWallet, address, and secret needed to verify (is taken from the URL)
   const verifyClaimAccount = () => {
+    const wallet = createWallet();
+    const secret = createSecret(wallet.signingKey.privateKey, password);
+
     axios
       .post(
         `https://api.consensys.space:8080/claimAccount`,
         JSON.stringify({
-          email: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312",
-          jwt: match.params.jwt
+          jwt: match.params.jwt,
+          address: wallet.signingKey.address,
+          secret: secret
         })
       )
       .then(result => {
@@ -35,13 +39,22 @@ export default function VerifyClaimAccount({ match }) {
           onChange={event => setPassword(event.target.value)}
           value={password}
         ></input>
+        <label className="email-form__label">RE-ENTER PASSWORD</label>
+        <input
+          className="email-form__input"
+          type="password"
+          onChange={event => setPassword2(event.target.value)}
+          value={password2}
+        ></input>
         <span className="app__white-button--small" onClick={verifyClaimAccount}>
           Submit
         </span>
       </form>
       {showMessage ? (
         <p className="claim-account__message">
-          Check your email for further instructions!
+          Your have now claimed ownership of your TruSat account! We have
+          emailed you a "secret" that will be required along with your email and
+          password to log in from now on.
         </p>
       ) : null}
     </div>
