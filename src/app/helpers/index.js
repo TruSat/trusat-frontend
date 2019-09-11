@@ -26,3 +26,7 @@ export const renderFlag = code => {
     });
   }
 };
+
+export const shortenAddress = address => {
+  return address;
+};
