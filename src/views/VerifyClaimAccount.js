@@ -13,7 +13,7 @@ export default function VerifyClaimAccount({ match }) {
 
     axios
       .post(
-        `https://api.consensys.space:8080/claimAccount`,
+        `https://api.consensys.space:8080/verifyClaimAccount`,
         JSON.stringify({
           jwt: match.params.jwt,
           address: wallet.signingKey.address,

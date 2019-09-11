@@ -5,6 +5,7 @@ import ObjectBadge from "../assets/ObjectBadge.svg";
 import Spinner from "../app/components/Spinner";
 import { renderFlag } from "../app/helpers";
 import { useUserState } from "../user/user-context";
+import { shortenAddress } from "../app/helpers";
 
 export default function Profile() {
   // TODO - add if statement to use address found in auth state before using the match address
@@ -82,7 +83,9 @@ export default function Profile() {
             // spotColor="#abc"
           />
           <h1 className="profile__header-username">
-            {userData.user_name ? userData.user_name : userData.user_address}
+            {userData.user_name
+              ? userData.user_name
+              : shortenAddress(userData.user_address)}
           </h1>
         </div>
 
