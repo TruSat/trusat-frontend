@@ -46,7 +46,7 @@ export default function Profile() {
         <td className="table__table-data">
           {obj.username_last_tracked
             ? obj.username_last_tracked
-            : obj.address_last_tracked}
+            : shortenAddress(obj.address_last_tracked)}
         </td>
       </tr>
     ));
