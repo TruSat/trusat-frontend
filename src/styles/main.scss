@@ -81,6 +81,11 @@ APP
   cursor: pointer;
 }
 
+.app__tooltip {
+  background: $primary-highlight-color;
+  color: $primary-text-color;
+}
+
 /* ----------
 TABLE
 ---------- */

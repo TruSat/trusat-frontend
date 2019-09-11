@@ -1,4 +1,5 @@
 import React from "react";
+import ReactTooltip from "react-tooltip";
 
 export const renderFlag = code => {
   if (!code) {
@@ -28,5 +29,10 @@ export const renderFlag = code => {
 };
 
 export const shortenAddress = address => {
-  return address;
+  return (
+    <div>
+      <p data-tip={address}>{address.substring(0, 5)}...</p>
+      <ReactTooltip type="info" />
+    </div>
+  );
 };
