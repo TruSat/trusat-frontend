@@ -71,72 +71,84 @@ export default function Profile() {
   return showUserProfile ? (
     <div className="profile__wrapper">
       <section className="profile__header-wrapper">
-        <Blockie
-          seed={userData.user_address}
-          size={30}
-          scale={3}
-          // color="#dfe"
-          // bgColor="#ffe"
-          // spotColor="#abc"
-        />
-        <div className="profile__header-info-wrapper">
-          <h1 className="profile__header-username">{userData.user_name}</h1>
-          <div className="profile__header-info-data-wrapper">
-            <div className="profile__header-info-data-key">
-              {userData.user_location ? (
-                <p className="profile__header-info-data-value">
-                  {userData.user_location}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">
-                  Location Undisclosed
-                </p>
-              )}
-            </div>
-            &nbsp;
-            <div className="profile__header-info-data-key">
-              {userData.number_objects_tracked ? (
-                <p className="profile__header-info-data-value">
-                  {userData.number_objects_tracked}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">?</p>
-              )}
-              &nbsp; OBJECTS TRACKED
-            </div>
-            &nbsp;
-            <div className="profile__header-info-data-key">
-              {userData.observation_count ? (
-                <p className="profile__header-info-data-value">
-                  {userData.observation_count}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">?</p>
-              )}
-              &nbsp; OBSERVATIONS
-            </div>
-            &nbsp;
-            <div className="profile__header-info-data-key">
-              {userData.average_observation_quality ? (
-                <p className="profile__header-info-data-value">
-                  {userData.average_observation_quality}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">?</p>
-              )}
-              &nbsp; <p>AVG. ACCURACY</p>
-            </div>
-          </div>
+        <div className="profile__blockie-name-wrapper">
+          <Blockie
+            seed={userData.user_address}
+            size={30}
+            scale={3}
+            className="blockie"
+            // color="#dfe"
+            // bgColor="#ffe"
+            // spotColor="#abc"
+          />
+          <h1 className="profile__header-username">
+            {userData.user_name ? userData.user_name : userData.user_address}
+          </h1>
         </div>
 
-        <NavLink style={{ color: "white" }} to="/settings">
-          Settings
-        </NavLink>
-      </section>
+        <div className="profile__button-data-wrapper">
+          <NavLink style={{ color: "white" }} to="/settings">
+            <span className="app__black-button--small">Settings</span>
+          </NavLink>
+          <div className="profile__header-info-data-label">
+            {userData.user_location ? (
+              <p className="profile__header-info-data-value">
+                userData.user_location
+              </p>
+            ) : (
+              <p className="profile__header-info-data-value">
+                Location Undisclosed
+              </p>
+            )}
+          </div>
 
-      <section className="profile__bio-wrapper">
-        <h2 className="profile__background-header">BACKGROUND</h2>
-        <p>{userData.user_bio ? userData.user_bio : "?"}</p>
+          <div className="profile__header-info-data-label">
+            {userData.number_objects_tracked ? (
+              <p className="profile__header-info-data-value">
+                {userData.number_objects_tracked}
+              </p>
+            ) : (
+              <p className="profile__header-info-data-value">?</p>
+            )}
+            &nbsp; OBJECTS TRACKED
+          </div>
+
+          <div className="profile__header-info-data-label">
+            {userData.observation_count ? (
+              <p className="profile__header-info-data-value">
+                {userData.observation_count}
+              </p>
+            ) : (
+              <p className="profile__header-info-data-value">?</p>
+            )}
+            &nbsp; OBSERVATIONS
+          </div>
+
+          <div className="profile__header-info-data-label">
+            {userData.user_first_observation ? (
+              <p className="profile__header-info-data-value">
+                {userData.user_first_observation}
+              </p>
+            ) : (
+              <p className="profile__header-info-data-value">?</p>
+            )}
+            &nbsp; <p>1ST OBSERVATION</p>
+          </div>
+
+          <div className="profile__header-info-data-label">
+            {userData.average_observation_quality ? (
+              <p className="profile__header-info-data-value">
+                {userData.average_observation_quality}
+              </p>
+            ) : (
+              <p className="profile__header-info-data-value">?</p>
+            )}
+            &nbsp; <p>AVG. ACCURACY</p>
+          </div>
+        </div>
+        <p className="profile__bio-text">
+          {userData.user_bio ? userData.user_bio : null}
+        </p>
       </section>
 
       <section className="profile__objects-tracked-wrapper">

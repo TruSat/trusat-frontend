@@ -41,7 +41,7 @@ APP
   display: inline-block;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 0.5em 2em;
 }
 
 .app__white-button--small:hover {
@@ -51,7 +51,7 @@ APP
 .app__button--black {
   align-self: flex-start;
   background: $primary-theme-color;
-  border: 1px solid $secondary-theme-color;
+  border: 1px solid $tertiary-color;
   border-radius: 4px;
   color: $primary-text-color;
   display: inline-block;
@@ -74,7 +74,7 @@ APP
   display: inline-block;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 0.5em 2em;
 }
 
 .app__black-button--small:hover {
@@ -290,6 +290,13 @@ CATALOG TABLE
   padding: 0em 2em 0em 0em;
 }
 
+/* ---------
+BLOCKIE
+---------- */
+.blockie {
+  border-radius: 50%;
+}
+
 /* ---------- 
 PROFILE
 ---------- */
@@ -298,49 +305,40 @@ PROFILE
 }
 
 .profile__header-wrapper {
-  border: 1px solid $secondary-theme-color;
-  border-left: none;
-  border-right: none;
   display: flex;
-  padding: 1em 0;
+  flex-direction: column;
 }
 
-.profile__header-info-wrapper {
-  margin-left: 1em;
-  height: 100%;
-  width: 100%;
+.profile__blockie-name-wrapper {
+  align-items: center;
+  display: flex;
 }
 
 .profile__header-username {
   @include view-title--desktop;
-  margin-left: none;
-  padding-left: none;
+  margin-left: 0.5em;
 }
 
-.profile__header-info-data-wrapper {
+.profile__button-data-wrapper {
   display: flex;
-  margin-left: 0.25em;
+  margin-top: 1em;
 }
 
-.profile__header-info-data-key {
+.profile__header-info-data-label {
+  @include label-text;
   align-items: center;
   display: flex;
-  font-size: $extra-small-font-size;
-  margin-right: 3em;
-  color: $secondary-theme-color;
 }
 
 .profile__header-info-data-value {
   color: $primary-text-color;
-  font-size: $small-font-size;
+  font-size: $extra-small-font-size;
+  margin-left: 3em;
 }
 
-.profile__bio-wrapper {
-  margin-top: 2em;
-}
-
-.profile__background-header {
-  @include section-title;
+.profile__bio-text {
+  @include body-text--large-desktop;
+  margin-top: 1em;
 }
 
 .profile__objects-tracked-wrapper {
