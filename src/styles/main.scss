@@ -899,7 +899,7 @@ OBJECT INFO
 
 .object-info__background-wrapper {
   flex: 1;
-  margin-right: 3em;
+  margin-right: 5em;
 }
 
 .object-info__background-section-wrapper {
@@ -908,7 +908,6 @@ OBJECT INFO
 }
 
 .object-info__how-to-wrapper {
-  right: 0;
 }
 
 .object-info__section-title {
@@ -1012,6 +1011,7 @@ OBJECT OBSERVATIONS NAV
 TABLE
 ---------- */
 .table {
+  width: 100%;
 }
 
 .table__header {
@@ -1021,7 +1021,12 @@ TABLE
 .table__header-text {
   @include label-text;
   padding: 0.5em 2em 1em 0em;
-  padding-left: 0;
+  text-align: left;
+}
+
+// used in HistoryMonthTable
+.table__month-text {
+  @include label-text--highlight;
   text-align: left;
 }
 
@@ -1063,8 +1068,12 @@ HISTORY YEAR DROPDOWN
 }
 
 .history-year-dropdown__year-text {
-  font-weight: bold;
-  font-size: $small-font-size;
+  @include label-text;
+}
+
+.history-year-dropdown__year-text--highlight {
+  @include label-text--highlight;
+  margin-bottom: 1em;
 }
 
 /* ----------
@@ -1091,88 +1100,6 @@ HISTROY MONTH DROPDOWN
   font-weight: bold;
   letter-spacing: 0.04em;
   line-height: 12px;
-}
-
-/* ----------
-HISTORY MONTH TABLE 
----------- */
-.history-month-table {
-}
-
-.history-month-table__header {
-  border: 1px solid $primary-text-color;
-  border-left: none;
-  border-right: none;
-}
-
-.history-month-table__month-text {
-  color: white;
-  font-size: $small-font-size;
-  font-weight: bold;
-  text-align: left;
-}
-
-.history-month-table__header-text {
-  color: $secondary-theme-color;
-  font-size: $small-font-size;
-  padding: 0.5em;
-  text-align: left;
-  padding: 0.5em 2em 0.5em 0em;
-}
-
-.history-month-table__header-weight-text {
-  color: $secondary-theme-color;
-  font-size: $small-font-size;
-  padding-right: none;
-  text-align: left;
-}
-
-.history-month-table__table-data {
-  font-size: $extra-small-font-size;
-  padding-right: 2em;
-}
-
-.history-month-table__weight-data {
-  font-size: $extra-small-font-size;
-  padding-right: none;
-}
-
-/* ----------
-USER SIGHTINGS TABLE
---------- */
-.user-sightings-table {
-}
-
-.user-sightings-table__header {
-  border: 1px solid $primary-text-color;
-  border-left: none;
-  border-right: none;
-}
-
-.user-sightings-table__header-text {
-  color: $secondary-theme-color;
-  font-size: $small-font-size;
-  padding: 0.5em 2em 0.5em 0em;
-  text-align: left;
-}
-
-.user-sightings-table__header-weight-text {
-  color: $secondary-theme-color;
-  font-size: $small-font-size;
-  padding-right: none;
-  text-align: left;
-}
-
-.user-sightings-table__table-data {
-  font-size: $extra-small-font-size;
-  line-height: 27px;
-  padding-right: 2em;
-}
-
-.user-sightings-table__weight-data {
-  font-size: $extra-small-font-size;
-  line-height: 27px;
-  padding-right: none;
 }
 
 /* ----------

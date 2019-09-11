@@ -23,10 +23,22 @@ export default function HistoryTable() {
           <div key={year} className="history-year-dropdown__row">
             <h1
               onClick={() => {
-                setYearChosen(year);
+                if (year !== yearChosen) {
+                  setYearChosen(year);
+                } else {
+                  setYearChosen("");
+                }
               }}
             >
-              <p className="history-year-dropdown__year-text">{year}</p>
+              <p
+                className={
+                  year === yearChosen
+                    ? "history-year-dropdown__year-text--highlight"
+                    : "history-year-dropdown__year-text"
+                }
+              >
+                {year}
+              </p>
             </h1>
             {yearChosen === year ? (
               <HistoryMonthDropdown yearNumber={yearChosen} />

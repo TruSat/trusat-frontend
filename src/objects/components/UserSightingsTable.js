@@ -33,16 +33,16 @@ export default function UserSightingsTable() {
   }, [jwt, userAddress, noradNumber]);
 
   return showTable ? (
-    <table className="user-sightings-table">
-      <thead className="user-sightings-table__header">
-        <tr className="user-sightings-table__header-row">
-          <th className="user-sightings-table__header-text">DATE</th>
+    <table className="table">
+      <thead className="table__header">
+        <tr className="table__header-row">
+          <th className="table__header-text">DATE</th>
           <th />
           <th />
-          <th className="user-sightings-table__header-text">USER</th>
-          <th className="user-sightings-table__header-text">QUAlITY</th>
-          <th className="user-sightings-table__header-text">TIME DIFF</th>
-          <th className="user-sightings-table__header-weight-text">WEIGHT</th>
+          <th className="table__header-text">USER</th>
+          <th className="table__header-text">QUAlITY</th>
+          <th className="table__header-text">TIME DIFF</th>
+          <th className="table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody>
@@ -50,29 +50,21 @@ export default function UserSightingsTable() {
           return (
             <tr
               key={objectUserSightings.indexOf(obj)}
-              className="user-sightings-table__body-row"
+              className="table__body-row"
             >
-              <td className="user-sightings-table__table-data">
-                {obj.observation_time}
-              </td>
-              <td className="user-sightings-table__table-data">
-                {renderFlag(objectOrigin)}
-              </td>
-              <td className="user-sightings-table__table-data">
+              <td className="table__table-data">{obj.observation_time}</td>
+              <td className="table__table-data">{renderFlag(objectOrigin)}</td>
+              <td className="table__table-data">
                 {obj.user_location ? obj.user_location : "undisclosed location"}
               </td>
-              <td className="user-sightings-table__table-data">
+              <td className="table__table-data">
                 {obj.username ? obj.username : obj.user_address}
               </td>
-              <td className="user-sightings-table__table-data">
-                {obj.observation_quality}
-              </td>
-              <td className="user-sightings-table__table-data">
+              <td className="table__table-data">{obj.observation_quality}</td>
+              <td className="table__table-data">
                 {obj.observation_time_difference}
               </td>
-              <td className="user-sightings-table__weight-data">
-                {obj.observation_weight}
-              </td>
+              <td className="table__weight-data">{obj.observation_weight}</td>
             </tr>
           );
         })}

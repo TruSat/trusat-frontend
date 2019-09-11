@@ -36,27 +36,23 @@ export default function HistoryMonthTable({
       return day.observation.map(observation => (
         <tr
           key={day.observation.indexOf(observation)}
-          className="history-month-table__body-row"
+          className="table__body-row"
         >
-          <td className="history-month-table__table-data">{day.date}</td>
-          <td className="history-month-table__table-data">
-            {renderFlag(objectOrigin)}
-          </td>
-          <td className="history-month-table__table-data">
-            {observation.user_location}
-          </td>
-          <td className="history-month-table__table-data">
+          <td className="table__table-data">{day.date}</td>
+          <td className="table__table-data">{renderFlag(objectOrigin)}</td>
+          <td className="table__table-data">{observation.user_location}</td>
+          <td className="table__table-data">
             {observation.username
               ? observation.username
               : observation.user_address}
           </td>
-          <td className="history-month-table__table-data">
+          <td className="table__table-data">
             {observation.observation_quality}
           </td>
-          <td className="history-month-table__table-data">
+          <td className="table__table-data">
             {observation.observation_time_difference}
           </td>
-          <td className="history-month-table__weight-data">
+          <td className="table__weight-data">
             {observation.observation_weight}%
           </td>
         </tr>
@@ -65,16 +61,16 @@ export default function HistoryMonthTable({
   };
 
   return showTable ? (
-    <table className="history-month-table">
-      <thead className="history-month-table__header">
-        <tr className="history-month-table__header-row">
-          <th className="history-month-table__month-text">{monthName}</th>
+    <table className="table">
+      <thead className="table__header">
+        <tr className="table__header-row">
+          <th className="table__month-text">{monthName}</th>
           <th />
           <th />
-          <th className="history-month-table__header-text">USER</th>
-          <th className="history-month-table__header-text">QUALITY</th>
-          <th className="history-month-table__header-text">TIME DIFF</th>
-          <th className="history-month-table__header-weight-text">WEIGHT</th>
+          <th className="table__header-text">USER</th>
+          <th className="table__header-text">QUALITY</th>
+          <th className="table__header-text">TIME DIFF</th>
+          <th className="table__header-weight-text">WEIGHT</th>
         </tr>
       </thead>
       <tbody>{renderDayRows()}</tbody>

@@ -1,8 +1,8 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import ObjectBadgeLarge from "../../assets/ObjectBadgeLarge.svg";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers";
+import HowToSeeIt from "./HowToSeeIt";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
@@ -75,24 +75,7 @@ export default function Info() {
             </div>
           ) : null}
         </div>
-
-        <div className="object-info__how-to-wrapper">
-          <h2 className="object-info__section-title">HOW TO SEE IT</h2>
-          <NavLink className="app__nav-link" to="/how">
-            <p className="object-info__link-text">Follow this tutorial</p>
-          </NavLink>
-          {objectInfo.heavens_above_url ? (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href={objectInfo.heavens_above_url}
-            >
-              <p className="object-info__link-text">
-                More info at Heavens Above
-              </p>
-            </a>
-          ) : null}
-        </div>
+        <HowToSeeIt />
       </section>
     </React.Fragment>
   );

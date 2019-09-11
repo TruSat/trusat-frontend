@@ -9,6 +9,7 @@ import {
   useObjectsState,
   useObjectsDispatch
 } from "../objects/objects-context";
+import HowToSeeIt from "../objects/components/HowToSeeIt";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
@@ -40,9 +41,9 @@ export default function ObjectInfo({ match }) {
 
   return showObjectView ? (
     <div className="object__wrapper">
-      <Info />
-
       <div className="object-observations__filter-table-wrapper">
+        <Info />
+
         <ObservationsFilter />
         <p className="object-observation__filter-explainer">
           This is a line where we'd explain what {observationFilter} is and how
