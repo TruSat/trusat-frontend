@@ -29,7 +29,7 @@ export default function InfluenceTable() {
       <thead className="table__header">
         <tr className="table__header-row">
           <th className="table__header-text">DATE</th>
-          <th className="table__header-text">TRACKED BY</th>
+          <th className="table__header-text app__hide-on-mobile">TRACKED BY</th>
           <th className="table__header-text">LOCATION</th>
           <th className="table__header-text">QUALITY</th>
           <th className="table__header-text">TIME DIFF</th>
@@ -41,7 +41,7 @@ export default function InfluenceTable() {
           return (
             <tr key={objectInfluence.indexOf(obj)} className="table__body-row">
               <td className="table__table-data">{obj.observation_time}</td>
-              <td className="table__table-data">
+              <td className="table__table-data app__hide-on-mobile">
                 {obj.username ? obj.username : shortenAddress(obj.user_address)}
               </td>
               <td className="table__table-data">

@@ -2,23 +2,51 @@
 OBJECT VIEW
 ---------- */
 .object__wrapper {
-  margin: 3em 4em;
+  margin: 2em 1em;
+}
+
+@media (min-width: 600px) {
+  .object__wrapper {
+    margin: 3em 4em;
+  }
 }
 
 /* ----------
 OBJECT INFO 
 ---------- */
-.object-info__header-section-wrapper {
-  display: flex;
-  margin-bottom: 1em;
+@media (max-width: 600px) {
+  .object-info__header-section-wrapper {
+    align-items: center;
+    border: 1px solid yellow;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 }
 
-.object-info__badge {
-  margin-right: 1em;
+@media (min-width: 600px) {
+  .object-info__header-section-wrapper {
+    display: flex;
+    margin-bottom: 1em;
+  }
 }
 
-.object-info__header {
-  @include view-title--desktop;
+@media (max-width: 600px) {
+  .object-info__badge {
+    width: 30%;
+  }
+}
+
+@media (min-width: 600px) {
+  .object-info__badge {
+    margin-right: 1em;
+  }
+}
+
+@media (min-width: 600px) {
+  .object-info__header {
+    @include view-title--desktop;
+  }
 }
 
 .object-info__header-info-wrapper {
@@ -44,9 +72,11 @@ OBJECT INFO
   margin-right: 5em;
 }
 
-.object-info__background-section-wrapper {
-  display: flex;
-  margin: 2em 0;
+@media (min-width: 600px) {
+  .object-info__background-section-wrapper {
+    display: flex;
+    margin: 2em 0;
+  }
 }
 
 .object-info__how-to-wrapper {

@@ -2,12 +2,11 @@
 CATALOG
 ---------- */
 .catalog__wrapper {
-  margin: 0em 1em;
+  margin: 2em 1em;
 }
 
 .catalog__header {
   @include view-title;
-  margin-top: 0.25em;
 }
 
 @media (min-width: 600px) {
