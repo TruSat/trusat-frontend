@@ -1,0 +1,202 @@
+/* ----------
+OBJECT VIEW
+---------- */
+.object__wrapper {
+  margin: 3em 4em;
+}
+
+/* ----------
+OBJECT INFO 
+---------- */
+.object-info__header-section-wrapper {
+  display: flex;
+  margin-bottom: 1em;
+}
+
+.object-info__badge {
+  margin-right: 1em;
+}
+
+.object-info__header {
+  @include view-title--desktop;
+}
+
+.object-info__header-info-wrapper {
+  display: flex;
+}
+
+.object-info__header-info-wrapper--with-margin {
+  display: flex;
+  margin-right: 1em;
+}
+
+.object-info__small-text {
+  font-size: $extra-small-font-size;
+}
+
+.object-info__small-text--grey {
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+}
+
+.object-info__background-wrapper {
+  flex: 1;
+  margin-right: 5em;
+}
+
+.object-info__background-section-wrapper {
+  display: flex;
+  margin: 2em 0;
+}
+
+.object-info__how-to-wrapper {
+}
+
+.object-info__section-title {
+  @include section-title;
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.object-info__origin-launched-wrapper {
+  display: flex;
+}
+
+.object-info__origin-wrapper {
+  margin-right: 5em;
+}
+
+.object-info__launched-wrapper {
+}
+
+.object-info__purpose-wrapper {
+  margin-top: 1em;
+}
+
+.object-info__info-label {
+  @include label-text;
+  margin-bottom: 0.5em;
+}
+
+.object-info__link-text {
+  color: $secondary-theme-color;
+  text-decoration-line: underline;
+  margin-bottom: 0.5em;
+}
+
+/* ----------
+OBJECT OBSERVATIONS NAV
+---------- */
+.object-observations__header {
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 19px;
+  margin-bottom: 0.5em;
+}
+
+.object-observations__filter-table-wrapper {
+  display: inline-block;
+  margin-bottom: 3em;
+}
+
+.object-observations__nav {
+  display: flex;
+  justify-content: column;
+}
+
+.object-observations__nav-links-wrapper {
+  border-bottom: 1px solid $secondary-theme-color;
+  display: flex;
+  margin-bottom: 1em;
+  width: 100%;
+}
+
+.object-observations__nav-link-wrapper--lowlight {
+  border-bottom: 3px solid $primary-theme-color;
+  padding-bottom: 0.5em;
+  margin-right: 2em;
+}
+
+.object-observations__nav-link-wrapper--highlight {
+  border-bottom: 3px solid $primary-highlight-color;
+  padding-bottom: 0.5em;
+  margin-right: 2em;
+}
+
+.object-observations__nav-link--lowlight {
+  color: $secondary-theme-color;
+  font-size: $small-font-size;
+}
+
+.object-observations__nav-link--highlight {
+  color: $primary-text-color;
+  font-size: $small-font-size;
+  font-weight: $bold-weight;
+}
+
+.object-observations__nav-link--lowlight:hover,
+.object-observations__nav-link--hightlight:hover {
+  cursor: pointer;
+}
+
+.object-observations__get-data-link-wrapper {
+  border-bottom: 3px solid $primary-theme-color;
+  padding-bottom: 0.5em;
+}
+
+.object-observation__filter-explainer {
+  @include body-text--large-desktop;
+  margin-bottom: 2em;
+}
+
+/* ----------
+HISTORY YEAR DROPDOWN 
+----------- */
+.history-year-dropdown {
+  border-bottom: 1px solid $primary-text-color;
+}
+
+.history-year-dropdown__row {
+  border-top: 1px solid $primary-text-color;
+  padding: 0.5em 0;
+}
+
+.history-year-dropdown__row:hover {
+  cursor: pointer;
+}
+
+.history-year-dropdown__year-text {
+  @include label-text;
+}
+
+.history-year-dropdown__year-text--highlight {
+  @include label-text--highlight;
+  margin-bottom: 1em;
+}
+
+/* ----------
+HISTROY MONTH DROPDOWN
+---------- */
+.history-month-dropdown {
+  border-bottom: 1px solid #363636;
+  display: flex;
+  flex-direction: column;
+}
+
+.history-month-dropdown__row {
+  border-top: 1px solid #363636;
+  padding: 0.5em 0;
+}
+
+.history-month-dropdown__row:hover {
+  cursor: pointer;
+}
+
+.history-month-dropdown__month-text {
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+  line-height: 12px;
+}
