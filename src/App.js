@@ -7,6 +7,7 @@ import { useAuthDispatch } from "./auth/auth-context";
 import { useUserDispatch } from "./user/user-context";
 import { ObjectsProvider } from "./objects/objects-context";
 import NavBar from "./app/components/NavBar";
+import MobileHeader from "./app/components/MobileHeader";
 import Catalog from "./views/Catalog";
 import Submit from "./views/Submit";
 import Welcome from "./views/Welcome";
@@ -76,12 +77,14 @@ export default function App() {
 
   return (
     <Router>
+      {/* Shown on mobile view */}
       <BurgerMenu left />
+      <MobileHeader />
+      {/* Shown on desktop view */}
       <NavBar />
+
       <Route exact path="/" component={Welcome} />
-
       <Route path="/catalog/:catalogFilter" component={Catalog} />
-
       <Route path="/submit" component={Submit} />
       <ObjectsProvider>
         <Route path="/object/:number" component={ObjectInfo} />

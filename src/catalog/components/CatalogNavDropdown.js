@@ -4,11 +4,11 @@ import Select from "react-select";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 const options = [
-  { value: "priorities", label: "Priorities" },
-  { value: "undisclosed", label: "Undisclosed" },
-  { value: "debris", label: "Debris" },
-  { value: "latest", label: "Latest" },
-  { value: "all", label: "All" }
+  { value: "priorities", label: "PRIORITIES" },
+  { value: "undisclosed", label: "UNDISCLOSED" },
+  { value: "debris", label: "DEBRIS" },
+  { value: "latest", label: "LATEST" },
+  { value: "all", label: "ALL" }
 ];
 
 function NavDropdown({ history, setRange }) {

@@ -6,6 +6,12 @@ APP
   display: block;
 }
 
+@media (max-width: 600px) {
+  .app__hide-on-mobile {
+    display: none;
+  }
+}
+
 .app__show-on-desktop {
   display: none;
 }
@@ -107,6 +113,21 @@ APP
 .app__tooltip {
   background: $primary-highlight-color;
   color: $primary-text-color;
+}
+
+/* ----------
+MOBILE HEADER 
+---------- */
+.mobile-header {
+  background: #2d2d2d;
+  padding: 1em;
+}
+
+.mobile-header__app-title {
+  font-size: $medium-line-height;
+  font-weight: 900;
+  line-height: $medium-line-height;
+  letter-spacing: 0.2em;
 }
 
 /* ----------
@@ -329,8 +350,8 @@ BURGER MENU
   position: fixed;
   width: 36px;
   height: 30px;
-  right: 20px;
-  top: 20px;
+  right: 10px;
+  top: 10px;
 }
 
 @media (min-width: 600px) {

@@ -19,7 +19,7 @@ export default function Catalog({ match }) {
     });
   }
 
-  const [range, setRange] = useState({ start: 0, end: 20 });
+  const [range, setRange] = useState({ start: 0, end: 10 });
 
   return (
     <div className="catalog__wrapper">

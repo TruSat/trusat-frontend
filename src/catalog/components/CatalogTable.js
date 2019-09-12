@@ -59,10 +59,12 @@ function CatalogTable({ match, range, setRange }) {
         </td>
         <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
 
-        <td className="table__table-data">
+        <td className="table__table-data app__hide-on-mobile">
           {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
         </td>
-        <td className="table__table-data">{obj.object_observation_quality}%</td>
+        <td className="table__table-data app__hide-on-mobile">
+          {obj.object_observation_quality}%
+        </td>
         <td className="table__weight-data">
           {obj.username
             ? obj.username_last_tracked
@@ -80,8 +82,12 @@ function CatalogTable({ match, range, setRange }) {
             <tr className="table__header-row">
               <th className="table__header-text">OBJECT</th>
               <th className="table__header-text">ORIGIN</th>
-              <th className="table__header-text">PURPOSE</th>
-              <th className="table__header-text">CONFIDENCE</th>
+              <th className="table__header-text app__hide-on-mobile">
+                PURPOSE
+              </th>
+              <th className="table__header-text app__hide-on-mobile">
+                CONFIDENCE
+              </th>
               <th className="table__header-text">LAST SEEN BY</th>
             </tr>
           </thead>
@@ -99,8 +105,8 @@ function CatalogTable({ match, range, setRange }) {
           onClick={() => {
             if (range.start !== 0) {
               setRange(currentRange => ({
-                start: currentRange.start - 20,
-                end: currentRange.end - 20
+                start: currentRange.start - 10,
+                end: currentRange.end - 10
               }));
             }
           }}
@@ -111,8 +117,8 @@ function CatalogTable({ match, range, setRange }) {
           onClick={() => {
             if (range.end < tableData.length) {
               setRange(currentRange => ({
-                start: currentRange.start + 20,
-                end: currentRange.end + 20
+                start: currentRange.start + 10,
+                end: currentRange.end + 10
               }));
             }
           }}
