@@ -61,12 +61,12 @@ CATALOF FILTER DESCRIPTION
 HOW TO PARTICIPATE
 ---------- */
 .catalog__how-to-wrapper {
-  border: 1px solid red;
   margin: 1em 0;
 }
 
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
+    margin: 0;
     min-width: 250px;
   }
 
