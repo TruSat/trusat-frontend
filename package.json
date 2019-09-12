@@ -16,6 +16,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
+    "react-select": "^3.0.4",
     "react-tooltip": "^3.11.1",
     "web3": "^1.2.0"
   },

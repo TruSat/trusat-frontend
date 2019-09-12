@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
-import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
-import FilterDescription from "../catalog/components/FilterDescription";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 import {
   useCatalogState,
@@ -27,7 +24,7 @@ export default function Catalog({ match }) {
   return (
     <div className="catalog__wrapper">
       <h1 className="catalog__header">Catalog</h1>
-      <CatalogNavDropdown />
+      <CatalogNavDropdown setRange={setRange} />
       <div className="catalog__nav-bar-how-to-wrapper">
         <CatalogNavBar setRange={setRange} />
         <HowToParticipate />
