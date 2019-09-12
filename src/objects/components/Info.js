@@ -48,7 +48,7 @@ export default function Info() {
               </p>
             </div>
 
-            <div className="object-info__header-info-wrapper">
+            <div className="object-info__header-info-wrapper object-info__norad-number-wrapper">
               <p className="object-info__small-text--grey">NORAD#</p>
               &nbsp;
               <p className="object-info__small-text">{noradNumber}</p>
