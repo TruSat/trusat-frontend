@@ -17,7 +17,7 @@ function CatalogNavBar({ setRange, history }) {
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
-            setRange({ start: 0, end: 20 });
+            setRange({ start: 0, end: 10 });
             catalogDispatch({
               type: "SET_CATALOG_FILTER",
               payload: "priorities"
@@ -35,7 +35,7 @@ function CatalogNavBar({ setRange, history }) {
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
-            setRange({ start: 0, end: 20 });
+            setRange({ start: 0, end: 10 });
             catalogDispatch({
               type: "SET_CATALOG_FILTER",
               payload: "undisclosed"
@@ -53,7 +53,7 @@ function CatalogNavBar({ setRange, history }) {
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
-            setRange({ start: 0, end: 20 });
+            setRange({ start: 0, end: 10 });
             catalogDispatch({
               type: "SET_CATALOG_FILTER",
               payload: "debris"
@@ -71,7 +71,7 @@ function CatalogNavBar({ setRange, history }) {
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
-            setRange({ start: 0, end: 20 });
+            setRange({ start: 0, end: 10 });
             catalogDispatch({
               type: "SET_CATALOG_FILTER",
               payload: "latest"
@@ -89,7 +89,7 @@ function CatalogNavBar({ setRange, history }) {
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
-            setRange({ start: 0, end: 20 });
+            setRange({ start: 0, end: 10 });
             catalogDispatch({
               type: "SET_CATALOG_FILTER",
               payload: "all"

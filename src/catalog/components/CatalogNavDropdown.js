@@ -25,7 +25,7 @@ function NavDropdown({ history, setRange }) {
   }, [catalogFilter, setSelectedOption]);
 
   const handleChange = newSelectedOption => {
-    setRange({ start: 0, end: 20 });
+    setRange({ start: 0, end: 10 });
 
     catalogDispatch({
       type: "SET_CATALOG_FILTER",
