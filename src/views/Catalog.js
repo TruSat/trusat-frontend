@@ -27,10 +27,17 @@ export default function Catalog({ match }) {
       <CatalogNavDropdown setRange={setRange} />
       <div className="catalog__nav-bar-how-to-wrapper">
         <CatalogNavBar setRange={setRange} />
-        <HowToParticipate />
+        {/* Shown on desktop */}
+        <div className="app__show-on-desktop">
+          <HowToParticipate />
+        </div>
       </div>
 
       <CatalogTable range={range} setRange={setRange} />
+      {/* Shown on mobile */}
+      <div className="app__show-on-mobile">
+        <HowToParticipate />
+      </div>
     </div>
   );
 }

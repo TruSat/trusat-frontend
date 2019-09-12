@@ -1,6 +1,25 @@
 /* ----------
 APP
 ---------- */
+
+.app__show-on-mobile {
+  display: block;
+}
+
+.app__show-on-desktop {
+  display: none;
+}
+
+@media (min-width: 600px) {
+  .app__show-on-mobile {
+    display: none;
+  }
+
+  .app__show-on-desktop {
+    display: block;
+  }
+}
+
 .app__nav-link {
   color: $primary-text-color;
   text-decoration: none;
