@@ -16,8 +16,6 @@ function NavDropdown({ history, setRange }) {
   const { catalogFilter } = useCatalogState();
   const catalogDispatch = useCatalogDispatch();
 
-  console.log(`catalog filter is =`, catalogFilter);
-
   useEffect(() => {
     options.map(option => {
       if (option.value === catalogFilter) {
@@ -38,7 +36,19 @@ function NavDropdown({ history, setRange }) {
   };
 
   return (
-    <Select value={selectedOption} onChange={handleChange} options={options} />
+    <Select
+      value={selectedOption}
+      onChange={handleChange}
+      options={options}
+      theme={theme => ({
+        ...theme,
+        colors: {
+          ...theme.colors,
+          primary25: "black",
+          primary: "#ffbd3c"
+        }
+      })}
+    />
   );
 }
 
