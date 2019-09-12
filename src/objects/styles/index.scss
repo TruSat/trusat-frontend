@@ -33,7 +33,7 @@ OBJECT INFO
 @media (max-width: 600px) {
   .object-info__badge {
     margin: 0 auto;
-    width: 30%;
+    width: 50%;
   }
 }
 
@@ -77,7 +77,7 @@ OBJECT INFO
 @media (max-width: 600px) {
   .object-info__norad-number-wrapper {
     display: flex;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
   }
 }
 
@@ -90,11 +90,7 @@ OBJECT INFO
   font-size: $extra-small-font-size;
 }
 
-@media (min-width: 600px) {
-  .object-info__background-wrapper {
-    flex: 1;
-    margin-right: 5em;
-  }
+.object-info__background-section-wrapper {
 }
 
 @media (min-width: 600px) {
@@ -104,7 +100,23 @@ OBJECT INFO
   }
 }
 
-.object-info__how-to-wrapper {
+@media (max-width: 600px) {
+  .object-info__background-wrapper {
+    margin-bottom: 4em;
+  }
+}
+
+@media (min-width: 600px) {
+  .object-info__background-wrapper {
+    flex: 1;
+    margin-right: 5em;
+  }
+}
+
+@media (max-width: 600px) {
+  .object-info__how-to-wrapper {
+    margin-bottom: 4em;
+  }
 }
 
 .object-info__section-title {

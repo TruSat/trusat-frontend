@@ -27,7 +27,7 @@ export default function FilterDescription() {
       return (
         <p
           key={`${description.filter} copy`}
-          className="object-observation__filter-explainer"
+          className="object-observation__filter-explainer app__hide-on-mobile"
         >
           {description.copy}
         </p>
