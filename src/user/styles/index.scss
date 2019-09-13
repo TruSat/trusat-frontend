@@ -133,6 +133,26 @@ PROFILE TABLE
 }
 
 /* ----------
+ACCOUNT SETTINGS
+---------- */
+.account-settings__wrapper {
+  margin: 3em 4em;
+}
+
+.account-settings__header {
+  @include view-title--desktop;
+}
+
+.account-settings__button-wrapper {
+  margin-top: 2em;
+  display: flex;
+}
+
+.account-settings__cancel-button {
+  margin-right: 1em;
+}
+
+/* ----------
 PROFILE SETTINGS
 ---------- */
 .profile-settings__wrapper {
@@ -188,26 +208,6 @@ PROFILE SETTINGS
 }
 
 .edit-profile-settings-input {
-}
-
-/* ----------
-ACCOUNT SETTINGS
----------- */
-.account-settings__wrapper {
-  margin: 3em 4em;
-}
-
-.account-settings__header {
-  @include view-title--desktop;
-}
-
-.account-settings__button-wrapper {
-  margin-top: 2em;
-  display: flex;
-}
-
-.account-settings__cancel-button {
-  margin-right: 1em;
 }
 
 /* ----------

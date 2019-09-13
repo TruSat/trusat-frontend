@@ -214,7 +214,13 @@ export default function Profile() {
               </td>
             </tr>
           </thead>
-          <tbody className="table__body">{renderYourObservationsRows()}</tbody>
+          <tbody className="table__body">
+            {userData.observation_history.length !== 0 ? (
+              renderYourObservationsRows()
+            ) : (
+              <p className="profile__none-yet-text">None yet</p>
+            )}
+          </tbody>
         </table>
       </section>
     </div>
