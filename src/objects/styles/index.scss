@@ -162,13 +162,6 @@ OBJECT OBSERVATIONS NAV
   margin-bottom: 0.5em;
 }
 
-@media (max-width: 600px) {
-  .object-observations__filter-table-wrapper {
-    border: 1px solid yellow;
-    width: 100%;
-  }
-}
-
 .object-observations__filter-table-wrapper {
   display: inline-block;
   margin-bottom: 3em;
@@ -228,13 +221,7 @@ OBJECT OBSERVATIONS NAV
 INFLUENCE TABLE 
 ---------- */
 @media (max-width: 600px) {
-  .object-influence-table {
-    border: 1px solid red;
-    width: 100%;
-  }
-
   .object-inluence-table__table-header-text {
-    border: 1px solid blue;
     padding-right: 1em;
   }
 }

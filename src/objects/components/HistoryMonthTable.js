@@ -42,7 +42,7 @@ export default function HistoryMonthTable({
           <td className="table__table-data">{day.date}</td>
           <td className="table__table-data">{renderFlag(objectOrigin)}</td>
           <td className="table__table-data">{observation.user_location}</td>
-          <td className="table__table-data">
+          <td className="table__table-data app__hide-on-mobile">
             {observation.username
               ? observation.username
               : shortenAddress(observation.user_address)}
@@ -68,10 +68,16 @@ export default function HistoryMonthTable({
           <th className="table__month-text">{monthName}</th>
           <th />
           <th />
-          <th className="table__header-text">USER</th>
+          <th className="table__header-text app__hide-on-mobile">USER</th>
           <th className="table__header-text">QUALITY</th>
-          <th className="table__header-text">TIME DIFF</th>
-          <th className="table__header-weight-text">WEIGHT</th>
+          <th className="table__header-text">
+            <p className="app__hide-on-mobile">TIME DIFF</p>
+            <p className="app__hide-on-desktop">DIFF..</p>
+          </th>
+          <th className="table__header-weight-text">
+            <p className="app__hide-on-mobile">WEIGHT</p>
+            <p className="app__hide-on-desktop">WT.</p>
+          </th>
         </tr>
       </thead>
       <tbody>{renderDayRows()}</tbody>
