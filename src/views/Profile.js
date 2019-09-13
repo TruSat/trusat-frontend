@@ -32,7 +32,7 @@ export default function Profile() {
           </NavLink>
         </td>
         <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
-        <td className="table__table-data">
+        <td className="table__table-data app__hide-on-mobile">
           {obj.object_primary_purpose ? (
             <p>
               {obj.object_primary_purpose}&nbsp;
@@ -42,7 +42,9 @@ export default function Profile() {
             <p>purpose unknown</p>
           )}
         </td>
-        <td className="table__table-data">{obj.observation_quality}</td>
+        <td className="table__table-data app__hide-on-mobile">
+          {obj.observation_quality}
+        </td>
         <td className="table__table-data">
           {obj.username_last_tracked
             ? obj.username_last_tracked
@@ -62,9 +64,11 @@ export default function Profile() {
         <td className="table__table-data">{observation.object_name}</td>
         <td className="table__table-data">{observation.observation_quality}</td>
         <td className="table__table-data">
-          {observation.observation_time_difference}
+          {observation.observation_time_difference.substring(0, 4)}
         </td>
-        <td className="table__table-data">{observation.observation_weight}</td>
+        <td className="table__table-data">
+          {observation.observation_weight.substring(0, 4)}
+        </td>
       </tr>
     ));
   };
@@ -90,63 +94,65 @@ export default function Profile() {
         </div>
 
         <div className="profile__button-data-wrapper">
-          <NavLink style={{ color: "white" }} to="/settings">
+          <NavLink className="app__nav-link" to="/settings">
             <span className="app__black-button--small">Settings</span>
           </NavLink>
-          <div className="profile__header-info-data-label">
-            {userData.user_location ? (
-              <p className="profile__header-info-data-value">
-                userData.user_location
-              </p>
-            ) : (
-              <p className="profile__header-info-data-value">
-                Location Undisclosed
-              </p>
-            )}
-          </div>
+          <div className="profile__header-data-wrapper">
+            <div className="profile__header-info-data-label">
+              {userData.user_location ? (
+                <p className="profile__header-info-data-value">
+                  userData.user_location
+                </p>
+              ) : (
+                <p className="profile__header-info-data-value">
+                  Location Undisclosed
+                </p>
+              )}
+            </div>
 
-          <div className="profile__header-info-data-label">
-            {userData.number_objects_tracked ? (
-              <p className="profile__header-info-data-value">
-                {userData.number_objects_tracked}
-              </p>
-            ) : (
-              <p className="profile__header-info-data-value">?</p>
-            )}
-            &nbsp; OBJECTS TRACKED
-          </div>
+            <div className="profile__header-info-data-label">
+              {userData.number_objects_tracked ? (
+                <p className="profile__header-info-data-value">
+                  {userData.number_objects_tracked}
+                </p>
+              ) : (
+                <p className="profile__header-info-data-value">?</p>
+              )}
+              &nbsp; OBJECTS TRACKED
+            </div>
 
-          <div className="profile__header-info-data-label">
-            {userData.observation_count ? (
-              <p className="profile__header-info-data-value">
-                {userData.observation_count}
-              </p>
-            ) : (
-              <p className="profile__header-info-data-value">?</p>
-            )}
-            &nbsp; OBSERVATIONS
-          </div>
+            <div className="profile__header-info-data-label">
+              {userData.observation_count ? (
+                <p className="profile__header-info-data-value">
+                  {userData.observation_count}
+                </p>
+              ) : (
+                <p className="profile__header-info-data-value">?</p>
+              )}
+              &nbsp; OBSERVATIONS
+            </div>
 
-          <div className="profile__header-info-data-label">
-            {userData.user_first_observation ? (
-              <p className="profile__header-info-data-value">
-                {userData.user_first_observation}
-              </p>
-            ) : (
-              <p className="profile__header-info-data-value">?</p>
-            )}
-            &nbsp; <p>1ST OBSERVATION</p>
-          </div>
+            <div className="profile__header-info-data-label">
+              {userData.user_first_observation ? (
+                <p className="profile__header-info-data-value">
+                  {userData.user_first_observation}
+                </p>
+              ) : (
+                <p className="profile__header-info-data-value">?</p>
+              )}
+              &nbsp; <p>1ST OBSERVATION</p>
+            </div>
 
-          <div className="profile__header-info-data-label">
-            {userData.average_observation_quality ? (
-              <p className="profile__header-info-data-value">
-                {userData.average_observation_quality}
-              </p>
-            ) : (
-              <p className="profile__header-info-data-value">?</p>
-            )}
-            &nbsp; <p>AVG. ACCURACY</p>
+            <div className="profile__header-info-data-label">
+              {userData.average_observation_quality ? (
+                <p className="profile__header-info-data-value">
+                  {userData.average_observation_quality}
+                </p>
+              ) : (
+                <p className="profile__header-info-data-value">?</p>
+              )}
+              &nbsp; <p>AVG. ACCURACY</p>
+            </div>
           </div>
         </div>
         <p className="profile__bio-text">
@@ -162,8 +168,12 @@ export default function Profile() {
               <tr>
                 <td className="table__header-text">OBJECT</td>
                 <td className="table__header-text">ORIGIN</td>
-                <td className="table__header-text">PURPOSE</td>
-                <td className="table__header-text">CONFIDENCE</td>
+                <td className="table__header-text app__hide-on-mobile">
+                  PURPOSE
+                </td>
+                <td className="table__header-text app__hide-on-mobile">
+                  CONFIDENCE
+                </td>
                 <td className="table__header-text">LAST SEEN BY</td>
               </tr>
             </thead>
@@ -189,10 +199,19 @@ export default function Profile() {
           <thead className="table__header">
             <tr>
               <td className="table__header-text">DATE</td>
-              <td className="table__header-text">OBJECT NAME</td>
-              <td className="table__header-text">QUALITY</td>
-              <td className="table__header-text">TIME DIFF</td>
-              <td className="table__header-text">WEIGHT</td>
+              <td className="table__header-text">OBJECT</td>
+              <td className="table__header-text">
+                <p className="app__hide-on-mobile">QUALITY</p>
+                <p className="app__hide-on-desktop">QUAL..</p>
+              </td>
+              <td className="table__header-text">
+                <p className="app__hide-on-mobile">TIME DIFF</p>
+                <p className="app__hide-on-desktop">DIFF..</p>
+              </td>
+              <td className="table__header-text">
+                <p className="app__hide-on-mobile">WEIGHT</p>
+                <p className="app__hide-on-desktop">WT.</p>
+              </td>
             </tr>
           </thead>
           <tbody className="table__body">{renderYourObservationsRows()}</tbody>

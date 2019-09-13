@@ -9,7 +9,13 @@ BLOCKIE
 PROFILE
 ---------- */
 .profile__wrapper {
-  margin: 3em 4em;
+  margin: 2em 1em;
+}
+
+@media (min-width: 600px) {
+  .profile__wrapper {
+    margin: 3em 4em;
+  }
 }
 
 .profile__header-wrapper {
@@ -23,25 +29,65 @@ PROFILE
 }
 
 .profile__header-username {
-  @include view-title--desktop;
+  color: $primary-highlight-color;
+  font-size: 36px;
   margin-left: 0.5em;
 }
 
+@media (min-width: 600px) {
+  .profile__header-username {
+    @include view-title--desktop;
+  }
+}
+
 .profile__button-data-wrapper {
-  display: flex;
   margin-top: 1em;
+}
+
+@media (min-width: 600px) {
+  .profile__button-data-wrapper {
+    display: flex;
+  }
+}
+
+.profile__header-data-wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 600px) {
+  .profile__header-data-wrapper {
+    flex-wrap: nowrap;
+  }
 }
 
 .profile__header-info-data-label {
   @include label-text;
-  align-items: center;
   display: flex;
+  margin: 1em 1.5em 0em 0em;
+}
+
+@media (min-width: 600px) {
+  .profile__header-info-data-label {
+    @include label-text;
+    align-items: center;
+    display: flex;
+    margin: none;
+  }
 }
 
 .profile__header-info-data-value {
   color: $primary-text-color;
   font-size: $extra-small-font-size;
-  margin-left: 3em;
+}
+
+@media (min-width: 600px) {
+  .profile__header-info-data-value {
+    color: $primary-text-color;
+    font-size: $extra-small-font-size;
+    margin-left: 3em;
+  }
 }
 
 .profile__bio-text {
