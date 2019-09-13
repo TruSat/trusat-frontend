@@ -101,7 +101,7 @@ export default function Profile() {
             <div className="profile__header-info-data-label">
               {userData.user_location ? (
                 <p className="profile__header-info-data-value">
-                  userData.user_location
+                  {userData.user_location}
                 </p>
               ) : (
                 <p className="profile__header-info-data-value">
