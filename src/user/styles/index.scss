@@ -227,6 +227,21 @@ PROFILE SETTINGS
 .edit-profile-settings-input {
 }
 
+.profile-settings__text-area {
+  height: 80px;
+  resize: none;
+  padding: 0.5em;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .profile-settings__text-area {
+    height: auto;
+    resize: none;
+    width: 100%;
+  }
+}
+
 /* ----------
 PRIVACY SETTINGS
 ---------- */

@@ -77,8 +77,14 @@ export default function ProfileSettings({
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">BIO</label>
           {showEditProfileInputs ? (
-            <EditProfileSettingInput setting={newBio} setSetting={setNewBio} />
+            <textarea
+              className="profile-settings__text-area"
+              maxlength="160"
+              value={newBio}
+              onChange={event => setNewBio(event.target.value)}
+            ></textarea>
           ) : (
+            // <EditProfileSettingInput setting={newBio} setSetting={setNewBio} />
             <p>{userData.user_bio}</p>
           )}
         </div>
