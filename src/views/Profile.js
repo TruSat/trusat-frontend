@@ -132,27 +132,31 @@ export default function Profile() {
               &nbsp; OBSERVATIONS
             </div>
 
-            <div className="profile__header-info-data-label">
-              {userData.user_first_observation ? (
-                <p className="profile__header-info-data-value">
-                  {userData.user_first_observation}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">?</p>
-              )}
-              &nbsp; <p>1ST OBSERVATION</p>
-            </div>
+            {userData.observation_count !== "0" ? (
+              <div className="profile__header-info-data-label">
+                {userData.user_first_observation ? (
+                  <p className="profile__header-info-data-value">
+                    {userData.user_first_observation}
+                  </p>
+                ) : (
+                  <p className="profile__header-info-data-value">?</p>
+                )}
+                &nbsp; <p>1ST OBSERVATION</p>
+              </div>
+            ) : null}
 
-            <div className="profile__header-info-data-label">
-              {userData.average_observation_quality ? (
-                <p className="profile__header-info-data-value">
-                  {userData.average_observation_quality}
-                </p>
-              ) : (
-                <p className="profile__header-info-data-value">?</p>
-              )}
-              &nbsp; <p>AVG. ACCURACY</p>
-            </div>
+            {userData.observation_count !== "0" ? (
+              <div className="profile__header-info-data-label">
+                {userData.average_observation_quality ? (
+                  <p className="profile__header-info-data-value">
+                    {userData.average_observation_quality}
+                  </p>
+                ) : (
+                  <p className="profile__header-info-data-value">?</p>
+                )}
+                &nbsp; <p>AVG. ACCURACY</p>
+              </div>
+            ) : null}
           </div>
         </div>
         <p className="profile__bio-text">
