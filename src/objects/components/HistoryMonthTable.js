@@ -40,8 +40,14 @@ export default function HistoryMonthTable({
           className="table__body-row"
         >
           <td className="table__table-data">{day.date}</td>
-          <td className="table__table-data">{renderFlag(objectOrigin)}</td>
-          <td className="table__table-data">{observation.user_location}</td>
+          <td className="table__table-data app__hide-on-mobile">
+            {renderFlag(objectOrigin)}
+          </td>
+          <td className="table__table-data">
+            {observation.user_location
+              ? observation.user_location
+              : "undisclosed"}
+          </td>
           <td className="table__table-data app__hide-on-mobile">
             {observation.username
               ? observation.username
@@ -66,8 +72,8 @@ export default function HistoryMonthTable({
       <thead className="table__header">
         <tr className="table__header-row">
           <th className="table__month-text">{monthName}</th>
-          <th />
-          <th />
+          <th className="app__hide-on-mobile"></th>
+          <th className="table__header-text">LOCATION</th>
           <th className="table__header-text app__hide-on-mobile">USER</th>
           <th className="table__header-text">QUALITY</th>
           <th className="table__header-text">

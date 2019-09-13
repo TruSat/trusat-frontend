@@ -20,9 +20,9 @@ export default function UserSightingsTable() {
         JSON.stringify({
           norad_number: noradNumber,
           jwt: jwt,
-          address: userAddress
+          // address: userAddress
           // leos address for testing
-          // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+          address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
         })
       )
       .then(result => {
@@ -38,12 +38,21 @@ export default function UserSightingsTable() {
       <thead className="table__header">
         <tr className="table__header-row">
           <th className="table__header-text">DATE</th>
-          <th />
-          <th />
-          <th className="table__header-text">USER</th>
-          <th className="table__header-text">QUAlITY</th>
-          <th className="table__header-text">TIME DIFF</th>
-          <th className="table__header-weight-text">WEIGHT</th>
+          <th className="app__hide-on-mobile"></th>
+          <th className="table__header-text">LOCATION</th>
+          <th className="table__header-text app__hide-on-mobile">USER</th>
+          <th className="table__header-text">
+            <p className="app__hide-on-mobile">QUALITY</p>
+            <p className="app__hide-on-desktop">QUAL..</p>
+          </th>
+          <th className="table__header-text">
+            <p className="app__hide-on-mobile">TIME DIFF</p>
+            <p className="app__hide-on-desktop">DIFF..</p>
+          </th>
+          <th className="table__header-weight-text">
+            <p className="app__hide-on-mobile">WEIGHT</p>
+            <p className="app__hide-on-desktop">WT.</p>
+          </th>
         </tr>
       </thead>
       <tbody>
@@ -54,18 +63,22 @@ export default function UserSightingsTable() {
               className="table__body-row"
             >
               <td className="table__table-data">{obj.observation_time}</td>
-              <td className="table__table-data">{renderFlag(objectOrigin)}</td>
-              <td className="table__table-data">
-                {obj.user_location ? obj.user_location : "undisclosed location"}
+              <td className="table__table-data app__hide-on-mobile">
+                {renderFlag(objectOrigin)}
               </td>
               <td className="table__table-data">
+                {obj.user_location ? obj.user_location : "undisclosed"}
+              </td>
+              <td className="table__table-data app__hide-on-mobile">
                 {obj.username ? obj.username : shortenAddress(obj.user_address)}
               </td>
               <td className="table__table-data">{obj.observation_quality}</td>
               <td className="table__table-data">
-                {obj.observation_time_difference}
+                {obj.observation_time_difference.substring(0, 4)}
               </td>
-              <td className="table__weight-data">{obj.observation_weight}</td>
+              <td className="table__weight-data">
+                {obj.observation_weight.substring(0, 4)}
+              </td>
             </tr>
           );
         })}
