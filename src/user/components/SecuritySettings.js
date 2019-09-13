@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export default function SecuritySettings() {
   return (
-    <section className="security-settings__wrapper">
+    <section className="security-settings__wrapper app__hide-on-mobile">
       <h2 className="security-settings__heading">DATA SECURITY</h2>
       <p className="security-settings__info-text">
         Call to action about why you'd want to connect a wallet, and what

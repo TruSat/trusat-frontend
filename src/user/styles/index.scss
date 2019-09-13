@@ -136,11 +136,20 @@ PROFILE TABLE
 ACCOUNT SETTINGS
 ---------- */
 .account-settings__wrapper {
-  margin: 3em 4em;
+  margin: 2em 1em;
 }
 
 .account-settings__header {
-  @include view-title--desktop;
+  @include view-title;
+}
+
+@media (min-width: 600px) {
+  .account-settings__wrapper {
+    margin: 3em 4em;
+  }
+  .account-settings__header {
+    @include view-title--desktop;
+  }
 }
 
 .account-settings__button-wrapper {
@@ -185,14 +194,22 @@ PROFILE SETTINGS
   cursor: pointer;
 }
 
-.profile-settings__profile-wrapper {
-  margin-top: 1em;
-  width: 48%;
+.profile-settings__profile-wrapper,
+.profile-settings__observation-wrapper {
+  margin-top: 3em;
+  width: 100%;
 }
 
-.profile-settings__observation-wrapper {
-  margin-top: 1em;
-  width: 48%;
+@media (min-width: 600px) {
+  .profile-settings__profile-wrapper {
+    margin-top: 1em;
+    max-width: 500px;
+  }
+
+  .profile-settings__observation-wrapper {
+    margin-top: 1em;
+    max-width: 500px;
+  }
 }
 
 .profile-settings__setting-wrapper {
