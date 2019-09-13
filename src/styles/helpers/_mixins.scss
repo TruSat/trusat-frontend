@@ -1,0 +1,61 @@
+/* -----
+Text
+----- */
+// the biggest "yellow" headers in the app
+@mixin view-title {
+  color: $primary-highlight-color;
+  letter-spacing: $tight-spacing;
+  font-size: $extra-extra-large-font-size;
+  font-weight: $light-weight;
+}
+
+@mixin view-title--desktop {
+  color: $primary-highlight-color;
+  letter-spacing: $tight-spacing;
+  font-size: $extra-extra-large-font-size;
+  font-weight: $thin-weight;
+}
+
+@mixin section-title {
+  color: $primary-text-color;
+  font-size: $medium-font-size;
+  font-weight: $bold-weight;
+}
+
+@mixin body-text--large {
+  color: $primary-text-color;
+  font-size: $medium-font-size;
+  font-weight: $regular-weight;
+}
+
+@mixin body-text--large-desktop {
+  color: $primary-text-color;
+  font-size: $large-font-size;
+  font-weight: $light-weight;
+}
+
+@mixin body-text--medium {
+  color: $primary-text-color;
+  font-size: $small-font-size;
+  font-weight: $regular-weight;
+}
+
+@mixin body-text--small {
+  color: $primary-text-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
+}
+
+@mixin label-text {
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
+  letter-spacing: $wide-spacing;
+}
+
+@mixin label-text--highlight {
+  color: $primary-text-color;
+  font-size: $extra-small-font-size;
+  font-weight: $regular-weight;
+  letter-spacing: $wide-spacing;
+}

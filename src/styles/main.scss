@@ -1,8 +1,13 @@
 @import "./base/reset";
 @import "./base/typography";
+
 @import "./helpers/variables";
+@import "./base/base";
 @import "./helpers/mixins";
-@import "./layout/nav-bar";
-@import "./layout/signup-modal";
-@import "./layout/login-options";
-@import "./components/table";
+
+@import "../app/styles/index.scss";
+@import "../auth/styles/index.scss";
+@import "../catalog/styles/index.scss";
+@import "../objects//styles/index.scss";
+@import "../user/styles/index.scss";
+@import "../submissions/styles/index.scss";

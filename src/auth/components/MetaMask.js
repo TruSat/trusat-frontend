@@ -1,90 +1,102 @@
 import React from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
+import { useUserDispatch } from "../../user/user-context";
 import { retrieveNonce, retrieveJwt } from "../helpers/";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";
+import { handleMetamaskConnect } from "../helpers";
 
 export default function MetaMask() {
+  // used for text render on the button
+  const pathname = window.location.pathname;
+
   const { isAuthenticating } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
-      handleMessageSign();
+      authDispatch({ type: "AUTHENTICATING", payload: true });
+      handleMetamaskMessageSign();
     } else {
       handleMetamaskConnect();
     }
   };
 
-  const handleMetamaskConnect = () => {
-    // user has metamask but they are not signed in to the plugin
-    if (window.ethereum.selectedAddress === undefined) {
-      alert("Please sign in to MetaMask plugin and try again!");
-      window.ethereum.enable().catch(console.error);
-      // metamask plugin not found
-    } else {
-      alert("You do not have the MetaMask plugin installed!");
-    }
-  };
-
-  const handleMessageSign = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
-
+  const handleMetamaskMessageSign = async () => {
     const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
-    const publicAddress = web3._provider.selectedAddress;
+    const address = web3._provider.selectedAddress;
 
-    const nonce = await retrieveNonce(publicAddress);
+    const nonce = await retrieveNonce(address);
+    console.log(`nonce = `, nonce);
 
     const nonceHash = ethers.utils.id(nonce);
 
     try {
       //a promise
-      const signedMessage = await web3.eth.personal.sign(
-        nonceHash,
-        publicAddress
-      );
+      const signedMessage = await web3.eth.personal.sign(nonceHash, address);
 
-      console.log(signedMessage);
+      console.log(`signed message =`, signedMessage);
 
-      return handleAuthenticate({ publicAddress, signedMessage });
+      return handleMetamaskAuthenticate({ address, signedMessage });
     } catch (error) {
-      dispatch({ type: "AUTHENTICATING", payload: false });
+      authDispatch({ type: "AUTHENTICATING", payload: false });
       alert(`You need to sign the message to be able to log in!`);
     }
   };
 
   // TODO utilize retrieve JWT function from helpers
-  const handleAuthenticate = async ({ publicAddress, signedMessage }) => {
-    Promise.resolve(
+  const handleMetamaskAuthenticate = async ({ address, signedMessage }) => {
+    let jwt;
+
+    await Promise.resolve(
       axios
         .post(
-          "http://ec2-18-222-251-120.us-east-2.compute.amazonaws.com:8080/login",
+          "https://api.consensys.space:8080/login",
           JSON.stringify({
-            publicAddress: publicAddress,
+            address: address,
             signedMessage: signedMessage
           })
         )
         .then(response => {
           console.log(response.data);
-          localStorage.setItem("mvp-jwt", response.data);
+          jwt = response.data.jwt;
+          localStorage.setItem("trusat-jwt", response.data.jwt);
+          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         })
         .catch(error => console.log(error))
     );
 
-    dispatch({
-      type: "SET_ADDRESS",
-      payload: publicAddress
-    });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
+    // TODO make this call an app helper
+    axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: address
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({ type: "SET_USER_ADDRESS", payload: address });
+        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+      })
+      .catch(err => console.log(err));
+
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
   return (
-    <span className="metamask-button" onClick={handleClick}>
-      {isAuthenticating ? "Loading..." : "MetaMask"}
+    <span className="app__button--white" onClick={handleClick}>
+      {isAuthenticating
+        ? "Loading..."
+        : pathname === "/signup"
+        ? "Sign up with MetaMask"
+        : "Sign in with MetaMask"}
     </span>
   );
 }

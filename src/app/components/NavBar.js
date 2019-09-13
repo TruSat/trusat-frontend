@@ -1,77 +1,124 @@
-import React, { useState } from "react";
+import React from "react";
+import { useUserState } from "../../user/user-context";
+import { useCatalogState } from "../../catalog/catalog-context";
 import { withRouter } from "react-router-dom";
-import SignUpModal from "../../auth/components/SignUpModal";
+import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  const [selected, setSelected] = useState(props.location.pathname);
-
-  const selectedStyle = {
-    color: "white",
-    borderBottom: "1px solid yellow",
-    textDecoration: "none"
-  };
+  const { userAddress } = useUserState();
+  const { catalogFilter } = useCatalogState();
 
   return (
     <div className="nav-bar">
-      <NavLink
-        onClick={() => setSelected("/")}
-        style={
-          selected === "/"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
-        }
-        to="/"
-      >
-        Orbit Predictions
+      <NavLink className="nav-bar__logo" to="/">
+        TRUSAT
       </NavLink>
-      <NavLink
-        onClick={() => setSelected("/community")}
-        style={
-          selected === "/community"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+
+      <div
+        className={
+          props.location.pathname === "/"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/community"
       >
-        Community
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected("/observations")}
-        style={
-          selected === "/observations"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+        <NavLink
+          className={
+            props.location.pathname === "/"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/"
+        >
+          WELCOME
+        </NavLink>
+      </div>
+
+      <div
+        className={
+          props.location.pathname.includes("catalog")
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/observations"
       >
-        My Observations
-      </NavLink>
-      <SignUpModal />
-      <NavLink
-        onClick={() => setSelected("/submit")}
-        style={
-          selected === "/submit"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+        <NavLink
+          className={
+            props.location.pathname.includes("catalog")
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to={`/catalog/${catalogFilter}`}
+        >
+          CATALOG
+        </NavLink>
+      </div>
+
+      {/* // My Profile button only rendered when user is logged in */}
+      {userAddress ? (
+        <div
+          className={
+            props.location.pathname === `/profile/${userAddress}`
+              ? "nav-bar__link-wrapper--highlight"
+              : "nav-bar__link-wrapper--lowlight"
+          }
+        >
+          <NavLink
+            className={
+              props.location.pathname === `/profile/${userAddress}`
+                ? "nav-bar__link--highlight"
+                : "nav-bar__link--lowlight"
+            }
+            to={`/profile/${userAddress}`}
+          >
+            MY PROFILE
+          </NavLink>
+        </div>
+      ) : null}
+
+      <div
+        className={
+          props.location.pathname === "/about"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/submit"
       >
-        <span style={{ background: "white", color: "black", padding: "0.5em" }}>
-          +Submit Observation
-        </span>
-      </NavLink>
-      <NavLink
-        onClick={() => setSelected("/account")}
-        style={
-          selected === "/account"
-            ? selectedStyle
-            : { color: "grey", textDecoration: "none" }
+        <NavLink
+          className={
+            props.location.pathname === "/about"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/about"
+        >
+          ABOUT
+        </NavLink>
+      </div>
+
+      <div
+        className={
+          props.location.pathname === "/how"
+            ? "nav-bar__link-wrapper--highlight"
+            : "nav-bar__link-wrapper--lowlight"
         }
-        to="/account"
       >
-        AVATAR
-      </NavLink>
+        <NavLink
+          className={
+            props.location.pathname === "/how"
+              ? "nav-bar__link--highlight"
+              : "nav-bar__link--lowlight"
+          }
+          to="/how"
+        >
+          HOW TO
+        </NavLink>
+      </div>
+
+      {/* Show Join button when user is not logged in */}
+      {!userAddress ? (
+        <NavLink className="app__nav-link" to="/login">
+          <JoinButton />
+        </NavLink>
+      ) : null}
     </div>
   );
 }

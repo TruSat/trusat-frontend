@@ -6,13 +6,15 @@ import {
   retrieveJwt
 } from "../helpers/";
 import { useAuthState, useAuthDispatch } from "../auth-context";
+import { useUserDispatch } from "../../user/user-context";
 
 export default function Burner() {
   const { isAuthenticating } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
 
   const handleLogin = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: true });
 
     const wallet = await createWallet();
     console.log(`wallet = `, wallet);
@@ -24,25 +26,26 @@ export default function Burner() {
     console.log(`signed message = `, signedMessage);
 
     const jwt = await retrieveJwt({
-      publicAddress: wallet.signingKey.address,
+      address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
     console.log(`jwt =`, jwt);
 
-    dispatch({ type: "SET_BURNER", payload: wallet });
-    dispatch({
-      type: "SET_ADDRESS",
+    authDispatch({ type: "SET_BURNER", payload: wallet });
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
+    authDispatch({ type: "SET_JWT", payload: jwt });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
+
+    userDispatch({
+      type: "SET_USER_ADDRESS",
       payload: wallet.signingKey.address
     });
-    dispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
-    dispatch({ type: "SET_JWT", payload: jwt });
-    dispatch({ type: "AUTHENTICATED", payload: true });
-    dispatch({ type: "AUTHENTICATING", payload: false });
 
     // add private key and jwt to local storage
     const privateKey = wallet.signingKey.privateKey;
-    localStorage.setItem("mvp-private-key", privateKey);
-    localStorage.setItem("mvp-jwt", jwt);
+    localStorage.setItem("trusat-private-key", privateKey);
+    localStorage.setItem("trusat-jwt", jwt);
   };
 
   return (

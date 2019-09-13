@@ -1,160 +1,90 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
 import {
   createWallet,
   retrieveNonce,
   signMessage,
-  retrieveJwt
+  retrieveJwt,
+  createSecret
 } from "../helpers/";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import pbkdf2 from "pbkdf2";
-import aesjs from "aes-js";
-import base64js from "base64-js";
+import { useUserDispatch } from "../../user/user-context";
 
 export default function SignupForm() {
-  const { isAuthenticating } = useAuthState();
-  const dispatch = useAuthDispatch();
-  const [email, setEmail] = useState("bob@cryptonoob.com");
-  const [password, setPassword] = useState("123456789");
+  const { isAuthenticating, isAuth } = useAuthState();
+  const authDispatch = useAuthDispatch();
+  const userDispatch = useUserDispatch();
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [password, setPassword] = useState("Zn48&NJFLPjr");
+  const [understandMessage, setUnderstandMessage] = useState(false);
+  const [retypedPassword, setRetypedPassword] = useState("");
+
+  // TODO - error handling in the UI
+  const emailSecret = secret => {
+    axios
+      .post(
+        `https://api.consensys.space:8080/emailSecret`,
+        JSON.stringify({ to: email, payload: secret })
+      )
+      .then(result => {
+        // TODO - ask kenan if this result should omit the secret in return for security reasons
+        console.log(result);
+      })
+      .catch(err => console.log(err));
+  };
+
+  // TO DO - add Formik to take care of this
+  const handleFormValidation = () => {};
 
   const handleSignup = async () => {
-    dispatch({ type: "AUTHENTICATING", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: true });
 
     const wallet = await createWallet();
-    // console.log(`wallet = `, wallet);
 
-    // const nonce = await retrieveNonce(wallet.signingKey.address);
-    // console.log(`nonce = ${nonce}`);
+    const nonce = await retrieveNonce(wallet.signingKey.address);
 
-    // const signedMessage = await signMessage({ nonce, wallet });
-    // console.log(`signed message = `, signedMessage);
+    const signedMessage = await signMessage({ nonce, wallet });
 
-    // const jwt = await retrieveJwt({
-    //   publicAddress: wallet.signingKey.address,
-    //   signedMessage: signedMessage
-    // });
-    // console.log(`jwt =`, jwt);
+    const jwt = await retrieveJwt({
+      address: wallet.signingKey.address,
+      signedMessage: signedMessage
+    });
+    console.log(`jwt =`, jwt);
 
-    // // dispatch({ type: "SET_BURNER", payload: wallet });
-    // dispatch({
-    //   type: "SET_ADDRESS",
-    //   payload: wallet.signingKey.address
-    // });
-    // dispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    // dispatch({ type: "SET_JWT", payload: jwt });
-    // dispatch({ type: "AUTHENTICATED", payload: true });
-    // dispatch({ type: "AUTHENTICATING", payload: false });
+    // TODO - do we want to persis the wallet used when signinup/logging in with email/password
+    // dispatch({ type: "SET_BURNER", payload: wallet });
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+    authDispatch({ type: "SET_JWT", payload: jwt });
+    authDispatch({ type: "AUTHENTICATED", payload: true });
+    authDispatch({ type: "AUTHENTICATING", payload: false });
 
-    // // add jwt to local storage
-    // localStorage.setItem("mvp-jwt", jwt);
+    // add jwt and address to local storage
+    localStorage.setItem("trusat-jwt", jwt);
 
-    createSecret(wallet.signingKey.privateKey);
-    // TODO
-    // encrypt wallet with users password and email to them
-    // create 16 byte iv with crypto, and convert to base64
-    // convert all three to base64 independently and then combine them as one big string
-    // encryptedMessafe,salt,iv
-  };
+    const secret = createSecret(wallet.signingKey.privateKey, password);
+    console.log(`address = `, wallet.address);
+    console.log(`secret = `, secret);
+    // TODO - email secret to the user
+    emailSecret(secret);
 
-  const createSecret = privateKey => {
-    console.log(`privateKey to encrypt = `, privateKey);
-    /*----------
-    ENCRYPT
-    ----------*/
-    const saltArray = new Uint32Array(1);
-    const salt = window.crypto.getRandomValues(saltArray)[0].toString();
-    // console.log(`salt = `, salt);
-
-    const key = pbkdf2.pbkdf2Sync(password, salt, 1, 256 / 8, "sha512");
-    // console.log(`key =`, key);
-
-    const ivArray = new Uint8Array(16);
-    const iv = window.crypto.getRandomValues(ivArray);
-    // console.log(`iv =`, iv);
-
-    const padArray = new Uint32Array(2);
-    const pad = window.crypto
-      .getRandomValues(padArray)
-      .join("")
-      .substring(0, 14);
-    // console.log(`pad = `, pad);
-
-    const privateKeyBytes = aesjs.utils.utf8.toBytes(`${pad}${privateKey}`);
-    // console.log(`privateKeyBytes =`, privateKeyBytes);
-
-    const aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
-    // console.log(`aesCbc =`, aesCbc);
-
-    const encryptedPrivateKeyBytes = aesCbc.encrypt(privateKeyBytes);
-    const encryptedPrivateKeyBytesAsHex = aesjs.utils.hex.fromBytes(
-      encryptedPrivateKeyBytes
-    );
-    // console.log(
-    //   `encryptedPrivateKeyBytesAsHex =`,
-    //   encryptedPrivateKeyBytesAsHex
-    // );
-
-    const saltAsByte64String = base64js.fromByteArray(salt);
-    // console.log(`saltAsBase64String = `, saltAsByte64String);
-
-    const ivAsByte64String = base64js.fromByteArray(iv);
-    // console.log(`ivAsBytes64String = `, ivAsByte64String);
-
-    // const encryptedPrivateKeyBytesAsHexAsByte64String = base64js.fromByteArray(
-    //   encryptedPrivateKeyBytesAsHex
-    // );
-    // console.log(
-    //   `encryptedPrivateKeyBytesAsHexAsByte64String = `,
-    //   encryptedPrivateKeyBytesAsHexAsByte64String
-    // );
-
-    const secretToEmail = `${saltAsByte64String},${ivAsByte64String},${encryptedPrivateKeyBytesAsHex}`;
-    console.log(`secretToEmail = `, secretToEmail);
-
-    return decryptSecret(secretToEmail);
-  };
-
-  const decryptSecret = secret => {
-    /*----------
-    DECRYPT
-    ----------*/
-    const splitSecret = secret.split(",");
-    // console.log(splitSecret);
-
-    const salt = base64js.toByteArray(splitSecret[0]).join("");
-    // console.log(`salt = `, salt);
-
-    const iv = base64js.toByteArray(splitSecret[1]);
-    // console.log(`iv =`, iv);
-
-    const encryptedPrivateKeyBytesAsHex = splitSecret[2];
-    // console.log(
-    //   `encryptedPrivateKeyBytesAsHex = `,
-    //   encryptedPrivateKeyBytesAsHex
-    // );
-
-    const key = pbkdf2.pbkdf2Sync(password, salt, 1, 256 / 8, "sha512");
-    // console.log(`key =`, key);
-
-    // When ready to decrypt the hex string, convert it back to bytes
-    const encryptedPrivateKeyBytes = aesjs.utils.hex.toBytes(
-      encryptedPrivateKeyBytesAsHex
-    );
-
-    const aesCbc = new aesjs.ModeOfOperation.cbc(key, iv);
-
-    const decryptedPrivateKeyBytes = aesCbc.decrypt(encryptedPrivateKeyBytes);
-
-    // Convert our bytes back into text
-    const decryptedPrivateKeyWithPad = aesjs.utils.utf8.fromBytes(
-      decryptedPrivateKeyBytes
-    );
-
-    const privateKey = decryptedPrivateKeyWithPad.substring(
-      14,
-      decryptedPrivateKeyWithPad.length
-    );
-
-    console.log(`decrypted private key = `, privateKey);
+    axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: wallet.signingKey.address
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        userDispatch({
+          type: "SET_USER_ADDRESS",
+          payload: wallet.signingKey.address
+        });
+        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+      })
+      .catch(err => console.log(err));
   };
 
   return (
@@ -163,29 +93,63 @@ export default function SignupForm() {
       name="auth-form"
       onSubmit={event => event.preventDefault()}
     >
-      <label>
-        Email:
+      <label className="email-form__label">Email</label>
+      <input
+        className="email-form__input"
+        required
+        type="email"
+        onChange={event => setEmail(event.target.value)}
+        value={email}
+      />
+
+      <label className="email-form__label">Password</label>
+      <input
+        className="email-form__input"
+        required
+        type="password"
+        onChange={event => setPassword(event.target.value)}
+        value={password}
+      />
+
+      <div className="email-form__checkbox-and-message-wrapper">
         <input
           required
-          type="email"
-          onChange={event => setEmail(event.target.value)}
-          value={email}
-        />
-      </label>
+          type="checkbox"
+          checked={understandMessage}
+          onChange={() => setUnderstandMessage(!understandMessage)}
+        ></input>
+        <p>
+          I understand I cannot change this password in the future, and that
+          TruSat cannot restore this passsword for me. I've saved it somewhere
+          safe.
+        </p>
+      </div>
 
-      <label>
-        Password:
-        <input
-          required
-          type="password"
-          onChange={event => setPassword(event.target.value)}
-          value={password}
-        />
-      </label>
+      <label className="email-form__label">Retype password to confirm</label>
+      <input
+        className="email-form__input"
+        required
+        type="password"
+        onChange={event => setRetypedPassword(event.target.value)}
+        value={retypedPassword}
+      />
 
-      <span onClick={handleSignup}>
-        {isAuthenticating ? `...Loading` : `Sign Up`}
-      </span>
+      <div className="email-form__button-wrapper">
+        <NavLink className="app__nav-link" to="/">
+          <span className="email-form__button--black">Cancel</span>
+        </NavLink>
+
+        <span className="email-form__button--white" onClick={handleSignup}>
+          {isAuthenticating ? `...Loading` : `Sign Up`}
+        </span>
+      </div>
+
+      <div className="email-form__link-to-login-wrapper">
+        <p>Already a member?</p>
+        <NavLink className="app__nav-link" to="/login">
+          <p className="email-form__log-in-text">Log in</p>
+        </NavLink>
+      </div>
     </form>
   );
 }

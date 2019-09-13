@@ -14,8 +14,8 @@ function authReducer(state, action) {
     case "SET_AUTH_TYPE": {
       return { ...state, authType: action.payload };
     }
-    case "SET_ADDRESS": {
-      return { ...state, address: action.payload };
+    case "SET_EMAIL": {
+      return { ...state, email: action.payload };
     }
     case "SET_BURNER": {
       return { ...state, burner: action.payload };
@@ -34,10 +34,11 @@ function AuthProvider({ children }) {
     isAuthenticating: false,
     isAuth: false,
     authType: "",
-    address: "",
+    email: "",
     burner: {},
-    jwt: {}
+    jwt: ""
   });
+
   return (
     <AuthStateContext.Provider value={state}>
       <AuthDispatchContext.Provider value={dispatch}>
