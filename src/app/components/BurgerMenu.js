@@ -17,9 +17,11 @@ export default function BurgerMenu(props) {
       <NavLink className="app__nav-link" to={`/catalog/${catalogFilter}`}>
         Catalog
       </NavLink>
-      <NavLink className="app__nav-link" to={`/profile${address}`}>
-        My Profile
-      </NavLink>
+      {address ? (
+        <NavLink className="app__nav-link" to={`/profile${address}`}>
+          My Profile
+        </NavLink>
+      ) : null}
       <NavLink className="app__nav-link" to="/about">
         About
       </NavLink>
