@@ -25,15 +25,28 @@ export default function InfluenceTable() {
   }, [noradNumber]);
 
   return showTable ? (
-    <table className="table">
+    <table className="table object-influence-table">
       <thead className="table__header">
         <tr className="table__header-row">
-          <th className="table__header-text">DATE</th>
+          <th className="table__header-text object-inluence-table__table-header-text">
+            DATE
+          </th>
           <th className="table__header-text app__hide-on-mobile">TRACKED BY</th>
-          <th className="table__header-text">LOCATION</th>
-          <th className="table__header-text">QUALITY</th>
-          <th className="table__header-text">TIME DIFF</th>
-          <th className="table__header-weight-text">WEIGHT</th>
+          <th className="table__header-text object-inluence-table__table-header-text">
+            LOCATION
+          </th>
+          <th className="table__header-text object-inluence-table__table-header-text">
+            <p className="app__hide-on-mobile">QUALITY</p>
+            <p className="app__hide-on-desktop">QUAL..</p>
+          </th>
+          <th className="table__header-text object-inluence-table__table-header-text">
+            <p className="app__hide-on-mobile">TIME DIFF</p>
+            <p className="app__hide-on-desktop">DIFF..</p>
+          </th>
+          <th className="table__header-weight-text">
+            <p className="app__hide-on-mobile">WEIGHT</p>
+            <p className="app__hide-on-desktop">WT.</p>
+          </th>
         </tr>
       </thead>
       <tbody className="table__body">
@@ -46,11 +59,10 @@ export default function InfluenceTable() {
               </td>
               <td className="table__table-data">
                 <div style={{ display: "flex" }}>
-                  {renderFlag(objectOrigin)}
-                  &nbsp;
-                  {obj.user_location
-                    ? obj.user_location
-                    : "undisclosed location"}
+                  {/* TO DO - allow user to pick a country code so we can render flags */}
+                  {/* {renderFlag(objectOrigin)}
+                  &nbsp; */}
+                  {obj.user_location ? obj.user_location : "undisclosed"}
                 </div>
               </td>
 

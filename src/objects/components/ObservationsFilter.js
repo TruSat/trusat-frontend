@@ -79,7 +79,8 @@ export default function ObservationsFilter() {
                 })
               }
             >
-              MY OBSERVATIONS
+              <p className="app__hide-on-desktop">MINE</p>
+              <p className="app__hide-on-mobile">MY OBSERVATIONS</p>
             </span>
           </div>
         ) : null}

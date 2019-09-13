@@ -6,6 +6,12 @@ APP
   display: block;
 }
 
+@media (min-width: 600px) {
+  .app__hide-on-desktop {
+    display: none;
+  }
+}
+
 @media (max-width: 600px) {
   .app__hide-on-mobile {
     display: none;
