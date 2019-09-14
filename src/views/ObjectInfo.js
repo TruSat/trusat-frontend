@@ -9,7 +9,6 @@ import {
   useObjectsState,
   useObjectsDispatch
 } from "../objects/objects-context";
-import HowToSeeIt from "../objects/components/HowToSeeIt";
 import FilterDescription from "../objects/components/FilterDescription";
 
 export default function ObjectInfo({ match }) {
@@ -64,4 +63,4 @@ export default function ObjectInfo({ match }) {
 // POST request
 // /objectMostSightings
 // No design for this table present in Mikes figma file.
-const most_sightings = {};
+// const most_sightings = {};

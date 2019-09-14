@@ -91,32 +91,32 @@ export default function UserSightingsTable() {
 // /objectUserSightings
 // receives Norad Number and JWT and returns and array of objects
 // sorted by most recent
-const user_sightings = [
-  {
-    observation_time: "1550398277",
-    username: "Leo Barhorst",
-    user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    user_location: "Brooklyn, USA",
-    observation_quality: "34",
-    observation_time_difference: "1.42",
-    observation_weight: "10" // The users most recent observations will in theory have a higher observation_weight %
-  },
-  {
-    observation_time: "1550398277",
-    username: "Leo Barhorst",
-    user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    user_location: "Brooklyn, USA",
-    observation_quality: "34",
-    observation_time_difference: "1.42",
-    observation_weight: "1"
-  },
-  {
-    observation_time: "1550398277",
-    username: "Leo Barhorst",
-    user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    user_location: "Brooklyn, USA",
-    observation_quality: "34",
-    observation_time_difference: "1.42",
-    observation_weight: "0"
-  }
-];
+// const user_sightings = [
+//   {
+//     observation_time: "1550398277",
+//     username: "Leo Barhorst",
+//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     user_location: "Brooklyn, USA",
+//     observation_quality: "34",
+//     observation_time_difference: "1.42",
+//     observation_weight: "10" // The users most recent observations will in theory have a higher observation_weight %
+//   },
+//   {
+//     observation_time: "1550398277",
+//     username: "Leo Barhorst",
+//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     user_location: "Brooklyn, USA",
+//     observation_quality: "34",
+//     observation_time_difference: "1.42",
+//     observation_weight: "1"
+//   },
+//   {
+//     observation_time: "1550398277",
+//     username: "Leo Barhorst",
+//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     user_location: "Brooklyn, USA",
+//     observation_quality: "34",
+//     observation_time_difference: "1.42",
+//     observation_weight: "0"
+//   }
+// ];

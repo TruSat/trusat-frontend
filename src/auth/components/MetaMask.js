@@ -1,7 +1,7 @@
 import React from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
-import { retrieveNonce, retrieveJwt } from "../helpers/";
+import { retrieveNonce } from "../helpers/";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";

@@ -3,7 +3,6 @@ import { useObjectsState } from "../objects-context";
 
 export default function FilterDescription() {
   const { observationFilter } = useObjectsState();
-  console.log(observationFilter);
 
   const filterDescriptions = [
     {

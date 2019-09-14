@@ -29,7 +29,6 @@ function CatalogTable({ match, range, setRange }) {
   const renderCatalogTable = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
-    console.log(rangeData);
 
     return rangeData.map(obj => (
       <tr
@@ -136,44 +135,44 @@ function CatalogTable({ match, range, setRange }) {
 // /catalog/priorities
 // limit to 100
 // sorted by priority
-const priorities = [
-  {
-    object_norad_number: "12345", // This is not rendered but will be used to create the route for the "object view"
-    object_name: "sl-27",
-    object_origin: "russia",
-    object_type: "rocket body",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926", // timestamp
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  },
-  {
-    object_norad_number: "12345",
-    object_name: "abrixas rocket",
-    object_origin: "usa",
-    object_type: "satelitte",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926",
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  },
-  {
-    object_norad_number: "12345",
-    object_name: "sl-27",
-    object_origin: "russia",
-    object_type: "rocket body",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926",
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  }
-];
+// const priorities = [
+//   {
+//     object_norad_number: "12345", // This is not rendered but will be used to create the route for the "object view"
+//     object_name: "sl-27",
+//     object_origin: "russia",
+//     object_type: "rocket body",
+//     object_primary_purpose: "military",
+//     object_secondary_purpose: "communications",
+//     object_observation_quality: "66",
+//     time_last_tracked: "1565803593926", // timestamp
+//     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     username_last_tracked: "username"
+//   },
+//   {
+//     object_norad_number: "12345",
+//     object_name: "abrixas rocket",
+//     object_origin: "usa",
+//     object_type: "satelitte",
+//     object_primary_purpose: "military",
+//     object_secondary_purpose: "communications",
+//     object_observation_quality: "66",
+//     time_last_tracked: "1565803593926",
+//     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     username_last_tracked: "username"
+//   },
+//   {
+//     object_norad_number: "12345",
+//     object_name: "sl-27",
+//     object_origin: "russia",
+//     object_type: "rocket body",
+//     object_primary_purpose: "military",
+//     object_secondary_purpose: "communications",
+//     object_observation_quality: "66",
+//     time_last_tracked: "1565803593926",
+//     address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
+//     username_last_tracked: "username"
+//   }
+// ];
 
 // GET request
 // /catalog/undisclosed
@@ -181,7 +180,7 @@ const priorities = [
 // but only contains those objects that are not found in the public (government) dataset
 // limit to 100
 // Sorted by priority probably makes sense?
-const undisclosed = [{}];
+// const undisclosed = [{}];
 
 // GET request
 // /catalog/debris
@@ -189,7 +188,7 @@ const undisclosed = [{}];
 // but only contains those items that are described as "debris" - the "harder to find"s.
 // limit to 100
 // Sorted by priority probably makes sensse?
-const debris = [{}];
+// const debris = [{}];
 
 // GET request
 // /catalog/latest
@@ -197,7 +196,7 @@ const debris = [{}];
 // Perhaps only "new" objects added to the database, maybe in the last month?
 // limit to 100
 // Need to ask Mike/Chris what is best here. By Latest maybe we can sort by highest confidence?
-const latest = [{}];
+// const latest = [{}];
 
 // GET request
 // /catalog/all
@@ -205,6 +204,6 @@ const latest = [{}];
 // Every item in the database
 // limit to 100
 // Not sure what is best way to sort this?
-const all = [{}];
+// const all = [{}];
 
 export default withRouter(CatalogTable);

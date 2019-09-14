@@ -12,8 +12,8 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
 
 export default function SignupForm() {
-  const { isAuthenticating, isAuth } = useAuthState();
   const authDispatch = useAuthDispatch();
+  const { isAuthenticating } = useAuthState();
   const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
@@ -35,7 +35,7 @@ export default function SignupForm() {
   };
 
   // TO DO - add Formik to take care of this
-  const handleFormValidation = () => {};
+  // const handleFormValidation = () => {};
 
   const handleSignup = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
