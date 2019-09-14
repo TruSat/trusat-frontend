@@ -17,11 +17,9 @@ function NavDropdown({ history, setRange }) {
   const catalogDispatch = useCatalogDispatch();
 
   useEffect(() => {
-    options.map(option => {
-      if (option.value === catalogFilter) {
-        setSelectedOption(option);
-      }
-    });
+    options
+      .filter(option => option.value === catalogFilter)
+      .map(option => setSelectedOption(option));
   }, [catalogFilter, setSelectedOption]);
 
   const handleChange = newSelectedOption => {

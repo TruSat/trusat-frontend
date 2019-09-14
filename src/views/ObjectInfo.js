@@ -13,7 +13,6 @@ import FilterDescription from "../objects/components/FilterDescription";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
-  console.log(noradNumber);
 
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();

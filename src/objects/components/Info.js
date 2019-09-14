@@ -6,7 +6,6 @@ import HowToSeeIt from "./HowToSeeIt";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
-  console.log(objectInfo);
 
   return (
     <React.Fragment>

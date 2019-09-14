@@ -21,16 +21,14 @@ export default function FilterDescription() {
     }
   ];
 
-  return filterDescriptions.map(description => {
-    if (description.filter === observationFilter) {
-      return (
-        <p
-          key={`${description.filter} copy`}
-          className="object-observation__filter-explainer app__hide-on-mobile"
-        >
-          {description.copy}
-        </p>
-      );
-    }
-  });
+  return filterDescriptions
+    .filter(description => description.filter === observationFilter)
+    .map(description => (
+      <p
+        key={`${description.filter} copy`}
+        className="object-observation__filter-explainer app__hide-on-mobile"
+      >
+        {description.copy}
+      </p>
+    ));
 }

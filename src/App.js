@@ -80,7 +80,7 @@ export default function App() {
   return (
     <Router>
       {/* Shown on mobile view */}
-      <BurgerMenu left />
+      <BurgerMenu right />
       <MobileHeader />
       {/* Shown on desktop view */}
       <NavBar />

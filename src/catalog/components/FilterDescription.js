@@ -27,16 +27,14 @@ export default function FilterDescription() {
     { filter: "all", copy: "All objects of the TruSat catalog." }
   ];
 
-  return filterDescriptions.map(description => {
-    if (description.filter === catalogFilter) {
-      return (
-        <p
-          key={`${description.filter} copy`}
-          className="catalog__filter-description"
-        >
-          {description.copy}
-        </p>
-      );
-    }
-  });
+  return filterDescriptions
+    .filter(description => description.filter === catalogFilter)
+    .map(description => (
+      <p
+        key={`${description.filter} copy`}
+        className="catalog__filter-description"
+      >
+        {description.copy}
+      </p>
+    ));
 }

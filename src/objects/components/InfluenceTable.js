@@ -17,7 +17,6 @@ export default function InfluenceTable() {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        console.log(result.data);
         setObjectInfluence(result.data);
         setShowTable(true);
       })
