@@ -1,20 +1,15 @@
 /* ----------
-SIGN UP
----------- */
-.sign-up__wrapper {
-  margin: 4em;
-}
-
-.sign-up__header {
-  @include view-title--desktop;
-}
-
-/* ----------
 SIGN UP OPTIONS
 ---------- */
 .sign-up-options__wrapper {
   display: flex;
-  margin-top: 3em;
+  margin-top: 2em;
+}
+
+@media (min-width: 600px) {
+  .sign-up-options__wrapper {
+    margin-top: 3em;
+  }
 }
 
 .sign-up-options__metamask-button-wrapper {
@@ -26,34 +21,51 @@ SIGN UP OPTIONS
 }
 
 /* ----------
+SIGN UP
+---------- */
+.sign-up__wrapper {
+  margin: 2em 1em;
+}
+
+.sign-up__header {
+  @include view-title;
+}
+
+@media (min-width: 600px) {
+  .sign-up__wrapper {
+    margin: 4em;
+  }
+
+  .sign-up__header {
+    @include view-title--desktop;
+  }
+}
+
+/* ----------
 SIGNUP SUCCESS
 ---------- */
 .sign-up-success__message-text {
   @include body-text--medium;
-  margin-bottom: 1em;
-}
-
-/* ----------
-LOG IN
----------- */
-.log-in__wrapper {
-  margin: 4em;
-}
-
-.log-in__header {
-  @include view-title--desktop;
-}
-
-.login__success-wrapper {
-  margin-top: 3em;
+  margin: 1em 0;
 }
 
 /* ----------
 LOG IN OPTIONS
 ---------- */
+.email-form {
+  display: flex;
+  flex-direction: column;
+}
+
 .log-in-options__wrapper {
   display: flex;
-  margin-top: 3em;
+  margin-top: 2em;
+}
+
+@media (min-width: 600px) {
+  .log-in-options__wrapper {
+    margin-top: 3em;
+  }
 }
 
 .log-in-options__metamask-button-wrapper {
@@ -65,28 +77,82 @@ LOG IN OPTIONS
 }
 
 /* ----------
+LOG IN
+---------- */
+.log-in__wrapper {
+  margin: 2em 1em;
+}
+
+.log-in__header {
+  @include view-title;
+}
+
+@media (min-width: 600px) {
+  .log-in__wrapper {
+    margin: 4em;
+  }
+
+  .log-in__header {
+    @include view-title--desktop;
+  }
+}
+
+/* ----------
+LOG IN SUCCESSS
+----------- */
+.login__success-wrapper {
+  margin-top: 2em;
+}
+
+@media (min-width: 600px) {
+  .login__success-wrapper {
+    margin-top: 3em;
+  }
+}
+
+/* ----------
 CLAIM ACCOUNT
 ---------- */
 .claim-account__wrapper {
-  margin: 2em 4em;
+  margin: 2em 1em;
+}
+
+@media (min-width: 600px) {
+  .claim-account__wrapper {
+    margin: 2em 4em;
+  }
 }
 
 .claim-account__header {
   @include view-title--desktop;
+  margin-bottom: 0.5em;
 }
 
 .claim-account__message {
-  @include body-text--large-desktop;
+  @include body-text--large;
   margin-top: 1em;
+}
+
+@media (min-width: 600px) {
+  .claim-account__message {
+    @include body-text--large-desktop;
+  }
 }
 
 /* ----------
 VERIFY CLAIM ACCOUNT
 ----------- */
 .verify-claim-account__wrapper {
-  margin: 2em 4em;
+  margin: 2em 1em;
+}
+
+@media (min-width: 600px) {
+  .verify-claim-account__wrapper {
+    margin: 2em 4em;
+  }
 }
 
 .verify-claim-account__header {
   @include view-title--desktop;
+  margin-bottom: 0.5em;
 }

@@ -253,10 +253,22 @@ TABLE
 /* ----------
 EMAIL FORM 
 ---------- */
+
+.log-in__header {
+  @include view-title--desktop;
+}
+
 .email-form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  max-width: 400px;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .email-form {
+    width: 400px;
+  }
 }
 
 .email-form__label {
