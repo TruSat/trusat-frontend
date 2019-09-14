@@ -1,6 +1,5 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
-import { NavLink } from "react-router-dom";
 import { useCatalogState } from "../../catalog/catalog-context";
 import { useUserState } from "../../user/user-context";
 
@@ -11,23 +10,27 @@ export default function BurgerMenu(props) {
   return (
     // Pass on our props
     <Menu {...props}>
-      <NavLink className="app__nav-link" to="/">
+      <a id="home" className="menu-item" href="/">
         Home
-      </NavLink>
-      <NavLink className="app__nav-link" to={`/catalog/${catalogFilter}`}>
+      </a>
+
+      <a id="catalog" className="menu-item" href={`/catalog/${catalogFilter}`}>
         Catalog
-      </NavLink>
+      </a>
+
       {address ? (
-        <NavLink className="app__nav-link" to={`/profile${address}`}>
+        <a id="profile" className="menu-item" href={`/profile${address}`}>
           My Profile
-        </NavLink>
+        </a>
       ) : null}
-      <NavLink className="app__nav-link" to="/about">
+
+      <a id="about" className="menu-item" href="/about">
         About
-      </NavLink>
-      <NavLink className="app__nav-link" to="/how">
-        How
-      </NavLink>
+      </a>
+
+      <a id="how" className="menu-item" href="/how">
+        How To
+      </a>
     </Menu>
   );
 }
