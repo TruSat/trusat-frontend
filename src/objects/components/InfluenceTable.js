@@ -3,12 +3,13 @@ import axios from "axios";
 // import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { shortenAddress } from "../../app/helpers";
+import TablePaginator from "../../app/components/TablePaginator";
 
 export default function InfluenceTable() {
   const { noradNumber } = useObjectsState();
-
   const [showTable, setShowTable] = useState(false);
-  const [objectInfluence, setObjectInfluence] = useState([]);
+  const [tableData, setTableData] = useState([]);
+  const [range, setRange] = useState({ start: 0, end: 10 });
 
   useEffect(() => {
     axios
@@ -17,66 +18,83 @@ export default function InfluenceTable() {
         JSON.stringify({ norad_number: noradNumber })
       )
       .then(result => {
-        setObjectInfluence(result.data);
+        setTableData(result.data);
         setShowTable(true);
       })
       .catch(err => console.log(err));
   }, [noradNumber]);
 
-  return showTable ? (
-    <table className="table object-influence-table">
-      <thead className="table__header">
-        <tr className="table__header-row">
-          <th className="table__header-text object-inluence-table__table-header-text">
-            DATE
-          </th>
-          <th className="table__header-text app__hide-on-mobile">TRACKED BY</th>
-          <th className="table__header-text object-inluence-table__table-header-text">
-            LOCATION
-          </th>
-          <th className="table__header-text object-inluence-table__table-header-text">
-            <p className="app__hide-on-mobile">QUALITY</p>
-            <p className="app__hide-on-desktop">QUAL..</p>
-          </th>
-          <th className="table__header-text object-inluence-table__table-header-text">
-            <p className="app__hide-on-mobile">TIME DIFF</p>
-            <p className="app__hide-on-desktop">DIFF..</p>
-          </th>
-          <th className="table__header-weight-text">
-            <p className="app__hide-on-mobile">WEIGHT</p>
-            <p className="app__hide-on-desktop">WT.</p>
-          </th>
-        </tr>
-      </thead>
-      <tbody className="table__body">
-        {objectInfluence.map(obj => {
-          return (
-            <tr key={objectInfluence.indexOf(obj)} className="table__body-row">
-              <td className="table__table-data">{obj.observation_time}</td>
-              <td className="table__table-data app__hide-on-mobile">
-                {obj.username ? obj.username : shortenAddress(obj.user_address)}
-              </td>
-              <td className="table__table-data">
-                <div style={{ display: "flex" }}>
-                  {/* TO DO - allow user to pick a country code so we can render flags */}
-                  {/* {renderFlag(objectOrigin)}
-                  &nbsp; */}
-                  {obj.user_location ? obj.user_location : "undisclosed"}
-                </div>
-              </td>
+  const renderInfluenceRows = () => {
+    const { start, end } = range;
+    const rangeData = tableData.slice(start, end);
 
-              <td className="table__table-data">{obj.observation_quality}</td>
-              <td className="table__table-data">
-                {obj.observation_time_difference.substring(0, 4)}
-              </td>
-              <td className="table__weight-data">
-                {obj.observation_weight.substring(0, 4)}
-              </td>
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    return rangeData.map(obj => {
+      return (
+        <tr key={rangeData.indexOf(obj)} className="table__body-row">
+          <td className="table__table-data">{obj.observation_time}</td>
+          <td className="table__table-data app__hide-on-mobile">
+            {obj.username ? obj.username : shortenAddress(obj.user_address)}
+          </td>
+          <td className="table__table-data">
+            <div style={{ display: "flex" }}>
+              {/* TO DO - allow user to pick a country code so we can render flags */}
+              {/* {renderFlag(objectOrigin)}
+              &nbsp; */}
+              {obj.user_location ? obj.user_location : "undisclosed"}
+            </div>
+          </td>
+
+          <td className="table__table-data">{obj.observation_quality}</td>
+          <td className="table__table-data">
+            {obj.observation_time_difference.substring(0, 4)}
+          </td>
+          <td className="table__weight-data">
+            {obj.observation_weight.substring(0, 4)}
+          </td>
+        </tr>
+      );
+    });
+  };
+
+  return showTable ? (
+    <React.Fragment>
+      <table className="table object-influence-table">
+        <thead className="table__header">
+          <tr className="table__header-row">
+            <th className="table__header-text object-inluence-table__table-header-text">
+              DATE
+            </th>
+            <th className="table__header-text app__hide-on-mobile">
+              TRACKED BY
+            </th>
+            <th className="table__header-text object-inluence-table__table-header-text">
+              LOCATION
+            </th>
+            <th className="table__header-text object-inluence-table__table-header-text">
+              <p className="app__hide-on-mobile">QUALITY</p>
+              <p className="app__hide-on-desktop">QUAL..</p>
+            </th>
+            <th className="table__header-text object-inluence-table__table-header-text">
+              <p className="app__hide-on-mobile">TIME DIFF</p>
+              <p className="app__hide-on-desktop">DIFF..</p>
+            </th>
+            <th className="table__header-weight-text">
+              <p className="app__hide-on-mobile">WEIGHT</p>
+              <p className="app__hide-on-desktop">WT.</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody className="table__body">{renderInfluenceRows()}</tbody>
+      </table>
+
+      {tableData.length > 10 ? (
+        <TablePaginator
+          tableDataLength={tableData.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
+    </React.Fragment>
   ) : null;
 }
 

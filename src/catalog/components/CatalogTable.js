@@ -27,7 +27,7 @@ function CatalogTable({ match, range, setRange }) {
     }
   }, [catalogFilter, setTableData]);
 
-  const renderCatalogTable = () => {
+  const renderCatalogRows = () => {
     const { start, end } = range;
     const rangeData = tableData.slice(start, end);
 
@@ -91,15 +91,17 @@ function CatalogTable({ match, range, setRange }) {
               <th className="table__header-text">LAST SEEN BY</th>
             </tr>
           </thead>
-          <tbody className="table__body">{renderCatalogTable()}</tbody>
+          <tbody className="table__body">{renderCatalogRows()}</tbody>
         </table>
       </div>
 
-      <TablePaginator
-        tableDataLength={tableData.length}
-        range={range}
-        setRange={setRange}
-      />
+      {tableData.length > 10 ? (
+        <TablePaginator
+          tableDataLength={tableData.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
     </React.Fragment>
   ) : (
     <Spinner />
