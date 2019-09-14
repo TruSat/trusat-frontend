@@ -86,7 +86,6 @@ export default function MetaMask() {
       .catch(err => console.log(err));
 
     authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    authDispatch({ type: "AUTHENTICATED", payload: true });
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 

@@ -33,7 +33,6 @@ export default function App() {
     const retrieveJwt = () => {
       const jwt = localStorage.getItem("trusat-jwt");
       authDispatch({ type: "SET_JWT", payload: jwt });
-      authDispatch({ type: "AUTHENTICATED", payload: true });
 
       const { address } = jwt_decode(jwt);
       userDispatch({ type: "SET_USER_ADDRESS", payload: address });

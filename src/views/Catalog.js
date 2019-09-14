@@ -19,7 +19,7 @@ export default function Catalog({ match }) {
     });
   }
 
-  // the range that will be shown by the TablePaginator component rendered under the CatalogTable
+  // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });
 
   return (

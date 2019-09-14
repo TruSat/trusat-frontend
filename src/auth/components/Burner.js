@@ -34,7 +34,6 @@ export default function Burner() {
     authDispatch({ type: "SET_BURNER", payload: wallet });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
     authDispatch({ type: "SET_JWT", payload: jwt });
-    authDispatch({ type: "AUTHENTICATED", payload: true });
     authDispatch({ type: "AUTHENTICATING", payload: false });
 
     userDispatch({

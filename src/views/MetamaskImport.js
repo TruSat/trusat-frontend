@@ -65,9 +65,7 @@ export default function MetamaskImport() {
         .catch(error => console.log(error))
     );
     userDispatch({ type: "SET_USER_ADDRESS", payload: address });
-
     authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    authDispatch({ type: "AUTHENTICATED", payload: true });
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
@@ -83,6 +81,7 @@ export default function MetamaskImport() {
         Call to action for why you'd want to connect a wallet, and what benefits
         it will unlock for you
       </h2>
+
       {/* STEP ONE */}
       <div className="metamask-import__step-header-wrapper">
         {step > 1 ? (
@@ -154,7 +153,6 @@ export default function MetamaskImport() {
       ) : null}
 
       {/* STEP TWO */}
-
       {step >= 2 ? (
         <div className="metamask-import__step-header-wrapper">
           {step > 2 ? (
@@ -344,7 +342,6 @@ export default function MetamaskImport() {
       ) : null}
 
       {/* STEP FIVE */}
-
       {step >= 4 ? (
         <div className="metamask-import__step-header-wrapper">
           {authType === "metamask" ? (

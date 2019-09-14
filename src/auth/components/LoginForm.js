@@ -59,7 +59,6 @@ export default function LoginForm() {
 
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
     authDispatch({ type: "SET_JWT", payload: jwt });
-    authDispatch({ type: "AUTHENTICATED", payload: true });
     authDispatch({ type: "AUTHENTICATING", payload: false });
 
     localStorage.setItem("trusat-jwt", jwt);

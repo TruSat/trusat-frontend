@@ -1,5 +1,4 @@
 import React from "react";
-
 import { useCatalogState } from "../catalog-context";
 
 export default function FilterDescription() {

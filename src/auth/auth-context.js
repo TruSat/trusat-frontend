@@ -8,9 +8,6 @@ function authReducer(state, action) {
     case "AUTHENTICATING": {
       return { ...state, isAuthenticating: action.payload };
     }
-    case "AUTHENTICATED": {
-      return { ...state, isAuth: action.payload };
-    }
     case "SET_AUTH_TYPE": {
       return { ...state, authType: action.payload };
     }
@@ -32,7 +29,6 @@ function authReducer(state, action) {
 function AuthProvider({ children }) {
   const [state, dispatch] = React.useReducer(authReducer, {
     isAuthenticating: false,
-    isAuth: false,
     authType: "",
     email: "",
     burner: {},
