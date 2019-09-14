@@ -4,6 +4,7 @@ import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { renderFlag, shortenAddress } from "../../app/helpers";
+import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
   const catalogFilter = match.params.catalogFilter;
@@ -94,37 +95,11 @@ function CatalogTable({ match, range, setRange }) {
         </table>
       </div>
 
-      <div style={{ margin: "1em", textAlign: "center" }}>
-        <p>
-          {range.start + 1}-
-          {range.end > tableData.length ? tableData.length : range.end} of{" "}
-          {tableData.length}
-        </p>
-        <button
-          onClick={() => {
-            if (range.start !== 0) {
-              setRange(currentRange => ({
-                start: currentRange.start - 10,
-                end: currentRange.end - 10
-              }));
-            }
-          }}
-        >
-          Left
-        </button>
-        <button
-          onClick={() => {
-            if (range.end < tableData.length) {
-              setRange(currentRange => ({
-                start: currentRange.start + 10,
-                end: currentRange.end + 10
-              }));
-            }
-          }}
-        >
-          Right
-        </button>
-      </div>
+      <TablePaginator
+        tableDataLength={tableData.length}
+        range={range}
+        setRange={setRange}
+      />
     </React.Fragment>
   ) : (
     <Spinner />
