@@ -4,7 +4,9 @@ import { useCatalogState } from "../../catalog/catalog-context";
 import { useUserState } from "../../user/user-context";
 
 export default function BurgerMenu(props) {
-  const { address } = useUserState();
+  const { userAddress } = useUserState();
+  console.log(userAddress);
+
   const { catalogFilter } = useCatalogState();
 
   return (
@@ -18,8 +20,8 @@ export default function BurgerMenu(props) {
         Catalog
       </a>
 
-      {address ? (
-        <a id="profile" className="menu-item" href={`/profile${address}`}>
+      {userAddress ? (
+        <a id="profile" className="menu-item" href={`/profile/${userAddress}`}>
           My Profile
         </a>
       ) : null}

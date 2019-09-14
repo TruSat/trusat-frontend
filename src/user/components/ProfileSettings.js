@@ -84,7 +84,6 @@ export default function ProfileSettings({
               onChange={event => setNewBio(event.target.value)}
             ></textarea>
           ) : (
-            // <EditProfileSettingInput setting={newBio} setSetting={setNewBio} />
             <p>{userData.user_bio}</p>
           )}
         </div>
