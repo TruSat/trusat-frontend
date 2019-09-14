@@ -33,20 +33,28 @@ function NavDropdown({ history, setRange }) {
     history.push(`/catalog/${newSelectedOption.value}`);
   };
 
+  const colorStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      border: "1px solid #ffbd3c"
+    }),
+
+    option: (provided, state) => ({
+      ...provided,
+      background: "#1f1f1f",
+      borderBottom: "1px solid #4f4f4f",
+      color: state.isSelected ? "#ffbd3c" : "white",
+      padding: "1em"
+    })
+  };
+
   return (
     <div className="catalog-nav-dropdown__wrapper">
       <Select
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        theme={theme => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary25: "black",
-            primary: "#ffbd3c"
-          }
-        })}
+        styles={colorStyles}
       />
     </div>
   );
