@@ -30,7 +30,7 @@ export default function InfluenceTable() {
 
     return rangeData.map(obj => {
       return (
-        <tr key={rangeData.indexOf(obj)} className="table__body-row">
+        <tr key={tableData.indexOf(obj)} className="table__body-row">
           <td className="table__table-data">{obj.observation_time}</td>
           <td className="table__table-data app__hide-on-mobile">
             {obj.username ? obj.username : shortenAddress(obj.user_address)}

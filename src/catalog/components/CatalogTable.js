@@ -33,7 +33,7 @@ function CatalogTable({ match, range, setRange }) {
 
     return rangeData.map(obj => (
       <tr
-        key={rangeData.indexOf(obj)}
+        key={tableData.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
         <td className="table__table-data">

@@ -32,6 +32,8 @@ export default function HistoryMonthTable({
   }, [noradNumber, yearNumber, monthNumber]);
 
   const renderDayRows = () => {
+    console.log(objectHistory);
+
     return objectHistory.map(day => {
       return day.observation.map(observation => (
         <tr

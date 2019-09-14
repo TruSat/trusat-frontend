@@ -28,7 +28,6 @@ export default function UserSightingsTable() {
         })
       )
       .then(result => {
-        console.log(result);
         setTableData(result.data);
         setShowTable(true);
       })
