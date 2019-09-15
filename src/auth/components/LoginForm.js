@@ -16,17 +16,13 @@ export default function LoginForm() {
   const [secret, setSecret] = useState(
     "3059463708/771ad0458152dfeb563e1719cc1ca7ba/17da8a731ee571f1e0707d4a57dd83b7ecba0225b8a6829d1ee6a8c2b2248ca025d82c61f7a6da915d749325879986b3ff536eaafc01d82fd27d515c790c4ff03c6e4f23941b91c24414d831739ecdbd"
   );
-
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
 
   const handleLogin = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
-    console.log(`secret = `, secret);
 
     const privateKey = decryptSecret(secret, password);
-    console.log(`privateKey = `, privateKey);
-
-    // fail log in attempt if a valid private key is not returned from decrptSecret
+    // fail the log in attempt if a valid private key is not returned from decrptSecret
     if (privateKey.length !== 66) {
       setShowPrivateKeyError(true);
       authDispatch({ type: "AUTHENTICATING", payload: false });
@@ -35,20 +31,14 @@ export default function LoginForm() {
 
     let wallet = new ethers.Wallet(privateKey);
 
-    console.log(`wallet = `, wallet);
-    console.log(`address = `, wallet.signingKey.address);
-
     const nonce = await retrieveNonce(wallet.signingKey.address);
-    console.log(`nonce = ${nonce}`);
 
     const signedMessage = await signMessage({ nonce, wallet });
-    console.log(`signed message = `, signedMessage);
 
     const jwt = await retrieveJwt({
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
-    console.log(`jwt =`, jwt);
 
     axios
       .post(
@@ -78,7 +68,6 @@ export default function LoginForm() {
   return (
     <form
       className="email-form"
-      name="email-form"
       onSubmit={event => {
         event.preventDefault();
         handleLogin();
