@@ -20,6 +20,13 @@ export default function SignupForm() {
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [retypedPassword, setRetypedPassword] = useState("");
 
+  const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
+    false
+  );
+  const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
+    false
+  );
+
   // TODO - error handling in the UI
   const emailSecret = secret => {
     axios
@@ -34,68 +41,91 @@ export default function SignupForm() {
       .catch(err => console.log(err));
   };
 
-  // TO DO - add Formik to take care of this
-  // const handleFormValidation = () => {};
+  const handleFormValidation = () => {
+    // will return true if string contains at least 1 number
+    function hasNumber(string) {
+      var regex = /\d/g;
+      return regex.test(string);
+    }
+    // check if user enters a password that is at least 8 chracters long and contains one number
+    if (password.length < 8 || !hasNumber(password)) {
+      setShowInvalidPasswordError(true);
+      return false;
+    }
+    // check that password and retyped password have same value
+    if (password !== retypedPassword) {
+      setShowUnmatchedPasswordError(true);
+      return false;
+    }
+    // two checks have passed
+    return true;
+  };
 
   const handleSignup = async () => {
-    authDispatch({ type: "AUTHENTICATING", payload: true });
+    const inputsAreValid = handleFormValidation();
 
-    const wallet = await createWallet();
+    if (inputsAreValid) {
+      authDispatch({ type: "AUTHENTICATING", payload: true });
 
-    const nonce = await retrieveNonce(wallet.signingKey.address);
+      const wallet = createWallet();
 
-    const signedMessage = await signMessage({ nonce, wallet });
+      const nonce = await retrieveNonce(wallet.signingKey.address);
 
-    const jwt = await retrieveJwt({
-      address: wallet.signingKey.address,
-      signedMessage: signedMessage
-    });
-    console.log(`jwt =`, jwt);
+      const signedMessage = await signMessage({ nonce, wallet });
 
-    // TODO - do we want to persis the wallet used when signinup/logging in with email/password
-    // dispatch({ type: "SET_BURNER", payload: wallet });
-    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    authDispatch({ type: "SET_JWT", payload: jwt });
-    authDispatch({ type: "AUTHENTICATING", payload: false });
+      const jwt = await retrieveJwt({
+        address: wallet.signingKey.address,
+        signedMessage: signedMessage
+      });
+      console.log(`jwt =`, jwt);
 
-    // add jwt and address to local storage
-    localStorage.setItem("trusat-jwt", jwt);
+      // dispatch({ type: "SET_BURNER", payload: wallet });
+      authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+      authDispatch({ type: "SET_JWT", payload: jwt });
+      authDispatch({ type: "AUTHENTICATING", payload: false });
 
-    const secret = createSecret(wallet.signingKey.privateKey, password);
-    console.log(`address = `, wallet.address);
-    console.log(`secret = `, secret);
-    // TODO - email secret to the user
-    emailSecret(secret);
+      // add jwt and address to local storage
+      localStorage.setItem("trusat-jwt", jwt);
 
-    axios
-      .post(
-        `https://api.consensys.space:8080/profile`,
-        JSON.stringify({
-          jwt: jwt,
-          address: wallet.signingKey.address
+      const secret = createSecret(wallet.signingKey.privateKey, password);
+      console.log(`address = `, wallet.address);
+      console.log(`secret = `, secret);
+      // TODO - email secret to the user
+      emailSecret(secret);
+
+      axios
+        .post(
+          `https://api.consensys.space:8080/profile`,
+          JSON.stringify({
+            jwt: jwt,
+            address: wallet.signingKey.address
+          })
+        )
+        .then(result => {
+          userDispatch({ type: "SET_USER_DATA", payload: result.data });
+          userDispatch({
+            type: "SET_USER_ADDRESS",
+            payload: wallet.signingKey.address
+          });
+          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
         })
-      )
-      .then(result => {
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        userDispatch({
-          type: "SET_USER_ADDRESS",
-          payload: wallet.signingKey.address
-        });
-        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
-      })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    }
   };
 
   return (
     <form
       className="email-form"
       name="auth-form"
-      onSubmit={event => event.preventDefault()}
+      onSubmit={event => {
+        event.preventDefault();
+        handleSignup();
+      }}
     >
       <label className="email-form__label">Email</label>
       <input
-        className="email-form__input"
         required
+        className="email-form__input"
         type="email"
         onChange={event => setEmail(event.target.value)}
         value={email}
@@ -103,12 +133,18 @@ export default function SignupForm() {
 
       <label className="email-form__label">Password</label>
       <input
-        className="email-form__input"
         required
+        className="email-form__input"
         type="password"
         onChange={event => setPassword(event.target.value)}
         value={password}
       />
+      {showInvalidPasswordError ? (
+        <div className="email-form__error">
+          Please choose a password that is at least 8 characters long and
+          contains one number
+        </div>
+      ) : null}
 
       <div className="email-form__checkbox-and-message-wrapper">
         <input
@@ -126,21 +162,26 @@ export default function SignupForm() {
 
       <label className="email-form__label">Retype password to confirm</label>
       <input
-        className="email-form__input"
         required
+        className="email-form__input"
         type="password"
         onChange={event => setRetypedPassword(event.target.value)}
         value={retypedPassword}
       />
+      {showUnmatchedPasswordError ? (
+        <div className="email-form__error">
+          The passwords you have entered do not match
+        </div>
+      ) : null}
 
       <div className="email-form__button-wrapper">
         <NavLink className="app__nav-link" to="/">
           <span className="email-form__button--black">Cancel</span>
         </NavLink>
 
-        <span className="email-form__button--white" onClick={handleSignup}>
+        <button type="submit" className="email-form__button--white">
           {isAuthenticating ? `...Loading` : `Sign Up`}
-        </span>
+        </button>
       </div>
 
       <div className="email-form__link-to-login-wrapper">
