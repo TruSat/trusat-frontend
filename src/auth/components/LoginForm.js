@@ -17,7 +17,8 @@ export default function LoginForm() {
     "3059463708/771ad0458152dfeb563e1719cc1ca7ba/17da8a731ee571f1e0707d4a57dd83b7ecba0225b8a6829d1ee6a8c2b2248ca025d82c61f7a6da915d749325879986b3ff536eaafc01d82fd27d515c790c4ff03c6e4f23941b91c24414d831739ecdbd"
   );
 
-  // TO DO - error handling in the UI
+  const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
+
   const handleLogin = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
     console.log(`secret = `, secret);
@@ -25,7 +26,15 @@ export default function LoginForm() {
     const privateKey = decryptSecret(secret, password);
     console.log(`privateKey = `, privateKey);
 
+    // fail log in attempt if a valid private key is not returned from decrptSecret
+    if (privateKey.length !== 66) {
+      setShowPrivateKeyError(true);
+      authDispatch({ type: "AUTHENTICATING", payload: false });
+      return;
+    }
+
     let wallet = new ethers.Wallet(privateKey);
+
     console.log(`wallet = `, wallet);
     console.log(`address = `, wallet.signingKey.address);
 
@@ -101,6 +110,13 @@ export default function LoginForm() {
         onChange={event => setSecret(event.target.value)}
         value={secret}
       />
+
+      {showPrivateKeyError ? (
+        <div className="email-form__error">
+          Invalid password and secret code combination. Please make sure you
+          have enetered both correctly and try again.
+        </div>
+      ) : null}
 
       <div className="email-form__button-wrapper">
         <NavLink className="app__nav-link" to="/">
