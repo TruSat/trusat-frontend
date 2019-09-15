@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import { useUserDispatch } from "../user/user-context";
 import { decryptSecret, retrieveNonce } from "../auth/helpers";
@@ -20,6 +20,12 @@ export default function MetamaskImport() {
   const { authType } = useAuthState();
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
+
+  useEffect(() => {
+    if (authType === "metamask") {
+      setStep(5);
+    }
+  }, [authType]);
 
   const handleMessageSign = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });

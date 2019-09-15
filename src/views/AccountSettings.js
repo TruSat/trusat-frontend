@@ -8,7 +8,7 @@ import Spinner from "../app/components/Spinner";
 import { useUserState } from "../user/user-context";
 
 export default function UserSettings() {
-  const { jwt } = useAuthState();
+  const { jwt, authType } = useAuthState();
   const { userAddress, userData, showUserProfile } = useUserState();
   // profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
@@ -108,7 +108,8 @@ export default function UserSettings() {
         </div>
       ) : null}
 
-      <SecuritySettings />
+      {/* Only show prompt to make move to metamask if they haven't already done so */}
+      {authType === "metamask" ? null : <SecuritySettings />}
     </div>
   ) : (
     <Spinner />
