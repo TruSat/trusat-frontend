@@ -2,29 +2,27 @@
 SUBMIT
 ----------- */
 .submit__wrapper {
-  margin: 2em 4em;
+  margin: 2em 1em;
 }
 
 .submit__header {
-  @include view-title--desktop;
+  @include view-title;
+  font-size: $extra-large-font-size;
+}
+
+@media (min-width: 600px) {
+  .submit__wrapper {
+    margin: 2em 4em;
+  }
+  .submit__header {
+    @include view-title--desktop;
+  }
 }
 
 .submit__sub-header {
   font-size: 24px;
   line-height: 28px;
   margin: 1em 0em 0.5em 0em;
-}
-
-.submit__form-button-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.submit__cancel-button {
-  margin-right: 1em;
-}
-
-.submit__button-wrapper {
 }
 
 .submit__info-text {
@@ -43,6 +41,10 @@ SUBMIT
 MULTIPLE OBSERVATION FORM
 ---------- */
 .multiple-observation-form {
+  margin-bottom: 1em;
+}
+
+.multiple-observation-form__textarea {
   background: #1f1f1f;
   border: 1px solid $secondary-theme-color;
   border-radius: 4px;
@@ -51,4 +53,11 @@ MULTIPLE OBSERVATION FORM
   margin: 0em 3em 3em 0;
   padding: 1em;
   resize: none;
+}
+
+.multiple-observation-form__button-wrapper {
+}
+
+.multiple-observation-form__cancel-button {
+  margin-right: 1em;
 }
