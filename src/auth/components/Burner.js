@@ -16,7 +16,7 @@ export default function Burner() {
   const handleLogin = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
 
-    const wallet = await createWallet();
+    const wallet = createWallet();
     console.log(`wallet = `, wallet);
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
