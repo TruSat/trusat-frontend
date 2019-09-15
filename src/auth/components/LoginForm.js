@@ -13,14 +13,16 @@ export default function LoginForm() {
   const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
-  const [secret, setSecret] = useState("");
+  const [secret, setSecret] = useState(
+    "3059463708/771ad0458152dfeb563e1719cc1ca7ba/17da8a731ee571f1e0707d4a57dd83b7ecba0225b8a6829d1ee6a8c2b2248ca025d82c61f7a6da915d749325879986b3ff536eaafc01d82fd27d515c790c4ff03c6e4f23941b91c24414d831739ecdbd"
+  );
 
   // TO DO - error handling in the UI
   const handleLogin = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
     console.log(`secret = `, secret);
 
-    const privateKey = await decryptSecret(secret, password);
+    const privateKey = decryptSecret(secret, password);
     console.log(`privateKey = `, privateKey);
 
     let wallet = new ethers.Wallet(privateKey);
@@ -68,7 +70,10 @@ export default function LoginForm() {
     <form
       className="email-form"
       name="email-form"
-      onSubmit={event => event.preventDefault()}
+      onSubmit={event => {
+        event.preventDefault();
+        handleLogin();
+      }}
     >
       <label className="email-form__label">Email</label>
       <input
@@ -90,6 +95,7 @@ export default function LoginForm() {
 
       <label className="email-form__label">Secret code</label>
       <input
+        required
         type="text"
         className="email-form__input"
         onChange={event => setSecret(event.target.value)}
@@ -100,9 +106,9 @@ export default function LoginForm() {
         <NavLink className="app__nav-link" to="/">
           <span className="email-form__button--black">Cancel</span>
         </NavLink>
-        <span className="email-form__button--white" onClick={handleLogin}>
+        <button className="email-form__button--white">
           {isAuthenticating ? `...Loading` : `Log in`}
-        </span>
+        </button>
       </div>
 
       <div className="email-form__link-to-login-wrapper">
