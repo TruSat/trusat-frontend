@@ -18,21 +18,28 @@ export default function ClaimAccount() {
         setShowMessage(true);
       })
       .catch(err => console.log(err));
+
+    setEmail("");
   };
   return (
     <div className="claim-account__wrapper">
       <h1 className="claim-account__header">Claim Account</h1>
-      <form className="email-form">
+      <form
+        className="email-form"
+        onSubmit={event => {
+          event.preventDefault();
+          claimAccount();
+        }}
+      >
         <label className="email-form__label">EMAIL</label>
         <input
+          required
           className="email-form__input"
           type="email"
           onChange={event => setEmail(event.target.value)}
           value={email}
         ></input>
-        <span className="app__white-button--small" onClick={claimAccount}>
-          Submit
-        </span>
+        <button className="app__white-button--small">Submit</button>
       </form>
       {showMessage ? (
         <p className="claim-account__message">

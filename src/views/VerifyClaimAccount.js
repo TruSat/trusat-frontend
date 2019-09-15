@@ -4,35 +4,82 @@ import { createWallet, createSecret } from "../auth/helpers";
 
 export default function VerifyClaimAccount({ match }) {
   const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
+  const [retypedPassword, setRetypedPasswprd] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
-  const verifyClaimAccount = () => {
-    const wallet = createWallet();
-    const secret = createSecret(wallet.signingKey.privateKey, password);
+  const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
+    false
+  );
+  const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
+    false
+  );
 
-    axios
-      .post(
-        `https://api.consensys.space:8080/verifyClaimAccount`,
-        JSON.stringify({
-          jwt: match.params.jwt,
-          address: wallet.signingKey.address,
-          secret: secret
+  const handleFormValidation = () => {
+    // will return true if string contains at least 1 number
+    function hasNumber(string) {
+      var regex = /\d/g;
+      return regex.test(string);
+    }
+    // check if user enters a password that is at least 8 chracters long and contains one number
+    if (password.length < 8 || !hasNumber(password)) {
+      setShowInvalidPasswordError(true);
+      return false;
+    }
+    // check that password and retyped password have same value
+    if (password !== retypedPassword) {
+      setShowUnmatchedPasswordError(true);
+      return false;
+    }
+    // two checks have passed
+    return true;
+  };
+
+  const verifyClaimAccount = () => {
+    const inputsAreValid = handleFormValidation();
+
+    if (inputsAreValid) {
+      const wallet = createWallet();
+      const secret = createSecret(wallet.signingKey.privateKey, password);
+
+      axios
+        .post(
+          `https://api.consensys.space:8080/verifyClaimAccount`,
+          JSON.stringify({
+            jwt: match.params.jwt,
+            address: wallet.signingKey.address,
+            secret: secret
+          })
+        )
+        .then(result => {
+          console.log(result);
+          setShowMessage(true);
+          setShowInvalidPasswordError(false);
+          setShowUnmatchedPasswordError(false);
         })
-      )
-      .then(result => {
-        console.log(result);
-        setShowMessage(true);
-      })
-      .catch(err => console.log(err));
+        .catch(err => {
+          console.log(err);
+          setShowInvalidPasswordError(false);
+          setShowUnmatchedPasswordError(false);
+        });
+
+      setPassword("");
+      setRetypedPasswprd("");
+    }
   };
 
   return (
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
-      <form className="email-form">
+      <form
+        className="email-form"
+        onSubmit={event => {
+          event.preventDefault();
+          verifyClaimAccount();
+        }}
+      >
         <label className="email-form__label">NEW PASSWORD</label>
         <input
+          required
           className="email-form__input"
           type="password"
           onChange={event => setPassword(event.target.value)}
@@ -40,14 +87,29 @@ export default function VerifyClaimAccount({ match }) {
         ></input>
         <label className="email-form__label">RE-ENTER NEW PASSWORD</label>
         <input
+          required
           className="email-form__input"
           type="password"
-          onChange={event => setPassword2(event.target.value)}
-          value={password2}
+          onChange={event => setRetypedPasswprd(event.target.value)}
+          value={retypedPassword}
         ></input>
-        <span className="app__white-button--small" onClick={verifyClaimAccount}>
+
+        {showInvalidPasswordError ? (
+          <div className="email-form__error">
+            Please choose a password that is at least 8 characters long and
+            contains one number
+          </div>
+        ) : null}
+
+        {showUnmatchedPasswordError ? (
+          <div className="email-form__error">
+            The passwords you have entered do not match
+          </div>
+        ) : null}
+
+        <button type="submit" className="app__white-button--small">
           Submit
-        </span>
+        </button>
       </form>
       {showMessage ? (
         <p className="claim-account__message">
