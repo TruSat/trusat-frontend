@@ -439,3 +439,18 @@ ASTRIAGRAPH
     height: 300px;
   }
 }
+
+/* ----------
+COPY TEXT
+---------- */
+.app__copy-text {
+  color: $secondary-theme-color;
+  line-height: $small-line-height;
+  margin-left: 0.5em;
+  size: $extra-small-font-size;
+  text-decoration-line: underline;
+}
+
+.app__copy-text:hover {
+  cursor: pointer;
+}

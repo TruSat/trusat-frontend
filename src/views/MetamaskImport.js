@@ -7,6 +7,7 @@ import Web3 from "web3";
 import axios from "axios";
 import CircleCheck from "../assets/CircleCheck.svg";
 import { NavLink } from "react-router-dom";
+import CopyText from "../app/components/CopyText";
 
 export default function MetamaskImport() {
   const [step, setStep] = useState(1);
@@ -258,13 +259,7 @@ export default function MetamaskImport() {
           offer ability to copy it with a click */}
           <div className="metamask-import__private-key-wrapper">
             <p className="metamask-import__private-key-text">{privateKey}</p>
-            <button
-              onClick={() => {
-                navigator.clipboard.writeText(privateKey);
-              }}
-            >
-              copy
-            </button>
+            <CopyText textToCopy={privateKey} />
           </div>
           <p className="metamask-import__copy">
             2. Login to MetaMask if you haven't already done so and click on
