@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { createWallet, createSecret } from "../auth/helpers";
-import { useAuthDispatch, useAuthState } from "../auth/auth-context";
+import { useAuthDispatch } from "../auth/auth-context";
 import { useUserDispatch } from "../user/user-context";
 
 export default function VerifyClaimAccount({ match }) {
@@ -9,7 +9,7 @@ export default function VerifyClaimAccount({ match }) {
   const [retypedPassword, setRetypedPasswprd] = useState("");
   const [showMessage, setShowMessage] = useState(false);
 
-  const authDispatch = useAuthState();
+  const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
 
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
