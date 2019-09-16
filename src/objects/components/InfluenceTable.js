@@ -4,24 +4,29 @@ import axios from "axios";
 import { useObjectsState } from "../objects-context";
 import { shortenAddress } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
+import Spinner from "../../app/components/Spinner";
 
 export default function InfluenceTable() {
   const { noradNumber } = useObjectsState();
-  const [showTable, setShowTable] = useState(false);
   const [tableData, setTableData] = useState([]);
   const [range, setRange] = useState({ start: 0, end: 10 });
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/influence`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(result => {
-        setTableData(result.data);
-        setShowTable(true);
-      })
-      .catch(err => console.log(err));
+    if (noradNumber) {
+      setIsLoading(true);
+
+      axios
+        .post(
+          `https://api.consensys.space:8080/object/influence`,
+          JSON.stringify({ norad_number: noradNumber })
+        )
+        .then(result => {
+          setTableData(result.data);
+          setIsLoading(false);
+        })
+        .catch(err => console.log(err));
+    }
   }, [noradNumber]);
 
   const renderInfluenceRows = () => {
@@ -56,7 +61,9 @@ export default function InfluenceTable() {
     });
   };
 
-  return showTable ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <React.Fragment>
       <table className="table object-influence-table">
         <thead className="table__header">
@@ -95,7 +102,7 @@ export default function InfluenceTable() {
         />
       ) : null}
     </React.Fragment>
-  ) : null;
+  );
 }
 
 // POST request

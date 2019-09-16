@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import HistoryMonthDropdown from "./HistoryMonthDropdown";
 
 export default function HistoryTable() {
-  const [yearChosen, setYearChosen] = useState("");
+  const [yearChosen, setYearChosen] = useState("2019");
 
   const years = [
     "2019",

@@ -10,14 +10,16 @@ import {
   useObjectsDispatch
 } from "../objects/objects-context";
 import FilterDescription from "../objects/components/FilterDescription";
+import Spinner from "../app/components/Spinner";
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
-  const [showObjectView, setShowObjectView] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .post(
         `https://api.consensys.space:8080/object/info`,
@@ -31,12 +33,14 @@ export default function ObjectInfo({ match }) {
           payload: result.data.object_origin
         });
 
-        setShowObjectView(true);
+        setIsLoading(false);
       })
       .catch(err => console.log(err));
   }, [noradNumber, objectsDispatch]);
 
-  return showObjectView ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="object__wrapper">
       <div className="object-observations__filter-table-wrapper">
         <Info />
@@ -47,7 +51,7 @@ export default function ObjectInfo({ match }) {
         {observationFilter === "mySightings" ? <UserSightingsTable /> : null}
       </div>
     </div>
-  ) : null;
+  );
 }
 
 // POST REQUEST

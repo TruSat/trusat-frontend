@@ -7,7 +7,7 @@ import HowToSeeIt from "./HowToSeeIt";
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
 
-  return (
+  return objectInfo.object_name ? (
     <React.Fragment>
       <section className="object-info__header-section-wrapper">
         <img
@@ -62,7 +62,7 @@ export default function Info() {
           <div className="object-info__origin-launched-wrapper">
             <div className="object-info__origin-wrapper">
               <p className="object-info__info-label">ORIGIN</p>
-              <p>{renderFlag(objectInfo.object_origin)}</p>
+              {renderFlag(objectInfo.object_origin)}
             </div>
             <div className="object-info__launched-wrapper">
               <p className="object-info__info-label">LAUNCHED</p>
@@ -79,7 +79,7 @@ export default function Info() {
         <HowToSeeIt />
       </section>
     </React.Fragment>
-  );
+  ) : null;
 }
 
 // POST REQUEST

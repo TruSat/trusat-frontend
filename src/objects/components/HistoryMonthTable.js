@@ -3,6 +3,7 @@ import axios from "axios";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { shortenAddress } from "../../app/helpers";
+import Spinner from "../../app/components/Spinner";
 
 export default function HistoryMonthTable({
   yearNumber,
@@ -10,10 +11,12 @@ export default function HistoryMonthTable({
   monthNumber
 }) {
   const { noradNumber, objectOrigin } = useObjectsState();
-  const [showTable, setShowTable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [objectHistory, setObjectHistory] = useState([]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .post(
         `https://api.consensys.space:8080/object/history`,
@@ -26,14 +29,12 @@ export default function HistoryMonthTable({
       .then(result => {
         console.log(result.data);
         setObjectHistory(result.data);
-        setShowTable(true);
+        setIsLoading(false);
       })
       .catch(err => console.log(err));
   }, [noradNumber, yearNumber, monthNumber]);
 
   const renderDayRows = () => {
-    console.log(objectHistory);
-
     return objectHistory.map(day => {
       return day.observation.map(observation => (
         <tr
@@ -68,7 +69,9 @@ export default function HistoryMonthTable({
     });
   };
 
-  return showTable ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <table className="table">
       <thead className="table__header">
         <tr className="table__header-row">
@@ -89,7 +92,7 @@ export default function HistoryMonthTable({
       </thead>
       <tbody>{renderDayRows()}</tbody>
     </table>
-  ) : null;
+  );
 }
 
 // const object_month_history = [
