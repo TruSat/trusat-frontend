@@ -49,7 +49,9 @@ export default function ObservationsTable() {
           {userData.observation_history.length !== 0 ? (
             renderYourObservationsRows()
           ) : (
-            <p className="profile__none-yet-text">None yet</p>
+            <tr>
+              <td className="profile__none-yet-text">None yet</td>
+            </tr>
           )}
         </tbody>
       </table>
