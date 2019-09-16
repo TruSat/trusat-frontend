@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ProfileHeader from "../user/components/ProfileHeader";
 import ObjectsCollectedTable from "../user/components/ObjectsCollectedTable";
@@ -6,20 +6,18 @@ import ObservationsTable from "../user/components/ObservationsTable";
 
 import Spinner from "../app/components/Spinner";
 import { useAuthState } from "../auth/auth-context";
-import { useUserState, useUserDispatch } from "../user/user-context";
+import { useUserDispatch } from "../user/user-context";
 
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;
   const { jwt } = useAuthState();
-  const { showUserProfile } = useUserState();
   const userDispatch = useUserDispatch();
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log(`fetching user data`);
-
-      userDispatch({ type: "SHOW_USER_PROFILE", payload: false });
-
+      setIsLoading(true);
       await axios
         .post(
           `https://api.consensys.space:8080/profile`,
@@ -32,21 +30,21 @@ export default function Profile({ match }) {
         )
         .then(result => {
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+          setIsLoading(false);
         })
         .catch(err => console.log(err));
     };
     fetchData();
-  }, [jwt, addressFromRoute, userDispatch]);
+  }, [jwt, addressFromRoute, userDispatch, setIsLoading]);
 
-  return showUserProfile ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="profile__wrapper">
       <ProfileHeader />
       <ObjectsCollectedTable />
       <ObservationsTable />
     </div>
-  ) : (
-    <Spinner />
   );
 }
 

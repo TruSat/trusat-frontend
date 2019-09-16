@@ -7,7 +7,7 @@ import { shortenAddress } from "../../app/helpers";
 export default function ProfileHeader() {
   const { userData } = useUserState();
 
-  return (
+  return userData.user_address ? (
     <section className="profile__header-wrapper">
       <div className="profile__blockie-name-wrapper">
         <Blockie
@@ -93,5 +93,5 @@ export default function ProfileHeader() {
         {userData.user_bio ? userData.user_bio : null}
       </p>
     </section>
-  );
+  ) : null;
 }

@@ -23,7 +23,7 @@ export default function ObservationsTable() {
     ));
   };
 
-  return (
+  return userData.observation_history ? (
     <section className="profile__your-observations-wrapper">
       <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
       <table className="table">
@@ -54,5 +54,5 @@ export default function ObservationsTable() {
         </tbody>
       </table>
     </section>
-  );
+  ) : null;
 }

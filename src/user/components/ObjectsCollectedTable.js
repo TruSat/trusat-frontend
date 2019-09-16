@@ -49,7 +49,7 @@ export default function ObjectsCollectedTable() {
     ));
   };
 
-  return (
+  return userData.objects_observed ? (
     <section className="profile__objects-tracked-wrapper">
       <h2 className="profile__sub-heading">OBJECTS COLLECTED</h2>
       {userData.objects_observed.length !== 0 ? (
@@ -80,5 +80,5 @@ export default function ObjectsCollectedTable() {
         </div>
       )}
     </section>
-  );
+  ) : null;
 }

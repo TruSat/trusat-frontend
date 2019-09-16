@@ -11,9 +11,6 @@ function userReducer(state, action) {
     case "SET_USER_DATA": {
       return { ...state, userData: action.payload };
     }
-    case "SHOW_USER_PROFILE": {
-      return { ...state, showUserProfile: action.payload };
-    }
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
     }
@@ -23,8 +20,7 @@ function userReducer(state, action) {
 function UserProvider({ children }) {
   const [state, dispatch] = React.useReducer(userReducer, {
     userAddress: "",
-    userData: {},
-    showUserProfile: false
+    userData: {}
   });
 
   return (
