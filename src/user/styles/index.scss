@@ -404,28 +404,6 @@ METAMASK IMPORT
 /* ----------
 SECRET FORM - in MetamaskImport component
 ---------- */
-.secret-form__wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 2em;
-  width: 300px;
-}
-
 .secret-form__label {
   color: $secondary-theme-color;
-  font-size: $extra-small-font-size;
-  margin-bottom: 0.5em;
-}
-
-.secret-form__input {
-  border: 1px solid $primary-text-color;
-  border-radius: 4px;
-  box-sizing: border-box;
-  align-self: flex-start;
-  background: black;
-  box-sizing: border-box;
-  color: $primary-text-color;
-  margin-bottom: 1em;
-  padding: 1em;
-  width: 100%;
 }

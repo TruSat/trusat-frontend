@@ -51,24 +51,28 @@ export default function StepTwo({ step, setStep, setPrivateKey }) {
             created for your account
           </p>
           <form
-            className="secret-form__wrapper"
+            className="email-form"
             onSubmit={event => {
               event.preventDefault();
               handleSubmit();
             }}
           >
-            <label className="secret-form__label">SECRET</label>
+            <label className="email-form__label secret-form__label">
+              SECRET
+            </label>
             <input
               required
-              className="secret-form__input"
+              className="email-form__input"
               type="text"
               value={secret}
               onChange={event => setSecret(event.target.value)}
             ></input>
-            <label className="secret-form__label">PASSWORD</label>
+            <label className="email-form__label secret-form__label">
+              PASSWORD
+            </label>
             <input
               required
-              className="secret-form__input"
+              className="email-form__input"
               type="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
