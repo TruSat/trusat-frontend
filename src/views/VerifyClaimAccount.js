@@ -63,7 +63,6 @@ export default function VerifyClaimAccount({ match }) {
             type: "SET_USER_ADDRESS",
             payload: wallet.signingKey.address
           });
-
           setShowMessage(true);
           setShowInvalidPasswordError(false);
           setShowUnmatchedPasswordError(false);

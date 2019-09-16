@@ -67,6 +67,7 @@ export const retrieveJwt = async ({ address, signedMessage }) => {
       })
     )
     .then(response => {
+      console.log(response);
       console.log(`JWT is = `, response.data.jwt);
       return response.data.jwt;
     })
