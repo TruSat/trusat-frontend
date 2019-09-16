@@ -28,8 +28,8 @@ export default function SignupForm() {
   );
 
   // TODO - error handling in the UI
-  const emailSecret = secret => {
-    axios
+  const emailSecret = async secret => {
+    await axios
       .post(
         `https://api.consensys.space:8080/emailSecret`,
         JSON.stringify({ to: email, payload: secret })
@@ -71,7 +71,7 @@ export default function SignupForm() {
 
       const nonce = await retrieveNonce(wallet.signingKey.address);
 
-      const signedMessage = await signMessage({ nonce, wallet });
+      const signedMessage = signMessage({ nonce, wallet });
 
       const jwt = await retrieveJwt({
         address: wallet.signingKey.address,
@@ -93,7 +93,7 @@ export default function SignupForm() {
       // TODO - email secret to the user
       emailSecret(secret);
 
-      axios
+      await axios
         .post(
           `https://api.consensys.space:8080/profile`,
           JSON.stringify({
@@ -107,7 +107,6 @@ export default function SignupForm() {
             type: "SET_USER_ADDRESS",
             payload: wallet.signingKey.address
           });
-          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
         })
         .catch(err => console.log(err));
     }

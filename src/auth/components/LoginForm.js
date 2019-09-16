@@ -33,14 +33,14 @@ export default function LoginForm() {
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
 
-    const signedMessage = await signMessage({ nonce, wallet });
+    const signedMessage = signMessage({ nonce, wallet });
 
     const jwt = await retrieveJwt({
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
 
-    axios
+    await axios
       .post(
         `https://api.consensys.space:8080/profile`,
         JSON.stringify({
@@ -54,7 +54,6 @@ export default function LoginForm() {
           type: "SET_USER_ADDRESS",
           payload: wallet.signingKey.address
         });
-        userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
       })
       .catch(err => console.log(err));
 

@@ -39,14 +39,14 @@ export default function VerifyClaimAccount({ match }) {
     return true;
   };
 
-  const verifyClaimAccount = () => {
+  const verifyClaimAccount = async () => {
     const inputsAreValid = handleFormValidation();
 
     if (inputsAreValid) {
       const wallet = createWallet();
       const secret = createSecret(wallet.signingKey.privateKey, password);
 
-      axios
+      await axios
         .post(
           `https://api.consensys.space:8080/verifyClaimAccount`,
           JSON.stringify({

@@ -7,15 +7,19 @@ export default function DownloadObjectTleButton() {
   const [tleString, setTleString] = useState("");
 
   useEffect(() => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/tle/object`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(res => {
-        setTleString(res.data);
-      })
-      .catch(err => console.log(err));
+    const fetchData = async () => {
+      await axios
+        .post(
+          `https://api.consensys.space:8080/tle/object`,
+          JSON.stringify({ norad_number: noradNumber })
+        )
+        .then(res => {
+          setTleString(res.data);
+        })
+        .catch(err => console.log(err));
+    };
+
+    fetchData();
   }, [noradNumber]);
 
   const downloadTles = () => {

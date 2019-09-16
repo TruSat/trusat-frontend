@@ -19,23 +19,27 @@ export default function ObjectInfo({ match }) {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/info`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(result => {
-        objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
-        objectsDispatch({ type: "SET_OBJECT_INFO", payload: result.data });
-        objectsDispatch({
-          type: "SET_OBJECT_ORIGIN",
-          payload: result.data.object_origin
-        });
+    const postData = async () => {
+      setIsLoading(true);
+      await axios
+        .post(
+          `https://api.consensys.space:8080/object/info`,
+          JSON.stringify({ norad_number: noradNumber })
+        )
+        .then(result => {
+          objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
+          objectsDispatch({ type: "SET_OBJECT_INFO", payload: result.data });
+          objectsDispatch({
+            type: "SET_OBJECT_ORIGIN",
+            payload: result.data.object_origin
+          });
 
-        setIsLoading(false);
-      })
-      .catch(err => console.log(err));
+          setIsLoading(false);
+        })
+        .catch(err => console.log(err));
+    };
+
+    postData();
   }, [noradNumber, objectsDispatch]);
 
   return isLoading ? (

@@ -6,32 +6,39 @@ import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers/";
 import { shortenAddress } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
+import Spinner from "../../app/components/Spinner";
 
 export default function UserSightingsTable() {
   const { jwt } = useAuthState();
   const { userAddress } = useUserState();
   const { noradNumber, objectOrigin } = useObjectsState();
   const [tableData, setTableData] = useState([]);
-  const [showTable, setShowTable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [range, setRange] = useState({ start: 0, end: 10 });
 
   useEffect(() => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/userSightings`,
-        JSON.stringify({
-          norad_number: noradNumber,
-          jwt: jwt,
-          // address: userAddress
-          // leos address for testing
-          address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      await axios
+        .post(
+          `https://api.consensys.space:8080/object/userSightings`,
+          JSON.stringify({
+            norad_number: noradNumber,
+            jwt: jwt,
+            // address: userAddress
+            // leos address for testing
+            address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+          })
+        )
+        .then(result => {
+          setTableData(result.data);
+          setIsLoading(false);
         })
-      )
-      .then(result => {
-        setTableData(result.data);
-        setShowTable(true);
-      })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    };
+
+    fetchData();
   }, [jwt, userAddress, noradNumber]);
 
   const renderUserSightingsRows = () => {
@@ -63,7 +70,9 @@ export default function UserSightingsTable() {
     });
   };
 
-  return showTable ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <React.Fragment>
       <table className="table">
         <thead className="table__header">
@@ -97,7 +106,7 @@ export default function UserSightingsTable() {
         />
       ) : null}
     </React.Fragment>
-  ) : null;
+  );
 }
 
 // POST request

@@ -13,10 +13,10 @@ export default function InfluenceTable() {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    if (noradNumber) {
+    const fetchData = async () => {
       setIsLoading(true);
 
-      axios
+      await axios
         .post(
           `https://api.consensys.space:8080/object/influence`,
           JSON.stringify({ norad_number: noradNumber })
@@ -26,6 +26,10 @@ export default function InfluenceTable() {
           setIsLoading(false);
         })
         .catch(err => console.log(err));
+    };
+
+    if (noradNumber) {
+      fetchData();
     }
   }, [noradNumber]);
 

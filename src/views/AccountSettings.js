@@ -39,8 +39,8 @@ export default function UserSettings() {
     setNewPublicLocation(public_location);
   }, [userData]);
 
-  const submitEdit = () => {
-    axios
+  const submitEdit = async () => {
+    await axios
       .post(
         `https://api.consensys.space:8080/editProfile`,
         JSON.stringify({

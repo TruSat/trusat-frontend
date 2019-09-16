@@ -10,7 +10,7 @@ export const createWallet = () => {
 };
 
 export const retrieveNonce = async address => {
-  return axios
+  return await axios
     .post(
       "https://api.consensys.space:8080/getNonce",
       JSON.stringify({ address: address })
@@ -32,14 +32,14 @@ export const handleMetamaskConnect = () => {
   }
 };
 
-export const signMessage = async ({ nonce, wallet }) => {
+export const signMessage = ({ nonce, wallet }) => {
   // hash the nonce
   const nonceHash = ethers.utils.id(nonce);
 
   // sign nonce using web3
   try {
     //a promise
-    const signedMessage = await web3.eth.accounts.sign(
+    const signedMessage = web3.eth.accounts.sign(
       nonceHash,
       wallet.signingKey.privateKey
     );
@@ -58,7 +58,7 @@ export const signMessage = async ({ nonce, wallet }) => {
 export const retrieveJwt = async ({ address, signedMessage }) => {
   console.log(signedMessage);
 
-  return axios
+  return await axios
     .post(
       "https://api.consensys.space:8080/login",
       JSON.stringify({

@@ -8,22 +8,28 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
   const catalogFilter = match.params.catalogFilter;
-  const [showTable, setShowTable] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    setShowTable(false);
-    if (catalogFilter) {
-      axios
+    const fetchData = async () => {
+      setIsLoading(true);
+
+      await axios
         .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
         .then(result => {
           setTableData(result.data);
-          setShowTable(true);
+          setIsLoading(false);
         })
         .catch(err => {
           console.log(err);
           setTableData([]);
+          setIsLoading(false);
         });
+    };
+
+    if (catalogFilter) {
+      fetchData();
     }
   }, [catalogFilter, setTableData]);
 
@@ -74,7 +80,9 @@ function CatalogTable({ match, range, setRange }) {
     ));
   };
 
-  return showTable ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <React.Fragment>
       <div>
         <table className="table">
@@ -103,8 +111,6 @@ function CatalogTable({ match, range, setRange }) {
         />
       ) : null}
     </React.Fragment>
-  ) : (
-    <Spinner />
   );
 }
 

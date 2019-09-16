@@ -5,8 +5,8 @@ export default function ClaimAccount() {
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [showMessage, setShowMessage] = useState(false);
 
-  const claimAccount = () => {
-    axios
+  const claimAccount = async () => {
+    await axios
       .post(
         `https://api.consensys.space:8080/claimAccount`,
         JSON.stringify({

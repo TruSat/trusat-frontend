@@ -7,13 +7,17 @@ export default function DownloadCatalogFilterTleButton() {
   const [tleString, setTleString] = useState("");
 
   useEffect(() => {
-    if (catalogFilter === "priorities" || catalogFilter === "all") {
-      axios
+    const fetchData = async () => {
+      await axios
         .get(`https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`)
         .then(res => {
           setTleString(res.data);
         })
         .catch(err => console.log(err));
+    };
+
+    if (catalogFilter === "priorities" || catalogFilter === "all") {
+      fetchData();
     }
   }, [catalogFilter]);
 

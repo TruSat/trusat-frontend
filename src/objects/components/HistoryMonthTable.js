@@ -17,21 +17,25 @@ export default function HistoryMonthTable({
   useEffect(() => {
     setIsLoading(true);
 
-    axios
-      .post(
-        `https://api.consensys.space:8080/object/history`,
-        JSON.stringify({
-          norad_number: noradNumber,
-          year: yearNumber,
-          month: monthNumber
+    const fetchData = async () => {
+      await axios
+        .post(
+          `https://api.consensys.space:8080/object/history`,
+          JSON.stringify({
+            norad_number: noradNumber,
+            year: yearNumber,
+            month: monthNumber
+          })
+        )
+        .then(result => {
+          console.log(result.data);
+          setObjectHistory(result.data);
+          setIsLoading(false);
         })
-      )
-      .then(result => {
-        console.log(result.data);
-        setObjectHistory(result.data);
-        setIsLoading(false);
-      })
-      .catch(err => console.log(err));
+        .catch(err => console.log(err));
+    };
+
+    fetchData();
   }, [noradNumber, yearNumber, monthNumber]);
 
   const renderDayRows = () => {
