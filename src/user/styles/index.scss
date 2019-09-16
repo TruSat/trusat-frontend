@@ -324,6 +324,12 @@ METAMASK IMPORT
 .metamask-import__link-to-account-text {
   color: #a5a5a5;
   font-size: $extra-small-font-size;
+  padding: 0.5em;
+  text-decoration: underline;
+}
+
+.metamask-import__link-to-account-text:hover {
+  cursor: pointer;
 }
 
 .metamask-import__main-header {
