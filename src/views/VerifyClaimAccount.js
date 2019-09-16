@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { createWallet, createSecret } from "../auth/helpers";
+import { useAuthDispatch, useAuthState } from "../auth/auth-context";
+import { useUserDispatch } from "../user/user-context";
 
 export default function VerifyClaimAccount({ match }) {
   const [password, setPassword] = useState("");
   const [retypedPassword, setRetypedPasswprd] = useState("");
   const [showMessage, setShowMessage] = useState(false);
+
+  const authDispatch = useAuthState();
+  const userDispatch = useUserDispatch();
 
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
@@ -50,8 +55,15 @@ export default function VerifyClaimAccount({ match }) {
             secret: secret
           })
         )
-        .then(result => {
-          console.log(result);
+        .then(response => {
+          console.log(response);
+          localStorage.setItem("trusat-jwt", response.data.jwt);
+          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
+          userDispatch({
+            type: "SET_USER_ADDRESS",
+            payload: wallet.signingKey.address
+          });
+
           setShowMessage(true);
           setShowInvalidPasswordError(false);
           setShowUnmatchedPasswordError(false);
