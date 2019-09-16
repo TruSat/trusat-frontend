@@ -3,10 +3,8 @@ import CircleCheck from "../../assets/CircleCheck.svg";
 import { decryptSecret } from "../../auth/helpers";
 
 export default function StepTwo({ step, setStep, setPrivateKey }) {
-  const [secret, setSecret] = useState(
-    "3235776040/74bef427ec535b0640b9f2476560a6e0/98cc58cc57fbbdc33fc23983066ad421239a65304847a6fc68f2e2eb07bf32d273a7d8203cca1f457c42880ea2671fbf15f2fdec25e96858d922f4e25d34294b1ececdadab32f42b5858fc4d27f50303"
-  );
-  const [password, setPassword] = useState("Zn48&NJFLPjr");
+  const [secret, setSecret] = useState("");
+  const [password, setPassword] = useState("");
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
 
   const handleSubmit = () => {
