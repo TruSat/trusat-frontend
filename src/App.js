@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import axios from "axios";
+
 import jwt_decode from "jwt-decode";
 import { ethers } from "ethers";
 import { BrowserRouter as Router, Route } from "react-router-dom";
@@ -30,32 +30,19 @@ export default function App() {
   useEffect(() => {
     // get jwt from local storage
     // utilized for authentication and is decoded to return users ethereum address
-    const retrieveJwt = () => {
+    const retrieveJwt = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
-      authDispatch({ type: "SET_JWT", payload: jwt });
+      await authDispatch({ type: "SET_JWT", payload: jwt });
 
-      const { address } = jwt_decode(jwt);
-      userDispatch({ type: "SET_USER_ADDRESS", payload: address });
-
-      axios
-        .post(
-          `https://api.consensys.space:8080/profile`,
-          JSON.stringify({
-            jwt: jwt,
-            addresss: address
-            // leo's for testing
-            // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
-          })
-        )
-        .then(result => {
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
-        })
-        .catch(err => console.log(err));
+      const { address } = await jwt_decode(jwt);
+      userDispatch({
+        type: "SET_USER_ADDRESS",
+        payload: address
+      });
     };
     // private key for "burner wallet"
     // will be called if user has submitted an observation without signing up to TruSat
-    const retrieveWallet = () => {
+    const retrieveWallet = async () => {
       const privateKey = localStorage.getItem("trusat-private-key");
       const wallet = new ethers.Wallet(privateKey);
 
@@ -67,12 +54,12 @@ export default function App() {
       authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
     };
 
-    if (localStorage.getItem("trusat-private-key")) {
-      retrieveWallet();
-    }
-
     if (localStorage.getItem("trusat-jwt")) {
       retrieveJwt();
+    }
+
+    if (localStorage.getItem("trusat-private-key")) {
+      retrieveWallet();
     }
   }, [authDispatch, userDispatch]);
 

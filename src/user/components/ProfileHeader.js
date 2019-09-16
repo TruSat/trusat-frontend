@@ -5,24 +5,21 @@ import { useUserState } from "../user-context";
 import { shortenAddress } from "../../app/helpers";
 
 export default function ProfileHeader() {
-  const { userAddress, userData } = useUserState();
+  const { userData } = useUserState();
 
   return (
     <section className="profile__header-wrapper">
       <div className="profile__blockie-name-wrapper">
         <Blockie
-          seed={userAddress}
+          seed={userData.user_address}
           size={30}
           scale={3}
           className="blockie"
-          // color="#dfe"
-          // bgColor="#ffe"
-          // spotColor="#abc"
         />
         <h1 className="profile__header-username">
           {userData.user_name
             ? userData.user_name
-            : shortenAddress(userAddress)}
+            : shortenAddress(userData.user_address)}
         </h1>
       </div>
 

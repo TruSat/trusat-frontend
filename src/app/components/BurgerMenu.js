@@ -5,8 +5,6 @@ import { useUserState } from "../../user/user-context";
 
 export default function BurgerMenu(props) {
   const { userAddress } = useUserState();
-  console.log(userAddress);
-
   const { catalogFilter } = useCatalogState();
 
   return (

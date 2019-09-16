@@ -1,14 +1,43 @@
-import React from "react";
+import React, { useEffect } from "react";
+import axios from "axios";
 import ProfileHeader from "../user/components/ProfileHeader";
 import ObjectsCollectedTable from "../user/components/ObjectsCollectedTable";
 import ObservationsTable from "../user/components/ObservationsTable";
 
 import Spinner from "../app/components/Spinner";
-import { useUserState } from "../user/user-context";
+import { useAuthState } from "../auth/auth-context";
+import { useUserState, useUserDispatch } from "../user/user-context";
 
-export default function Profile() {
-  const { userData, showUserProfile } = useUserState();
-  console.log(userData);
+export default function Profile({ match }) {
+  const addressFromRoute = match.params.address;
+  const { jwt } = useAuthState();
+  const { showUserProfile } = useUserState();
+  const userDispatch = useUserDispatch();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log(`fetching user data`);
+
+      userDispatch({ type: "SHOW_USER_PROFILE", payload: false });
+
+      await axios
+        .post(
+          `https://api.consensys.space:8080/profile`,
+          JSON.stringify({
+            jwt: jwt,
+            address: addressFromRoute
+            // leo's address for testing
+            // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+          })
+        )
+        .then(result => {
+          userDispatch({ type: "SET_USER_DATA", payload: result.data });
+          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
+        })
+        .catch(err => console.log(err));
+    };
+    fetchData();
+  }, [jwt, addressFromRoute, userDispatch]);
 
   return showUserProfile ? (
     <div className="profile__wrapper">
