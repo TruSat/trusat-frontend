@@ -36,14 +36,18 @@ function NavBar(props) {
 
       <div
         className={
-          props.location.pathname.includes("catalog")
+          props.location.pathname.includes("catalog") ||
+          props.location.pathname.includes("object") ||
+          props.location.pathname.includes("submit")
             ? "nav-bar__link-wrapper--highlight"
             : "nav-bar__link-wrapper--lowlight"
         }
       >
         <NavLink
           className={
-            props.location.pathname.includes("catalog")
+            props.location.pathname.includes("catalog") ||
+            props.location.pathname.includes("object") ||
+            props.location.pathname.includes("submit")
               ? "nav-bar__link--highlight"
               : "nav-bar__link--lowlight"
           }
