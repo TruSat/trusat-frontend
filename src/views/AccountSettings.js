@@ -4,40 +4,46 @@ import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
-import Spinner from "../app/components/Spinner";
 import { useUserState } from "../user/user-context";
+import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
   const { jwt, authType } = useAuthState();
-  const { userAddress, userData, showUserProfile } = useUserState();
-  // profile settings
+  const { userAddress, userData } = useUserState();
+  const [isLoading, setIsLoading] = useState(false);
+  // Profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
-  //privacy settings
+  // Privacy settings
   const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
-  const [newPublicUsername, setNewPublicUsername] = useState(false);
+  const [newPublicUsername, setNewPublicUsername] = useState(true);
   const [newPublicLocation, setNewPublicLocation] = useState(false);
+  const [newPublicObservations, setNewPublicObservations] = useState(true);
 
-  useEffect(() => {
-    const {
-      user_name,
-      email,
-      user_location,
-      user_bio,
-      public_username,
-      public_location
-    } = userData;
+  // useEffect(() => {
+  //   setIsLoading(true);
 
-    setNewUsername(user_name);
-    setNewEmail(email);
-    setNewLocation(user_location);
-    setNewBio(user_bio);
-    setNewPublicUsername(public_username);
-    setNewPublicLocation(public_location);
-  }, [userData]);
+  //   const {
+  //     user_name,
+  //     email,
+  //     user_location,
+  //     user_bio,
+  //     public_username,
+  //     public_location
+  //   } = userData;
+
+  //   setNewUsername(user_name);
+  //   setNewEmail(email);
+  //   setNewLocation(user_location);
+  //   setNewBio(user_bio);
+  //   setNewPublicUsername(public_username);
+  //   setNewPublicLocation(public_location);
+
+  //   setIsLoading(false);
+  // }, [userData]);
 
   const submitEdit = async () => {
     await axios
@@ -60,7 +66,9 @@ export default function UserSettings() {
       .catch(err => console.log(err));
   };
 
-  return showUserProfile ? (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="account-settings__wrapper">
       <h1 className="account-settings__header">Account Settings</h1>
       <ProfileSettings
@@ -82,6 +90,8 @@ export default function UserSettings() {
         setNewPublicUsername={setNewPublicUsername}
         newPublicLocation={newPublicLocation}
         setNewPublicLocation={setNewPublicLocation}
+        newPublicObservations={newPublicObservations}
+        setNewPublicObservations={setNewPublicObservations}
       />
 
       {showEditProfileInputs === true || showEditPrivacyInputs === true ? (
@@ -111,7 +121,5 @@ export default function UserSettings() {
       {/* Only show prompt to make move to metamask if they haven't already done so */}
       {authType === "metamask" ? null : <SecuritySettings />}
     </div>
-  ) : (
-    <Spinner />
   );
 }

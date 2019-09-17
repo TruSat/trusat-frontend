@@ -6,7 +6,9 @@ export default function PrivacySettings({
   newPublicUsername,
   setNewPublicUsername,
   newPublicLocation,
-  setNewPublicLocation
+  setNewPublicLocation,
+  newPublicObservations,
+  setNewPublicObservations
 }) {
   return (
     <section className="privacy-settings__wrapper">
@@ -19,6 +21,8 @@ export default function PrivacySettings({
           edit
         </p>
       </h2>
+
+      {/* Make user name public/private */}
       <div className="privacy-settings__setting-wrapper">
         {showEditPrivacyInputs ? (
           <input
@@ -36,6 +40,8 @@ export default function PrivacySettings({
           Hide my username and show ETH address instead
         </label>
       </div>
+
+      {/* Make location public/private */}
       <div className="privacy-settings__setting-wrapper">
         {showEditPrivacyInputs ? (
           <input
@@ -50,8 +56,26 @@ export default function PrivacySettings({
           `√ `
         )}
         <label className="privacy-settings__checkbox--label">
-          When listing my observation, display my location as "undisclosed"
-          rather than as a city near where the observation was made
+          Display my location as "undisclosed"
+        </label>
+      </div>
+
+      {/* Make observations (IODs or other formats) public/private */}
+      <div className="privacy-settings__setting-wrapper">
+        {showEditPrivacyInputs ? (
+          <input
+            type="checkbox"
+            className="privacy-settings__checkbox"
+            checked={!newPublicObservations}
+            onChange={() => setNewPublicLocation(!newPublicObservations)}
+          ></input>
+        ) : newPublicObservations ? (
+          `X  `
+        ) : (
+          `√ `
+        )}
+        <label className="privacy-settings__checkbox--label">
+          Hide my observations
         </label>
       </div>
       <p className="privacy-settings__remove-text">
