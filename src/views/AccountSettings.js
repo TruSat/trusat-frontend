@@ -4,10 +4,11 @@ import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
-import { useUserState } from "../user/user-context";
+import { useUserDispatch, useUserState } from "../user/user-context";
 import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
+  const userDispatch = useUserDispatch();
   const { jwt, authType } = useAuthState();
   const { userAddress, userData } = useUserState();
   const [isLoading, setIsLoading] = useState(false);
@@ -23,29 +24,31 @@ export default function UserSettings() {
   const [newPublicLocation, setNewPublicLocation] = useState(false);
   const [newPublicObservations, setNewPublicObservations] = useState(true);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
+  useEffect(() => {
+    setIsLoading(true);
 
-  //   const {
-  //     user_name,
-  //     email,
-  //     user_location,
-  //     user_bio,
-  //     public_username,
-  //     public_location
-  //   } = userData;
+    const {
+      user_name,
+      email,
+      user_location,
+      user_bio,
+      public_username,
+      public_location
+    } = userData;
 
-  //   setNewUsername(user_name);
-  //   setNewEmail(email);
-  //   setNewLocation(user_location);
-  //   setNewBio(user_bio);
-  //   setNewPublicUsername(public_username);
-  //   setNewPublicLocation(public_location);
+    setNewUsername(user_name);
+    setNewEmail(email);
+    setNewLocation(user_location);
+    setNewBio(user_bio);
+    setNewPublicUsername(public_username);
+    setNewPublicLocation(public_location);
 
-  //   setIsLoading(false);
-  // }, [userData]);
+    setIsLoading(false);
+  }, [userData]);
 
   const submitEdit = async () => {
+    setIsLoading(true);
+    // Post the edits
     await axios
       .post(
         `https://api.consensys.space:8080/editProfile`,
@@ -56,12 +59,27 @@ export default function UserSettings() {
           email: newEmail,
           bio: newBio,
           location: newLocation,
-          publicUsername: newPublicUsername,
-          publicLocation: newPublicLocation
+          public_username: newPublicUsername,
+          public_location: newPublicLocation,
+          public_observations: newPublicObservations
         })
       )
       .then(result => {
         console.log(result);
+      })
+      .catch(err => console.log(err));
+    // Get the updated user data
+    await axios
+      .post(
+        `https://api.consensys.space:8080/profile`,
+        JSON.stringify({
+          jwt: jwt,
+          address: userAddress
+        })
+      )
+      .then(result => {
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        setIsLoading(false);
       })
       .catch(err => console.log(err));
   };
