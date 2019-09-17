@@ -50,12 +50,23 @@ MULTIPLE OBSERVATION FORM
   border-radius: 4px;
   box-sizing: border-box;
   color: $primary-text-color;
-  margin: 0em 3em 3em 0;
   padding: 1em;
   resize: none;
 }
 
+.multiple-observation-form__success-message {
+  align-items: center;
+  color: $primary-highlight-color;
+  display: flex;
+  margin-top: 1em;
+}
+
+.multiple-observation-form__image {
+  margin-right: 0.25em;
+}
+
 .multiple-observation-form__button-wrapper {
+  margin-top: 2em;
 }
 
 .multiple-observation-form__cancel-button {
