@@ -35,7 +35,8 @@ export default function UserSettings() {
       user_location,
       user_bio,
       public_username,
-      public_location
+      public_location,
+      public_observations
     } = userData;
 
     setNewUsername(user_name);
@@ -44,6 +45,7 @@ export default function UserSettings() {
     setNewBio(user_bio);
     setNewPublicUsername(public_username);
     setNewPublicLocation(public_location);
+    setNewPublicObservations(public_observations);
 
     setIsLoading(false);
   }, [userData]);
