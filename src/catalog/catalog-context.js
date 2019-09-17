@@ -8,7 +8,6 @@ function catalogReducer(state, action) {
     case "SET_CATALOG_FILTER": {
       return { ...state, catalogFilter: action.payload };
     }
-
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
     }
@@ -17,7 +16,9 @@ function catalogReducer(state, action) {
 
 function CatalogProvider({ children }) {
   const [state, dispatch] = React.useReducer(catalogReducer, {
-    catalogFilter: "priorities"
+    catalogFilter: "priorities",
+    tableData: [],
+    tableRange: {}
   });
 
   return (

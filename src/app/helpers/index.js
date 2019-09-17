@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import ReactTooltip from "react-tooltip";
 
 export const renderFlag = code => {
