@@ -1,21 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
-import { useUserState } from "../user-context";
+import { useProfileState } from "../profile-context";
 import { renderFlag, shortenAddress } from "../../app/helpers";
 
 export default function ObjectsCollectedTable() {
-  const { userData } = useUserState();
+  const { profileData } = useProfileState();
 
   const renderObjectsCollectedRows = () => {
-    return userData.objects_observed.map(obj => (
+    return profileData.objects_observed.map(obj => (
       <tr
-        key={userData.observation_history.indexOf(obj)}
+        key={profileData.observation_history.indexOf(obj)}
         className="table__body-row profile-table__body-row"
       >
         <td className="table__table-data">
           <NavLink
-            key={userData.objects_observed.indexOf(obj)}
+            key={profileData.objects_observed.indexOf(obj)}
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
@@ -49,10 +49,10 @@ export default function ObjectsCollectedTable() {
     ));
   };
 
-  return userData.objects_observed ? (
+  return profileData.objects_observed ? (
     <section className="profile__objects-tracked-wrapper">
       <h2 className="profile__sub-heading">OBJECTS COLLECTED</h2>
-      {userData.objects_observed.length !== 0 ? (
+      {profileData.objects_observed.length !== 0 ? (
         <table className="table">
           <thead className="table__header">
             <tr>

@@ -43,7 +43,7 @@ function ObjectsProvider({ children }) {
 function useObjectsState() {
   const context = React.useContext(ObjectsStateContext);
   if (context === undefined) {
-    throw new Error(`useAuthState must be used with an AuthProvider`);
+    throw new Error(`useObjectsState must be used with a ObjectsProvider`);
   }
   return context;
 }
@@ -51,7 +51,7 @@ function useObjectsState() {
 function useObjectsDispatch() {
   const context = React.useContext(ObjectsDispatchContext);
   if (context === undefined) {
-    throw new Error(`useAuthDispatch must be used within an AuthProvider`);
+    throw new Error(`useObjectsDispatch must be used within a ObjectsProvider`);
   }
   return context;
 }

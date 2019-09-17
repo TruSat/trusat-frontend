@@ -1,5 +1,6 @@
 import React from "react";
-import { useUserState } from "../../user/user-context";
+import { useAuthState } from "../../auth/auth-context";
+import { useUserState } from "../user-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
 import { shortenAddress } from "../../app/helpers";
@@ -17,7 +18,8 @@ export default function ProfileSettings({
   showEditProfileInputs,
   setShowEditProfileInputs
 }) {
-  const { userAddress, userData } = useUserState();
+  const { userAddress } = useAuthState();
+  const { userData } = useUserState();
 
   return (
     <section className="profile-settings__wrapper">

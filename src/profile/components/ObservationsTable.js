@@ -1,13 +1,15 @@
 import React from "react";
-import { useUserState } from "../user-context";
+import { useProfileState } from "../profile-context";
+import { useAuthState } from "../../auth/auth-context";
 
 export default function ObservationsTable() {
-  const { userData } = useUserState();
+  const { userAddress } = useAuthState();
+  const { profileData } = useProfileState();
 
   const renderYourObservationsRows = () => {
-    return userData.observation_history.map(observation => (
+    return profileData.observation_history.map(observation => (
       <tr
-        key={userData.observation_history.indexOf(observation)}
+        key={profileData.observation_history.indexOf(observation)}
         className="table__body-row"
       >
         <td className="table__table-data">{observation.observation_time}</td>
@@ -23,9 +25,13 @@ export default function ObservationsTable() {
     ));
   };
 
-  return userData.observation_history ? (
+  return profileData.observation_history ? (
     <section className="profile__your-observations-wrapper">
-      <h2 className="profile__sub-heading">YOUR OBSERVATIONS</h2>
+      <h2 className="profile__sub-heading">
+        {userAddress === profileData.user_address
+          ? "YOUR OBSERVATIONS"
+          : "OBSERVATIONS"}
+      </h2>
       <table className="table">
         <thead className="table__header">
           <tr>
@@ -46,7 +52,7 @@ export default function ObservationsTable() {
           </tr>
         </thead>
         <tbody className="table__body">
-          {userData.observation_history.length !== 0 ? (
+          {profileData.observation_history.length !== 0 ? (
             renderYourObservationsRows()
           ) : (
             <tr>

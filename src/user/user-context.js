@@ -3,11 +3,8 @@ import React from "react";
 const UserStateContext = React.createContext();
 const UserDispatchContext = React.createContext();
 
-function userReducer(state, action) {
+function UserReducer(state, action) {
   switch (action.type) {
-    case "SET_USER_ADDRESS": {
-      return { ...state, userAddress: action.payload };
-    }
     case "SET_USER_DATA": {
       return { ...state, userData: action.payload };
     }
@@ -18,8 +15,7 @@ function userReducer(state, action) {
 }
 
 function UserProvider({ children }) {
-  const [state, dispatch] = React.useReducer(userReducer, {
-    userAddress: "",
+  const [state, dispatch] = React.useReducer(UserReducer, {
     userData: {}
   });
 
@@ -35,7 +31,7 @@ function UserProvider({ children }) {
 function useUserState() {
   const context = React.useContext(UserStateContext);
   if (context === undefined) {
-    throw new Error(`useAuthState must be used with an AuthProvider`);
+    throw new Error(`useUserState must be used with a UserProvider`);
   }
   return context;
 }
@@ -43,7 +39,7 @@ function useUserState() {
 function useUserDispatch() {
   const context = React.useContext(UserDispatchContext);
   if (context === undefined) {
-    throw new Error(`useAuthDispatch must be used within an AuthProvider`);
+    throw new Error(`useUserDispatch must be used within a UserProvider`);
   }
   return context;
 }

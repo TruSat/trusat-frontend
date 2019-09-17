@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import ProfileHeader from "../user/components/ProfileHeader";
-import ObjectsCollectedTable from "../user/components/ObjectsCollectedTable";
-import ObservationsTable from "../user/components/ObservationsTable";
+import ProfileHeader from "../profile/components/ProfileHeader";
+import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
+import ObservationsTable from "../profile/components/ObservationsTable";
 
 import Spinner from "../app/components/Spinner";
 import { useAuthState } from "../auth/auth-context";
-import { useUserDispatch } from "../user/user-context";
+import { useProfileDispatch } from "../profile/profile-context";
+import { useUserState } from "../user/user-context";
 
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;
-  const { jwt } = useAuthState();
-  const userDispatch = useUserDispatch();
-
+  const { jwt, userAddress } = useAuthState();
+  const { userData } = useUserState();
+  const profileDispatch = useProfileDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
+      console.log(`fetching profile data`);
+
       setIsLoading(true);
       await axios
         .post(
@@ -29,15 +32,31 @@ export default function Profile({ match }) {
           })
         )
         .then(result => {
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
+          profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
           setIsLoading(false);
         })
         .catch(err => console.log(err));
     };
-    if (jwt) {
+    // TO DO - work out how to view profile pages when not logged in
+    // For now the request is only made when the jwt value of "none" comes through from authState
+
+    // when jwt value comes in,
+    // and userAddress doesn't match the address in the route, fetchData
+    if (jwt && userAddress !== addressFromRoute) {
       fetchData();
+      // otherwise display the userData of logged in user
+      // as the two addresses will match
+    } else if (userData) {
+      profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
     }
-  }, [jwt, addressFromRoute, userDispatch, setIsLoading]);
+  }, [
+    addressFromRoute,
+    jwt,
+    userAddress,
+    userData,
+    profileDispatch,
+    setIsLoading
+  ]);
 
   return isLoading ? (
     <Spinner />

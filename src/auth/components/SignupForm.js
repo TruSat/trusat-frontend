@@ -103,7 +103,7 @@ export default function SignupForm() {
         )
         .then(result => {
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          userDispatch({
+          authDispatch({
             type: "SET_USER_ADDRESS",
             payload: wallet.signingKey.address
           });

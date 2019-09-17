@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LoginOptions from "../auth/components/LoginOptions";
-import { useUserState } from "../user/user-context";
+import { useAuthState } from "../auth/auth-context";
 
 export default function LogIn() {
-  const { userAddress } = useUserState();
+  const { userAddress } = useAuthState();
 
   return (
     <div className="log-in__wrapper">

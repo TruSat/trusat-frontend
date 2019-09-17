@@ -5,11 +5,9 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import axios from "axios";
 import { useAuthDispatch } from "../../auth/auth-context";
-import { useUserDispatch } from "../../user/user-context";
 
 export default function StepFive({ step, setStep }) {
   const authDispatch = useAuthDispatch();
-  const userDispatch = useUserDispatch();
 
   const handleMessageSign = async () => {
     authDispatch({ type: "AUTHENTICATING", payload: true });
@@ -54,7 +52,7 @@ export default function StepFive({ step, setStep }) {
         })
         .catch(error => console.log(error))
     );
-    userDispatch({ type: "SET_USER_ADDRESS", payload: address });
+    authDispatch({ type: "SET_USER_ADDRESS", payload: address });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };

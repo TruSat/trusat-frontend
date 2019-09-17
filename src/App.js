@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
@@ -28,37 +29,33 @@ export default function App() {
   useEffect(() => {
     // get jwt from local storage
     // utilized for authentication and is decoded to return users ethereum address
-    const retrieveJwt = async () => {
+    const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
       await authDispatch({ type: "SET_JWT", payload: jwt });
 
       const { address } = await jwt_decode(jwt);
-      userDispatch({
+      authDispatch({
         type: "SET_USER_ADDRESS",
         payload: address
       });
-    };
-    // private key for "burner wallet"
-    // will be called if user has submitted an observation without signing up to TruSat
-    // const retrieveWallet = async () => {
-    //   const privateKey = localStorage.getItem("trusat-private-key");
-    //   const wallet = new ethers.Wallet(privateKey);
 
-    //   authDispatch({ type: "SET_BURNER", payload: wallet });
-    //   userDispatch({
-    //     type: "SET_USER_ADDRESS",
-    //     payload: wallet.signingKey.address
-    //   });
-    //   authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
-    // };
+      await axios
+        .post(
+          `https://api.consensys.space:8080/profile`,
+          JSON.stringify({
+            jwt: jwt,
+            address: address
+          })
+        )
+        .then(result => {
+          userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        })
+        .catch(err => console.log(err));
+    };
 
     if (localStorage.getItem("trusat-jwt")) {
-      retrieveJwt();
+      retrieveJwtAndGetUserData();
     }
-
-    // if (localStorage.getItem("trusat-private-key")) {
-    //   retrieveWallet();
-    // }
   }, [authDispatch, userDispatch]);
 
   return (

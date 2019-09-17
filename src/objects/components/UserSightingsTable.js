@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
-import { useUserState } from "../../user/user-context";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers/";
 import { shortenAddress } from "../../app/helpers";
@@ -9,8 +8,7 @@ import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
 export default function UserSightingsTable() {
-  const { jwt } = useAuthState();
-  const { userAddress } = useUserState();
+  const { jwt, userAddress } = useAuthState();
   const { noradNumber, objectOrigin } = useObjectsState();
   const [tableData, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);

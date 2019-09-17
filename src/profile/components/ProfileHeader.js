@@ -1,32 +1,34 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Blockie from "react-blockies";
-import { useUserState } from "../user-context";
+import { useAuthState } from "../../auth/auth-context";
+import { useProfileState } from "../profile-context";
 import { shortenAddress } from "../../app/helpers";
 
 export default function ProfileHeader() {
-  const { userAddress, userData } = useUserState();
+  const { userAddress } = useAuthState();
+  const { profileData } = useProfileState();
+  console.log(profileData);
 
-  return userData.user_address ? (
+  return profileData.user_address ? (
     <section className="profile__header-wrapper">
       <div className="profile__blockie-name-wrapper">
         <Blockie
-          seed={userData.user_address}
+          seed={profileData.user_address}
           size={30}
           scale={3}
           className="blockie"
         />
         <h1 className="profile__header-username">
-          {userData.user_name
-            ? userData.user_name
-            : shortenAddress(userData.user_address)}
+          {profileData.user_name
+            ? profileData.user_name
+            : shortenAddress(profileData.user_address)}
         </h1>
       </div>
 
       <div className="profile__button-data-wrapper">
         {/* Dont render settings link to user unless they are viewing their own profile */}
-
-        {userAddress === userData.user_address ? (
+        {userAddress === profileData.user_address ? (
           <NavLink className="app__nav-link" to="/settings">
             <span className="app__black-button--small">Settings</span>
           </NavLink>
@@ -34,9 +36,9 @@ export default function ProfileHeader() {
 
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
-            {userData.user_location ? (
+            {profileData.user_location ? (
               <p className="profile__header-info-data-value">
-                {userData.user_location}
+                {profileData.user_location}
               </p>
             ) : (
               <p className="profile__header-info-data-value">
@@ -46,9 +48,9 @@ export default function ProfileHeader() {
           </div>
 
           <div className="profile__header-info-data-label">
-            {userData.number_objects_tracked ? (
+            {profileData.number_objects_tracked ? (
               <p className="profile__header-info-data-value">
-                {userData.number_objects_tracked}
+                {profileData.number_objects_tracked}
               </p>
             ) : (
               <p className="profile__header-info-data-value">?</p>
@@ -57,9 +59,9 @@ export default function ProfileHeader() {
           </div>
 
           <div className="profile__header-info-data-label">
-            {userData.observation_count ? (
+            {profileData.observation_count ? (
               <p className="profile__header-info-data-value">
-                {userData.observation_count}
+                {profileData.observation_count}
               </p>
             ) : (
               <p className="profile__header-info-data-value">?</p>
@@ -67,11 +69,11 @@ export default function ProfileHeader() {
             &nbsp; OBSERVATIONS
           </div>
 
-          {userData.observation_count !== "0" ? (
+          {profileData.observation_count !== "0" ? (
             <div className="profile__header-info-data-label">
-              {userData.user_first_observation ? (
+              {profileData.user_first_observation ? (
                 <p className="profile__header-info-data-value">
-                  {userData.user_first_observation}
+                  {profileData.user_first_observation}
                 </p>
               ) : (
                 <p className="profile__header-info-data-value">?</p>
@@ -80,11 +82,11 @@ export default function ProfileHeader() {
             </div>
           ) : null}
 
-          {userData.observation_count !== "0" ? (
+          {profileData.observation_count !== "0" ? (
             <div className="profile__header-info-data-label">
-              {userData.average_observation_quality ? (
+              {profileData.average_observation_quality ? (
                 <p className="profile__header-info-data-value">
-                  {userData.average_observation_quality}
+                  {profileData.average_observation_quality}
                 </p>
               ) : (
                 <p className="profile__header-info-data-value">?</p>
@@ -95,7 +97,7 @@ export default function ProfileHeader() {
         </div>
       </div>
       <p className="profile__bio-text">
-        {userData.user_bio ? userData.user_bio : null}
+        {profileData.user_bio ? profileData.user_bio : null}
       </p>
     </section>
   ) : null;

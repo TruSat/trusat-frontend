@@ -1,10 +1,10 @@
 import React from "react";
 import SignupOptions from "../auth/components/SignupOptions";
 import SignupSuccess from "../auth/components/SignupSuccess";
-import { useUserState } from "../user/user-context";
+import { useAuthState } from "../auth/auth-context";
 
 export default function SignUp() {
-  const { userAddress } = useUserState();
+  const { userAddress } = useAuthState();
 
   return (
     <div className="sign-up__wrapper">

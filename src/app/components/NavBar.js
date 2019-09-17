@@ -1,12 +1,12 @@
 import React from "react";
-import { useUserState } from "../../user/user-context";
+import { useAuthState } from "../../auth/auth-context";
 import { useCatalogState } from "../../catalog/catalog-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 
 function NavBar(props) {
-  const { userAddress } = useUserState();
+  const { userAddress } = useAuthState();
   const { catalogFilter } = useCatalogState();
 
   return (

@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useUserState } from "../../user/user-context";
+import { useAuthState } from "../../auth/auth-context";
 
 export default function SignupSuccess() {
-  const { userAddress } = useUserState();
+  const { userAddress } = useAuthState();
 
   return (
     <div>

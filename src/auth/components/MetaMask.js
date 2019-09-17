@@ -80,7 +80,7 @@ export default function MetaMask() {
       )
       .then(result => {
         userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        userDispatch({ type: "SET_USER_ADDRESS", payload: address });
+        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
       })
       .catch(err => console.log(err));
 
