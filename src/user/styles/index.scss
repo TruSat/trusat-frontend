@@ -274,6 +274,8 @@ PRIVACY SETTINGS
 }
 
 .privacy-settings__setting-wrapper {
+  align-items: center;
+  display: flex;
   margin: 1em 0;
 }
 
@@ -283,6 +285,10 @@ PRIVACY SETTINGS
 .privacy-settings__setting-label {
   font-size: $medium-font-size;
   line-height: $medium-line-height;
+}
+
+.privacy-settings__image {
+  margin-right: 0.25em;
 }
 
 .privacy-settings__remove-text {

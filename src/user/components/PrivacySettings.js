@@ -1,4 +1,5 @@
 import React from "react";
+import CircleCheck from "../../assets/CircleCheck.svg";
 
 export default function PrivacySettings({
   showEditPrivacyInputs,
@@ -32,9 +33,23 @@ export default function PrivacySettings({
             onChange={() => setNewPublicUsername(!newPublicUsername)}
           ></input>
         ) : newPublicUsername ? (
-          `X  `
+          <span
+            style={{
+              border: "1px solid red",
+              borderRadius: "50%",
+              color: "red",
+              marginRight: "0.25em",
+              padding: "0.3em"
+            }}
+          >
+            x
+          </span>
         ) : (
-          `√  `
+          <img
+            className="privacy-settings__image"
+            src={CircleCheck}
+            alt="check"
+          ></img>
         )}
         <label className="privacy-settings__checkbox-label">
           Hide my username and show ETH address instead
@@ -51,9 +66,23 @@ export default function PrivacySettings({
             onChange={() => setNewPublicLocation(!newPublicLocation)}
           ></input>
         ) : newPublicLocation ? (
-          `X  `
+          <span
+            style={{
+              border: "1px solid red",
+              borderRadius: "50%",
+              color: "red",
+              marginRight: "0.25em",
+              padding: "0.3em"
+            }}
+          >
+            x
+          </span>
         ) : (
-          `√ `
+          <img
+            className="privacy-settings__image"
+            src={CircleCheck}
+            alt="check"
+          ></img>
         )}
         <label className="privacy-settings__checkbox--label">
           Display my location as "undisclosed"
@@ -67,12 +96,26 @@ export default function PrivacySettings({
             type="checkbox"
             className="privacy-settings__checkbox"
             checked={!newPublicObservations}
-            onChange={() => setNewPublicLocation(!newPublicObservations)}
+            onChange={() => setNewPublicObservations(!newPublicObservations)}
           ></input>
         ) : newPublicObservations ? (
-          `X  `
+          <span
+            style={{
+              border: "1px solid red",
+              borderRadius: "50%",
+              color: "red",
+              marginRight: "0.25em",
+              padding: "0.3em"
+            }}
+          >
+            x
+          </span>
         ) : (
-          `√ `
+          <img
+            className="privacy-settings__image"
+            src={CircleCheck}
+            alt="check"
+          ></img>
         )}
         <label className="privacy-settings__checkbox--label">
           Hide my observations

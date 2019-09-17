@@ -25,6 +25,8 @@ export default function UserSettings() {
   const [newPublicObservations, setNewPublicObservations] = useState(true);
 
   useEffect(() => {
+    console.log(userData);
+
     setIsLoading(true);
 
     const {
