@@ -72,9 +72,14 @@ function CatalogTable({ match, range, setRange }) {
           {obj.object_observation_quality}%
         </td>
         <td className="table__weight-data">
-          {obj.username
-            ? obj.username_last_tracked
-            : shortenAddress(obj.address_last_tracked)}
+          <NavLink
+            className="app__nav-link"
+            to={`/profile/${obj.address_last_tracked}`}
+          >
+            {obj.username
+              ? obj.username_last_tracked
+              : shortenAddress(obj.address_last_tracked)}
+          </NavLink>
         </td>
       </tr>
     ));
