@@ -24,9 +24,9 @@ export default function UserSightingsTable() {
           JSON.stringify({
             norad_number: noradNumber,
             jwt: jwt,
-            // address: userAddress
+            address: userAddress
             // leos address for testing
-            address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+            // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
           })
         )
         .then(result => {
