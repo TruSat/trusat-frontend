@@ -11,7 +11,6 @@ import { useUserDispatch } from "../user/user-context";
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;
   const { jwt } = useAuthState();
-  console.log(jwt);
   const userDispatch = useUserDispatch();
 
   const [isLoading, setIsLoading] = useState(false);

@@ -1,7 +1,5 @@
 import React, { useEffect } from "react";
-
 import jwt_decode from "jwt-decode";
-import { ethers } from "ethers";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import { useUserDispatch } from "./user/user-context";

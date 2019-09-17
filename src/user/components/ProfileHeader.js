@@ -5,7 +5,7 @@ import { useUserState } from "../user-context";
 import { shortenAddress } from "../../app/helpers";
 
 export default function ProfileHeader() {
-  const { userData } = useUserState();
+  const { userAddress, userData } = useUserState();
 
   return userData.user_address ? (
     <section className="profile__header-wrapper">
@@ -24,9 +24,14 @@ export default function ProfileHeader() {
       </div>
 
       <div className="profile__button-data-wrapper">
-        <NavLink className="app__nav-link" to="/settings">
-          <span className="app__black-button--small">Settings</span>
-        </NavLink>
+        {/* Dont render settings link to user unless they are viewing their own profile */}
+
+        {userAddress === userData.user_address ? (
+          <NavLink className="app__nav-link" to="/settings">
+            <span className="app__black-button--small">Settings</span>
+          </NavLink>
+        ) : null}
+
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
             {userData.user_location ? (
