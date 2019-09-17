@@ -42,25 +42,25 @@ export default function App() {
     };
     // private key for "burner wallet"
     // will be called if user has submitted an observation without signing up to TruSat
-    const retrieveWallet = async () => {
-      const privateKey = localStorage.getItem("trusat-private-key");
-      const wallet = new ethers.Wallet(privateKey);
+    // const retrieveWallet = async () => {
+    //   const privateKey = localStorage.getItem("trusat-private-key");
+    //   const wallet = new ethers.Wallet(privateKey);
 
-      authDispatch({ type: "SET_BURNER", payload: wallet });
-      userDispatch({
-        type: "SET_USER_ADDRESS",
-        payload: wallet.signingKey.address
-      });
-      authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
-    };
+    //   authDispatch({ type: "SET_BURNER", payload: wallet });
+    //   userDispatch({
+    //     type: "SET_USER_ADDRESS",
+    //     payload: wallet.signingKey.address
+    //   });
+    //   authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
+    // };
 
     if (localStorage.getItem("trusat-jwt")) {
       retrieveJwt();
     }
 
-    if (localStorage.getItem("trusat-private-key")) {
-      retrieveWallet();
-    }
+    // if (localStorage.getItem("trusat-private-key")) {
+    //   retrieveWallet();
+    // }
   }, [authDispatch, userDispatch]);
 
   return (
