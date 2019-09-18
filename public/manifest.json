@@ -1,9 +1,9 @@
 {
   "short_name": "TruSat",
-  "name": "Create React App Sample",
+  "name": "TruSat",
   "icons": [
     {
-      "src": "SatSymbol.svg",
+      "src": "/src/assets/SatSymbol.svg",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     }
