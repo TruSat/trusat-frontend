@@ -51,6 +51,8 @@ export default function UserSettings() {
   }, [userData]);
 
   const submitEdit = async () => {
+    console.log(`jwt take from authState = `, jwt);
+
     setIsLoading(true);
     // Post the edits
     await axios
