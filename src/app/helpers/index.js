@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import ReactTooltip from "react-tooltip";
 
 export const renderFlag = code => {
@@ -39,9 +39,17 @@ export const shortenAddressToolTip = address => {
 
 export const toolTip = (displayText, toolTipText) => {
   return (
-    <div className="app__tooltip-wrapper" data-tip={toolTipText}>
+    <div className="app__tool-tip-wrapper" data-tip={toolTipText}>
       {displayText}
       <ReactTooltip type="info" />
     </div>
   );
+};
+
+export const toolTipCopy = {
+  object: "copy about object",
+  origin: "copy about origin",
+  purpose: "copy about purpose",
+  confidence: "copy about confidence",
+  last_seen_by: "copy about last seen by"
 };
