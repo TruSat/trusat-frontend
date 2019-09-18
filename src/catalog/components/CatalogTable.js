@@ -3,7 +3,12 @@ import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
-import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
+import {
+  renderFlag,
+  toolTip,
+  shortenAddressToolTip,
+  toolTipCopy
+} from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
@@ -94,15 +99,21 @@ function CatalogTable({ match, range, setRange }) {
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
-              <th className="table__header-text">OBJECT</th>
-              <th className="table__header-text">ORIGIN</th>
-              <th className="table__header-text app__hide-on-mobile">
-                PURPOSE
+              <th className="table__header-text">
+                {toolTip("OBJECT", toolTipCopy.object)}
+              </th>
+              <th className="table__header-text">
+                {toolTip("ORIGIN", toolTipCopy.origin)}
               </th>
               <th className="table__header-text app__hide-on-mobile">
-                CONFIDENCE
+                {toolTip("PURPOSE", toolTipCopy.purpose)}
               </th>
-              <th className="table__header-text">LAST SEEN BY</th>
+              <th className="table__header-text app__hide-on-mobile">
+                {toolTip("CONFIDENCE", toolTipCopy.confidence)}
+              </th>
+              <th className="table__header-text">
+                {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
+              </th>
             </tr>
           </thead>
           <tbody className="table__body">{renderCatalogRows()}</tbody>

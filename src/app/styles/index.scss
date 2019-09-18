@@ -254,7 +254,8 @@ TABLE
 /* ----------
 TOOL TIP HELPER
 ---------- */
-.app__tooltip-wrapper {
+.app__tool-tip-wrapper {
+  display: inline-block;
 }
 
 /* ----------
