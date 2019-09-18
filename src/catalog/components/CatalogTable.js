@@ -77,7 +77,7 @@ function CatalogTable({ match, range, setRange }) {
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
           >
-            {obj.username
+            {obj.username_last_tracked
               ? toolTip(obj.username_last_tracked, obj.address_last_tracked)
               : shortenAddressToolTip(obj.address_last_tracked)}
           </NavLink>
