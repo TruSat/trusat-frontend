@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
-import { renderFlag, shortenAddressToolTip } from "../../app/helpers";
+import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObjectsCollectedTable() {
@@ -20,14 +20,13 @@ export default function ObjectsCollectedTable() {
       >
         <td className="table__table-data">
           <NavLink
-            key={profileData.objects_observed.indexOf(obj)}
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="profile-table__data-wrapper">
               <img src={ObjectBadge} alt="Object Badge"></img>
               &nbsp;
-              <p>{obj.object_name}</p>
+              {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
           </NavLink>
         </td>
@@ -39,16 +38,21 @@ export default function ObjectsCollectedTable() {
               {obj.object_secondary_purpose}
             </p>
           ) : (
-            <p>purpose unknown</p>
+            <p>unknown</p>
           )}
         </td>
         <td className="table__table-data app__hide-on-mobile">
           {obj.observation_quality}
         </td>
         <td className="table__table-data">
-          {obj.username_last_tracked
-            ? obj.username_last_tracked
-            : shortenAddressToolTip(obj.address_last_tracked)}
+          <NavLink
+            className="app__nav-link"
+            to={`/profile/${obj.address_last_tracked}`}
+          >
+            {obj.username_last_tracked
+              ? toolTip(obj.username_last_tracked, obj.address_last_tracked)
+              : shortenAddressToolTip(obj.address_last_tracked)}
+          </NavLink>
         </td>
       </tr>
     ));

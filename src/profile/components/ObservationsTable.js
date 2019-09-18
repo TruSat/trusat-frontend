@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+import { toolTip } from "../../app/helpers";
 import { useProfileState } from "../profile-context";
 import { useAuthState } from "../../auth/auth-context";
 import TablePaginator from "../../app/components/TablePaginator";
@@ -11,6 +13,7 @@ export default function ObservationsTable() {
   const renderYourObservationsRows = () => {
     const { start, end } = range;
     const rangeData = profileData.observation_history.slice(start, end);
+    console.log(rangeData);
 
     return rangeData.map(observation => (
       <tr
@@ -18,7 +21,14 @@ export default function ObservationsTable() {
         className="table__body-row"
       >
         <td className="table__table-data">{observation.observation_time}</td>
-        <td className="table__table-data">{observation.object_name}</td>
+        <td className="table__table-data">
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${observation.object_norad_number}`}
+          >
+            {toolTip(observation.object_name, observation.object_norad_number)}
+          </NavLink>
+        </td>
         <td className="table__table-data">{observation.observation_quality}</td>
         <td className="table__table-data">
           {observation.observation_time_difference.substring(0, 4)}
