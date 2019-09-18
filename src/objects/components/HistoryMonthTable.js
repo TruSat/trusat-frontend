@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
-import { shortenAddressToolTip } from "../../app/helpers";
+import { toolTip, shortenAddressToolTip } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
 
 export default function HistoryMonthTable({
@@ -55,9 +56,14 @@ export default function HistoryMonthTable({
               : "undisclosed"}
           </td>
           <td className="table__table-data app__hide-on-mobile">
-            {observation.username
-              ? observation.username
-              : shortenAddressToolTip(observation.user_address)}
+            <NavLink
+              className="app__nav-link"
+              to={`/profile/${observation.user_address}`}
+            >
+              {observation.username
+                ? toolTip(observation.username, observation.user_address)
+                : shortenAddressToolTip(observation.user_address)}
+            </NavLink>
           </td>
           <td className="table__table-data">
             {observation.observation_quality}

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-// import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { toolTip, shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
@@ -54,9 +53,6 @@ export default function InfluenceTable() {
           </td>
           <td className="table__table-data">
             <div style={{ display: "flex" }}>
-              {/* TO DO - allow user to pick a country code so we can render flags */}
-              {/* {renderFlag(objectOrigin)}
-              &nbsp; */}
               {obj.user_location ? obj.user_location : "undisclosed"}
             </div>
           </td>
