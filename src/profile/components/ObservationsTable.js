@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import { useProfileState } from "../profile-context";
 import { useAuthState } from "../../auth/auth-context";
+import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObservationsTable() {
   const { userAddress } = useAuthState();
   const { profileData } = useProfileState();
+  const [range, setRange] = useState({ start: 0, end: 10 });
 
   const renderYourObservationsRows = () => {
-    return profileData.observation_history.map(observation => (
+    const { start, end } = range;
+    const rangeData = profileData.observation_history.slice(start, end);
+
+    return rangeData.map(observation => (
       <tr
         key={profileData.observation_history.indexOf(observation)}
         className="table__body-row"
@@ -61,6 +66,14 @@ export default function ObservationsTable() {
           )}
         </tbody>
       </table>
+
+      {profileData.observation_history.length > 10 ? (
+        <TablePaginator
+          tableDataLength={profileData.observation_history.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
     </section>
   ) : null;
 }

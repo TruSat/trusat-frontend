@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
@@ -7,9 +7,13 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObjectsCollectedTable() {
   const { profileData } = useProfileState();
+  const [range, setRange] = useState({ start: 0, end: 10 });
 
   const renderObjectsCollectedRows = () => {
-    return profileData.objects_observed.map(obj => (
+    const { start, end } = range;
+    const rangeData = profileData.objects_observed.slice(start, end);
+
+    return rangeData.map(obj => (
       <tr
         key={profileData.observation_history.indexOf(obj)}
         className="table__body-row profile-table__body-row"
@@ -80,6 +84,14 @@ export default function ObjectsCollectedTable() {
           </NavLink>
         </div>
       )}
+
+      {profileData.objects_observed.length > 10 ? (
+        <TablePaginator
+          tableDataLength={profileData.objects_observed.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
     </section>
   ) : null;
 }
