@@ -1,10 +1,9 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { useCatalogState } from "../catalog-context";
+import { NavLink, withRouter } from "react-router-dom";
 import DownloadCatalogFilterTleButton from "./DownloadCatalogFilterTleButton";
 
-export default function HowToParticipate() {
-  const { catalogFilter } = useCatalogState();
+function HowToParticipate({ match }) {
+  const catalogFilter = match.params.catalogFilter;
 
   return (
     <div className="catalog__how-to-wrapper">
@@ -28,3 +27,5 @@ export default function HowToParticipate() {
     </div>
   );
 }
+
+export default withRouter(HowToParticipate);

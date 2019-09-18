@@ -59,6 +59,7 @@ function CatalogTable({ match, range, setRange }) {
                 src={ObjectBadge}
                 alt="Object Badge"
               ></img>
+              &nbsp;
               {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
           </NavLink>

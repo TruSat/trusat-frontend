@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
 import { renderFlag, shortenAddressToolTip } from "../../app/helpers";
+import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObjectsCollectedTable() {
   const { profileData } = useProfileState();

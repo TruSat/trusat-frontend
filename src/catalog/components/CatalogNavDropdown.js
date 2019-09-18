@@ -11,10 +11,10 @@ const options = [
   { value: "all", label: "ALL" }
 ];
 
-function NavDropdown({ history, setRange }) {
+function NavDropdown({ match, history, setRange }) {
   const [selectedOption, setSelectedOption] = useState("");
-  const { catalogFilter } = useCatalogState();
-  const catalogDispatch = useCatalogDispatch();
+  const catalogFilter = match.params.catalogFilter;
+  // const catalogDispatch = useCatalogDispatch();
 
   useEffect(() => {
     options
@@ -25,10 +25,10 @@ function NavDropdown({ history, setRange }) {
   const handleChange = newSelectedOption => {
     setRange({ start: 0, end: 10 });
 
-    catalogDispatch({
-      type: "SET_CATALOG_FILTER",
-      payload: newSelectedOption.value
-    });
+    // catalogDispatch({
+    //   type: "SET_CATALOG_FILTER",
+    //   payload: newSelectedOption.value
+    // });
 
     history.push(`/catalog/${newSelectedOption.value}`);
   };

@@ -1,10 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 import FilterDescription from "./FilterDescription";
+import { useCatalogDispatch } from "../catalog-context";
 
-function CatalogNavBar({ setRange, history }) {
-  const { catalogFilter } = useCatalogState();
+function CatalogNavBar({ setRange, history, match }) {
+  const catalogFilter = match.params.catalogFilter;
   const catalogDispatch = useCatalogDispatch();
 
   return (
@@ -54,10 +54,7 @@ function CatalogNavBar({ setRange, history }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({
-              type: "SET_CATALOG_FILTER",
-              payload: "debris"
-            });
+            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "debris" });
             history.push("/catalog/debris");
           }}
         >
@@ -72,10 +69,7 @@ function CatalogNavBar({ setRange, history }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({
-              type: "SET_CATALOG_FILTER",
-              payload: "latest"
-            });
+            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "latest" });
             history.push("/catalog/latest");
           }}
         >
@@ -90,10 +84,7 @@ function CatalogNavBar({ setRange, history }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({
-              type: "SET_CATALOG_FILTER",
-              payload: "all"
-            });
+            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "all" });
             history.push("/catalog/all");
           }}
         >
