@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers/";
-import { shortenAddressToolTip } from "../../app/helpers";
+import { shortenAddressToolTip, toolTipCopy, toolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
@@ -77,20 +77,32 @@ export default function UserSightingsTable() {
       <table className="table">
         <thead className="table__header">
           <tr className="table__header-row">
-            <th className="table__header-text">DATE</th>
-            <th className="app__hide-on-mobile"></th>
-            <th className="table__header-text">LOCATION</th>
-            <th className="table__header-text app__hide-on-mobile">USER</th>
             <th className="table__header-text">
-              <p className="app__hide-on-mobile">QUALITY</p>
+              {toolTip("DATE", toolTipCopy.date)}
+            </th>
+            <th className="app__hide-on-mobile"></th>
+            <th className="table__header-text">
+              {toolTip("LOCATION", toolTipCopy.location)}
+            </th>
+            <th className="table__header-text app__hide-on-mobile">
+              {toolTip("USER", toolTipCopy.user)}
+            </th>
+            <th className="table__header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("QUALITY", toolTipCopy.quality)}
+              </p>
               <p className="app__hide-on-desktop">QUAL..</p>
             </th>
             <th className="table__header-text">
-              <p className="app__hide-on-mobile">TIME DIFF</p>
+              <p className="app__hide-on-mobile">
+                T{toolTip("TIME DIFF", toolTipCopy.time_diff)}
+              </p>
               <p className="app__hide-on-desktop">DIFF..</p>
             </th>
             <th className="table__header-weight-text">
-              <p className="app__hide-on-mobile">WEIGHT</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("WEIGHT", toolTipCopy.weight)}
+              </p>
               <p className="app__hide-on-desktop">WT.</p>
             </th>
           </tr>

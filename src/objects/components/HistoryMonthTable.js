@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
-import { toolTip, shortenAddressToolTip } from "../../app/helpers";
+import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
 
 export default function HistoryMonthTable({
@@ -87,15 +87,25 @@ export default function HistoryMonthTable({
         <tr className="table__header-row">
           <th className="table__month-text">{monthName}</th>
           <th className="app__hide-on-mobile"></th>
-          <th className="table__header-text">LOCATION</th>
-          <th className="table__header-text app__hide-on-mobile">USER</th>
-          <th className="table__header-text">QUALITY</th>
           <th className="table__header-text">
-            <p className="app__hide-on-mobile">TIME DIFF</p>
+            {toolTip("LOCATION", toolTipCopy.location)}
+          </th>
+          <th className="table__header-text app__hide-on-mobile">
+            {toolTip("USER", toolTipCopy.user)}
+          </th>
+          <th className="table__header-text">
+            {toolTip("QUALITY", toolTipCopy.quality)}
+          </th>
+          <th className="table__header-text">
+            <p className="app__hide-on-mobile">
+              {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+            </p>
             <p className="app__hide-on-desktop">DIFF..</p>
           </th>
           <th className="table__header-weight-text">
-            <p className="app__hide-on-mobile">WEIGHT</p>
+            <p className="app__hide-on-mobile">
+              {toolTip("WEIGHT", toolTipCopy.weight)}
+            </p>
             <p className="app__hide-on-desktop">WT.</p>
           </th>
         </tr>

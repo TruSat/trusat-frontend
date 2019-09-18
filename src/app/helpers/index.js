@@ -51,5 +51,12 @@ export const toolTipCopy = {
   origin: "copy about origin",
   purpose: "copy about purpose",
   confidence: "copy about confidence",
-  last_seen_by: "copy about last seen by"
+  last_seen_by: "copy about last seen by",
+  date: "copy about date",
+  tracked_by: "copy about tracked by",
+  location: "copy about location",
+  quality: "copy about quality",
+  time_diff: "copy about time diff",
+  weight: "copy about weight",
+  user: "copy about user"
 };

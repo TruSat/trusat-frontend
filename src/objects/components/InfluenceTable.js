@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { useObjectsState } from "../objects-context";
-import { toolTip, shortenAddressToolTip } from "../../app/helpers";
+import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
@@ -77,24 +77,30 @@ export default function InfluenceTable() {
         <thead className="table__header">
           <tr className="table__header-row">
             <th className="table__header-text object-inluence-table__table-header-text">
-              DATE
+              {toolTip("DATE", toolTipCopy.date)}
             </th>
             <th className="table__header-text app__hide-on-mobile">
-              TRACKED BY
+              {toolTip("TRACKED BY", toolTipCopy.tracked_by)}
             </th>
             <th className="table__header-text object-inluence-table__table-header-text">
-              LOCATION
+              {toolTip("LOCATION", toolTipCopy.location)}
             </th>
             <th className="table__header-text object-inluence-table__table-header-text">
-              <p className="app__hide-on-mobile">QUALITY</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("QUALITY", toolTipCopy.quality)}
+              </p>
               <p className="app__hide-on-desktop">QUAL..</p>
             </th>
             <th className="table__header-text object-inluence-table__table-header-text">
-              <p className="app__hide-on-mobile">TIME DIFF</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+              </p>
               <p className="app__hide-on-desktop">DIFF..</p>
             </th>
             <th className="table__header-weight-text">
-              <p className="app__hide-on-mobile">WEIGHT</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("WEIGHT", toolTipCopy.weight)}
+              </p>
               <p className="app__hide-on-desktop">WT.</p>
             </th>
           </tr>
