@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { toolTip } from "../../app/helpers";
+import { toolTip, toolTipCopy } from "../../app/helpers";
 import { useProfileState } from "../profile-context";
 import { useAuthState } from "../../auth/auth-context";
 import TablePaginator from "../../app/components/TablePaginator";
@@ -50,18 +50,28 @@ export default function ObservationsTable() {
       <table className="table">
         <thead className="table__header">
           <tr>
-            <td className="table__header-text">DATE</td>
-            <td className="table__header-text">OBJECT</td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">QUALITY</p>
+              {toolTip("DATE", toolTipCopy.date)}
+            </td>
+            <td className="table__header-text">
+              {toolTip("OBJECT", toolTipCopy.object)}
+            </td>
+            <td className="table__header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("QUALITY", toolTipCopy.quality)}
+              </p>
               <p className="app__hide-on-desktop">QUAL..</p>
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">TIME DIFF</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+              </p>
               <p className="app__hide-on-desktop">DIFF..</p>
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">WEIGHT</p>
+              <p className="app__hide-on-mobile">
+                {toolTip("WEIGHT", toolTipCopy.weight)}
+              </p>
               <p className="app__hide-on-desktop">WT.</p>
             </td>
           </tr>

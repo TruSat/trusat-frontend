@@ -2,7 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
-import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
+import {
+  renderFlag,
+  toolTip,
+  shortenAddressToolTip,
+  toolTipCopy
+} from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObjectsCollectedTable() {
@@ -65,15 +70,21 @@ export default function ObjectsCollectedTable() {
         <table className="table">
           <thead className="table__header">
             <tr>
-              <td className="table__header-text">OBJECT</td>
-              <td className="table__header-text">ORIGIN</td>
-              <td className="table__header-text app__hide-on-mobile">
-                PURPOSE
+              <td className="table__header-text">
+                {toolTip("OBJECT", toolTipCopy.object)}
+              </td>
+              <td className="table__header-text">
+                {toolTip("ORIGIN", toolTipCopy.origin)}
               </td>
               <td className="table__header-text app__hide-on-mobile">
-                CONFIDENCE
+                {toolTip("PURPOSE", toolTipCopy.purpose)}
               </td>
-              <td className="table__header-text">LAST SEEN BY</td>
+              <td className="table__header-text app__hide-on-mobile">
+                {toolTip("CONFIDENCE", toolTipCopy.confidence)}
+              </td>
+              <td className="table__header-text">
+                {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
+              </td>
             </tr>
           </thead>
           <tbody className="table__body">{renderObjectsCollectedRows()}</tbody>

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Blockie from "react-blockies";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../profile-context";
-import { shortenAddressToolTip } from "../../app/helpers";
+import { shortenAddressToolTip, toolTip, toolTipCopy } from "../../app/helpers";
 
 export default function ProfileHeader() {
   const { userAddress } = useAuthState();
@@ -21,7 +21,7 @@ export default function ProfileHeader() {
         />
         <h1 className="profile__header-username">
           {profileData.user_name
-            ? profileData.user_name
+            ? toolTip(profileData.user_name, profileData.user_address)
             : shortenAddressToolTip(profileData.user_address)}
         </h1>
       </div>
