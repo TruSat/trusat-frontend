@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
-import { renderFlag, shortenAddress } from "../../app/helpers";
+import { renderFlag, shortenAddressToolTip } from "../../app/helpers";
 
 export default function ObjectsCollectedTable() {
   const { profileData } = useProfileState();
@@ -43,7 +43,7 @@ export default function ObjectsCollectedTable() {
         <td className="table__table-data">
           {obj.username_last_tracked
             ? obj.username_last_tracked
-            : shortenAddress(obj.address_last_tracked)}
+            : shortenAddressToolTip(obj.address_last_tracked)}
         </td>
       </tr>
     ));

@@ -3,7 +3,7 @@ import { useAuthState } from "../../auth/auth-context";
 import { useUserState } from "../user-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
-import { shortenAddress } from "../../app/helpers";
+import { shortenAddressToolTip } from "../../app/helpers";
 
 // TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({
@@ -48,7 +48,7 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">ETH ADDRESS</label>
-          <p>{shortenAddress(userAddress)}</p>
+          <p>{shortenAddressToolTip(userAddress)}</p>
           <CopyText textToCopy={userAddress} />
         </div>
 

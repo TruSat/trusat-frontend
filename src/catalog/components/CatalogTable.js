@@ -3,7 +3,7 @@ import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import axios from "axios";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
-import { renderFlag, shortenAddress } from "../../app/helpers";
+import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
@@ -59,7 +59,7 @@ function CatalogTable({ match, range, setRange }) {
                 src={ObjectBadge}
                 alt="Object Badge"
               ></img>
-              <p>&nbsp;{obj.object_name}</p>
+              {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
           </NavLink>
         </td>
@@ -77,8 +77,8 @@ function CatalogTable({ match, range, setRange }) {
             to={`/profile/${obj.address_last_tracked}`}
           >
             {obj.username
-              ? obj.username_last_tracked
-              : shortenAddress(obj.address_last_tracked)}
+              ? toolTip(obj.username_last_tracked, obj.address_last_tracked)
+              : shortenAddressToolTip(obj.address_last_tracked)}
           </NavLink>
         </td>
       </tr>

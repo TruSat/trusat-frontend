@@ -3,7 +3,7 @@ import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useObjectsState } from "../objects-context";
 import { renderFlag } from "../../app/helpers/";
-import { shortenAddress } from "../../app/helpers";
+import { shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
@@ -54,7 +54,9 @@ export default function UserSightingsTable() {
             {obj.user_location ? obj.user_location : "undisclosed"}
           </td>
           <td className="table__table-data app__hide-on-mobile">
-            {obj.username ? obj.username : shortenAddress(obj.user_address)}
+            {obj.username
+              ? obj.username
+              : shortenAddressToolTip(obj.user_address)}
           </td>
           <td className="table__table-data">{obj.observation_quality}</td>
           <td className="table__table-data">

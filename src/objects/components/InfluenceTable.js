@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 // import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
-import { shortenAddress } from "../../app/helpers";
+import { shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
@@ -42,7 +42,9 @@ export default function InfluenceTable() {
         <tr key={tableData.indexOf(obj)} className="table__body-row">
           <td className="table__table-data">{obj.observation_time}</td>
           <td className="table__table-data app__hide-on-mobile">
-            {obj.username ? obj.username : shortenAddress(obj.user_address)}
+            {obj.username
+              ? obj.username
+              : shortenAddressToolTip(obj.user_address)}
           </td>
           <td className="table__table-data">
             <div style={{ display: "flex" }}>

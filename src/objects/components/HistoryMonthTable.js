@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
-import { shortenAddress } from "../../app/helpers";
+import { shortenAddressToolTip } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
 
 export default function HistoryMonthTable({
@@ -57,7 +57,7 @@ export default function HistoryMonthTable({
           <td className="table__table-data app__hide-on-mobile">
             {observation.username
               ? observation.username
-              : shortenAddress(observation.user_address)}
+              : shortenAddressToolTip(observation.user_address)}
           </td>
           <td className="table__table-data">
             {observation.observation_quality}

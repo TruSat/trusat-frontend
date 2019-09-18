@@ -1,7 +1,7 @@
 import React from "react";
 import ObjectBadgeLarge from "../../assets/ObjectBadgeLarge.svg";
 import { useObjectsState } from "../objects-context";
-import { renderFlag, shortenAddress } from "../../app/helpers";
+import { renderFlag, shortenAddressToolTip } from "../../app/helpers";
 import HowToSeeIt from "./HowToSeeIt";
 
 export default function Info() {
@@ -43,7 +43,7 @@ export default function Info() {
               <p className="object-info__small-text">
                 {objectInfo.username_last_tracked
                   ? objectInfo.username_last_tracked
-                  : shortenAddress(objectInfo.username_last_tracked)}
+                  : shortenAddressToolTip(objectInfo.username_last_tracked)}
               </p>
             </div>
 
