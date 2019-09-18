@@ -39,6 +39,9 @@ export default function App() {
         payload: address
       });
 
+      console.log(`jwt from localStorage = `, jwt);
+      console.log(`decoded address from jwt in localStorage = `, address);
+
       await axios
         .post(
           `https://api.consensys.space:8080/profile`,
@@ -48,6 +51,10 @@ export default function App() {
           })
         )
         .then(result => {
+          console.log(
+            `userData retrieved from /profile on app load = `,
+            result.data
+          );
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
         })
         .catch(err => console.log(err));

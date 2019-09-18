@@ -69,6 +69,7 @@ export default function MultipleObservationForm() {
         JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
       )
       .then(result => {
+        console.log(`result returned from /submitObservation = `, result);
         setSuccessCount(result.data.success);
         setIsLoading(false);
       })

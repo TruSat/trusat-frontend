@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export default function ClaimAccount() {
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [email, setEmail] = useState("john.gribbin@consensys.net");
   const [showMessage, setShowMessage] = useState(false);
 
   const claimAccount = async () => {

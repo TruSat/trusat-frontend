@@ -45,7 +45,7 @@ export default function Profile({ match }) {
     if (jwt && userAddress !== addressFromRoute) {
       fetchData();
       // otherwise display the userData of logged in user
-      // as the two addresses will match
+      // as the userAddress and addressFromRoute will match
     } else if (userData) {
       profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
     }
