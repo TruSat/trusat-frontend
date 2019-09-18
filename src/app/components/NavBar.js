@@ -4,6 +4,7 @@ import { useCatalogState } from "../../catalog/catalog-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
+import SatSymbol from "../../assets/SatSymbol.svg";
 
 function NavBar(props) {
   const { userAddress } = useAuthState();
@@ -12,7 +13,14 @@ function NavBar(props) {
   return (
     <div className="nav-bar">
       <NavLink className="nav-bar__logo" to="/">
-        TRUSAT
+        <div className="nav-bar__sat-title-wrapper">
+          <img
+            className="nav-bar__sat-symbol"
+            src={SatSymbol}
+            alt="sat symbol"
+          ></img>
+          <p>TRUSAT</p>
+        </div>
       </NavLink>
 
       <div

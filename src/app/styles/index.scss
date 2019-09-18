@@ -159,6 +159,15 @@ NAV BAR
     text-decoration: none;
   }
 
+  .nav-bar__sat-title-wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-bar__sat-symbol {
+    margin-right: 0.25em;
+  }
+
   .nav-bar__link-wrapper--highlight {
     color: $primary-text-color;
     border-bottom: 3px solid $primary-highlight-color;
