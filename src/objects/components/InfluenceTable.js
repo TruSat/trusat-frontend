@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 // import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
-import { shortenAddressToolTip } from "../../app/helpers";
+import { toolTip, shortenAddressToolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
@@ -42,9 +43,14 @@ export default function InfluenceTable() {
         <tr key={tableData.indexOf(obj)} className="table__body-row">
           <td className="table__table-data">{obj.observation_time}</td>
           <td className="table__table-data app__hide-on-mobile">
-            {obj.username
-              ? obj.username
-              : shortenAddressToolTip(obj.user_address)}
+            <NavLink
+              className="app__nav-link"
+              to={`/profile/${obj.user_address}`}
+            >
+              {obj.username
+                ? toolTip(obj.username, obj.user_address)
+                : shortenAddressToolTip(obj.user_address)}
+            </NavLink>
           </td>
           <td className="table__table-data">
             <div style={{ display: "flex" }}>

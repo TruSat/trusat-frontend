@@ -1,7 +1,8 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import ObjectBadgeLarge from "../../assets/ObjectBadgeLarge.svg";
 import { useObjectsState } from "../objects-context";
-import { renderFlag, shortenAddressToolTip } from "../../app/helpers";
+import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
 import HowToSeeIt from "./HowToSeeIt";
 
 export default function Info() {
@@ -41,9 +42,17 @@ export default function Info() {
               <p className="object-info__small-text--grey">BY</p>
               &nbsp;
               <p className="object-info__small-text">
-                {objectInfo.username_last_tracked
-                  ? objectInfo.username_last_tracked
-                  : shortenAddressToolTip(objectInfo.username_last_tracked)}
+                <NavLink
+                  className="app__nav-link"
+                  to={`/profile/${objectInfo.address_last_tracked}`}
+                >
+                  {objectInfo.username_last_tracked
+                    ? toolTip(
+                        objectInfo.username_last_tracked,
+                        objectInfo.address_last_tracked
+                      )
+                    : shortenAddressToolTip(objectInfo.address_last_tracked)}
+                </NavLink>
               </p>
             </div>
 
