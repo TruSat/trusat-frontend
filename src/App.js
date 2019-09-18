@@ -31,17 +31,9 @@ export default function App() {
     // utilized for authentication and is decoded to return users ethereum address
     const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
-      await authDispatch({ type: "SET_JWT", payload: jwt });
-
       const { address } = await jwt_decode(jwt);
-      authDispatch({
-        type: "SET_USER_ADDRESS",
-        payload: address
-      });
-
-      console.log(`jwt from localStorage = `, jwt);
-      console.log(`decoded address from jwt in localStorage = `, address);
-
+      // console.log(`jwt from localStorage = `, jwt);
+      // console.log(`decoded address from jwt in localStorage = `, address);
       await axios
         .post(
           `https://api.consensys.space:8080/profile`,
@@ -51,10 +43,15 @@ export default function App() {
           })
         )
         .then(result => {
-          console.log(
-            `userData retrieved from /profile on app load = `,
-            result.data
-          );
+          // console.log(
+          //   `userData retrieved from /profile on app load = `,
+          //   result.data
+          // );
+          authDispatch({ type: "SET_JWT", payload: jwt });
+          authDispatch({
+            type: "SET_USER_ADDRESS",
+            payload: address
+          });
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
         })
         .catch(err => console.log(err));
