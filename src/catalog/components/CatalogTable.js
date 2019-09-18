@@ -72,7 +72,7 @@ function CatalogTable({ match, range, setRange }) {
         <td className="table__table-data app__hide-on-mobile">
           {obj.object_observation_quality}%
         </td>
-        <td className="table__weight-data">
+        <td className="table__table-data">
           <NavLink
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
