@@ -480,8 +480,15 @@ COPY TEXT
   cursor: pointer;
 }
 
+// TODO color of font for these messages?
+.app__success-message {
+  color: $primary-highlight-color;
+  font-size: $large-font-size;
+  margin: 1em;
+}
+
 .app__error-message {
   color: $primary-highlight-color;
-  font-size: $medium-font-size;
+  font-size: $large-font-size;
   margin: 1em;
 }

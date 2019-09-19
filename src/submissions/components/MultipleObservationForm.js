@@ -108,7 +108,7 @@ export default function MultipleObservationForm() {
 
         {/* Success message */}
         {successCount > 0 ? (
-          <div className="multiple-observation-form__success-message">
+          <div className="app__success-message">
             <img
               className="multiple-observation-form__image"
               src={CircleCheck}
@@ -121,7 +121,7 @@ export default function MultipleObservationForm() {
 
         {/* Failure message */}
         {successCount === 0 ? (
-          <p className="multiple-observation-form__success-message">
+          <p className="app__error-message">
             Something went wrong! You either submitted invald observations or
             duplicates that are already present in the TruSat database. Please
             check your observations and try again
