@@ -151,7 +151,7 @@ NAV BAR
     border: 3px solid #2d2d2d;
     display: flex;
     height: 3.5em;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   .nav-bar__logo {
@@ -162,18 +162,25 @@ NAV BAR
   .nav-bar__sat-title-wrapper {
     display: flex;
     align-items: center;
+    margin-left: 1em;
   }
 
   .nav-bar__sat-symbol {
     margin-right: 0.25em;
   }
 
+  .nav-bar__route-link-wrapper {
+    align-items: center;
+    display: flex;
+  }
+
   .nav-bar__link-wrapper--highlight {
+    align-items: center;
     color: $primary-text-color;
     border-bottom: 3px solid $primary-highlight-color;
     display: flex;
-    align-items: center;
     height: 3.5em;
+    margin: 0em 2em;
   }
 
   .nav-bar__link-wrapper--highlight:hover {
@@ -183,6 +190,7 @@ NAV BAR
   .nav-bar__link-wrapper--lowlight {
     border-bottom: 3px solid #2d2d2d;
     color: #888888;
+    margin: 0em 2em;
   }
 
   .nav-bar__link-wrapper--lowlight:hover {
@@ -206,6 +214,7 @@ NAV BAR
     line-height: 14px;
     font-weight: bold;
     font-size: 12px;
+    margin-right: 1em;
     padding: 1em 3em;
   }
 
