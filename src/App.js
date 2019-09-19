@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import { useUserDispatch } from "./user/user-context";
 import { ObjectsProvider } from "./objects/objects-context";
@@ -70,22 +70,34 @@ export default function App() {
       {/* Shown on desktop view */}
       <NavBar />
 
-      <Route exact path="/" component={Welcome} />
-      <Route path="/catalog/:catalogFilter" component={Catalog} />
-      <Route path="/submit" component={Submit} />
-      <ObjectsProvider>
+      <Switch>
+        <Route exact path="/" component={Welcome} />
+        <Route path="/catalog/:catalogFilter" component={Catalog} />
+        <Route path="/submit" component={Submit} />
         <Route path="/object/:number" component={ObjectInfo} />
-      </ObjectsProvider>
-      <Route path="/profile/:address" component={Profile} />
-      {/* TO DO - make this route show an error when an eth address isnt found */}
-      <Route exact path="/settings" component={AccountSettings} />
-      <Route path="/settings/metamask" component={MetamaskImport} />
-      <Route path="/about" component={About} />
-      <Route path="/how" component={HowTo} />
-      <Route path="/login" component={LogIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route exact path="/claim" component={ClaimAccount} />
-      <Route path="/claim/:jwt" component={VerifyClaimAccount} />
+        <Route exact path="/profile/:address" component={Profile} />
+        {/* TO DO - make this route show an error when an eth address isnt found */}
+        <Route exact path="/settings" component={AccountSettings} />
+        <Route path="/settings/metamask" component={MetamaskImport} />
+        <Route path="/about" component={About} />
+        <Route path="/how" component={HowTo} />
+        <Route path="/login" component={LogIn} />
+        <Route path="/signup" component={SignUp} />
+        <Route exact path="/claim" component={ClaimAccount} />
+        <Route path="/claim/:jwt" component={VerifyClaimAccount} />
+        <Route component={NoMatch} />
+      </Switch>
     </Router>
+  );
+}
+
+function NoMatch({ location }) {
+  return (
+    <div>
+      <h3 style={{ color: "red", margin: "2em" }}>
+        <code>{location.pathname}</code> is not a route in TruSat. Please check
+        that you entered the correct URL
+      </h3>
+    </div>
   );
 }
