@@ -27,10 +27,10 @@ export default function MetamaskImport() {
       </NavLink>
 
       <h1 className="metamask-import__main-header">Connect to MetaMask</h1>
-      <h2 className="metamask-import__sub-header">
+      {/* <h2 className="metamask-import__sub-header">
         Call to action for why you'd want to connect a wallet, and what benefits
         it will unlock for you
-      </h2>
+      </h2> */}
 
       <StepOne step={step} setStep={setStep} />
       <StepTwo step={step} setStep={setStep} setPrivateKey={setPrivateKey} />

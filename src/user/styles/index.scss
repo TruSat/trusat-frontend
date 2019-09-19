@@ -184,6 +184,7 @@ SECURITY SETTINGS
 .security-settings__info-text {
   @include body-text--large-desktop;
   margin-bottom: 1em;
+  max-width: 1000px;
 }
 
 /* ----------
@@ -206,12 +207,13 @@ METAMASK IMPORT
 
 .metamask-import__main-header {
   @include view-title--desktop;
+  margin-bottom: 0.25em;
 }
 
-.metamask-import__sub-header {
-  font-size: $extra-large-font-size;
-  margin: 0.5em 0em 1em 0em;
-}
+// .metamask-import__sub-header {
+//   font-size: $extra-large-font-size;
+//   margin: 0.5em 0em 1em 0em;
+// }
 
 .metamask-import__step-header-wrapper {
   display: flex;
@@ -234,7 +236,7 @@ METAMASK IMPORT
 
 .metamask-import__copy-wrapper {
   margin-top: 1em;
-  width: 75%;
+  max-width: 1000px;
 }
 
 .metamask-import__copy {
