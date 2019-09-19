@@ -12,11 +12,24 @@ import {
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 
+// check if noradNumber from url is not more than 5 chracters long
+// and if it only contains numbers
+const isValidNumber = number => {
+  if (number.length > 5 || /^\d+$/.test(number) === false) {
+    return false;
+  }
+  return true;
+};
+
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
+  console.log(isValidNumber(noradNumber));
+
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
   const [isLoading, setIsLoading] = useState(false);
+
+  const [showNumberError, setShowNumberError] = useState(false);
 
   useEffect(() => {
     const postData = async () => {
@@ -36,13 +49,24 @@ export default function ObjectInfo({ match }) {
 
           setIsLoading(false);
         })
+        // TODO - handle error messaging to return to UI
         .catch(err => console.log(err));
     };
 
-    postData();
+    // only fetch data for a number
+    if (isValidNumber(noradNumber)) {
+      postData();
+    } else {
+      setShowNumberError(true);
+    }
   }, [noradNumber, objectsDispatch]);
 
-  return isLoading ? (
+  return showNumberError ? (
+    <p className="app__error-message">
+      Invalid NORAD Number found in the URL. Please double check the NORAD
+      Number you are trying to look up and refresh your browser.
+    </p>
+  ) : isLoading ? (
     <Spinner />
   ) : (
     <div className="object__wrapper">

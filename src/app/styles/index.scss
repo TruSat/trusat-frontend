@@ -481,7 +481,7 @@ COPY TEXT
 }
 
 .app__error-message {
-  color: red;
+  color: $primary-highlight-color;
   font-size: $medium-font-size;
   margin: 1em;
 }
