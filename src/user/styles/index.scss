@@ -91,12 +91,22 @@ PROFILE SETTINGS
 }
 
 .edit-profile-settings-input {
+  background: black;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  color: $primary-text-color;
+  padding: 1em;
+  width: 100%;
 }
 
 .profile-settings__text-area {
+  background: black;
+  border-radius: 4px;
+  border: 1px solid #cccccc;
+  color: $primary-text-color;
   height: 80px;
+  padding: 1em;
   resize: none;
-  padding: 0.5em;
   width: 100%;
 }
 
