@@ -77,6 +77,7 @@ export default function App() {
         <Route path="/object/:number" component={ObjectInfo} />
       </ObjectsProvider>
       <Route path="/profile/:address" component={Profile} />
+      {/* TO DO - make this route show an error when an eth address isnt found */}
       <Route exact path="/settings" component={AccountSettings} />
       <Route path="/settings/metamask" component={MetamaskImport} />
       <Route path="/about" component={About} />

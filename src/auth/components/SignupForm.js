@@ -154,7 +154,7 @@ export default function SignupForm() {
         ></input>
         <p>
           I understand I cannot change this password in the future, and that
-          TruSat cannot restore this passsword for me. I've saved it somewhere
+          TruSat cannot restore this password for me. I've saved it somewhere
           safe.
         </p>
       </div>
