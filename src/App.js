@@ -4,7 +4,6 @@ import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import { useUserDispatch } from "./user/user-context";
-import { ObjectsProvider } from "./objects/objects-context";
 import NavBar from "./app/components/NavBar";
 import MobileHeader from "./app/components/MobileHeader";
 import Catalog from "./views/Catalog";
@@ -74,6 +73,7 @@ export default function App() {
         <Route exact path="/" component={Welcome} />
         <Route path="/catalog/:catalogFilter" component={Catalog} />
         <Route path="/submit" component={Submit} />
+        {/* TO DO - make this route show an error when a number is appended that is greater than 5 */}
         <Route path="/object/:number" component={ObjectInfo} />
         <Route exact path="/profile/:address" component={Profile} />
         {/* TO DO - make this route show an error when an eth address isnt found */}
@@ -94,7 +94,7 @@ export default function App() {
 function NoMatch({ location }) {
   return (
     <div>
-      <h3 style={{ color: "red", margin: "2em" }}>
+      <h3 className="app__error-message">
         <code>{location.pathname}</code> is not a route in TruSat. Please check
         that you entered the correct URL
       </h3>

@@ -3,11 +3,25 @@ import axios from "axios";
 import ProfileHeader from "../profile/components/ProfileHeader";
 import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
 import ObservationsTable from "../profile/components/ObservationsTable";
-
 import Spinner from "../app/components/Spinner";
 import { useAuthState } from "../auth/auth-context";
 import { useProfileDispatch } from "../profile/profile-context";
 import { useUserState } from "../user/user-context";
+
+const isAddress = address => {
+  // check if it has the basic requirements of an address
+  if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
+    return false;
+    // If it's ALL lowercase or ALL upppercase
+  }
+  // else if (
+  //   /^(0x|0X)?[0-9a-f]{40}$/.test(address) ||
+  //   /^(0x|0X)?[0-9A-F]{40}$/.test(address)
+  // ) {
+  //   return true;
+  // }
+  return true;
+};
 
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;
@@ -15,12 +29,13 @@ export default function Profile({ match }) {
   const { userData } = useUserState();
   const profileDispatch = useProfileDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [showAddressError, setShowAddressError] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       console.log(`fetching profile data`);
-
       setIsLoading(true);
+
       await axios
         .post(
           `https://api.consensys.space:8080/profile`,
@@ -37,17 +52,22 @@ export default function Profile({ match }) {
         })
         .catch(err => console.log(err));
     };
-    // TO DO - work out how to view profile pages when not logged in
-    // For now the request is only made when the jwt value of "none" comes through from authState
 
-    // when jwt value comes in,
-    // and userAddress doesn't match the address in the route, fetchData
-    if (jwt && userAddress !== addressFromRoute) {
-      fetchData();
-      // otherwise display the userData of logged in user
-      // as the userAddress and addressFromRoute will match
-    } else if (userData) {
-      profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
+    // If address in route is not a valid ethereum address, render an error
+    if (!isAddress(addressFromRoute)) {
+      setShowAddressError(true);
+    } else {
+      // TO DO - discuss this logic with Kenan
+      // if profileDispatch is present through
+      // and userAddress value is not equaled to address found in route
+      // call the api to fetch profileData
+      if (profileDispatch && userAddress !== addressFromRoute) {
+        fetchData();
+        // if userData is present
+        // load it into the UI
+      } else if (userData) {
+        profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
+      }
     }
   }, [
     addressFromRoute,
@@ -55,10 +75,16 @@ export default function Profile({ match }) {
     userAddress,
     userData,
     profileDispatch,
-    setIsLoading
+    setIsLoading,
+    showAddressError
   ]);
 
-  return isLoading ? (
+  return showAddressError ? (
+    <p className="app__error-message">
+      Invalid ethereum address found in the URL. Please double check the address
+      you are trying to look up and refresh your browser.
+    </p>
+  ) : isLoading ? (
     <Spinner />
   ) : (
     <div className="profile__wrapper">

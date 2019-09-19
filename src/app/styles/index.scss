@@ -479,3 +479,9 @@ COPY TEXT
 .app__copy-text:hover {
   cursor: pointer;
 }
+
+.app__error-message {
+  color: red;
+  font-size: $medium-font-size;
+  margin: 1em;
+}
