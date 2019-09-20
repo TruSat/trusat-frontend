@@ -7,23 +7,36 @@ export const useTrusatApi = () => {
   const [url, setUrl] = useState(``);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
+
   useEffect(() => {
+    let didCancel = false;
+
     const fetchData = async () => {
       console.log(`fetching data!`);
       setIsError(false);
       setIsLoading(true);
+
       try {
         const result = await axios(url);
-        setData(result.data);
+
+        if (!didCancel) {
+          setData(result.data);
+        }
       } catch (error) {
-        setIsError(true);
+        if (!didCancel) {
+          setIsError(true);
+        }
       }
       setIsLoading(false);
     };
-    // only fetch when url comes through
+    // Only fetch when url comes through
     if (url) {
       fetchData();
     }
+    // Clean up function which prevents attempt to update state of unmounted component
+    return () => {
+      didCancel = true;
+    };
   }, [url]);
 
   return [{ data, isLoading, isError }, setUrl];
