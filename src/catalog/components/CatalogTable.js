@@ -14,7 +14,6 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
   const catalogFilter = match.params.catalogFilter;
-  console.log(catalogFilter);
   const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
 
   useEffect(() => {
