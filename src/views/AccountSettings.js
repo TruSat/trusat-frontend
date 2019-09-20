@@ -8,8 +8,10 @@ import { useUserDispatch, useUserState } from "../user/user-context";
 import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
+  console.log(typeof window.ethereum);
+
   const userDispatch = useUserDispatch();
-  const { jwt, authType } = useAuthState();
+  const { jwt } = useAuthState();
   const { userAddress, userData } = useUserState();
   const [isLoading, setIsLoading] = useState(false);
   // Profile settings
@@ -142,8 +144,8 @@ export default function UserSettings() {
         </div>
       ) : null}
 
-      {/* Only show prompt to make move to metamask if they haven't already done so */}
-      {authType === "metamask" ? null : <SecuritySettings />}
+      {/* Only show prompt to make move to metamask if they dont have plugin installed */}
+      {typeof window.etherem !== Object ? null : <SecuritySettings />}
     </div>
   );
 }
