@@ -12,6 +12,7 @@ ACCOUNT SETTINGS
 @media (min-width: 600px) {
   .account-settings__wrapper {
     margin: 3em 4em;
+    max-width: 1200px;
   }
   .account-settings__header {
     @include view-title--desktop;

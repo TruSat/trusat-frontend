@@ -132,7 +132,10 @@ function NavBar(props) {
         <NavLink className="app__nav-link" to="/login">
           <JoinButton />
         </NavLink>
-      ) : null}
+      ) : (
+        // Invisible element to ensure nav bar links stays center of header component
+        <div style={{ width: "100px" }}></div>
+      )}
     </div>
   );
 }
