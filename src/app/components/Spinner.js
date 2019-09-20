@@ -3,7 +3,7 @@ import React from "react";
 export default function Spinner() {
   return (
     <React.Fragment>
-      <p style={{ marginTop: "2em", textAlign: "center" }}>...Loading</p>
+      <p className="app__loading-message">...Loading</p>
     </React.Fragment>
   );
 }

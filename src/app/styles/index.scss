@@ -481,14 +481,16 @@ COPY TEXT
 }
 
 // TODO color of font for these messages?
-.app__success-message {
+.app__loading-message {
   color: $primary-highlight-color;
   font-size: $large-font-size;
-  margin: 1em;
+  margin: 1em 0;
+  text-align: center;
 }
 
+.app__success-message,
 .app__error-message {
   color: $primary-highlight-color;
   font-size: $large-font-size;
-  margin: 1em;
+  margin: 1em 0;
 }

@@ -1,5 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import ReactTooltip from "react-tooltip";
+
+export const useTrusatApi = () => {
+  const [data, setData] = useState([]);
+  const [url, setUrl] = useState(``);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log(`fetching data!`);
+      setIsError(false);
+      setIsLoading(true);
+      try {
+        const result = await axios(url);
+        setData(result.data);
+      } catch (error) {
+        setIsError(true);
+      }
+      setIsLoading(false);
+    };
+    // only fetch when url comes through
+    if (url) {
+      fetchData();
+    }
+  }, [url]);
+
+  return [{ data, isLoading, isError }, setUrl];
+};
 
 export const renderFlag = code => {
   if (!code) {

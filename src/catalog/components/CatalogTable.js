@@ -1,50 +1,33 @@
-import React, { useState, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
-import axios from "axios";
+
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import {
   renderFlag,
   toolTip,
   shortenAddressToolTip,
-  toolTipCopy
+  toolTipCopy,
+  useTrusatApi
 } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 function CatalogTable({ match, range, setRange }) {
   const catalogFilter = match.params.catalogFilter;
-  const [isLoading, setIsLoading] = useState(false);
-  const [tableData, setTableData] = useState([]);
+  console.log(catalogFilter);
+  const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-
-      await axios
-        .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
-        .then(result => {
-          setTableData(result.data);
-          setIsLoading(false);
-        })
-        .catch(err => {
-          console.log(err);
-          setTableData([]);
-          setIsLoading(false);
-        });
-    };
-
-    if (catalogFilter) {
-      fetchData();
-    }
-  }, [catalogFilter, setTableData]);
+    doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
+  }, [catalogFilter, doFetch]);
 
   const renderCatalogRows = () => {
     const { start, end } = range;
-    const rangeData = tableData.slice(start, end);
+    const rangeData = data.slice(start, end);
 
     return rangeData.map(obj => (
       <tr
-        key={tableData.indexOf(obj)}
+        key={data.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
         <td className="table__table-data">
@@ -55,7 +38,7 @@ function CatalogTable({ match, range, setRange }) {
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
                 <p>
-                  {tableData.indexOf(obj) + 1}
+                  {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
               ) : null}
@@ -91,43 +74,48 @@ function CatalogTable({ match, range, setRange }) {
     ));
   };
 
-  return isLoading ? (
-    <Spinner />
-  ) : (
-    <React.Fragment>
-      <div>
-        <table className="table">
-          <thead className="table__header">
-            <tr className="table__header-row">
-              <th className="table__header-text">
-                {toolTip("OBJECT", toolTipCopy.object)}
-              </th>
-              <th className="table__header-text">
-                {toolTip("ORIGIN", toolTipCopy.origin)}
-              </th>
-              <th className="table__header-text app__hide-on-mobile">
-                {toolTip("PURPOSE", toolTipCopy.purpose)}
-              </th>
-              <th className="table__header-text app__hide-on-mobile">
-                {toolTip("CONFIDENCE", toolTipCopy.confidence)}
-              </th>
-              <th className="table__header-text">
-                {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
-              </th>
-            </tr>
-          </thead>
-          <tbody className="table__body">{renderCatalogRows()}</tbody>
-        </table>
-      </div>
+  return (
+    <Fragment>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          {isError && (
+            <p className="app__error-message">Something went wrong ...</p>
+          )}
 
-      {tableData.length > 10 ? (
-        <TablePaginator
-          tableDataLength={tableData.length}
-          range={range}
-          setRange={setRange}
-        />
-      ) : null}
-    </React.Fragment>
+          <table className="table">
+            <thead className="table__header">
+              <tr className="table__header-row">
+                <th className="table__header-text">
+                  {toolTip("OBJECT", toolTipCopy.object)}
+                </th>
+                <th className="table__header-text">
+                  {toolTip("ORIGIN", toolTipCopy.origin)}
+                </th>
+                <th className="table__header-text app__hide-on-mobile">
+                  {toolTip("PURPOSE", toolTipCopy.purpose)}
+                </th>
+                <th className="table__header-text app__hide-on-mobile">
+                  {toolTip("CONFIDENCE", toolTipCopy.confidence)}
+                </th>
+                <th className="table__header-text">
+                  {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
+                </th>
+              </tr>
+            </thead>
+            <tbody className="table__body">{renderCatalogRows()}</tbody>
+          </table>
+          {data.length > 10 ? (
+            <TablePaginator
+              tableDataLength={data.length}
+              range={range}
+              setRange={setRange}
+            />
+          ) : null}
+        </Fragment>
+      )}
+    </Fragment>
   );
 }
 
