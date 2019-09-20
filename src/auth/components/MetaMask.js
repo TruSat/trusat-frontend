@@ -1,11 +1,15 @@
 import React from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
-import { retrieveNonce } from "../helpers/";
-import { ethers } from "ethers";
+import {
+  retrieveNonce,
+  metamaskSignMessage,
+  retrieveMetamaskJwt
+} from "../helpers/";
 import Web3 from "web3";
 import axios from "axios";
 import { handleMetamaskConnect } from "../helpers";
+const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export default function MetaMask() {
   // used for text render on the button
@@ -18,74 +22,50 @@ export default function MetaMask() {
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
       authDispatch({ type: "AUTHENTICATING", payload: true });
-      handleMetamaskMessageSign();
+      handleMetamaskAuth();
+      // if user has metamask but isn't signed into the plugin
     } else {
       handleMetamaskConnect();
     }
   };
 
-  const handleMetamaskMessageSign = async () => {
-    const web3 = new Web3(Web3.givenProvider || window.ethereum);
-
+  // For both signup and login metamask flows
+  const handleMetamaskAuth = async () => {
     const address = web3._provider.selectedAddress;
 
     const nonce = await retrieveNonce(address);
-    console.log(`nonce = `, nonce);
 
-    const nonceHash = ethers.utils.id(nonce);
+    const metamaskSignedMessage = await metamaskSignMessage({ nonce, address });
 
-    try {
-      //a promise
-      const signedMessage = await web3.eth.personal.sign(nonceHash, address);
+    // Only hit /profile endpoint if a signed message is returned from metamaskSignedMessage
+    if (typeof metamaskSignedMessage === "string") {
+      const jwt = await retrieveMetamaskJwt({ address, metamaskSignedMessage });
 
-      console.log(`signed message =`, signedMessage);
-
-      return handleMetamaskAuthenticate({ address, signedMessage });
-    } catch (error) {
-      authDispatch({ type: "AUTHENTICATING", payload: false });
-      alert(`You need to sign the message to be able to log in!`);
-    }
-  };
-
-  // TODO utilize retrieve JWT function from helpers
-  const handleMetamaskAuthenticate = async ({ address, signedMessage }) => {
-    let jwt;
-
-    await Promise.resolve(
-      axios
+      await axios
         .post(
-          "https://api.consensys.space:8080/login",
+          `https://api.consensys.space:8080/profile`,
           JSON.stringify({
-            address: address,
-            signedMessage: signedMessage
+            jwt: jwt,
+            address: address
           })
         )
-        .then(response => {
-          console.log(response.data);
-          jwt = response.data.jwt;
-          localStorage.setItem("trusat-jwt", response.data.jwt);
-          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
+        .then(result => {
+          userDispatch({ type: "SET_USER_DATA", payload: result.data });
+          authDispatch({ type: "SET_USER_ADDRESS", payload: address });
         })
-        .catch(error => console.log(error))
-    );
+        .catch(err => console.log(err));
 
-    // TODO make this call an app helper
-    await axios
-      .post(
-        `https://api.consensys.space:8080/profile`,
-        JSON.stringify({
-          jwt: jwt,
-          address: address
-        })
-      )
-      .then(result => {
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-      })
-      .catch(err => console.log(err));
-
-    authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-    authDispatch({ type: "AUTHENTICATING", payload: false });
+      authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+      authDispatch({ type: "AUTHENTICATING", payload: false });
+      // Add jwt to local storage
+      localStorage.setItem("trusat-jwt", jwt);
+      // When user cancels the sign or there is an error returned from metamaskSignMessage
+    } else {
+      authDispatch({ type: "AUTHENTICATING", payload: false });
+      alert(
+        `You must sign the message by clicking "Sign" on the MetaMask plugin in order to verify your identity!`
+      );
+    }
   };
 
   return (

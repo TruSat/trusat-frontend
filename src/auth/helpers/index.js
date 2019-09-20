@@ -3,7 +3,7 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
 import aesjs from "aes-js";
-var web3 = new Web3(Web3.givenProvider || "ws://localhost:8546");
+var web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export const createWallet = () => {
   return ethers.Wallet.createRandom();
@@ -32,6 +32,7 @@ export const handleMetamaskConnect = () => {
   }
 };
 
+// Used for email/password and burner auth
 export const signMessage = ({ nonce, wallet }) => {
   // hash the nonce
   const nonceHash = ethers.utils.id(nonce);
@@ -55,9 +56,8 @@ export const signMessage = ({ nonce, wallet }) => {
   }
 };
 
+// Used for email/password and burner auth
 export const retrieveJwt = async ({ address, signedMessage }) => {
-  console.log(signedMessage);
-
   return await axios
     .post(
       "https://api.consensys.space:8080/login",
@@ -67,8 +67,40 @@ export const retrieveJwt = async ({ address, signedMessage }) => {
       })
     )
     .then(response => {
-      console.log(response);
-      console.log(`JWT is = `, response.data.jwt);
+      return response.data.jwt;
+    })
+    .catch(error => console.log(error));
+};
+
+// Used for metamask auth
+export const metamaskSignMessage = async ({ nonce, address }) => {
+  const nonceHash = ethers.utils.id(nonce);
+
+  try {
+    //a promise
+    const signedMessage = await web3.eth.personal.sign(nonceHash, address);
+
+    return signedMessage;
+    // will return an error is user clicks cancel on metamask
+  } catch (error) {
+    return error;
+  }
+};
+
+// used for metamask auth
+export const retrieveMetamaskJwt = async ({
+  address,
+  metamaskSignedMessage
+}) => {
+  return await axios
+    .post(
+      "https://api.consensys.space:8080/login",
+      JSON.stringify({
+        address: address,
+        signedMessage: metamaskSignedMessage
+      })
+    )
+    .then(response => {
       return response.data.jwt;
     })
     .catch(error => console.log(error));
