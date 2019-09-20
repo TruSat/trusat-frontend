@@ -1,5 +1,6 @@
 import React from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
+import { toolTip } from "../../app/helpers";
 
 export default function PrivacySettings({
   showEditPrivacyInputs,
@@ -121,9 +122,15 @@ export default function PrivacySettings({
           Hide my observations
         </label>
       </div>
-      <p className="privacy-settings__remove-text">
-        Remove my current and historical data from the system
-      </p>
+      <a
+        className="privacy-settings__remove-text"
+        href="mailto:remove@trusat.org"
+      >
+        {toolTip(
+          `Remove my current and historical data from the system`,
+          `Click to email us at remove@trusat.org and we will take care of your request within two weeks`
+        )}
+      </a>
     </section>
   );
 }
