@@ -1,83 +1,79 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import FilterDescription from "./FilterDescription";
 
 function CatalogNavBar({ catalogFilter, setRange, history }) {
   return (
-    <section>
-      <div className="catalog-nav-bar__wrapper">
-        <span
-          className={
-            catalogFilter === "priorities"
-              ? "catalog-nav-bar__link--highlight"
-              : "catalog-nav-bar__link--lowlight"
-          }
-          onClick={() => {
-            setRange({ start: 0, end: 10 });
-            history.push("/catalog/priorities");
-          }}
-        >
-          PRIORITIES
-        </span>
+    <div className="catalog-nav-bar__wrapper">
+      <span
+        className={
+          catalogFilter === "priorities"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          history.push("/catalog/priorities");
+        }}
+      >
+        PRIORITIES
+      </span>
 
-        <span
-          className={
-            catalogFilter === "undisclosed"
-              ? "catalog-nav-bar__link--highlight"
-              : "catalog-nav-bar__link--lowlight"
-          }
-          onClick={() => {
-            setRange({ start: 0, end: 10 });
-            history.push("/catalog/undisclosed");
-          }}
-        >
-          UNDISCLOSED
-        </span>
+      <span
+        className={
+          catalogFilter === "undisclosed"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          history.push("/catalog/undisclosed");
+        }}
+      >
+        UNDISCLOSED
+      </span>
 
-        <span
-          className={
-            catalogFilter === "debris"
-              ? "catalog-nav-bar__link--highlight"
-              : "catalog-nav-bar__link--lowlight"
-          }
-          onClick={() => {
-            setRange({ start: 0, end: 10 });
-            history.push("/catalog/debris");
-          }}
-        >
-          DEBRIS
-        </span>
+      <span
+        className={
+          catalogFilter === "debris"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          history.push("/catalog/debris");
+        }}
+      >
+        DEBRIS
+      </span>
 
-        <span
-          className={
-            catalogFilter === "latest"
-              ? "catalog-nav-bar__link--highlight"
-              : "catalog-nav-bar__link--lowlight"
-          }
-          onClick={() => {
-            setRange({ start: 0, end: 10 });
-            history.push("/catalog/latest");
-          }}
-        >
-          LATEST
-        </span>
+      <span
+        className={
+          catalogFilter === "latest"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          history.push("/catalog/latest");
+        }}
+      >
+        LATEST
+      </span>
 
-        <span
-          className={
-            catalogFilter === "all"
-              ? "catalog-nav-bar__link--highlight"
-              : "catalog-nav-bar__link--lowlight"
-          }
-          onClick={() => {
-            setRange({ start: 0, end: 10 });
-            history.push("/catalog/all");
-          }}
-        >
-          ALL
-        </span>
-      </div>
-      <FilterDescription catalogFilter={catalogFilter} />
-    </section>
+      <span
+        className={
+          catalogFilter === "all"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          history.push("/catalog/all");
+        }}
+      >
+        ALL
+      </span>
+    </div>
   );
 }
 
