@@ -10,7 +10,7 @@ export default function LoginOptions() {
         {window.ethereum ? (
           <React.Fragment>
             <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
-            <MetaMask />
+            <MetaMask buttonText={`Sign up with MetaMask`} />
           </React.Fragment>
         ) : null}
       </div>

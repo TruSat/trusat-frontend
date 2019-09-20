@@ -13,7 +13,7 @@ export default function LoginOptions() {
               <p className="log-in-options__metamask-button-wrapper-text">
                 Or:
               </p>
-              <MetaMask />
+              <MetaMask buttonText={`Log in with MetaMask`} />
             </React.Fragment>
           ) : null}
         </div>
