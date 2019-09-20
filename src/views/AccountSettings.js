@@ -8,8 +8,6 @@ import { useUserDispatch, useUserState } from "../user/user-context";
 import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
-  console.log(typeof window.ethereum);
-
   const userDispatch = useUserDispatch();
   const { jwt } = useAuthState();
   const { userAddress, userData } = useUserState();
@@ -27,8 +25,6 @@ export default function UserSettings() {
   const [newPublicObservations, setNewPublicObservations] = useState(true);
 
   useEffect(() => {
-    console.log(userData);
-
     setIsLoading(true);
 
     const {
@@ -53,8 +49,6 @@ export default function UserSettings() {
   }, [userData]);
 
   const submitEdit = async () => {
-    console.log(`jwt take from authState = `, jwt);
-
     setIsLoading(true);
     // Post the edits
     await axios
@@ -145,7 +139,7 @@ export default function UserSettings() {
       ) : null}
 
       {/* Only show prompt to make move to metamask if they dont have plugin installed */}
-      {typeof window.etherem !== Object ? null : <SecuritySettings />}
+      {window.etherem ? null : <SecuritySettings />}
     </div>
   );
 }

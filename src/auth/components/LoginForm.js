@@ -11,9 +11,11 @@ export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [secret, setSecret] = useState("");
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [password, setPassword] = useState("Zn48&NJFLPjr");
+  const [secret, setSecret] = useState(
+    "3005657919/5ed29f8c52656f771b35b037245bd3a1/672859aab2a336937e48e58c27226aac4b747475f59c67d38c2f3dbdf48e75b751b22a7be955a23018b30cde21079e79546fc1f362f7d812fd2c6f18a7b74e5cf486eff78710a5d0b33e3fdf516cfaf8"
+  );
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
 
   const handleLogin = async () => {
