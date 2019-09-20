@@ -11,10 +11,7 @@ import axios from "axios";
 import { handleMetamaskConnect } from "../helpers";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
-export default function MetaMask() {
-  // used for text render on the button
-  const pathname = window.location.pathname;
-
+export default function MetaMask({ buttonText }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
@@ -70,11 +67,7 @@ export default function MetaMask() {
 
   return (
     <span className="app__button--white" onClick={handleClick}>
-      {isAuthenticating
-        ? "Loading..."
-        : pathname === "/signup"
-        ? "Sign up with MetaMask"
-        : "Sign in with MetaMask"}
+      {isAuthenticating ? "Loading..." : buttonText}
     </span>
   );
 }

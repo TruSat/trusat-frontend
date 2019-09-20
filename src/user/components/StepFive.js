@@ -28,15 +28,6 @@ export default function StepFive({ step }) {
         </div>
       ) : null}
 
-      {step === 5 && authType !== "metamask" ? (
-        <div className="metamask-import__copy-wrapper">
-          <p className="metamask-import__copy">last step!</p>
-          <p className="metamask-import__copy">
-            Click the "sign" button in MetaMask to sign into TruSat
-          </p>
-        </div>
-      ) : null}
-
       {/* The success message */}
       {authType === "metamask" ? (
         <div className="metamask-import__copy-wrapper">

@@ -8,7 +8,7 @@ import StepFour from "../user/components/StepFour";
 import StepFive from "../user/components/StepFive";
 
 export default function MetamaskImport() {
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(4);
   const [privateKey, setPrivateKey] = useState("");
   const { authType } = useAuthState();
 
