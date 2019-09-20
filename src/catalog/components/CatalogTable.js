@@ -7,13 +7,13 @@ import {
   renderFlag,
   toolTip,
   shortenAddressToolTip,
-  toolTipCopy,
-  useTrusatApi
+  toolTipCopy
 } from "../../app/helpers";
+import { useCatalogApi } from "../catalogFetchReducer";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
-  const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
+  const [{ data, isLoading, isError }, doFetch] = useCatalogApi();
 
   useEffect(() => {
     doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
@@ -21,6 +21,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
 
   const renderCatalogRows = () => {
     const { start, end } = range;
+
     const rangeData = data.slice(start, end);
 
     return rangeData.map(obj => (
