@@ -17,8 +17,8 @@ export default function SignupForm() {
   const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
-  const [understandMessage, setUnderstandMessage] = useState(false);
-  const [retypedPassword, setRetypedPassword] = useState("");
+  const [understandMessage, setUnderstandMessage] = useState(true);
+  const [retypedPassword, setRetypedPassword] = useState("Zn48&NJFLPjr");
 
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
@@ -77,7 +77,6 @@ export default function SignupForm() {
         address: wallet.signingKey.address,
         signedMessage: signedMessage
       });
-      console.log(`jwt =`, jwt);
 
       // dispatch({ type: "SET_BURNER", payload: wallet });
       authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
@@ -88,9 +87,7 @@ export default function SignupForm() {
       localStorage.setItem("trusat-jwt", jwt);
 
       const secret = createSecret(wallet.signingKey.privateKey, password);
-      console.log(`address = `, wallet.address);
-      console.log(`secret = `, secret);
-      // TODO - email secret to the user
+      // email secret to the user
       emailSecret(secret);
 
       await axios
