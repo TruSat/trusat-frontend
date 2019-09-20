@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
 import Select from "react-select";
-import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 const options = [
   { value: "priorities", label: "PRIORITIES" },
@@ -11,10 +9,8 @@ const options = [
   { value: "all", label: "ALL" }
 ];
 
-function NavDropdown({ match, history, setRange }) {
+export default function NavDropdown({ catalogFilter, history, setRange }) {
   const [selectedOption, setSelectedOption] = useState("");
-  const catalogFilter = match.params.catalogFilter;
-  // const catalogDispatch = useCatalogDispatch();
 
   useEffect(() => {
     options
@@ -24,11 +20,6 @@ function NavDropdown({ match, history, setRange }) {
 
   const handleChange = newSelectedOption => {
     setRange({ start: 0, end: 10 });
-
-    // catalogDispatch({
-    //   type: "SET_CATALOG_FILTER",
-    //   payload: newSelectedOption.value
-    // });
 
     history.push(`/catalog/${newSelectedOption.value}`);
   };
@@ -59,5 +50,3 @@ function NavDropdown({ match, history, setRange }) {
     </div>
   );
 }
-
-export default withRouter(NavDropdown);

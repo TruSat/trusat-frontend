@@ -1,16 +1,14 @@
 import React from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import DownloadCatalogFilterTleButton from "./DownloadCatalogFilterTleButton";
 
-function HowToParticipate({ match }) {
-  const catalogFilter = match.params.catalogFilter;
-
+export default function HowToParticipate({ catalogFilter }) {
   return (
     <div className="catalog__how-to-wrapper">
       <h2 className="catalog__how-to-text">HOW TO PARTICIPATE</h2>
       <div className="catalog__button-wrapper">
         {catalogFilter === "priorities" || catalogFilter === "all" ? (
-          <DownloadCatalogFilterTleButton />
+          <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
         ) : null}
 
         <NavLink className="app__nav-link" to="/submit">
@@ -27,5 +25,3 @@ function HowToParticipate({ match }) {
     </div>
   );
 }
-
-export default withRouter(HowToParticipate);

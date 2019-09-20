@@ -1,14 +1,13 @@
 import React from "react";
 import { useAuthState } from "../../auth/auth-context";
-import { useCatalogState } from "../../catalog/catalog-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import SatSymbol from "../../assets/SatSymbol.svg";
 
 function NavBar(props) {
+  const catalogFilter = "priorities";
   const { userAddress } = useAuthState();
-  const { catalogFilter } = useCatalogState();
 
   return (
     <div className="nav-bar">

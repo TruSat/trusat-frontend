@@ -1,9 +1,6 @@
 import React from "react";
-import { useCatalogState } from "../catalog-context";
 
-export default function FilterDescription() {
-  const { catalogFilter } = useCatalogState();
-
+export default function FilterDescription({ catalogFilter }) {
   const filterDescriptions = [
     {
       filter: "priorities",

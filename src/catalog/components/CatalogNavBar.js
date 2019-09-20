@@ -1,12 +1,8 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import FilterDescription from "./FilterDescription";
-import { useCatalogDispatch } from "../catalog-context";
 
-function CatalogNavBar({ setRange, history, match }) {
-  const catalogFilter = match.params.catalogFilter;
-  const catalogDispatch = useCatalogDispatch();
-
+function CatalogNavBar({ catalogFilter, setRange, history }) {
   return (
     <section>
       <div className="catalog-nav-bar__wrapper">
@@ -18,10 +14,6 @@ function CatalogNavBar({ setRange, history, match }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({
-              type: "SET_CATALOG_FILTER",
-              payload: "priorities"
-            });
             history.push("/catalog/priorities");
           }}
         >
@@ -36,10 +28,6 @@ function CatalogNavBar({ setRange, history, match }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({
-              type: "SET_CATALOG_FILTER",
-              payload: "undisclosed"
-            });
             history.push("/catalog/undisclosed");
           }}
         >
@@ -54,7 +42,6 @@ function CatalogNavBar({ setRange, history, match }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "debris" });
             history.push("/catalog/debris");
           }}
         >
@@ -69,7 +56,6 @@ function CatalogNavBar({ setRange, history, match }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "latest" });
             history.push("/catalog/latest");
           }}
         >
@@ -84,14 +70,13 @@ function CatalogNavBar({ setRange, history, match }) {
           }
           onClick={() => {
             setRange({ start: 0, end: 10 });
-            catalogDispatch({ type: "SET_CATALOG_FILTER", payload: "all" });
             history.push("/catalog/all");
           }}
         >
           ALL
         </span>
       </div>
-      <FilterDescription />
+      <FilterDescription catalogFilter={catalogFilter} />
     </section>
   );
 }

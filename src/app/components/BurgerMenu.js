@@ -1,11 +1,10 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
-import { useCatalogState } from "../../catalog/catalog-context";
 import { useAuthState } from "../../auth/auth-context";
 
 export default function BurgerMenu(props) {
   const { userAddress } = useAuthState();
-  const { catalogFilter } = useCatalogState();
+  const catalogFilter = "priorities";
 
   return (
     // Pass on our props

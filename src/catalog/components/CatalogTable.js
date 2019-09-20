@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 
 import ObjectBadge from "../../assets/ObjectBadge.svg";
@@ -12,8 +12,7 @@ import {
 } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
-function CatalogTable({ match, range, setRange }) {
-  const catalogFilter = match.params.catalogFilter;
+export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
 
   useEffect(() => {
@@ -192,5 +191,3 @@ function CatalogTable({ match, range, setRange }) {
 // limit to 100
 // Not sure what is best way to sort this?
 // const all = [{}];
-
-export default withRouter(CatalogTable);

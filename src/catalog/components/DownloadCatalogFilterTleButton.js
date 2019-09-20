@@ -1,10 +1,8 @@
 import React, { Fragment, useEffect } from "react";
-import { useCatalogState } from "../catalog-context";
 import { useTrusatApi } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
 
-export default function DownloadCatalogFilterTleButton() {
-  const { catalogFilter } = useCatalogState();
+export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
 
   useEffect(() => {
@@ -34,24 +32,25 @@ export default function DownloadCatalogFilterTleButton() {
 
   return (
     <Fragment>
-      {isError && (
-        <p className="app__error-message">Something went wrong ...</p>
-      )}
-
-      {isLoading ? (
+      {isLoading && !isError ? (
         <Spinner />
       ) : (
-        <a
-          className="catalog__link"
-          href={downloadTles()}
-          download={`trusat_${catalogFilter}.txt`}
-        >
-          <span className="catalog__button catalog__get-data-button">
-            Get data
-          </span>
-        </a>
+        <Fragment>
+          {isError ? (
+            <p className="app__error-message">Something went wrong ...</p>
+          ) : (
+            <a
+              className="catalog__link"
+              href={downloadTles()}
+              download={`trusat_${catalogFilter}.txt`}
+            >
+              <span className="catalog__button catalog__get-data-button">
+                Get data
+              </span>
+            </a>
+          )}
+        </Fragment>
       )}
     </Fragment>
-    // only give option to download if user chooses "priorities" or "all" as a catalog filter
   );
 }
