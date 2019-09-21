@@ -27,8 +27,8 @@ export default function StepOne({ step, setStep }) {
         <div className="metamask-import__copy-wrapper">
           <p className="metamask-import__copy">
             You'll need MetaMask to secure your account. MetaMask is a browser
-            extension that acts as a secure vault for your private and valuable
-            information stored on the blockchain
+            extension that acts as a secure vault for your ethereum wallet that
+            currently serves as your identity in TruSat.
           </p>
           <span
             className={
