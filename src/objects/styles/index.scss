@@ -86,6 +86,10 @@ OBJECT INFO
   font-size: $extra-small-font-size;
 }
 
+.object-info__large-text {
+  @include body-text--large-desktop;
+}
+
 .object-info__small-text--grey {
   color: $secondary-theme-color;
   font-size: $extra-small-font-size;

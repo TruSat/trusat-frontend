@@ -6,7 +6,8 @@ import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
 import HowToSeeIt from "./HowToSeeIt";
 
 export default function Info() {
-  const { noradNumber, objectInfo } = useObjectsState();
+  const { noradNumber, objectInfo, objectBackground } = useObjectsState();
+  console.log(objectBackground);
 
   return objectInfo.object_name ? (
     <React.Fragment>
@@ -75,13 +76,15 @@ export default function Info() {
             </div>
             <div className="object-info__launched-wrapper">
               <p className="object-info__info-label">LAUNCHED</p>
-              <p>{objectInfo.year_launched}</p>
+              <p className="object-info__large-text">
+                {objectInfo.year_launched}
+              </p>
             </div>
           </div>
-          {objectInfo.object_background ? (
+          {objectBackground ? (
             <div className="object-info__purpose-wrapper">
               <p className="object-info__info-label">PURPOSE</p>
-              <p>{objectInfo.object_background}</p>
+              <p className="object-info__large-text">{objectBackground}</p>
             </div>
           ) : null}
         </div>

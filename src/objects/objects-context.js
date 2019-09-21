@@ -11,6 +11,9 @@ function objectsReducer(state, action) {
     case "SET_OBJECT_ORIGIN": {
       return { ...state, objectOrigin: action.payload };
     }
+    case "SET_OBJECT_BACKGROUND": {
+      return { ...state, objectBackground: action.payload };
+    }
     case "SET_OBJECT_INFO": {
       return { ...state, objectInfo: action.payload };
     }
@@ -27,6 +30,7 @@ function ObjectsProvider({ children }) {
   const [state, dispatch] = React.useReducer(objectsReducer, {
     noradNumber: "",
     objectOrigin: "",
+    objectBackground: "",
     objectInfo: {},
     observationFilter: "influence"
   });

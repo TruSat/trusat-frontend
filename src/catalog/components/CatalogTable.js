@@ -11,9 +11,12 @@ import {
 } from "../../app/helpers";
 import { useCatalogApi } from "../catalogFetchReducer";
 import TablePaginator from "../../app/components/TablePaginator";
+import { useObjectsDispatch } from "../../objects/objects-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useCatalogApi();
+  const objectsDispatch = useObjectsDispatch();
+  console.log(data);
 
   useEffect(() => {
     doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
@@ -32,6 +35,12 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         <td className="table__table-data">
           <NavLink
             className="app__nav-link"
+            onClick={() => {
+              objectsDispatch({
+                type: "SET_OBJECT_BACKGROUND",
+                payload: `${obj.object_primary_purpose}/${obj.object_secondary_purpose}`
+              });
+            }}
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">
