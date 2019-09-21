@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect } from "react";
-import { useTrusatApi } from "../../app/helpers";
+import { useTrusatGetApi } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
-  const [{ data, isLoading, isError }, doFetch] = useTrusatApi();
+  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if (catalogFilter === "priorities" || catalogFilter === "all") {

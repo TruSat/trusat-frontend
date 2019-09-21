@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactTooltip from "react-tooltip";
 
-export const useTrusatApi = () => {
+export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState(``);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +40,46 @@ export const useTrusatApi = () => {
   }, [url]);
 
   return [{ data, isLoading, isError }, setUrl];
+};
+
+export const useTrusatPostApi = () => {
+  const [data, setData] = useState([]);
+  const [url, setUrl] = useState(``);
+  const [postData, setPostData] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  useEffect(() => {
+    let didCancel = false;
+
+    const fetchData = async () => {
+      console.log("posting data!");
+      setIsError(false);
+      setIsLoading(true);
+      try {
+        const result = await axios.post(url, postData);
+
+        if (!didCancel) {
+          setData(result.data);
+        }
+      } catch (error) {
+        if (!didCancel) {
+          setIsError(true);
+        }
+      }
+      setIsLoading(false);
+    };
+
+    if (url && postData) {
+      fetchData();
+    }
+    // Clean up function which prevents attempt to update state of unmounted component
+    return () => {
+      didCancel = true;
+    };
+  }, [url, postData]);
+
+  return [{ data, isLoading, isError }, setUrl, setPostData];
 };
 
 export const renderFlag = code => {
