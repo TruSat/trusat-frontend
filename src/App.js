@@ -28,7 +28,6 @@ export default function App() {
 
   useEffect(() => {
     let didCancel = false;
-
     // get jwt from local storage
     // utilized for authentication and is decoded to return users ethereum address
     const retrieveJwtAndGetUserData = async () => {
