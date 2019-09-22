@@ -12,7 +12,7 @@ import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 import { useTrusatPostApi } from "../app/helpers";
 
-// check if noradNumber from url is not more than 5 chracters long
+// Check if noradNumber from url is not more than 5 chracters long
 // and if it only contains numbers
 const isValidNumber = number => {
   if (number.length > 5 || /^\d+$/.test(number) === false) {
@@ -26,7 +26,7 @@ export default function ObjectInfo({ match }) {
   const [{ data, isLoading, isError }, doPost, withData] = useTrusatPostApi();
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
-  const [showNumberError, setShowNumberError] = useState(false);
+  const [isNumberError, setIsNumberError] = useState(false);
 
   useEffect(() => {
     // only fetch data for a potentially valid norad number
@@ -38,7 +38,7 @@ export default function ObjectInfo({ match }) {
         })
       );
     } else {
-      setShowNumberError(true);
+      setIsNumberError(true);
     }
 
     if (data) {
@@ -49,49 +49,38 @@ export default function ObjectInfo({ match }) {
         payload: data.object_origin
       });
     }
+
+    console.log(data);
   }, [noradNumber, data, withData, doPost, objectsDispatch]);
 
-  return (
+  return isNumberError ? (
+    <p className="app__error-message">
+      Invalid NORAD Number found in the URL. Please double check the NORAD
+      Number you are trying to look up and refresh your browser.
+    </p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
     <Fragment>
-      {isLoading ? (
-        <Spinner />
+      {isError || data.length === 0 ? (
+        <p className="app__error-message">Something went wrong ...</p>
       ) : (
-        <Fragment>
-          {showNumberError ? (
-            <p className="app__error-message">
-              Invalid NORAD Number found in the URL. Please double check the
-              NORAD Number you are trying to look up and refresh your browser.
-            </p>
-          ) : isError ? (
-            <p className="app__error-message">Something went wrong ...</p>
-          ) : (
-            <div className="object__wrapper">
-              <div className="object-observations__filter-table-wrapper">
-                <Info />
-                <ObservationsFilter />
-                <FilterDescription />
-                {observationFilter === "influence" ? <InfluenceTable /> : null}
-                {observationFilter === "history" ? (
-                  <HistoryYearDropdown />
-                ) : null}
-                {observationFilter === "mySightings" ? (
-                  <UserSightingsTable />
-                ) : null}
-              </div>
-            </div>
-          )}
-        </Fragment>
+        <div className="object__wrapper">
+          <div className="object-observations__filter-table-wrapper">
+            <Info />
+            <ObservationsFilter />
+            <FilterDescription />
+            {observationFilter === "influence" ? <InfluenceTable /> : null}
+            {observationFilter === "history" ? <HistoryYearDropdown /> : null}
+            {observationFilter === "mySightings" ? (
+              <UserSightingsTable />
+            ) : null}
+          </div>
+        </div>
       )}
     </Fragment>
   );
 }
-
-// /* // {showNumberError ? (
-// //     <p className="app__error-message">
-// //       Invalid NORAD Number found in the URL. Please double check the NORAD
-// //       Number you are trying to look up and refresh your browser.
-// //     </p>
-// //   ) : null}
 
 // POST REQUEST
 // /objectInfo
