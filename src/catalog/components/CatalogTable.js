@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import {
@@ -12,9 +12,14 @@ import { useTrusatGetApi } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
+import axios from "axios";
 
-function CatalogTable({ match, range, setRange }) {
-  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+export default function CatalogTable({
+  catalogFilter,
+  match,
+  range,
+  setRange
+}) {
   const objectsDispatch = useObjectsDispatch();
   const {
     prioritiesData,
@@ -23,53 +28,71 @@ function CatalogTable({ match, range, setRange }) {
     latestData,
     allData
   } = useCatalogState();
-  // console.log(`priorities data = `, prioritiesData);
-  // console.log(`undisclosed data = `, undisclosedData);
-  // console.log(`debris data = `, debrisData);
-  // console.log(`latest data = `, latestData);
-  // console.log(`all data = `, allData);
+  console.log(`catalog filter = `, catalogFilter);
+  console.log(`priorities data = `, prioritiesData);
+  console.log(`undisclosed data = `, undisclosedData);
+  console.log(`debris data = `, debrisData);
+  console.log(`latest data = `, latestData);
+  console.log(`all data = `, allData);
   const catalogDispatch = useCatalogDispatch();
+
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (
-      match.params.catalogFilter === "priorities" &&
-      prioritiesData.length !== 0
-    ) {
+    let didCancel = false;
+
+    const fetchData = async () => {
+      console.log(`fetching data!`);
+
+      setIsError(false);
+      setIsLoading(true);
+
+      try {
+        const result = await axios(
+          `https://api.consensys.space:8080/catalog/${catalogFilter}`
+        );
+
+        if (!didCancel) {
+          setTableData(result.data);
+
+          catalogDispatch({
+            type: `SET_${catalogFilter.toUpperCase()}_DATA`,
+            payload: result.data
+          });
+        }
+      } catch (error) {
+        if (!didCancel) {
+          setIsError(true);
+        }
+      }
+      setIsLoading(false);
+    };
+
+    if (catalogFilter === "priorities" && prioritiesData.length !== 0) {
       setTableData(prioritiesData);
     } else if (
-      match.params.catalogFilter === "undisclosed" &&
+      catalogFilter === "undisclosed" &&
       undisclosedData.length !== 0
     ) {
       setTableData(undisclosedData);
-    } else if (
-      match.params.catalogFilter === "debris" &&
-      debrisData.length !== 0
-    ) {
+    } else if (catalogFilter === "debris" && debrisData.length !== 0) {
       setTableData(debrisData);
-    } else if (
-      match.params.catalogFilter === "latest" &&
-      latestData.length !== 0
-    ) {
+    } else if (catalogFilter === "latest" && latestData.length !== 0) {
       setTableData(latestData);
-    } else if (match.params.catalogFilter === "all" && allData.length !== 0) {
+    } else if (catalogFilter === "all" && allData.length !== 0) {
       setTableData(allData);
     } else {
-      doFetch(
-        `https://api.consensys.space:8080/catalog/${match.params.catalogFilter}`
-      );
-
-      setTableData(data);
-
-      catalogDispatch({
-        type: `SET_${match.params.catalogFilter.toUpperCase()}_DATA`,
-        payload: data
-      });
+      fetchData();
     }
+
+    // Clean up function which prevents attempt to update state of unmounted component
+    return () => {
+      didCancel = true;
+    };
   }, [
-    match.params.catalogFilter,
-    doFetch,
-    data,
+    catalogFilter,
     prioritiesData,
     undisclosedData,
     debrisData,
@@ -110,7 +133,7 @@ function CatalogTable({ match, range, setRange }) {
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">
-              {match.params.catalogFilter === "priorities" ? (
+              {catalogFilter === "priorities" ? (
                 <p>
                   {tableData.indexOf(obj) + 1}
                   &nbsp;
@@ -180,9 +203,9 @@ function CatalogTable({ match, range, setRange }) {
             </thead>
             <tbody className="table__body">{renderCatalogRows()}</tbody>
           </table>
-          {data.length > 10 ? (
+          {tableData.length > 10 ? (
             <TablePaginator
-              tableDataLength={data.length}
+              tableDataLength={tableData.length}
               range={range}
               setRange={setRange}
             />
@@ -192,8 +215,6 @@ function CatalogTable({ match, range, setRange }) {
     </Fragment>
   );
 }
-
-export default withRouter(CatalogTable);
 
 // GET request
 // /catalog/priorities
@@ -269,3 +290,79 @@ export default withRouter(CatalogTable);
 // limit to 100
 // Not sure what is best way to sort this?
 // const all = [{}];
+
+// switch (catalogFilter) {
+//   case "priorities":
+//     if (prioritiesData && prioritiesData.length !== 0) {
+//       setTableData(prioritiesData);
+//     } else {
+//       doFetch(`https://api.consensys.space:8080/catalog/priorities`);
+
+//       setTableData(data);
+
+//       catalogDispatch({
+//         type: `SET_PRIORITIES_DATA`,
+//         payload: data
+//       });
+//     }
+//     break;
+//   case "undisclosed":
+//     if (undisclosedData && undisclosedData.length !== 0) {
+//       setTableData(undisclosedData);
+//     } else {
+//       doFetch(`https://api.consensys.space:8080/catalog/undisclosed`);
+
+//       setTableData(data);
+
+//       catalogDispatch({
+//         type: `SET_UNDISCLOSED_DATA`,
+//         payload: data
+//       });
+//     }
+//     break;
+//   case "debris":
+//     if (debrisData && debrisData.length !== 0) {
+//       setTableData(debrisData);
+//     } else {
+//       doFetch(`https://api.consensys.space:8080/catalog/debris`);
+
+//       setTableData(data);
+
+//       catalogDispatch({
+//         type: `SET_DEBRIS_DATA`,
+//         payload: data
+//       });
+//     }
+//     break;
+//   case "latest":
+//     if (latestData && latestData.length !== 0) {
+//       setTableData(latestData);
+//     } else {
+//       doFetch(`https://api.consensys.space:8080/catalog/latest`);
+
+//       setTableData(data);
+
+//       catalogDispatch({
+//         type: `SET_LATEST_DATA`,
+//         payload: data
+//       });
+//     }
+//     break;
+//   case "all":
+//     if (allData && allData.length !== 0) {
+//       setTableData(allData);
+//     } else {
+//       doFetch(`https://api.consensys.space:8080/catalog/all`);
+
+//       setTableData(data);
+
+//       catalogDispatch({
+//         type: `SET_ALL_DATA`,
+//         payload: data
+//       });
+//     }
+//     break;
+//   default: {
+//     throw new Error(`Unhandle catalogFilter type: ${catalogFilter}`);
+//   }
+// }
