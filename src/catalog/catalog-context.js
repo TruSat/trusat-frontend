@@ -18,7 +18,7 @@ function catalogReducer(state, action) {
       return { ...state, latestData: action.payload };
     }
     case "SET_ALL_DATA": {
-      return { ...state, prioritiesData: action.payload };
+      return { ...state, allData: action.payload };
     }
     case "SET_PRIORITIES_TLE_DATA": {
       return { ...state, prioritiesTleData: action.payload };

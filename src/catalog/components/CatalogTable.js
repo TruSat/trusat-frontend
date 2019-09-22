@@ -1,7 +1,6 @@
 import React, { Fragment, useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, withRouter } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
-
 import ObjectBadge from "../../assets/ObjectBadge.svg";
 import {
   renderFlag,
@@ -14,7 +13,7 @@ import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
-export default function CatalogTable({ catalogFilter, range, setRange }) {
+function CatalogTable({ match, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
   const objectsDispatch = useObjectsDispatch();
   const {
@@ -24,35 +23,51 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     latestData,
     allData
   } = useCatalogState();
+  // console.log(`priorities data = `, prioritiesData);
+  // console.log(`undisclosed data = `, undisclosedData);
+  // console.log(`debris data = `, debrisData);
+  // console.log(`latest data = `, latestData);
+  // console.log(`all data = `, allData);
   const catalogDispatch = useCatalogDispatch();
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (catalogFilter === "priorities" && prioritiesData.length !== 0) {
+    if (
+      match.params.catalogFilter === "priorities" &&
+      prioritiesData.length !== 0
+    ) {
       setTableData(prioritiesData);
     } else if (
-      catalogFilter === "undisclosed" &&
+      match.params.catalogFilter === "undisclosed" &&
       undisclosedData.length !== 0
     ) {
       setTableData(undisclosedData);
-    } else if (catalogFilter === "debris" && debrisData.length !== 0) {
+    } else if (
+      match.params.catalogFilter === "debris" &&
+      debrisData.length !== 0
+    ) {
       setTableData(debrisData);
-    } else if (catalogFilter === "latest" && latestData.length !== 0) {
+    } else if (
+      match.params.catalogFilter === "latest" &&
+      latestData.length !== 0
+    ) {
       setTableData(latestData);
-    } else if (catalogFilter === "all" && allData.length !== 0) {
+    } else if (match.params.catalogFilter === "all" && allData.length !== 0) {
       setTableData(allData);
     } else {
-      doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
+      doFetch(
+        `https://api.consensys.space:8080/catalog/${match.params.catalogFilter}`
+      );
 
       setTableData(data);
 
       catalogDispatch({
-        type: `SET_${catalogFilter.toUpperCase()}_DATA`,
+        type: `SET_${match.params.catalogFilter.toUpperCase()}_DATA`,
         payload: data
       });
     }
   }, [
-    catalogFilter,
+    match.params.catalogFilter,
     doFetch,
     data,
     prioritiesData,
@@ -95,9 +110,9 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">
-              {catalogFilter === "priorities" ? (
+              {match.params.catalogFilter === "priorities" ? (
                 <p>
-                  {data.indexOf(obj) + 1}
+                  {tableData.indexOf(obj) + 1}
                   &nbsp;
                 </p>
               ) : null}
@@ -177,6 +192,8 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     </Fragment>
   );
 }
+
+export default withRouter(CatalogTable);
 
 // GET request
 // /catalog/priorities
