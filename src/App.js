@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -22,38 +22,41 @@ import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 
 export default function App() {
+  const [isError, setIsError] = useState(false);
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
 
   useEffect(() => {
+    let didCancel = false;
+
     // get jwt from local storage
     // utilized for authentication and is decoded to return users ethereum address
     const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
       const { address } = await jwt_decode(jwt);
-      // console.log(`jwt from localStorage = `, jwt);
-      // console.log(`decoded address from jwt in localStorage = `, address);
-      await axios
-        .post(
+
+      try {
+        const result = await axios.post(
           `https://api.consensys.space:8080/profile`,
           JSON.stringify({
             jwt: jwt,
             address: address
           })
-        )
-        .then(result => {
-          // console.log(
-          //   `userData retrieved from /profile on app load = `,
-          //   result.data
-          // );
+        );
+
+        if (!didCancel) {
           authDispatch({ type: "SET_JWT", payload: jwt });
           authDispatch({
             type: "SET_USER_ADDRESS",
             payload: address
           });
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        })
-        .catch(err => console.log(err));
+        }
+      } catch (error) {
+        if (!didCancel) {
+          setIsError(true);
+        }
+      }
     };
 
     if (localStorage.getItem("trusat-jwt")) {
@@ -73,10 +76,8 @@ export default function App() {
         <Route exact path="/" component={Welcome} />
         <Route path="/catalog/:catalogFilter" component={Catalog} />
         <Route path="/submit" component={Submit} />
-        {/* TO DO - make this route show an error when a number is appended that is greater than 5 */}
         <Route path="/object/:number" component={ObjectInfo} />
         <Route exact path="/profile/:address" component={Profile} />
-        {/* TO DO - make this route show an error when an eth address isnt found */}
         <Route exact path="/settings" component={AccountSettings} />
         <Route path="/settings/metamask" component={MetamaskImport} />
         <Route path="/about" component={About} />
