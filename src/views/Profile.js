@@ -68,7 +68,7 @@ export default function Profile({ match }) {
       setIsAddressError(true);
     } else {
       // if profileDispatch is present through and userAddress value is not equaled to address found in route
-      if (profileDispatch && userAddress !== addressFromRoute) {
+      if (userAddress !== addressFromRoute) {
         fetchData();
         // else if userData is present load it into the UI
       } else if (userData) {

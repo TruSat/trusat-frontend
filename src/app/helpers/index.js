@@ -12,7 +12,7 @@ export const useTrusatGetApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log(`fetching data!`);
+      console.log(`useTrusatGetApi is fetching data!`);
 
       setIsError(false);
       setIsLoading(true);
@@ -54,7 +54,7 @@ export const useTrusatPostApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log("posting data!");
+      console.log("useTrusatPostApi is posting data!");
       setIsError(false);
       setIsLoading(true);
       try {

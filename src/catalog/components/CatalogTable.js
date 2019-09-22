@@ -13,12 +13,7 @@ import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 import axios from "axios";
 
-export default function CatalogTable({
-  catalogFilter,
-  match,
-  range,
-  setRange
-}) {
+export default function CatalogTable({ catalogFilter, range, setRange }) {
   const objectsDispatch = useObjectsDispatch();
   const {
     prioritiesData,
@@ -27,12 +22,12 @@ export default function CatalogTable({
     latestData,
     allData
   } = useCatalogState();
-  console.log(`catalog filter = `, catalogFilter);
-  console.log(`priorities data = `, prioritiesData);
-  console.log(`undisclosed data = `, undisclosedData);
-  console.log(`debris data = `, debrisData);
-  console.log(`latest data = `, latestData);
-  console.log(`all data = `, allData);
+  // console.log(`catalog filter = `, catalogFilter);
+  // console.log(`priorities data = `, prioritiesData);
+  // console.log(`undisclosed data = `, undisclosedData);
+  // console.log(`debris data = `, debrisData);
+  // console.log(`latest data = `, latestData);
+  // console.log(`all data = `, allData);
   const catalogDispatch = useCatalogDispatch();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +38,8 @@ export default function CatalogTable({
     let didCancel = false;
 
     const fetchData = async () => {
+      console.log(`fetching catalogData`);
+
       setIsError(false);
       setIsLoading(true);
 

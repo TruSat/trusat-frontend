@@ -49,8 +49,6 @@ export default function ObjectInfo({ match }) {
         payload: data.object_origin
       });
     }
-
-    console.log(data);
   }, [noradNumber, data, withData, doPost, objectsDispatch]);
 
   return isNumberError ? (
