@@ -12,6 +12,8 @@ export const useTrusatGetApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
+      console.log(`fetching data!`);
+
       setIsError(false);
       setIsLoading(true);
 
@@ -68,7 +70,7 @@ export const useTrusatPostApi = () => {
       }
       setIsLoading(false);
     };
-
+    // Only fetch when url and postData comes through
     if (url && postData) {
       fetchData();
     }

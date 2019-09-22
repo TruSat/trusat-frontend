@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import Select from "react-select";
 
 const options = [
@@ -9,7 +10,7 @@ const options = [
   { value: "all", label: "ALL" }
 ];
 
-export default function NavDropdown({ catalogFilter, history, setRange }) {
+function NavDropdown({ catalogFilter, history, setRange }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
@@ -50,3 +51,5 @@ export default function NavDropdown({ catalogFilter, history, setRange }) {
     </div>
   );
 }
+
+export default withRouter(NavDropdown);

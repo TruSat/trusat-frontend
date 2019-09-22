@@ -20,7 +20,12 @@ function catalogReducer(state, action) {
     case "SET_ALL_DATA": {
       return { ...state, prioritiesData: action.payload };
     }
-
+    case "SET_PRIORITIES_TLE_DATA": {
+      return { ...state, prioritiesTleData: action.payload };
+    }
+    case "SET_ALL_TLE_DATA": {
+      return { ...state, allTleData: action.payload };
+    }
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
     }
@@ -29,11 +34,13 @@ function catalogReducer(state, action) {
 
 function CatalogProvider({ children }) {
   const [state, dispatch] = React.useReducer(catalogReducer, {
-    prioritiesData: null,
-    undisclosedData: null,
-    debrisData: null,
-    latestData: null,
-    allData: null
+    prioritiesData: [],
+    undisclosedData: [],
+    debrisData: [],
+    latestData: [],
+    allData: [],
+    prioritiesTleData: "",
+    allTleData: ""
   });
 
   return (

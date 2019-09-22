@@ -9,13 +9,13 @@ import {
   shortenAddressToolTip,
   toolTipCopy
 } from "../../app/helpers";
-import { useCatalogApi } from "../catalogFetchReducer";
+import { useTrusatGetApi } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
-  const [{ data, isLoading, isError }, doFetch] = useCatalogApi();
+  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
   const objectsDispatch = useObjectsDispatch();
   const {
     prioritiesData,
@@ -28,31 +28,18 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    if (
-      catalogFilter === "priorities" &&
-      prioritiesData &&
-      prioritiesData.length !== 0
-    ) {
+    if (catalogFilter === "priorities" && prioritiesData.length !== 0) {
       setTableData(prioritiesData);
     } else if (
       catalogFilter === "undisclosed" &&
-      undisclosedData &&
       undisclosedData.length !== 0
     ) {
       setTableData(undisclosedData);
-    } else if (
-      catalogFilter === "debris" &&
-      debrisData &&
-      debrisData.length !== 0
-    ) {
+    } else if (catalogFilter === "debris" && debrisData.length !== 0) {
       setTableData(debrisData);
-    } else if (
-      catalogFilter === "latest" &&
-      latestData &&
-      latestData.length !== 0
-    ) {
+    } else if (catalogFilter === "latest" && latestData.length !== 0) {
       setTableData(latestData);
-    } else if (catalogFilter === "all" && allData && allData.length !== 0) {
+    } else if (catalogFilter === "all" && allData.length !== 0) {
       setTableData(allData);
     } else {
       doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
