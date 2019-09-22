@@ -168,47 +168,43 @@ export default function CatalogTable({
     ));
   };
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <Fragment>
-      {isLoading ? (
-        <Spinner />
+      {isError ? (
+        <p className="app__error-message">Something went wrong ...</p>
       ) : (
-        <Fragment>
-          {isError && (
-            <p className="app__error-message">Something went wrong ...</p>
-          )}
-
-          <table className="table">
-            <thead className="table__header">
-              <tr className="table__header-row">
-                <th className="table__header-text">
-                  {toolTip("OBJECT", toolTipCopy.object)}
-                </th>
-                <th className="table__header-text">
-                  {toolTip("ORIGIN", toolTipCopy.origin)}
-                </th>
-                <th className="table__header-text app__hide-on-mobile">
-                  {toolTip("PURPOSE", toolTipCopy.purpose)}
-                </th>
-                <th className="table__header-text app__hide-on-mobile">
-                  {toolTip("CONFIDENCE", toolTipCopy.confidence)}
-                </th>
-                <th className="table__header-text">
-                  {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
-                </th>
-              </tr>
-            </thead>
-            <tbody className="table__body">{renderCatalogRows()}</tbody>
-          </table>
-          {tableData.length > 10 ? (
-            <TablePaginator
-              tableDataLength={tableData.length}
-              range={range}
-              setRange={setRange}
-            />
-          ) : null}
-        </Fragment>
+        <table className="table">
+          <thead className="table__header">
+            <tr className="table__header-row">
+              <th className="table__header-text">
+                {toolTip("OBJECT", toolTipCopy.object)}
+              </th>
+              <th className="table__header-text">
+                {toolTip("ORIGIN", toolTipCopy.origin)}
+              </th>
+              <th className="table__header-text app__hide-on-mobile">
+                {toolTip("PURPOSE", toolTipCopy.purpose)}
+              </th>
+              <th className="table__header-text app__hide-on-mobile">
+                {toolTip("CONFIDENCE", toolTipCopy.confidence)}
+              </th>
+              <th className="table__header-text">
+                {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
+              </th>
+            </tr>
+          </thead>
+          <tbody className="table__body">{renderCatalogRows()}</tbody>
+        </table>
       )}
+      {tableData.length > 10 ? (
+        <TablePaginator
+          tableDataLength={tableData.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
     </Fragment>
   );
 }

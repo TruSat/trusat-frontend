@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
 import ProfileHeader from "../profile/components/ProfileHeader";
 import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
@@ -28,16 +28,22 @@ export default function Profile({ match }) {
   const { jwt, userAddress } = useAuthState();
   const { userData } = useUserState();
   const profileDispatch = useProfileDispatch();
+
+  const [isAddressError, setIsAddressError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [showAddressError, setShowAddressError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    let didCancel = false;
+
     const fetchData = async () => {
-      console.log(`fetching profile data`);
+      console.log(`fetching /profile data!`);
+
+      setIsError(false);
       setIsLoading(true);
 
-      await axios
-        .post(
+      try {
+        const result = await axios.post(
           `https://api.consensys.space:8080/profile`,
           JSON.stringify({
             jwt: jwt,
@@ -45,26 +51,26 @@ export default function Profile({ match }) {
             // leo's address for testing
             // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
           })
-        )
-        .then(result => {
+        );
+
+        if (!didCancel) {
           profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
-          setIsLoading(false);
-        })
-        .catch(err => console.log(err));
+        }
+      } catch (error) {
+        if (!didCancel) {
+          setIsError(true);
+        }
+      }
+      setIsLoading(false);
     };
 
-    // If address in route is not a valid ethereum address, render an error
     if (!isAddress(addressFromRoute)) {
-      setShowAddressError(true);
+      setIsAddressError(true);
     } else {
-      // TO DO - discuss this logic with Kenan
-      // if profileDispatch is present through
-      // and userAddress value is not equaled to address found in route
-      // call the api to fetch profileData
+      // if profileDispatch is present through and userAddress value is not equaled to address found in route
       if (profileDispatch && userAddress !== addressFromRoute) {
         fetchData();
-        // if userData is present
-        // load it into the UI
+        // else if userData is present load it into the UI
       } else if (userData) {
         profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
       }
@@ -76,10 +82,10 @@ export default function Profile({ match }) {
     userData,
     profileDispatch,
     setIsLoading,
-    showAddressError
+    isAddressError
   ]);
 
-  return showAddressError ? (
+  return isAddressError ? (
     <p className="app__error-message">
       Invalid ethereum address found in the URL. Please double check the address
       you are trying to look up and refresh your browser.
@@ -87,11 +93,17 @@ export default function Profile({ match }) {
   ) : isLoading ? (
     <Spinner />
   ) : (
-    <div className="profile__wrapper">
-      <ProfileHeader />
-      <ObjectsCollectedTable />
-      <ObservationsTable />
-    </div>
+    <Fragment>
+      {isError ? (
+        <p className="app__error-message">Something went wrong ...</p>
+      ) : (
+        <div className="profile__wrapper">
+          <ProfileHeader />
+          <ObjectsCollectedTable />
+          <ObservationsTable />
+        </div>
+      )}
+    </Fragment>
   );
 }
 
