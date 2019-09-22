@@ -8,7 +8,6 @@ import {
   shortenAddressToolTip,
   toolTipCopy
 } from "../../app/helpers";
-import { useTrusatGetApi } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
@@ -44,8 +43,6 @@ export default function CatalogTable({
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log(`fetching data!`);
-
       setIsError(false);
       setIsLoading(true);
 
