@@ -12,7 +12,6 @@ export const useTrusatGetApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log(`fetching data!`);
       setIsError(false);
       setIsLoading(true);
 

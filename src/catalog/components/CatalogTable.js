@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 
@@ -12,24 +12,78 @@ import {
 import { useCatalogApi } from "../catalogFetchReducer";
 import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
+import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useCatalogApi();
   const objectsDispatch = useObjectsDispatch();
-  console.log(data);
+  const {
+    prioritiesData,
+    undisclosedData,
+    debrisData,
+    latestData,
+    allData
+  } = useCatalogState();
+  const catalogDispatch = useCatalogDispatch();
+  const [tableData, setTableData] = useState([]);
 
   useEffect(() => {
-    doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
-  }, [catalogFilter, doFetch]);
+    if (
+      catalogFilter === "priorities" &&
+      prioritiesData &&
+      prioritiesData.length !== 0
+    ) {
+      setTableData(prioritiesData);
+    } else if (
+      catalogFilter === "undisclosed" &&
+      undisclosedData &&
+      undisclosedData.length !== 0
+    ) {
+      setTableData(undisclosedData);
+    } else if (
+      catalogFilter === "debris" &&
+      debrisData &&
+      debrisData.length !== 0
+    ) {
+      setTableData(debrisData);
+    } else if (
+      catalogFilter === "latest" &&
+      latestData &&
+      latestData.length !== 0
+    ) {
+      setTableData(latestData);
+    } else if (catalogFilter === "all" && allData && allData.length !== 0) {
+      setTableData(allData);
+    } else {
+      doFetch(`https://api.consensys.space:8080/catalog/${catalogFilter}`);
+
+      setTableData(data);
+
+      catalogDispatch({
+        type: `SET_${catalogFilter.toUpperCase()}_DATA`,
+        payload: data
+      });
+    }
+  }, [
+    catalogFilter,
+    doFetch,
+    data,
+    prioritiesData,
+    undisclosedData,
+    debrisData,
+    latestData,
+    allData,
+    catalogDispatch
+  ]);
 
   const renderCatalogRows = () => {
     const { start, end } = range;
 
-    const rangeData = data.slice(start, end);
+    const rangeData = tableData.slice(start, end);
 
     return rangeData.map(obj => (
       <tr
-        key={data.indexOf(obj)}
+        key={tableData.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
         <td className="table__table-data">

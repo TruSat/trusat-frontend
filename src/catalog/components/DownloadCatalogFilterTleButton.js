@@ -8,7 +8,6 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   useEffect(() => {
     if (catalogFilter === "priorities" || catalogFilter === "all") {
       // TODO - stop api being hit twice
-      console.log(`fetching txt data`);
       doFetch(
         `https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`
       );

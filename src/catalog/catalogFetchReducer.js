@@ -40,6 +40,7 @@ export const useCatalogApi = initialUrl => {
     let didCancel = false;
 
     const fetchData = async () => {
+      console.log("fetching data");
       dispatch({ type: "FETCH_INIT" });
 
       try {
