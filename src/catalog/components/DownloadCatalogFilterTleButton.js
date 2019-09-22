@@ -61,27 +61,17 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
     return textFile;
   };
 
-  return (
-    <Fragment>
-      {isLoading && !isError ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          {isError ? (
-            <p className="app__error-message">Something went wrong ...</p>
-          ) : (
-            <a
-              className="catalog__link"
-              href={downloadTles()}
-              download={`trusat_${catalogFilter}.txt`}
-            >
-              <span className="catalog__button catalog__get-data-button">
-                Get data
-              </span>
-            </a>
-          )}
-        </Fragment>
-      )}
-    </Fragment>
+  return isError ? (
+    <p className="app__error-message">Something went wrong ...</p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
+    <a
+      className="catalog__link"
+      href={downloadTles()}
+      download={`trusat_${catalogFilter}.txt`}
+    >
+      <span className="catalog__button catalog__get-data-button">Get data</span>
+    </a>
   );
 }
