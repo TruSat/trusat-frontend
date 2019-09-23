@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import axios from "axios";
 import { API_ROOT } from "../../app/helpers";
 import {
@@ -15,8 +15,13 @@ import CircleCheck from "../../assets/CircleCheck.svg";
 
 export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const [pastedIODs, setPastedIODs] = useState(``);
+  const [pastedIODs, setPastedIODs] = useState(`la
+la
+la
+28537 05 004A   4353 G 20190324194037131 56 75 0926071+373796 16 S
+28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S`);
   const [successCount, setSuccessCount] = useState(null);
+  const [errorMessages, setErrorMessages] = useState([]);
   const authDispatch = useAuthDispatch();
   const { jwt } = useAuthState();
   // const userDispatch = useUserDispatch();
@@ -34,19 +39,6 @@ export default function MultipleObservationForm() {
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
-    // authDispatch({ type: "SET_BURNER", payload: wallet });
-    // authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
-    // authDispatch({ type: "SET_JWT", payload: jwt });
-    // authDispatch({ type: "AUTHENTICATING", payload: false });
-
-    // userDispatch({
-    //   type: "SET_USER_ADDRESS",
-    //   payload: wallet.signingKey.address
-    // });
-    // // add private key and jwt to local storage
-    // const privateKey = wallet.signingKey.privateKey;
-    // localStorage.setItem("trusat-private-key", privateKey);
-    // localStorage.setItem("trusat-jwt", jwt);
     return jwt;
   };
 
@@ -70,8 +62,13 @@ export default function MultipleObservationForm() {
         JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
       )
       .then(result => {
-        console.log(`result returned from /submitObservation = `, result);
-        setSuccessCount(result.data.success);
+        console.log(`result returned from /submitObservation = `, result.data);
+        if (result.data.success !== 0) {
+          setSuccessCount(result.data.success);
+        } else if (result.data.error_messages.length !== 0) {
+          setErrorMessages(result.data.error_messages);
+        }
+
         setIsLoading(false);
       })
       .catch(err => {
@@ -121,12 +118,13 @@ export default function MultipleObservationForm() {
         ) : null}
 
         {/* Failure message */}
-        {successCount === 0 ? (
-          <p className="app__error-message">
-            Something went wrong! You either submitted invald observations or
-            duplicates that are already present in the TruSat database. Please
-            check your observations and try again
-          </p>
+        {errorMessages.length > 0 ? (
+          <Fragment>
+            <p className="app__error-message">Something went wrong!</p>
+            {errorMessages.map(message => {
+              return <p className="app__error-message">{message}</p>;
+            })}
+          </Fragment>
         ) : null}
       </div>
 
