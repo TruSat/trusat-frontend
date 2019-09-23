@@ -27,7 +27,7 @@ export default function ProfileHeader() {
 
       <div className="profile__button-data-wrapper">
         {/* Dont render settings link to user unless they are viewing their own profile */}
-        {userAddress === profileData.user_address ? (
+        {userAddress.toLowerCase() === profileData.user_address ? (
           <NavLink className="app__nav-link" to="/settings">
             <span className="app__black-button--small">Settings</span>
           </NavLink>
