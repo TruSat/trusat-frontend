@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
@@ -21,7 +22,7 @@ export default function HistoryMonthTable({
     const fetchData = async () => {
       await axios
         .post(
-          `https://api.consensys.space:8080/object/history`,
+          `${API_ROOT}/object/history`,
           JSON.stringify({
             norad_number: noradNumber,
             year: yearNumber,

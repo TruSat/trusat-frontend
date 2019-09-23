@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import { NavLink } from "react-router-dom";
 import { useObjectsState } from "../objects-context";
 import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
@@ -18,7 +19,7 @@ export default function InfluenceTable() {
 
       await axios
         .post(
-          `https://api.consensys.space:8080/object/influence`,
+          `${API_ROOT}/object/influence`,
           JSON.stringify({ norad_number: noradNumber })
         )
         .then(result => {

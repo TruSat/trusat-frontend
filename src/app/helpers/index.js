@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import ReactTooltip from "react-tooltip";
 
+export const API_ROOT = `https://api.consensys.space:8080`;
+
 export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState(``);

@@ -8,6 +8,7 @@ import {
 } from "../helpers/";
 import Web3 from "web3";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import { handleMetamaskConnect } from "../helpers";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
@@ -29,6 +30,7 @@ export default function MetaMask({ buttonText }) {
   // For both signup and login metamask flows
   const handleMetamaskAuth = async () => {
     const address = web3._provider.selectedAddress;
+    console.log(`address found in metamask = `, address);
 
     const nonce = await retrieveNonce(address);
 
@@ -40,7 +42,7 @@ export default function MetaMask({ buttonText }) {
 
       await axios
         .post(
-          `https://api.consensys.space:8080/profile`,
+          `${API_ROOT}/profile`,
           JSON.stringify({
             jwt: jwt,
             address: address

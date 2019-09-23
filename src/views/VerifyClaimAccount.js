@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_ROOT } from "../app/helpers";
 import { createWallet, createSecret } from "../auth/helpers";
 import { useAuthDispatch } from "../auth/auth-context";
 
@@ -45,7 +46,7 @@ export default function VerifyClaimAccount({ match }) {
 
       await axios
         .post(
-          `https://api.consensys.space:8080/verifyClaimAccount`,
+          `${API_ROOT}/verifyClaimAccount`,
           JSON.stringify({
             jwt: match.params.jwt,
             address: wallet.signingKey.address,

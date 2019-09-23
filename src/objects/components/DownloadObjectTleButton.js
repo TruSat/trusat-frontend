@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 
 export default function DownloadObjectTleButton() {
@@ -10,7 +11,7 @@ export default function DownloadObjectTleButton() {
     const fetchData = async () => {
       await axios
         .post(
-          `https://api.consensys.space:8080/tle/object`,
+          `${API_ROOT}/tle/object`,
           JSON.stringify({ norad_number: noradNumber })
         )
         .then(res => {

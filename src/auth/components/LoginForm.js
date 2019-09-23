@@ -6,6 +6,7 @@ import { useUserDispatch } from "../../user/user-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
 import { decryptSecret } from "../helpers";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
@@ -42,7 +43,7 @@ export default function LoginForm() {
 
     await axios
       .post(
-        `https://api.consensys.space:8080/profile`,
+        `${API_ROOT}/profile`,
         JSON.stringify({
           jwt: jwt,
           address: wallet.signingKey.address

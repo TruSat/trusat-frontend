@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ROOT } from "./app/helpers";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
@@ -36,7 +37,7 @@ export default function App() {
 
       try {
         const result = await axios.post(
-          `https://api.consensys.space:8080/profile`,
+          `${API_ROOT}/profile`,
           JSON.stringify({
             jwt: jwt,
             address: address

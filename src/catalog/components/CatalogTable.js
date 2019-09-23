@@ -12,6 +12,7 @@ import TablePaginator from "../../app/components/TablePaginator";
 import { useObjectsDispatch } from "../../objects/objects-context";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const objectsDispatch = useObjectsDispatch();
@@ -44,9 +45,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
       setIsLoading(true);
 
       try {
-        const result = await axios(
-          `https://api.consensys.space:8080/catalog/${catalogFilter}`
-        );
+        const result = await axios(`${API_ROOT}/catalog/${catalogFilter}`);
 
         if (!didCancel) {
           setTableData(result.data);
@@ -280,79 +279,3 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
 // limit to 100
 // Not sure what is best way to sort this?
 // const all = [{}];
-
-// switch (catalogFilter) {
-//   case "priorities":
-//     if (prioritiesData && prioritiesData.length !== 0) {
-//       setTableData(prioritiesData);
-//     } else {
-//       doFetch(`https://api.consensys.space:8080/catalog/priorities`);
-
-//       setTableData(data);
-
-//       catalogDispatch({
-//         type: `SET_PRIORITIES_DATA`,
-//         payload: data
-//       });
-//     }
-//     break;
-//   case "undisclosed":
-//     if (undisclosedData && undisclosedData.length !== 0) {
-//       setTableData(undisclosedData);
-//     } else {
-//       doFetch(`https://api.consensys.space:8080/catalog/undisclosed`);
-
-//       setTableData(data);
-
-//       catalogDispatch({
-//         type: `SET_UNDISCLOSED_DATA`,
-//         payload: data
-//       });
-//     }
-//     break;
-//   case "debris":
-//     if (debrisData && debrisData.length !== 0) {
-//       setTableData(debrisData);
-//     } else {
-//       doFetch(`https://api.consensys.space:8080/catalog/debris`);
-
-//       setTableData(data);
-
-//       catalogDispatch({
-//         type: `SET_DEBRIS_DATA`,
-//         payload: data
-//       });
-//     }
-//     break;
-//   case "latest":
-//     if (latestData && latestData.length !== 0) {
-//       setTableData(latestData);
-//     } else {
-//       doFetch(`https://api.consensys.space:8080/catalog/latest`);
-
-//       setTableData(data);
-
-//       catalogDispatch({
-//         type: `SET_LATEST_DATA`,
-//         payload: data
-//       });
-//     }
-//     break;
-//   case "all":
-//     if (allData && allData.length !== 0) {
-//       setTableData(allData);
-//     } else {
-//       doFetch(`https://api.consensys.space:8080/catalog/all`);
-
-//       setTableData(data);
-
-//       catalogDispatch({
-//         type: `SET_ALL_DATA`,
-//         payload: data
-//       });
-//     }
-//     break;
-//   default: {
-//     throw new Error(`Unhandle catalogFilter type: ${catalogFilter}`);
-//   }
-// }

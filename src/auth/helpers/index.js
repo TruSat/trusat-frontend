@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
@@ -11,10 +12,7 @@ export const createWallet = () => {
 
 export const retrieveNonce = async address => {
   return await axios
-    .post(
-      "https://api.consensys.space:8080/getNonce",
-      JSON.stringify({ address: address })
-    )
+    .post(`${API_ROOT}/getNonce`, JSON.stringify({ address: address }))
     .then(response => {
       return response.data.nonce;
     })
@@ -60,7 +58,7 @@ export const signMessage = ({ nonce, wallet }) => {
 export const retrieveJwt = async ({ address, signedMessage }) => {
   return await axios
     .post(
-      "https://api.consensys.space:8080/login",
+      `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: signedMessage.signature
@@ -94,7 +92,7 @@ export const retrieveMetamaskJwt = async ({
 }) => {
   return await axios
     .post(
-      "https://api.consensys.space:8080/login",
+      `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: metamaskSignedMessage

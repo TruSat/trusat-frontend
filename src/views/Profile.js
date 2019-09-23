@@ -1,5 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import axios from "axios";
+import { API_ROOT } from "../app/helpers";
 import ProfileHeader from "../profile/components/ProfileHeader";
 import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
 import ObservationsTable from "../profile/components/ObservationsTable";
@@ -44,7 +45,7 @@ export default function Profile({ match }) {
 
       try {
         const result = await axios.post(
-          `https://api.consensys.space:8080/profile`,
+          `${API_ROOT}/profile`,
           JSON.stringify({
             jwt: jwt,
             address: addressFromRoute

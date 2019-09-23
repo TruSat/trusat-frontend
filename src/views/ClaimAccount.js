@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_ROOT } from "../app/helpers";
 
 export default function ClaimAccount() {
   const [email, setEmail] = useState("john.gribbin@consensys.net");
@@ -8,7 +9,7 @@ export default function ClaimAccount() {
   const claimAccount = async () => {
     await axios
       .post(
-        `https://api.consensys.space:8080/claimAccount`,
+        `${API_ROOT}/claimAccount`,
         JSON.stringify({
           email: email
         })

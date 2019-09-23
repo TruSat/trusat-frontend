@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { API_ROOT } from "../app/helpers";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
@@ -53,7 +54,7 @@ export default function UserSettings() {
     // Post the edits
     await axios
       .post(
-        `https://api.consensys.space:8080/editProfile`,
+        `${API_ROOT}/editProfile`,
         JSON.stringify({
           jwt: jwt,
           address: userAddress,
@@ -73,7 +74,7 @@ export default function UserSettings() {
     // Get the updated user data
     await axios
       .post(
-        `https://api.consensys.space:8080/profile`,
+        `${API_ROOT}/profile`,
         JSON.stringify({
           jwt: jwt,
           address: userAddress

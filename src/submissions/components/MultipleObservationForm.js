@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
 import {
   createWallet,
   retrieveNonce,
@@ -65,7 +66,7 @@ export default function MultipleObservationForm() {
 
     await axios
       .post(
-        `https://api.consensys.space:8080/submitObservation`,
+        `${API_ROOT}/submitObservation`,
         JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
       )
       .then(result => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useObjectsState } from "../objects-context";
-import { renderFlag } from "../../app/helpers/";
+import { renderFlag, API_ROOT } from "../../app/helpers/";
 import { shortenAddressToolTip, toolTipCopy, toolTip } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
@@ -20,7 +20,7 @@ export default function UserSightingsTable() {
 
       await axios
         .post(
-          `https://api.consensys.space:8080/object/userSightings`,
+          `${API_ROOT}/object/userSightings`,
           JSON.stringify({
             norad_number: noradNumber,
             jwt: jwt,

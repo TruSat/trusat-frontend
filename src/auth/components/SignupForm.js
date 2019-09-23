@@ -10,6 +10,7 @@ import {
 } from "../helpers/";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
+import { API_ROOT } from "../../app/helpers";
 
 export default function SignupForm() {
   const authDispatch = useAuthDispatch();
@@ -31,7 +32,7 @@ export default function SignupForm() {
   const emailSecret = async secret => {
     await axios
       .post(
-        `https://api.consensys.space:8080/emailSecret`,
+        `${API_ROOT}/emailSecret`,
         JSON.stringify({ to: email, payload: secret })
       )
       .then(result => {
@@ -92,7 +93,7 @@ export default function SignupForm() {
 
       await axios
         .post(
-          `https://api.consensys.space:8080/profile`,
+          `${API_ROOT}/profile`,
           JSON.stringify({
             jwt: jwt,
             address: wallet.signingKey.address

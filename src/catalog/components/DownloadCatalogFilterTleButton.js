@@ -1,7 +1,8 @@
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Spinner from "../../app/components/Spinner";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
+import { API_ROOT } from "../../app/helpers";
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const { prioritiesTleData, allTleData } = useCatalogState();
@@ -19,7 +20,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
 
       try {
         const result = await axios(
-          `https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`
+          `${API_ROOT}/tle/trusat_${catalogFilter}.txt`
         );
 
         if (!didCancel) {
