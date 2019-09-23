@@ -10,8 +10,8 @@ import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
   const userDispatch = useUserDispatch();
-  const { jwt } = useAuthState();
-  const { userAddress, userData } = useUserState();
+  const { jwt, userAddress } = useAuthState();
+  const { userData } = useUserState();
   const [isLoading, setIsLoading] = useState(false);
   // Profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
@@ -72,6 +72,8 @@ export default function UserSettings() {
       })
       .catch(err => console.log(err));
     // Get the updated user data
+    console.log(`userAddress = `, userAddress);
+
     await axios
       .post(
         `${API_ROOT}/profile`,
