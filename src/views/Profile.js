@@ -56,6 +56,7 @@ export default function Profile({ match }) {
 
         if (!didCancel) {
           profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
+          console.log(result.data);
         }
       } catch (error) {
         if (!didCancel) {
