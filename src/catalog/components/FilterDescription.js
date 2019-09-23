@@ -18,7 +18,7 @@ export default function FilterDescription({ catalogFilter }) {
     },
     {
       filter: "latest",
-      copy: "The most recently tracked objects in the catalog."
+      copy: "The most recently launched objects that are in the catalog."
     },
     { filter: "all", copy: "All objects of the TruSat catalog." }
   ];
