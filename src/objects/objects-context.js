@@ -17,6 +17,9 @@ function objectsReducer(state, action) {
     case "SET_OBJECT_INFO": {
       return { ...state, objectInfo: action.payload };
     }
+    case "SET_YEAR_LAUNCHED": {
+      return { ...state, yearLaunched: action.payload };
+    }
     case "SET_OBSERVATION_FILTER": {
       return { ...state, observationFilter: action.payload };
     }
@@ -32,6 +35,7 @@ function ObjectsProvider({ children }) {
     objectOrigin: "",
     objectBackground: "",
     objectInfo: {},
+    yearLaunched: "",
     observationFilter: "history"
   });
 
