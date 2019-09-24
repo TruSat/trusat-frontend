@@ -51,6 +51,7 @@ export default function MetaMask({ buttonText }) {
         .then(result => {
           userDispatch({ type: "SET_USER_DATA", payload: result.data });
           authDispatch({ type: "SET_USER_ADDRESS", payload: address });
+          authDispatch({ type: "SET_JWT", payload: jwt });
         })
         .catch(err => console.log(err));
 
