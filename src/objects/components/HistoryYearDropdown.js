@@ -5,9 +5,9 @@ import HistoryMonthTable from "./HistoryMonthTable";
 import { useObjectsState } from "../../objects/objects-context";
 
 export default function HistoryYearDropdown() {
-  const { noradNumber } = useObjectsState();
+  const { noradNumber, yearLaunched } = useObjectsState();
   const [yearChosen, setYearChosen] = useState("2019");
-  const [objectYearHistory, setObjectYearHistory] = useState([]);
+  const [yearData, setYearData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function HistoryYearDropdown() {
           })
         );
         console.log(result.data);
-        setObjectYearHistory(result.data);
+        setYearData(result.data);
         setIsLoading(false);
       } catch (error) {
         console.log(error);
@@ -36,13 +36,13 @@ export default function HistoryYearDropdown() {
   }, [yearChosen, noradNumber]);
 
   const renderMonthTables = () => {
-    return Object.keys(objectYearHistory).map((monthKey, index) => {
-      if (objectYearHistory[monthKey].length !== 0) {
+    return Object.keys(yearData).map((monthKey, index) => {
+      if (yearData[monthKey].length !== 0) {
         return (
           <HistoryMonthTable
             key={monthKey}
             monthName={monthKey}
-            monthHistory={objectYearHistory[monthKey]}
+            monthData={yearData[monthKey]}
           />
         );
       }
