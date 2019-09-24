@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
 import {
@@ -16,6 +16,7 @@ export default function MetaMask({ buttonText }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
   const userDispatch = useUserDispatch();
+  const [isError, setIsError] = useState(false);
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
@@ -30,7 +31,6 @@ export default function MetaMask({ buttonText }) {
   // For both signup and login metamask flows
   const handleMetamaskAuth = async () => {
     const address = web3._provider.selectedAddress;
-    console.log(`address found in metamask = `, address);
 
     const nonce = await retrieveNonce(address);
 
@@ -40,35 +40,38 @@ export default function MetaMask({ buttonText }) {
     if (typeof metamaskSignedMessage === "string") {
       const jwt = await retrieveMetamaskJwt({ address, metamaskSignedMessage });
 
-      await axios
-        .post(
+      try {
+        const result = await axios.post(
           `${API_ROOT}/profile`,
           JSON.stringify({
             jwt: jwt,
             address: address
           })
-        )
-        .then(result => {
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-          authDispatch({ type: "SET_JWT", payload: jwt });
-        })
-        .catch(err => console.log(err));
+        );
+        userDispatch({ type: "SET_USER_DATA", payload: result.data });
+        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
+        authDispatch({ type: "SET_JWT", payload: jwt });
+        authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+        // Add jwt to local storage
+        localStorage.setItem("trusat-jwt", jwt);
+      } catch (error) {
+        setIsError(true);
+        authDispatch({ type: "AUTHENTICATING", payload: false });
+      }
 
-      authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
       authDispatch({ type: "AUTHENTICATING", payload: false });
-      // Add jwt to local storage
-      localStorage.setItem("trusat-jwt", jwt);
-      // When user cancels the sign or there is an error returned from metamaskSignMessage
     } else {
       authDispatch({ type: "AUTHENTICATING", payload: false });
+      // When user cancels the sign or there is an error returned from metamaskSignMessage
       alert(
         `You must sign the message by clicking "Sign" on the MetaMask plugin in order to verify your identity!`
       );
     }
   };
 
-  return (
+  return isError ? (
+    <p className="app__error-message">Something went wrong ...</p>
+  ) : (
     <span className="app__button--white" onClick={handleClick}>
       {isAuthenticating ? "Loading..." : buttonText}
     </span>
