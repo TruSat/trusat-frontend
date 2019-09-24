@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { useUserDispatch } from "../../user/user-context";
 import {
@@ -69,11 +69,14 @@ export default function MetaMask({ buttonText }) {
     }
   };
 
-  return isError ? (
-    <p className="app__error-message">Something went wrong ...</p>
-  ) : (
-    <span className="app__button--white" onClick={handleClick}>
-      {isAuthenticating ? "Loading..." : buttonText}
-    </span>
+  return (
+    <Fragment>
+      <span className="app__button--white" onClick={handleClick}>
+        {isAuthenticating ? "Loading..." : buttonText}
+      </span>
+      {isError ? (
+        <p className="app__error-message">Something went wrong ...</p>
+      ) : null}
+    </Fragment>
   );
 }
