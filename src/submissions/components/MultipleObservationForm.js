@@ -27,8 +27,6 @@ la
   // const userDispatch = useUserDispatch();
 
   const getBurnerJwt = async () => {
-    authDispatch({ type: "AUTHENTICATING", payload: true });
-
     const wallet = createWallet();
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
@@ -48,7 +46,7 @@ la
 
     let submissionJwt = "";
 
-    if (!jwt) {
+    if (jwt === "none") {
       submissionJwt = await getBurnerJwt();
     } else {
       submissionJwt = jwt;
@@ -56,25 +54,25 @@ la
 
     const arrayOfIODs = pastedIODs.split("\n");
 
-    await axios
-      .post(
+    try {
+      console.log(`submissionJwt = `, submissionJwt);
+
+      const result = await axios.post(
         `${API_ROOT}/submitObservation`,
         JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
-      )
-      .then(result => {
-        console.log(`result returned from /submitObservation = `, result.data);
-        if (result.data.success !== 0) {
-          setSuccessCount(result.data.success);
-        } else if (result.data.error_messages.length !== 0) {
-          setErrorMessages(result.data.error_messages);
-        }
+      );
 
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.log(err);
-        setIsLoading(false);
-      });
+      if (result.data.success !== 0) {
+        setSuccessCount(result.data.success);
+      } else if (result.data.error_messages.length !== 0) {
+        setErrorMessages(result.data.error_messages);
+      }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
   };
 
   return (
