@@ -29,22 +29,6 @@ export default function SignupForm() {
   );
   const [isError, setIsError] = useState(false);
 
-  // TODO - error handling in the UI
-  const emailSecret = async secret => {
-    try {
-      const result = await axios.post(
-        `${API_ROOT}/emailSecrets`,
-        JSON.stringify({ to: email, payload: secret })
-      );
-      if (result) {
-        return true;
-      }
-    } catch (error) {
-      setIsError(true);
-      return false;
-    }
-  };
-
   const handleFormValidation = () => {
     // will return true if string contains at least 1 number
     function hasNumber(string) {
@@ -63,6 +47,21 @@ export default function SignupForm() {
     }
     // two checks have passed
     return true;
+  };
+
+  const emailSecret = async secret => {
+    try {
+      const result = await axios.post(
+        `${API_ROOT}/emailSecret`,
+        JSON.stringify({ to: email, payload: secret })
+      );
+      if (result) {
+        return true;
+      }
+    } catch (error) {
+      setIsError(true);
+      return false;
+    }
   };
 
   const handleSignup = async () => {
