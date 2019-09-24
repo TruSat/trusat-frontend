@@ -270,6 +270,31 @@ TABLE
 }
 
 /* ----------
+TABLE PAGINATOR
+---------- */
+.table-paginator {
+  display: flex;
+  justify-self: center;
+  margin: 1em 0;
+}
+
+.table-paginator__button-wrapper {
+  color: $secondary-theme-color;
+  display: flex;
+  font-size: $extra-small-font-size;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.table-paginator__middle-text {
+  margin: 0 1em;
+}
+
+.table-paginator__button-text:hover {
+  cursor: pointer;
+}
+
+/* ----------
 TOOL TIP HELPER
 ---------- */
 .app__tool-tip-wrapper {
