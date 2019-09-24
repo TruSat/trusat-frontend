@@ -18,8 +18,10 @@ export default function LoginForm() {
     "3005657919/5ed29f8c52656f771b35b037245bd3a1/672859aab2a336937e48e58c27226aac4b747475f59c67d38c2f3dbdf48e75b751b22a7be955a23018b30cde21079e79546fc1f362f7d812fd2c6f18a7b74e5cf486eff78710a5d0b33e3fdf516cfaf8"
   );
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const handleLogin = async () => {
+    setIsError(false);
     authDispatch({ type: "AUTHENTICATING", payload: true });
 
     const privateKey = decryptSecret(secret, password);
@@ -29,7 +31,6 @@ export default function LoginForm() {
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
-
     let wallet = new ethers.Wallet(privateKey);
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
@@ -41,31 +42,31 @@ export default function LoginForm() {
       signedMessage: signedMessage
     });
 
-    await axios
-      .post(
+    try {
+      const result = await axios.post(
         `${API_ROOT}/profile`,
         JSON.stringify({
           jwt: jwt,
           address: wallet.signingKey.address
         })
-      )
-      .then(result => {
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        authDispatch({
-          type: "SET_USER_ADDRESS",
-          payload: wallet.signingKey.address
-        });
-      })
-      .catch(err => console.log(err));
-
-    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    authDispatch({ type: "SET_JWT", payload: jwt });
+      );
+      userDispatch({ type: "SET_USER_DATA", payload: result.data });
+      authDispatch({
+        type: "SET_USER_ADDRESS",
+        payload: wallet.signingKey.address
+      });
+      authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+      authDispatch({ type: "SET_JWT", payload: jwt });
+      localStorage.setItem("trusat-jwt", jwt);
+    } catch (error) {
+      setIsError(true);
+    }
     authDispatch({ type: "AUTHENTICATING", payload: false });
-
-    localStorage.setItem("trusat-jwt", jwt);
   };
 
-  return (
+  return isError ? (
+    <p className="app__error-message">Something went wrong ...</p>
+  ) : (
     <form
       className="email-form"
       onSubmit={event => {
