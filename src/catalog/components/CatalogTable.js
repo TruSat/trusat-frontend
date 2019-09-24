@@ -23,14 +23,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     latestData,
     allData
   } = useCatalogState();
-  // console.log(`catalog filter = `, catalogFilter);
-  // console.log(`priorities data = `, prioritiesData);
-  // console.log(`undisclosed data = `, undisclosedData);
-  // console.log(`debris data = `, debrisData);
-  // console.log(`latest data = `, latestData);
-  // console.log(`all data = `, allData);
   const catalogDispatch = useCatalogDispatch();
-
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [tableData, setTableData] = useState([]);
