@@ -43,11 +43,16 @@ export default function ObjectInfo({ match }) {
     }
 
     if (data) {
+      console.log(data);
       objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
       objectsDispatch({ type: "SET_OBJECT_INFO", payload: data });
       objectsDispatch({
         type: "SET_OBJECT_ORIGIN",
         payload: data.object_origin
+      });
+      objectsDispatch({
+        type: "SET_YEAR_LAUNCHED",
+        payload: data.year_launched
       });
     }
   }, [noradNumber, data, withData, doPost, objectsDispatch]);
