@@ -11,12 +11,20 @@ export const createWallet = () => {
 };
 
 export const retrieveNonce = async address => {
-  return await axios
-    .post(`${API_ROOT}/getNonce`, JSON.stringify({ address: address }))
-    .then(response => {
-      return response.data.nonce;
-    })
-    .catch(error => console.log(error));
+  if (address) {
+    try {
+      const result = await axios.post(
+        `${API_ROOT}/getNonce`,
+        JSON.stringify({ address: address })
+      );
+
+      return result.data.nonce;
+    } catch (error) {
+      return false;
+    }
+  } else {
+    return false;
+  }
 };
 
 export const handleMetamaskConnect = () => {
