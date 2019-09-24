@@ -263,27 +263,8 @@ HISTORY YEAR DROPDOWN
 }
 
 /* ----------
-HISTROY MONTH DROPDOWN
+HISTORY MONTH TABLE
 ---------- */
-.history-month-dropdown {
-  border-bottom: 1px solid #363636;
-  display: flex;
-  flex-direction: column;
-}
-
-.history-month-dropdown__row {
-  border-top: 1px solid #363636;
-  padding: 0.5em 0;
-}
-
-.history-month-dropdown__row:hover {
-  cursor: pointer;
-}
-
-.history-month-dropdown__month-text {
-  color: $secondary-theme-color;
-  font-size: $extra-small-font-size;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  line-height: 12px;
+.history-month-table {
+  margin-top: 1em;
 }
