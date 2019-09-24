@@ -1,8 +1,55 @@
-import React, { useState } from "react";
-import HistoryMonthDropdown from "./HistoryMonthDropdown";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { API_ROOT } from "../../app/helpers";
+import HistoryMonthTable from "./HistoryMonthTable";
+import { useObjectsState } from "../../objects/objects-context";
 
-export default function HistoryTable() {
+export default function HistoryYearDropdown() {
+  const { noradNumber } = useObjectsState();
   const [yearChosen, setYearChosen] = useState("2019");
+  const [objectYearHistory, setObjectYearHistory] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+
+    const fetchData = async () => {
+      try {
+        const result = await axios.post(
+          `${API_ROOT}/object/history`,
+          JSON.stringify({
+            norad_number: noradNumber,
+            year: yearChosen
+          })
+        );
+        console.log(result.data);
+        setObjectYearHistory(result.data);
+        setIsLoading(false);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (noradNumber) {
+      fetchData();
+    }
+  }, [yearChosen, noradNumber]);
+
+  const renderMonthTables = () => {
+    return Object.keys(objectYearHistory).map((monthKey, index) => {
+      if (objectYearHistory[monthKey].length !== 0) {
+        return (
+          <HistoryMonthTable
+            key={monthKey}
+            monthName={monthKey}
+            monthHistory={objectYearHistory[monthKey]}
+          />
+        );
+      }
+    });
+
+    // <HistoryMonthTable monthHistory={monthHistory} />
+  };
 
   const years = [
     "2019",
@@ -40,9 +87,7 @@ export default function HistoryTable() {
                 {year}
               </p>
             </h1>
-            {yearChosen === year ? (
-              <HistoryMonthDropdown yearNumber={yearChosen} />
-            ) : null}
+            {yearChosen === year ? renderMonthTables() : null}
           </div>
         );
       })}

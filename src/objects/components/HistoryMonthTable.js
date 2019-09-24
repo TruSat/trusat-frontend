@@ -1,47 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
+
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
-import Spinner from "../../app/components/Spinner";
 
-export default function HistoryMonthTable({
-  yearNumber,
-  monthName,
-  monthNumber
-}) {
-  const { noradNumber, objectOrigin } = useObjectsState();
-  const [isLoading, setIsLoading] = useState(false);
-  const [objectHistory, setObjectHistory] = useState([]);
-
-  useEffect(() => {
-    setIsLoading(true);
-
-    const fetchData = async () => {
-      await axios
-        .post(
-          `${API_ROOT}/object/history`,
-          JSON.stringify({
-            norad_number: noradNumber,
-            year: yearNumber,
-            month: monthNumber
-          })
-        )
-        .then(result => {
-          console.log(result.data);
-          setObjectHistory(result.data);
-          setIsLoading(false);
-        })
-        .catch(err => console.log(err));
-    };
-
-    fetchData();
-  }, [noradNumber, yearNumber, monthNumber]);
+export default function HistoryMonthTable({ monthName, monthHistory }) {
+  const { objectOrigin } = useObjectsState();
 
   const renderDayRows = () => {
-    return objectHistory.map(day => {
+    console.log(monthHistory);
+
+    return monthHistory.map(day => {
       return day.observation.map(observation => (
         <tr
           key={day.observation.indexOf(observation)}
@@ -80,9 +50,7 @@ export default function HistoryMonthTable({
     });
   };
 
-  return isLoading ? (
-    <Spinner />
-  ) : (
+  return monthHistory.length !== 0 ? (
     <table className="table">
       <thead className="table__header">
         <tr className="table__header-row">
@@ -113,7 +81,7 @@ export default function HistoryMonthTable({
       </thead>
       <tbody>{renderDayRows()}</tbody>
     </table>
-  );
+  ) : null;
 }
 
 // const object_month_history = [

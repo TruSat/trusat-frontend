@@ -32,7 +32,7 @@ function ObjectsProvider({ children }) {
     objectOrigin: "",
     objectBackground: "",
     objectInfo: {},
-    observationFilter: "influence"
+    observationFilter: "history"
   });
 
   return (
