@@ -43,24 +43,23 @@ export const handleMetamaskConnect = () => {
 // Used for email/password and burner auth
 export const signMessage = ({ nonce, wallet }) => {
   // hash the nonce
-  const nonceHash = ethers.utils.id(nonce);
-
-  // sign nonce using web3
-  try {
-    //a promise
-    const signedMessage = web3.eth.accounts.sign(
-      nonceHash,
-      wallet.signingKey.privateKey
-    );
-
-    // TODO remove web3 as a dependency for signing messages
-    // const signedMessage = await wallet.signMessage(nonceHash);
-
-    return signedMessage;
-  } catch (error) {
-    // TODO
-    // dispatch({ type: "AUTHENTICATING", payload: false });
-    alert(`Message signing failed, please try again`);
+  if (nonce && wallet) {
+    try {
+      const nonceHash = ethers.utils.id(nonce);
+      // sign nonce using web3
+      const signedMessage = web3.eth.accounts.sign(
+        nonceHash,
+        wallet.signingKey.privateKey
+      );
+      // TODO remove web3 as a dependency for signing messages
+      // const signedMessage = await wallet.signMessage(nonceHash);
+      return signedMessage;
+    } catch (error) {
+      return false;
+    }
+  } else {
+    // fail if function doesnt receive nonce and wallet
+    return false;
   }
 };
 
