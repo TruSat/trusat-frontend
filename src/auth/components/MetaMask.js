@@ -56,17 +56,14 @@ export default function MetaMask({ buttonText }) {
         localStorage.setItem("trusat-jwt", jwt);
       } catch (error) {
         setIsError(true);
-        authDispatch({ type: "AUTHENTICATING", payload: false });
       }
-
-      authDispatch({ type: "AUTHENTICATING", payload: false });
     } else {
-      authDispatch({ type: "AUTHENTICATING", payload: false });
       // When user cancels the sign or there is an error returned from metamaskSignMessage
       alert(
         `You must sign the message by clicking "Sign" on the MetaMask plugin in order to verify your identity!`
       );
     }
+    authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
   return (
