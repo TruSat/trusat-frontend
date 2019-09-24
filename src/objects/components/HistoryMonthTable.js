@@ -1,17 +1,20 @@
-import React from "react";
+import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-
 import { renderFlag } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
 import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
+import TablePaginator from "../../app/components/TablePaginator";
 
-export default function HistoryMonthTable({ monthName, monthHistory }) {
+export default function HistoryMonthTable({ monthName, monthData }) {
   const { objectOrigin } = useObjectsState();
+  const [range, setRange] = useState({ start: 0, end: 10 });
 
   const renderDayRows = () => {
-    console.log(monthHistory);
+    const { start, end } = range;
 
-    return monthHistory.map(day => {
+    const rangeData = monthData.slice(start, end);
+
+    return rangeData.map(day => {
       return day.observation.map(observation => (
         <tr
           key={day.observation.indexOf(observation)}
@@ -50,37 +53,49 @@ export default function HistoryMonthTable({ monthName, monthHistory }) {
     });
   };
 
-  return monthHistory.length !== 0 ? (
-    <table className="table">
-      <thead className="table__header">
-        <tr className="table__header-row">
-          <th className="table__month-text">{monthName}</th>
-          <th className="app__hide-on-mobile"></th>
-          <th className="table__header-text">
-            {toolTip("LOCATION", toolTipCopy.location)}
-          </th>
-          <th className="table__header-text app__hide-on-mobile">
-            {toolTip("USER", toolTipCopy.user)}
-          </th>
-          <th className="table__header-text">
-            {toolTip("QUALITY", toolTipCopy.quality)}
-          </th>
-          <th className="table__header-text">
-            <p className="app__hide-on-mobile">
-              {toolTip("TIME DIFF", toolTipCopy.time_diff)}
-            </p>
-            <p className="app__hide-on-desktop">DIFF..</p>
-          </th>
-          <th className="table__header-weight-text">
-            <p className="app__hide-on-mobile">
-              {toolTip("WEIGHT", toolTipCopy.weight)}
-            </p>
-            <p className="app__hide-on-desktop">WT.</p>
-          </th>
-        </tr>
-      </thead>
-      <tbody>{renderDayRows()}</tbody>
-    </table>
+  return monthData.length !== 0 ? (
+    <Fragment>
+      <table className="table history-month-table">
+        <thead className="table__header">
+          <tr className="table__header-row">
+            <th className="table__month-text">
+              {monthName.substring(0, 3).toUpperCase()}
+            </th>
+            <th className="app__hide-on-mobile"></th>
+            <th className="table__header-text">
+              {toolTip("LOCATION", toolTipCopy.location)}
+            </th>
+            <th className="table__header-text app__hide-on-mobile">
+              {toolTip("USER", toolTipCopy.user)}
+            </th>
+            <th className="table__header-text">
+              {toolTip("QUALITY", toolTipCopy.quality)}
+            </th>
+            <th className="table__header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+              </p>
+              <p className="app__hide-on-desktop">DIFF..</p>
+            </th>
+            <th className="table__header-weight-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("WEIGHT", toolTipCopy.weight)}
+              </p>
+              <p className="app__hide-on-desktop">WT.</p>
+            </th>
+          </tr>
+        </thead>
+        <tbody>{renderDayRows()}</tbody>
+      </table>
+      {/* TODO - set tableDataLength to the observation count */}
+      {monthData.length > 10 ? (
+        <TablePaginator
+          tableDataLength={monthData.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
+    </Fragment>
   ) : null;
 }
 
