@@ -6,6 +6,7 @@ export default function BurgerMenu(props) {
   const { userAddress } = useAuthState();
   const catalogFilter = "priorities";
 
+  // TODO - test NavLinks to see if they stop api getting hit
   return (
     // Pass on our props
     <Menu {...props}>

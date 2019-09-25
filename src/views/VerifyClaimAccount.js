@@ -1,28 +1,39 @@
-import React, { useState } from "react";
-import axios from "axios";
-import { API_ROOT } from "../app/helpers";
+import React, { useState, useEffect } from "react";
 import { createWallet, createSecret } from "../auth/helpers";
+import { useTrusatPostApi } from "../app/helpers";
 import { useAuthDispatch } from "../auth/auth-context";
+import Spinner from "../app/components/Spinner";
 
 export default function VerifyClaimAccount({ match }) {
   const [password, setPassword] = useState("");
   const [retypedPassword, setRetypedPasswprd] = useState("");
-  const [showMessage, setShowMessage] = useState(false);
-  const authDispatch = useAuthDispatch();
-
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
   );
   const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
     false
   );
+  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const authDispatch = useAuthDispatch();
 
-  const handleFormValidation = () => {
+  useEffect(() => {
+    if (data.length !== 0) {
+      authDispatch({ type: "SET_JWT", payload: data.jwt });
+      setShowSuccessMessage(true);
+      localStorage.setItem("trusat-jwt", data.jwt);
+    }
+  }, [data, authDispatch]);
+
+  const inputsAreValid = () => {
+    setShowInvalidPasswordError(false);
+    setShowUnmatchedPasswordError(false);
+
     // will return true if string contains at least 1 number
-    function hasNumber(string) {
+    const hasNumber = string => {
       var regex = /\d/g;
       return regex.test(string);
-    }
+    };
     // check if user enters a password that is at least 8 chracters long and contains one number
     if (password.length < 8 || !hasNumber(password)) {
       setShowInvalidPasswordError(true);
@@ -38,45 +49,39 @@ export default function VerifyClaimAccount({ match }) {
   };
 
   const verifyClaimAccount = async () => {
-    const inputsAreValid = handleFormValidation();
-
-    if (inputsAreValid) {
+    if (inputsAreValid()) {
       const wallet = createWallet();
       const secret = createSecret(wallet.signingKey.privateKey, password);
 
-      await axios
-        .post(
-          `${API_ROOT}/verifyClaimAccount`,
+      try {
+        doPost(`/verifyClaimAccount`);
+        withData(
           JSON.stringify({
             jwt: match.params.jwt,
             address: wallet.signingKey.address,
             secret: secret
           })
-        )
-        .then(response => {
-          console.log(response);
-          localStorage.setItem("trusat-jwt", response.data.jwt);
-          authDispatch({ type: "SET_JWT", payload: response.data.jwt });
-          authDispatch({
-            type: "SET_USER_ADDRESS",
-            payload: wallet.signingKey.address
-          });
-          setShowMessage(true);
-          setShowInvalidPasswordError(false);
-          setShowUnmatchedPasswordError(false);
-        })
-        .catch(err => {
-          console.log(err);
-          setShowInvalidPasswordError(false);
-          setShowUnmatchedPasswordError(false);
+        );
+        authDispatch({
+          type: "SET_USER_ADDRESS",
+          payload: wallet.signingKey.address
         });
-
+      } catch (error) {
+        console.log(error);
+      }
       setPassword("");
       setRetypedPasswprd("");
     }
   };
 
-  return (
+  return isError ? (
+    <p className="app__error-message">
+      Invalid ethereum address found in the URL. Please double check the address
+      you are trying to look up and refresh your browser.
+    </p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
       <form
@@ -120,7 +125,7 @@ export default function VerifyClaimAccount({ match }) {
           Submit
         </button>
       </form>
-      {showMessage ? (
+      {showSuccessMessage ? (
         <p className="claim-account__message">
           Your have now claimed ownership of your TruSat account! We have
           emailed you a "secret" that will be required along with your email and
