@@ -9,9 +9,17 @@ export default function Submit() {
       <p className="submit__sub-header">Submit preformatted data</p>
       <MultipleObservationForm />
 
-      <NavLink to="/how">
-        <p className="submit__link-text">Help</p>
-      </NavLink>
+      <div>
+        <p className="submit__text">
+          Or submit observations to{" "}
+          <a href="mailto:submit@trusat.org" className="submit__link-text">
+            submit@TruSat.org
+          </a>
+        </p>
+        <NavLink to="/how">
+          <p className="submit__link-text">Help</p>
+        </NavLink>
+      </div>
     </div>
   );
 }

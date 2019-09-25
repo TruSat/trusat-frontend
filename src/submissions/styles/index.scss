@@ -31,6 +31,12 @@ SUBMIT
   margin: 2em 0 0.5em 0;
 }
 
+.submit__text {
+  color: $secondary-theme-color;
+  font-size: $medium-font-size;
+  margin-bottom: 0.5em;
+}
+
 .submit__link-text {
   color: $secondary-theme-color;
   font-size: $medium-font-size;
