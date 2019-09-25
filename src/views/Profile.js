@@ -38,8 +38,6 @@ export default function Profile({ match }) {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log(`fetching /profile data!`);
-
       setIsError(false);
       setIsLoading(true);
 

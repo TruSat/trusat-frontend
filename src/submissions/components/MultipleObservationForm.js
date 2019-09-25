@@ -8,7 +8,7 @@ import {
   retrieveJwt
 } from "../../auth/helpers";
 import { NavLink } from "react-router-dom";
-import { useAuthState, useAuthDispatch } from "../../auth/auth-context";
+import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
 // import { useUserDispatch } from "../../user/user-context";
@@ -22,9 +22,7 @@ la
 28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S`);
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
-  const authDispatch = useAuthDispatch();
   const { jwt } = useAuthState();
-  // const userDispatch = useUserDispatch();
 
   const getBurnerJwt = async () => {
     const wallet = createWallet();
@@ -55,8 +53,6 @@ la
     const arrayOfIODs = pastedIODs.split("\n");
 
     try {
-      console.log(`submissionJwt = `, submissionJwt);
-
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
         JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
