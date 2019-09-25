@@ -26,11 +26,12 @@ export default function LoginForm() {
 
     const privateKey = decryptSecret(secret, password);
     // fail the log in attempt if a valid private key is not returned from decrptSecret
-    if (privateKey.length !== 66) {
+    if (!privateKey) {
       setShowPrivateKeyError(true);
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
+
     let wallet = new ethers.Wallet(privateKey);
 
     const nonce = await retrieveNonce(wallet.signingKey.address);
@@ -41,6 +42,13 @@ export default function LoginForm() {
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
+
+    // do not attempt to hit /profile unless a valid jwt is returned from retriveJwt
+    if (!jwt) {
+      setIsError(true);
+      authDispatch({ type: "AUTHENTICATING", payload: false });
+      return;
+    }
 
     try {
       const result = await axios.post(

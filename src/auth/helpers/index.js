@@ -65,18 +65,18 @@ export const signMessage = ({ nonce, wallet }) => {
 
 // Used for email/password and burner auth
 export const retrieveJwt = async ({ address, signedMessage }) => {
-  return await axios
-    .post(
+  try {
+    const result = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: signedMessage.signature
       })
-    )
-    .then(response => {
-      return response.data.jwt;
-    })
-    .catch(error => console.log(error));
+    );
+    return result.data.jwt;
+  } catch (error) {
+    return false;
+  }
 };
 
 // Used for metamask auth
@@ -90,7 +90,7 @@ export const metamaskSignMessage = async ({ nonce, address }) => {
     return signedMessage;
     // will return an error is user clicks cancel on metamask
   } catch (error) {
-    return error;
+    return false;
   }
 };
 
@@ -99,18 +99,19 @@ export const retrieveMetamaskJwt = async ({
   address,
   metamaskSignedMessage
 }) => {
-  return await axios
-    .post(
+  try {
+    const result = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: metamaskSignedMessage
       })
-    )
-    .then(response => {
-      return response.data.jwt;
-    })
-    .catch(error => console.log(error));
+    );
+
+    return result.data.jwt;
+  } catch (error) {
+    return false;
+  }
 };
 
 export const createSecret = (privateKey, password) => {
@@ -166,5 +167,9 @@ export const decryptSecret = (secret, password) => {
     14,
     decryptedPrivateKeyWithPad.length
   );
+
+  if (privateKey.length !== 66) {
+    return false;
+  }
   return privateKey;
 };

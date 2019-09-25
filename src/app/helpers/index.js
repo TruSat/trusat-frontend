@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
 
 export const API_ROOT = `https://api.consensys.space:8080`;
+
+export const axiosWithCache = axios.create({
+  baseURL: "/",
+  headers: { "Cache-Control": "no-cache" },
+  // cache will be enabled by default
+  adapter: cacheAdapterEnhancer(axios.defaults.adapter)
+});
 
 export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
@@ -20,7 +28,7 @@ export const useTrusatGetApi = () => {
       setIsLoading(true);
 
       try {
-        const result = await axios(url);
+        const result = await axiosWithCache(`${API_ROOT}${url}`);
 
         if (!didCancel) {
           setData(result.data);

@@ -83,7 +83,7 @@ export default function SignupForm() {
       });
 
       const secret = createSecret(wallet.signingKey.privateKey, password);
-      // email secret to the user
+      // email secret to the user - returns true if post request was successful
       const emailSecretSuccess = await emailSecret(secret);
       // only log user in if email of secret is a success
       if (emailSecretSuccess) {
