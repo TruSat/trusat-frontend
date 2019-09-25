@@ -106,17 +106,6 @@ export default function UserSettings() {
         newBio={newBio}
         setNewBio={setNewBio}
       />
-      <PrivacySettings
-      // showEditPrivacyInputs={showEditPrivacyInputs}
-      // setShowEditPrivacyInputs={setShowEditPrivacyInputs}
-      // newPublicUsername={newPublicUsername}
-      // setNewPublicUsername={setNewPublicUsername}
-      // newPublicLocation={newPublicLocation}
-      // setNewPublicLocation={setNewPublicLocation}
-      // newPublicObservations={newPublicObservations}
-      // setNewPublicObservations={setNewPublicObservations}
-      />
-
       {showEditProfileInputs === true ? (
         <div className="account-settings__button-wrapper">
           <span
@@ -140,6 +129,16 @@ export default function UserSettings() {
           </span>
         </div>
       ) : null}
+      <PrivacySettings
+      // showEditPrivacyInputs={showEditPrivacyInputs}
+      // setShowEditPrivacyInputs={setShowEditPrivacyInputs}
+      // newPublicUsername={newPublicUsername}
+      // setNewPublicUsername={setNewPublicUsername}
+      // newPublicLocation={newPublicLocation}
+      // setNewPublicLocation={setNewPublicLocation}
+      // newPublicObservations={newPublicObservations}
+      // setNewPublicObservations={setNewPublicObservations}
+      />
 
       {/* Only show prompt to make move to metamask if they dont have plugin installed */}
       {window.etherem ? null : <SecuritySettings />}
