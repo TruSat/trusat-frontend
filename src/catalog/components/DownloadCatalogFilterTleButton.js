@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import {
+  cacheAdapterEnhancer,
+  throttleAdapterEnhancer
+} from "axios-extensions";
 import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 import { API_ROOT } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
+
+const axiosWithCache = axios.create({
+  baseURL: "/",
+  headers: { "Cache-Control": "no-cache" },
+  adapter: throttleAdapterEnhancer(cacheAdapterEnhancer(axios.defaults.adapter))
+});
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const { prioritiesTleData, allTleData } = useCatalogState();
@@ -21,7 +31,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
       try {
         console.log(`fetching TLE data for txt file!`);
 
-        const result = await axios(
+        const result = await axiosWithCache(
           `${API_ROOT}/tle/trusat_${catalogFilter}.txt`
         );
 
@@ -42,10 +52,17 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
     };
 
     const getBlobDataAndCreateTextFile = async () => {
-      if (catalogFilter === "priorities" && prioritiesTleData.length !== 0) {
+      if (
+        catalogFilter === "priorities" &&
+        prioritiesTleData &&
+        prioritiesTleData.length !== 0
+      ) {
         const textFile = await createTextFile(prioritiesTleData);
         setTextFile(textFile);
-      } else if (catalogFilter === "all" && allTleData.length !== 0) {
+      } else if (
+        catalogFilter === "all" &&
+        allTleData & (allTleData.length !== 0)
+      ) {
         const textFile = await createTextFile(allTleData);
         setTextFile(textFile);
       } else {

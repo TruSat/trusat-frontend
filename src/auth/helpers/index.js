@@ -32,7 +32,7 @@ export const handleMetamaskConnect = () => {
   if (window.ethereum.selectedAddress === undefined) {
     alert("Please sign in to MetaMask plugin and try again!");
     window.ethereum.enable().catch(console.error);
-    // metamask plugin not found
+    // Covers brave permissions problems when attempting to connect
   } else {
     alert(
       "Please check permissions on your MetaMask plugin by navigating to the Settings tab via your avatar icon and then clicking Connections. From there click the connect button to grant TruSat.org access!"

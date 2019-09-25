@@ -44,6 +44,7 @@ export default function Profile({ match }) {
       setIsLoading(true);
 
       try {
+        console.log(`fetching profile data`);
         const result = await axios.post(
           `${API_ROOT}/profile`,
           JSON.stringify({
@@ -69,10 +70,10 @@ export default function Profile({ match }) {
     if (!isAddress(addressFromRoute)) {
       setIsAddressError(true);
     } else {
-      // if profileDispatch is present through and userAddress value is not equaled to address found in route
-      if (userAddress !== addressFromRoute) {
+      // if userAddress is present through and userAddress value is not equaled to address found in route, fetchData
+      if (userAddress && userAddress !== addressFromRoute) {
         fetchData();
-        // else if userData is present load it into the UI
+        // else if userData is present from app load load it into the UI
       } else if (userData) {
         profileDispatch({ type: "SET_PROFILE_DATA", payload: userData });
       }
