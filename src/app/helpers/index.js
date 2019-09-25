@@ -68,7 +68,7 @@ export const useTrusatPostApi = () => {
       setIsError(false);
       setIsLoading(true);
       try {
-        const result = await axios.post(url, postData);
+        const result = await axios.post(`${API_ROOT}${url}`, postData);
 
         if (!didCancel) {
           setData(result.data);

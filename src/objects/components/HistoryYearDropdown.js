@@ -1,54 +1,37 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
+import { useTrusatPostApi } from "../../app/helpers";
 import HistoryMonthTable from "./HistoryMonthTable";
 import { useObjectsState } from "../../objects/objects-context";
 
 export default function HistoryYearDropdown() {
   const { noradNumber, yearLaunched } = useObjectsState();
   const [yearChosen, setYearChosen] = useState("2019");
-  const [yearData, setYearData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
 
   useEffect(() => {
-    setIsLoading(true);
-
-    const fetchData = async () => {
-      try {
-        const result = await axios.post(
-          `${API_ROOT}/object/history`,
-          JSON.stringify({
-            norad_number: noradNumber,
-            year: yearChosen
-          })
-        );
-        console.log(result.data);
-        setYearData(result.data);
-        setIsLoading(false);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    if (noradNumber) {
-      fetchData();
+    if (noradNumber && yearChosen) {
+      doPost(`/object/history`);
+      withData(
+        JSON.stringify({
+          norad_number: noradNumber,
+          year: yearChosen
+        })
+      );
     }
-  }, [yearChosen, noradNumber]);
+  }, [yearChosen, noradNumber, doPost, withData]);
 
   const renderMonthTables = () => {
-    return Object.keys(yearData).map((monthKey, index) => {
-      if (yearData[monthKey].length !== 0) {
+    return Object.keys(data).map((monthKey, index) => {
+      if (data[monthKey]) {
         return (
           <HistoryMonthTable
             key={monthKey}
             monthName={monthKey}
-            monthData={yearData[monthKey]}
+            monthData={data[monthKey]}
           />
         );
       }
     });
-
-    // <HistoryMonthTable monthHistory={monthHistory} />
   };
 
   const years = [

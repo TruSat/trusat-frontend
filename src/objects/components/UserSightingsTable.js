@@ -1,51 +1,44 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import { useObjectsState } from "../objects-context";
-import { renderFlag, API_ROOT } from "../../app/helpers/";
-import { shortenAddressToolTip, toolTipCopy, toolTip } from "../../app/helpers";
+import {
+  shortenAddressToolTip,
+  toolTipCopy,
+  toolTip,
+  renderFlag,
+  useTrusatPostApi
+} from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
 export default function UserSightingsTable() {
   const { jwt, userAddress } = useAuthState();
   const { noradNumber, objectOrigin } = useObjectsState();
-  const [tableData, setTableData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const [range, setRange] = useState({ start: 0, end: 10 });
+  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-
-      await axios
-        .post(
-          `${API_ROOT}/object/userSightings`,
-          JSON.stringify({
-            norad_number: noradNumber,
-            jwt: jwt,
-            address: userAddress
-            // leos address for testing
-            // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
-          })
-        )
-        .then(result => {
-          setTableData(result.data);
-          setIsLoading(false);
+    if ((noradNumber, jwt, userAddress)) {
+      doPost(`/object/userSightings`);
+      withData(
+        JSON.stringify({
+          norad_number: noradNumber,
+          jwt: jwt,
+          address: userAddress
+          // leos address for testing
+          // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
         })
-        .catch(err => console.log(err));
-    };
-
-    fetchData();
-  }, [jwt, userAddress, noradNumber]);
+      );
+    }
+  }, [jwt, userAddress, noradNumber, doPost, withData]);
 
   const renderUserSightingsRows = () => {
     const { start, end } = range;
-    const rangeData = tableData.slice(start, end);
+    const rangeData = data.slice(start, end);
 
     return rangeData.map(obj => {
       return (
-        <tr key={tableData.indexOf(obj)} className="table__body-row">
+        <tr key={data.indexOf(obj)} className="table__body-row">
           <td className="table__table-data">{obj.observation_time}</td>
           <td className="table__table-data app__hide-on-mobile">
             {renderFlag(objectOrigin)}
@@ -70,7 +63,9 @@ export default function UserSightingsTable() {
     });
   };
 
-  return isLoading ? (
+  return isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : isLoading ? (
     <Spinner />
   ) : (
     <React.Fragment>
@@ -110,9 +105,9 @@ export default function UserSightingsTable() {
         <tbody>{renderUserSightingsRows()}</tbody>
       </table>
 
-      {tableData.length > 10 ? (
+      {data.length > 10 ? (
         <TablePaginator
-          tableDataLength={tableData.length}
+          tableDataLength={data.length}
           range={range}
           setRange={setRange}
         />
@@ -120,37 +115,3 @@ export default function UserSightingsTable() {
     </React.Fragment>
   );
 }
-
-// POST request
-// /objectUserSightings
-// receives Norad Number and JWT and returns and array of objects
-// sorted by most recent
-// const user_sightings = [
-//   {
-//     observation_time: "1550398277",
-//     username: "Leo Barhorst",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-//     user_location: "Brooklyn, USA",
-//     observation_quality: "34",
-//     observation_time_difference: "1.42",
-//     observation_weight: "10" // The users most recent observations will in theory have a higher observation_weight %
-//   },
-//   {
-//     observation_time: "1550398277",
-//     username: "Leo Barhorst",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-//     user_location: "Brooklyn, USA",
-//     observation_quality: "34",
-//     observation_time_difference: "1.42",
-//     observation_weight: "1"
-//   },
-//   {
-//     observation_time: "1550398277",
-//     username: "Leo Barhorst",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-//     user_location: "Brooklyn, USA",
-//     observation_quality: "34",
-//     observation_time_difference: "1.42",
-//     observation_weight: "0"
-//   }
-// ];

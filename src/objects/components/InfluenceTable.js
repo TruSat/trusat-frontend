@@ -1,46 +1,35 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
 import { NavLink } from "react-router-dom";
 import { useObjectsState } from "../objects-context";
-import { toolTip, shortenAddressToolTip, toolTipCopy } from "../../app/helpers";
+import {
+  toolTip,
+  shortenAddressToolTip,
+  toolTipCopy,
+  useTrusatPostApi
+} from "../../app/helpers";
+
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
 export default function InfluenceTable() {
   const { noradNumber } = useObjectsState();
-  const [tableData, setTableData] = useState([]);
   const [range, setRange] = useState({ start: 0, end: 10 });
-  const [isLoading, setIsLoading] = useState(false);
+  const [{ data, isLoading, isError }, doPost, withData] = useTrusatPostApi();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoading(true);
-
-      await axios
-        .post(
-          `${API_ROOT}/object/influence`,
-          JSON.stringify({ norad_number: noradNumber })
-        )
-        .then(result => {
-          setTableData(result.data);
-          setIsLoading(false);
-        })
-        .catch(err => console.log(err));
-    };
-
     if (noradNumber) {
-      fetchData();
+      doPost(`/object/influence`);
+      withData(JSON.stringify({ norad_number: noradNumber }));
     }
-  }, [noradNumber]);
+  }, [noradNumber, doPost, withData]);
 
   const renderInfluenceRows = () => {
     const { start, end } = range;
-    const rangeData = tableData.slice(start, end);
+    const rangeData = data.slice(start, end);
 
     return rangeData.map(obj => {
       return (
-        <tr key={tableData.indexOf(obj)} className="table__body-row">
+        <tr key={data.indexOf(obj)} className="table__body-row">
           <td className="table__table-data">{obj.observation_time}</td>
           <td className="table__table-data app__hide-on-mobile">
             <NavLink
@@ -70,7 +59,9 @@ export default function InfluenceTable() {
     });
   };
 
-  return isLoading ? (
+  return isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : isLoading ? (
     <Spinner />
   ) : (
     <React.Fragment>
@@ -109,9 +100,9 @@ export default function InfluenceTable() {
         <tbody className="table__body">{renderInfluenceRows()}</tbody>
       </table>
 
-      {tableData.length > 10 ? (
+      {data.length > 10 ? (
         <TablePaginator
-          tableDataLength={tableData.length}
+          tableDataLength={data.length}
           range={range}
           setRange={setRange}
         />

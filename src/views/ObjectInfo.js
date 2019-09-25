@@ -10,8 +10,7 @@ import {
 } from "../objects/objects-context";
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
-
-import { API_ROOT, useTrusatPostApi } from "../app/helpers";
+import { useTrusatPostApi } from "../app/helpers";
 
 // Check if noradNumber from url is not more than 5 chracters long
 // and if it only contains numbers
@@ -32,7 +31,7 @@ export default function ObjectInfo({ match }) {
   useEffect(() => {
     // only fetch data for a potentially valid norad number
     if (isValidNumber(noradNumber)) {
-      doPost(`${API_ROOT}/object/info`);
+      doPost(`/object/info`);
       withData(
         JSON.stringify({
           norad_number: noradNumber
@@ -55,7 +54,7 @@ export default function ObjectInfo({ match }) {
         payload: data.year_launched
       });
     }
-  }, [noradNumber, data, withData, doPost, objectsDispatch]);
+  }, [noradNumber, data, doPost, withData, objectsDispatch]);
 
   return isNumberError ? (
     <p className="app__error-message">
