@@ -39,6 +39,8 @@ export default function LoginForm() {
     const signedMessage = signMessage({ nonce, wallet });
 
     const jwt = await retrieveJwt({
+      // dont send email to backend on log in - not required for auth
+      email: null,
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });

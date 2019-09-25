@@ -64,11 +64,12 @@ export const signMessage = ({ nonce, wallet }) => {
 };
 
 // Used for email/password and burner auth
-export const retrieveJwt = async ({ address, signedMessage }) => {
+export const retrieveJwt = async ({ email, address, signedMessage }) => {
   try {
     const result = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
+        email: email,
         address: address,
         signedMessage: signedMessage.signature
       })

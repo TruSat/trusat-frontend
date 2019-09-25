@@ -78,6 +78,7 @@ export default function SignupForm() {
       const signedMessage = signMessage({ nonce, wallet });
 
       const jwt = await retrieveJwt({
+        email: email,
         address: wallet.signingKey.address,
         signedMessage: signedMessage
       });
