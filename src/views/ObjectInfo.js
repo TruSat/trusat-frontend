@@ -84,15 +84,3 @@ export default function ObjectInfo({ match }) {
     </Fragment>
   );
 }
-
-// POST REQUEST
-// /objectInfo
-// receives Norad Number and returns an object.
-// const object_info =
-//   object_origin: "russia"
-// };
-
-// POST request
-// /objectMostSightings
-// No design for this table present in Mikes figma file.
-// const most_sightings = {}; */
