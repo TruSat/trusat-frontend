@@ -20,10 +20,10 @@ export default function UserSettings() {
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
   // Privacy settings
-  const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
-  const [newPublicUsername, setNewPublicUsername] = useState(true);
-  const [newPublicLocation, setNewPublicLocation] = useState(false);
-  const [newPublicObservations, setNewPublicObservations] = useState(true);
+  // const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
+  // const [newPublicUsername, setNewPublicUsername] = useState(true);
+  // const [newPublicLocation, setNewPublicLocation] = useState(false);
+  // const [newPublicObservations, setNewPublicObservations] = useState(true);
 
   useEffect(() => {
     setIsLoading(true);
@@ -32,19 +32,19 @@ export default function UserSettings() {
       user_name,
       email,
       user_location,
-      user_bio,
-      public_username,
-      public_location,
-      public_observations
+      user_bio
+      // public_username,
+      // public_location,
+      // public_observations
     } = userData;
 
     setNewUsername(user_name);
     setNewEmail(email);
     setNewLocation(user_location);
     setNewBio(user_bio);
-    setNewPublicUsername(public_username);
-    setNewPublicLocation(public_location);
-    setNewPublicObservations(public_observations);
+    // setNewPublicUsername(public_username);
+    // setNewPublicLocation(public_location);
+    // setNewPublicObservations(public_observations);
 
     setIsLoading(false);
   }, [userData]);
@@ -61,10 +61,10 @@ export default function UserSettings() {
           username: newUsername,
           email: newEmail,
           bio: newBio,
-          location: newLocation,
-          public_username: newPublicUsername,
-          public_location: newPublicLocation,
-          public_observations: newPublicObservations
+          location: newLocation
+          // public_username: newPublicUsername,
+          // public_location: newPublicLocation,
+          // public_observations: newPublicObservations
         })
       )
       .then(result => {
@@ -107,23 +107,23 @@ export default function UserSettings() {
         setNewBio={setNewBio}
       />
       <PrivacySettings
-        showEditPrivacyInputs={showEditPrivacyInputs}
-        setShowEditPrivacyInputs={setShowEditPrivacyInputs}
-        newPublicUsername={newPublicUsername}
-        setNewPublicUsername={setNewPublicUsername}
-        newPublicLocation={newPublicLocation}
-        setNewPublicLocation={setNewPublicLocation}
-        newPublicObservations={newPublicObservations}
-        setNewPublicObservations={setNewPublicObservations}
+      // showEditPrivacyInputs={showEditPrivacyInputs}
+      // setShowEditPrivacyInputs={setShowEditPrivacyInputs}
+      // newPublicUsername={newPublicUsername}
+      // setNewPublicUsername={setNewPublicUsername}
+      // newPublicLocation={newPublicLocation}
+      // setNewPublicLocation={setNewPublicLocation}
+      // newPublicObservations={newPublicObservations}
+      // setNewPublicObservations={setNewPublicObservations}
       />
 
-      {showEditProfileInputs === true || showEditPrivacyInputs === true ? (
+      {showEditProfileInputs === true ? (
         <div className="account-settings__button-wrapper">
           <span
             className="app__white-button--small account-settings__cancel-button"
             onClick={() => {
               setShowEditProfileInputs(false);
-              setShowEditPrivacyInputs(false);
+              // setShowEditPrivacyInputs(false);
             }}
           >
             Cancel
@@ -133,7 +133,7 @@ export default function UserSettings() {
             onClick={() => {
               submitEdit();
               setShowEditProfileInputs(false);
-              setShowEditPrivacyInputs(false);
+              // setShowEditPrivacyInputs(false);
             }}
           >
             Save

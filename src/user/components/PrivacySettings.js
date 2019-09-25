@@ -16,16 +16,16 @@ export default function PrivacySettings({
     <section className="privacy-settings__wrapper">
       <h2 className="privacy-settings__heading">
         <p>PRIVACY</p>
-        <p
+        {/* <p
           className="privacy-settings__edit-button-text"
           onClick={() => setShowEditPrivacyInputs(true)}
         >
           edit
-        </p>
+        </p> */}
       </h2>
 
       {/* Make user name public/private */}
-      <div className="privacy-settings__setting-wrapper">
+      {/* <div className="privacy-settings__setting-wrapper">
         {showEditPrivacyInputs ? (
           <input
             type="checkbox"
@@ -58,7 +58,7 @@ export default function PrivacySettings({
       </div>
 
       {/* Make location public/private */}
-      <div className="privacy-settings__setting-wrapper">
+      {/* <div className="privacy-settings__setting-wrapper">
         {showEditPrivacyInputs ? (
           <input
             type="checkbox"
@@ -88,10 +88,10 @@ export default function PrivacySettings({
         <label className="privacy-settings__checkbox--label">
           Display my location as "undisclosed"
         </label>
-      </div>
+      </div> */}
 
       {/* Make observations (IODs or other formats) public/private */}
-      <div className="privacy-settings__setting-wrapper">
+      {/* <div className="privacy-settings__setting-wrapper">
         {showEditPrivacyInputs ? (
           <input
             type="checkbox"
@@ -121,7 +121,7 @@ export default function PrivacySettings({
         <label className="privacy-settings__checkbox--label">
           Hide my observations
         </label>
-      </div>
+      </div> */}
       <a
         className="privacy-settings__remove-text"
         href="mailto:remove@trusat.org"
