@@ -1,14 +1,6 @@
-import React, { useState, useEffect, Fragment } from "react";
-import axios from "axios";
-import { cacheAdapterEnhancer } from "axios-extensions";
-import { API_ROOT } from "../../app/helpers";
+import React, { useState, Fragment } from "react";
+import { API_ROOT, axiosWithCache } from "../../app/helpers";
 import Spinner from "../../app/components/Spinner";
-
-const axiosWithCache = axios.create({
-  baseURL: "/",
-  headers: { "Cache-Control": "no-cache" },
-  adapter: cacheAdapterEnhancer(axios.defaults.adapter)
-});
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [isLoading, setIsLoading] = useState(false);
