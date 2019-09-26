@@ -14,13 +14,13 @@ export default function VerifyClaimAccount({ match }) {
     false
   );
   const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
   const authDispatch = useAuthDispatch();
 
   useEffect(() => {
     if (data.length !== 0) {
       authDispatch({ type: "SET_JWT", payload: data.jwt });
-      setShowSuccessMessage(true);
+      setIsSuccess(true);
       localStorage.setItem("trusat-jwt", data.jwt);
     }
   }, [data, authDispatch]);
@@ -62,10 +62,7 @@ export default function VerifyClaimAccount({ match }) {
             secret: secret
           })
         );
-        authDispatch({
-          type: "SET_USER_ADDRESS",
-          payload: wallet.signingKey.address
-        });
+        setIsSuccess(true);
       } catch (error) {
         console.log(error);
       }
@@ -120,7 +117,7 @@ export default function VerifyClaimAccount({ match }) {
           Submit
         </button>
       </form>
-      {showSuccessMessage ? (
+      {isSuccess ? (
         <p className="claim-account__message">
           Your have now claimed ownership of your TruSat account! We have
           emailed you a "secret" that will be required along with your email and
