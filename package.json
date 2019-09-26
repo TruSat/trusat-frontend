@@ -10,6 +10,7 @@
     "ethers": "^4.0.33",
     "jwt-decode": "^2.2.0",
     "node-sass": "^4.12.0",
+    "p5": "^0.9.0",
     "p5.js-svg": "https://github.com/zenozeng/p5.js-svg.git",
     "pbkdf2": "^3.0.17",
     "react": "^16.8.6",

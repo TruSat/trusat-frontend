@@ -7941,6 +7941,11 @@ p-try@^2.0.0:
   dependencies:
     svgcanvas "^0.10.0"
 
+p5@^0.9.0:
+  version "0.9.0"
+  resolved "https://registry.yarnpkg.com/p5/-/p5-0.9.0.tgz#a4431bf2a0ff6ede06e2c512faddb495c3332504"
+  integrity sha512-N8FzKr9SKofl4f+d9g6oYDRk5JOYgY1bIhCInzNxW7khc1zk7whQIOhaHeijSslfN3rJYfWso6Fn3O/w+TCwLg==
+
 pako@~1.0.5:
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/pako/-/pako-1.0.10.tgz#4328badb5086a426aa90f541977d4955da5c9732"
