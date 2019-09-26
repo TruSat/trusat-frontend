@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { useUserDispatch } from "../../user/user-context";
 import {
   retrieveNonce,
   metamaskSignMessage,
@@ -15,7 +14,6 @@ const web3 = new Web3(Web3.givenProvider || window.ethereum);
 export default function MetaMask({ buttonText }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const userDispatch = useUserDispatch();
   const [isError, setIsError] = useState(false);
 
   const handleClick = async () => {
@@ -40,23 +38,11 @@ export default function MetaMask({ buttonText }) {
     if (typeof metamaskSignedMessage === "string") {
       const jwt = await retrieveMetamaskJwt({ address, metamaskSignedMessage });
 
-      try {
-        const result = await axios.post(
-          `${API_ROOT}/profile`,
-          JSON.stringify({
-            jwt: jwt,
-            address: address
-          })
-        );
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-        authDispatch({ type: "SET_JWT", payload: jwt });
-        authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-        // Add jwt to local storage
-        localStorage.setItem("trusat-jwt", jwt);
-      } catch (error) {
-        setIsError(true);
-      }
+      authDispatch({ type: "SET_USER_ADDRESS", payload: address });
+      authDispatch({ type: "SET_JWT", payload: jwt });
+      authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+      // Add jwt to local storage
+      localStorage.setItem("trusat-jwt", jwt);
     } else {
       // When user cancels the sign or there is an error returned from metamaskSignMessage
       alert(

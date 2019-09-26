@@ -9,13 +9,11 @@ import {
   createSecret
 } from "../helpers/";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { useUserDispatch } from "../../user/user-context";
 import { API_ROOT } from "../../app/helpers";
 
 export default function SignupForm() {
   const authDispatch = useAuthDispatch();
   const { isAuthenticating } = useAuthState();
-  const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [understandMessage, setUnderstandMessage] = useState(true);
@@ -88,27 +86,17 @@ export default function SignupForm() {
       const emailSecretSuccess = await emailSecret(secret);
       // only log user in if email of secret is a success
       if (emailSecretSuccess) {
-        try {
-          const result = await axios.post(
-            `${API_ROOT}/profile`,
-            JSON.stringify({
-              jwt: jwt,
-              address: wallet.signingKey.address
-            })
-          );
-          authDispatch({ type: "SET_JWT", payload: jwt });
-          authDispatch({
-            type: "SET_USER_ADDRESS",
-            payload: wallet.signingKey.address
-          });
-          authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          // add jwt and address to local storage
-          localStorage.setItem("trusat-jwt", jwt);
-        } catch (error) {
-          setIsError(true);
-        }
+        authDispatch({ type: "SET_JWT", payload: jwt });
+        authDispatch({
+          type: "SET_USER_ADDRESS",
+          payload: wallet.signingKey.address
+        });
+        authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+
+        // add jwt and address to local storage
+        localStorage.setItem("trusat-jwt", jwt);
       }
+
       authDispatch({ type: "AUTHENTICATING", payload: false });
     } else {
       setShowInvalidPasswordError(true);

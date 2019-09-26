@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { API_ROOT } from "./app/helpers";
 import jwt_decode from "jwt-decode";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
-import { useUserDispatch } from "./user/user-context";
 import NavBar from "./app/components/NavBar";
 import MobileHeader from "./app/components/MobileHeader";
 import Catalog from "./views/Catalog";
@@ -25,44 +22,25 @@ import VerifyClaimAccount from "./views/VerifyClaimAccount";
 export default function App() {
   const [isError, setIsError] = useState(false);
   const authDispatch = useAuthDispatch();
-  const userDispatch = useUserDispatch();
 
   useEffect(() => {
-    let didCancel = false;
     // get jwt from local storage
     // utilized for authentication and is decoded to return users ethereum address
     const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
       const { address } = await jwt_decode(jwt);
 
-      try {
-        const result = await axios.post(
-          `${API_ROOT}/profile`,
-          JSON.stringify({
-            jwt: jwt,
-            address: address
-          })
-        );
-
-        if (!didCancel) {
-          authDispatch({ type: "SET_JWT", payload: jwt });
-          authDispatch({
-            type: "SET_USER_ADDRESS",
-            payload: address
-          });
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        }
-      } catch (error) {
-        if (!didCancel) {
-          setIsError(true);
-        }
-      }
+      authDispatch({ type: "SET_JWT", payload: jwt });
+      authDispatch({
+        type: "SET_USER_ADDRESS",
+        payload: address
+      });
     };
 
     if (localStorage.getItem("trusat-jwt")) {
       retrieveJwtAndGetUserData();
     }
-  }, [authDispatch, userDispatch]);
+  }, [authDispatch]);
 
   return (
     <Router>

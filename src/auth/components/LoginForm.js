@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { useUserDispatch } from "../../user/user-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
 import { decryptSecret } from "../helpers";
 import axios from "axios";
@@ -11,7 +10,6 @@ import { API_ROOT } from "../../app/helpers";
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const userDispatch = useUserDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [password, setPassword] = useState("Zn48&NJFLPjr");
   const [secret, setSecret] = useState(
@@ -52,25 +50,14 @@ export default function LoginForm() {
       return;
     }
 
-    try {
-      const result = await axios.post(
-        `${API_ROOT}/profile`,
-        JSON.stringify({
-          jwt: jwt,
-          address: wallet.signingKey.address
-        })
-      );
-      userDispatch({ type: "SET_USER_DATA", payload: result.data });
-      authDispatch({
-        type: "SET_USER_ADDRESS",
-        payload: wallet.signingKey.address
-      });
-      authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-      authDispatch({ type: "SET_JWT", payload: jwt });
-      localStorage.setItem("trusat-jwt", jwt);
-    } catch (error) {
-      setIsError(true);
-    }
+    authDispatch({
+      type: "SET_USER_ADDRESS",
+      payload: wallet.signingKey.address
+    });
+    authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
+    authDispatch({ type: "SET_JWT", payload: jwt });
+    localStorage.setItem("trusat-jwt", jwt);
+
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 

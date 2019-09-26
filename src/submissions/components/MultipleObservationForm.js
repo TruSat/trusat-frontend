@@ -11,7 +11,6 @@ import { NavLink } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
-// import { useUserDispatch } from "../../user/user-context";
 
 export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);

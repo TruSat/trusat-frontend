@@ -1,24 +1,27 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_ROOT } from "../app/helpers";
+import {
+  useProfileState,
+  useProfileDispatch
+} from "../profile/profile-context";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
-import { useUserDispatch, useUserState } from "../user/user-context";
 import Spinner from "../app/components/Spinner";
 
 export default function UserSettings() {
-  const userDispatch = useUserDispatch();
+  const profileDispatch = useProfileDispatch();
+  const { profileData } = useProfileState();
   const { jwt, userAddress } = useAuthState();
-  const { userData } = useUserState();
-  const [isLoading, setIsLoading] = useState(false);
   // Profile settings
   const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
+  const [isLoading, setIsloading] = useState(false);
   // Privacy settings
   // const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
   // const [newPublicUsername, setNewPublicUsername] = useState(true);
@@ -26,8 +29,6 @@ export default function UserSettings() {
   // const [newPublicObservations, setNewPublicObservations] = useState(true);
 
   useEffect(() => {
-    setIsLoading(true);
-
     const {
       user_name,
       email,
@@ -36,7 +37,7 @@ export default function UserSettings() {
       // public_username,
       // public_location,
       // public_observations
-    } = userData;
+    } = profileData;
 
     setNewUsername(user_name);
     setNewEmail(email);
@@ -45,12 +46,9 @@ export default function UserSettings() {
     // setNewPublicUsername(public_username);
     // setNewPublicLocation(public_location);
     // setNewPublicObservations(public_observations);
-
-    setIsLoading(false);
-  }, [userData]);
+  }, [profileData]);
 
   const submitEdit = async () => {
-    setIsLoading(true);
     // Post the edits
     await axios
       .post(
@@ -71,22 +69,13 @@ export default function UserSettings() {
         console.log(result);
       })
       .catch(err => console.log(err));
-    // Get the updated user data
-    console.log(`userAddress = `, userAddress);
 
     await axios
-      .post(
-        `${API_ROOT}/profile`,
-        JSON.stringify({
-          jwt: jwt,
-          address: userAddress
-        })
-      )
+      .get(`${API_ROOT}/profile/${userAddress}`)
       .then(result => {
-        userDispatch({ type: "SET_USER_DATA", payload: result.data });
-        setIsLoading(false);
+        profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
       })
-      .catch(err => console.log(err));
+      .catch(error => console.log(error));
   };
 
   return isLoading ? (

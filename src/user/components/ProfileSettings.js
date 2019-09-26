@@ -1,6 +1,6 @@
 import React from "react";
 import { useAuthState } from "../../auth/auth-context";
-import { useUserState } from "../user-context";
+import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
 import { shortenAddressToolTip } from "../../app/helpers";
@@ -19,7 +19,7 @@ export default function ProfileSettings({
   setShowEditProfileInputs
 }) {
   const { userAddress } = useAuthState();
-  const { userData } = useUserState();
+  const { profileData } = useProfileState();
 
   return (
     <section className="profile-settings__wrapper">
@@ -42,7 +42,7 @@ export default function ProfileSettings({
               setSetting={setNewUsername}
             />
           ) : (
-            <p>{userData.user_name}</p>
+            <p>{profileData.user_name}</p>
           )}
         </div>
 
@@ -60,7 +60,7 @@ export default function ProfileSettings({
               setSetting={setNewEmail}
             />
           ) : (
-            <p>{userData.email ? userData.email : "none"}</p>
+            <p>{profileData.email ? profileData.email : "none"}</p>
           )}
         </div>
 
@@ -73,7 +73,9 @@ export default function ProfileSettings({
             />
           ) : (
             <p>
-              {userData.user_location ? userData.user_location : "undisclosed"}
+              {profileData.user_location
+                ? profileData.user_location
+                : "undisclosed"}
             </p>
           )}
         </div>
@@ -88,7 +90,7 @@ export default function ProfileSettings({
               onChange={event => setNewBio(event.target.value)}
             ></textarea>
           ) : (
-            <p>{userData.user_bio}</p>
+            <p>{profileData.user_bio}</p>
           )}
         </div>
       </div>
