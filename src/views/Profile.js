@@ -28,7 +28,9 @@ export default function Profile({ match }) {
     if (!isAddress(addressFromRoute)) {
       setIsAddressError(true);
     } else {
-      doFetch(`/profile?address=${addressFromRoute}&jwt=${jwt}`);
+      if (typeof jwt === "string") {
+        doFetch(`/profile?address=${addressFromRoute}&jwt=${jwt}`);
+      }
     }
 
     if (data.length !== 0) {
