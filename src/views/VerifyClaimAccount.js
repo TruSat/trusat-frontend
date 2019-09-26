@@ -74,12 +74,7 @@ export default function VerifyClaimAccount({ match }) {
     }
   };
 
-  return isError ? (
-    <p className="app__error-message">
-      Invalid ethereum address found in the URL. Please double check the address
-      you are trying to look up and refresh your browser.
-    </p>
-  ) : isLoading ? (
+  return isLoading ? (
     <Spinner />
   ) : (
     <div className="verify-claim-account__wrapper">
@@ -131,6 +126,9 @@ export default function VerifyClaimAccount({ match }) {
           emailed you a "secret" that will be required along with your email and
           password to log in from now on.
         </p>
+      ) : null}
+      {isError ? (
+        <p className="app__error-message">Something went wrong...</p>
       ) : null}
     </div>
   );

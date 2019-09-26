@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/main.scss";
 import { AuthProvider } from "../src/auth/auth-context";
-// import { UserProvider } from "../src/user/user-context";
+
 import { ProfileProvider } from "../src/profile/profile-context";
 import { ObjectsProvider } from "../src/objects/objects-context";
 import App from "./App";
@@ -10,13 +10,11 @@ import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <AuthProvider>
-    {/* <UserProvider> */}
     <ProfileProvider>
       <ObjectsProvider>
         <App />
       </ObjectsProvider>
     </ProfileProvider>
-    {/* </UserProvider> */}
   </AuthProvider>,
 
   document.getElementById("root")

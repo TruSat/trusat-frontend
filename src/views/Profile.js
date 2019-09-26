@@ -35,6 +35,9 @@ export default function Profile({ match }) {
       setIsAddressError(true);
     } else {
       doFetch(`/profile?address=${addressFromRoute}&jwt=${jwt}`);
+    }
+
+    if (data.length !== 0) {
       profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
     }
   }, [jwt, addressFromRoute, doFetch, data, profileDispatch]);

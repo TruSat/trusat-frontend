@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { API_ROOT, axiosWithCache } from "../app/helpers";
-import {
-  useProfileState,
-  useProfileDispatch
-} from "../profile/profile-context";
+import { API_ROOT } from "../app/helpers";
+import { useProfileState } from "../profile/profile-context";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 
-export default function UserSettings() {
-  const profileDispatch = useProfileDispatch();
+function UserSettings({ history }) {
   const { profileData } = useProfileState();
   const { jwt, userAddress } = useAuthState();
   // Profile settings
@@ -70,23 +67,11 @@ export default function UserSettings() {
         })
       );
     } catch (error) {
-      console.log(error);
-    }
-
-    try {
-      const result = await axiosWithCache.get(
-        `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`,
-        {
-          useCache: false
-        }
-      );
-
-      profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
-    } catch (error) {
       setIsError(true);
     }
 
-    setIsloading(false);
+    history.push(`/profile/${userAddress}`);
+    window.location.reload();
   };
 
   return isError ? (
@@ -147,3 +132,5 @@ export default function UserSettings() {
     </div>
   );
 }
+
+export default withRouter(UserSettings);

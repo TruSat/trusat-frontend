@@ -1,28 +1,34 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { API_ROOT } from "../app/helpers";
+import Spinner from "../app/components/Spinner";
 
 export default function ClaimAccount() {
   const [email, setEmail] = useState("john.gribbin@consensys.net");
-  const [showMessage, setShowMessage] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const claimAccount = async () => {
-    await axios
-      .post(
+    setIsError(false);
+    setIsLoading(true);
+    try {
+      await axios.post(
         `${API_ROOT}/claimAccount`,
         JSON.stringify({
           email: email
         })
-      )
-      .then(result => {
-        console.log(result);
-        setShowMessage(true);
-      })
-      .catch(err => console.log(err));
-
+      );
+      setIsSuccess(true);
+    } catch (error) {
+      setIsError(true);
+    }
+    setIsLoading(false);
     setEmail("");
   };
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="claim-account__wrapper">
       <h1 className="claim-account__header">Claim Account</h1>
       <form
@@ -42,10 +48,13 @@ export default function ClaimAccount() {
         ></input>
         <button className="app__white-button--small">Submit</button>
       </form>
-      {showMessage ? (
+      {isSuccess ? (
         <p className="claim-account__message">
           Check your email for further instructions!
         </p>
+      ) : null}
+      {isError ? (
+        <p className="app__error-message">Something went wrong...</p>
       ) : null}
     </div>
   );
