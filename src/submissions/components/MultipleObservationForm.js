@@ -14,11 +14,7 @@ import CircleCheck from "../../assets/CircleCheck.svg";
 
 export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const [pastedIODs, setPastedIODs] = useState(`la
-la
-la
-28537 05 004A   4353 G 20190324194037131 56 75 0926071+373796 16 S
-28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S`);
+  const [pastedIODs, setPastedIODs] = useState(``);
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
@@ -48,13 +44,12 @@ la
     } else {
       submissionJwt = jwt;
     }
-
-    const arrayOfIODs = pastedIODs.split("\n");
+    // const arrayOfIODs = pastedIODs.split("\n");
 
     try {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
-        JSON.stringify({ jwt: submissionJwt, multiple: arrayOfIODs })
+        JSON.stringify({ jwt: submissionJwt, multiple: pastedIODs })
       );
 
       if (result.data.success !== 0) {
@@ -85,12 +80,15 @@ la
           // TODO - better placeholder text, and placeholder IODs that aren't user specific.
           placeholder={`Paste your observations in this field, one observation per line like so:
           
-28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S
-28537 05 004A   4353 G 20190324193959728 56 75 0852089+468562 16 S
-28537 05 004A   4353 G 20190324194001008 56 75 0853326+465278 16 S
-28537 05 004A   4353 G 20190324194001888 56 75 0854298+463051 16 S
-28537 05 004A   4353 G 20190324194037131 56 75 0926071+373796 16 S
-28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S`}
+12345 98 123A   2007 G 20081122112233444 56 14 1122334+112233 39 S
+12345 98 123A   2007 F 2008112211223344  56 25 1122   +1122   28 R+05  1
+12345 98 123A   2007 P 200811221122334   27 35 11223  +112    27 S+070 10
+12345 98 123LEO 2007 B 20081122112233    18 75 1122334+112222 36 V+110 1
+12345 98 123UNK 2007 F 200811221122000   27                      B-005 05
+12345 98 123UNK 2007 F 20081122112233444 28                      V+095 05
+12345 98 123UNK 2007 F 200811221123400   27                      P-010 05  10000
+                2007 O 20081122
+                2007 C 200811231130`}
           value={pastedIODs}
           onChange={event => setPastedIODs(event.target.value)}
           rows="10"
@@ -139,11 +137,3 @@ la
     </form>
   );
 }
-
-// IODs
-// 28537 05 004A   4353 G 20190324193958688 56 75 0850592+471197 16 S
-// 28537 05 004A   4353 G 20190324193959728 56 75 0852089+468562 16 S
-// 28537 05 004A   4353 G 20190324194001008 56 75 0853326+465278 16 S
-// 28537 05 004A   4353 G 20190324194001888 56 75 0854298+463051 16 S
-// 28537 05 004A   4353 G 20190324194037131 56 75 0926071+373796 16 S
-// 28537 05 004A   4353 G 20190324194038691 56 75 0927158+369915 16 S
