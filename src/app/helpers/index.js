@@ -9,7 +9,10 @@ export const axiosWithCache = axios.create({
   baseURL: "/",
   headers: { "Cache-Control": "no-cache" },
   // cache will be enabled by default
-  adapter: cacheAdapterEnhancer(axios.defaults.adapter)
+  adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
+    enabledByDefault: true,
+    cacheFlag: `useCache`
+  })
 });
 
 export const useTrusatGetApi = () => {
@@ -29,47 +32,6 @@ export const useTrusatGetApi = () => {
 
       try {
         const result = await axiosWithCache(`${API_ROOT}${url}`);
-
-        if (!didCancel) {
-          setData(result.data);
-        }
-      } catch (error) {
-        if (!didCancel) {
-          setIsError(true);
-        }
-      }
-      setIsLoading(false);
-    };
-    // Only fetch when url comes through
-    if (url) {
-      fetchData();
-    }
-    // Clean up function which prevents attempt to update state of unmounted component
-    return () => {
-      didCancel = true;
-    };
-  }, [url]);
-
-  return [{ data, isLoading, isError }, setUrl];
-};
-
-export const useTrusatGetApiNoCache = () => {
-  const [data, setData] = useState([]);
-  const [url, setUrl] = useState(``);
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    let didCancel = false;
-
-    const fetchData = async () => {
-      console.log(`useTrusatGetApi is fetching data!`);
-
-      setIsError(false);
-      setIsLoading(true);
-
-      try {
-        const result = await axios(`${API_ROOT}${url}`);
 
         if (!didCancel) {
           setData(result.data);

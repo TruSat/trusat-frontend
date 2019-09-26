@@ -97,6 +97,15 @@ export default function ProfileSettings({
 
       <div className="profile-settings__observation-wrapper">
         <h2 className="profile-settings__heading">OBSERVATION STATIONS</h2>
+        <div className="profile-settings__station-text-wrapper">
+          {profileData.observation_stations
+            ? profileData.observation_stations.map(station => {
+                return (
+                  <p className="profile-settings__station-text">{station}</p>
+                );
+              })
+            : "None found"}
+        </div>
       </div>
     </section>
   );

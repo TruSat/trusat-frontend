@@ -34,10 +34,10 @@ export default function Profile({ match }) {
     if (!isAddress(addressFromRoute)) {
       setIsAddressError(true);
     } else {
-      doFetch(`/profile/${addressFromRoute}`);
+      doFetch(`/profile?address=${addressFromRoute}&jwt=${jwt}`);
       profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
     }
-  }, [addressFromRoute, doFetch, data, profileDispatch]);
+  }, [jwt, addressFromRoute, doFetch, data, profileDispatch]);
 
   return isAddressError ? (
     <p className="app__error-message">

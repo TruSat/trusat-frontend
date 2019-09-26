@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { API_ROOT } from "../app/helpers";
+import { API_ROOT, axiosWithCache } from "../app/helpers";
 import {
   useProfileState,
   useProfileDispatch
@@ -21,7 +21,9 @@ export default function UserSettings() {
   const [newEmail, setNewEmail] = useState("");
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
+
   const [isLoading, setIsloading] = useState(false);
+  const [isError, setIsError] = useState(false);
   // Privacy settings
   // const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
   // const [newPublicUsername, setNewPublicUsername] = useState(true);
@@ -49,9 +51,11 @@ export default function UserSettings() {
   }, [profileData]);
 
   const submitEdit = async () => {
+    setIsError(false);
+    setIsloading(true);
     // Post the edits
-    await axios
-      .post(
+    try {
+      await axios.post(
         `${API_ROOT}/editProfile`,
         JSON.stringify({
           jwt: jwt,
@@ -64,21 +68,30 @@ export default function UserSettings() {
           // public_location: newPublicLocation,
           // public_observations: newPublicObservations
         })
-      )
-      .then(result => {
-        console.log(result);
-      })
-      .catch(err => console.log(err));
+      );
+    } catch (error) {
+      console.log(error);
+    }
 
-    await axios
-      .get(`${API_ROOT}/profile/${userAddress}`)
-      .then(result => {
-        profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
-      })
-      .catch(error => console.log(error));
+    try {
+      const result = await axiosWithCache.get(
+        `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`,
+        {
+          useCache: false
+        }
+      );
+
+      profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
+    } catch (error) {
+      setIsError(true);
+    }
+
+    setIsloading(false);
   };
 
-  return isLoading ? (
+  return isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : isLoading ? (
     <Spinner />
   ) : (
     <div className="account-settings__wrapper">
