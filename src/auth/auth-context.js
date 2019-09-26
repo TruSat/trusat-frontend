@@ -28,7 +28,7 @@ function AuthProvider({ children }) {
     isAuthenticating: false,
     authType: "",
     jwt: "none",
-    userAddress: "none"
+    userAddress: ""
   });
 
   return (
