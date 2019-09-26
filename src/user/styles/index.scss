@@ -201,7 +201,7 @@ SECURITY SETTINGS
 }
 
 .security-settings__info-text {
-  @include body-text--large-desktop;
+  @include body-text--medium;
   margin-bottom: 1em;
   max-width: 1000px;
 }
