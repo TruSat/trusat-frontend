@@ -6,7 +6,7 @@ import Spinner from "../app/components/Spinner";
 
 export default function VerifyClaimAccount({ match }) {
   const [password, setPassword] = useState("");
-  const [retypedPassword, setRetypedPasswprd] = useState("");
+  const [retypedPassword, setRetypedPassword] = useState("");
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
   );
@@ -53,21 +53,21 @@ export default function VerifyClaimAccount({ match }) {
       const wallet = createWallet();
       const secret = createSecret(wallet.signingKey.privateKey, password);
 
-      try {
-        doPost(`/verifyClaimAccount`);
-        withData(
-          JSON.stringify({
-            jwt: match.params.jwt,
-            address: wallet.signingKey.address,
-            secret: secret
-          })
-        );
-        setIsSuccess(true);
-      } catch (error) {
-        console.log(error);
-      }
+      await doPost(`/verifyClaimAccount`);
+      await withData(
+        JSON.stringify({
+          jwt: match.params.jwt,
+          address: wallet.signingKey.address,
+          secret: secret
+        })
+      );
+
       setPassword("");
-      setRetypedPasswprd("");
+      setRetypedPassword("");
+
+      if (data && !isError) {
+        setIsSuccess(true);
+      }
     }
   };
 
@@ -96,7 +96,7 @@ export default function VerifyClaimAccount({ match }) {
           required
           className="email-form__input"
           type="password"
-          onChange={event => setRetypedPasswprd(event.target.value)}
+          onChange={event => setRetypedPassword(event.target.value)}
           value={retypedPassword}
         ></input>
 

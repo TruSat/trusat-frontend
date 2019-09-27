@@ -1,31 +1,26 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { API_ROOT } from "../app/helpers";
+import { useTrusatPostApi } from "../app/helpers";
 import Spinner from "../app/components/Spinner";
 
 export default function ClaimAccount() {
-  const [email, setEmail] = useState("john.gribbin@consensys.net");
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
   const [isSuccess, setIsSuccess] = useState(false);
-  const [isError, setIsError] = useState(false);
 
   const claimAccount = async () => {
-    setIsError(false);
-    setIsLoading(true);
-    try {
-      await axios.post(
-        `${API_ROOT}/claimAccount`,
-        JSON.stringify({
-          email: email
-        })
-      );
-      setIsSuccess(true);
-    } catch (error) {
-      setIsError(true);
-    }
-    setIsLoading(false);
+    await doPost(`/claimAccount`);
+    await withData(
+      JSON.stringify({
+        email: email
+      })
+    );
     setEmail("");
+
+    if (data && !isError) {
+      setIsSuccess(true);
+    }
   };
+
   return isLoading ? (
     <Spinner />
   ) : (

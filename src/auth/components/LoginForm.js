@@ -4,16 +4,14 @@ import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
 import { decryptSecret } from "../helpers";
-import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
-  const [password, setPassword] = useState("Zn48&NJFLPjr");
+  const [password, setPassword] = useState("G46*xuYNW3LQ");
   const [secret, setSecret] = useState(
-    "3005657919/5ed29f8c52656f771b35b037245bd3a1/672859aab2a336937e48e58c27226aac4b747475f59c67d38c2f3dbdf48e75b751b22a7be955a23018b30cde21079e79546fc1f362f7d812fd2c6f18a7b74e5cf486eff78710a5d0b33e3fdf516cfaf8"
+    "527831024/05b66ecd6b04f66e6e07271005d743e2/ffe380721f92da440832d5b82466dbc582f83d8991f684f207761b2fca1a5de40d6d85de1d82ae03bbfdc775028e3dc92fbea99aafd736495c6365f78fa7869388fef5230346d0a7c8439d6fb86c493c"
   );
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
   const [isError, setIsError] = useState(false);

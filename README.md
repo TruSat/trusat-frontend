@@ -1,4 +1,4 @@
-# sathunt-frontend
+# trusat-frontend
 
 ## Get Started
 
