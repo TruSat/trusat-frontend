@@ -1,36 +1,46 @@
-import React from "react";
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import { slide as Menu } from "react-burger-menu";
 import { useAuthState } from "../../auth/auth-context";
 
-export default function BurgerMenu(props) {
+export default function BurgerMenu() {
+  const [menuOpen, setMenuOpen] = useState(false);
   const { userAddress } = useAuthState();
-  const catalogFilter = "priorities";
 
-  // TODO - test NavLinks to see if they stop api getting hit
+  const handleStateChange = state => {
+    setMenuOpen(state.isOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
   return (
-    // Pass on our props
-    <Menu {...props}>
-      <a id="home" className="menu-item" href="/">
+    <Menu
+      isOpen={menuOpen}
+      onStateChange={state => handleStateChange(state)}
+      closeMenu={closeMenu}
+    >
+      <NavLink onClick={() => closeMenu()} to={`/`}>
         Home
-      </a>
+      </NavLink>
 
-      <a id="catalog" className="menu-item" href={`/catalog/${catalogFilter}`}>
+      <NavLink onClick={() => closeMenu()} to={`/catalog/priorities`}>
         Catalog
-      </a>
+      </NavLink>
 
       {userAddress ? (
-        <a id="profile" className="menu-item" href={`/profile/${userAddress}`}>
+        <NavLink onClick={() => closeMenu()} to={`/profile/${userAddress}`}>
           My Profile
-        </a>
+        </NavLink>
       ) : null}
 
-      <a id="about" className="menu-item" href="/about">
+      <NavLink onClick={() => closeMenu()} to={`/about`}>
         About
-      </a>
+      </NavLink>
 
-      <a id="how" className="menu-item" href="/how">
+      <NavLink onClick={() => closeMenu()} to={`/how`}>
         How To
-      </a>
+      </NavLink>
     </Menu>
   );
 }
