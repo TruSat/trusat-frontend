@@ -6,7 +6,7 @@ import {
   toolTipCopy,
   toolTip,
   renderFlag,
-  useTrusatPostApi
+  useTrusatGetApi
 } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
@@ -15,22 +15,24 @@ export default function UserSightingsTable() {
   const { jwt, userAddress } = useAuthState();
   const { noradNumber, objectOrigin } = useObjectsState();
   const [range, setRange] = useState({ start: 0, end: 10 });
-  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
+  const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if ((noradNumber, jwt, userAddress)) {
-      doPost(`/object/userSightings`);
-      withData(
-        JSON.stringify({
-          norad_number: noradNumber,
-          jwt: jwt,
-          address: userAddress
-          // leos address for testing
-          // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
-        })
+      doFetch(
+        `/object/userSightings?jwt=${jwt}&address=${userAddress}&norad_number=${noradNumber}`
       );
+      // withData(
+      //   JSON.stringify({
+      //     norad_number: noradNumber,
+      //     jwt: jwt,
+      //     address: userAddress
+      //     // leos address for testing
+      //     // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
+      //   })
+      // );
     }
-  }, [jwt, userAddress, noradNumber, doPost, withData]);
+  }, [jwt, userAddress, noradNumber, doFetch]);
 
   const renderUserSightingsRows = () => {
     const { start, end } = range;

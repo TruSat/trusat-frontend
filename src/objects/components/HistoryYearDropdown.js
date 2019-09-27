@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { useTrusatPostApi } from "../../app/helpers";
+import { useTrusatGetApi } from "../../app/helpers";
 import HistoryMonthTable from "./HistoryMonthTable";
 import { useObjectsState } from "../../objects/objects-context";
 
 export default function HistoryYearDropdown() {
   const { noradNumber, yearLaunched } = useObjectsState();
   const [yearChosen, setYearChosen] = useState("2019");
-  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
+  const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if (noradNumber && yearChosen) {
-      doPost(`/object/history`);
-      withData(
-        JSON.stringify({
-          norad_number: noradNumber,
-          year: yearChosen
-        })
-      );
+      doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
+      // withData(
+      //   JSON.stringify({
+      //     norad_number: noradNumber,
+      //     year: yearChosen
+      //   })
+      // );
     }
-  }, [yearChosen, noradNumber, doPost, withData]);
+    console.log(data);
+  }, [yearChosen, noradNumber, doFetch, data]);
 
   const renderMonthTables = () => {
     return Object.keys(data).map((monthKey, index) => {

@@ -5,7 +5,7 @@ import {
   toolTip,
   shortenAddressToolTip,
   toolTipCopy,
-  useTrusatPostApi
+  useTrusatGetApi
 } from "../../app/helpers";
 
 import TablePaginator from "../../app/components/TablePaginator";
@@ -14,14 +14,13 @@ import Spinner from "../../app/components/Spinner";
 export default function InfluenceTable() {
   const { noradNumber } = useObjectsState();
   const [range, setRange] = useState({ start: 0, end: 10 });
-  const [{ data, isLoading, isError }, doPost, withData] = useTrusatPostApi();
+  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if (noradNumber) {
-      doPost(`/object/influence`);
-      withData(JSON.stringify({ norad_number: noradNumber }));
+      doFetch(`/object/influence?norad_number=${noradNumber}`);
     }
-  }, [noradNumber, doPost, withData]);
+  }, [noradNumber, doFetch]);
 
   const renderInfluenceRows = () => {
     const { start, end } = range;

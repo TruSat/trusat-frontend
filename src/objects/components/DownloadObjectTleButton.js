@@ -10,10 +10,7 @@ export default function DownloadObjectTleButton() {
   useEffect(() => {
     const fetchData = async () => {
       await axios
-        .post(
-          `${API_ROOT}/tle/object`,
-          JSON.stringify({ norad_number: noradNumber })
-        )
+        .get(`${API_ROOT}/tle/object?norad_number=${noradNumber}`)
         .then(res => {
           setTleString(res.data);
         })

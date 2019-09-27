@@ -10,7 +10,7 @@ import {
 } from "../objects/objects-context";
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
-import { useTrusatPostApi } from "../app/helpers";
+import { useTrusatGetApi } from "../app/helpers";
 
 // Check if noradNumber from url is not more than 5 chracters long
 // and if it only contains numbers
@@ -23,7 +23,7 @@ const isValidNumber = number => {
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
-  const [{ data, isLoading, isError }, doPost, withData] = useTrusatPostApi();
+  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
   const [isNumberError, setIsNumberError] = useState(false);
@@ -31,18 +31,12 @@ export default function ObjectInfo({ match }) {
   useEffect(() => {
     // only fetch data for a potentially valid norad number
     if (isValidNumber(noradNumber)) {
-      doPost(`/object/info`);
-      withData(
-        JSON.stringify({
-          norad_number: noradNumber
-        })
-      );
+      doFetch(`/object/info?norad_number=${noradNumber}`);
     } else {
       setIsNumberError(true);
     }
 
-    if (data) {
-      console.log(data);
+    if (data.length !== 0) {
       objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
       objectsDispatch({ type: "SET_OBJECT_INFO", payload: data });
       objectsDispatch({
@@ -54,7 +48,7 @@ export default function ObjectInfo({ match }) {
         payload: data.year_launched
       });
     }
-  }, [noradNumber, data, doPost, withData, objectsDispatch]);
+  }, [noradNumber, data, doFetch, objectsDispatch]);
 
   return isNumberError ? (
     <p className="app__error-message">

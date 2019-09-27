@@ -11,16 +11,12 @@ export default function HistoryMonthTable({ monthName, monthData }) {
 
   const renderDayRows = () => {
     const { start, end } = range;
-
     const rangeData = monthData.slice(start, end);
 
-    return rangeData.map(day => {
-      return day.observation.map(observation => (
-        <tr
-          key={day.observation.indexOf(observation)}
-          className="table__body-row"
-        >
-          <td className="table__table-data">{day.date}</td>
+    return rangeData.map(observation => {
+      return (
+        <tr key={observation.observation_date} className="table__body-row">
+          <td className="table__table-data">{observation.observation_date}</td>
           <td className="table__table-data app__hide-on-mobile">
             {renderFlag(objectOrigin)}
           </td>
@@ -49,7 +45,7 @@ export default function HistoryMonthTable({ monthName, monthData }) {
             {observation.observation_weight}%
           </td>
         </tr>
-      ));
+      );
     });
   };
 
