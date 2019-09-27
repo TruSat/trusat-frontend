@@ -13,66 +13,55 @@ export default function HistoryYearDropdown() {
     if (noradNumber && yearChosen) {
       doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
     }
-  }, [yearChosen, noradNumber, doFetch, data]);
+  }, [noradNumber, yearLaunched, yearChosen, doFetch, data]);
 
   const renderMonthTables = () => {
-    return Object.keys(data).map((monthKey, index) => {
-      if (data[monthKey]) {
-        return (
-          <HistoryMonthTable
-            key={monthKey}
-            monthName={monthKey}
-            monthData={data[monthKey]}
-          />
-        );
-      }
-    });
+    return Object.keys(data)
+      .filter(monthKey => data[monthKey])
+      .map(monthKey => (
+        <HistoryMonthTable
+          key={monthKey}
+          monthName={monthKey}
+          monthData={data[monthKey]}
+        />
+      ));
   };
 
-  const years = [
-    "2019",
-    "2018",
-    "2017",
-    "2016",
-    "2015",
-    "2014",
-    "2013",
-    "2012",
-    "2011"
-  ];
+  const currentYear = new Date().getFullYear();
+  const yearRows = [];
+
+  for (let i = currentYear; i >= yearLaunched; i--) {
+    yearRows.push(
+      <div key={i} className="history-year-dropdown__row">
+        <h1
+          onClick={() => {
+            if (i !== yearChosen) {
+              setYearChosen(i);
+            } else {
+              setYearChosen("");
+            }
+          }}
+        >
+          <p
+            className={
+              i === yearChosen
+                ? "history-year-dropdown__year-text--highlight"
+                : "history-year-dropdown__year-text"
+            }
+          >
+            {i}
+          </p>
+        </h1>
+        {yearChosen === i ? renderMonthTables() : null}
+      </div>
+    );
+  }
 
   return isError ? (
     <p className="app__error-message">Something went wrong...</p>
   ) : isLoading ? (
     <Spinner />
   ) : (
-    <section className="history-year-dropdown">
-      {years.map(year => {
-        return (
-          <div key={year} className="history-year-dropdown__row">
-            <h1
-              onClick={() => {
-                if (year !== yearChosen) {
-                  setYearChosen(year);
-                } else {
-                  setYearChosen("");
-                }
-              }}
-            >
-              <p
-                className={
-                  year === yearChosen
-                    ? "history-year-dropdown__year-text--highlight"
-                    : "history-year-dropdown__year-text"
-                }
-              >
-                {year}
-              </p>
-            </h1>
-            {yearChosen === year ? renderMonthTables() : null}
-          </div>
-        );
-      })}
-    </section>
+    <section className="history-year-dropdown">{yearRows}</section>
   );
 }
