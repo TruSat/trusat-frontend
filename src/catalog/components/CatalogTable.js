@@ -1,7 +1,7 @@
 import React, { useEffect, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
-import ObjectBadge from "../../assets/ObjectBadge.svg";
+import ObjectBadge from "../../app/components/ObjectBadge";
 import {
   useTrusatGetApi,
   renderFlag,
@@ -14,6 +14,7 @@ import { useObjectsDispatch } from "../../objects/objects-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+  console.log(data);
   const objectsDispatch = useObjectsDispatch();
 
   useEffect(() => {
@@ -58,11 +59,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                   &nbsp;
                 </p>
               ) : null}
-              <img
-                className="table__object-badge"
-                src={ObjectBadge}
-                alt="Object Badge"
-              ></img>
+              <ObjectBadge noradNumber={obj.object_norad_number} />
               &nbsp;
               {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
