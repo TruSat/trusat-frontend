@@ -10,43 +10,41 @@ export default function HistoryMonthTable({ monthName, monthData }) {
   const [range, setRange] = useState({ start: 0, end: 10 });
 
   const renderDayRows = () => {
+    console.log(monthData);
+
     const { start, end } = range;
     const rangeData = monthData.slice(start, end);
 
-    return rangeData.map(observation => {
-      return (
-        <tr key={observation.observation_date} className="table__body-row">
-          <td className="table__table-data">{observation.observation_date}</td>
-          <td className="table__table-data app__hide-on-mobile">
-            {renderFlag(objectOrigin)}
-          </td>
-          <td className="table__table-data">
-            {observation.user_location
-              ? observation.user_location
-              : "undisclosed"}
-          </td>
-          <td className="table__table-data app__hide-on-mobile">
-            <NavLink
-              className="app__nav-link"
-              to={`/profile/${observation.user_address}`}
-            >
-              {observation.username
-                ? toolTip(observation.username, observation.user_address)
-                : shortenAddressToolTip(observation.user_address)}
-            </NavLink>
-          </td>
-          <td className="table__table-data">
-            {observation.observation_quality}
-          </td>
-          <td className="table__table-data">
-            {observation.observation_time_difference}
-          </td>
-          <td className="table__weight-data">
-            {observation.observation_weight}%
-          </td>
-        </tr>
-      );
-    });
+    return rangeData.map(observation => (
+      <tr key={observation.observation_date} className="table__body-row">
+        <td className="table__table-data">{observation.observation_date}</td>
+        <td className="table__table-data app__hide-on-mobile">
+          {renderFlag(objectOrigin)}
+        </td>
+        <td className="table__table-data">
+          {observation.user_location
+            ? observation.user_location
+            : "undisclosed"}
+        </td>
+        <td className="table__table-data app__hide-on-mobile">
+          <NavLink
+            className="app__nav-link"
+            to={`/profile/${observation.user_address}`}
+          >
+            {observation.username
+              ? toolTip(observation.username, observation.user_address)
+              : shortenAddressToolTip(observation.user_address)}
+          </NavLink>
+        </td>
+        <td className="table__table-data">{observation.observation_quality}</td>
+        <td className="table__table-data">
+          {observation.observation_time_difference}
+        </td>
+        <td className="table__weight-data">
+          {observation.observation_weight}%
+        </td>
+      </tr>
+    ));
   };
 
   return monthData.length !== 0 ? (
