@@ -8,11 +8,9 @@ import { decryptSecret } from "../helpers";
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
-  const [password, setPassword] = useState("G46*xuYNW3LQ");
-  const [secret, setSecret] = useState(
-    "527831024/05b66ecd6b04f66e6e07271005d743e2/ffe380721f92da440832d5b82466dbc582f83d8991f684f207761b2fca1a5de40d6d85de1d82ae03bbfdc775028e3dc92fbea99aafd736495c6365f78fa7869388fef5230346d0a7c8439d6fb86c493c"
-  );
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [secret, setSecret] = useState("");
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
   const [isError, setIsError] = useState(false);
 
