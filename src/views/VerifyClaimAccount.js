@@ -26,8 +26,8 @@ export default function VerifyClaimAccount({ match }) {
       console.log(data.jwt);
       const { address } = await jwt_decode(data.jwt);
       authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-      setIsSuccess(true);
       localStorage.setItem("trusat-jwt", data.jwt);
+      setIsSuccess(true);
     };
 
     if (data.length !== 0) {
@@ -74,10 +74,6 @@ export default function VerifyClaimAccount({ match }) {
 
       setPassword("");
       setRetypedPassword("");
-
-      if (data && !isError) {
-        setIsSuccess(true);
-      }
     }
   };
 
