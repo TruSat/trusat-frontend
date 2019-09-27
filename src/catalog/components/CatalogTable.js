@@ -14,7 +14,6 @@ import { useObjectsDispatch } from "../../objects/objects-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
-  console.log(data);
   const objectsDispatch = useObjectsDispatch();
 
   useEffect(() => {
