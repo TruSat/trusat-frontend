@@ -6,12 +6,15 @@ import Spinner from "../../app/components/Spinner";
 
 export default function HistoryYearDropdown() {
   const { noradNumber, yearLaunched } = useObjectsState();
-  const [yearChosen, setYearChosen] = useState("2019");
+  const [yearChosen, setYearChosen] = useState(null);
   const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if (noradNumber && yearChosen) {
       doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
+    }
+    if (yearChosen === null) {
+      setYearChosen(2019);
     }
   }, [noradNumber, yearLaunched, yearChosen, doFetch, data]);
 
