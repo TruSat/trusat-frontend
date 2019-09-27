@@ -36,7 +36,7 @@ function ObjectsProvider({ children }) {
     objectBackground: "",
     objectInfo: {},
     yearLaunched: "",
-    observationFilter: "history"
+    observationFilter: "influence"
   });
 
   return (

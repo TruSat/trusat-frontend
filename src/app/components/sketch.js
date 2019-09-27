@@ -1,11 +1,13 @@
 export default function sketch(p) {
+  // can be changed by passed in props
   let noradNumber = 12345;
+  let canvasSize = 48;
+
   // Extract digits from NORAD ID to enable variation in shapes
   const lastDigit = Number(String(noradNumber).charAt(4));
   const secondToLastDigit = Number(String(noradNumber).charAt(3));
 
-  // Declare shape-related variables
-  const canvasSize = 48;
+  // Colors for adge
   const pallette = [
     "#FC7756", // salmon
     "#004F85", // blue
@@ -22,8 +24,10 @@ export default function sketch(p) {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
-    if (noradNumber !== null) {
-      noradNumber = props.noradNumber;
+    noradNumber = props.noradNumber;
+
+    if (props.width !== null) {
+      canvasSize = props.width;
     }
   };
 

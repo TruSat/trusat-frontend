@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import ObjectBadge from "../../assets/ObjectBadge.svg";
 import { useProfileState } from "../profile-context";
 import {
   renderFlag,
@@ -8,6 +7,7 @@ import {
   shortenAddressToolTip,
   toolTipCopy
 } from "../../app/helpers";
+import ObjectBadge from "../../app/components/ObjectBadge";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function ObjectsCollectedTable() {
@@ -29,7 +29,7 @@ export default function ObjectsCollectedTable() {
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="profile-table__data-wrapper">
-              <img src={ObjectBadge} alt="Object Badge"></img>
+              <ObjectBadge noradNumber={obj.object_norad_number} />
               &nbsp;
               {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
