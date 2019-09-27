@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTrusatGetApi } from "../../app/helpers";
 import HistoryMonthTable from "./HistoryMonthTable";
 import { useObjectsState } from "../../objects/objects-context";
+import Spinner from "../../app/components/Spinner";
 
 export default function HistoryYearDropdown() {
   const { noradNumber, yearLaunched } = useObjectsState();
@@ -11,14 +12,7 @@ export default function HistoryYearDropdown() {
   useEffect(() => {
     if (noradNumber && yearChosen) {
       doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
-      // withData(
-      //   JSON.stringify({
-      //     norad_number: noradNumber,
-      //     year: yearChosen
-      //   })
-      // );
     }
-    console.log(data);
   }, [yearChosen, noradNumber, doFetch, data]);
 
   const renderMonthTables = () => {
@@ -47,7 +41,11 @@ export default function HistoryYearDropdown() {
     "2011"
   ];
 
-  return (
+  return isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
     <section className="history-year-dropdown">
       {years.map(year => {
         return (

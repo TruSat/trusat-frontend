@@ -26,36 +26,34 @@ export default function InfluenceTable() {
     const { start, end } = range;
     const rangeData = data.slice(start, end);
 
-    return rangeData.map(obj => {
-      return (
-        <tr key={data.indexOf(obj)} className="table__body-row">
-          <td className="table__table-data">{obj.observation_time}</td>
-          <td className="table__table-data app__hide-on-mobile">
-            <NavLink
-              className="app__nav-link"
-              to={`/profile/${obj.user_address}`}
-            >
-              {obj.username
-                ? toolTip(obj.username, obj.user_address)
-                : shortenAddressToolTip(obj.user_address)}
-            </NavLink>
-          </td>
-          <td className="table__table-data">
-            <div style={{ display: "flex" }}>
-              {obj.user_location ? obj.user_location : "undisclosed"}
-            </div>
-          </td>
+    return rangeData.map(obj => (
+      <tr key={data.indexOf(obj)} className="table__body-row">
+        <td className="table__table-data">{obj.observation_time}</td>
+        <td className="table__table-data app__hide-on-mobile">
+          <NavLink
+            className="app__nav-link"
+            to={`/profile/${obj.user_address}`}
+          >
+            {obj.username
+              ? toolTip(obj.username, obj.user_address)
+              : shortenAddressToolTip(obj.user_address)}
+          </NavLink>
+        </td>
+        <td className="table__table-data">
+          <div style={{ display: "flex" }}>
+            {obj.user_location ? obj.user_location : "undisclosed"}
+          </div>
+        </td>
 
-          <td className="table__table-data">{obj.observation_quality}</td>
-          <td className="table__table-data">
-            {obj.observation_time_difference.substring(0, 4)}
-          </td>
-          <td className="table__weight-data">
-            {obj.observation_weight.substring(0, 4)}
-          </td>
-        </tr>
-      );
-    });
+        <td className="table__table-data">{obj.observation_quality}</td>
+        <td className="table__table-data">
+          {obj.observation_time_difference.substring(0, 4)}
+        </td>
+        <td className="table__weight-data">
+          {obj.observation_weight.substring(0, 4)}
+        </td>
+      </tr>
+    ));
   };
 
   return isError ? (

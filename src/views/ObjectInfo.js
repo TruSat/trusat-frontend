@@ -59,7 +59,7 @@ export default function ObjectInfo({ match }) {
     <Spinner />
   ) : (
     <Fragment>
-      {isError || data.length === 0 ? (
+      {isError ? (
         <p className="app__error-message">Something went wrong ...</p>
       ) : (
         <div className="object__wrapper">
