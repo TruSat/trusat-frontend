@@ -10,11 +10,9 @@ import {
   toolTipCopy
 } from "../../app/helpers";
 import TablePaginator from "../../app/components/TablePaginator";
-import { useObjectsDispatch } from "../../objects/objects-context";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
-  const objectsDispatch = useObjectsDispatch();
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}`);
@@ -33,22 +31,6 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         <td className="table__table-data">
           <NavLink
             className="app__nav-link"
-            // pass through the purpose to the object view as placeholder until more info is scraped on objects
-            onClick={() => {
-              obj.object_primary_purpose
-                ? objectsDispatch({
-                    type: "SET_OBJECT_BACKGROUND",
-                    payload: `${obj.object_primary_purpose}${
-                      obj.object_secondary_purpose
-                        ? `/${obj.object_secondary_purpose}`
-                        : ""
-                    }`
-                  })
-                : objectsDispatch({
-                    type: "SET_OBJECT_BACKGROUND",
-                    payload: `unknown`
-                  });
-            }}
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">

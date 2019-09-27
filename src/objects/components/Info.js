@@ -1,21 +1,21 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import ObjectBadgeLarge from "../../assets/ObjectBadgeLarge.svg";
 import { useObjectsState } from "../objects-context";
 import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
 import HowToSeeIt from "./HowToSeeIt";
+import ObjectBadge from "../../app/components/ObjectBadge";
 
 export default function Info() {
-  const { noradNumber, objectInfo, objectBackground } = useObjectsState();
+  const { noradNumber, objectInfo } = useObjectsState();
+  console.log(objectInfo);
 
   return objectInfo.object_name ? (
     <React.Fragment>
       <section className="object-info__header-section-wrapper">
-        <img
-          className="object-info__badge"
-          src={ObjectBadgeLarge}
-          alt="object badge"
-        ></img>
+        <div className="object-info__badge-wrapper">
+          <ObjectBadge noradNumber={noradNumber} width={100} />
+        </div>
+
         <div>
           <h1 className="object-info__header">{objectInfo.object_name}</h1>
           <div className="object-info__header-info-wrapper">
@@ -80,10 +80,15 @@ export default function Info() {
               </p>
             </div>
           </div>
-          {objectBackground ? (
+          {objectInfo.object_purpose ? (
             <div className="object-info__purpose-wrapper">
               <p className="object-info__info-label">PURPOSE</p>
-              <p className="object-info__large-text">{objectBackground}</p>
+              <p className="object-info__large-text">
+                {objectInfo.object_purpose}
+                {objectInfo.object_secondary_purpose
+                  ? `/${objectInfo.object_secondary_purpose}`
+                  : null}
+              </p>
             </div>
           ) : null}
         </div>
