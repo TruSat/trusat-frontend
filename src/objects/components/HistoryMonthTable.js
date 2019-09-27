@@ -18,7 +18,7 @@ export default function HistoryMonthTable({ monthName, monthData }) {
     const rangeData = monthData.slice(start, end);
 
     return rangeData.map(observation => (
-      <tr key={observation.observation_date} className="table__body-row">
+      <tr key={observation.observation_time} className="table__body-row">
         <td className="table__table-data">{observation.observation_date}</td>
         <td className="table__table-data app__hide-on-mobile">
           {renderFlag(objectOrigin)}
