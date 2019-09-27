@@ -20,7 +20,7 @@ import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 
 export default function App() {
-  const [isError, setIsError] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const authDispatch = useAuthDispatch();
 
   useEffect(() => {
