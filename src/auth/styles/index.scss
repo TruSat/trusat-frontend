@@ -130,7 +130,7 @@ CLAIM ACCOUNT
 
 .claim-account__message {
   @include body-text--large;
-  margin-top: 1em;
+  margin: 1em 0;
 }
 
 @media (min-width: 600px) {

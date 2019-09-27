@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import jwt_decode from "jwt-decode";
 import { createWallet, createSecret } from "../auth/helpers";
 import { useTrusatPostApi } from "../app/helpers";
-import { useAuthDispatch } from "../auth/auth-context";
+import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
 
 export default function VerifyClaimAccount({ match }) {
@@ -15,13 +17,21 @@ export default function VerifyClaimAccount({ match }) {
   );
   const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
   const [isSuccess, setIsSuccess] = useState(false);
+  const { userAddress } = useAuthState();
   const authDispatch = useAuthDispatch();
 
   useEffect(() => {
-    if (data.length !== 0) {
+    const logUserIn = async () => {
       authDispatch({ type: "SET_JWT", payload: data.jwt });
+      console.log(data.jwt);
+      const { address } = await jwt_decode(data.jwt);
+      authDispatch({ type: "SET_USER_ADDRESS", payload: address });
       setIsSuccess(true);
       localStorage.setItem("trusat-jwt", data.jwt);
+    };
+
+    if (data.length !== 0) {
+      logUserIn();
     }
   }, [data, authDispatch]);
 
@@ -118,11 +128,16 @@ export default function VerifyClaimAccount({ match }) {
         </button>
       </form>
       {isSuccess ? (
-        <p className="claim-account__message">
-          Your have now claimed ownership of your TruSat account! We have
-          emailed you a "secret" that will be required along with your email and
-          password to log in from now on.
-        </p>
+        <div className="login__success-wrapper">
+          <p className="claim-account__message">
+            Your have now claimed ownership of your TruSat account! We have
+            emailed you a "secret" that will be required along with your email
+            and password to log in from now on.
+          </p>
+          <NavLink className="app__nav-link" to={`/profile/${userAddress}`}>
+            <span className="app__button--white">Go to Profile</span>
+          </NavLink>
+        </div>
       ) : null}
       {isError ? (
         <p className="app__error-message">Something went wrong...</p>
