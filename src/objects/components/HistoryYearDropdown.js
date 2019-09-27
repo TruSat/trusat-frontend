@@ -30,7 +30,7 @@ export default function HistoryYearDropdown() {
   const currentYear = new Date().getFullYear();
   const yearRows = [];
 
-  for (let i = currentYear; i >= yearLaunched && i >= 1970; i--) {
+  for (let i = currentYear; i >= yearLaunched && i >= 1998; i--) {
     yearRows.push(
       <div key={i} className="history-year-dropdown__row">
         <h1

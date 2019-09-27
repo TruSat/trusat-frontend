@@ -24,10 +24,8 @@ export default function sketch(p) {
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
-    noradNumber = props.noradNumber;
-
-    if (props.width !== null) {
-      canvasSize = props.width;
+    if (props.noradNumber !== null) {
+      noradNumber = props.noradNumber;
     }
   };
 
