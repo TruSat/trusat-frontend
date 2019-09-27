@@ -19,9 +19,6 @@ export default function sketch(p) {
     //p.noLoop();
     p.rectMode(p.CENTER);
     p.noStroke();
-
-    // Temporary background. Remove this in real app.
-    p.background(pallette[2]);
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
