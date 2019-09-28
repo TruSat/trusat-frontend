@@ -528,20 +528,25 @@ HOW TO VIEW
   padding: 2em 1em;
 }
 
+.how-to__main-header {
+  color: #fc7756;
+  line-height: 42px;
+  font-size: 36px;
+  font-weight: 200;
+}
+
 @media (min-width: 600px) {
   .how-to__wrapper {
     padding: 2em 4em;
   }
+
+  .how-to__main-header {
+    font-size: 76px;
+    line-height: 89px;
+  }
 }
 
 .how-to__section {
-}
-
-.how-to__main-header {
-  color: #fc7756;
-  line-height: 89px;
-  font-size: 76px;
-  font-weight: 200;
 }
 
 .how-to__sub-header {
@@ -550,7 +555,7 @@ HOW TO VIEW
   font-weight: bold;
   line-height: 24px;
   letter-spacing: 0.05em;
-  margin: 2em 0em 0.5em 0em;
+  margin: 1em 0em 0.5em 0em;
   padding-bottom: 0.25em;
   width: 100%;
 }
