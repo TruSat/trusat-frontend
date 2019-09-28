@@ -519,3 +519,59 @@ COPY TEXT
   font-size: $large-font-size;
   margin: 1em 0;
 }
+
+/* ---------- 
+HOW TO VIEW  
+---------- */
+.how-to__wrapper {
+  background: #081122;
+  padding: 2em 1em;
+}
+
+@media (min-width: 600px) {
+  .how-to__wrapper {
+    padding: 2em 4em;
+  }
+}
+
+.how-to__section {
+}
+
+.how-to__main-header {
+  color: #fc7756;
+  line-height: 89px;
+  font-size: 76px;
+  font-weight: 200;
+}
+
+.how-to__sub-header {
+  border-bottom: 1px solid $primary-text-color;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  margin: 2em 0em 0.5em 0em;
+  padding-bottom: 0.25em;
+  width: 100%;
+}
+
+.how-to__question {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
+  margin: 1em 0em 0.5em 0em;
+}
+
+.how-to__copy {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  margin-bottom: 1em;
+}
+
+.how-to__link {
+  color: $primary-text-color;
+}
