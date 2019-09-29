@@ -3,7 +3,8 @@ import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
-import SatSymbol from "../../assets/SatSymbol.svg";
+// import SatSymbol from "../../assets/SatSymbol.svg";
+import TrusatLogoSmall from "../../assets/TrusatLogoSmall.svg";
 
 function NavBar(props) {
   const catalogFilter = "priorities";
@@ -13,12 +14,16 @@ function NavBar(props) {
     <div className="nav-bar">
       <NavLink className="nav-bar__logo" to="/">
         <div className="nav-bar__sat-title-wrapper">
-          <img
+          {/* <img
             className="nav-bar__sat-symbol"
             src={SatSymbol}
             alt="sat symbol"
+          ></img> */}
+          <img
+            className="nav-bar__trusat-title"
+            src={TrusatLogoSmall}
+            alt="trusat title"
           ></img>
-          <p>TRUSAT</p>
         </div>
       </NavLink>
 

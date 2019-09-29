@@ -122,6 +122,33 @@ APP
   color: $primary-text-color;
 }
 
+.app__rounded-button--black {
+  align-self: flex-start;
+  background: #0e0e1e;
+  border-radius: 23px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: $primary-text-color;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0.5em 2em;
+}
+
+.app__rounded-button--orange {
+  align-self: flex-start;
+  background: #fc7756;
+  border-radius: 23px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  color: #0a0b18;
+  display: inline-block;
+  line-height: 20px;
+  padding: 0.5em 2em;
+}
+
+.app__rounded-button--black,
+.app__rounded-button--orange:hover {
+  cursor: pointer;
+}
+
 /* ----------
 MOBILE HEADER 
 ---------- */
@@ -304,7 +331,6 @@ TOOL TIP HELPER
 /* ----------
 EMAIL FORM 
 ---------- */
-
 .log-in__header {
   @include view-title--desktop;
 }
@@ -473,24 +499,6 @@ BURGER MENU
 }
 
 /* ----------
-ASTRIAGRAPH
----------- */
-.astriagraph__wrapper {
-  align-items: center;
-  background: $primary-theme-color;
-  display: flex;
-  justify-content: center;
-  height: 100px;
-  width: 100%;
-}
-
-@media (min-width: 600px) {
-  .astriagraph__wrapper {
-    height: 300px;
-  }
-}
-
-/* ----------
 COPY TEXT
 ---------- */
 .app__copy-text {
@@ -520,15 +528,134 @@ COPY TEXT
   margin: 1em 0;
 }
 
+/* ----------
+WELCOME VIEW
+----------- */
+.welcome__wrapper {
+}
+
+.welcome__section--one {
+  background: linear-gradient(0deg, #081122 0%, #004f85 50.52%, #fc7756 100%);
+  // top: 0;
+  // position: fixed;
+  padding: 3em 4em;
+}
+
+.welcome__section--two {
+  background: linear-gradient(0deg, #004f85 0%, #fc7756 100%);
+  padding: 3em 4em 6em 4em;
+}
+
+.welcome__section--three {
+  background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
+  padding: 0em 4em 4em 4em;
+}
+
+.welcome__title-logo-wrapper {
+  text-align: center;
+}
+
+.welcome__trusat-tagline {
+  font-size: 32px;
+  letter-spacing: 0.04em;
+  line-height: 37px;
+  margin: 0.5em 0;
+}
+
+.welcome__illustration-join-wrapper {
+  display: flex;
+  margin-top: 6em;
+}
+
+.welcome__input-button-wrapper {
+  display: flex;
+  position: relative;
+  height: 40px;
+  margin-top: 1em;
+}
+
+.welcome__input {
+  background: transparent;
+  border: 1px solid #0e0e1e;
+  box-sizing: border-box;
+  font-size: 20px;
+  padding-left: 0.5em;
+  width: 400px;
+}
+
+.welcome__subscribe-button {
+  position: absolute;
+  height: 24px;
+  left: 350px;
+  padding: none;
+}
+
+.welcome__join-copy-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 0em 2em;
+}
+
+.welcome__sub-header--black {
+  color: #0e0e1e;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 59px;
+}
+
+.welcome__sub-header--white {
+  font-size: 48px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 59px;
+}
+
+.welcome__large-copy {
+  line-height: 59px;
+  font-size: 48px;
+  margin-top: 0.5em;
+}
+
+.welcome__large-copy--bold {
+  line-height: 59px;
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0.5em 0;
+}
+
+.welcome__small-copy--black {
+  color: #081122;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.welcome__small-copy--white {
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.welcome__mailing-list-wrapper {
+  margin: 2em 0;
+}
+
+.welcome__partners-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2em 0em 5em 0em;
+}
+
 /* ---------- 
 HOW TO VIEW  
 ---------- */
-.how-to__wrapper {
+.about__wrapper {
   background: #081122;
   padding: 2em 1em;
 }
 
-.how-to__main-header {
+.about__main-header {
   color: #fc7756;
   line-height: 42px;
   font-size: 36px;
@@ -536,20 +663,20 @@ HOW TO VIEW
 }
 
 @media (min-width: 600px) {
-  .how-to__wrapper {
+  .about__wrapper {
     padding: 2em 4em;
   }
 
-  .how-to__main-header {
+  .about__main-header {
     font-size: 76px;
     line-height: 89px;
   }
 }
 
-.how-to__section {
+.about__section {
 }
 
-.how-to__sub-header {
+.about__sub-header {
   border-bottom: 1px solid $primary-text-color;
   font-size: 20px;
   font-weight: bold;
@@ -560,7 +687,7 @@ HOW TO VIEW
   width: 100%;
 }
 
-.how-to__question {
+.about__question {
   font-size: 20px;
   font-weight: bold;
   line-height: 24px;
@@ -569,7 +696,7 @@ HOW TO VIEW
   margin: 1em 0em 0.5em 0em;
 }
 
-.how-to__copy {
+.about__copy {
   font-size: 20px;
   font-weight: 300;
   line-height: 23px;
@@ -577,6 +704,6 @@ HOW TO VIEW
   margin-bottom: 1em;
 }
 
-.how-to__link {
+.about__link {
   color: $primary-text-color;
 }
