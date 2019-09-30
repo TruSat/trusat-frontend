@@ -190,12 +190,8 @@ NAV BAR
     justify-content: space-between;
   }
 
-  .nav-bar__logo {
-    color: $primary-text-color;
-    text-decoration: none;
-  }
-
   .nav-bar__sat-title-wrapper {
+    border-bottom: 3px solid transparent;
     display: flex;
     align-items: center;
     margin-left: 1em;
@@ -596,6 +592,7 @@ COPY TEXT
 WELCOME VIEW
 ----------- */
 .welcome__wrapper {
+  background: yellow;
 }
 
 .welcome__section--one {
@@ -610,7 +607,7 @@ WELCOME VIEW
 
 .welcome__section--three {
   background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
-  padding: 0em 1em 4em 1em;
+  padding: 1em 1em 4em 1em;
 }
 
 @media (min-width: 600px) {
@@ -626,7 +623,7 @@ WELCOME VIEW
 
   .welcome__section--three {
     background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
-    padding: 0em 4em 4em 4em;
+    padding: 1em 4em 4em 4em;
   }
 }
 
@@ -728,6 +725,22 @@ WELCOME VIEW
   .welcome__join-button {
     margin-top: none;
   }
+}
+
+.welcome__iframe-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.welcome__iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .welcome__input-button-wrapper {
@@ -879,7 +892,11 @@ HOW TO VIEW
   }
 }
 
-.about__section {
+.about__partners-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 1em 0em 1em 0em;
 }
 
 .about__sub-header {
