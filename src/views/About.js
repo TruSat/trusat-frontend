@@ -30,7 +30,53 @@ export default function About() {
           projects designed to solve wicked problems.
         </p>
         <h2 className="about__sub-header">PARTNERS</h2>
-        <p className="about__copy">*Images go here*</p>
+        <div className="about__partners-wrapper">
+          <span
+            style={{
+              background: "#C4C4C4",
+              borderRadius: "50%",
+              height: "138px",
+              marginBottom: "1em",
+              width: "138px"
+            }}
+          ></span>
+          <span
+            style={{
+              background: "#C4C4C4",
+              borderRadius: "50%",
+              height: "138px",
+              marginBottom: "1em",
+              width: "138px"
+            }}
+          ></span>
+          <span
+            style={{
+              background: "#C4C4C4",
+              borderRadius: "50%",
+              height: "138px",
+              marginBottom: "1em",
+              width: "138px"
+            }}
+          ></span>
+          <span
+            style={{
+              background: "#C4C4C4",
+              borderRadius: "50%",
+              height: "138px",
+              marginBottom: "1em",
+              width: "138px"
+            }}
+          ></span>
+          <span
+            style={{
+              background: "#C4C4C4",
+              borderRadius: "50%",
+              height: "138px",
+              marginBottom: "1em",
+              width: "138px"
+            }}
+          ></span>
+        </div>
         <h2 className="about__sub-header">WHITEPAPER</h2>
         <p className="about__copy">
           A technical deep dive into how TruSat works. Read it here.
