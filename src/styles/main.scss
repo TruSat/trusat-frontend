@@ -5,10 +5,10 @@
 @import "./base/base";
 @import "./helpers/mixins";
 
-@import "../app/styles/index.scss";
-@import "../auth/styles/index.scss";
-@import "../catalog/styles/index.scss";
-@import "../objects//styles/index.scss";
-@import "../profile/styles/index.scss";
-@import "../user/styles/index.scss";
-@import "../submissions/styles/index.scss";
+@import "../app/app-styles.scss";
+@import "../auth/auth-styles.scss";
+@import "../catalog/catalog-styles.scss";
+@import "../objects/objects-styles.scss";
+@import "../profile/profile-styles.scss";
+@import "../user/user-styles.scss";
+@import "../submissions/submissions-styles.scss";
