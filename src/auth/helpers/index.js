@@ -4,7 +4,7 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
 import aesjs from "aes-js";
-var web3 = new Web3(Web3.givenProvider || window.ethereum);
+const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export const createWallet = () => {
   return ethers.Wallet.createRandom();

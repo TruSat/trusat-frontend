@@ -1,24 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
+import { useTrusatGetApi } from "../../app/helpers";
 import { useObjectsState } from "../objects-context";
+import Spinner from "../../app/components/Spinner";
 
 export default function DownloadObjectTleButton() {
   const { noradNumber } = useObjectsState();
   const [tleString, setTleString] = useState("");
+  const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    const fetchData = async () => {
-      await axios
-        .get(`${API_ROOT}/tle/object?norad_number=${noradNumber}`)
-        .then(res => {
-          setTleString(res.data);
-        })
-        .catch(err => console.log(err));
-    };
+    doFetch(`/tle/object?norad_number=${noradNumber}`);
 
-    fetchData();
-  }, [noradNumber]);
+    if (data) {
+      setTleString(data);
+    }
+  }, [noradNumber, doFetch, data]);
 
   const downloadTles = () => {
     let textFile = null;
@@ -36,7 +32,11 @@ export default function DownloadObjectTleButton() {
   };
 
   // only show download option if system can find a TLE for this object
-  return tleString ? (
+  return isLoading ? (
+    <Spinner />
+  ) : isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : (
     <a
       className="catalog__link"
       href={downloadTles()}
@@ -44,5 +44,5 @@ export default function DownloadObjectTleButton() {
     >
       <span className="catalog__button catalog__get-data-button">Get data</span>
     </a>
-  ) : null;
+  );
 }
