@@ -4,7 +4,7 @@ import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
-import { shortenAddressToolTip } from "../../app/helpers";
+import { shortenAddressToolTip, toolTip } from "../../app/helpers";
 
 // TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({
@@ -61,7 +61,12 @@ export default function ProfileSettings({
               setSetting={setNewEmail}
             />
           ) : (
-            <p>{profileData.email ? profileData.email : "none"}</p>
+            <p>
+              {toolTip(
+                profileData.email ? profileData.email : "none",
+                "This is the address you want to use to recover this account"
+              )}
+            </p>
           )}
         </div>
 
