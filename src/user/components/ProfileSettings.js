@@ -1,4 +1,5 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
@@ -21,7 +22,7 @@ export default function ProfileSettings({
   const { userAddress } = useAuthState();
   const { profileData } = useProfileState();
 
-  return (
+  return userAddress ? (
     <section className="profile-settings__wrapper">
       <div className="profile-settings__profile-wrapper">
         <h2 className="profile-settings__heading">
@@ -98,7 +99,7 @@ export default function ProfileSettings({
       <div className="profile-settings__observation-wrapper">
         <h2 className="profile-settings__heading">OBSERVATION STATIONS</h2>
         <div className="profile-settings__station-text-wrapper">
-          {profileData.observation_stations
+          {profileData.observation_stations.length !== 0
             ? profileData.observation_stations.map(station => {
                 return (
                   <p className="profile-settings__station-text">{station}</p>
@@ -108,5 +109,11 @@ export default function ProfileSettings({
         </div>
       </div>
     </section>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/login"
+      }}
+    />
   );
 }
