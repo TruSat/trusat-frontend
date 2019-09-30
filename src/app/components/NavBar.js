@@ -3,7 +3,8 @@ import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
-import TrusatLogoSmall from "../../assets/TrusatLogoSmall.svg";
+import TrusatLogoSmallBlack from "../../assets/TrusatLogoSmallBlack.svg";
+import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
 
 function NavBar(props) {
   const path = props.location.pathname;
@@ -14,7 +15,11 @@ function NavBar(props) {
     <div className={path === "/" ? "nav-bar--welcome" : "nav-bar"}>
       <NavLink className="app__nav-link" to="/">
         <div className="nav-bar__sat-title-wrapper">
-          <img src={TrusatLogoSmall} alt="trusat title"></img>
+          {path === "/" ? (
+            <img src={TrusatLogoSmallBlack} alt="trusat title"></img>
+          ) : (
+            <img src={TrusatLogoSmallWhite} alt="trusat title"></img>
+          )}
         </div>
       </NavLink>
 

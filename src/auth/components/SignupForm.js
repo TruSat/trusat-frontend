@@ -14,10 +14,10 @@ import { API_ROOT } from "../../app/helpers";
 export default function SignupForm() {
   const authDispatch = useAuthDispatch();
   const { isAuthenticating } = useAuthState();
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
-  const [password, setPassword] = useState("Zn48&NJFLPjr");
-  const [understandMessage, setUnderstandMessage] = useState(true);
-  const [retypedPassword, setRetypedPassword] = useState("Zn48&NJFLPjr");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [retypedPassword, setRetypedPassword] = useState("");
+  const [understandMessage, setUnderstandMessage] = useState(false);
 
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
@@ -28,9 +28,13 @@ export default function SignupForm() {
   const [isError, setIsError] = useState(false);
 
   const handleFormValidation = () => {
+    setShowInvalidPasswordError(false);
+    setShowUnmatchedPasswordError(false);
+
     // will return true if string contains at least 1 number
     function hasNumber(string) {
       var regex = /\d/g;
+      console.log(`has number = `, regex.test(string));
       return regex.test(string);
     }
     // check if user enters a password that is at least 8 chracters long and contains one number
@@ -39,7 +43,7 @@ export default function SignupForm() {
       return false;
     }
     // check that password and retyped password have same value
-    if (password !== retypedPassword) {
+    if (hasNumber(password) && password !== retypedPassword) {
       setShowUnmatchedPasswordError(true);
       return false;
     }
