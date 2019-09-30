@@ -8,6 +8,7 @@ import ProfileSettings from "../user/components/ProfileSettings";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
+import Button from "../app/components/Button";
 
 function UserSettings({ history }) {
   const { profileData } = useProfileState();
@@ -74,6 +75,12 @@ function UserSettings({ history }) {
     window.location.reload();
   };
 
+  const logout = () => {
+    localStorage.removeItem("trusat-jwt");
+    history.push(`/`);
+    window.location.reload();
+  };
+
   return isError ? (
     <p className="app__error-message">Something went wrong...</p>
   ) : isLoading ? (
@@ -129,6 +136,12 @@ function UserSettings({ history }) {
 
       {/* Only show prompt to make move to metamask if they dont have plugin installed */}
       {window.etherem ? null : <SecuritySettings />}
+      <Button
+        color="white"
+        text="logout"
+        addStyles="account-settings__log-out-button"
+        onClick={logout}
+      ></Button>
     </div>
   );
 }
