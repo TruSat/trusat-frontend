@@ -8,11 +8,21 @@ export default function Home() {
     <div className="welcome__wrapper">
       <section className="welcome__section--one">
         <div className="welcome__title-logo-wrapper">
-          <img src={TrusatLogoBig} alt="Trusat logo"></img>
+          <img
+            className="welcome__image welcome__logo-image"
+            src={TrusatLogoBig}
+            alt="Trusat logo"
+          ></img>
+
           <h2 className="welcome__trusat-tagline">
             OPEN SOURCE SPACE SUSTAINABILITY
           </h2>
-          <img src={Globe} alt="globe"></img>
+
+          <img
+            className="welcome__image welcome__globe-image"
+            src={Globe}
+            alt="globe"
+          ></img>
         </div>
 
         <p className="welcome__large-copy">
@@ -45,7 +55,11 @@ export default function Home() {
             Join the mailing list to stay posted on the project
           </p>
           <div className="welcome__input-button-wrapper">
-            <input className="welcome__input" type="email"></input>
+            <input
+              className="welcome__input"
+              type="email"
+              placeholder="Your email"
+            ></input>
             <RoundedButton
               addStyles="welcome__subscribe-button"
               color="black"
@@ -55,13 +69,7 @@ export default function Home() {
         </div>
 
         <div className="welcome__illustration-join-wrapper">
-          <span
-            style={{
-              background: "#C4C4C4",
-              minHeight: "332px",
-              minWidth: "332px"
-            }}
-          ></span>
+          <span className="welcome__illustration welcome__illustration--left"></span>
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Start watching</h2>
             <p className="welcome__small-copy--white">
@@ -69,36 +77,32 @@ export default function Home() {
               just need a clear sky. Report your observations for credit in the
               TruSat network.
             </p>
-            <RoundedButton color="orange" text="JOIN THE TRACKERS" />
+            <RoundedButton
+              addStyles="welcome__join-button"
+              color="orange"
+              text="JOIN THE TRACKERS"
+            />
           </div>
         </div>
 
-        <div className="welcome__illustration-join-wrapper">
+        <div className="welcome__illustration-join-wrapper welcome__illustration-join-wrapper--center">
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Start Building</h2>
             <p className="welcome__small-copy--white">
               TruSat is entirely open source. Check out the open issues,
               bounties, and our plans to open TruSat’s governance.
             </p>
-            <RoundedButton color="orange" text="JOIN THE BUILDERS" />
+            <RoundedButton
+              addStyles="welcome__join-button"
+              color="orange"
+              text="JOIN THE BUILDERS"
+            />
           </div>
-          <span
-            style={{
-              background: "#C4C4C4",
-              minHeight: "332px",
-              minWidth: "332px"
-            }}
-          ></span>
+          <span className="welcome__illustration welcome__illustration--right"></span>
         </div>
 
         <div className="welcome__illustration-join-wrapper">
-          <span
-            style={{
-              background: "#C4C4C4",
-              minHeight: "332px",
-              minWidth: "332px"
-            }}
-          ></span>
+          <span className="welcome__illustration welcome__illustration--left"></span>
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">How it works</h2>
             <p className="welcome__small-copy--white">
@@ -106,7 +110,11 @@ export default function Home() {
               be clickbait to get people to the Lite Paper so that the curious
               can learn something valuable.
             </p>
-            <RoundedButton color="orange" text="LEARN ABOUT TRUSAT" />
+            <RoundedButton
+              addStyles="welcome__join-button"
+              color="orange"
+              text="LEARN ABOUT TRUSAT"
+            />
           </div>
         </div>
       </section>
@@ -119,6 +127,7 @@ export default function Home() {
               background: "#C4C4C4",
               borderRadius: "50%",
               height: "138px",
+              marginBottom: "1em",
               width: "138px"
             }}
           ></span>
@@ -127,6 +136,7 @@ export default function Home() {
               background: "#C4C4C4",
               borderRadius: "50%",
               height: "138px",
+              marginBottom: "1em",
               width: "138px"
             }}
           ></span>
@@ -135,6 +145,7 @@ export default function Home() {
               background: "#C4C4C4",
               borderRadius: "50%",
               height: "138px",
+              marginBottom: "1em",
               width: "138px"
             }}
           ></span>
@@ -143,6 +154,7 @@ export default function Home() {
               background: "#C4C4C4",
               borderRadius: "50%",
               height: "138px",
+              marginBottom: "1em",
               width: "138px"
             }}
           ></span>
@@ -151,6 +163,7 @@ export default function Home() {
               background: "#C4C4C4",
               borderRadius: "50%",
               height: "138px",
+              marginBottom: "1em",
               width: "138px"
             }}
           ></span>
