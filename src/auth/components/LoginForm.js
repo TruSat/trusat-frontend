@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { retrieveNonce, signMessage, retrieveJwt } from "../helpers/";
-import { decryptSecret } from "../helpers";
+import {
+  retrieveNonce,
+  signMessage,
+  retrieveJwt,
+  decryptSecret
+} from "../auth-helpers";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();

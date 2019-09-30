@@ -6,7 +6,7 @@ import {
   retrieveNonce,
   signMessage,
   retrieveJwt
-} from "../../auth/helpers";
+} from "../../auth/auth-helpers";
 import { NavLink } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";

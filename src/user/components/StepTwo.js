@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
-import { decryptSecret } from "../../auth/helpers";
+import { decryptSecret } from "../../auth/auth-helpers";
 
 export default function StepTwo({ step, setStep, setPrivateKey }) {
   const [secret, setSecret] = useState("");

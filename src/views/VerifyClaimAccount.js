@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { createWallet, createSecret } from "../auth/helpers";
+import { createWallet, createSecret } from "../auth/auth-helpers";
 import { useTrusatPostApi } from "../app/helpers";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";

@@ -7,7 +7,6 @@ import {
   toolTipCopy,
   useTrusatGetApi
 } from "../../app/helpers";
-
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 

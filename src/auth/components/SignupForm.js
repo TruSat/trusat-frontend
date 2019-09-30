@@ -7,7 +7,7 @@ import {
   signMessage,
   retrieveJwt,
   createSecret
-} from "../helpers/";
+} from "../auth-helpers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import { API_ROOT } from "../../app/helpers";
 

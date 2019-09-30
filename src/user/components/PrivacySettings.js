@@ -1,5 +1,5 @@
 import React from "react";
-import CircleCheck from "../../assets/CircleCheck.svg";
+// import CircleCheck from "../../assets/CircleCheck.svg";
 import { toolTip } from "../../app/helpers";
 
 export default function PrivacySettings({

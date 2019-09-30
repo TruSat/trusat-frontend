@@ -3,10 +3,10 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 import {
   retrieveNonce,
   metamaskSignMessage,
-  retrieveMetamaskJwt
-} from "../helpers/";
+  retrieveMetamaskJwt,
+  handleMetamaskConnect
+} from "../auth-helpers";
 import Web3 from "web3";
-import { handleMetamaskConnect } from "../helpers";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export default function MetaMask({ buttonText }) {
