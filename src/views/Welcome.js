@@ -6,6 +6,7 @@ import RoundedButton from "../app/components/RoundedButton";
 export default function Home() {
   return (
     <div className="welcome__wrapper">
+      {/* SECTION/GRADIENT ONE */}
       <section className="welcome__section--one">
         <div className="welcome__title-logo-wrapper">
           <img
@@ -33,21 +34,28 @@ export default function Home() {
           How do we ensure collisions and debris don’t trap us on Earth?
         </p>
         <p className="welcome__large-copy--bold">That's where you come in:</p>
-        <iframe
-          title="pale blue dot video"
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/wupToqz1e2g"
-          frameborder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+        <div className="welcome__iframe-wrapper">
+          <iframe
+            className="welcome__iframe"
+            title="pale blue dot video"
+            src="https://www.youtube.com/embed/wupToqz1e2g"
+            frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen="allowfullscreen"
+            mozallowfullscreen="mozallowfullscreen"
+            msallowfullscreen="msallowfullscreen"
+            oallowfullscreen="oallowfullscreen"
+            webkitallowfullscreen="webkitallowfullscreen"
+          ></iframe>
+        </div>
+
         <p className="welcome__large-copy">
           TruSat is a global community measuring satellite behavior to ensure
           clean, open, usable space for everyone.
         </p>
       </section>
 
+      {/* SECTION/GRADIENT TWO */}
       <section className="welcome__section--two">
         <div className="welcome__mailing-list-wrapper">
           <h2 className="welcome__sub-header--black">Stay in the loop</h2>
@@ -119,6 +127,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SECTION/GRADIENT THREE */}
       <section className="welcome__section--three">
         <h2 className="welcome__sub-header--white">Partners</h2>
         <div className="welcome__partners-wrapper">
