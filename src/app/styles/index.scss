@@ -6,6 +6,10 @@ APP
   display: block;
 }
 
+.app__hide {
+  display: none;
+}
+
 @media (min-width: 600px) {
   .app__hide-on-desktop {
     display: none;
@@ -171,7 +175,12 @@ NAV BAR
   display: none;
 }
 
+.nav-bar--welcome {
+  display: none;
+}
+
 @media (min-width: 600px) {
+  // nav bar styles shown everywhere but the welcome page
   .nav-bar {
     align-items: center;
     background: #2d2d2d;
@@ -190,10 +199,6 @@ NAV BAR
     display: flex;
     align-items: center;
     margin-left: 1em;
-  }
-
-  .nav-bar__sat-symbol {
-    margin-right: 0.25em;
   }
 
   .nav-bar__route-link-wrapper {
@@ -238,6 +243,65 @@ NAV BAR
     background: $primary-highlight-color;
     border-radius: 4px;
     color: $primary-theme-color;
+    line-height: 14px;
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 1em;
+    padding: 1em 3em;
+  }
+
+  .nav-bar__join-button:hover {
+    cursor: pointer;
+  }
+
+  // changes to nav bar shown on welcome page
+  .nav-bar--welcome {
+    align-items: center;
+    border: 3px solid transparent;
+    display: flex;
+    height: 3.5em;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+  }
+
+  .nav-bar__link-wrapper--highlight--welcome {
+    align-items: center;
+    // color: #0e0e1e;
+    border-bottom: 3px solid #0e0e1e;
+    display: flex;
+    height: 3.5em;
+    margin: 0em 2em;
+  }
+
+  .nav-bar__link-wrapper--highlight--welcome:hover {
+    cursor: pointer;
+  }
+
+  .nav-bar__link-wrapper--lowlight--welcome {
+    border-bottom: 3px solid transparent;
+    color: #888888;
+    margin: 0em 2em;
+  }
+
+  .nav-bar__link-wrapper--lowlight--welcome:hover {
+    cursor: pointer;
+  }
+
+  .nav-bar__link--highlight--welcome {
+    color: #0e0e1e;
+    text-decoration: none;
+  }
+
+  .nav-bar__link--lowlight--welcome {
+    opacity: 0.5;
+    text-decoration: none;
+  }
+
+  .nav-bar__join-button--welcome {
+    background: #0e0e1e;
+    border-radius: 4px;
+    color: $primary-text-color;
     line-height: 14px;
     font-weight: bold;
     font-size: 12px;
@@ -536,9 +600,7 @@ WELCOME VIEW
 
 .welcome__section--one {
   background: linear-gradient(0deg, #081122 0%, #004f85 50.52%, #fc7756 100%);
-  // top: 0;
-  // position: fixed;
-  padding: 2em 1em;
+  padding: 3.5em 1em;
 }
 
 .welcome__section--two {
@@ -554,9 +616,7 @@ WELCOME VIEW
 @media (min-width: 600px) {
   .welcome__section--one {
     background: linear-gradient(0deg, #081122 0%, #004f85 50.52%, #fc7756 100%);
-    // top: 0;
-    // position: fixed;
-    padding: 3em 4em;
+    padding: 10em 4em;
   }
 
   .welcome__section--two {
@@ -590,7 +650,7 @@ WELCOME VIEW
 .welcome__trusat-tagline {
   font-size: 16px;
   line-height: 19px;
-  margin: 0.5em 0;
+  margin: 1em 0;
 }
 
 @media (min-width: 600px) {
@@ -598,34 +658,38 @@ WELCOME VIEW
     font-size: 32px;
     letter-spacing: 0.04em;
     line-height: 37px;
-    margin: 0.5em 0;
+    margin: 1em 0;
   }
 }
 
 .welcome__illustration-join-wrapper {
-  border: 1px solid white;
   display: flex;
   justify-content: space-between;
   margin-top: 6em;
 }
 
-@media (max-width: 750px) {
+// flip middle join wrapper order on mobile
+@media (max-width: 600px) {
   .welcome__illustration-join-wrapper {
     flex-wrap: wrap;
+  }
+
+  .welcome__illustration-join-wrapper--center {
+    flex-direction: column-reverse;
   }
 }
 
 .welcome__illustration {
   background: #c4c4c4;
   height: 314px;
-  width: 314%;
+  width: 100%;
 }
 
 @media (min-width: 600px) {
   .welcome__illustration {
     background: #c4c4c4;
     height: 332px;
-    min-width: 332px;
+    max-width: 332px;
   }
 
   .welcome__illustration--left {
@@ -644,10 +708,6 @@ WELCOME VIEW
   width: 100%;
 }
 
-.welcome__illustration-join-wrapper--center {
-  flex-direction: column-reverse;
-}
-
 .welcome__sub-header--white {
   margin: 0.25em 0em;
 }
@@ -659,10 +719,6 @@ WELCOME VIEW
 @media (min-width: 600px) {
   .welcome__join-copy-wrapper {
     min-width: 350px;
-  }
-
-  .welcome__illustration-join-wrapper--center {
-    flex-direction: column;
   }
 
   .welcome__sub-header--white {

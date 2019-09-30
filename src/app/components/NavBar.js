@@ -3,22 +3,17 @@ import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
-// import SatSymbol from "../../assets/SatSymbol.svg";
 import TrusatLogoSmall from "../../assets/TrusatLogoSmall.svg";
 
 function NavBar(props) {
+  const path = props.location.pathname;
   const catalogFilter = "priorities";
   const { userAddress } = useAuthState();
 
   return (
-    <div className="nav-bar">
+    <div className={path === "/" ? "nav-bar--welcome" : "nav-bar"}>
       <NavLink className="nav-bar__logo" to="/">
         <div className="nav-bar__sat-title-wrapper">
-          {/* <img
-            className="nav-bar__sat-symbol"
-            src={SatSymbol}
-            alt="sat symbol"
-          ></img> */}
           <img
             className="nav-bar__trusat-title"
             src={TrusatLogoSmall}
@@ -30,15 +25,15 @@ function NavBar(props) {
       <div className="nav-bar__route-link-wrapper">
         <div
           className={
-            props.location.pathname === "/"
-              ? "nav-bar__link-wrapper--highlight"
+            path === "/"
+              ? "nav-bar__link-wrapper--highlight--welcome"
               : "nav-bar__link-wrapper--lowlight"
           }
         >
           <NavLink
             className={
-              props.location.pathname === "/"
-                ? "nav-bar__link--highlight"
+              path === "/"
+                ? "nav-bar__link--highlight--welcome"
                 : "nav-bar__link--lowlight"
             }
             to="/"
@@ -49,19 +44,19 @@ function NavBar(props) {
 
         <div
           className={
-            props.location.pathname.includes("catalog") ||
-            // props.location.pathname.includes("object") ||
-            props.location.pathname.includes("submit")
+            path.includes("catalog") || path.includes("submit")
               ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
               : "nav-bar__link-wrapper--lowlight"
           }
         >
           <NavLink
             className={
-              props.location.pathname.includes("catalog") ||
-              // props.location.pathname.includes("object") ||
-              props.location.pathname.includes("submit")
+              path.includes("catalog") || path.includes("submit")
                 ? "nav-bar__link--highlight"
+                : path === "/"
+                ? "nav-bar__link--lowlight--welcome"
                 : "nav-bar__link--lowlight"
             }
             to={`/catalog/${catalogFilter}`}
@@ -74,15 +69,19 @@ function NavBar(props) {
         {userAddress ? (
           <div
             className={
-              props.location.pathname === `/profile/${userAddress}`
+              path === `/profile/${userAddress}`
                 ? "nav-bar__link-wrapper--highlight"
+                : path === "/"
+                ? "nav-bar__link-wrapper--lowlight--welcome"
                 : "nav-bar__link-wrapper--lowlight"
             }
           >
             <NavLink
               className={
-                props.location.pathname === `/profile/${userAddress}`
+                path === `/profile/${userAddress}`
                   ? "nav-bar__link--highlight"
+                  : path === "/"
+                  ? "nav-bar__link--lowlight--welcome"
                   : "nav-bar__link--lowlight"
               }
               to={`/profile/${userAddress}`}
@@ -94,15 +93,19 @@ function NavBar(props) {
 
         <div
           className={
-            props.location.pathname === "/about"
+            path === "/about"
               ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
               : "nav-bar__link-wrapper--lowlight"
           }
         >
           <NavLink
             className={
-              props.location.pathname === "/about"
+              path === "/about"
                 ? "nav-bar__link--highlight"
+                : path === "/"
+                ? "nav-bar__link--lowlight--welcome"
                 : "nav-bar__link--lowlight"
             }
             to="/about"
@@ -113,15 +116,19 @@ function NavBar(props) {
 
         <div
           className={
-            props.location.pathname === "/how"
+            path === "/how"
               ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
               : "nav-bar__link-wrapper--lowlight"
           }
         >
           <NavLink
             className={
-              props.location.pathname === "/how"
+              path === "/how"
                 ? "nav-bar__link--highlight"
+                : path === "/"
+                ? "nav-bar__link--lowlight--welcome"
                 : "nav-bar__link--lowlight"
             }
             to="/how"
@@ -134,7 +141,7 @@ function NavBar(props) {
       {/* Show Join button when user is not logged in */}
       {!userAddress ? (
         <NavLink className="app__nav-link" to="/login">
-          <JoinButton />
+          <JoinButton path={path} />
         </NavLink>
       ) : (
         // Invisible element to ensure nav bar links stays center of header component
