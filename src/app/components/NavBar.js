@@ -12,13 +12,9 @@ function NavBar(props) {
 
   return (
     <div className={path === "/" ? "nav-bar--welcome" : "nav-bar"}>
-      <NavLink className="nav-bar__logo" to="/">
+      <NavLink className="app__nav-link" to="/">
         <div className="nav-bar__sat-title-wrapper">
-          <img
-            className="nav-bar__trusat-title"
-            src={TrusatLogoSmall}
-            alt="trusat title"
-          ></img>
+          <img src={TrusatLogoSmall} alt="trusat title"></img>
         </div>
       </NavLink>
 
