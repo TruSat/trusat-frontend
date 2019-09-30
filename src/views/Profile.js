@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { useTrusatGetApi } from "../app/helpers";
+import { useTrusatGetApi } from "../app/app-helpers";
 import ProfileHeader from "../profile/components/ProfileHeader";
 import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
 import ObservationsTable from "../profile/components/ObservationsTable";

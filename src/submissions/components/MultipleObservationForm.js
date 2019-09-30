@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import axios from "axios";
-import { API_ROOT } from "../../app/helpers";
+import { API_ROOT } from "../../app/app-helpers";
 import {
   createWallet,
   retrieveNonce,

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { createWallet, createSecret } from "../auth/auth-helpers";
-import { useTrusatPostApi } from "../app/helpers";
+import { useTrusatPostApi } from "../app/app-helpers";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
 
@@ -23,7 +23,6 @@ export default function VerifyClaimAccount({ match }) {
   useEffect(() => {
     const logUserIn = async () => {
       authDispatch({ type: "SET_JWT", payload: data.jwt });
-      console.log(data.jwt);
       const { address } = await jwt_decode(data.jwt);
       authDispatch({ type: "SET_USER_ADDRESS", payload: address });
       localStorage.setItem("trusat-jwt", data.jwt);

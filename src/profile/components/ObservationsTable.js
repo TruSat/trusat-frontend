@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { toolTip, toolTipCopy } from "../../app/helpers";
+import { toolTip, toolTipCopy } from "../../app/app-helpers";
 import { useProfileState } from "../profile-context";
 import { useAuthState } from "../../auth/auth-context";
 import TablePaginator from "../../app/components/TablePaginator";

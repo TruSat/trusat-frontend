@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useTrusatGetApi } from "../../app/helpers";
+import { useTrusatGetApi } from "../../app/app-helpers";
 import HistoryMonthTable from "./HistoryMonthTable";
 import { useObjectsState } from "../../objects/objects-context";
 import Spinner from "../../app/components/Spinner";

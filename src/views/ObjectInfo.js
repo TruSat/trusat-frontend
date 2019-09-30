@@ -10,7 +10,7 @@ import {
 } from "../objects/objects-context";
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
-import { useTrusatGetApi } from "../app/helpers";
+import { useTrusatGetApi } from "../app/app-helpers";
 
 // Check if noradNumber from url is not more than 5 chracters long
 // and if it only contains numbers

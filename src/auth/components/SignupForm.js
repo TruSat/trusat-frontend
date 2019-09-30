@@ -9,7 +9,7 @@ import {
   createSecret
 } from "../auth-helpers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { API_ROOT } from "../../app/helpers";
+import { API_ROOT } from "../../app/app-helpers";
 
 export default function SignupForm() {
   const authDispatch = useAuthDispatch();

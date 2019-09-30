@@ -1,7 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import { useObjectsState } from "../objects-context";
-import { renderFlag, toolTip, shortenAddressToolTip } from "../../app/helpers";
+import {
+  renderFlag,
+  toolTip,
+  shortenAddressToolTip
+} from "../../app/app-helpers";
 import HowToSeeIt from "./HowToSeeIt";
 import ObjectBadge from "../../app/components/ObjectBadge";
 

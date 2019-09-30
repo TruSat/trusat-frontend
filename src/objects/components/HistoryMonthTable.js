@@ -6,7 +6,7 @@ import {
   toolTip,
   shortenAddressToolTip,
   toolTipCopy
-} from "../../app/helpers";
+} from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function HistoryMonthTable({ monthName, monthData }) {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
-import { API_ROOT } from "../app/helpers";
+import { API_ROOT } from "../app/app-helpers";
 import { useProfileState } from "../profile/profile-context";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";

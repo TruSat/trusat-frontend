@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useTrusatGetApi } from "../../app/helpers";
+import { useTrusatGetApi } from "../../app/app-helpers";
 import { useObjectsState } from "../objects-context";
 import Spinner from "../../app/components/Spinner";
 

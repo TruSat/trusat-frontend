@@ -1,5 +1,5 @@
 import axios from "axios";
-import { API_ROOT } from "../app/helpers";
+import { API_ROOT } from "../app/app-helpers";
 import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";

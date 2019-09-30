@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useTrusatPostApi } from "../app/helpers";
+import { useTrusatPostApi } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
 
 export default function ClaimAccount() {

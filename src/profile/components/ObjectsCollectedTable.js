@@ -6,7 +6,7 @@ import {
   toolTip,
   shortenAddressToolTip,
   toolTipCopy
-} from "../../app/helpers";
+} from "../../app/app-helpers";
 import ObjectBadge from "../../app/components/ObjectBadge";
 import TablePaginator from "../../app/components/TablePaginator";
 

@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import Blockie from "react-blockies";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../profile-context";
-import { shortenAddressToolTip, toolTip } from "../../app/helpers";
+import { shortenAddressToolTip, toolTip } from "../../app/app-helpers";
 
 export default function ProfileHeader() {
   const { userAddress } = useAuthState();

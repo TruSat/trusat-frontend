@@ -6,7 +6,7 @@ import {
   shortenAddressToolTip,
   toolTipCopy,
   useTrusatGetApi
-} from "../../app/helpers";
+} from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 

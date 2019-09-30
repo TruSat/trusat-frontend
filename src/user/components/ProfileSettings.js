@@ -4,7 +4,7 @@ import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
-import { shortenAddressToolTip, toolTip } from "../../app/helpers";
+import { shortenAddressToolTip, toolTip } from "../../app/app-helpers";
 
 // TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({

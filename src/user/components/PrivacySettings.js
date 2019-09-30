@@ -1,6 +1,6 @@
 import React from "react";
 // import CircleCheck from "../../assets/CircleCheck.svg";
-import { toolTip } from "../../app/helpers";
+import { toolTip } from "../../app/app-helpers";
 
 export default function PrivacySettings({
   showEditPrivacyInputs,
