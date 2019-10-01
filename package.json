@@ -30,7 +30,7 @@
     "start": "react-scripts start",
     "start-local": "REACT_APP_API_ROOT='http://localhost:8080' react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --verbose",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

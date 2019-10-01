@@ -5,16 +5,8 @@ import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
 import ObservationsTable from "../profile/components/ObservationsTable";
 import Spinner from "../app/components/Spinner";
 import { useAuthState } from "../auth/auth-context";
+import { isAddress } from "../auth/auth-helpers";
 import { useProfileDispatch } from "../profile/profile-context";
-
-const isAddress = address => {
-  // check if it has the basic requirements of an address
-  if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
-    return false;
-  }
-
-  return true;
-};
 
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;

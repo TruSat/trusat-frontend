@@ -10,6 +10,15 @@ export const createWallet = () => {
   return ethers.Wallet.createRandom();
 };
 
+export const isAddress = address => {
+  // check if it has the basic requirements of an address
+  if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
+    return false;
+  }
+
+  return true;
+};
+
 export const retrieveNonce = async address => {
   if (address) {
     try {
