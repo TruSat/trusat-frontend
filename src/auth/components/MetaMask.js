@@ -26,6 +26,8 @@ export default function MetaMask({ buttonText }) {
 
   // For both signup and login metamask flows
   const handleMetamaskAuth = async () => {
+    setIsError(false);
+
     const address = web3._provider.selectedAddress;
 
     const nonce = await retrieveNonce(address);
@@ -35,12 +37,16 @@ export default function MetaMask({ buttonText }) {
     // Only hit /profile endpoint if a signed message is returned from metamaskSignedMessage
     if (typeof metamaskSignedMessage === "string") {
       const jwt = await retrieveMetamaskJwt({ address, metamaskSignedMessage });
-
-      authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-      authDispatch({ type: "SET_JWT", payload: jwt });
-      authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-      // Add jwt to local storage
-      localStorage.setItem("trusat-jwt", jwt);
+      // only log user in and add jwt to local storage if jwt is valid
+      if (!jwt) {
+        setIsError(true);
+      } else {
+        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
+        authDispatch({ type: "SET_JWT", payload: jwt });
+        authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
+        // Add jwt to local storage
+        localStorage.setItem("trusat-jwt", jwt);
+      }
     } else {
       // When user cancels the sign or there is an error returned from metamaskSignMessage
       alert(

@@ -18,7 +18,6 @@ export default function SignupForm() {
   const [password, setPassword] = useState("");
   const [retypedPassword, setRetypedPassword] = useState("");
   const [understandMessage, setUnderstandMessage] = useState(false);
-
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
   );
@@ -88,17 +87,18 @@ export default function SignupForm() {
       const secret = createSecret(wallet.signingKey.privateKey, password);
       // email secret to the user - returns true if post request was successful
       const emailSecretSuccess = await emailSecret(secret);
-      // only log user in if email of secret is a success
-      if (emailSecretSuccess) {
+      // only log user in if email of secret is a success and jwt is valid
+      if (emailSecretSuccess && jwt) {
         authDispatch({ type: "SET_JWT", payload: jwt });
         authDispatch({
           type: "SET_USER_ADDRESS",
           payload: wallet.signingKey.address
         });
         authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-
         // add jwt and address to local storage
         localStorage.setItem("trusat-jwt", jwt);
+      } else {
+        setIsError(true);
       }
 
       authDispatch({ type: "AUTHENTICATING", payload: false });
