@@ -77,7 +77,7 @@ export default function Info() {
               <p className="object-info__info-label">ORIGIN</p>
               {renderFlag(objectInfo.object_origin)}
             </div>
-            <div className="object-info__launched-wrapper">
+            <div>
               <p className="object-info__info-label">LAUNCHED</p>
               <p className="object-info__large-text">
                 {objectInfo.year_launched}

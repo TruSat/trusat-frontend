@@ -39,10 +39,10 @@ export default function Home() {
             className="welcome__iframe"
             title="pale blue dot video"
             src="https://www.youtube.com/embed/wupToqz1e2g"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen="allowfullscreen"
-            mozallowfullscreen="mozallowfullscreen"
+            allowFullScreen="allowfullscreen"
+            mozallowullscreen="mozallowfullscreen"
             msallowfullscreen="msallowfullscreen"
             oallowfullscreen="oallowfullscreen"
             webkitallowfullscreen="webkitallowfullscreen"
@@ -184,7 +184,11 @@ export default function Home() {
             Join the mailing list to stay posted on the project
           </p>
           <div className="welcome__input-button-wrapper">
-            <input className="welcome__input" type="email"></input>
+            <input
+              className="welcome__input"
+              type="email"
+              placeholder="Your email"
+            ></input>
             <RoundedButton
               addStyles="welcome__subscribe-button"
               color="black"

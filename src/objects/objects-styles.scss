@@ -96,9 +96,6 @@ OBJECT INFO
   font-size: $extra-small-font-size;
 }
 
-.object-info__background-section-wrapper {
-}
-
 @media (min-width: 600px) {
   .object-info__background-section-wrapper {
     display: flex;
@@ -138,9 +135,6 @@ OBJECT INFO
 
 .object-info__origin-wrapper {
   margin-right: 5em;
-}
-
-.object-info__launched-wrapper {
 }
 
 .object-info__purpose-wrapper {
