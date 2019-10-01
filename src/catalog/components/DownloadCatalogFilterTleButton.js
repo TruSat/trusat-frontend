@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { API_ROOT, axiosWithCache } from "../../app/app-helpers";
 import Spinner from "../../app/components/Spinner";
 
@@ -7,13 +7,15 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [isError, setIsError] = useState(false);
   const [textFile, setTextFile] = useState(null);
 
+  useEffect(() => {
+    setTextFile(null);
+  }, [catalogFilter]);
+
   const fetchData = async () => {
     setIsError(false);
     setIsLoading(true);
 
     try {
-      console.log(`fetching TLE data for txt file!`);
-
       const result = await axiosWithCache(
         `${API_ROOT}/tle/trusat_${catalogFilter}.txt`
       );
@@ -46,6 +48,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
       >
         Get data
       </span>
+
       {textFile ? (
         <a
           className="catalog__link"
