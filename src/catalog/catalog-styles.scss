@@ -20,12 +20,29 @@ CATALOG
   }
 }
 
-.catalog__nav-bar-how-to-wrapper {
+@media (max-width: 600px) {
+  .catalog__nav-bar-how-to-wrapper {
+    flex-wrap: nowrap;
+  }
 }
 
-@media (min-width: 600px) {
+// wrap on ipad view
+.catalog__nav-bar-how-to-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3em;
+}
+
+@media (min-width: 800px) {
+  .catalog__nav-bar-how-to-wrapper {
+    flex-wrap: nowrap;
+  }
+}
+
+@media (min-width: 800px) {
   .catalog__nav-bar-how-to-wrapper {
     display: flex;
+    flex-wrap: no-wrap;
     margin-bottom: 3em;
   }
 }
