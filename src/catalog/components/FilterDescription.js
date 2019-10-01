@@ -9,7 +9,7 @@ export default function FilterDescription({ catalogFilter }) {
     },
     {
       filter: "undisclosed",
-      copy: "The classified satellites of the TruSat catalog."
+      copy: "Classified satellites."
     },
     {
       filter: "debris",
@@ -18,9 +18,9 @@ export default function FilterDescription({ catalogFilter }) {
     },
     {
       filter: "latest",
-      copy: "The most recently launched objects that are in the catalog."
+      copy: "The most recently launched objects."
     },
-    { filter: "all", copy: "All objects of the TruSat catalog." }
+    { filter: "all", copy: "All objects in the TruSat catalog." }
   ];
 
   return filterDescriptions
