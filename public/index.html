@@ -23,8 +23,29 @@
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
-    <script src="/__/firebase/7.0.0/firebase-app.js"></script>
-    <script src="/__/firebase/7.0.0/firebase-analytics.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-app.js"></script>
+
+    <!-- Firebase analytics -->
+    <script src="https://www.gstatic.com/firebasejs/7.0.0/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBwJOzn5SBIH6Eo_kfxRz_KbUGGm7EaphE",
+        authDomain: "trusat.firebaseapp.com",
+        databaseURL: "https://trusat.firebaseio.com",
+        projectId: "trusat",
+        storageBucket: "",
+        messagingSenderId: "754249305539",
+        appId: "1:754249305539:web:d798452ded34e045c40176",
+        measurementId: "G-Z99N30GF7W"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
