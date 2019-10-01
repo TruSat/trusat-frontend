@@ -131,7 +131,7 @@ export default function Home() {
       <section className="welcome__section--three">
         <h2 className="welcome__sub-header--white">Partners</h2>
         <div className="welcome__partners-wrapper">
-          <span
+          <div
             style={{
               background: "#C4C4C4",
               borderRadius: "50%",
@@ -139,8 +139,8 @@ export default function Home() {
               marginBottom: "1em",
               width: "138px"
             }}
-          ></span>
-          <span
+          ></div>
+          <div
             style={{
               background: "#C4C4C4",
               borderRadius: "50%",
@@ -148,8 +148,8 @@ export default function Home() {
               marginBottom: "1em",
               width: "138px"
             }}
-          ></span>
-          <span
+          ></div>
+          <div
             style={{
               background: "#C4C4C4",
               borderRadius: "50%",
@@ -157,8 +157,8 @@ export default function Home() {
               marginBottom: "1em",
               width: "138px"
             }}
-          ></span>
-          <span
+          ></div>
+          <div
             style={{
               background: "#C4C4C4",
               borderRadius: "50%",
@@ -166,8 +166,8 @@ export default function Home() {
               marginBottom: "1em",
               width: "138px"
             }}
-          ></span>
-          <span
+          ></div>
+          <div
             style={{
               background: "#C4C4C4",
               borderRadius: "50%",
@@ -175,7 +175,7 @@ export default function Home() {
               marginBottom: "1em",
               width: "138px"
             }}
-          ></span>
+          ></div>
         </div>
 
         <div className="welcome__mailing-list-wrapper">
