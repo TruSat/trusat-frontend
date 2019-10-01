@@ -6,7 +6,7 @@ import {
   decryptSecret
 } from "./auth-helpers";
 
-describe("Auth helper functions", () => {
+describe("Auth helpers", () => {
   it("Can verify if an ethereum address is valid", () => {
     const address = "0xC41aD670CE88aD9D198e25B8A0A22227f7513F42";
 
@@ -40,5 +40,17 @@ describe("Auth helper functions", () => {
     const signedMessage = signMessage({ nonce, wallet });
 
     expect(signedMessage).toEqual(expect.objectContaining(expected));
+  });
+
+  it("Can encrypt a private key with a password to return a secret", () => {
+    return false;
+  });
+
+  it("Can decrypt a secret with the correct password to return a private key", () => {
+    return false;
+  });
+
+  it("Can decrypt a secret with an incorrect password to return false", () => {
+    return false;
   });
 });
