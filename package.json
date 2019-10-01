@@ -17,6 +17,7 @@
     "react-blockies": "^1.4.1",
     "react-burger-menu": "^2.6.11",
     "react-dom": "^16.8.6",
+    "react-ga": "^2.6.0",
     "react-p5-wrapper": "^2.0.0",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",

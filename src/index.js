@@ -6,6 +6,8 @@ import { ProfileProvider } from "../src/profile/profile-context";
 import { ObjectsProvider } from "../src/objects/objects-context";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-149300298-1");
 
 ReactDOM.render(
   <AuthProvider>
