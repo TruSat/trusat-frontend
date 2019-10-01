@@ -249,6 +249,14 @@ NAV BAR
     cursor: pointer;
   }
 
+  .nav-bar {
+    align-items: center;
+    background: #2d2d2d;
+    border: 3px solid #2d2d2d;
+    display: flex;
+    height: 3.5em;
+    justify-content: space-between;
+  }
   // changes to nav bar shown on welcome page
   .nav-bar--welcome {
     align-items: center;
