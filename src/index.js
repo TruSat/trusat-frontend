@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/main.scss";
 import { AuthProvider } from "../src/auth/auth-context";
-
 import { ProfileProvider } from "../src/profile/profile-context";
 import { ObjectsProvider } from "../src/objects/objects-context";
 import App from "./App";
