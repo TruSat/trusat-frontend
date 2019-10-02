@@ -2,11 +2,8 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LoginOptions from "../auth/components/LoginOptions";
 import { useAuthState } from "../auth/auth-context";
-import ReactGA from "react-ga";
 
 export default function LogIn() {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-
   const { userAddress } = useAuthState();
 
   return (

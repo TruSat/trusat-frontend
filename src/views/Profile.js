@@ -7,11 +7,8 @@ import Spinner from "../app/components/Spinner";
 import { useAuthState } from "../auth/auth-context";
 import { isAddress } from "../auth/auth-helpers";
 import { useProfileDispatch } from "../profile/profile-context";
-import ReactGA from "react-ga";
 
 export default function Profile({ match }) {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-
   const addressFromRoute = match.params.address;
   const { jwt } = useAuthState();
   const profileDispatch = useProfileDispatch();

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useTrusatPostApi } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
-import ReactGA from "react-ga";
 
 export default function ClaimAccount() {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-
   const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
   const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
   const [isSuccess, setIsSuccess] = useState(false);

@@ -11,7 +11,6 @@ import {
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 import { useTrusatGetApi } from "../app/app-helpers";
-import ReactGA from "react-ga";
 
 // Check if noradNumber from url is not more than 5 chracters long
 // and if it only contains numbers
@@ -23,8 +22,6 @@ const isValidNumber = number => {
 };
 
 export default function ObjectInfo({ match }) {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-
   const noradNumber = match.params.number;
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
   const { observationFilter } = useObjectsState();

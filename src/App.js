@@ -19,6 +19,7 @@ import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "../src/app/components/CookieBanner";
+import ReactGA from "react-ga";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -55,6 +56,12 @@ export default function App() {
       <MobileHeader />
       {/* Shown on desktop view */}
       <NavBar />
+      <Route
+        path="/"
+        render={({ location }) => {
+          ReactGA.pageview(location.pathname + location.search);
+        }}
+      />
 
       <Switch>
         <Route exact path="/" component={Welcome} />

@@ -6,11 +6,8 @@ import StepTwo from "../user/components/StepTwo";
 import StepThree from "../user/components/StepThree";
 import StepFour from "../user/components/StepFour";
 import StepFive from "../user/components/StepFive";
-import ReactGA from "react-ga";
 
 export default function MetamaskImport() {
-  ReactGA.pageview(window.location.pathname + window.location.search);
-
   const [step, setStep] = useState(1);
   const [privateKey, setPrivateKey] = useState("");
   const { authType } = useAuthState();
