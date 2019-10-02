@@ -18,6 +18,7 @@ import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
+import CookieBanner from "../src/app/components/CookieBanner";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -71,6 +72,8 @@ export default function App() {
         <Route path="/claim/:jwt" component={VerifyClaimAccount} />
         <Route component={NoMatch} />
       </Switch>
+
+      <CookieBanner />
     </Router>
   );
 }

@@ -938,3 +938,35 @@ HOW TO VIEW
 .about__link {
   color: $primary-text-color;
 }
+
+/* ----------
+COOKIE BANNER
+---------- */
+.cookie-banner {
+  background: $primary-highlight-color;
+  bottom: 0;
+  box-shadow: 0px -3px 3px grey;
+  padding: 1em;
+  position: fixed;
+  width: 100%;
+}
+
+.cookie-banner__message {
+  @include body-text--large;
+  color: $primary-theme-color;
+}
+
+@media (min-width: 600px) {
+  .cookie-banner__message {
+    @include body-text--large-desktop;
+    color: $primary-theme-color;
+  }
+}
+
+.cookie-banner__button-wrapper {
+  margin-top: 1em;
+}
+
+.cookie-banner__ok-button {
+  margin-right: 1em;
+}

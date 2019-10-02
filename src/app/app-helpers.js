@@ -3,7 +3,12 @@ import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
 
-export const API_ROOT = process.env.REACT_APP_API_ROOT || `https://api.consensys.space:8080`;
+export const deleteCookie = cookieName => {
+  document.cookie = `${cookieName}= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
+};
+
+export const API_ROOT =
+  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:8080`;
 
 export const axiosWithCache = axios.create({
   baseURL: "/",
