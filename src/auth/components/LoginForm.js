@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 import {
+  isPrivateKey,
   retrieveNonce,
   signMessage,
   retrieveJwt,
@@ -24,7 +25,7 @@ export default function LoginForm() {
 
     const privateKey = decryptSecret(secret, password);
     // fail the log in attempt if a valid private key is not returned from decrptSecret
-    if (!privateKey) {
+    if (!isPrivateKey(privateKey)) {
       setShowPrivateKeyError(true);
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
