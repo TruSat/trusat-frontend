@@ -46,10 +46,10 @@ export default function InfluenceTable() {
 
         <td className="table__table-data">{obj.observation_quality}</td>
         <td className="table__table-data">
-          {obj.observation_time_difference.substring(0, 4)}
+          {obj.observation_time_difference.toString().substring(0, 4)}
         </td>
         <td className="table__weight-data">
-          {obj.observation_weight.substring(0, 4)}
+          {obj.observation_weight.toString().substring(0, 4)}
         </td>
       </tr>
     ));
