@@ -30,10 +30,10 @@ export default function ObservationsTable() {
         </td>
         <td className="table__table-data">{observation.observation_quality}</td>
         <td className="table__table-data">
-          {observation.observation_time_difference.substring(0, 4)}
+          {observation.observation_time_difference.toString().substring(0, 4)}
         </td>
         <td className="table__table-data">
-          {observation.observation_weight.substring(0, 4)}
+          {observation.observation_weight.toString().substring(0, 4)}
         </td>
       </tr>
     ));
