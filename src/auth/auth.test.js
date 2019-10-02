@@ -8,7 +8,7 @@ import {
   decryptSecret
 } from "./auth-helpers";
 
-// make crypto object available to tests
+// Make crypto object available to tests
 const crypto = require("crypto");
 Object.defineProperty(global.self, "crypto", {
   value: {
@@ -90,7 +90,7 @@ describe("Auth helpers", () => {
     const wallet = createWallet();
     const privateKeyToEncrypt = wallet.privateKey;
     const password = "N0w1Q!SK$GaC";
-    const wrongPassword = "oops123";
+    const wrongPassword = "fakeToshi123";
     const secret = createSecret(privateKeyToEncrypt, password);
     const decryptedPrivateKey = decryptSecret(secret, wrongPassword);
 

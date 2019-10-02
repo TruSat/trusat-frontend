@@ -155,11 +155,9 @@ export const createSecret = (privateKey, password) => {
 
   // create 14 random numbers to be used as a pad on the private key
   const pad = window.crypto
-    .getRandomValues(new Uint32Array(2))
+    .getRandomValues(new Uint32Array(6))
     .join("")
     .substring(0, 14);
-  console.log(`pad = `, pad);
-
   // add pad to private key and convert string to bytes
   const privateKeyBytes = aesjs.utils.utf8.toBytes(`${pad}${privateKey}`);
   // encryption utilizing key and iv
