@@ -2,8 +2,10 @@ import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Globe from "../assets/Globe.svg";
 import RoundedButton from "../app/components/RoundedButton";
+import ReactGA from "react-ga";
 
 export default function Home() {
+  ReactGA.pageview(window.location.pathname + window.location.search);
   return (
     <div className="welcome__wrapper">
       {/* SECTION/GRADIENT ONE */}

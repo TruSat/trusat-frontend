@@ -5,8 +5,11 @@ import FilterDescription from "../catalog/components/FilterDescription";
 import CatalogTable from "../catalog/components/CatalogTable";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 import HowToParticipate from "../catalog/components/HowToParticipate";
+import ReactGA from "react-ga";
 
 function Catalog({ match }) {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   const catalogFilter = match.params.catalogFilter;
   // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });

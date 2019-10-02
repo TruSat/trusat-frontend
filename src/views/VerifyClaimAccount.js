@@ -5,8 +5,11 @@ import { createWallet, createSecret } from "../auth/auth-helpers";
 import { useTrusatPostApi } from "../app/app-helpers";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
+import ReactGA from "react-ga";
 
 export default function VerifyClaimAccount({ match }) {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   const [password, setPassword] = useState("");
   const [retypedPassword, setRetypedPassword] = useState("");
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(

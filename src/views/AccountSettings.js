@@ -9,8 +9,11 @@ import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
+import ReactGA from "react-ga";
 
 function UserSettings({ history }) {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   const { profileData } = useProfileState();
   const { jwt, userAddress } = useAuthState();
   // Profile settings

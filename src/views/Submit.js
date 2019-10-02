@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import MultipleObservationForm from "../submissions/components/MultipleObservationForm";
+import ReactGA from "react-ga";
 
 export default function Submit() {
+  ReactGA.pageview(window.location.pathname + window.location.search);
+
   return (
     <div className="submit__wrapper">
       <h1 className="submit__header">Submit Observations</h1>
