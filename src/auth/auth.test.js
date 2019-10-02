@@ -8,7 +8,7 @@ import {
   decryptSecret
 } from "./auth-helpers";
 
-// Make crypto object available to tests
+// Make crypto object used in encryption helpers available to test suite
 const crypto = require("crypto");
 Object.defineProperty(global.self, "crypto", {
   value: {
@@ -27,6 +27,19 @@ describe("Auth helpers", () => {
     const address = "this_is_not_an_address";
 
     expect(isAddress(address)).toBe(false);
+  });
+
+  it("Can verify if an ethereum private key is valid", () => {
+    const privateKey =
+      "0x4b5279522ef5b9424b40780250baae310ebfade1be7174536a317a79a35f5658";
+
+    expect(isPrivateKey(privateKey)).toBe(true);
+  });
+
+  it("Can verify if an ethereum private key is invalid", () => {
+    const privateKey = "this_is_not_a_valid_private_key";
+
+    expect(isPrivateKey(privateKey)).toBe(false);
   });
 
   it("Can create a wallet that holds a valid ethereum private key", () => {
@@ -86,7 +99,7 @@ describe("Auth helpers", () => {
     expect(privateKeyToEncrypt).toBe(decryptedPrivateKey);
   });
 
-  it("Will not decrypt a private key with a different password that was used to encrypt it", () => {
+  it("Can not decrypt a private key with a different password that was used to encrypt it", () => {
     const wallet = createWallet();
     const privateKeyToEncrypt = wallet.privateKey;
     const password = "N0w1Q!SK$GaC";
