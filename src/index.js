@@ -6,8 +6,10 @@ import { ProfileProvider } from "../src/profile/profile-context";
 import { ObjectsProvider } from "../src/objects/objects-context";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+// google analytics
 import ReactGA from "react-ga";
 ReactGA.initialize("UA-149300298-1");
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 ReactDOM.render(
   <AuthProvider>

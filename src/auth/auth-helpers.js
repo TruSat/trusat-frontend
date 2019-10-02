@@ -19,6 +19,25 @@ export const isAddress = address => {
   return true;
 };
 
+export const isPrivateKey = privateKey => {
+  // check if it has the basic requirements of an address
+  if (privateKey.length !== 66) {
+    return false;
+  }
+
+  return true;
+};
+
+export const isValidPassword = password => {
+  // checks if string contains at least one numerical character
+  const regex = /\d/g;
+  // fail if user enters password less than 8 characters or not containing at least one number
+  if (password.length < 8 || !regex.test(password)) {
+    return false;
+  }
+  return true;
+};
+
 export const retrieveNonce = async address => {
   if (address) {
     try {
@@ -133,11 +152,14 @@ export const createSecret = (privateKey, password) => {
   const key = pbkdf2.pbkdf2Sync(password, salt, 1, 256 / 8, "sha512");
   // create iv
   const iv = window.crypto.getRandomValues(new Uint8Array(16));
+
   // create 14 random numbers to be used as a pad on the private key
   const pad = window.crypto
     .getRandomValues(new Uint32Array(2))
     .join("")
     .substring(0, 14);
+  console.log(`pad = `, pad);
+
   // add pad to private key and convert string to bytes
   const privateKeyBytes = aesjs.utils.utf8.toBytes(`${pad}${privateKey}`);
   // encryption utilizing key and iv
@@ -180,7 +202,7 @@ export const decryptSecret = (secret, password) => {
     decryptedPrivateKeyWithPad.length
   );
 
-  if (privateKey.length !== 66) {
+  if (!isPrivateKey) {
     return false;
   }
   return privateKey;

@@ -1,10 +1,20 @@
 import {
   createWallet,
+  isPrivateKey,
   isAddress,
+  isValidPassword,
   signMessage,
   createSecret,
   decryptSecret
 } from "./auth-helpers";
+
+// make crypto object available to tests
+const crypto = require("crypto");
+Object.defineProperty(global.self, "crypto", {
+  value: {
+    getRandomValues: arr => crypto.randomBytes(arr.length)
+  }
+});
 
 describe("Auth helpers", () => {
   it("Can verify if an ethereum address is valid", () => {
@@ -17,6 +27,12 @@ describe("Auth helpers", () => {
     const address = "this_is_not_an_address";
 
     expect(isAddress(address)).toBe(false);
+  });
+
+  it("Can create a wallet that holds a valid ethereum private key", () => {
+    const wallet = createWallet();
+
+    expect(isPrivateKey(wallet.privateKey)).toBe(true);
   });
 
   it("Can create a wallet that holds a valid ethereum address", () => {
@@ -42,15 +58,42 @@ describe("Auth helpers", () => {
     expect(signedMessage).toEqual(expect.objectContaining(expected));
   });
 
-  it("Can encrypt a private key with a password to return a secret", () => {
-    return false;
+  it("Can verify that a password is at least 8 characters in length and contains at least one number", () => {
+    const password = "N0w1Q!SK$GaC";
+
+    expect(isValidPassword(password)).toBe(true);
   });
 
-  it("Can decrypt a secret with the correct password to return a private key", () => {
-    return false;
+  it("Can verify that a password os not at least 8 characters in length", () => {
+    const password = "1234567";
+
+    expect(isValidPassword(password)).toBe(false);
   });
 
-  it("Can decrypt a secret with an incorrect password to return false", () => {
-    return false;
+  it("Can verify that a password does not contain at least one number", () => {
+    const password = "bestpasswordever";
+
+    expect(isValidPassword(password)).toBe(false);
+  });
+
+  it("Can encrypt and decrypt a private key with the same password", () => {
+    const wallet = createWallet();
+    const privateKeyToEncrypt = wallet.privateKey;
+    const password = "N0w1Q!SK$GaC";
+    const secret = createSecret(privateKeyToEncrypt, password);
+    const decryptedPrivateKey = decryptSecret(secret, password);
+
+    expect(privateKeyToEncrypt).toBe(decryptedPrivateKey);
+  });
+
+  it("Will not decrypt a private key with a different password that was used to encrypt it", () => {
+    const wallet = createWallet();
+    const privateKeyToEncrypt = wallet.privateKey;
+    const password = "N0w1Q!SK$GaC";
+    const wrongPassword = "oops123";
+    const secret = createSecret(privateKeyToEncrypt, password);
+    const decryptedPrivateKey = decryptSecret(secret, wrongPassword);
+
+    expect(privateKeyToEncrypt).not.toBe(decryptedPrivateKey);
   });
 });
