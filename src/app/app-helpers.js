@@ -147,16 +147,17 @@ export const toolTip = (displayText, toolTipText) => {
 };
 
 export const toolTipCopy = {
-  object: "copy about object",
-  origin: "copy about origin",
-  purpose: "copy about purpose",
-  confidence: "copy about confidence",
-  last_seen_by: "copy about last seen by",
-  date: "copy about date",
-  tracked_by: "copy about tracked by",
-  location: "copy about location",
-  quality: "copy about quality",
-  time_diff: "copy about time diff",
-  weight: "copy about weight",
-  user: "copy about user"
+  object: "satellites and debris in orbit",
+  origin: "country of origin",
+  purpose: "primary function of satellite",
+  confidence: "degree of certainty in orbital prediction",
+  last_seen_by: "observer with most recent submission",
+  date: "date of observation",
+  tracked_by: "submitter of observation",
+  location: "location of observation",
+  quality: "trustworthiness based on confidence factors",
+  time_diff: "time difference between observed location and predicted location",
+  weight:
+    "relative amount of influence this observation has over orbital prediction",
+  user: "user who made observation"
 };
