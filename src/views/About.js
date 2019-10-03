@@ -5,7 +5,7 @@ export default function About() {
     <div className="about__wrapper">
       <section className="about__section about__about-trusat-section">
         <h1 className="about__main-header">About Trusat</h1>
-        <h2 className="about__sub-header about__what-is-trusat-text">
+        <h2 className="about__sub-header about__sub-header--top">
           WHAT IS TRUSAT?
         </h2>
         <p className="about__copy">
@@ -91,7 +91,7 @@ export default function About() {
 
       <section className="about__section">
         <h1 className="about__main-header">Questions and Answers</h1>
-        <h2 className="about__sub-header about__about-trusat-text">
+        <h2 className="about__sub-header about__sub-header--top">
           ABOUT TRUSAT
         </h2>
 
