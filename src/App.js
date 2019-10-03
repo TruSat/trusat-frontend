@@ -18,7 +18,8 @@ import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
-import CookieBanner from "../src/app/components/CookieBanner";
+import CookieBanner from "./app/components/CookieBanner";
+import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import ReactGA from "react-ga";
 
@@ -78,7 +79,8 @@ export default function App() {
         <Route path="/signup" component={SignUp} />
         <Route exact path="/claim" component={ClaimAccount} />
         <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-        <Route path="/whitepaper" component={Whitepaper}></Route>
+        <Route path="/whitepaper" component={Whitepaper} />
+        <Route path="/charter" component={Charter} />
         <Route component={NoMatch} />
       </Switch>
 
