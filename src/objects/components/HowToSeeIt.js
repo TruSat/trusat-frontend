@@ -4,7 +4,7 @@ import DownloadObjectTleButton from "../components/DownloadObjectTleButton";
 import { useObjectsState } from "../objects-context";
 
 export default function HowToSeeIt() {
-  const { objectInfo } = useObjectsState();
+  const { objectInfo, noradNumber } = useObjectsState();
 
   return (
     <div className="object-info__how-to-wrapper">
@@ -22,6 +22,13 @@ export default function HowToSeeIt() {
           <p className="object-info__link-text">More info at Heavens Above</p>
         </a>
       ) : null}
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href={`https://www.calsky.com/csephem.cgi?&object=Satellite&number=${noradNumber}`}
+      >
+        <p className="object-info__link-text">More info at Calsky</p>
+      </a>
     </div>
   );
 }
