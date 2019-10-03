@@ -545,9 +545,10 @@ BURGER MENU
 
 /* General sidebar styles */
 .bm-menu {
-  background: #373a47;
-  padding: 2.5em 1.5em 0;
-  font-size: 1.15em;
+  background: #2d2d2d;
+  padding: 1em;
+  font-size: $extra-large-font-size;
+  line-height: 50px;
 }
 
 /* Morph shape necessary with bubble or elastic */
@@ -557,7 +558,7 @@ BURGER MENU
 
 /* Wrapper for item list */
 .bm-item-list {
-  color: #b8b7ad;
+  color: $primary-text-color;
 }
 
 /* Styling of overlay */
