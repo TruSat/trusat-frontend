@@ -5,11 +5,11 @@ export default function FilterDescription({ catalogFilter }) {
     {
       filter: "priorities",
       copy:
-        "This is a hitlist of satellites most in need of amateur observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
+        "This is an autonomously-generated list of satellites most in need of observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
     },
     {
       filter: "undisclosed",
-      copy: "Classified satellites."
+      copy: "These satellites do not appear in public space object catalogs."
     },
     {
       filter: "debris",
@@ -18,9 +18,9 @@ export default function FilterDescription({ catalogFilter }) {
     },
     {
       filter: "latest",
-      copy: "The most recently launched objects."
+      copy: "The most recently tracked objects in the catalog."
     },
-    { filter: "all", copy: "All objects in the TruSat catalog." }
+    { filter: "all", copy: "All objects of the TruSat catalog." }
   ];
 
   return filterDescriptions

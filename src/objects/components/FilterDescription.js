@@ -8,7 +8,7 @@ export default function FilterDescription() {
     {
       filter: "influence",
       copy:
-        "The more accurate and timely your observations—the more weight they will carry in determining the latest orbit predictions."
+        "The more accurate and timely your observations, the more weight they will carry in determining the latest orbit predictions."
     },
     {
       filter: "history",
@@ -17,7 +17,7 @@ export default function FilterDescription() {
     },
     {
       filter: "mySightings",
-      copy: "These are your observations of this object."
+      copy: "All observations you’ve made for this object."
     }
   ];
 
