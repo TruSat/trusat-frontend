@@ -600,7 +600,6 @@ COPY TEXT
 WELCOME VIEW
 ----------- */
 .welcome__wrapper {
-  background: yellow;
 }
 
 .welcome__section--one {
@@ -901,6 +900,10 @@ HOW TO VIEW
   }
 }
 
+.about__about-trusat-section {
+  margin-bottom: 5em;
+}
+
 .about__partners-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -914,9 +917,14 @@ HOW TO VIEW
   font-weight: bold;
   line-height: 24px;
   letter-spacing: 0.05em;
-  margin: 1em 0em 0.5em 0em;
+  margin: 3em 0em 0.5em 0em;
   padding-bottom: 0.25em;
   width: 100%;
+}
+
+.about__what-is-trusat-text,
+.about__about-trusat-text {
+  margin-top: 1em;
 }
 
 .about__question {
@@ -934,6 +942,10 @@ HOW TO VIEW
   line-height: 23px;
   letter-spacing: 0.05em;
   margin-bottom: 1em;
+}
+
+.about__answer {
+  margin-bottom: 2em;
 }
 
 .about__link {

@@ -3,9 +3,11 @@ import React from "react";
 export default function About() {
   return (
     <div className="about__wrapper">
-      <section className="about__section">
+      <section className="about__section about__about-trusat-section">
         <h1 className="about__main-header">About Trusat</h1>
-        <h2 className="about__sub-header">WHAT IS TRUSAT?</h2>
+        <h2 className="about__sub-header about__what-is-trusat-text">
+          WHAT IS TRUSAT?
+        </h2>
         <p className="about__copy">
           TruSat is a blockchain-enabled space sustainability tool designed to
           promote and maintain a transparent catalog of objects in space. We
@@ -83,18 +85,20 @@ export default function About() {
         </p>
         <h2 className="about__sub-header">TRUSAT CHARTER</h2>
         <p className="about__copy">
-          An outline of TruSat’s intiial governance. Read it here.
+          An outline of TruSat’s initial governance. Read it here.
         </p>
       </section>
 
       <section className="about__section">
         <h1 className="about__main-header">Questions and Answers</h1>
-        <h2 className="about__sub-header">ABOUT TRUSAT</h2>
+        <h2 className="about__sub-header about__about-trusat-text">
+          ABOUT TRUSAT
+        </h2>
 
         <h3 className="about__question">
           Who uses the data derived from this catalog?
         </h3>
-        <p className="about__copy">
+        <p className="about__copy about__answer">
           The data in this catalog is publicly available to anyone who chooses
           to use it. Spacecraft operators, NGOs, and Research Institutions often
           use this type of data to support their operations and research of
@@ -105,7 +109,7 @@ export default function About() {
           Why is this an open-source project? Aren’t there government entities
           tracking objects in space?
         </h3>
-        <p className="about__copy">
+        <p className="about__copy  about__answer">
           Two of the most robust satellite databases are held by the Department
           of Defense (USA) and Roscosmos (Russia). Neither database is
           representative of all objects in space. In order to achieve true
@@ -114,7 +118,7 @@ export default function About() {
           cannot be compromised by national interests.
         </p>
 
-        <h3 className="about__question">
+        <h3 className="about__question ">
           If I am unable to contribute observations, how else can I contribute
           to TruSat?
         </h3>
@@ -147,7 +151,7 @@ export default function About() {
         <h3 className="about__question">
           Do I need a MetaMask Account to submit an observation?
         </h3>
-        <p className="about__copy">
+        <p className="about__copy  about__answer">
           A MetaMask account is only necessary if you would like to add an
           additional level of security to your data. If you choose to connect
           your TruSat account to Metamask, you will unlock additional features
@@ -159,7 +163,7 @@ export default function About() {
         <h3 className="about__question">
           Can I make submit my observations anonymously?
         </h3>
-        <p className="about__copy">
+        <p className="about__copy  about__answer">
           Yes. Head to the account settings page. In the “Privacy” section you
           will find an option to hide your username and show your ETH address
           instead.
