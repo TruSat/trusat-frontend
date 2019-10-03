@@ -19,6 +19,7 @@ import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "../src/app/components/CookieBanner";
+import Whitepaper from "./views/Whitepaper";
 import ReactGA from "react-ga";
 
 export default function App() {
@@ -77,6 +78,7 @@ export default function App() {
         <Route path="/signup" component={SignUp} />
         <Route exact path="/claim" component={ClaimAccount} />
         <Route path="/claim/:jwt" component={VerifyClaimAccount} />
+        <Route path="/whitepaper" component={Whitepaper}></Route>
         <Route component={NoMatch} />
       </Switch>
 

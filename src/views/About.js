@@ -1,14 +1,15 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 export default function About() {
   return (
-    <div className="about__wrapper">
-      <section className="about__section about__about-trusat-section">
-        <h1 className="about__main-header">About Trusat</h1>
-        <h2 className="about__sub-header about__sub-header--top">
+    <div className="static-page__wrapper">
+      <section className="static-page__section about__about-trusat-section">
+        <h1 className="static-page__main-header">About Trusat</h1>
+        <h2 className="static-page__sub-header about__sub-header--top">
           WHAT IS TRUSAT?
         </h2>
-        <p className="about__copy">
+        <p className="static-page__copy">
           TruSat is a blockchain-enabled space sustainability tool designed to
           promote and maintain a transparent catalog of objects in space. We
           collaborate with individuals and institutions that are passionate
@@ -16,11 +17,11 @@ export default function About() {
           catalog. Our network of contributors is then tasked to go outside,
           observe the sky, and submit their observations to TruSat.
         </p>
-        <p className="about__copy">
+        <p className="static-page__copy">
           TruSat is the first product to be launched by
           {` `}
           <a
-            className="about__link"
+            className="static-page__link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://consensys.space"
@@ -31,7 +32,7 @@ export default function About() {
           diversify, and decentralize the space industry through experimental
           projects designed to solve wicked problems.
         </p>
-        <h2 className="about__sub-header">PARTNERS</h2>
+        <h2 className="static-page__sub-header">PARTNERS</h2>
         <div className="about__partners-wrapper">
           <span
             style={{
@@ -79,26 +80,32 @@ export default function About() {
             }}
           ></span>
         </div>
-        <h2 className="about__sub-header">WHITEPAPER</h2>
-        <p className="about__copy">
-          A technical deep dive into how TruSat works. Read it here.
+        <h2 className="static-page__sub-header">WHITEPAPER</h2>
+        <p className="static-page__copy">
+          A technical deep dive into how TruSat works. Read it{" "}
+          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
+            here.
+          </NavLink>
         </p>
-        <h2 className="about__sub-header">TRUSAT CHARTER</h2>
-        <p className="about__copy">
-          An outline of TruSat’s initial governance. Read it here.
+        <h2 className="static-page__sub-header">TRUSAT CHARTER</h2>
+        <p className="static-page__copy">
+          An outline of TruSat’s initial governance. Read it{" "}
+          <NavLink className="app__nav-link static-page__link" to="/charter">
+            here.
+          </NavLink>
         </p>
       </section>
 
-      <section className="about__section">
-        <h1 className="about__main-header">Questions and Answers</h1>
-        <h2 className="about__sub-header about__sub-header--top">
+      <section className="static-page__section">
+        <h1 className="static-page__main-header">Questions and Answers</h1>
+        <h2 className="static-page__sub-header about__sub-header--top">
           ABOUT TRUSAT
         </h2>
 
         <h3 className="about__question">
           Who uses the data derived from this catalog?
         </h3>
-        <p className="about__copy about__answer">
+        <p className="static-page__copy about__answer">
           The data in this catalog is publicly available to anyone who chooses
           to use it. Spacecraft operators, NGOs, and Research Institutions often
           use this type of data to support their operations and research of
@@ -109,7 +116,7 @@ export default function About() {
           Why is this an open-source project? Aren’t there government entities
           tracking objects in space?
         </h3>
-        <p className="about__copy  about__answer">
+        <p className="static-page__copy  about__answer">
           Two of the most robust satellite databases are held by the Department
           of Defense (USA) and Roscosmos (Russia). Neither database is
           representative of all objects in space. In order to achieve true
@@ -122,7 +129,7 @@ export default function About() {
           If I am unable to contribute observations, how else can I contribute
           to TruSat?
         </h3>
-        <p className="about__copy">
+        <p className="static-page__copy">
           TruSat is an open-source project, and we are constantly collaborating
           with people who have a myriad of skillsets. If you are a developer,
           for instance, you can write code in exchange for small payments on the
@@ -130,7 +137,7 @@ export default function About() {
           can contribute documentation on the “Bounties.Network Platform” as
           well. To learn more about these opportunities, please visit the{` `}
           <a
-            className="about__link"
+            className="static-page__link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://trusat.discord.com"
@@ -138,20 +145,20 @@ export default function About() {
             TruSat Discord Channel.
           </a>
         </p>
-        <p className="about__copy">
+        <p className="static-page__copy">
           If you wish to further explore other ways to contribute, please
           contact the TruSat Community Manager, Kim Macharia at
           Kim.Macharia@consensys.net.
         </p>
       </section>
 
-      <section className="about__section">
-        <h2 className="about__sub-header">MANAGING MY PROFILE</h2>
+      <section className="static-page__section">
+        <h2 className="static-page__sub-header">MANAGING MY PROFILE</h2>
 
         <h3 className="about__question">
           Do I need a MetaMask Account to submit an observation?
         </h3>
-        <p className="about__copy  about__answer">
+        <p className="static-page__copy  about__answer">
           A MetaMask account is only necessary if you would like to add an
           additional level of security to your data. If you choose to connect
           your TruSat account to Metamask, you will unlock additional features
@@ -163,7 +170,7 @@ export default function About() {
         <h3 className="about__question">
           Can I make submit my observations anonymously?
         </h3>
-        <p className="about__copy  about__answer">
+        <p className="static-page__copy  about__answer">
           Yes. Head to the account settings page. In the “Privacy” section you
           will find an option to hide your username and show your ETH address
           instead.
@@ -172,7 +179,7 @@ export default function About() {
         <h3 className="about__question">
           Can I remove my data from the TruSat system?
         </h3>
-        <p className="about__copy">
+        <p className="static-page__copy">
           Yes. Head to the account settings page. In the “Privacy” section you
           will find an option to remove your current and historical data from
           the system.

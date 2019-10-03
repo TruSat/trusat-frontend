@@ -874,15 +874,22 @@ WELCOME VIEW
   margin: 2em 0em 5em 0em;
 }
 
-/* ---------- 
-HOW TO VIEW  
+/* ----------
+STATIC PAGE VIEW 
+- /whitepaper
+- /about
+- /howto
 ---------- */
-.about__wrapper {
+.static-page__wrapper {
   background: #081122;
   padding: 2em 1em;
 }
 
-.about__main-header {
+.static-page__section {
+  margin-bottom: 5em;
+}
+
+.static-page__main-header {
   color: #fc7756;
   line-height: 42px;
   font-size: 36px;
@@ -890,36 +897,58 @@ HOW TO VIEW
 }
 
 @media (min-width: 600px) {
-  .about__wrapper {
+  .static-page__wrapper {
     padding: 2em 4em;
   }
 
-  .about__main-header {
+  .static-page__main-header {
     font-size: 76px;
     line-height: 89px;
   }
 }
 
-.about__about-trusat-section {
-  margin-bottom: 5em;
+.static-page__sub-header {
+  @include section-title;
+  border-bottom: 1px solid $primary-text-color;
+  margin: 3em 0em 0.5em 0em;
+  padding-bottom: 0.25em;
+  width: 100%;
 }
 
+.static-page__copy {
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 23px;
+  letter-spacing: 0.05em;
+  margin-bottom: 1em;
+}
+
+.static-page__link {
+  color: $primary-text-color;
+  text-decoration: underline;
+}
+
+/* ---------- 
+WHITEPAPER VIEW
+---------- */
+.whitepaper__link-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 1em;
+}
+
+.white-paper__link {
+  margin-bottom: 1em;
+}
+
+/* ---------- 
+ABOUT VIEW  
+---------- */
 .about__partners-wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin: 1em 0em 1em 0em;
-}
-
-.about__sub-header {
-  border-bottom: 1px solid $primary-text-color;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 24px;
-  letter-spacing: 0.05em;
-  margin: 3em 0em 0.5em 0em;
-  padding-bottom: 0.25em;
-  width: 100%;
 }
 
 .about__sub-header--top {
@@ -935,78 +964,21 @@ HOW TO VIEW
   margin: 1em 0em 0.5em 0em;
 }
 
-.about__copy {
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 23px;
-  letter-spacing: 0.05em;
-  margin-bottom: 1em;
-}
-
 .about__answer {
   margin-bottom: 2em;
-}
-
-.about__link {
-  color: $primary-text-color;
 }
 
 /* ----------
 HOW TO VIEW 
 ---------- */
-.how-to__wrapper {
-  background: #081122;
-  padding: 2em 1em;
-}
-
-.how-to__section {
-  margin-bottom: 5em;
-}
-
-.how-to__main-header {
-  color: #fc7756;
-  line-height: 42px;
-  font-size: 36px;
-  font-weight: 200;
+.how-to__sub-header--top {
+  margin-top: 0.5em;
 }
 
 @media (min-width: 600px) {
-  .how-to__wrapper {
-    padding: 2em 4em;
+  .how-to__sub-header--top {
+    margin-top: 1em;
   }
-
-  .how-to__main-header {
-    font-size: 76px;
-    line-height: 89px;
-  }
-}
-
-.how-to__sub-header {
-  border-bottom: 1px solid $primary-text-color;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 24px;
-  letter-spacing: 0.05em;
-  margin: 3em 0em 0.5em 0em;
-  padding-bottom: 0.25em;
-  width: 100%;
-}
-
-.how-to__sub-header--top {
-  margin-top: 1em;
-}
-
-.how-to__copy {
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 23px;
-  letter-spacing: 0.05em;
-  margin-bottom: 1em;
-}
-
-.how-to__link {
-  color: $primary-text-color;
-  text-decoration: underline;
 }
 
 .how-to__step-wrapper {
