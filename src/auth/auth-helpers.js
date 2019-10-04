@@ -93,7 +93,25 @@ export const signMessage = ({ nonce, wallet }) => {
   }
 };
 
-// Used for email/password and burner auth
+// Used for email/password signup
+export const signUp = async ({ email, address, signedMessage, secret }) => {
+  try {
+    const result = await axios.post(
+      `${API_ROOT}/login`,
+      JSON.stringify({
+        email: email,
+        address: address,
+        signedMessage: signedMessage.signature,
+        secret: secret
+      })
+    );
+    return result.data.jwt;
+  } catch (error) {
+    return false;
+  }
+};
+
+// Used for email/password and burner login
 export const retrieveJwt = async ({ email, address, signedMessage }) => {
   try {
     const result = await axios.post(

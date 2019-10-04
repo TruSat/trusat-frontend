@@ -22,7 +22,7 @@ export default function LoginForm() {
   const handleLogin = async () => {
     setIsError(false);
     authDispatch({ type: "AUTHENTICATING", payload: true });
-
+    // get private key from the secret using the users password
     const privateKey = decryptSecret(secret, password);
     // fail the log in attempt if a valid private key is not returned from decrptSecret
     if (!isPrivateKey(privateKey)) {
@@ -30,20 +30,19 @@ export default function LoginForm() {
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
-
+    // create wallet for signing message
     let wallet = new ethers.Wallet(privateKey);
-
+    // get unique nonce from server for this user
     const nonce = await retrieveNonce(wallet.signingKey.address);
-
+    // sign the nonce
     const signedMessage = signMessage({ nonce, wallet });
-
+    // get JSON web token that will be used to keep user logged in
     const jwt = await retrieveJwt({
       // dont send email to backend on log in - not required for auth
       email: null,
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
-
     // do not attempt to hit /profile unless a valid jwt is returned from retriveJwt
     if (!jwt) {
       setIsError(true);
@@ -57,6 +56,7 @@ export default function LoginForm() {
     });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
     authDispatch({ type: "SET_JWT", payload: jwt });
+    // add jwt to local storage so user will stayed logged in until expiry
     localStorage.setItem("trusat-jwt", jwt);
 
     authDispatch({ type: "AUTHENTICATING", payload: false });

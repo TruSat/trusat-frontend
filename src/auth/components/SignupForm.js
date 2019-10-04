@@ -1,23 +1,21 @@
 import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 import {
   isValidPassword,
   createWallet,
   retrieveNonce,
   signMessage,
-  retrieveJwt,
+  signUp,
   createSecret
 } from "../auth-helpers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
-import { API_ROOT } from "../../app/app-helpers";
 
-export default function SignupForm() {
+export default function SignupForm({ setIsSuccess }) {
   const authDispatch = useAuthDispatch();
   const { isAuthenticating } = useAuthState();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [retypedPassword, setRetypedPassword] = useState("");
+  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [password, setPassword] = useState("helloworld123");
+  const [retypedPassword, setRetypedPassword] = useState("helloworld123");
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
@@ -35,7 +33,6 @@ export default function SignupForm() {
       setShowInvalidPasswordError(true);
       return false;
     }
-
     // check that password and retyped password have same value
     if (password !== retypedPassword) {
       setShowUnmatchedPasswordError(true);
@@ -45,53 +42,30 @@ export default function SignupForm() {
     return true;
   };
 
-  const emailSecret = async secret => {
-    try {
-      const result = await axios.post(
-        `${API_ROOT}/emailSecret`,
-        JSON.stringify({ to: email, payload: secret })
-      );
-      if (result) {
-        return true;
-      }
-    } catch (error) {
-      setIsError(true);
-      return false;
-    }
-  };
-
   const handleSignup = async () => {
     const inputsAreValid = handleFormValidation();
 
     if (inputsAreValid) {
       setIsError(false);
       authDispatch({ type: "AUTHENTICATING", payload: true });
-
+      // create a new wallet for user
       const wallet = createWallet();
-
+      // get unique nonce from server which will be signed by the users private key
       const nonce = await retrieveNonce(wallet.signingKey.address);
-
+      // signed nonce
       const signedMessage = signMessage({ nonce, wallet });
-
-      const jwt = await retrieveJwt({
+      // encrypt wallet with users private key
+      const secret = createSecret(wallet.signingKey.privateKey, password);
+      // sends email to user with a "secret" that will be used to log in
+      const signUpSuccess = await signUp({
         email: email,
         address: wallet.signingKey.address,
-        signedMessage: signedMessage
+        signedMessage: signedMessage,
+        secret: secret
       });
-
-      const secret = createSecret(wallet.signingKey.privateKey, password);
-      // email secret to the user - returns true if post request was successful
-      const emailSecretSuccess = await emailSecret(secret);
-      // only log user in if email of secret is a success and jwt is valid
-      if (emailSecretSuccess && jwt) {
-        authDispatch({ type: "SET_JWT", payload: jwt });
-        authDispatch({
-          type: "SET_USER_ADDRESS",
-          payload: wallet.signingKey.address
-        });
-        authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-        // add jwt and address to local storage
-        localStorage.setItem("trusat-jwt", jwt);
+      // If secret is emailed, direct user to their email account to verify ownership
+      if (signUpSuccess) {
+        setIsSuccess(true);
       } else {
         setIsError(true);
       }

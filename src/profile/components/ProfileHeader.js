@@ -47,7 +47,7 @@ export default function ProfileHeader() {
             <p className="profile__header-info-data-value">
               {profileData.number_objects_tracked
                 ? profileData.number_objects_tracked
-                : `?`}
+                : 0}
             </p>
             &nbsp; OBJECTS TRACKED
           </div>
@@ -56,7 +56,7 @@ export default function ProfileHeader() {
             <p className="profile__header-info-data-value">
               {profileData.observation_count
                 ? profileData.observation_count
-                : `?`}
+                : 0}
             </p>
             &nbsp; OBSERVATIONS
           </div>
