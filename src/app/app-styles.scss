@@ -1051,3 +1051,9 @@ COOKIE BANNER
 .cookie-banner__ok-button {
   margin-right: 1em;
 }
+
+.cookie-banner__link {
+  color: $primary-theme-color;
+  font-size: $extra-small-font-size;
+  margin-top: 1em;
+}

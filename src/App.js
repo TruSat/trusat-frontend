@@ -22,6 +22,7 @@ import CookieBanner from "./app/components/CookieBanner";
 import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import ReactGA from "react-ga";
+import PrivacyPolicy from "./views/PrivacyPolicy";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -81,6 +82,7 @@ export default function App() {
         <Route path="/claim/:jwt" component={VerifyClaimAccount} />
         <Route path="/whitepaper" component={Whitepaper} />
         <Route path="/charter" component={Charter} />
+        <Route path="/policy" component={PrivacyPolicy} />
         <Route component={NoMatch} />
       </Switch>
 

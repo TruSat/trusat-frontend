@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
 import ReactGA from "react-ga";
 import { deleteCookie } from "../app-helpers";
 import Button from "../../app/components/Button";
@@ -19,7 +20,7 @@ export default function CookieBanner() {
   return isOpen ? (
     <div className="cookie-banner">
       <p className="cookie-banner__message">
-        We use cookies to improve this product, gabish?
+        We use cookies to improve this product.
       </p>
       <div className="cookie-banner__button-wrapper">
         <Button
@@ -40,6 +41,9 @@ export default function CookieBanner() {
           text="No Thanks"
         ></Button>
       </div>
+      <NavLink className="app__nav-link" to="policy">
+        <p className="cookie-banner__link">Read our privacy policy</p>
+      </NavLink>
     </div>
   ) : null;
 }
