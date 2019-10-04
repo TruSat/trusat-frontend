@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Globe from "../assets/Globe.svg";
 import RoundedButton from "../app/components/RoundedButton";
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+
   return (
     <div className="welcome__wrapper">
       {/* SECTION/GRADIENT ONE */}
@@ -178,23 +180,91 @@ export default function Home() {
           ></div>
         </div>
 
-        <div className="welcome__mailing-list-wrapper">
-          <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-          <p className="welcome__small-copy--black">
-            Join the mailing list to stay posted on the project
-          </p>
-          <div className="welcome__input-button-wrapper">
-            <input
-              className="welcome__input"
-              type="email"
-              placeholder="Your email"
-            ></input>
-            <RoundedButton
-              addStyles="welcome__subscribe-button"
-              color="black"
-              text="SUBSCRIBE"
-            />
-          </div>
+        <div id="mc_embed_signup">
+          <form
+            action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+          >
+            {/* <div id="mc_embed_signup_scroll">
+              <div class="mc-field-group">
+                <label for="mce-EMAIL">
+                  Email Address <span class="asterisk">*</span>
+                </label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                  name="EMAIL"
+                  class="required email"
+                  id="mce-EMAIL"
+                />
+              </div>
+
+              <div id="mce-responses" class="clear">
+                <div
+                  class="response"
+                  id="mce-error-response"
+                  style={{ display: "none" }}
+                ></div>
+                <div
+                  class="response"
+                  id="mce-success-response"
+                  style={{ display: "none" }}
+                ></div>
+              </div>
+              <div
+                style={{ position: "absolute", left: "-5000px" }}
+                aria-hidden="true"
+              >
+                <input
+                  type="text"
+                  name="b_d2289b46e82a459c8808b427c_8b9ce58d71"
+                  tabindex="-1"
+                  value=""
+                />
+              </div>
+              <div class="clear">
+                <input
+                  type="submit"
+                  value="Subscribe"
+                  name="subscribe"
+                  id="mc-embedded-subscribe"
+                  class="button"
+                />
+              </div>
+            </div> */}
+            <div className="welcome__mailing-list-wrapper">
+              <h2 className="welcome__sub-header--black">Stay in the loop</h2>
+              <p className="welcome__small-copy--black">
+                Join the mailing list to stay posted on the project
+              </p>
+              <div className="welcome__input-button-wrapper">
+                <input
+                  name="EMAIL"
+                  id="mce-EMAIL"
+                  className="welcome__input"
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                ></input>
+                {/* Make this a button so 'submit' work */}
+                <RoundedButton
+                  type="submit"
+                  name="subscribe"
+                  addStyles="welcome__subscribe-button"
+                  color="black"
+                  text="SUBSCRIBE"
+                  id="mc-embedded-subscribe"
+                />
+              </div>
+            </div>
+          </form>
         </div>
       </section>
     </div>

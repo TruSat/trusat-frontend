@@ -106,23 +106,29 @@ export const renderFlag = code => {
     return <p className="table__small-text">unknown</p>;
   } else if (!code.includes("/")) {
     return (
-      <img
-        className="catalog-table__small-text"
-        src={`https://www.countryflags.io/${code}/flat/16.png`}
-        alt={`${code} flag `}
-      />
+      <div className="app__tool-tip-wrapper" data-tip={code}>
+        <img
+          className="catalog-table__small-text"
+          src={`https://www.countryflags.io/${code}/flat/16.png`}
+          alt={`${code} flag `}
+        />
+        <ReactTooltip type="info" />
+      </div>
     );
   } else if (code.includes("/")) {
     const sharedCodes = code.split("/");
 
     return sharedCodes.map(sharedCode => {
       return (
-        <img
-          key={sharedCode}
-          className="catalog-table__small-text"
-          src={`https://www.countryflags.io/${sharedCode}/flat/16.png`}
-          alt={`${sharedCode} flag `}
-        />
+        <div className="app__tool-tip-wrapper" data-tip={code}>
+          <img
+            key={sharedCode}
+            className="catalog-table__small-text"
+            src={`https://www.countryflags.io/${sharedCode}/flat/16.png`}
+            alt={`${sharedCode} flag `}
+          />
+          <ReactTooltip type="info" />
+        </div>
       );
     });
   }

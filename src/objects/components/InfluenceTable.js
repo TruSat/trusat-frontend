@@ -64,7 +64,7 @@ export default function InfluenceTable() {
       <table className="table object-influence-table">
         <thead className="table__header">
           <tr className="table__header-row">
-            <th className="table__header-text object-inluence-table__table-header-text">
+            <th className="table__header-text object-inluence-table__table-header-text ">
               {toolTip("DATE", toolTipCopy.date)}
             </th>
             <th className="table__header-text app__hide-on-mobile">

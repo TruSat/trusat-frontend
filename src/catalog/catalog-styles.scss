@@ -154,8 +154,8 @@ CATALOG NAV BAR
 }
 
 .catalog-nav-bar__link--highlight {
+  @include section-title;
   border-bottom: 4px solid $primary-highlight-color;
-  color: $primary-text-color;
   margin-right: 2em;
   padding-bottom: 0.5em;
   text-decoration: none;
@@ -166,6 +166,7 @@ CATALOG NAV BAR
 }
 
 .catalog-nav-bar__link--lowlight {
+  @include section-title;
   border-bottom: 4px solid $primary-theme-color;
   color: $secondary-theme-color;
   margin-right: 2em;

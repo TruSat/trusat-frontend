@@ -13,6 +13,7 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+  console.log(data);
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}`);
@@ -40,19 +41,40 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                   &nbsp;
                 </p>
               ) : null}
-              <ObjectBadge noradNumber={obj.object_norad_number} />
+              <ObjectBadge
+                noradNumber={obj.object_norad_number}
+                quality={obj.object_observation_quality}
+              />
               &nbsp;
               {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
           </NavLink>
         </td>
-        <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
+
+        <td className="table__table-data">
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {renderFlag(obj.object_origin)}
+          </NavLink>
+        </td>
 
         <td className="table__table-data app__hide-on-mobile">
-          {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
+          </NavLink>
         </td>
         <td className="table__table-data app__hide-on-mobile">
-          {obj.object_observation_quality}%
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {obj.object_observation_quality}%
+          </NavLink>
         </td>
         <td className="table__table-data">
           <NavLink

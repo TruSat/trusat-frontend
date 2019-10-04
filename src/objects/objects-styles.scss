@@ -198,14 +198,12 @@ OBJECT OBSERVATIONS NAV
 }
 
 .object-observations__nav-link--lowlight {
+  @include section-title;
   color: $secondary-theme-color;
-  font-size: $small-font-size;
 }
 
 .object-observations__nav-link--highlight {
-  color: $primary-text-color;
-  font-size: $small-font-size;
-  font-weight: $bold-weight;
+  @include section-title;
 }
 
 .object-observations__nav-link--lowlight:hover,
