@@ -12,11 +12,12 @@ CATALOG
 
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 0em 4em 4em 4em;
+    margin: 4em 4em 4em 4em;
   }
   .catalog__header {
-    @include view-title--desktop;
-    margin: 0.5em 0;
+    // @include view-title--desktop;
+    // margin: 0.5em 0;
+    display: none;
   }
 }
 
