@@ -200,6 +200,11 @@ OBJECT OBSERVATIONS NAV
 .object-observations__nav-link--lowlight {
   @include section-title;
   color: $secondary-theme-color;
+  font-weight: $regular-weight;
+}
+
+.object-observations__nav-link--lowlight:hover {
+  color: $primary-text-color;
 }
 
 .object-observations__nav-link--highlight {

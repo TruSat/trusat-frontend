@@ -169,6 +169,7 @@ CATALOG NAV BAR
   @include section-title;
   border-bottom: 4px solid $primary-theme-color;
   color: $secondary-theme-color;
+  font-weight: $regular-weight;
   margin-right: 2em;
   padding-bottom: 0.5em;
   text-decoration: none;
@@ -176,6 +177,7 @@ CATALOG NAV BAR
 
 .catalog-nav-bar__link--lowlight:hover {
   cursor: pointer;
+  color: $primary-text-color;
 }
 
 /* ----------
