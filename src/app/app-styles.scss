@@ -156,7 +156,7 @@ APP
 MOBILE HEADER 
 ---------- */
 .mobile-header {
-  background: #2d2d2d;
+  background: $tertiary-color;
   padding: 1em;
 }
 
@@ -182,8 +182,8 @@ NAV BAR
   // nav bar styles shown everywhere but the welcome page
   .nav-bar {
     align-items: center;
-    background: #2d2d2d;
-    border: 3px solid #2d2d2d;
+    background: $tertiary-color;
+    border: 3px solid $tertiary-color;
     display: flex;
     height: 3.5em;
     justify-content: space-between;
@@ -215,7 +215,7 @@ NAV BAR
   }
 
   .nav-bar__link-wrapper--lowlight {
-    border-bottom: 3px solid #2d2d2d;
+    border-bottom: 3px solid $tertiary-color;
     color: #888888;
     margin: 0em 2em;
   }
@@ -251,8 +251,8 @@ NAV BAR
 
   .nav-bar {
     align-items: center;
-    background: #2d2d2d;
-    border: 3px solid #2d2d2d;
+    background: $tertiary-color;
+    border: 3px solid $tertiary-color;
     display: flex;
     height: 3.5em;
     justify-content: space-between;
