@@ -28,7 +28,15 @@ function NavDropdown({ catalogFilter, history, setRange }) {
   const colorStyles = {
     control: (provided, state) => ({
       ...provided,
-      border: "1px solid #ffbd3c"
+      backgroundColor: "transparent",
+      border: "1px solid white",
+      fontSize: "20px",
+      fontWeight: "bold",
+      padding: "0.25em"
+    }),
+
+    singleValue: (provided, state) => ({
+      color: "white",
     }),
 
     option: (provided, state) => ({
