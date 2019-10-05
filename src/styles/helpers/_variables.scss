@@ -6,6 +6,14 @@ $secondary-theme-color: #a5a5a5;
 $primary-text-color: #ffffff;
 $tertiary-color: #4f4f4f;
 $primary-highlight-color: #ffbd3c;
+
+/*
+FONT FAMILIES
+*/
+$main-font: "Roboto", sans-serif;
+$display-font: "Montserrat", sans-serif;
+
+
 /*
 FONT SIZES
 */
@@ -16,13 +24,14 @@ $large-font-size: 24px;
 $extra-large-font-size: 36px;
 $extra-extra-large-font-size: 76px;
 
-/* -----
+/*
 FONT WEIGHT
 ----- */
 $thin-weight: 100;
-$light-weight: 200;
-$regular-weight: 600;
+$light-weight: 300;
+$regular-weight: 400;
 $bold-weight: bold;
+$black-weight: 700;
 
 /*
 LINE HEIGHTS
