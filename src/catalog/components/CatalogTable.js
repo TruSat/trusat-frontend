@@ -36,7 +36,9 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           >
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
-                <p>
+                <p
+                  className="priorityRank"
+                >
                   {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>

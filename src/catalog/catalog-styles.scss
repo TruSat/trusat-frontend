@@ -189,6 +189,14 @@ CATALOG TABLE
   display: flex;
 }
 
+.priorityRank {
+  width: 25px;
+}
+
+.badgeWrapper {
+  padding: 0 10px 0 0;
+}
+
 .catalog-table__body-row {
   border-bottom: 1px solid $tertiary-color;
 }
