@@ -238,15 +238,21 @@ NAV BAR
     background: $primary-highlight-color;
     border-radius: 4px;
     color: $primary-theme-color;
-    line-height: 14px;
-    font-weight: bold;
-    font-size: 12px;
+    // line-height: 14px;
+    // font-weight: bold;
+    font-size: $small-font-size;
     margin-right: 1em;
-    padding: 1em 3em;
+    padding: 0.5em 2em;
   }
 
   .nav-bar__join-button:hover {
     cursor: pointer;
+  }
+
+  .nav-bar__button--lowlight {
+    background-color: transparent;
+    border: 1px solid $primary-text-color; 
+    color: $primary-text-color;
   }
 
   .nav-bar {

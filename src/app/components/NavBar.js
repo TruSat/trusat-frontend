@@ -145,8 +145,10 @@ function NavBar(props) {
           <JoinButton path={path} />
         </NavLink>
       ) : (
-        // Invisible element to ensure nav bar links stays center of header component
-        <div style={{ width: "100px" }}></div>
+        // Show "submiit data" button if user is logged in
+        <NavLink className="app__nav-link" to="/submit">
+          <span className="nav-bar__join-button nav-bar__button--lowlight">Submit data</span>
+        </NavLink>
       )}
     </div>
   );
