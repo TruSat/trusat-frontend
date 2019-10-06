@@ -81,7 +81,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             {obj.object_observation_quality}%
           </NavLink>
         </td>
-        <td className="table__table-data">
+        <td className="table__table-data usernameWrapper">
           <NavLink
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
@@ -117,7 +117,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               <th className="table__header-text app__hide-on-mobile">
                 {toolTip("CONFIDENCE", toolTipCopy.confidence)}
               </th>
-              <th className="table__header-text">
+              <th className="table__header-text usernameWrapper">
                 {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
               </th>
             </tr>

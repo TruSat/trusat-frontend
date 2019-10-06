@@ -353,8 +353,14 @@ TABLE
 
 .table__table-data {
   font-size: $extra-small-font-size;
-  padding: 0.5em 2em 0.5em 0em;
+  padding: 0.5em 1em 0.5em 0em;
   vertical-align: middle;
+}
+
+@media (min-width: 600px) {
+  .table__table-data {
+    padding: 0.5em 2em 0.5em 0em;
+  }
 }
 
 .table__weight-data {

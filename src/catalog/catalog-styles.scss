@@ -194,12 +194,40 @@ CATALOG TABLE
   padding-right: 4px;
 }
 
+@media (min-width: 600px) {
+  .priorityRank {
+    min-width: 24px;
+  }
+}
+
 .badgeWrapper {
-  padding: 0 13px 0 0;
+  padding-right: 13px;
+}
+
+@media (min-width: 600px) {
+  .badgeWrapper {
+    padding-right: 20px;
+  }
 }
 
 .objectNameWrapper {
   font-size: $small-font-size;
+}
+
+@media (min-width: 600px) {
+  .objectNameWrapper {
+    min-width: 200px;
+  }
+}
+
+.usernameWrapper {
+  padding-right: 0;
+}
+
+@media (min-width: 600px) {
+  .usernameWrapper {
+    min-width: 90px;
+  }
 }
 
 .catalog-table__body-row {
