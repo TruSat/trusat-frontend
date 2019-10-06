@@ -190,23 +190,24 @@ CATALOG TABLE
 }
 
 .catalog-table__object-data-wrapper__priorityRank {
-  min-width: 18px;
-  padding-right: 4px;
+  min-width: 1.5em;
+  padding-right: 0.25em;
+  
 }
 
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper__priorityRank {
-    min-width: 24px;
+    min-width: 2.2em;
   }
 }
 
 .catalog-table__object-data-wrapper__badgeWrapper {
-  padding-right: 13px;
+  padding-right: 1em;
 }
 
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper__badgeWrapper {
-    padding-right: 20px;
+    padding-right: 1.75em;
   }
 }
 
@@ -216,7 +217,7 @@ CATALOG TABLE
 
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper__objectName {
-    min-width: 200px;
+    min-width: 20em;
   }
 }
 
@@ -226,7 +227,7 @@ CATALOG TABLE
 
 @media (min-width: 600px) {
   .catalog-table__table-data--usernameWrapper {
-    min-width: 90px;
+    min-width: 7.5em;
   }
 }
 
