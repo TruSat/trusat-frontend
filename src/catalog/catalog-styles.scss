@@ -120,7 +120,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin-right: 1em;
+  margin: 1em 1em 1em 0;
 }
 
 .catalog__get-data-button:hover {
@@ -134,7 +134,6 @@ HOW TO PARTICIPATE
 .catalog__link-text {
   color: $secondary-theme-color;
   text-decoration-line: underline;
-  margin-bottom: 1.25em;
 }
 
 /* ----------

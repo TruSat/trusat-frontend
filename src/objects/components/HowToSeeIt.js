@@ -9,7 +9,6 @@ export default function HowToSeeIt() {
   return (
     <div className="object-info__how-to-wrapper">
       <h2 className="object-info__section-title">HOW TO SEE IT</h2>
-      <DownloadObjectTleButton />
       <NavLink className="app__nav-link" to="/how">
         <p className="object-info__link-text">Learn how to track satellites</p>
       </NavLink>
@@ -29,6 +28,7 @@ export default function HowToSeeIt() {
       >
         <p className="object-info__link-text">More info at Calsky</p>
       </a>
+      <DownloadObjectTleButton />
     </div>
   );
 }
