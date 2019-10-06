@@ -29,7 +29,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         key={data.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
-        <td className="table__table-data">
+        <td className="table__table-data table__table-data--big_rows">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}

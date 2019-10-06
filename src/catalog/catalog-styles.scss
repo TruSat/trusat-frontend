@@ -80,7 +80,7 @@ CATALOF FILTER DESCRIPTION
 HOW TO PARTICIPATE
 ---------- */
 .catalog__how-to-wrapper {
-  margin: 3em 0;
+  margin: 5em 0;
 }
 
 @media (min-width: 600px) {
@@ -134,7 +134,7 @@ HOW TO PARTICIPATE
 .catalog__link-text {
   color: $secondary-theme-color;
   text-decoration-line: underline;
-  margin-bottom: 0.5em;
+  margin-bottom: 1.25em;
 }
 
 /* ----------
@@ -185,10 +185,10 @@ CATALOG NAV BAR
 CATALOG TABLE
 ---------- */
 .table__body-row:first-of-type td {
-  padding-top: 1.5em;
+  // padding-top: 1.5em;
 }
 
-.table__table-data {
+.table__table-data--big_rows {
   padding: 1.5em 1em 1.5em 0em;
 }
 
