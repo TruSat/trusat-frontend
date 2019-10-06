@@ -37,7 +37,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
                 <p
-                  className="priorityRank"
+                  className="catalog-table__object-data-wrapper__priorityRank"
                 >
                   {data.indexOf(obj) + 1}
                   &nbsp;
@@ -48,7 +48,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                 quality={obj.object_observation_quality}
               />
               <div
-                className="objectNameWrapper"
+                className="catalog-table__object-data-wrapper__objectName"
               >
                 {toolTip(obj.object_name, obj.object_norad_number)}
               </div>
@@ -81,7 +81,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             {obj.object_observation_quality}%
           </NavLink>
         </td>
-        <td className="table__table-data usernameWrapper">
+        <td className="table__table-data catalog-table__table-data--usernameWrapper">
           <NavLink
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
@@ -117,7 +117,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               <th className="table__header-text app__hide-on-mobile">
                 {toolTip("CONFIDENCE", toolTipCopy.confidence)}
               </th>
-              <th className="table__header-text usernameWrapper">
+              <th className="table__header-text catalog-table__table-data--usernameWrapper">
                 {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
               </th>
             </tr>

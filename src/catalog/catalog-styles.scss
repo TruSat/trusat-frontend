@@ -189,43 +189,43 @@ CATALOG TABLE
   display: flex;
 }
 
-.priorityRank {
+.catalog-table__object-data-wrapper__priorityRank {
   min-width: 18px;
   padding-right: 4px;
 }
 
 @media (min-width: 600px) {
-  .priorityRank {
+  .catalog-table__object-data-wrapper__priorityRank {
     min-width: 24px;
   }
 }
 
-.badgeWrapper {
+.catalog-table__object-data-wrapper__badgeWrapper {
   padding-right: 13px;
 }
 
 @media (min-width: 600px) {
-  .badgeWrapper {
+  .catalog-table__object-data-wrapper__badgeWrapper {
     padding-right: 20px;
   }
 }
 
-.objectNameWrapper {
+.catalog-table__object-data-wrapper__objectName {
   font-size: $small-font-size;
 }
 
 @media (min-width: 600px) {
-  .objectNameWrapper {
+  .catalog-table__object-data-wrapper__objectName {
     min-width: 200px;
   }
 }
 
-.usernameWrapper {
+.catalog-table__table-data--usernameWrapper {
   padding-right: 0;
 }
 
 @media (min-width: 600px) {
-  .usernameWrapper {
+  .catalog-table__table-data--usernameWrapper {
     min-width: 90px;
   }
 }
