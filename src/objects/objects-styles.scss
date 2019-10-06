@@ -125,8 +125,8 @@ OBJECT INFO
 
 .object-info__section-title {
   @include section-title;
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 0.5em;
+  border-bottom: 1px solid $secondary-theme-color;
+  margin-bottom: 1em;
   padding-bottom: 0.5em;
 }
 
