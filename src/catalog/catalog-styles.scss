@@ -190,11 +190,16 @@ CATALOG TABLE
 }
 
 .priorityRank {
-  width: 25px;
+  min-width: 18px;
+  padding-right: 4px;
 }
 
 .badgeWrapper {
-  padding: 0 10px 0 0;
+  padding: 0 13px 0 0;
+}
+
+.objectNameWrapper {
+  font-size: $small-font-size;
 }
 
 .catalog-table__body-row {

@@ -47,8 +47,11 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                 noradNumber={obj.object_norad_number}
                 quality={obj.object_observation_quality}
               />
-              &nbsp;
-              {toolTip(obj.object_name, obj.object_norad_number)}
+              <div
+                className="objectNameWrapper"
+              >
+                {toolTip(obj.object_name, obj.object_norad_number)}
+              </div>
             </div>
           </NavLink>
         </td>
