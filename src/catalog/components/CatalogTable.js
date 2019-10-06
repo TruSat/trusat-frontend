@@ -56,7 +56,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </NavLink>
         </td>
 
-        <td className="table__table-data">
+        <td className="table__table-data catalog-table__table-data--originWrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -65,7 +65,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </NavLink>
         </td>
 
-        <td className="table__table-data app__hide-on-mobile">
+        <td className="table__table-data app__hide-on-mobile catalog-table__table-data--purposeWrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}

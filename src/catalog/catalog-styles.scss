@@ -184,6 +184,26 @@ CATALOG NAV BAR
 /* ----------
 CATALOG TABLE
 ---------- */
+.table__body-row:first-of-type td {
+  padding-top: 1.5em;
+}
+
+.table__table-data {
+  padding: 1.5em 1em 1.5em 0em;
+}
+
+
+@media (min-width: 600px) {
+  .table__body-row:first-of-type td {
+    padding-top: 1.5em;
+  }
+  
+  .catalog-table__object-data-wrapper__priorityRank {
+    min-width: 2.2em;
+  }
+}
+
+
 .catalog-table__object-data-wrapper {
   align-items: center;
   display: flex;
@@ -221,6 +241,18 @@ CATALOG TABLE
   }
 }
 
+.catalog-table__table-data--purposeWrapper {
+  padding-right: 3em;
+}
+
+
+@media (min-width: 600px) {
+  .catalog-table__table-data--originWrapper {
+    padding-right: 3em;
+  }
+}
+
+
 .catalog-table__table-data--usernameWrapper {
   padding-right: 0;
 }
@@ -235,6 +267,12 @@ CATALOG TABLE
   border-bottom: 1px solid $tertiary-color;
 }
 
-.catalog-table__table-data {
-  padding: 0em 2em 0em 0em;
+.table-paginator {
+  margin: 1.5em;
+}
+
+@media (min-width: 600px) {
+  .table-paginator {
+    margin: 2.5em;
+  }
 }
