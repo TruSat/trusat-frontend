@@ -29,14 +29,16 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
         key={data.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
-        <td className="table__table-data">
+        <td className="table__table-data table__table-data--big_rows">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
-                <p>
+                <p
+                  className="catalog-table__object-data-wrapper__priorityRank"
+                >
                   {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
@@ -45,13 +47,16 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                 noradNumber={obj.object_norad_number}
                 quality={obj.object_observation_quality}
               />
-              &nbsp;
-              {toolTip(obj.object_name, obj.object_norad_number)}
+              <div
+                className="catalog-table__object-data-wrapper__objectName"
+              >
+                {toolTip(obj.object_name, obj.object_norad_number)}
+              </div>
             </div>
           </NavLink>
         </td>
 
-        <td className="table__table-data">
+        <td className="table__table-data catalog-table__table-data--originWrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -60,7 +65,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </NavLink>
         </td>
 
-        <td className="table__table-data app__hide-on-mobile">
+        <td className="table__table-data app__hide-on-mobile catalog-table__table-data--purposeWrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -76,7 +81,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             {obj.object_observation_quality}%
           </NavLink>
         </td>
-        <td className="table__table-data">
+        <td className="table__table-data catalog-table__table-data--usernameWrapper">
           <NavLink
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
@@ -112,7 +117,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               <th className="table__header-text app__hide-on-mobile">
                 {toolTip("CONFIDENCE", toolTipCopy.confidence)}
               </th>
-              <th className="table__header-text">
+              <th className="table__header-text catalog-table__table-data--usernameWrapper">
                 {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
               </th>
             </tr>

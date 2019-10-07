@@ -12,11 +12,12 @@ CATALOG
 
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 0em 4em 4em 4em;
+    margin: 4em 4em 4em 4em;
   }
   .catalog__header {
-    @include view-title--desktop;
-    margin: 0.5em 0;
+    // @include view-title--desktop;
+    // margin: 0.5em 0;
+    display: none;
   }
 }
 
@@ -79,7 +80,7 @@ CATALOF FILTER DESCRIPTION
 HOW TO PARTICIPATE
 ---------- */
 .catalog__how-to-wrapper {
-  margin: 3em 0;
+  margin: 5em 0;
 }
 
 @media (min-width: 600px) {
@@ -89,7 +90,7 @@ HOW TO PARTICIPATE
   }
 
   .catalog__button {
-    border: 1px solid #5f5f5f;
+    border: 1px solid $secondary-theme-color;
     border-radius: 4px;
     display: inline-block;
     margin-bottom: 1em;
@@ -105,11 +106,11 @@ HOW TO PARTICIPATE
 }
 
 .catalog__button {
-  border: 1px solid #5f5f5f;
+  border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   display: inline-block;
   margin-bottom: 1em;
-  padding: 0.5em;
+  padding: 0.5em 1em;
   width: 40%;
   text-align: center;
 }
@@ -119,7 +120,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin-right: 1em;
+  margin: 1em 1em 1em 0;
 }
 
 .catalog__get-data-button:hover {
@@ -133,7 +134,6 @@ HOW TO PARTICIPATE
 .catalog__link-text {
   color: $secondary-theme-color;
   text-decoration-line: underline;
-  margin-bottom: 0.5em;
 }
 
 /* ----------
@@ -157,7 +157,7 @@ CATALOG NAV BAR
   @include section-title;
   border-bottom: 4px solid $primary-highlight-color;
   margin-right: 2em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.3em;
   text-decoration: none;
 }
 
@@ -169,27 +169,109 @@ CATALOG NAV BAR
   @include section-title;
   border-bottom: 4px solid $primary-theme-color;
   color: $secondary-theme-color;
+  font-weight: $regular-weight;
   margin-right: 2em;
-  padding-bottom: 0.5em;
+  padding-bottom: 0.3em;
   text-decoration: none;
 }
 
 .catalog-nav-bar__link--lowlight:hover {
   cursor: pointer;
+  color: $primary-text-color;
 }
 
 /* ----------
 CATALOG TABLE
 ---------- */
+.table__body-row:first-of-type td {
+  // padding-top: 1.5em;
+}
+
+.table__table-data--big_rows {
+  padding: 1.5em 1em 1.5em 0em;
+}
+
+
+@media (min-width: 600px) {
+  .table__body-row:first-of-type td {
+    padding-top: 1.5em;
+  }
+  
+  .catalog-table__object-data-wrapper__priorityRank {
+    min-width: 2.2em;
+  }
+}
+
+
 .catalog-table__object-data-wrapper {
   align-items: center;
   display: flex;
+}
+
+.catalog-table__object-data-wrapper__priorityRank {
+  min-width: 1.5em;
+  padding-right: 0.25em;
+  
+}
+
+@media (min-width: 600px) {
+  .catalog-table__object-data-wrapper__priorityRank {
+    min-width: 2.2em;
+  }
+}
+
+.catalog-table__object-data-wrapper__badgeWrapper {
+  padding-right: 1em;
+}
+
+@media (min-width: 600px) {
+  .catalog-table__object-data-wrapper__badgeWrapper {
+    padding-right: 1.75em;
+  }
+}
+
+.catalog-table__object-data-wrapper__objectName {
+  font-size: $small-font-size;
+}
+
+@media (min-width: 600px) {
+  .catalog-table__object-data-wrapper__objectName {
+    min-width: 20em;
+  }
+}
+
+.catalog-table__table-data--purposeWrapper {
+  padding-right: 3em;
+}
+
+
+@media (min-width: 600px) {
+  .catalog-table__table-data--originWrapper {
+    padding-right: 3em;
+  }
+}
+
+
+.catalog-table__table-data--usernameWrapper {
+  padding-right: 0;
+}
+
+@media (min-width: 600px) {
+  .catalog-table__table-data--usernameWrapper {
+    min-width: 7.5em;
+  }
 }
 
 .catalog-table__body-row {
   border-bottom: 1px solid $tertiary-color;
 }
 
-.catalog-table__table-data {
-  padding: 0em 2em 0em 0em;
+.table-paginator {
+  margin: 1.5em;
+}
+
+@media (min-width: 600px) {
+  .table-paginator {
+    margin: 2.5em;
+  }
 }

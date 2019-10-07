@@ -5,8 +5,9 @@ Text
 @mixin view-title {
   color: $primary-highlight-color;
   letter-spacing: $tight-spacing;
+  font-family: $display-font;
   font-size: $extra-extra-large-font-size;
-  font-weight: $light-weight;
+  font-weight: $thin-weight;
 }
 
 @mixin view-title--desktop {

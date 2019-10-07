@@ -4,11 +4,15 @@ import sketch from "../components/sketch";
 
 export default function ObjectBadge({ noradNumber, width, quality }) {
   return (
+    <div
+      className="catalog-table__object-data-wrapper__badgeWrapper"
+    >
     <P5Wrapper
       sketch={sketch}
       noradNumber={noradNumber}
       width={width}
       quality={quality}
     ></P5Wrapper>
+    </div>
   );
 }

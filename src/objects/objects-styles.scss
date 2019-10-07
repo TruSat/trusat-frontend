@@ -21,6 +21,7 @@ OBJECT INFO
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    margin-bottom: 2em;
   }
 }
 
@@ -99,13 +100,13 @@ OBJECT INFO
 @media (min-width: 600px) {
   .object-info__background-section-wrapper {
     display: flex;
-    margin: 2em 0;
+    margin: 4em 0 8em;
   }
 }
 
 @media (max-width: 600px) {
   .object-info__background-wrapper {
-    margin-bottom: 4em;
+    margin-bottom: 5em;
   }
 }
 
@@ -118,14 +119,14 @@ OBJECT INFO
 
 @media (max-width: 600px) {
   .object-info__how-to-wrapper {
-    margin-bottom: 4em;
+    margin-bottom: 5em;
   }
 }
 
 .object-info__section-title {
   @include section-title;
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 0.5em;
+  border-bottom: 1px solid $secondary-theme-color;
+  margin-bottom: 1em;
   padding-bottom: 0.5em;
 }
 
@@ -200,6 +201,11 @@ OBJECT OBSERVATIONS NAV
 .object-observations__nav-link--lowlight {
   @include section-title;
   color: $secondary-theme-color;
+  font-weight: $regular-weight;
+}
+
+.object-observations__nav-link--lowlight:hover {
+  color: $primary-text-color;
 }
 
 .object-observations__nav-link--highlight {
