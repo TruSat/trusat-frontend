@@ -30,7 +30,7 @@ export default function ProfileHeader() {
         {userAddress.toLowerCase() ===
         profileData.user_address.toLowerCase() ? (
           <NavLink className="app__nav-link" to="/settings">
-            <span className="app__black-button--small">Settings</span>
+            <span className="app__black-button--small app__black-button--settings">Settings</span>
           </NavLink>
         ) : null}
 

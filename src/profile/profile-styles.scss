@@ -51,6 +51,10 @@ PROFILE
   }
 }
 
+.app__black-button--settings {
+  margin-right: 2em;
+}
+
 .profile__header-data-wrapper {
   align-items: center;
   display: flex;
@@ -67,6 +71,7 @@ PROFILE
   @include label-text;
   display: flex;
   margin: 1em 1.5em 0em 0em;
+  border: 1px solid seagreen;
 }
 
 @media (min-width: 600px) {
@@ -87,7 +92,7 @@ PROFILE
   .profile__header-info-data-value {
     color: $primary-text-color;
     font-size: $extra-small-font-size;
-    margin-left: 3em;
+    // margin-left: 3em;
   }
 }
 
