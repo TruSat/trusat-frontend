@@ -36,7 +36,7 @@ export default function ProfileHeader() {
 
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
-            <p className="profile__header-info-data-value">
+            <p className="profile__header-info-data-value profile__header-info-data-value--lowlight">
               {profileData.user_location
                 ? profileData.user_location
                 : `Location Undisclosed`}

@@ -52,26 +52,27 @@ PROFILE
 }
 
 .app__black-button--settings {
-  margin-right: 2em;
+  margin: 0 2em 1em 0;
 }
 
 .profile__header-data-wrapper {
-  align-items: center;
+  align-items: start;
   display: flex;
   flex-wrap: wrap;
+  text-transform: uppercase;
+  // border: 1px solid blue;
 }
 
 @media (min-width: 600px) {
   .profile__header-data-wrapper {
-    flex-wrap: nowrap;
+    // flex-wrap: nowrap;
   }
 }
 
 .profile__header-info-data-label {
   @include label-text;
   display: flex;
-  margin: 1em 1.5em 0em 0em;
-  border: 1px solid seagreen;
+  margin: 1em 2em 0em 0em;
 }
 
 @media (min-width: 600px) {
@@ -86,6 +87,10 @@ PROFILE
 .profile__header-info-data-value {
   color: $primary-text-color;
   font-size: $extra-small-font-size;
+}
+
+.profile__header-info-data-value--lowlight {
+  color: $secondary-theme-color;
 }
 
 @media (min-width: 600px) {
