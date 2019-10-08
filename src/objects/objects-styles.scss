@@ -65,27 +65,26 @@ OBJECT INFO
 @media (min-width: 600px) {
   .object-info__header-info-wrapper {
     display: flex;
+    font-size: $extra-small-font-size;
   }
 }
 
 .object-info__header-info-wrapper--with-margin {
-  margin-bottom: 0.5em;
-}
-
-.object-info__header-info-wrapper--with-margin {
   display: flex;
-  margin-right: 1em;
+  margin-bottom: 0.5em;
+  margin-right: 2em;
 }
 
 @media (max-width: 600px) {
   .object-info__norad-number-wrapper {
     display: flex;
-    margin-bottom: 3em;
+    margin-bottom: 2em;
   }
 }
 
 .object-info__small-text {
   font-size: $extra-small-font-size;
+  text-transform: uppercase;
 }
 
 .object-info__large-text {
@@ -95,6 +94,10 @@ OBJECT INFO
 .object-info__small-text--grey {
   color: $secondary-theme-color;
   font-size: $extra-small-font-size;
+}
+
+.object-info__small-text--with-margin {
+  margin-right: 2em;
 }
 
 @media (min-width: 600px) {

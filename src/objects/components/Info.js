@@ -28,7 +28,7 @@ export default function Info() {
                 {objectInfo.number_users_tracked}
               </p>
               &nbsp;
-              <p className="object-info__small-text--grey">OBSERVERS</p>
+              <p className="object-info__small-text--grey object-info__small-text--with-margin">OBSERVERS</p>
               &nbsp;
               <p className="object-info__small-text">
                 {objectInfo.observation_quality}
