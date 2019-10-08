@@ -208,6 +208,16 @@ CATALOG TABLE
   display: flex;
 }
 
+.catalog-table__object-data-wrapper__badgeWrapper {
+  padding-right: 1em;
+}
+
+@media (min-width: 600px) {
+  .catalog-table__object-data-wrapper__badgeWrapper {
+    padding-right: 1.75em;
+  }
+}
+
 .catalog-table__object-data-wrapper__priorityRank {
   min-width: 1.5em;
   padding-right: 0.25em;
@@ -217,16 +227,6 @@ CATALOG TABLE
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper__priorityRank {
     min-width: 2.2em;
-  }
-}
-
-.catalog-table__object-data-wrapper__badgeWrapper {
-  padding-right: 1em;
-}
-
-@media (min-width: 600px) {
-  .catalog-table__object-data-wrapper__badgeWrapper {
-    padding-right: 1.75em;
   }
 }
 
