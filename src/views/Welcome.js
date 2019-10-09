@@ -31,7 +31,7 @@ export default function Home() {
         
         <div className="welcome__title-intro-wrapper">
           <p className="welcome__large-copy welcome__large-copy--bold">
-            The number of satellites is increasing by 10x.
+            The number of satellites in low-Earth orbit is increasing by 10x.
           </p>
           <p className="welcome__large-copy">
             If we don’t grow responsibly, satellite collisions and debris could render space unusable.
@@ -41,12 +41,11 @@ export default function Home() {
           </p>
         </div>
 
-
         <div className="welcome__iframe-wrapper">
           <iframe
             className="welcome__iframe"
             title="pale blue dot video"
-            src="https://www.youtube.com/embed/wupToqz1e2g"
+            src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowfullscreen"
@@ -57,10 +56,6 @@ export default function Home() {
           ></iframe>
         </div>
 
-        <p className="welcome__large-copy">
-          TruSat is a global community measuring satellite behavior to ensure
-          clean, open, usable space for everyone.
-        </p>
       </section>
 
       {/* SECTION/GRADIENT TWO */}

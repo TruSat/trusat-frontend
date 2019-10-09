@@ -833,8 +833,8 @@ WELCOME VIEW
 }
 
 .welcome__large-copy {
-  line-height: 39px;
-  font-size: 32px;
+  line-height: 30px;
+  font-size: 24px;
   margin-bottom: 0.5em;
 }
 
@@ -844,13 +844,13 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__large-copy {
-    line-height: 59px;
-    font-size: 48px;
+    line-height: 40px;
+    font-size: 32px;
   }
 
   .welcome__large-copy--bold {
-    line-height: 59px;
-    font-size: 48px;
+    line-height: 40px;
+    font-size: 32px;
   }
 }
 
