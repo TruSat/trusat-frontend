@@ -35,15 +35,21 @@ function NavDropdown({ catalogFilter, history, setRange }) {
       padding: "0.25em"
     }),
 
+    menu: (provided, state) => ({
+      ...provided,
+      backgroundColor: "transparent",
+      marginTop: "0"
+    }),
+
     singleValue: (provided, state) => ({
       color: "white",
     }),
 
     option: (provided, state) => ({
       ...provided,
-      background: "#1f1f1f",
+      background: "#043053",
       borderBottom: "1px solid #4f4f4f",
-      color: state.isSelected ? "#ffbd3c" : "white",
+      color: state.isSelected ? "#FC7756" : "white",
       padding: "1em"
     })
   };
