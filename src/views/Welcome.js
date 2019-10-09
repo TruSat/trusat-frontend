@@ -28,20 +28,24 @@ export default function Home() {
             alt="globe"
           ></img>
         </div>
+        
+        <div className="welcome__title-intro-wrapper">
+          <p className="welcome__large-copy welcome__large-copy--bold">
+            The number of satellites in low-Earth orbit is increasing by 10x.
+          </p>
+          <p className="welcome__large-copy">
+            If we don’t grow responsibly, satellite collisions and debris could render space unusable.
+          </p>
+          <p className="welcome__large-copy">
+            How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
+          </p>
+        </div>
 
-        <p className="welcome__large-copy">
-          The number of satellites in low-Earth orbit is about to increase by
-          10x.
-        </p>
-        <p className="welcome__large-copy">
-          How do we ensure collisions and debris don’t trap us on Earth?
-        </p>
-        <p className="welcome__large-copy--bold">That's where you come in:</p>
         <div className="welcome__iframe-wrapper">
           <iframe
             className="welcome__iframe"
             title="pale blue dot video"
-            src="https://www.youtube.com/embed/wupToqz1e2g"
+            src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowfullscreen"
@@ -52,51 +56,10 @@ export default function Home() {
           ></iframe>
         </div>
 
-        <p className="welcome__large-copy">
-          TruSat is a global community measuring satellite behavior to ensure
-          clean, open, usable space for everyone.
-        </p>
       </section>
 
       {/* SECTION/GRADIENT TWO */}
       <section className="welcome__section--two">
-        <form
-          action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-          method="post"
-          id="mc-embedded-subscribe-form"
-          name="mc-embedded-subscribe-form"
-          class="validate"
-          target="_blank"
-          novalidate
-        >
-          <div className="welcome__mailing-list-wrapper">
-            <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-            <p className="welcome__small-copy--black">
-              Join the mailing list to stay posted on the project
-            </p>
-            <div className="welcome__input-button-wrapper">
-              <input
-                required
-                name="EMAIL"
-                id="mce-EMAIL"
-                className="welcome__input"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-              ></input>
-              <RoundedButton
-                type="submit"
-                name="subscribe"
-                addStyles="welcome__subscribe-button"
-                color="black"
-                text="SUBSCRIBE"
-                id="mc-embedded-subscribe"
-                onSubmit={() => setEmail("")}
-              />
-            </div>
-          </div>
-        </form>
 
         <div className="welcome__illustration-join-wrapper">
           <span className="welcome__illustration welcome__illustration--left"></span>

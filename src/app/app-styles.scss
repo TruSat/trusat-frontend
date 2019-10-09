@@ -251,6 +251,9 @@ NAV BAR
     background-color: transparent;
     border: 1px solid $primary-text-color; 
     color: $primary-text-color;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 1.5em;
   }
 
   .nav-bar {
@@ -657,10 +660,6 @@ WELCOME VIEW
   max-width: 480px;
 }
 
-.welcome__globe-image {
-  max-width: 650px;
-}
-
 .welcome__trusat-tagline {
   font-size: 16px;
   line-height: 19px;
@@ -674,6 +673,14 @@ WELCOME VIEW
     line-height: 37px;
     margin: 1em 0;
   }
+}
+
+.welcome__globe-image {
+  max-width: 650px;
+}
+
+.welcome__title-intro-wrapper {
+  margin: 3em 0;
 }
 
 .welcome__illustration-join-wrapper {
@@ -826,27 +833,24 @@ WELCOME VIEW
 }
 
 .welcome__large-copy {
-  line-height: 39px;
-  font-size: 32px;
-  margin-top: 0.5em;
+  line-height: 30px;
+  font-size: 24px;
+  margin-bottom: 0.5em;
 }
 
 .welcome__large-copy--bold {
-  line-height: 39px;
-  font-size: 32px;
   font-weight: bold;
-  margin: 0.5em 0;
 }
 
 @media (min-width: 600px) {
   .welcome__large-copy {
-    line-height: 59px;
-    font-size: 48px;
+    line-height: 40px;
+    font-size: 32px;
   }
 
   .welcome__large-copy--bold {
-    line-height: 59px;
-    font-size: 48px;
+    line-height: 40px;
+    font-size: 32px;
   }
 }
 
