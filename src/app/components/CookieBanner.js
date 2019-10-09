@@ -41,7 +41,7 @@ export default function CookieBanner() {
           text="No Thanks"
         ></Button>
       </div>
-      <NavLink className="app__nav-link" to="policy">
+      <NavLink className="app__nav-link" to="/policy">
         <p className="cookie-banner__link">Read our privacy policy</p>
       </NavLink>
     </div>
