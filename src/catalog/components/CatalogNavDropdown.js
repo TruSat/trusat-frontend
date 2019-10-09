@@ -4,9 +4,9 @@ import Select from "react-select";
 
 const options = [
   { value: "priorities", label: "PRIORITIES" },
+  { value: "latest", label: "LAUNCHES" },
   { value: "undisclosed", label: "UNDISCLOSED" },
   { value: "debris", label: "DEBRIS" },
-  { value: "latest", label: "LATEST" },
   { value: "all", label: "ALL" }
 ];
 

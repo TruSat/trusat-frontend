@@ -149,7 +149,6 @@ function NavBar(props) {
         <NavLink className="app__nav-link" to="/submit">
           <span className="nav-bar__join-button nav-bar__button--lowlight">Submit data</span>
         </NavLink>
-        // <div></div>
       )}
     </div>
   );
