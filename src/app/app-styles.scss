@@ -660,10 +660,6 @@ WELCOME VIEW
   max-width: 480px;
 }
 
-.welcome__globe-image {
-  max-width: 650px;
-}
-
 .welcome__trusat-tagline {
   font-size: 16px;
   line-height: 19px;
@@ -677,6 +673,14 @@ WELCOME VIEW
     line-height: 37px;
     margin: 1em 0;
   }
+}
+
+.welcome__globe-image {
+  max-width: 650px;
+}
+
+.welcome__title-intro-wrapper {
+  margin: 3em 0;
 }
 
 .welcome__illustration-join-wrapper {
@@ -831,14 +835,11 @@ WELCOME VIEW
 .welcome__large-copy {
   line-height: 39px;
   font-size: 32px;
-  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 .welcome__large-copy--bold {
-  line-height: 39px;
-  font-size: 32px;
   font-weight: bold;
-  margin: 0.5em 0;
 }
 
 @media (min-width: 600px) {

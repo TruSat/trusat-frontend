@@ -28,15 +28,20 @@ export default function Home() {
             alt="globe"
           ></img>
         </div>
+        
+        <div className="welcome__title-intro-wrapper">
+          <p className="welcome__large-copy welcome__large-copy--bold">
+            The number of satellites is increasing by 10x.
+          </p>
+          <p className="welcome__large-copy">
+            If we don’t grow responsibly, satellite collisions and debris could render space unusable.
+          </p>
+          <p className="welcome__large-copy">
+            How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
+          </p>
+        </div>
 
-        <p className="welcome__large-copy">
-          The number of satellites in low-Earth orbit is about to increase by
-          10x.
-        </p>
-        <p className="welcome__large-copy">
-          How do we ensure collisions and debris don’t trap us on Earth?
-        </p>
-        <p className="welcome__large-copy--bold">That's where you come in:</p>
+
         <div className="welcome__iframe-wrapper">
           <iframe
             className="welcome__iframe"
