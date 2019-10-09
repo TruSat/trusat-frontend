@@ -23,20 +23,23 @@ export default function ProfileHeader() {
             ? toolTip(profileData.user_name, profileData.user_address)
             : shortenAddressToolTip(profileData.user_address)}
         </h1>
-      </div>
 
-      <div className="profile__button-data-wrapper">
         {/* Dont render settings link to user unless they are viewing their own profile */}
         {userAddress.toLowerCase() ===
         profileData.user_address.toLowerCase() ? (
-          <NavLink className="app__nav-link" to="/settings">
-            <span className="app__black-button--small">Settings</span>
-          </NavLink>
+          <div className="profile__header-settings-link-wrapper">
+            <NavLink className="app__nav-link" to="/settings">
+              <span className="app__black-button--small app__black-button--settings">Settings</span>
+            </NavLink>
+          </div>
         ) : null}
+      </div>
+
+      <div className="profile__button-data-wrapper">
 
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
-            <p className="profile__header-info-data-value">
+            <p className="profile__header-info-data-value profile__header-info-data-value--lowlight">
               {profileData.user_location
                 ? profileData.user_location
                 : `Location Undisclosed`}

@@ -25,6 +25,24 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
 
       <span
         className={
+          catalogFilter === "latest"
+            ? "catalog-nav-bar__link--highlight"
+            : "catalog-nav-bar__link--lowlight"
+        }
+        onClick={() => {
+          setRange({ start: 0, end: 10 });
+          ReactGA.event({
+            category: "Catalog",
+            action: "User selected latest filter"
+          });
+          history.push("/catalog/latest");
+        }}
+      >
+        LAUNCHES
+      </span>
+
+      <span
+        className={
           catalogFilter === "undisclosed"
             ? "catalog-nav-bar__link--highlight"
             : "catalog-nav-bar__link--lowlight"
@@ -57,24 +75,6 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }}
       >
         DEBRIS
-      </span>
-
-      <span
-        className={
-          catalogFilter === "latest"
-            ? "catalog-nav-bar__link--highlight"
-            : "catalog-nav-bar__link--lowlight"
-        }
-        onClick={() => {
-          setRange({ start: 0, end: 10 });
-          ReactGA.event({
-            category: "Catalog",
-            action: "User selected latest filter"
-          });
-          history.push("/catalog/latest");
-        }}
-      >
-        LATEST
       </span>
 
       <span

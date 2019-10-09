@@ -27,6 +27,13 @@ PROFILE
 .profile__blockie-name-wrapper {
   align-items: center;
   display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 600px) {
+  .profile__blockie-name-wrapper {
+      flex-wrap: nowrap;
+  }
 }
 
 .profile__header-username {
@@ -45,28 +52,34 @@ PROFILE
   margin-top: 1em;
 }
 
+
+.profile__header-settings-link-wrapper {
+  text-align: left;
+  width: 100%;
+  margin-right: 0;
+}
+
 @media (min-width: 600px) {
-  .profile__button-data-wrapper {
-    display: flex;
+  .profile__header-settings-link-wrapper {
+    text-align: right;
   }
+}
+
+.app__black-button--settings {
+  margin-top: 1em;
 }
 
 .profile__header-data-wrapper {
-  align-items: center;
+  align-items: start;
   display: flex;
   flex-wrap: wrap;
-}
-
-@media (min-width: 600px) {
-  .profile__header-data-wrapper {
-    flex-wrap: nowrap;
-  }
+  text-transform: uppercase;
 }
 
 .profile__header-info-data-label {
   @include label-text;
   display: flex;
-  margin: 1em 1.5em 0em 0em;
+  margin: 1em 2em 0em 0em;
 }
 
 @media (min-width: 600px) {
@@ -83,11 +96,14 @@ PROFILE
   font-size: $extra-small-font-size;
 }
 
+.profile__header-info-data-value--lowlight {
+  color: $secondary-theme-color;
+}
+
 @media (min-width: 600px) {
   .profile__header-info-data-value {
     color: $primary-text-color;
     font-size: $extra-small-font-size;
-    margin-left: 3em;
   }
 }
 
@@ -108,7 +124,7 @@ PROFILE
 }
 
 .profile__your-observations-wrapper {
-  margin-top: 3em;
+  margin-top: 5em;
 }
 
 .profile__none-yet-text {
