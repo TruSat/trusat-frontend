@@ -212,7 +212,7 @@ CATALOG TABLE
   padding-right: 1em;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .catalog-table__object-data-wrapper__badgeWrapper {
     padding-right: 1.75em;
   }
@@ -224,7 +224,7 @@ CATALOG TABLE
   
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .catalog-table__object-data-wrapper__priorityRank {
     min-width: 2.2em;
   }
@@ -236,6 +236,12 @@ CATALOG TABLE
 
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper__objectName {
+    min-width: 8em;
+  }
+}
+
+@media (min-width: 800px) {
+  .catalog-table__object-data-wrapper__objectName {
     min-width: 20em;
   }
 }
@@ -245,7 +251,7 @@ CATALOG TABLE
 }
 
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .catalog-table__table-data--originWrapper {
     padding-right: 3em;
   }
@@ -256,7 +262,7 @@ CATALOG TABLE
   padding-right: 0;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   .catalog-table__table-data--usernameWrapper {
     min-width: 7.5em;
   }

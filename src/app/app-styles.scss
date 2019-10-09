@@ -251,6 +251,9 @@ NAV BAR
     background-color: transparent;
     border: 1px solid $primary-text-color; 
     color: $primary-text-color;
+    display: inline-block;
+    text-align: center;
+    padding: 0.5em 1.5em;
   }
 
   .nav-bar {
