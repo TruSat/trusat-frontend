@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import Globe from "../assets/Globe.svg";
+import Globe from "../assets/welcome-illustration.png";
 import RoundedButton from "../app/components/RoundedButton";
 
 export default function Home() {
@@ -33,12 +33,15 @@ export default function Home() {
           <p className="welcome__large-copy welcome__large-copy--bold">
             The number of satellites in low-Earth orbit is increasing by 10x.
           </p>
-          <p className="welcome__large-copy">
+          <p className="welcome__small-copy--white">
             If we don’t grow responsibly, satellite collisions and debris could render space unusable.
           </p>
-          <p className="welcome__large-copy">
+          <p className="welcome__small-copy--white">
             How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
           </p>
+          <div className="welcome__title-intro-wrapper__arrow">
+            [arrow here]
+          </div>
         </div>
 
         <div className="welcome__iframe-wrapper">

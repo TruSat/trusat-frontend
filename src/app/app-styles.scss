@@ -616,7 +616,7 @@ WELCOME VIEW
 }
 
 .welcome__section--one {
-  background: linear-gradient(0deg, #081122 0%, #004f85 50.52%, #fc7756 100%);
+  background-color: $primary-theme-color;
   padding: 3.5em 1em;
 }
 
@@ -680,7 +680,7 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: 3em 0;
+  margin-bottom: 3em;
 }
 
 .welcome__illustration-join-wrapper {
@@ -856,13 +856,15 @@ WELCOME VIEW
 
 .welcome__small-copy--black {
   color: #081122;
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
 }
 
 .welcome__small-copy--white {
-  font-size: 24px;
-  line-height: 29px;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
 }
 
 @media (min-width: 600px) {
