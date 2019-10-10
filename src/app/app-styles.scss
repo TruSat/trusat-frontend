@@ -660,8 +660,6 @@ WELCOME VIEW
 
 .welcome__logo-image {
   max-width: 260px;
-  position: relative;
-  z-index: 1;
 }
 
 @media (min-width: 600px) {
@@ -676,7 +674,6 @@ WELCOME VIEW
   line-height: 19px;
   margin: 1em 0;
   position: relative;
-  z-index: 1;
 }
 
 @media (min-width: 600px) {
@@ -701,9 +698,24 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: -2em 2em 3em 2em;
+  margin: -2em 2em 1em 2em;
   position: relative;
-  z-index: 1;
+}
+
+@media (min-width: 600px) {
+  .welcome__title-intro-wrapper {
+    margin: -7em 2em 1em 2em;
+    text-align: center;
+  }
+}
+
+.welcome_arrow-wrapper {
+  width: 100%;
+  text-align: center;
+}
+
+.welcome__arrow-image {
+  max-width: 20px;
 }
 
 .welcome__illustration-join-wrapper {
@@ -856,8 +868,8 @@ WELCOME VIEW
 }
 
 .welcome__large-copy {
-  line-height: 30px;
   font-size: 24px;
+  line-height: 30px;
   margin-bottom: 0.5em;
 }
 
@@ -867,13 +879,13 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__large-copy {
-    line-height: 40px;
-    font-size: 32px;
+    font-size: 48px;
+    line-height: 59px;
   }
 
   .welcome__large-copy--bold {
-    line-height: 40px;
-    font-size: 32px;
+    font-size: 48px;
+    line-height: 59px;
   }
 }
 
@@ -892,13 +904,15 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__small-copy--black {
-    font-size: 32px;
-    line-height: 39px;
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 0.75em;
   }
 
   .welcome__small-copy--white {
-    font-size: 32px;
-    line-height: 39px;
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 0.75em;
   }
 }
 

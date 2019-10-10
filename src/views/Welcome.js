@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Globe from "../assets/welcome-illustration.png";
+import Arrow from "../assets/Arrow.svg";
 import RoundedButton from "../app/components/RoundedButton";
 
 export default function Home() {
@@ -39,8 +40,12 @@ export default function Home() {
           <p className="welcome__small-copy--white">
             How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
           </p>
-          <div className="welcome__title-intro-wrapper__arrow">
-            [arrow here]
+          <div className="welcome_arrow-wrapper">
+          <img
+            className="welcome__image welcome__arrow-image"
+            src={Arrow}
+            alt="down arrow"
+          ></img>
           </div>
         </div>
 
