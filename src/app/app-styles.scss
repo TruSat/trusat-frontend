@@ -613,7 +613,7 @@ COPY TEXT
 WELCOME VIEW
 ----------- */
 .welcome__wrapper {
-  max-width: 960px;
+  max-width: 1080px;
   margin: 0 auto;
 }
 
@@ -623,28 +623,25 @@ WELCOME VIEW
 }
 
 .welcome__section--two {
-  background: linear-gradient(0deg, #004f85 0%, #fc7756 100%);
-  padding: 2em 1em 6em 1em;
+  background-color: $primary-theme-color;
+  padding: 6em 0 6em 0;
 }
 
 .welcome__section--three {
   background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
-  padding: 1em 1em 4em 1em;
+  padding: 1em 0 4em 0;
 }
 
 @media (min-width: 600px) {
   .welcome__section--one {
-    // background: linear-gradient(0deg, #081122 0%, #004f85 50.52%, #fc7756 100%);
-    padding: 7em 4em;
+    padding: 7em 4em 0;
   }
 
   .welcome__section--two {
-    background: linear-gradient(0deg, #004f85 0%, #fc7756 100%);
-    padding: 3em 4em 6em 4em;
+    padding: 15em 4em 6em 4em;
   }
 
   .welcome__section--three {
-    background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
     padding: 1em 4em 4em 4em;
   }
 }
@@ -698,14 +695,14 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: -2em 2em 1em 2em;
+  margin: -2em 2.5em 1em 2.5em;
   position: relative;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
   .welcome__title-intro-wrapper {
     margin: -7em 2em 1em 2em;
-    text-align: center;
   }
 }
 
@@ -721,7 +718,14 @@ WELCOME VIEW
 .welcome__illustration-join-wrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 6em;
+  margin: 0 1.5em 7em 1.5em;
+
+}
+
+@media (min-width: 600px) {
+  .welcome__illustration-join-wrapper {
+    margin-bottom: 12em;
+  }
 }
 
 // flip middle join wrapper order on mobile
@@ -758,9 +762,6 @@ WELCOME VIEW
 }
 
 .welcome__join-copy-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   width: 100%;
 }
 
@@ -889,6 +890,20 @@ WELCOME VIEW
   }
 }
 
+.welcome__medium-copy--white {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 600px) {
+  .welcome__medium-copy--white {
+    font-size: 36px;
+    line-height: 44px;
+    margin-bottom: 0.75em;
+  }
+}
+
 .welcome__small-copy--black {
   color: #081122;
   font-size: 18px;
@@ -904,14 +919,14 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__small-copy--black {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 20px;
+    line-height: 24px;
     margin-bottom: 0.75em;
   }
 
   .welcome__small-copy--white {
-    font-size: 36px;
-    line-height: 44px;
+    font-size: 20px;
+    line-height: 24px;
     margin-bottom: 0.75em;
   }
 }

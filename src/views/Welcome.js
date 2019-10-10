@@ -34,10 +34,10 @@ export default function Home() {
           <p className="welcome__large-copy welcome__large-copy--bold">
             The number of satellites in low-Earth orbit is increasing by 10x.
           </p>
-          <p className="welcome__small-copy--white">
+          <p className="welcome__medium-copy--white">
             If we don’t grow responsibly, satellite collisions and debris could render space unusable.
           </p>
-          <p className="welcome__small-copy--white">
+          <p className="welcome__medium-copy--white">
             How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
           </p>
           <div className="welcome_arrow-wrapper">
@@ -72,11 +72,15 @@ export default function Home() {
         <div className="welcome__illustration-join-wrapper">
           <span className="welcome__illustration welcome__illustration--left"></span>
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Start watching</h2>
+            <h2 className="welcome__sub-header--white">Join the trackers</h2>
             <p className="welcome__small-copy--white">
-              Almost anyone can join the global sport of satellite tracking. You
-              just need a clear sky. Report your observations for credit in the
-              TruSat network.
+              We’ll show you how to spot satellites. It’s fun, and all you need is a clear sky.
+            </p>
+            <p className="welcome__small-copy--white">
+              TruSat points you to satellites that are the highest priority to monitor. It combines observations from around the world into an accurate record of satellite behavior.
+            </p>
+            <p className="welcome__small-copy--white">
+              Report your observations to the global satellite catalog to earn credit in the TruSat network.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
@@ -90,10 +94,9 @@ export default function Home() {
 
         <div className="welcome__illustration-join-wrapper welcome__illustration-join-wrapper--center">
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Start Building</h2>
+            <h2 className="welcome__sub-header--white">Join the build</h2>
             <p className="welcome__small-copy--white">
-              TruSat is entirely open source. Check out the open issues,
-              bounties, and our plans to open TruSat’s governance.
+              TruSat is an early beta release. The project is entirely open source. Join our developer mailing list to stay updated on bounties, hackathons, and open issues.
             </p>
             <a
               className="app__nav-link"
@@ -114,7 +117,7 @@ export default function Home() {
         <div className="welcome__illustration-join-wrapper">
           <span className="welcome__illustration welcome__illustration--left"></span>
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">How it works</h2>
+            <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
               I don’t yet know the copy that goes here, but it should basically
               be clickbait to get people to the Lite Paper so that the curious
