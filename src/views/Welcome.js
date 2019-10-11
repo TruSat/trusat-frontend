@@ -200,6 +200,11 @@ export default function Home() {
           </div>
         </div>
 
+      </section>
+
+      {/* SECTION/GRADIENT FOUR */}
+      <section className="welcome__section--four">
+
         <div className="welcome__mailing-list-wrapper">
           <form
             action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"

@@ -628,8 +628,13 @@ WELCOME VIEW
 }
 
 .welcome__section--three {
-  background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
-  padding: 0 0 4em 0;
+  background-color: $primary-theme-color;
+  padding: 0 0 3em 0;
+}
+
+.welcome__section--four {
+  background-color: $primary-highlight-color;
+  padding: 4em 0 4em 0;
 }
 
 @media (min-width: 600px) {
@@ -643,6 +648,10 @@ WELCOME VIEW
 
   .welcome__section--three {
     padding: 1em 4em 4em 4em;
+  }
+
+  .welcome__section--four {
+    padding: 4em 4em 4em 4em;
   }
 }
 
