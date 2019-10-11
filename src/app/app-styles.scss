@@ -167,6 +167,12 @@ MOBILE HEADER
   letter-spacing: 0.2em;
 }
 
+@media (min-width: 800px) {
+  .mobile-header {
+    display: none;
+  }
+}
+
 /* ----------
 NAV BAR
 ---------- */
@@ -178,7 +184,7 @@ NAV BAR
   display: none;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 800px) {
   // nav bar styles shown everywhere but the welcome page
   .nav-bar {
     align-items: center;
@@ -249,7 +255,7 @@ NAV BAR
 
   .nav-bar__button--lowlight {
     background-color: transparent;
-    border: 1px solid $primary-text-color; 
+    border: 1px solid $primary-text-color;
     color: $primary-text-color;
     display: inline-block;
     text-align: center;
@@ -534,7 +540,8 @@ BURGER MENU
   top: 10px;
 }
 
-@media (min-width: 600px) {
+// anything bigger than an ipad
+@media (min-width: 800px) {
   .bm-burger-button {
     display: none;
   }

@@ -97,7 +97,7 @@ export const signMessage = ({ nonce, wallet }) => {
 export const signUp = async ({ email, address, signedMessage, secret }) => {
   try {
     const result = await axios.post(
-      `${API_ROOT}/login`,
+      `${API_ROOT}/signup`,
       JSON.stringify({
         email: email,
         address: address,
