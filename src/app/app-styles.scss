@@ -718,7 +718,7 @@ WELCOME VIEW
 .welcome__illustration-join-wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 0 1.5em 7em 1.5em;
+  margin: 0 1.5em 8em 1.5em;
 
 }
 
@@ -740,24 +740,21 @@ WELCOME VIEW
 }
 
 .welcome__illustration {
-  background: #c4c4c4;
-  height: 314px;
   width: 100%;
 }
 
 @media (min-width: 600px) {
   .welcome__illustration {
-    background: #c4c4c4;
-    height: 332px;
-    max-width: 332px;
+    max-width: 360px;
+    max-height: 360px;
   }
 
   .welcome__illustration--left {
-    margin-right: 1em;
+    margin-right: 3em;
   }
 
   .welcome__illustration--right {
-    margin-left: 1em;
+    margin-left: 3em;
   }
 }
 

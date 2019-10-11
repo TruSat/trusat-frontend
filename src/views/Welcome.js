@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Globe from "../assets/welcome-illustration.png";
 import Arrow from "../assets/Arrow.svg";
+import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
 
 export default function Home() {
@@ -70,7 +71,11 @@ export default function Home() {
       <section className="welcome__section--two">
 
         <div className="welcome__illustration-join-wrapper">
-          <span className="welcome__illustration welcome__illustration--left"></span>
+          <img
+            className="welcome__illustration welcome__illustration--left"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Join the trackers</h2>
             <p className="welcome__small-copy--white">
@@ -111,11 +116,19 @@ export default function Home() {
               />
             </a>
           </div>
-          <span className="welcome__illustration welcome__illustration--right"></span>
+          <img
+            className="welcome__illustration welcome__illustration--right"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>   
         </div>
 
         <div className="welcome__illustration-join-wrapper">
-          <span className="welcome__illustration welcome__illustration--left"></span>
+          <img
+            className="welcome__illustration welcome__illustration--left"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>          
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
