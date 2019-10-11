@@ -619,26 +619,26 @@ WELCOME VIEW
 
 .welcome__section--one {
   background-color: $primary-theme-color;
-  padding: 3.5em 0em;
+  padding: 3.5em 0em 10em;
 }
 
 .welcome__section--two {
   background-color: $primary-theme-color;
-  padding: 6em 0 6em 0;
+  padding: 0;
 }
 
 .welcome__section--three {
   background: linear-gradient(0deg, #fc7756 0%, #004f85 100%);
-  padding: 1em 0 4em 0;
+  padding: 0 0 4em 0;
 }
 
 @media (min-width: 600px) {
   .welcome__section--one {
-    padding: 7em 4em 0;
+    padding: 7em 4em 15em;
   }
 
   .welcome__section--two {
-    padding: 15em 4em 6em 4em;
+    padding: 0 4em 0 4em;
   }
 
   .welcome__section--three {
@@ -928,10 +928,6 @@ WELCOME VIEW
   }
 }
 
-.welcome__mailing-list-wrapper {
-  margin: 2em 0;
-}
-
 .welcome__partners-wrapper {
   padding: 0 1.5em;
 }
@@ -942,6 +938,15 @@ WELCOME VIEW
   justify-content: space-between;
   margin: 2em 0em 5em 0em;
 }
+
+.welcome__mailing-list-wrapper {
+  padding: 0 1.5em;
+}
+
+.welcome__mailing-list-inputs {
+  margin: 2em 0;
+}
+
 
 /* ----------
 STATIC PAGE VIEW 

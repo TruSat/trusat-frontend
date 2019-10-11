@@ -200,43 +200,45 @@ export default function Home() {
           </div>
         </div>
 
-        <form
-          action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-          method="post"
-          id="mc-embedded-subscribe-form"
-          name="mc-embedded-subscribe-form"
-          class="validate"
-          target="_blank"
-          novalidate
-        >
-          <div className="welcome__mailing-list-wrapper">
-            <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-            <p className="welcome__small-copy--black">
-              Join the mailing list to stay posted on the project
-            </p>
-            <div className="welcome__input-button-wrapper">
-              <input
-                required
-                name="EMAIL"
-                id="mce-EMAIL"
-                className="welcome__input"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-              ></input>
-              <RoundedButton
-                type="submit"
-                name="subscribe"
-                addStyles="welcome__subscribe-button"
-                color="black"
-                text="SUBSCRIBE"
-                id="mc-embedded-subscribe"
-                onSubmit={() => setEmail("")}
-              />
+        <div className="welcome__mailing-list-wrapper">
+          <form
+            action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+          >
+            <div className="welcome__mailing-list-inputs">
+              <h2 className="welcome__sub-header--black">Stay in the loop</h2>
+              <p className="welcome__small-copy--black">
+                Join the mailing list to stay posted on the project
+              </p>
+              <div className="welcome__input-button-wrapper">
+                <input
+                  required
+                  name="EMAIL"
+                  id="mce-EMAIL"
+                  className="welcome__input"
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                ></input>
+                <RoundedButton
+                  type="submit"
+                  name="subscribe"
+                  addStyles="welcome__subscribe-button"
+                  color="black"
+                  text="SUBSCRIBE"
+                  id="mc-embedded-subscribe"
+                  onSubmit={() => setEmail("")}
+                />
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
     </div>
   );
