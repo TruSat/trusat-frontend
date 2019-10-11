@@ -933,6 +933,10 @@ WELCOME VIEW
 }
 
 .welcome__partners-wrapper {
+  padding: 0 1.5em;
+}
+
+.welcome__partners-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
