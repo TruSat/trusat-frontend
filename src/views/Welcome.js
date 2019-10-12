@@ -30,23 +30,25 @@ export default function Home() {
             alt="globe"
           ></img>
         </div>
-        
+
         <div className="welcome__title-intro-wrapper">
           <p className="welcome__large-copy welcome__large-copy--bold">
             The number of satellites in low-Earth orbit is increasing by 10x.
           </p>
           <p className="welcome__medium-copy--white">
-            If we don’t grow responsibly, satellite collisions and debris could render space unusable.
+            If we don’t grow responsibly, satellite collisions and debris could
+            render space unusable.
           </p>
           <p className="welcome__medium-copy--white">
-            How do we ensure we don’t trap ourselves on Earth? With the sport of satellite tracking...
+            How do we ensure we don’t trap ourselves on Earth? With the sport of
+            satellite tracking...
           </p>
           <div className="welcome_arrow-wrapper">
-          <img
-            className="welcome__image welcome__arrow-image"
-            src={Arrow}
-            alt="down arrow"
-          ></img>
+            <img
+              className="welcome__image welcome__arrow-image"
+              src={Arrow}
+              alt="down arrow"
+            ></img>
           </div>
         </div>
 
@@ -65,12 +67,10 @@ export default function Home() {
             modestbranding="1"
           ></iframe>
         </div>
-
       </section>
 
       {/* SECTION/GRADIENT TWO */}
       <section className="welcome__section--two">
-
         <div className="welcome__illustration-join-wrapper">
           <img
             className="welcome__illustration welcome__illustration--left"
@@ -80,13 +80,17 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Join the trackers</h2>
             <p className="welcome__small-copy--white">
-              We’ll show you how to spot satellites. It’s fun, and all you need is a clear sky.
+              We’ll show you how to spot satellites. It’s fun, and all you need
+              is a clear sky.
             </p>
             <p className="welcome__small-copy--white">
-              TruSat points you to satellites that are the highest priority to monitor. It combines observations from around the world into an accurate record of satellite behavior.
+              TruSat points you to satellites that are the highest priority to
+              monitor. It combines observations from around the world into an
+              accurate record of satellite behavior.
             </p>
             <p className="welcome__small-copy--white">
-              Report your observations to the global satellite catalog to earn credit in the TruSat network.
+              Report your observations to the global satellite catalog to earn
+              credit in the TruSat network.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
@@ -102,7 +106,9 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Join the build</h2>
             <p className="welcome__small-copy--white">
-              TruSat is an early beta release. The project is entirely open source. Join our developer mailing list to stay updated on bounties, hackathons, and open issues.
+              TruSat is an early beta release. The project is entirely open
+              source. Join our developer mailing list to stay updated on
+              bounties, hackathons, and open issues.
             </p>
             <a
               className="app__nav-link"
@@ -121,7 +127,7 @@ export default function Home() {
             className="welcome__illustration welcome__illustration--right"
             src={IllustrationPlaceholder}
             alt="Illustration"
-          ></img>   
+          ></img>
         </div>
 
         <div className="welcome__illustration-join-wrapper">
@@ -129,7 +135,7 @@ export default function Home() {
             className="welcome__illustration welcome__illustration--left"
             src={IllustrationPlaceholder}
             alt="Illustration"
-          ></img>          
+          ></img>
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
@@ -200,19 +206,17 @@ export default function Home() {
             ></div>
           </div>
         </div>
-
       </section>
 
       {/* SECTION/GRADIENT FOUR */}
       <section className="welcome__section--four">
-
         <div className="welcome__mailing-list-wrapper">
           <form
             action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
             method="post"
             id="mc-embedded-subscribe-form"
             name="mc-embedded-subscribe-form"
-            class="validate"
+            className="validate"
             target="_blank"
             novalidate
           >
