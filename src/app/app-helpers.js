@@ -30,8 +30,6 @@ export const useTrusatGetApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log(`useTrusatGetApi is fetching data!`);
-
       setIsError(false);
       setIsLoading(true);
 
@@ -72,7 +70,6 @@ export const useTrusatPostApi = () => {
     let didCancel = false;
 
     const fetchData = async () => {
-      console.log("useTrusatPostApi is posting data!");
       setIsError(false);
       setIsLoading(true);
       try {
@@ -162,7 +159,11 @@ export const toolTipCopy = {
   tracked_by: "submitter of observation",
   location: "location of observation",
   quality: "trustworthiness based on confidence factors",
-  time_diff: "time difference between observed location and predicted location",
+  time_error:
+    "the time-of-flight error from the observation to the point orthogonal to the predict track",
+  position_error:
+    "the angle in degrees that separates the observation from the predict",
+  cross_track_error: "how far from the predict track the observation is",
   weight:
     "relative amount of influence this observation has over orbital prediction",
   user: "user who made observation"

@@ -38,9 +38,14 @@ export default function HistoryMonthTable({ monthName, monthData }) {
               : shortenAddressToolTip(observation.user_address)}
           </NavLink>
         </td>
-        <td className="table__table-data">{observation.observation_quality}</td>
+        <td className="table__table-data">
+          {observation.observation_position_error}
+        </td>
         <td className="table__table-data">
           {observation.observation_time_difference}
+        </td>
+        <td className="table__table-data">
+          {observation.observation_cross_track_error}
         </td>
         <td className="table__weight-data">
           {observation.observation_weight}%
@@ -65,13 +70,23 @@ export default function HistoryMonthTable({ monthName, monthData }) {
               {toolTip("USER", toolTipCopy.user)}
             </th>
             <th className="table__header-text">
-              {toolTip("QUALITY", toolTipCopy.quality)}
+              <p className="app__hide-on-mobile">
+                {toolTip("POSITION ERR.", toolTipCopy.position_error)}
+              </p>
+
+              <p className="app__hide-on-desktop">POS ERR.</p>
             </th>
             <th className="table__header-text">
               <p className="app__hide-on-mobile">
-                {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+                {toolTip("TIME ERR.", toolTipCopy.time_error)}
               </p>
-              <p className="app__hide-on-desktop">DIFF..</p>
+              <p className="app__hide-on-desktop">TIME ERR.</p>
+            </th>
+            <th className="table__header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
+              </p>
+              <p className="app__hide-on-desktop">CT ERR.</p>
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">

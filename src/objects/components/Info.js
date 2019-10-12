@@ -11,7 +11,6 @@ import ObjectBadge from "../../app/components/ObjectBadge";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
-  console.log(objectInfo);
 
   return objectInfo.object_name ? (
     <React.Fragment>
@@ -24,7 +23,6 @@ export default function Info() {
           <h1 className="object-info__header">{objectInfo.object_name}</h1>
           <div className="object-info__header-info-wrapper">
             <div className="object-info__header-info-wrapper__group">
-
               <p className="object-info__small-text">
                 {objectInfo.number_users_tracked}
               </p>

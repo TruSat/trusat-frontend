@@ -19,7 +19,9 @@ export default function InfluenceTable() {
     if (noradNumber) {
       doFetch(`/object/influence?norad_number=${noradNumber}`);
     }
-  }, [noradNumber, doFetch]);
+
+    console.log(data);
+  }, [noradNumber, doFetch, data]);
 
   const renderInfluenceRows = () => {
     const { start, end } = range;
@@ -44,13 +46,16 @@ export default function InfluenceTable() {
           </div>
         </td>
 
-        <td className="table__table-data">{obj.observation_quality}</td>
+        <td className="table__table-data">{obj.observation_position_error}</td>
         <td className="table__table-data">
-          {obj.observation_time_difference.toString().substring(0, 4)}
+          {obj.observation_time_difference
+            ? obj.observation_time_difference.toString().substring(0, 4)
+            : null}
         </td>
-        <td className="table__weight-data">
-          {obj.observation_weight.toString().substring(0, 4)}
+        <td className="table__table-data">
+          {obj.observation_cross_track_error}
         </td>
+        <td className="table__weight-data">{obj.observation_weight}</td>
       </tr>
     ));
   };
@@ -73,17 +78,24 @@ export default function InfluenceTable() {
             <th className="table__header-text object-inluence-table__table-header-text">
               {toolTip("LOCATION", toolTipCopy.location)}
             </th>
+
             <th className="table__header-text object-inluence-table__table-header-text">
               <p className="app__hide-on-mobile">
-                {toolTip("QUALITY", toolTipCopy.quality)}
+                {toolTip("POSITION ERR.", toolTipCopy.position_error)}
               </p>
-              <p className="app__hide-on-desktop">QUAL..</p>
+              <p className="app__hide-on-desktop">POS ERR.</p>
             </th>
             <th className="table__header-text object-inluence-table__table-header-text">
               <p className="app__hide-on-mobile">
-                {toolTip("TIME DIFF", toolTipCopy.time_diff)}
+                {toolTip("TIME ERR.", toolTipCopy.time_error)}
               </p>
-              <p className="app__hide-on-desktop">DIFF..</p>
+              <p className="app__hide-on-desktop">TIME ERR.</p>
+            </th>
+            <th className="table__header-text object-inluence-table__table-header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
+              </p>
+              <p className="app__hide-on-desktop">CT ERR.</p>
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">
@@ -106,39 +118,3 @@ export default function InfluenceTable() {
     </React.Fragment>
   );
 }
-
-// POST request
-// /objectInfluence
-// receives Norad Number and returns and array of objects
-// Lists the most influential users who have helped to create the LATEST TLE with an accurate sighting
-// Weight should add up to 100%
-// sorted by most influence
-// const object_influence = [
-//   {
-//     observation_time: "1550398277",
-//     username: "Leo Barhorst",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a", // always needed as a fallback in event the user has not not created a username
-//     user_location: "Brooklyn, USA", // only available if the user has made it publicly available
-//     observation_quality: "34", // quality/accuracy of the individual observastion
-//     observation_time_difference: "1.42", // this will be a positive or negative number in seconds
-//     observation_weight: "33" // a percentage value
-//   },
-//   {
-//     observation_time: "1550398277",
-//     username: "Jim Smith",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-//     user_location: "Los Angeles, USA",
-//     observation_quality: "45",
-//     observation_time_difference: "1.42",
-//     observation_weight: "33"
-//   },
-//   {
-//     observation_time: "1550398277",
-//     username: "Joe Bloggs",
-//     user_address: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-//     user_location: "London, UK",
-//     observation_quality: "20",
-//     observation_time_difference: "1.42",
-//     observation_weight: "33"
-//   }
-// ];

@@ -44,12 +44,23 @@ export default function UserSightingsTable() {
               ? obj.username
               : shortenAddressToolTip(obj.user_address)}
           </td>
-          <td className="table__table-data">{obj.observation_quality}</td>
           <td className="table__table-data">
-            {obj.observation_time_difference.substring(0, 4)}
+            {obj.observation_position_error}
+          </td>
+          <td className="table__table-data">
+            {obj.observation_time_difference
+              ? obj.observation_time_difference.substring(0, 4)
+              : null}
+          </td>
+          <td className="table__table-data">
+            {obj.observation_cross_track_error
+              ? obj.observation_cross_track_error.substring(0, 4)
+              : null}
           </td>
           <td className="table__weight-data">
-            {obj.observation_weight.substring(0, 4)}
+            {obj.observation_weight
+              ? obj.observation_weight.substring(0, 4)
+              : null}
           </td>
         </tr>
       );
@@ -77,15 +88,21 @@ export default function UserSightingsTable() {
             </th>
             <th className="table__header-text">
               <p className="app__hide-on-mobile">
-                {toolTip("QUALITY", toolTipCopy.quality)}
+                {toolTip("POSITION ERR.", toolTipCopy.position_error)}
               </p>
-              <p className="app__hide-on-desktop">QUAL..</p>
+              <p className="app__hide-on-desktop">POS ERR.</p>
             </th>
             <th className="table__header-text">
               <p className="app__hide-on-mobile">
-                T{toolTip("TIME DIFF", toolTipCopy.time_diff)}
+                {toolTip("TIME ERR.", toolTipCopy.time_error)}
               </p>
-              <p className="app__hide-on-desktop">DIFF..</p>
+              <p className="app__hide-on-desktop">TIME ERR.</p>
+            </th>
+            <th className="table__header-text">
+              <p className="app__hide-on-mobile">
+                {toolTip("CROSS TRACKE ERR.", toolTipCopy.cross_track_error)}
+              </p>
+              <p className="app__hide-on-desktop">CT ERR.</p>
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">
