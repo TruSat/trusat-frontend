@@ -39,7 +39,7 @@ export default function Home() {
             If we don’t grow responsibly, satellite collisions and debris could render space unusable.
           </p>
           <p className="welcome__medium-copy--white">
-            How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
+            How do we ensure we don’t trap ourselves on Earth? With the sport of satellite tracking...
           </p>
           <div className="welcome_arrow-wrapper">
           <img
@@ -62,6 +62,7 @@ export default function Home() {
             msallowfullscreen="msallowfullscreen"
             oallowfullscreen="oallowfullscreen"
             webkitallowfullscreen="webkitallowfullscreen"
+            modestbranding="1"
           ></iframe>
         </div>
 
