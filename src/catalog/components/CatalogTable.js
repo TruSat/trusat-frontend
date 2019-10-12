@@ -13,7 +13,6 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
-  console.log(data);
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}`);
@@ -36,9 +35,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           >
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
-                <p
-                  className="catalog-table__object-data-wrapper__priorityRank"
-                >
+                <p className="catalog-table__object-data-wrapper__priorityRank">
                   {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
@@ -47,9 +44,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                 noradNumber={obj.object_norad_number}
                 quality={obj.object_observation_quality}
               />
-              <div
-                className="catalog-table__object-data-wrapper__objectName"
-              >
+              <div className="catalog-table__object-data-wrapper__objectName">
                 {toolTip(obj.object_name, obj.object_norad_number)}
               </div>
             </div>
