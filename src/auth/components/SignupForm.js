@@ -23,6 +23,8 @@ export default function SignupForm({ setIsSuccess }) {
   const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
     false
   );
+  // used to prompt user to either log in or claim their account
+  const [isAlreadySignedUp, setIsAlreadySignedUp] = useState(false);
   const [isError, setIsError] = useState(false);
 
   const handleFormValidation = () => {
@@ -52,6 +54,12 @@ export default function SignupForm({ setIsSuccess }) {
       const wallet = createWallet();
       // get unique nonce from server which will be signed by the users private key
       const nonce = await retrieveNonce(wallet.signingKey.address);
+
+      if (nonce === undefined) {
+        setIsAlreadySignedUp(true);
+        return;
+      }
+
       // signed nonce
       const signedMessage = signMessage({ nonce, wallet });
       // encrypt wallet with users private key
@@ -86,6 +94,31 @@ export default function SignupForm({ setIsSuccess }) {
           handleSignup();
         }}
       >
+        {isError ? (
+          <p className="app__error-message">Something went wrong ...</p>
+        ) : null}
+
+        {isAlreadySignedUp ? (
+          <Fragment>
+            <p className="app__error-message">
+              We already have an account in our records for this email address.
+              If you already created an an account, please check your email
+              inbox for the secret we sent you upon sign up.
+            </p>
+            <p className="app__error-message">
+              If you have not previously signed up please go
+              {` `}
+              <NavLink
+                className="app__nav-link app__error-message sign-up__link"
+                to="/claim"
+              >
+                here
+              </NavLink>
+              {` `}to claim your account.
+            </p>
+          </Fragment>
+        ) : null}
+
         <label className="email-form__label">Email</label>
         <input
           required
@@ -155,9 +188,6 @@ export default function SignupForm({ setIsSuccess }) {
           </NavLink>
         </div>
       </form>
-      {isError ? (
-        <p className="app__error-message">Something went wrong ...</p>
-      ) : null}
     </Fragment>
   );
 }
