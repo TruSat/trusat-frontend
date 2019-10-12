@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import Globe from "../assets/welcome-illustration.png";
 import Arrow from "../assets/Arrow.svg";
 import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
@@ -26,7 +25,7 @@ export default function Home() {
 
           <img
             className="welcome__image welcome__globe-image"
-            src={Globe}
+            src={`https://trusat-assets.s3.amazonaws.com/welcome-illustration.png`}
             alt="globe"
           ></img>
         </div>
