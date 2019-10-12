@@ -315,14 +315,12 @@ NAV BAR
   }
 
   .nav-bar__join-button--welcome {
-    background: #0e0e1e;
+    background: $primary-text-color;
     border-radius: 4px;
-    color: $primary-text-color;
-    line-height: 14px;
-    font-weight: bold;
-    font-size: 12px;
+    color: $primary-theme-color;
+    font-size: $small-font-size;
     margin-right: 1em;
-    padding: 1em 3em;
+    padding: 0.5em 2em;
   }
 
   .nav-bar__join-button:hover {
