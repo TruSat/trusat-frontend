@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import Globe from "../assets/Globe.svg";
+import Globe from "../assets/welcome-illustration.png";
+import Arrow from "../assets/Arrow.svg";
+import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
 
 export default function Home() {
@@ -33,12 +35,19 @@ export default function Home() {
           <p className="welcome__large-copy welcome__large-copy--bold">
             The number of satellites in low-Earth orbit is increasing by 10x.
           </p>
-          <p className="welcome__large-copy">
+          <p className="welcome__medium-copy--white">
             If we don’t grow responsibly, satellite collisions and debris could render space unusable.
           </p>
-          <p className="welcome__large-copy">
-            How do we ensure we don’t trap ourselves on Earth?—with the sport of satellite tracking.
+          <p className="welcome__medium-copy--white">
+            How do we ensure we don’t trap ourselves on Earth? With the sport of satellite tracking...
           </p>
+          <div className="welcome_arrow-wrapper">
+          <img
+            className="welcome__image welcome__arrow-image"
+            src={Arrow}
+            alt="down arrow"
+          ></img>
+          </div>
         </div>
 
         <div className="welcome__iframe-wrapper">
@@ -53,6 +62,7 @@ export default function Home() {
             msallowfullscreen="msallowfullscreen"
             oallowfullscreen="oallowfullscreen"
             webkitallowfullscreen="webkitallowfullscreen"
+            modestbranding="1"
           ></iframe>
         </div>
 
@@ -62,13 +72,21 @@ export default function Home() {
       <section className="welcome__section--two">
 
         <div className="welcome__illustration-join-wrapper">
-          <span className="welcome__illustration welcome__illustration--left"></span>
+          <img
+            className="welcome__illustration welcome__illustration--left"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Start watching</h2>
+            <h2 className="welcome__sub-header--white">Join the trackers</h2>
             <p className="welcome__small-copy--white">
-              Almost anyone can join the global sport of satellite tracking. You
-              just need a clear sky. Report your observations for credit in the
-              TruSat network.
+              We’ll show you how to spot satellites. It’s fun, and all you need is a clear sky.
+            </p>
+            <p className="welcome__small-copy--white">
+              TruSat points you to satellites that are the highest priority to monitor. It combines observations from around the world into an accurate record of satellite behavior.
+            </p>
+            <p className="welcome__small-copy--white">
+              Report your observations to the global satellite catalog to earn credit in the TruSat network.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
@@ -82,10 +100,9 @@ export default function Home() {
 
         <div className="welcome__illustration-join-wrapper welcome__illustration-join-wrapper--center">
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Start Building</h2>
+            <h2 className="welcome__sub-header--white">Join the build</h2>
             <p className="welcome__small-copy--white">
-              TruSat is entirely open source. Check out the open issues,
-              bounties, and our plans to open TruSat’s governance.
+              TruSat is an early beta release. The project is entirely open source. Join our developer mailing list to stay updated on bounties, hackathons, and open issues.
             </p>
             <a
               className="app__nav-link"
@@ -100,13 +117,21 @@ export default function Home() {
               />
             </a>
           </div>
-          <span className="welcome__illustration welcome__illustration--right"></span>
+          <img
+            className="welcome__illustration welcome__illustration--right"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>   
         </div>
 
         <div className="welcome__illustration-join-wrapper">
-          <span className="welcome__illustration welcome__illustration--left"></span>
+          <img
+            className="welcome__illustration welcome__illustration--left"
+            src={IllustrationPlaceholder}
+            alt="Illustration"
+          ></img>          
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">How it works</h2>
+            <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
               I don’t yet know the copy that goes here, but it should basically
               be clickbait to get people to the Lite Paper so that the curious
@@ -125,92 +150,101 @@ export default function Home() {
 
       {/* SECTION/GRADIENT THREE */}
       <section className="welcome__section--three">
-        <h2 className="welcome__sub-header--white">Partners</h2>
         <div className="welcome__partners-wrapper">
-          <div
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></div>
-          <div
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></div>
-          <div
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></div>
-          <div
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></div>
-          <div
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></div>
+          <h2 className="welcome__sub-header--white">Partners</h2>
+          <div className="welcome__partners-list">
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+          </div>
         </div>
 
-        <form
-          action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-          method="post"
-          id="mc-embedded-subscribe-form"
-          name="mc-embedded-subscribe-form"
-          class="validate"
-          target="_blank"
-          novalidate
-        >
-          <div className="welcome__mailing-list-wrapper">
-            <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-            <p className="welcome__small-copy--black">
-              Join the mailing list to stay posted on the project
-            </p>
-            <div className="welcome__input-button-wrapper">
-              <input
-                required
-                name="EMAIL"
-                id="mce-EMAIL"
-                className="welcome__input"
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={event => setEmail(event.target.value)}
-              ></input>
-              <RoundedButton
-                type="submit"
-                name="subscribe"
-                addStyles="welcome__subscribe-button"
-                color="black"
-                text="SUBSCRIBE"
-                id="mc-embedded-subscribe"
-                onSubmit={() => setEmail("")}
-              />
+      </section>
+
+      {/* SECTION/GRADIENT FOUR */}
+      <section className="welcome__section--four">
+
+        <div className="welcome__mailing-list-wrapper">
+          <form
+            action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+            method="post"
+            id="mc-embedded-subscribe-form"
+            name="mc-embedded-subscribe-form"
+            class="validate"
+            target="_blank"
+            novalidate
+          >
+            <div className="welcome__mailing-list-inputs">
+              <h2 className="welcome__sub-header--black">Stay in the loop</h2>
+              <p className="welcome__small-copy--black">
+                Join the mailing list to stay posted on the project
+              </p>
+              <div className="welcome__input-button-wrapper">
+                <input
+                  required
+                  name="EMAIL"
+                  id="mce-EMAIL"
+                  className="welcome__input"
+                  type="email"
+                  placeholder="Your email"
+                  value={email}
+                  onChange={event => setEmail(event.target.value)}
+                ></input>
+                <RoundedButton
+                  type="submit"
+                  name="subscribe"
+                  addStyles="welcome__subscribe-button"
+                  color="black"
+                  text="SUBSCRIBE"
+                  id="mc-embedded-subscribe"
+                  onSubmit={() => setEmail("")}
+                />
+              </div>
             </div>
-          </div>
-        </form>
+          </form>
+        </div>
       </section>
     </div>
   );
