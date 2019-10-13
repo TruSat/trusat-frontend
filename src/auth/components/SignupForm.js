@@ -54,6 +54,7 @@ export default function SignupForm({ setIsSuccess }) {
       const wallet = createWallet();
       // get unique nonce from server which will be signed by the users private key
       const nonce = await retrieveNonce(wallet.signingKey.address);
+      console.log(`nonce = `, nonce);
 
       if (nonce === undefined) {
         setIsAlreadySignedUp(true);
