@@ -46,16 +46,24 @@ export default function InfluenceTable() {
           </div>
         </td>
 
-        <td className="table__table-data">{obj.observation_position_error}</td>
         <td className="table__table-data">
-          {obj.observation_time_difference
-            ? obj.observation_time_difference.toString().substring(0, 4)
+          {obj.observation_position_error
+            ? obj.observation_position_error.toString().substring(0, 5)
             : null}
         </td>
         <td className="table__table-data">
+          {obj.observation_time_difference
+            ? obj.observation_time_difference.toString().substring(0, 5)
+            : null}
+        </td>
+        <td className="table__table-data app__hide-on-mobile">
           {obj.observation_cross_track_error}
         </td>
-        <td className="table__weight-data">{obj.observation_weight}</td>
+        <td className="table__weight-data">
+          {obj.observation_weight
+            ? obj.observation_weight.toString().substring(0, 5)
+            : null}
+        </td>
       </tr>
     ));
   };
@@ -91,11 +99,8 @@ export default function InfluenceTable() {
               </p>
               <p className="app__hide-on-desktop">TIME ERR.</p>
             </th>
-            <th className="table__header-text object-inluence-table__table-header-text">
-              <p className="app__hide-on-mobile">
-                {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
-              </p>
-              <p className="app__hide-on-desktop">CT ERR.</p>
+            <th className="table__header-text object-inluence-table__table-header-text app__hide-on-mobile">
+              {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">

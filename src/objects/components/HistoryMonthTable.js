@@ -44,7 +44,7 @@ export default function HistoryMonthTable({ monthName, monthData }) {
         <td className="table__table-data">
           {observation.observation_time_difference}
         </td>
-        <td className="table__table-data">
+        <td className="table__table-data app__hide-on-mobile">
           {observation.observation_cross_track_error}
         </td>
         <td className="table__weight-data">
@@ -86,7 +86,6 @@ export default function HistoryMonthTable({ monthName, monthData }) {
               <p className="app__hide-on-mobile">
                 {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
               </p>
-              <p className="app__hide-on-desktop">CT ERR.</p>
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">

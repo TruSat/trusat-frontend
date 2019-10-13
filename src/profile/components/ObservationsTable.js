@@ -30,19 +30,21 @@ export default function ObservationsTable() {
           </NavLink>
         </td>
         <td className="table__table-data">
-          {observation.observation_position_error}
-        </td>
-        <td className="table__table-data">
-          {observation.observation_time_difference
-            ? observation.observation_time_difference.toString().substring(0, 4)
+          {observation.observation_position_error
+            ? observation.observation_position_error.toString().substring(0, 5)
             : null}
         </td>
         <td className="table__table-data">
+          {observation.observation_time_difference
+            ? observation.observation_time_difference.toString().substring(0, 5)
+            : null}
+        </td>
+        <td className="table__table-data app__hide-on-mobile">
           {observation.observation_cross_track_error}
         </td>
         <td className="table__table-data">
           {observation.observation_weight
-            ? observation.observation_weight.toString().substring(0, 4)
+            ? observation.observation_weight.toString().substring(0, 5)
             : null}
         </td>
       </tr>
@@ -81,7 +83,6 @@ export default function ObservationsTable() {
               <p className="app__hide-on-mobile">
                 {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
               </p>
-              <p className="app__hide-on-desktop">CT ERR.</p>
             </td>
             <td className="table__header-text">
               <p className="app__hide-on-mobile">

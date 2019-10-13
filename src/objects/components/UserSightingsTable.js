@@ -45,21 +45,23 @@ export default function UserSightingsTable() {
               : shortenAddressToolTip(obj.user_address)}
           </td>
           <td className="table__table-data">
-            {obj.observation_position_error}
-          </td>
-          <td className="table__table-data">
-            {obj.observation_time_difference
-              ? obj.observation_time_difference.substring(0, 4)
+            {obj.observation_position_error
+              ? obj.observation_position_error.toString().substring(0, 5)
               : null}
           </td>
           <td className="table__table-data">
+            {obj.observation_time_difference
+              ? obj.observation_time_difference.toString().substring(0, 5)
+              : null}
+          </td>
+          <td className="table__table-data app__hide-on-mobile">
             {obj.observation_cross_track_error
-              ? obj.observation_cross_track_error.substring(0, 4)
+              ? obj.observation_cross_track_error
               : null}
           </td>
           <td className="table__weight-data">
             {obj.observation_weight
-              ? obj.observation_weight.substring(0, 4)
+              ? obj.observation_weight.toString().substring(0, 5)
               : null}
           </td>
         </tr>
@@ -98,11 +100,8 @@ export default function UserSightingsTable() {
               </p>
               <p className="app__hide-on-desktop">TIME ERR.</p>
             </th>
-            <th className="table__header-text">
-              <p className="app__hide-on-mobile">
-                {toolTip("CROSS TRACKE ERR.", toolTipCopy.cross_track_error)}
-              </p>
-              <p className="app__hide-on-desktop">CT ERR.</p>
+            <th className="table__header-text app__hide-on-mobile">
+              {toolTip("CROSS TRACKE ERR.", toolTipCopy.cross_track_error)}
             </th>
             <th className="table__header-weight-text">
               <p className="app__hide-on-mobile">
