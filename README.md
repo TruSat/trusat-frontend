@@ -2,7 +2,7 @@
 
 TruSat is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space){:target="\_blank"}. Check out the project [here](https://trusat.org){:target="\_blank"}
 
-![alt text](https://trusat-assets.s3.amazonaws.com/welcome-illustration.png)
+![alt text]()
 
 ## Get Started
 
@@ -19,9 +19,9 @@ yarn install && yarn start
 Run the tests with the following command:
 
 ```
-yarn run tests
+yarn test
 ```
 
 ## Contributing
 
-Please open an issue if you find something that needs fixed. Check out this [Style Guide](https://github.com/agis/git-style-guide){:target="\_blank"} for some tips on best practices when contributing. We welcome all and any contributions, especially those that tackle open issues.
+Please open an issue if you find something that needs fixed. We welcome all and any contributions, especially those that tackle open issues. Check out this [Style Guide](https://github.com/agis/git-style-guide){:target="\_blank"} for some tips on best practices when contributing.

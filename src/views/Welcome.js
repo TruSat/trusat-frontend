@@ -217,7 +217,7 @@ export default function Home() {
             name="mc-embedded-subscribe-form"
             className="validate"
             target="_blank"
-            novalidate
+            noValidate
           >
             <div className="welcome__mailing-list-inputs">
               <h2 className="welcome__sub-header--black">Stay in the loop</h2>
