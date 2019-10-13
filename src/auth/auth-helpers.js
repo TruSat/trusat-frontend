@@ -15,7 +15,6 @@ export const isAddress = address => {
   if (!/^(0x)?[0-9a-f]{40}$/i.test(address)) {
     return false;
   }
-
   return true;
 };
 
@@ -24,7 +23,6 @@ export const isPrivateKey = privateKey => {
   if (privateKey.length !== 66) {
     return false;
   }
-
   return true;
 };
 
@@ -38,16 +36,20 @@ export const isValidPassword = password => {
   return true;
 };
 
-export const retrieveNonce = async address => {
+export const retrieveNonce = async (email, address) => {
   if (address) {
     try {
       const result = await axios.post(
         `${API_ROOT}/getNonce`,
-        JSON.stringify({ address: address })
+        JSON.stringify({
+          email: email,
+          address: address
+        })
       );
 
       return result.data.nonce;
     } catch (error) {
+      console.log(error);
       return false;
     }
   } else {
