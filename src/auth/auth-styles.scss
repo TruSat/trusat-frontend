@@ -137,6 +137,7 @@ CLAIM ACCOUNT
 
 @media (min-width: 600px) {
   .claim-account__header {
+    margin-top: 0.75em;
     @include view-title--desktop;
   }
 }
@@ -175,6 +176,7 @@ VERIFY CLAIM ACCOUNT
 
 @media (min-width: 600px) {
   .verify-claim-account__header {
+    margin-top: 0.75em;
     @include view-title--desktop;
   }
 }
