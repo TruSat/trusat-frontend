@@ -970,8 +970,10 @@ STATIC PAGE VIEW
 - /charter
 ---------- */
 .static-page__wrapper {
-  background: #081122;
+  background: $primary-theme-color;
   padding: 2em 1em;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .static-page__section {
@@ -1008,8 +1010,7 @@ STATIC PAGE VIEW
 .static-page__copy {
   font-size: 20px;
   font-weight: 300;
-  line-height: 23px;
-  letter-spacing: 0.05em;
+  line-height: 25px;
   margin-bottom: 1em;
 }
 
