@@ -39,33 +39,55 @@ export default function About() {
         <p className="static-page__copy">
           <NavLink className="app__nav-link static-page__link" to="/whitepaper">
             The TruSat white paper
-          </NavLink>
-          {" "} — A technical deep dive into how TruSat works.
+          </NavLink>{" "}
+          — A technical deep dive into how TruSat works.
         </p>
         <p className="static-page__copy">
           <NavLink className="app__nav-link static-page__link" to="/charter">
             The TruSat Charter
-          </NavLink>
-          {" "} — An outline of TruSat’s initial governance.
+          </NavLink>{" "}
+          — An outline of TruSat’s initial governance.
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
+          <NavLink className="app__nav-link static-page__link" to="/how">
             FAQ
-          </NavLink>
-          {" "} — Frequently asked questions
+          </NavLink>{" "}
+          — Frequently asked questions
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/charter">
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://discordapp.com"
+          >
             TruSat's community chat
-          </NavLink>
-          {" "} — A Discord channel to discuss the project and get help.
+          </a>{" "}
+          — A Discord channel to discuss the project and get help.
         </p>
         <p className="static-page__copy">
-          Follow project updates on <a href="https://www.facebook.com/PlanetaryResourcesInc/">Facebook</a> and <a href="https://twitter.com/planetaryrsrcs">Twitter</a>
+          Follow project updates on{" "}
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/PlanetaryResourcesInc/"
+          >
+            Facebook
+          </a>{" "}
+          and{" "}
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/planetaryrsrcs"
+          >
+            Twitter
+          </a>
         </p>
         <div className="about__partners-wrapper">
-        <h2 className="static-page__sub-header">PARTNERS</h2>
-        <div className="about__partners-list">
+          <h2 className="static-page__sub-header">PARTNERS</h2>
+          <div className="about__partners-list">
             <div
               style={{
                 background: "#C4C4C4",
@@ -117,13 +139,37 @@ export default function About() {
           Press
         </h2>
         <p className="static-page__copy">
-          Space News — <a href="https://spacenews.com/">The Blockchain-based Satellite Catalog to Keep Space Clean</a>
+          Space News — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            The Blockchain-based Satellite Catalog to Keep Space Clean
+          </a>
         </p>
         <p className="static-page__copy">
-          Tech Crunch — <a href="https://spacenews.com/">Here’s the Headline for the Story</a>
+          Tech Crunch — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            Here’s the Headline for the Story
+          </a>
         </p>
         <p className="static-page__copy">
-          New York Times — <a href="https://spacenews.com/">Blockchain in Outer Space Might Just Work</a>
+          New York Times — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            Blockchain in Outer Space Might Just Work
+          </a>
         </p>
       </section>
 
