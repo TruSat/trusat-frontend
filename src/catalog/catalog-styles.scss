@@ -2,7 +2,7 @@
 CATALOG
 ---------- */
 .catalog__wrapper {
-  margin: 2em 1em;
+  margin: 2em auto;
   max-width: 1000px;
 }
 
@@ -12,7 +12,7 @@ CATALOG
 
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 4em 4em 4em 4em;
+    margin: 4em auto;
   }
   .catalog__header {
     @include view-title--desktop;

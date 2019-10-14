@@ -9,13 +9,13 @@ BLOCKIE
 PROFILE
 ---------- */
 .profile__wrapper {
-  margin: 2em 1em;
+  margin: 2em auto;
   max-width: 1000px;
 }
 
 @media (min-width: 600px) {
   .profile__wrapper {
-    margin: 3em 4em;
+    margin: 3em auto;
   }
 }
 
