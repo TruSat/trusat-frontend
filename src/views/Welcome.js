@@ -20,7 +20,7 @@ export default function Home() {
           ></img>
 
           <h2 className="welcome__trusat-tagline">
-            OPEN SOURCE SPACE SUSTAINABILITY
+            CITIZEN-LED SATELLITE TRACKING
           </h2>
 
           <img
