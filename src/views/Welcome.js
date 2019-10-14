@@ -32,11 +32,11 @@ export default function Home() {
 
         <div className="welcome__title-intro-wrapper">
           <p className="welcome__large-copy welcome__large-copy--bold">
-            The number of satellites in low-Earth orbit is increasing by 10x.
+            The number of satellites is increasing by 10x.
           </p>
           <p className="welcome__medium-copy--white">
-            If we don’t grow responsibly, satellite collisions and debris could
-            render space unusable.
+            If we don’t limit satellite collisions, then debris could
+            render space unusable for generations.
           </p>
           <p className="welcome__medium-copy--white">
             How do we ensure we don’t trap ourselves on Earth? With the sport of
@@ -83,19 +83,16 @@ export default function Home() {
               is a clear sky.
             </p>
             <p className="welcome__small-copy--white">
-              TruSat points you to satellites that are the highest priority to
-              monitor. It combines observations from around the world into an
-              accurate record of satellite behavior.
+            TruSat shows you when and where to look to see satellites that are the highest priority to monitor. When you record an observation, you’ll be credited in the <NavLink className="app__nav-link static-page__link" to="/catalog">TruSat Catalog</NavLink>, and the satellite will be added to your collection.
             </p>
             <p className="welcome__small-copy--white">
-              Report your observations to the global satellite catalog to earn
-              credit in the TruSat network.
+              Your observations are merged with others around the world to create a trusted record of satellite behavior.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
                 addStyles="welcome__join-button"
                 color="orange"
-                text="JOIN THE TRACKERS"
+                text="START TRACKING"
               />
             </NavLink>
           </div>
@@ -105,7 +102,7 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Join the build</h2>
             <p className="welcome__small-copy--white">
-              TruSat is an early beta release. The project is entirely open
+              TruSat is in its early alpha stage, and is entirely open
               source. Join our developer mailing list to stay updated on
               bounties, hackathons, and open issues.
             </p>
@@ -138,15 +135,15 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
-              I don’t yet know the copy that goes here, but it should basically
-              be clickbait to get people to the Lite Paper so that the curious
-              can learn something valuable.
+              Space is wild. There’s been no way to ensure responsible practices in orbit, because there’s been no open, widely-trusted source of data about satellite behavior. 
             </p>
+            <p className="welcome__small-copy--white">
+              To fill this gap, the TruSat system is designed to enable the emerging space sustainability community to task a global network of citizen satellite observers to track satellites of interest. TruSat’s open software merges observations from around the planet into a decentralized record of orbital positions suitable for measuring orbital behavior against sustainability standards.             </p>
             <NavLink className="app__nav-link" to="/whitepaper">
               <RoundedButton
                 addStyles="welcome__join-button"
                 color="orange"
-                text="LEARN ABOUT TRUSAT"
+                text="LEARN MORE"
               />
             </NavLink>
           </div>
