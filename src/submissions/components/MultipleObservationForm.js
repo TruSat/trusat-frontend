@@ -19,6 +19,7 @@ export default function MultipleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
+  const [isError, setIsError] = useState(false);
 
   const getBurnerJwt = async () => {
     const wallet = createWallet();
@@ -62,7 +63,7 @@ export default function MultipleObservationForm() {
 
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      setIsError(true);
     }
     setIsLoading(false);
   };
@@ -121,7 +122,9 @@ export default function MultipleObservationForm() {
         ) : null}
       </div>
 
-      {isLoading ? (
+      {isError ? (
+        <p className="app__error-message">Something went wrong...</p>
+      ) : isLoading ? (
         <Spinner />
       ) : (
         <div className="multiple-observation-form__button-wrapper">

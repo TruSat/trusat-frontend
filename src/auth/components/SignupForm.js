@@ -57,7 +57,6 @@ export default function SignupForm({ setIsSuccess }) {
         email: email,
         address: wallet.signingKey.address
       });
-      console.log(`nonce ===`, nonce);
       // undefined is returned if user has already signed up with this email address
       if (nonce === undefined) {
         setIsAlreadySignedUp(true);

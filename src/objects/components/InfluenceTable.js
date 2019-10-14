@@ -19,8 +19,6 @@ export default function InfluenceTable() {
     if (noradNumber) {
       doFetch(`/object/influence?norad_number=${noradNumber}`);
     }
-
-    console.log(data);
   }, [noradNumber, doFetch, data]);
 
   const renderInfluenceRows = () => {

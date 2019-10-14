@@ -6,7 +6,6 @@ const ProfileDispatchContext = React.createContext();
 function ProfileReducer(state, action) {
   switch (action.type) {
     case "SET_PROFILE_DATA": {
-      console.log(`set profile data, now ${action.payload.user_name}`);
       return { ...state, profileData: action.payload };
     }
     default: {

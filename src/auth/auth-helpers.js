@@ -50,7 +50,6 @@ export const retrieveNonce = async ({ email, address }) => {
 
       return result.data.nonce;
     } catch (error) {
-      console.log(error);
       return false;
     }
   } else {

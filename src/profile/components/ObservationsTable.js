@@ -14,7 +14,6 @@ export default function ObservationsTable() {
     const { start, end } = range;
     const rangeData = profileData.observation_history.slice(start, end);
 
-    console.log(rangeData);
     return rangeData.map(observation => (
       <tr
         key={profileData.observation_history.indexOf(observation)}
