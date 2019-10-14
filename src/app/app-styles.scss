@@ -979,10 +979,11 @@ STATIC PAGE VIEW
 }
 
 .static-page__main-header {
-  color: #fc7756;
-  line-height: 42px;
+  color: $primary-highlight-color;
+  font-family: $display-font;
   font-size: 36px;
   font-weight: 200;
+  line-height: 42px;
 }
 
 @media (min-width: 600px) {
