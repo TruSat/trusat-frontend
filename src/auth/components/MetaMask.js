@@ -30,7 +30,7 @@ export default function MetaMask({ buttonText }) {
 
     const address = web3._provider.selectedAddress;
 
-    const nonce = await retrieveNonce(address);
+    const nonce = await retrieveNonce({ address });
 
     const metamaskSignedMessage = await metamaskSignMessage({ nonce, address });
 

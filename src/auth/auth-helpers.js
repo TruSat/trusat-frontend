@@ -36,7 +36,7 @@ export const isValidPassword = password => {
   return true;
 };
 
-export const retrieveNonce = async (email, address) => {
+export const retrieveNonce = async ({ email, address }) => {
   if (address) {
     try {
       const result = await axios.post(

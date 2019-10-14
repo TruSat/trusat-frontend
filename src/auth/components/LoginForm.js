@@ -13,9 +13,11 @@ import {
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [secret, setSecret] = useState("");
+  const [email, setEmail] = useState("john.gribbin@consensys.net");
+  const [password, setPassword] = useState("cI69L%8bLsvA");
+  const [secret, setSecret] = useState(
+    "932401292/b1fd79954a897085a3ad30ff7af78698/4fbd3dd6fc369fc36fc890ff32e21e292a14d9ceeffc760615c278a28bcd661c8f5d3edbbef52db8356f89a96bb9c6e1a44a62c726e422fa5f36a72fa61e4e5a73e3719ce6cfe7681a1815b89da75166"
+  );
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -33,7 +35,7 @@ export default function LoginForm() {
     // create wallet for signing message
     let wallet = new ethers.Wallet(privateKey);
     // get unique nonce from server for this user
-    const nonce = await retrieveNonce(wallet.signingKey.address);
+    const nonce = await retrieveNonce({ address: wallet.signingKey.address });
     // sign the nonce
     const signedMessage = signMessage({ nonce, wallet });
     // get JSON web token that will be used to keep user logged in

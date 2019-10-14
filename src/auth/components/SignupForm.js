@@ -13,9 +13,9 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 export default function SignupForm({ setIsSuccess }) {
   const authDispatch = useAuthDispatch();
   const { isAuthenticating } = useAuthState();
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
-  const [password, setPassword] = useState("helloworld123");
-  const [retypedPassword, setRetypedPassword] = useState("helloworld123");
+  const [email, setEmail] = useState("john.gribbin@consensys.net");
+  const [password, setPassword] = useState("cI69L%8bLsvA");
+  const [retypedPassword, setRetypedPassword] = useState("cI69L%8bLsvA");
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false
@@ -53,7 +53,10 @@ export default function SignupForm({ setIsSuccess }) {
       // create a new wallet for user
       const wallet = createWallet();
       // get unique nonce from server which will be signed by the users private key
-      const nonce = await retrieveNonce(email, wallet.signingKey.address);
+      const nonce = await retrieveNonce({
+        email: email,
+        address: wallet.signingKey.address
+      });
       console.log(`nonce ===`, nonce);
       // undefined is returned if user has already signed up with this email address
       if (nonce === undefined) {
