@@ -45,6 +45,10 @@ OBJECT INFO
   }
 }
 
+.object-info__header {
+  font-family: $display-font;
+}
+
 @media (max-width: 600px) {
   .object-info__header {
     color: $primary-highlight-color;
