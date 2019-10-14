@@ -33,10 +33,9 @@ export default function App() {
     // utilized for authentication and is decoded to return users ethereum address
     const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
-      isJwtValid(jwt);
 
-      // only attempt user auth if valid jwt is found
-      if (typeof jwt === "string") {
+      // only attempt user auth if jwt of type string is found and is not expired
+      if (typeof jwt === "string" && isJwtValid(jwt)) {
         const { address } = await jwt_decode(jwt);
 
         authDispatch({ type: "SET_JWT", payload: jwt });
@@ -44,7 +43,7 @@ export default function App() {
           type: "SET_USER_ADDRESS",
           payload: address
         });
-        // remove invalid jwt found in local storage
+        // remove jwt found in local storage
       } else {
         localStorage.removeItem("trusat-jwt");
       }

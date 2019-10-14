@@ -6,7 +6,14 @@ import jwt_decode from "jwt-decode";
 
 export const isJwtValid = async jwt => {
   const jwtObject = await jwt_decode(jwt);
-  console.log(jwtObject);
+  const expiryTime = jwtObject.exp;
+  const currentTime = Math.round(+new Date() / 1000);
+
+  if (expiryTime > currentTime) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export const deleteCookie = cookieName => {
