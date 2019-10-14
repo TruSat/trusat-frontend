@@ -8,7 +8,6 @@ export default function Submit() {
       <h1 className="submit__header">Submit Observations</h1>
       <p className="submit__sub-header">Submit preformatted data</p>
       <MultipleObservationForm />
-
       <div>
         <p className="submit__text">
           Or submit observations to{" "}
