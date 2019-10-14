@@ -15,9 +15,9 @@ CATALOG
     margin: 4em 4em 4em 4em;
   }
   .catalog__header {
-    // @include view-title--desktop;
-    // margin: 0.5em 0;
-    display: none;
+    @include view-title--desktop;
+    margin: 0.5em 0;
+    // display: none;
   }
 }
 

@@ -5,7 +5,7 @@ export default function FilterDescription({ catalogFilter }) {
     {
       filter: "priorities",
       copy:
-        "This is an autonomously-generated list of satellites most in need of observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
+        "This is an auto-generated list of satellites most in need of observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
     },
     {
       filter: "undisclosed",
