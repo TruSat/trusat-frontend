@@ -128,8 +128,17 @@ CLAIM ACCOUNT
 }
 
 .claim-account__header {
-  @include view-title--desktop;
+  color: #fc7756;
+  line-height: 42px;
+  font-size: 36px;
+  font-weight: 200;
   margin-bottom: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .claim-account__header {
+    @include view-title--desktop;
+  }
 }
 
 .claim-account__message {
@@ -157,6 +166,15 @@ VERIFY CLAIM ACCOUNT
 }
 
 .verify-claim-account__header {
-  @include view-title--desktop;
+  color: #fc7756;
+  line-height: 42px;
+  font-size: 36px;
+  font-weight: 200;
   margin-bottom: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .verify-claim-account__header {
+    @include view-title--desktop;
+  }
 }
