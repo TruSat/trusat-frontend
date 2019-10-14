@@ -35,67 +35,141 @@ export default function About() {
           developing the software that eases the process of making and reporting
           satellite observations, or writing or translating documentation
         </p>
-        <h2 className="static-page__sub-header">PARTNERS</h2>
-        <div className="about__partners-wrapper">
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-        </div>
-        <h2 className="static-page__sub-header">WHITEPAPER</h2>
+        <h2 className="static-page__sub-header">LINKS</h2>
         <p className="static-page__copy">
-          A technical deep dive into how TruSat works. Read it{" "}
           <NavLink className="app__nav-link static-page__link" to="/whitepaper">
-            here.
-          </NavLink>
+            The TruSat white paper
+          </NavLink>{" "}
+          — A technical deep dive into how TruSat works.
         </p>
-        <h2 className="static-page__sub-header">TRUSAT CHARTER</h2>
         <p className="static-page__copy">
-          An outline of TruSat’s initial governance. Read it{" "}
           <NavLink className="app__nav-link static-page__link" to="/charter">
-            here.
-          </NavLink>
+            The TruSat Charter
+          </NavLink>{" "}
+          — An outline of TruSat’s initial governance.
+        </p>
+        <p className="static-page__copy">
+          <NavLink className="app__nav-link static-page__link" to="/how">
+            FAQ
+          </NavLink>{" "}
+          — Frequently asked questions
+        </p>
+        <p className="static-page__copy">
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://discordapp.com"
+          >
+            TruSat's community chat
+          </a>{" "}
+          — A Discord channel to discuss the project and get help.
+        </p>
+        <p className="static-page__copy">
+          Follow project updates on{" "}
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.facebook.com/PlanetaryResourcesInc/"
+          >
+            Facebook
+          </a>{" "}
+          and{" "}
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://twitter.com/planetaryrsrcs"
+          >
+            Twitter
+          </a>
+        </p>
+        <div className="about__partners-wrapper">
+          <h2 className="static-page__sub-header">PARTNERS</h2>
+          <div className="about__partners-list">
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+          </div>
+        </div>
+        <h2 className="static-page__sub-header about__sub-header--top">
+          Press
+        </h2>
+        <p className="static-page__copy">
+          Space News — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            The Blockchain-based Satellite Catalog to Keep Space Clean
+          </a>
+        </p>
+        <p className="static-page__copy">
+          Tech Crunch — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            Here’s the Headline for the Story
+          </a>
+        </p>
+        <p className="static-page__copy">
+          New York Times — 
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://spacenews.com/"
+          >
+            Blockchain in Outer Space Might Just Work
+          </a>
         </p>
       </section>
 

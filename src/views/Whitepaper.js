@@ -5,6 +5,15 @@ export default function Whitepaper() {
     <div className="static-page__wrapper">
       <section className="static-page__section">
         <h1 className="static-page__main-header">TruSat White Paper</h1>
+        <p className="static-page__copy">
+          This page is a summary of the full TruSat white paper. To read the
+          white paper in its full form in full form,{" "}
+          {/* TODO - add functionality to this link to download PDF from where it is hosted on AWS */}
+          <a className="static-page__link" href="https://www.google.com">
+            download the pdf
+          </a>
+          .
+        </p>
         <div className="whitepaper__link-wrapper">
           <a
             className="static-page__link white-paper__nav-link"

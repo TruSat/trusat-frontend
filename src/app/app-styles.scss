@@ -133,6 +133,7 @@ APP
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: $primary-text-color;
   display: inline-block;
+  font-weight: bold;
   line-height: 20px;
   padding: 0.5em 2em;
 }
@@ -143,6 +144,7 @@ APP
   border-radius: 23px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: #0a0b18;
+  font-weight: bold;
   line-height: 20px;
   padding: 0.75em 2em;
 }
@@ -618,6 +620,7 @@ COPY TEXT
 WELCOME VIEW
 ----------- */
 .welcome__wrapper {
+  font-family: $display-font;
   max-width: 1080px;
   margin: 0 auto;
 }
@@ -967,8 +970,10 @@ STATIC PAGE VIEW
 - /charter
 ---------- */
 .static-page__wrapper {
-  background: #081122;
+  background: $primary-theme-color;
   padding: 2em 1em;
+  max-width: 720px;
+  margin: 0 auto;
 }
 
 .static-page__section {
@@ -976,10 +981,11 @@ STATIC PAGE VIEW
 }
 
 .static-page__main-header {
-  color: #fc7756;
-  line-height: 42px;
+  color: $primary-highlight-color;
+  font-family: $display-font;
   font-size: 36px;
   font-weight: 200;
+  line-height: 42px;
 }
 
 @media (min-width: 600px) {
@@ -1004,8 +1010,7 @@ STATIC PAGE VIEW
 .static-page__copy {
   font-size: 20px;
   font-weight: 300;
-  line-height: 23px;
-  letter-spacing: 0.05em;
+  line-height: 25px;
   margin-bottom: 1em;
 }
 
@@ -1035,10 +1040,14 @@ WHITEPAPER VIEW
 ABOUT VIEW  
 ---------- */
 .about__partners-wrapper {
+  margin: 1em 0em 1em 0em;
+}
+
+.about__partners-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 1em 0em 1em 0em;
+  margin: 2em 0em 5em 0em;
 }
 
 .about__sub-header--top {
