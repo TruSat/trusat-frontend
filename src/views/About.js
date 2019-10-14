@@ -63,53 +63,55 @@ export default function About() {
         <p className="static-page__copy">
           Follow project updates on <a href="https://www.facebook.com/PlanetaryResourcesInc/">Facebook</a> and <a href="https://twitter.com/planetaryrsrcs">Twitter</a>
         </p>
-        <h2 className="static-page__sub-header">PARTNERS</h2>
         <div className="about__partners-wrapper">
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
-          <span
-            style={{
-              background: "#C4C4C4",
-              borderRadius: "50%",
-              height: "138px",
-              marginBottom: "1em",
-              width: "138px"
-            }}
-          ></span>
+        <h2 className="static-page__sub-header">PARTNERS</h2>
+        <div className="about__partners-list">
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+            <div
+              style={{
+                background: "#C4C4C4",
+                borderRadius: "50%",
+                height: "120px",
+                marginBottom: "1em",
+                width: "120px"
+              }}
+            ></div>
+          </div>
         </div>
         <h2 className="static-page__sub-header about__sub-header--top">
           Press

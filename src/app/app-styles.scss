@@ -1040,10 +1040,14 @@ WHITEPAPER VIEW
 ABOUT VIEW  
 ---------- */
 .about__partners-wrapper {
+  margin: 1em 0em 1em 0em;
+}
+
+.about__partners-list {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 1em 0em 1em 0em;
+  margin: 2em 0em 5em 0em;
 }
 
 .about__sub-header--top {
