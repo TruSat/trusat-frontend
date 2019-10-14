@@ -9,6 +9,7 @@ import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
+import { checkJwt } from "../auth/auth-helpers";
 
 function UserSettings({ history }) {
   const { profileData } = useProfileState();
@@ -22,35 +23,21 @@ function UserSettings({ history }) {
 
   const [isLoading, setIsloading] = useState(false);
   const [isError, setIsError] = useState(false);
-  // Privacy settings
-  // const [showEditPrivacyInputs, setShowEditPrivacyInputs] = useState(false);
-  // const [newPublicUsername, setNewPublicUsername] = useState(true);
-  // const [newPublicLocation, setNewPublicLocation] = useState(false);
-  // const [newPublicObservations, setNewPublicObservations] = useState(true);
 
   useEffect(() => {
-    const {
-      user_name,
-      email,
-      user_location,
-      user_bio
-      // public_username,
-      // public_location,
-      // public_observations
-    } = profileData;
-
+    const { user_name, email, user_location, user_bio } = profileData;
+    // Add the current values so that they appear in input fields when user is editing
     setNewUsername(user_name);
     setNewEmail(email);
     setNewLocation(user_location);
     setNewBio(user_bio);
-    // setNewPublicUsername(public_username);
-    // setNewPublicLocation(public_location);
-    // setNewPublicObservations(public_observations);
   }, [profileData]);
 
   const submitEdit = async () => {
     setIsError(false);
     setIsloading(true);
+    // checks if jwt is valid and hasn't expired
+    checkJwt(jwt);
     // Post the edits
     try {
       await axios.post(
@@ -62,15 +49,12 @@ function UserSettings({ history }) {
           email: newEmail,
           bio: newBio,
           location: newLocation
-          // public_username: newPublicUsername,
-          // public_location: newPublicLocation,
-          // public_observations: newPublicObservations
         })
       );
     } catch (error) {
       setIsError(true);
     }
-
+    // After edit, kick user back to their profile and refresh browser to show changes
     history.push(`/profile/${userAddress}`);
     window.location.reload();
   };
@@ -106,7 +90,6 @@ function UserSettings({ history }) {
             className="app__white-button--small account-settings__cancel-button"
             onClick={() => {
               setShowEditProfileInputs(false);
-              // setShowEditPrivacyInputs(false);
             }}
           >
             Cancel
@@ -116,23 +99,14 @@ function UserSettings({ history }) {
             onClick={() => {
               submitEdit();
               setShowEditProfileInputs(false);
-              // setShowEditPrivacyInputs(false);
             }}
           >
             Save
           </span>
         </div>
       ) : null}
-      <PrivacySettings
-      // showEditPrivacyInputs={showEditPrivacyInputs}
-      // setShowEditPrivacyInputs={setShowEditPrivacyInputs}
-      // newPublicUsername={newPublicUsername}
-      // setNewPublicUsername={setNewPublicUsername}
-      // newPublicLocation={newPublicLocation}
-      // setNewPublicLocation={setNewPublicLocation}
-      // newPublicObservations={newPublicObservations}
-      // setNewPublicObservations={setNewPublicObservations}
-      />
+
+      <PrivacySettings />
 
       {/* Only show prompt to make move to metamask if they dont have plugin installed */}
       {window.etherem ? null : <SecuritySettings />}
