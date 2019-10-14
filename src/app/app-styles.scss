@@ -133,6 +133,7 @@ APP
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: $primary-text-color;
   display: inline-block;
+  font-weight: bold;
   line-height: 20px;
   padding: 0.5em 2em;
 }
@@ -143,6 +144,7 @@ APP
   border-radius: 23px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: #0a0b18;
+  font-weight: bold;
   line-height: 20px;
   padding: 0.75em 2em;
 }
@@ -618,6 +620,7 @@ COPY TEXT
 WELCOME VIEW
 ----------- */
 .welcome__wrapper {
+  font-family: $display-font;
   max-width: 1080px;
   margin: 0 auto;
 }
