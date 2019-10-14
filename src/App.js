@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import jwt_decode from "jwt-decode";
-import { isJwtValid } from "./app/app-helpers";
+import { checkJwt } from "./auth/auth-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import NavBar from "./app/components/NavBar";
@@ -29,25 +29,19 @@ export default function App() {
   const authDispatch = useAuthDispatch();
 
   useEffect(() => {
-    // get jwt from local storage
-    // utilized for authentication and is decoded to return users ethereum address
+    // get jwt from local storage which is decoded to return the user ethereum address
     const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
-      isJwtValid(jwt);
+      // checks if jwt is valid and hasn't expired
+      checkJwt(jwt);
 
-      // only attempt user auth if valid jwt is found
-      if (typeof jwt === "string") {
-        const { address } = await jwt_decode(jwt);
+      const { address } = await jwt_decode(jwt);
 
-        authDispatch({ type: "SET_JWT", payload: jwt });
-        authDispatch({
-          type: "SET_USER_ADDRESS",
-          payload: address
-        });
-        // remove invalid jwt found in local storage
-      } else {
-        localStorage.removeItem("trusat-jwt");
-      }
+      authDispatch({ type: "SET_JWT", payload: jwt });
+      authDispatch({
+        type: "SET_USER_ADDRESS",
+        payload: address
+      });
     };
 
     if (localStorage.getItem("trusat-jwt")) {

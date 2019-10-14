@@ -2,12 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
-import jwt_decode from "jwt-decode";
-
-export const isJwtValid = async jwt => {
-  const jwtObject = await jwt_decode(jwt);
-  console.log(jwtObject);
-};
 
 export const deleteCookie = cookieName => {
   document.cookie = `${cookieName}= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;

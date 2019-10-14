@@ -5,7 +5,8 @@ import {
   createWallet,
   retrieveNonce,
   signMessage,
-  retrieveJwt
+  retrieveJwt,
+  checkJwt
 } from "../../auth/auth-helpers";
 import { NavLink } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
@@ -22,7 +23,7 @@ export default function MultipleObservationForm() {
   const getBurnerJwt = async () => {
     const wallet = createWallet();
 
-    const nonce = await retrieveNonce(wallet.signingKey.address);
+    const nonce = await retrieveNonce({ address: wallet.signingKey.address });
 
     const signedMessage = signMessage({ nonce, wallet });
 
@@ -44,7 +45,8 @@ export default function MultipleObservationForm() {
     } else {
       submissionJwt = jwt;
     }
-    // const arrayOfIODs = pastedIODs.split("\n");
+    // check if jwt is valid and hasn't expired before submission
+    checkJwt(jwt);
 
     try {
       const result = await axios.post(

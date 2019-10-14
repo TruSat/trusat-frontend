@@ -4,6 +4,7 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
 import aesjs from "aes-js";
+import jwt_decode from "jwt-decode";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export const createWallet = () => {
@@ -165,6 +166,22 @@ export const retrieveMetamaskJwt = async ({
   }
 };
 
+export const checkJwt = async jwt => {
+  // expiry time of JWT
+  const { exp } = await jwt_decode(jwt);
+  // get UNIX current time
+  const currentTime = Math.round(+new Date() / 1000);
+  // if jwt is of type string and has not expired, return from the function
+  // this allows rest of function calling checkJwt to continue
+  if (typeof jwt === "string" && exp > currentTime) {
+    return;
+    // otherwise remove jwt from localstorage refresh browser
+  } else {
+    localStorage.removeItem("trusat-jwt");
+    window.location.reload();
+  }
+};
+
 export const createSecret = (privateKey, password) => {
   // create a salt of 10 random numbers
   const salt = window.crypto.getRandomValues(new Uint32Array(1))[0].toString();
@@ -172,7 +189,6 @@ export const createSecret = (privateKey, password) => {
   const key = pbkdf2.pbkdf2Sync(password, salt, 1, 256 / 8, "sha512");
   // create iv
   const iv = window.crypto.getRandomValues(new Uint8Array(16));
-
   // create 14 random numbers to be used as a pad on the private key
   const pad = window.crypto
     .getRandomValues(new Uint32Array(6))
