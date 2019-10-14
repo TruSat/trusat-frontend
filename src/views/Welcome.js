@@ -106,18 +106,41 @@ export default function Home() {
               source. Join our developer mailing list to stay updated on
               bounties, hackathons, and open issues.
             </p>
-            <a
-              className="app__nav-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://github.com/consensys-space"
-            >
-              <RoundedButton
-                addStyles="welcome__join-button"
-                color="orange"
-                text="JOIN THE BUILDERS"
-              />
-            </a>
+            <div className="welcome__mailing-list-wrapper">
+              <form
+                action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                className="validate"
+                target="_blank"
+                noValidate
+              >
+                <div className="welcome__mailing-list-inputs">
+                  <div className="welcome__input-button-wrapper">
+                    <input
+                      required
+                      name="EMAIL"
+                      id="mce-EMAIL"
+                      className="welcome__input welcome__input--white"
+                      type="email"
+                      placeholder="Your email"
+                      value={email}
+                      onChange={event => setEmail(event.target.value)}
+                    ></input>
+                    <RoundedButton
+                      type="submit"
+                      name="subscribe"
+                      addStyles="welcome__subscribe-button"
+                      color="orange"
+                      text="SUBSCRIBE"
+                      id="mc-embedded-subscribe"
+                      onSubmit={() => setEmail("")}
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
           <img
             className="welcome__illustration welcome__illustration--right"

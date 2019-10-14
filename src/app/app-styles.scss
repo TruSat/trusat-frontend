@@ -128,7 +128,7 @@ APP
 
 .app__rounded-button--black {
   align-self: flex-start;
-  background: #0e0e1e;
+  background: $primary-theme-color;
   border-radius: 23px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: $primary-text-color;
@@ -140,10 +140,10 @@ APP
 
 .app__rounded-button--orange {
   align-self: flex-start;
-  background: #fc7756;
+  background:$primary-highlight-color;
   border-radius: 23px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  color: #0a0b18;
+  color: $primary-theme-color;
   font-weight: bold;
   line-height: 20px;
   padding: 0.75em 2em;
@@ -832,7 +832,7 @@ WELCOME VIEW
 
 .welcome__input {
   background: transparent;
-  border: 1px solid #0e0e1e;
+  border: 1px solid $primary-theme-color;
   box-sizing: border-box;
   flex: 1;
   font-family: roboto;
@@ -841,8 +841,18 @@ WELCOME VIEW
   width: 400px;
 }
 
+
 .welcome__input::placeholder {
-  color: #004f85;
+  color: $primary-theme-color;
+}
+
+.welcome__input--white {
+  border: 1px solid $primary-text-color;
+  color: $primary-text-color;
+}
+
+.welcome__input--white::placeholder {
+  color: $primary-text-color;
 }
 
 .welcome__subscribe-button {
@@ -955,7 +965,7 @@ WELCOME VIEW
 }
 
 .welcome__mailing-list-wrapper {
-  padding: 0 1.5em;
+  padding: 0 1.5em 0 0;
 }
 
 .welcome__mailing-list-inputs {
