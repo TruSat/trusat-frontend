@@ -173,7 +173,7 @@ export const checkJwt = async jwt => {
   // if jwt is of type string and has not expired, return from the function
   // this allows rest of function calling checkJwt to continue
   if (typeof jwt === "string" && exp > currentTime) {
-    return;
+    return true;
     // otherwise remove jwt from localstorage refresh browser
   } else {
     localStorage.removeItem("trusat-jwt");
