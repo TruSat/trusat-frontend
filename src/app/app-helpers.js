@@ -132,12 +132,12 @@ export const renderFlag = code => {
 };
 
 export const shortenAddressToolTip = address => {
-  return (
+  return address ? (
     <div data-tip={address}>
       {`${address.substring(0, 5)}...`}
       <ReactTooltip type="info" />
     </div>
-  );
+  ) : null;
 };
 
 export const toolTip = (displayText, toolTipText) => {
