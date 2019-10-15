@@ -7,8 +7,9 @@ OBJECT VIEW
 
 @media (min-width: 600px) {
   .object__wrapper {
-    margin: 3em 4em;
+    margin: 3em auto;
     max-width: 1000px;
+    padding: 0 2em;
   }
 }
 

@@ -12,7 +12,8 @@ CATALOG
 
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 4em 4em 4em 4em;
+    margin: 4em auto;
+    padding: 0 2em;
   }
   .catalog__header {
     @include view-title--desktop;
@@ -191,17 +192,15 @@ CATALOG TABLE
   padding: 1.5em 1em 1.5em 0em;
 }
 
-
 @media (min-width: 600px) {
   .table__body-row:first-of-type td {
     padding-top: 1.5em;
   }
-  
+
   .catalog-table__object-data-wrapper__priorityRank {
     min-width: 2.2em;
   }
 }
-
 
 .catalog-table__object-data-wrapper {
   align-items: center;
@@ -221,7 +220,6 @@ CATALOG TABLE
 .catalog-table__object-data-wrapper__priorityRank {
   min-width: 1.5em;
   padding-right: 0.25em;
-  
 }
 
 @media (min-width: 800px) {
@@ -250,13 +248,11 @@ CATALOG TABLE
   padding-right: 3em;
 }
 
-
 @media (min-width: 800px) {
   .catalog-table__table-data--originWrapper {
     padding-right: 3em;
   }
 }
-
 
 .catalog-table__table-data--usernameWrapper {
   padding-right: 0;

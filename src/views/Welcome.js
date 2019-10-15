@@ -31,16 +31,23 @@ export default function Home() {
         </div>
 
         <div className="welcome__title-intro-wrapper">
-          <p className="welcome__large-copy welcome__large-copy--bold">
-            The number of satellites is increasing by 10x.
+          <p className="welcome__large-copy--bold">
+            Space debris is a problem
           </p>
           <p className="welcome__medium-copy--white">
-            If we don’t limit satellite collisions, then debris could
-            render space unusable for generations.
+            The number of satellites is increasing by 10x. If we don’t limit satellite collisions, then fields of debris could cage us on Earth for generations.
+          </p>
+          <p className="welcome__large-copy--bold">
+            You are the solution
           </p>
           <p className="welcome__medium-copy--white">
-            How do we ensure we don’t trap ourselves on Earth? With the sport of
-            satellite tracking...
+          Use TruSat to find satellites and record their positions, creating a global record that deters bad practices in orbit.
+          </p>
+          <p className="welcome__large-copy--bold">
+            How?
+          </p>
+          <p className="welcome__medium-copy--white welcome__medium-copy--last">
+            Check out the explainer video.
           </p>
           <div className="welcome_arrow-wrapper">
             <img
@@ -86,7 +93,7 @@ export default function Home() {
             TruSat shows you when and where to look to see satellites that are the highest priority to monitor. When you record an observation, you’ll be credited in the <NavLink className="app__nav-link static-page__link" to="/catalog">TruSat Catalog</NavLink>, and the satellite will be added to your collection.
             </p>
             <p className="welcome__small-copy--white">
-              Your observations are merged with others around the world to create a trusted record of satellite behavior.
+              Your observations are merged with data from a global community of trackers, creating a trusted record of satellite behavior.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton

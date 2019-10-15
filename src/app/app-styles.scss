@@ -285,7 +285,6 @@ NAV BAR
 
   .nav-bar__link-wrapper--highlight--welcome {
     align-items: center;
-    border-bottom: 3px solid $primary-text-color;
     display: flex;
     height: 3.5em;
     margin: 0em 2em;
@@ -297,7 +296,6 @@ NAV BAR
 
   .nav-bar__link-wrapper--lowlight--welcome {
     border-bottom: 3px solid transparent;
-    color: #888888;
     margin: 0em 2em;
   }
 
@@ -306,13 +304,12 @@ NAV BAR
   }
 
   .nav-bar__link--highlight--welcome {
-    color: $primary-text-color;
+    color: #838891;
     text-decoration: none;
   }
 
   .nav-bar__link--lowlight--welcome {
-    color: $primary-text-color;
-    opacity: 0.5;
+    color: #838891;
     text-decoration: none;
   }
 
@@ -692,7 +689,7 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__trusat-tagline {
-    font-size: 18px;
+    font-size: 24px;
     line-height: 37px;
     margin: 1em 0;
   }
@@ -711,7 +708,7 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: -2em 2.5em 1em 2.5em;
+  margin: -2em 2em 1em 2em;
   position: relative;
   text-align: center;
 }
@@ -891,38 +888,42 @@ WELCOME VIEW
 
 .welcome__large-copy {
   font-size: 24px;
-  line-height: 30px;
   margin-bottom: 0.5em;
 }
 
 .welcome__large-copy--bold {
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 0.25em;
 }
 
 @media (min-width: 600px) {
   .welcome__large-copy {
     font-size: 48px;
-    line-height: 59px;
   }
 
   .welcome__large-copy--bold {
     font-size: 48px;
-    line-height: 59px;
   }
 }
 
 .welcome__medium-copy--white {
   font-size: 18px;
   line-height: 22px;
-  margin-bottom: 12px;
+  margin-bottom: 2em;
 }
 
 @media (min-width: 600px) {
   .welcome__medium-copy--white {
-    font-size: 36px;
-    line-height: 44px;
-    margin-bottom: 0.75em;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 3.5em;
+    padding: 0 12em;
   }
+}
+
+.welcome__medium-copy--last {
+  margin-bottom: 1em
 }
 
 .welcome__small-copy--black {
