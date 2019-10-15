@@ -892,37 +892,37 @@ WELCOME VIEW
 
 .welcome__large-copy {
   font-size: 24px;
-  line-height: 30px;
   margin-bottom: 0.5em;
 }
 
 .welcome__large-copy--bold {
   font-weight: bold;
+  margin-bottom: 0.5em;
 }
 
 @media (min-width: 600px) {
   .welcome__large-copy {
     font-size: 48px;
-    line-height: 59px;
+    margin-bottom: 0.25em;
   }
 
   .welcome__large-copy--bold {
     font-size: 48px;
-    line-height: 59px;
+    margin-bottom: 0.25em;
   }
 }
 
 .welcome__medium-copy--white {
   font-size: 18px;
   line-height: 22px;
-  margin-bottom: 12px;
+  margin-bottom: 2em;
 }
 
 @media (min-width: 600px) {
   .welcome__medium-copy--white {
     font-size: 36px;
     line-height: 44px;
-    margin-bottom: 0.75em;
+    margin-bottom: 1.5em;
   }
 }
 
