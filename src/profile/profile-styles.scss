@@ -9,7 +9,7 @@ BLOCKIE
 PROFILE
 ---------- */
 .profile__wrapper {
-  margin: 2em 1em;
+  margin: 1em 1em;
   max-width: 1000px;
 }
 
@@ -40,19 +40,26 @@ PROFILE
   color: $primary-highlight-color;
   font-family: $display-font;
   font-size: 36px;
-  margin-left: 0.5em;
+  margin-top: 0.5em;
 }
 
 @media (min-width: 600px) {
   .profile__header-username {
     @include view-title--desktop;
+    margin-left: 0.5em;
+    margin-top: 0;
   }
 }
 
 .profile__button-data-wrapper {
-  margin-top: 1em;
+  // margin-top: 0.5em;
 }
 
+@media (min-width: 600px) {
+  .profile__button-data-wrapper {
+    margin-top: 1em;
+  }
+}
 
 .profile__header-settings-link-wrapper {
   text-align: left;
