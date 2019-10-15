@@ -111,7 +111,7 @@ function NavBar(props) {
               }
               to={`/whitepaper`}
             >
-              WHITEPAPER
+              WHITE PAPER
             </NavLink>
           </div>
         )}
