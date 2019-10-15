@@ -41,7 +41,7 @@ export default function Home() {
             You are the solution
           </p>
           <p className="welcome__medium-copy--white">
-          Use TruSat to find and observe satellites, creating a global record that deters bad practices in orbit.
+          Use TruSat to find satellites and record their positions, creating a global record that deters bad practices in orbit.
           </p>
           <p className="welcome__large-copy--bold">
             See how

@@ -711,7 +711,7 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: -2em 2.5em 1em 2.5em;
+  margin: -2em 2em 1em 2em;
   position: relative;
   text-align: center;
 }
@@ -896,19 +896,18 @@ WELCOME VIEW
 }
 
 .welcome__large-copy--bold {
+  font-size: 24px;
   font-weight: bold;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
 }
 
 @media (min-width: 600px) {
   .welcome__large-copy {
     font-size: 48px;
-    margin-bottom: 0.25em;
   }
 
   .welcome__large-copy--bold {
     font-size: 48px;
-    margin-bottom: 0.25em;
   }
 }
 
@@ -920,9 +919,10 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__medium-copy--white {
-    font-size: 36px;
-    line-height: 44px;
-    margin-bottom: 1.5em;
+    font-size: 18px;
+    line-height: 22px;
+    margin-bottom: 3.5em;
+    padding: 0 12em;
   }
 }
 
