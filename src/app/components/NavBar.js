@@ -19,24 +19,27 @@ function NavBar(props) {
       </NavLink>
 
       <div className="nav-bar__route-link-wrapper">
-        <div
-          className={
-            path === "/"
-              ? "nav-bar__link-wrapper--highlight--welcome"
-              : "nav-bar__link-wrapper--lowlight"
-          }
-        >
-          <NavLink
+        {/* // Welcome button only rendered when user is logged out */}
+        {userAddress ? null : (
+          <div
             className={
               path === "/"
-                ? "nav-bar__link--highlight--welcome"
-                : "nav-bar__link--lowlight"
+                ? "nav-bar__link-wrapper--highlight--welcome"
+                : "nav-bar__link-wrapper--lowlight"
             }
-            to="/"
           >
-            WELCOME
-          </NavLink>
-        </div>
+            <NavLink
+              className={
+                path === "/"
+                  ? "nav-bar__link--highlight--welcome"
+                  : "nav-bar__link--lowlight"
+              }
+              to="/"
+            >
+              WELCOME
+            </NavLink>
+          </div>
+        )}
 
         <div
           className={
@@ -86,6 +89,32 @@ function NavBar(props) {
             </NavLink>
           </div>
         ) : null}
+
+        {/* // Whitepaper button only rendered when user is logged out */}
+        {userAddress ? null : (
+          <div
+            className={
+              path === `whitepaper`
+                ? "nav-bar__link-wrapper--highlight"
+                : path === "/"
+                ? "nav-bar__link-wrapper--lowlight--welcome"
+                : "nav-bar__link-wrapper--lowlight"
+            }
+          >
+            <NavLink
+              className={
+                path === `/whitepaper`
+                  ? "nav-bar__link--highlight"
+                  : path === "/"
+                  ? "nav-bar__link--lowlight--welcome"
+                  : "nav-bar__link--lowlight"
+              }
+              to={`/whitepaper`}
+            >
+              WHITEPAPER
+            </NavLink>
+          </div>
+        )}
 
         <div
           className={
