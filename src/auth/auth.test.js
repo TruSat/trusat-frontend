@@ -5,8 +5,10 @@ import {
   isValidPassword,
   signMessage,
   createSecret,
-  decryptSecret
+  decryptSecret,
+  checkJwt
 } from "./auth-helpers";
+import { it } from "ethers/wordlists";
 
 // Make crypto object used in encryption helpers available to test suite
 const crypto = require("crypto");
@@ -108,5 +110,13 @@ describe("Auth helpers", () => {
     const decryptedPrivateKey = decryptSecret(secret, wrongPassword);
 
     expect(privateKeyToEncrypt).not.toBe(decryptedPrivateKey);
+  });
+
+  it("Can verify if a JWT is valid", () => {
+    return false;
+  });
+
+  it("Can verify if a JWT is invalid", () => {
+    return false;
   });
 });
