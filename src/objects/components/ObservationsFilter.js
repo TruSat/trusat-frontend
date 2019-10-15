@@ -30,7 +30,7 @@ export default function ObservationsFilter() {
               })
             }
           >
-            INFLUENCE
+            OBSERVATIONS
           </span>
         </div>
 
