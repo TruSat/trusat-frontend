@@ -36,7 +36,7 @@ export default function DownloadObjectTleButton() {
     <Spinner />
   ) : isError ? (
     <p className="app__error-message">Something went wrong...</p>
-  ) : (
+  ) : tleString.length !== 0 ? (
     <a
       className="catalog__link"
       href={downloadTles()}
@@ -44,5 +44,5 @@ export default function DownloadObjectTleButton() {
     >
       <span className="catalog__button catalog__get-data-button">Get data</span>
     </a>
-  );
+  ) : null;
 }
