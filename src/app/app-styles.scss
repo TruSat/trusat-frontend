@@ -140,7 +140,7 @@ APP
 
 .app__rounded-button--orange {
   align-self: flex-start;
-  background:$primary-highlight-color;
+  background: $primary-highlight-color;
   border-radius: 23px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: $primary-theme-color;
@@ -838,7 +838,6 @@ WELCOME VIEW
   width: 400px;
 }
 
-
 .welcome__input::placeholder {
   color: $primary-theme-color;
 }
@@ -1127,6 +1126,13 @@ HOW TO VIEW
 CHARTER VIEW
 ---------- */
 .charter__sub-header {
+  margin-top: 1em;
+}
+
+/* ----------
+FAQ view
+---------- */
+.faq__sub-header {
   margin-top: 1em;
 }
 

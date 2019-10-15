@@ -22,6 +22,7 @@ import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "./app/components/CookieBanner";
 import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
+import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 
@@ -78,6 +79,7 @@ export default function App() {
         <Route exact path="/claim" component={ClaimAccount} />
         <Route path="/claim/:jwt" component={VerifyClaimAccount} />
         <Route path="/whitepaper" component={Whitepaper} />
+        <Route path="/faq" component={FAQ}></Route>
         <Route path="/charter" component={Charter} />
         <Route path="/policy" component={PrivacyPolicy} />
         <Route component={NoMatch} />

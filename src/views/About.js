@@ -49,7 +49,7 @@ export default function About() {
           — An outline of TruSat’s initial governance.
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/how">
+          <NavLink className="app__nav-link static-page__link" to="/faq">
             FAQ
           </NavLink>{" "}
           — Frequently asked questions
