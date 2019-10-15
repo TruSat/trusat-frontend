@@ -111,19 +111,19 @@ describe("Auth helpers", () => {
     expect(privateKeyToEncrypt).not.toBe(decryptedPrivateKey);
   });
 
-  it("Can verify if a JWT is valid", () => {
+  it("Can verify if a JWT is valid", async () => {
     // This JWT has an expiry date of *insert date*
     const jwt =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhZGRyZXNzIjoiMHhjNDFhZDY3MGNlODhhZDlkMTk4ZTI1YjhhMGEyMjIyN2Y3NTEzZjQyIiwiZXhwIjo1MzgyNTgwOTg2Nn0.mRE6wWR6CNFLJ5csjm23bYVo4umne7sHDuZ7whmsW6IxQsKOV_s-3GOvPcpaPnZXnewO8TkMUJExDXwnWC6P2Spxt_2Y2CrT_aWm9attBTyvszQau7WM44e0lpiJw5sN6jRnewohj-mv5FTGw1Y51I0Or4rN2WQRAwGlWXvbvRU0llEJl1vMWLhK6SAce8IkCs2nCRf8TrlxHNkoYcUBDcxpti0OhOnhr0yB_kVT9CRg9BqzWm3GTVaekCivqjFeo2WHWg4hMsGnmCM_x4AQIIk8JP6eGr9cKceg8GXkYz9JMELhgqUbod0EgrYWSV1OXtOcj938OyCA0SvkmwiFFg";
 
-    expect(checkJwt(jwt)).toBe(true);
+    expect(await checkJwt(jwt)).toBe(true);
   });
 
-  it("Can verify if a JWT is invalid", () => {
+  it("Can verify if a JWT is invalid", async () => {
     // This JWT had an expiry date of *insert date*
     const jwt =
       "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhZGRyZXNzIjoiMHhjNDFhZDY3MGNlODhhZDlkMTk4ZTI1YjhhMGEyMjIyN2Y3NTEzZjQyIiwiZXhwIjo1MzgyNTgwOTg2Nn0.mRE6wWR6CNFLJ5csjm23bYVo4umne7sHDuZ7whmsW6IxQsKOV_s-3GOvPcpaPnZXnewO8TkMUJExDXwnWC6P2Spxt_2Y2CrT_aWm9attBTyvszQau7WM44e0lpiJw5sN6jRnewohj-mv5FTGw1Y51I0Or4rN2WQRAwGlWXvbvRU0llEJl1vMWLhK6SAce8IkCs2nCRf8TrlxHNkoYcUBDcxpti0OhOnhr0yB_kVT9CRg9BqzWm3GTVaekCivqjFeo2WHWg4hMsGnmCM_x4AQIIk8JP6eGr9cKceg8GXkYz9JMELhgqUbod0EgrYWSV1OXtOcj938OyCA0SvkmwiFFg";
 
-    expect(checkJwt(jwt)).not.toBe(true);
+    expect(await checkJwt(jwt)).not.toBe(true);
   });
 });
