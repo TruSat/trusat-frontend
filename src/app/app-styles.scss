@@ -285,7 +285,6 @@ NAV BAR
 
   .nav-bar__link-wrapper--highlight--welcome {
     align-items: center;
-    border-bottom: 3px solid $primary-text-color;
     display: flex;
     height: 3.5em;
     margin: 0em 2em;
@@ -297,7 +296,6 @@ NAV BAR
 
   .nav-bar__link-wrapper--lowlight--welcome {
     border-bottom: 3px solid transparent;
-    color: #888888;
     margin: 0em 2em;
   }
 
@@ -306,13 +304,12 @@ NAV BAR
   }
 
   .nav-bar__link--highlight--welcome {
-    color: $primary-text-color;
+    color: #838891;
     text-decoration: none;
   }
 
   .nav-bar__link--lowlight--welcome {
-    color: $primary-text-color;
-    opacity: 0.5;
+    color: #838891;
     text-decoration: none;
   }
 

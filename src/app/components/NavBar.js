@@ -129,7 +129,7 @@ function NavBar(props) {
             }
             to="/how"
           >
-            <p>HOW TO</p>
+            HOW TO
           </NavLink>
         </div>
       </div>
