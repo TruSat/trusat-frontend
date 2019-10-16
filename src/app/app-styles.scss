@@ -285,6 +285,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--highlight--welcome {
     align-items: center;
+    border-bottom: 3px solid $primary-highlight-color;
     display: flex;
     height: 3.5em;
     margin: 0em 2em;
@@ -304,7 +305,7 @@ NAV BAR
   }
 
   .nav-bar__link--highlight--welcome {
-    color: #838891;
+    color: $primary-text-color;
     text-decoration: none;
   }
 
@@ -923,7 +924,7 @@ WELCOME VIEW
 }
 
 .welcome__medium-copy--last {
-  margin-bottom: 1em
+  margin-bottom: 1em;
 }
 
 .welcome__small-copy--black {
