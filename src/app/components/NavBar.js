@@ -94,7 +94,7 @@ function NavBar(props) {
         {userAddress ? null : (
           <div
             className={
-              path === `whitepaper`
+              path === `/whitepaper`
                 ? "nav-bar__link-wrapper--highlight"
                 : path === "/"
                 ? "nav-bar__link-wrapper--lowlight--welcome"
