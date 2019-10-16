@@ -3,7 +3,7 @@ import { useTrusatPostApi } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
 
 export default function ClaimAccount() {
-  const [email, setEmail] = useState("bobthecryptonoob@gmail.com");
+  const [email, setEmail] = useState("");
   const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
   const [isSuccess, setIsSuccess] = useState(false);
 
