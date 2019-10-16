@@ -48,7 +48,7 @@ export default function Info() {
             <div className="object-info__header-info-wrapper__group">
               <p className="object-info__small-text--grey">BY</p>
               &nbsp;
-              <p className="object-info__small-text">
+              <div className="object-info__small-text">
                 <NavLink
                   className="app__nav-link"
                   to={`/profile/${objectInfo.address_last_tracked}`}
@@ -60,7 +60,7 @@ export default function Info() {
                       )
                     : shortenAddressToolTip(objectInfo.address_last_tracked)}
                 </NavLink>
-              </p>
+              </div>
             </div>
           </div>
         </div>
