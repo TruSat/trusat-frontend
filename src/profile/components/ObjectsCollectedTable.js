@@ -20,7 +20,7 @@ export default function ObjectsCollectedTable() {
 
     return rangeData.map(obj => (
       <tr
-        key={profileData.observation_history.indexOf(obj)}
+        key={obj.object_norad_number}
         className="table__body-row profile-table__body-row"
       >
         <td className="table__table-data">
