@@ -16,7 +16,9 @@ import CircleCheck from "../../assets/CircleCheck.svg";
 export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [pastedIODs, setPastedIODs] = useState(``);
+  // server provides a count of accepted IODs - i.e. correct format and not duplicates
   const [successCount, setSuccessCount] = useState(null);
+  // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
@@ -24,9 +26,15 @@ export default function MultipleObservationForm() {
   const getBurnerJwt = async () => {
     const wallet = createWallet();
 
+    console.log(`burner address = `, wallet.signingKey.address);
+
     const nonce = await retrieveNonce({ address: wallet.signingKey.address });
 
+    console.log(`burnernonce = `, nonce);
+
     const signedMessage = signMessage({ nonce, wallet });
+
+    console.log(`burner signed message = `, signedMessage);
 
     const jwt = await retrieveJwt({
       address: wallet.signingKey.address,
@@ -36,11 +44,13 @@ export default function MultipleObservationForm() {
   };
 
   const handleSubmit = async () => {
-    setPastedIODs("");
     setIsLoading(true);
+    setIsError(false);
+    setSuccessCount(null);
+    setErrorMessages([]);
 
     let submissionJwt = "";
-
+    // create a burner and get a jwt for it if users wants to submit without signing up/in
     if (jwt === "none") {
       submissionJwt = await getBurnerJwt();
     } else {
@@ -54,14 +64,13 @@ export default function MultipleObservationForm() {
         `${API_ROOT}/submitObservation`,
         JSON.stringify({ jwt: submissionJwt, multiple: pastedIODs })
       );
+      setPastedIODs("");
 
       if (result.data.success !== 0) {
         setSuccessCount(result.data.success);
       } else if (result.data.error_messages.length !== 0) {
         setErrorMessages(result.data.error_messages);
       }
-
-      setIsLoading(false);
     } catch (error) {
       setIsError(true);
     }
@@ -111,7 +120,7 @@ export default function MultipleObservationForm() {
           </div>
         ) : null}
 
-        {/* Failure message */}
+        {/* Failure messages */}
         {errorMessages.length > 0 ? (
           <Fragment>
             <p className="app__error-message">Something went wrong!</p>
