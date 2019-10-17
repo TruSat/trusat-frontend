@@ -31,8 +31,8 @@ function NavBar(props) {
             <NavLink
               className={
                 path === "/"
-                  ? "nav-bar__link--highlight--welcome"
-                  : "nav-bar__link--lowlight"
+                  ? "app__nav-link nav-bar__link--highlight--welcome"
+                  : "app__nav-link nav-bar__link--lowlight"
               }
               to="/"
             >
@@ -53,10 +53,10 @@ function NavBar(props) {
           <NavLink
             className={
               path.includes("catalog") || path.includes("submit")
-                ? "nav-bar__link--highlight"
+                ? "app__nav-link nav-bar__link--highlight"
                 : path === "/"
-                ? "nav-bar__link--lowlight--welcome"
-                : "nav-bar__link--lowlight"
+                ? "app__nav-link nav-bar__link--lowlight--welcome"
+                : "app__nav-link nav-bar__link--lowlight"
             }
             to={`/catalog/${catalogFilter}`}
           >
@@ -78,10 +78,10 @@ function NavBar(props) {
             <NavLink
               className={
                 path === `/profile/${userAddress}`
-                  ? "nav-bar__link--highlight"
+                  ? "app__nav-link nav-bar__link--highlight"
                   : path === "/"
-                  ? "nav-bar__link--lowlight--welcome"
-                  : "nav-bar__link--lowlight"
+                  ? "app__nav-link nav-bar__link--lowlight--welcome"
+                  : "app__nav-link nav-bar__link--lowlight"
               }
               to={`/profile/${userAddress}`}
             >
@@ -104,10 +104,10 @@ function NavBar(props) {
             <NavLink
               className={
                 path === `/whitepaper`
-                  ? "nav-bar__link--highlight"
+                  ? "app__nav-link nav-bar__link--highlight"
                   : path === "/"
-                  ? "nav-bar__link--lowlight--welcome"
-                  : "nav-bar__link--lowlight"
+                  ? "app__nav-link nav-bar__link--lowlight--welcome"
+                  : "app__nav-link nav-bar__link--lowlight"
               }
               to={`/whitepaper`}
             >
@@ -128,10 +128,10 @@ function NavBar(props) {
           <NavLink
             className={
               path === "/about"
-                ? "nav-bar__link--highlight"
+                ? "app__nav-link nav-bar__link--highlight"
                 : path === "/"
-                ? "nav-bar__link--lowlight--welcome"
-                : "nav-bar__link--lowlight"
+                ? "app__nav-link nav-bar__link--lowlight--welcome"
+                : "app__nav-link nav-bar__link--lowlight"
             }
             to="/about"
           >
@@ -151,10 +151,10 @@ function NavBar(props) {
           <NavLink
             className={
               path === "/how"
-                ? "nav-bar__link--highlight"
+                ? "app__nav-link nav-bar__link--highlight"
                 : path === "/"
-                ? "nav-bar__link--lowlight--welcome"
-                : "nav-bar__link--lowlight"
+                ? "app__nav-link nav-bar__link--lowlight--welcome"
+                : "app__nav-link nav-bar__link--lowlight"
             }
             to="/how"
           >
