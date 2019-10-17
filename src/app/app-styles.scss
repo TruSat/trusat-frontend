@@ -252,6 +252,10 @@ NAV BAR
     text-decoration: none;
   }
 
+  .nav-bar__link--lowlight:hover {
+    color: $primary-text-color;
+  }
+
   .nav-bar__join-button {
     background: $primary-highlight-color;
     border-radius: 4px;
@@ -322,6 +326,10 @@ NAV BAR
   .nav-bar__link--lowlight--welcome {
     color: #838891;
     text-decoration: none;
+  }
+
+  .nav-bar__link--lowlight--welcome:hover {
+    color: $primary-text-color;
   }
 
   .nav-bar__join-button--welcome {
