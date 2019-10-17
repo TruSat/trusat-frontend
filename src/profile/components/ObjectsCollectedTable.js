@@ -29,7 +29,7 @@ export default function ObjectsCollectedTable() {
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="profile-table__data-wrapper">
-              <ObjectBadge noradNumber={obj.object_norad_number} />
+              <ObjectBadge noradNumber={obj.object_norad_number} size="small" />
               &nbsp;
               {toolTip(obj.object_name, obj.object_norad_number)}
             </div>
