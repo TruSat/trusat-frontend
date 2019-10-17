@@ -75,7 +75,7 @@ export default function sketch(p) {
 
     // Draw number text
     p.textAlign(p.CENTER);
-    p.textSize(10);
+    p.textSize(16);
     p.fill(pallette[3]);
     p.text(noradNumber, canvasSize / 2, canvasSize / 2 + 3);
   };
