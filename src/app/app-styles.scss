@@ -1201,10 +1201,17 @@ COOKIE BANNER
 /* ----------
 Footer
 ---------- */
-.footer__wrapper {
+.footer {
+  bottom: 0;
+  margin: 0 auto;
+  position: fixed;
+  width: 100%;
+}
+
+.footer__content {
   display: flex;
   justify-content: space-between;
-  padding: 1em 1em 0.5em 1em;
+  padding: 1em 2em;
 }
 
 .footer__text-links-wrapper {
@@ -1221,4 +1228,8 @@ Footer
   height: auto;
   margin: 0 0.5em;
   width: 30px;
+}
+
+.footer__icon--last {
+  margin: none;
 }

@@ -26,7 +26,6 @@ import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
-import Footer from "./app/components/Footer";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -87,9 +86,8 @@ export default function App() {
         <Route path="/terms" component={Terms} />
         <Route component={NoMatch} />
       </Switch>
-
+      {/* Returns footer when closed */}
       <CookieBanner />
-      <Footer />
     </Router>
   );
 }
