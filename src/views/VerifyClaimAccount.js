@@ -81,47 +81,51 @@ export default function VerifyClaimAccount({ match }) {
   ) : (
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
-      <form
-        className="email-form"
-        onSubmit={event => {
-          event.preventDefault();
-          verifyClaimAccount();
-        }}
-      >
-        <label className="email-form__label">NEW PASSWORD</label>
-        <input
-          required
-          className="email-form__input"
-          type="password"
-          onChange={event => setPassword(event.target.value)}
-          value={password}
-        ></input>
-        <label className="email-form__label">RE-ENTER NEW PASSWORD</label>
-        <input
-          required
-          className="email-form__input"
-          type="password"
-          onChange={event => setRetypedPassword(event.target.value)}
-          value={retypedPassword}
-        ></input>
+      {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret */}
+      {!isSuccess ? (
+        <form
+          className="email-form"
+          onSubmit={event => {
+            event.preventDefault();
+            verifyClaimAccount();
+          }}
+        >
+          <label className="email-form__label">NEW PASSWORD</label>
+          <input
+            required
+            className="email-form__input"
+            type="password"
+            onChange={event => setPassword(event.target.value)}
+            value={password}
+          ></input>
+          <label className="email-form__label">RE-ENTER NEW PASSWORD</label>
+          <input
+            required
+            className="email-form__input"
+            type="password"
+            onChange={event => setRetypedPassword(event.target.value)}
+            value={retypedPassword}
+          ></input>
 
-        {showInvalidPasswordError ? (
-          <div className="email-form__error">
-            Please choose a password that is at least 8 characters long and
-            contains one number
-          </div>
-        ) : null}
+          {showInvalidPasswordError ? (
+            <div className="email-form__error">
+              Please choose a password that is at least 8 characters long and
+              contains one number
+            </div>
+          ) : null}
 
-        {showUnmatchedPasswordError ? (
-          <div className="email-form__error">
-            The passwords you have entered do not match
-          </div>
-        ) : null}
+          {showUnmatchedPasswordError ? (
+            <div className="email-form__error">
+              The passwords you have entered do not match
+            </div>
+          ) : null}
 
-        <button type="submit" className="app__white-button--small">
-          Submit
-        </button>
-      </form>
+          <button type="submit" className="app__white-button--small">
+            Submit
+          </button>
+        </form>
+      ) : null}
+
       {isSuccess ? (
         <div className="login__success-wrapper">
           <p className="claim-account__message">
