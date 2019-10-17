@@ -1,14 +1,15 @@
 import React from "react";
 import P5Wrapper from "react-p5-wrapper";
-import sketch from "../../assets/sketch.js";
+import SketchSmall from "../../assets/SketchSmall.js";
+import SketchLarge from "../../assets/SketchLarge.js";
 
-export default function ObjectBadge({ noradNumber, width, quality }) {
+export default function ObjectBadge({ noradNumber, quality, size, addStyles }) {
   return (
-    <div className="catalog-table__object-data-wrapper__badgeWrapper">
+    // pass in small of large for width, see catalogTable and /object view to see difference
+    <div className={`${addStyles}`}>
       <P5Wrapper
-        sketch={sketch}
+        sketch={size === "small" ? SketchSmall : SketchLarge}
         noradNumber={noradNumber}
-        width={width}
         quality={quality}
       ></P5Wrapper>
     </div>

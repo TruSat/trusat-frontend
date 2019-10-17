@@ -16,7 +16,11 @@ export default function Info() {
     <React.Fragment>
       <section className="object-info__header-section-wrapper">
         <div className="object-info__badge-wrapper">
-          <ObjectBadge noradNumber={noradNumber} width={100} />
+          <ObjectBadge
+            noradNumber={noradNumber}
+            size="large"
+            addStyles={`object-badge__wrapper--object-view`}
+          />
         </div>
 
         <div>
@@ -48,7 +52,7 @@ export default function Info() {
             <div className="object-info__header-info-wrapper__group">
               <p className="object-info__small-text--grey">BY</p>
               &nbsp;
-              <p className="object-info__small-text">
+              <div className="object-info__small-text">
                 <NavLink
                   className="app__nav-link"
                   to={`/profile/${objectInfo.address_last_tracked}`}
@@ -60,7 +64,7 @@ export default function Info() {
                       )
                     : shortenAddressToolTip(objectInfo.address_last_tracked)}
                 </NavLink>
-              </p>
+              </div>
             </div>
           </div>
         </div>

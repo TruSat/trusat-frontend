@@ -13,9 +13,9 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 export default function SignupForm({ setIsSuccess }) {
   const authDispatch = useAuthDispatch();
   const { isAuthenticating } = useAuthState();
-  const [email, setEmail] = useState("john.gribbin@consensys.net");
-  const [password, setPassword] = useState("cI69L%8bLsvA");
-  const [retypedPassword, setRetypedPassword] = useState("cI69L%8bLsvA");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [retypedPassword, setRetypedPassword] = useState("");
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
     false

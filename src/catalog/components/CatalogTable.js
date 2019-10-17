@@ -43,7 +43,9 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               <ObjectBadge
                 noradNumber={obj.object_norad_number}
                 quality={obj.object_observation_quality}
+                size={"small"}
               />
+              &nbsp;
               <div className="catalog-table__object-data-wrapper__objectName">
                 {toolTip(obj.object_name, obj.object_norad_number)}
               </div>

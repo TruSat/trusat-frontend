@@ -42,12 +42,20 @@ export default function BurgerMenu() {
         How To
       </NavLink>
 
-      <NavLink onClick={() => closeMenu()} to={`/signup`}>
-        Sign Up
-      </NavLink>
+      {userAddress ? null : (
+        <NavLink onClick={() => closeMenu()} to={`/signup`}>
+          Sign Up
+        </NavLink>
+      )}
 
-      <NavLink onClick={() => closeMenu()} to={`/login`}>
-        Log In
+      {userAddress ? null : (
+        <NavLink onClick={() => closeMenu()} to={`/login`}>
+          Log In
+        </NavLink>
+      )}
+
+      <NavLink onClick={() => closeMenu()} to={`/submit`}>
+        Submit
       </NavLink>
     </Menu>
   );

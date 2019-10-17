@@ -67,26 +67,26 @@ export default function ObservationsTable() {
               {toolTip("OBJECT", toolTipCopy.object)}
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">
+              <div className="app__hide-on-mobile">
                 {toolTip("POSITION ERR.", toolTipCopy.position_error)}
-              </p>
+              </div>
               <p className="app__hide-on-desktop">POS ERR.</p>
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">
+              <div className="app__hide-on-mobile">
                 {toolTip("TIME ERR.", toolTipCopy.time_error)}
-              </p>
+              </div>
               <p className="app__hide-on-desktop">TIME ERR.</p>
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">
+              <div className="app__hide-on-mobile">
                 {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
-              </p>
+              </div>
             </td>
             <td className="table__header-text">
-              <p className="app__hide-on-mobile">
+              <div className="app__hide-on-mobile">
                 {toolTip("WEIGHT", toolTipCopy.weight)}
-              </p>
+              </div>
               <p className="app__hide-on-desktop">WT.</p>
             </td>
           </tr>

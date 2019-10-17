@@ -25,6 +25,7 @@ import Whitepaper from "./views/Whitepaper";
 import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
+import Terms from "./views/Terms";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -81,10 +82,11 @@ export default function App() {
         <Route path="/whitepaper" component={Whitepaper} />
         <Route path="/faq" component={FAQ}></Route>
         <Route path="/charter" component={Charter} />
-        <Route path="/policy" component={PrivacyPolicy} />
+        <Route path="/privacy" component={PrivacyPolicy} />
+        <Route path="/terms" component={Terms} />
         <Route component={NoMatch} />
       </Switch>
-
+      {/* Returns footer when closed */}
       <CookieBanner />
     </Router>
   );

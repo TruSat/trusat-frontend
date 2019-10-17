@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import ReactGA from "react-ga";
 import { deleteCookie } from "../app-helpers";
 import Button from "../../app/components/Button";
+import Footer from "../components/Footer";
 
 export default function CookieBanner() {
   const [isOpen, setIsOpen] = useState(true);
@@ -45,5 +46,7 @@ export default function CookieBanner() {
         <p className="cookie-banner__link">Read our privacy policy</p>
       </NavLink>
     </div>
-  ) : null;
+  ) : (
+    <Footer />
+  );
 }

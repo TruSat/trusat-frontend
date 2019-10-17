@@ -16,6 +16,7 @@ PROFILE
 @media (min-width: 600px) {
   .profile__wrapper {
     margin: 3em auto;
+    padding: 0 2em;
   }
 }
 
@@ -32,7 +33,7 @@ PROFILE
 
 @media (min-width: 600px) {
   .profile__blockie-name-wrapper {
-      flex-wrap: nowrap;
+    flex-wrap: nowrap;
   }
 }
 

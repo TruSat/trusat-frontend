@@ -1,7 +1,6 @@
 /* ----------
 APP
 ---------- */
-
 .app__show-on-mobile {
   display: block;
 }
@@ -121,11 +120,21 @@ APP
   cursor: pointer;
 }
 
+/* ----------
+TOOLTIP
+---------- */
 .app__tooltip {
   background: $primary-highlight-color;
   color: $primary-text-color;
 }
 
+.app__tool-tip-wrapper {
+  display: inline-block;
+}
+
+/* ----------
+ROUNDED BUTTON
+---------- */
 .app__rounded-button--black {
   align-self: flex-start;
   background: $primary-theme-color;
@@ -242,6 +251,10 @@ NAV BAR
     text-decoration: none;
   }
 
+  .nav-bar__link--lowlight:hover {
+    color: $primary-text-color;
+  }
+
   .nav-bar__join-button {
     background: $primary-highlight-color;
     border-radius: 4px;
@@ -285,6 +298,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--highlight--welcome {
     align-items: center;
+    border-bottom: 3px solid $primary-highlight-color;
     display: flex;
     height: 3.5em;
     margin: 0em 2em;
@@ -304,13 +318,17 @@ NAV BAR
   }
 
   .nav-bar__link--highlight--welcome {
-    color: #838891;
+    color: $primary-text-color;
     text-decoration: none;
   }
 
   .nav-bar__link--lowlight--welcome {
     color: #838891;
     text-decoration: none;
+  }
+
+  .nav-bar__link--lowlight--welcome:hover {
+    color: $primary-text-color;
   }
 
   .nav-bar__join-button--welcome {
@@ -405,10 +423,15 @@ TABLE PAGINATOR
 }
 
 /* ----------
-TOOL TIP HELPER
+OBJECT BADGE
 ---------- */
-.app__tool-tip-wrapper {
-  display: inline-block;
+.object-badge__wrapper {
+}
+
+.object-badge__wrapper--object-view {
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 /* ----------
@@ -923,7 +946,7 @@ WELCOME VIEW
 }
 
 .welcome__medium-copy--last {
-  margin-bottom: 1em
+  margin-bottom: 1em;
 }
 
 .welcome__small-copy--black {
@@ -1169,7 +1192,44 @@ COOKIE BANNER
 }
 
 .cookie-banner__link {
+  align-items: center;
   color: $primary-theme-color;
   font-size: $extra-small-font-size;
   margin-top: 1em;
+}
+
+/* ----------
+Footer
+---------- */
+.footer {
+  bottom: 0;
+  margin: 0 auto;
+  position: fixed;
+  width: 100%;
+}
+
+.footer__content {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 2em;
+}
+
+.footer__text-links-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: $extra-small-font-size;
+}
+
+.footer__text-link {
+  margin-right: 1em;
+}
+
+.footer__icon {
+  height: auto;
+  margin: 0 0.5em;
+  width: 30px;
+}
+
+.footer__icon--last {
+  margin: none;
 }

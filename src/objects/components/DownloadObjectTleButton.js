@@ -42,7 +42,7 @@ export default function DownloadObjectTleButton() {
       href={downloadTles()}
       download={`trusat_${noradNumber}.txt`}
     >
-      <span className="catalog__button catalog__get-data-button">Get data</span>
+      <span className="catalog__button catalog__get-data-button">Get TLE</span>
     </a>
   ) : null;
 }
