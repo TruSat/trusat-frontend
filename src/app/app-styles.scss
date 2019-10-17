@@ -121,11 +121,21 @@ APP
   cursor: pointer;
 }
 
+/* ----------
+TOOLTIP
+---------- */
 .app__tooltip {
   background: $primary-highlight-color;
   color: $primary-text-color;
 }
 
+.app__tool-tip-wrapper {
+  display: inline-block;
+}
+
+/* ----------
+ROUNDED BUTTON
+---------- */
 .app__rounded-button--black {
   align-self: flex-start;
   background: $primary-theme-color;
@@ -406,10 +416,15 @@ TABLE PAGINATOR
 }
 
 /* ----------
-TOOL TIP HELPER
+OBJECT BADGE
 ---------- */
-.app__tool-tip-wrapper {
-  display: inline-block;
+.object-badge__wrapper {
+}
+
+.object-badge__wrapper--object-view {
+  justify-content: center;
+  display: flex;
+  width: 100%;
 }
 
 /* ----------
