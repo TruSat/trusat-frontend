@@ -650,7 +650,7 @@ WELCOME VIEW
 }
 
 .welcome__bottom__wrapper {
-  background-color: $primary-highlight-color;
+  background-color: $tertiary-color;
 }
 
 .welcome__section--one {
@@ -871,7 +871,7 @@ WELCOME VIEW
 
 .welcome__input {
   background: transparent;
-  border: 1px solid $primary-theme-color;
+  border: 1px solid $primary-text-color;
   box-sizing: border-box;
   flex: 1;
   font-family: roboto;
@@ -881,7 +881,7 @@ WELCOME VIEW
 }
 
 .welcome__input::placeholder {
-  color: $primary-theme-color;
+  color: $primary-text-color;
 }
 
 .welcome__input--white {
@@ -907,7 +907,7 @@ WELCOME VIEW
 }
 
 .welcome__sub-header--black {
-  color: #0e0e1e;
+  color: $primary-theme-color;
   font-size: 48px;
   font-style: normal;
   font-weight: bold;

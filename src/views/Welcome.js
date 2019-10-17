@@ -197,8 +197,8 @@ export default function Home() {
                 noValidate
               >
                 <div className="welcome__mailing-list-inputs">
-                  <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-                  <p className="welcome__small-copy--black">
+                  <h2 className="welcome__sub-header--white">Stay in the loop</h2>
+                  <p className="welcome__small-copy--white">
                     Join the mailing list to stay posted on the project
                   </p>
                   <div className="welcome__input-button-wrapper">
@@ -216,7 +216,7 @@ export default function Home() {
                       type="submit"
                       name="subscribe"
                       addStyles="welcome__subscribe-button"
-                      color="black"
+                      color="orange"
                       text="SUBSCRIBE"
                       id="mc-embedded-subscribe"
                       onSubmit={() => setEmail("")}
