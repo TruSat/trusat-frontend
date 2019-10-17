@@ -1,7 +1,6 @@
 /* ----------
 APP
 ---------- */
-
 .app__show-on-mobile {
   display: block;
 }
@@ -1193,7 +1192,33 @@ COOKIE BANNER
 }
 
 .cookie-banner__link {
+  align-items: center;
   color: $primary-theme-color;
   font-size: $extra-small-font-size;
   margin-top: 1em;
+}
+
+/* ----------
+Footer
+---------- */
+.footer__wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 1em 1em 0.5em 1em;
+}
+
+.footer__text-links-wrapper {
+  display: flex;
+  align-items: center;
+  font-size: $extra-small-font-size;
+}
+
+.footer__text-link {
+  margin-right: 1em;
+}
+
+.footer__icon {
+  height: auto;
+  margin: 0 0.5em;
+  width: 30px;
 }
