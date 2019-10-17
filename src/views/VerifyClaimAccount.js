@@ -21,8 +21,6 @@ export default function VerifyClaimAccount({ match }) {
   const authDispatch = useAuthDispatch();
 
   useEffect(() => {
-    console.log(data);
-
     const logUserIn = async () => {
       authDispatch({ type: "SET_JWT", payload: data.jwt });
       const { address } = await jwt_decode(data.jwt);
