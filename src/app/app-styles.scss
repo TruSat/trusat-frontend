@@ -641,8 +641,15 @@ WELCOME VIEW
 ----------- */
 .welcome__wrapper {
   font-family: $display-font;
+}
+
+.welcome__content__wrapper {
   max-width: 1080px;
   margin: 0 auto;
+}
+
+.welcome__bottom__wrapper {
+  background-color: $primary-highlight-color;
 }
 
 .welcome__section--one {
@@ -661,8 +668,9 @@ WELCOME VIEW
 }
 
 .welcome__section--four {
-  background-color: $primary-highlight-color;
   padding: 4em 0 4em 0;
+  max-width: 1080px;
+  margin: 0 auto;
 }
 
 @media (min-width: 600px) {
@@ -775,6 +783,7 @@ WELCOME VIEW
 }
 
 .welcome__illustration {
+  margin-bottom: 1em;
   width: 100%;
 }
 
@@ -977,6 +986,7 @@ WELCOME VIEW
 
 .welcome__small-copy--bold {
   font-weight: bold;
+  font-size: 18px;
 }
 
 .welcome__small-copy__ul {
@@ -992,13 +1002,13 @@ WELCOME VIEW
 
 @media (min-width: 600px) {
   .welcome__small-copy--black {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
     margin-bottom: 0.75em;
   }
 
   .welcome__small-copy--white {
-    font-size: 20px;
+    font-size: 18px;
     line-height: 24px;
     margin-bottom: 0.75em;
   }
