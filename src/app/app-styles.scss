@@ -731,7 +731,7 @@ WELCOME VIEW
 }
 
 .welcome__title-intro-wrapper {
-  margin: -2em 2em 1em 2em;
+  margin: -2em 1em 1em 1em;
   position: relative;
   text-align: center;
 }
@@ -911,22 +911,26 @@ WELCOME VIEW
 
 .welcome__large-copy {
   font-size: 24px;
+  line-height: 30px;
   margin-bottom: 0.5em;
 }
 
 .welcome__large-copy--bold {
   font-size: 24px;
   font-weight: bold;
+  line-height: 30px;
   margin-bottom: 0.25em;
 }
 
 @media (min-width: 600px) {
   .welcome__large-copy {
     font-size: 48px;
+    line-height: 60px;
   }
 
   .welcome__large-copy--bold {
     font-size: 48px;
+    line-height: 60px;
   }
 }
 

@@ -20,7 +20,7 @@ export default function Home() {
           ></img>
 
           <h2 className="welcome__trusat-tagline">
-            CITIZEN-LED SATELLITE TRACKING
+            OPEN SOURCE SPACE SUSTAINABILITY
           </h2>
 
           <img
@@ -32,17 +32,16 @@ export default function Home() {
 
         <div className="welcome__title-intro-wrapper">
           <p className="welcome__large-copy--bold">
-            Space debris is a problem
+            Space debris is a problem. <br className="app__hide-on-mobile"></br>You are the solution.
           </p>
           <p className="welcome__medium-copy--white">
             The number of satellites is increasing by 10x. If we don’t limit satellite collisions, then fields of debris could cage us on Earth for generations.
           </p>
           <p className="welcome__large-copy--bold">
-            You are the solution
+            Welcome to the sport <br className="app__hide-on-mobile"></br>of satellite tracking.
           </p>
           <p className="welcome__medium-copy--white">
-          Use TruSat to find satellites and record their positions, creating a global record that deters bad practices in orbit.
-          </p>
+            Use TruSat to find satellites in the sky with your naked eye, and record their positions. This creates a planetary record that encourages sustainable practices in orbit.          </p>
           <p className="welcome__large-copy--bold">
             How?
           </p>
