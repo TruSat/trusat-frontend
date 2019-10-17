@@ -56,7 +56,7 @@ export default function Home() {
             ></iframe>
           </div>
           <p className="welcome__medium-copy--white">
-            Use TruSat to find satellites in the sky with your naked eye and record their positions. This creates a planetary record that encourages sustainable practices in orbit.          
+            Use TruSat to find satellites in the sky with your naked eye, record their positions, and help create a planetary record that encourages sustainable practices in orbit.          
           </p>
         </div>
       </section>
@@ -70,17 +70,15 @@ export default function Home() {
             alt="Illustration"
           ></img>
           <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Join the trackers</h2>
-            <p className="welcome__small-copy--white">
-              We’ll show you how to spot satellites. It’s fun, and all you need
-              is a clear sky.
+            <h2 className="welcome__sub-header--white">Satellite tracking? <span className="welcome__small-copy--emoticon">¯\_(ツ)_/¯</span></h2>
+            <p className="welcome__small-copy--white welcome__small-copy--bold">
+              It’s fun, relaxing, and all you need is a clear sky
             </p>
-            <p className="welcome__small-copy--white">
-            TruSat shows you when and where to look to see satellites that are the highest priority to monitor. When you record an observation, you’ll be credited in the <NavLink className="app__nav-link static-page__link" to="/catalog">TruSat Catalog</NavLink>, and the satellite will be added to your collection.
-            </p>
-            <p className="welcome__small-copy--white">
-              Your observations are merged with data from a global community of trackers, creating a trusted record of satellite behavior.
-            </p>
+            <ul className="welcome__small-copy__ul">
+              <li>TruSat will show you to when and where to look to see satellites that are the highest priority to monitor. </li>
+              <li>When you record an observation, you’ll be credited in the TruSat Catalog, and the satellite will be added to your collection.</li>
+              <li>Never seen a sat? We’ll show you how.</li>
+            </ul>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
                 addStyles="welcome__join-button"
