@@ -125,7 +125,7 @@ export default function VerifyClaimAccount({ match }) {
       {isSuccess ? (
         <div className="login__success-wrapper">
           <p className="claim-account__message">
-            Your have now claimed ownership of your TruSat account! We have
+            You have now claimed ownership of your TruSat account! We have
             emailed you a "secret" that will be required along with your email
             and password to log in from now on.
           </p>
