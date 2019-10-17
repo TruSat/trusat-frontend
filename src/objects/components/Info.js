@@ -16,7 +16,11 @@ export default function Info() {
     <React.Fragment>
       <section className="object-info__header-section-wrapper">
         <div className="object-info__badge-wrapper">
-          <ObjectBadge noradNumber={noradNumber} width={100} />
+          <ObjectBadge
+            noradNumber={noradNumber}
+            size="large"
+            addStyles={`object-badge__wrapper--object-view`}
+          />
         </div>
 
         <div>
