@@ -646,6 +646,7 @@ WELCOME VIEW
 .welcome__content__wrapper {
   max-width: 1080px;
   margin: 0 auto;
+  padding: 0 1.5em;
 }
 
 .welcome__bottom__wrapper {
@@ -683,7 +684,7 @@ WELCOME VIEW
   }
 
   .welcome__section--three {
-    padding: 1em 4em 4em 4em;
+    padding: 0 4em 4em 4em;
   }
 
   .welcome__section--four {
@@ -762,12 +763,12 @@ WELCOME VIEW
 .welcome__illustration-join-wrapper {
   display: flex;
   justify-content: space-between;
-  margin: 0 1.5em 8em 1.5em;
+  margin: 0 0 8em 0;
 }
 
 @media (min-width: 600px) {
   .welcome__illustration-join-wrapper {
-    margin-bottom: 12em;
+    margin-bottom: 10em;
   }
 }
 
@@ -1020,7 +1021,7 @@ WELCOME VIEW
 }
 
 .welcome__partners-wrapper {
-  padding: 0 1.5em;
+  padding: 0;
 }
 
 .welcome__partners-list {
