@@ -35,42 +35,29 @@ export default function Home() {
             Space debris is a problem. <br className="app__hide-on-mobile"></br>You are the solution.
           </p>
           <p className="welcome__medium-copy--white">
-            The number of satellites is increasing by 10x. If we don’t limit satellite collisions, then fields of debris could cage us on Earth for generations.
+            The number of satellites is increasing by 25x. Collisions threaten the technology we depend on every day, and our spacefaring future.          
           </p>
           <p className="welcome__large-copy--bold">
-            Welcome to the sport <br className="app__hide-on-mobile"></br>of satellite tracking.
+            Welcome to the sport <br className="app__hide-on-mobile"></br>of satellite tracking:
           </p>
-          <p className="welcome__medium-copy--white">
-            Use TruSat to find satellites in the sky with your naked eye, and record their positions. This creates a planetary record that encourages sustainable practices in orbit.          </p>
-          <p className="welcome__large-copy--bold">
-            How?
-          </p>
-          <p className="welcome__medium-copy--white welcome__medium-copy--last">
-            Check out the explainer video.
-          </p>
-          <div className="welcome_arrow-wrapper">
-            <img
-              className="welcome__image welcome__arrow-image"
-              src={Arrow}
-              alt="down arrow"
-            ></img>
+          <div className="welcome__iframe-wrapper">
+            <iframe
+              className="welcome__iframe"
+              title="pale blue dot video"
+              src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
+              frameBorder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen="allowfullscreen"
+              mozallowullscreen="mozallowfullscreen"
+              msallowfullscreen="msallowfullscreen"
+              oallowfullscreen="oallowfullscreen"
+              webkitallowfullscreen="webkitallowfullscreen"
+              modestbranding="1"
+            ></iframe>
           </div>
-        </div>
-
-        <div className="welcome__iframe-wrapper">
-          <iframe
-            className="welcome__iframe"
-            title="pale blue dot video"
-            src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen="allowfullscreen"
-            mozallowullscreen="mozallowfullscreen"
-            msallowfullscreen="msallowfullscreen"
-            oallowfullscreen="oallowfullscreen"
-            webkitallowfullscreen="webkitallowfullscreen"
-            modestbranding="1"
-          ></iframe>
+          <p className="welcome__medium-copy--white">
+            Use TruSat to find satellites in the sky with your naked eye and record their positions. This creates a planetary record that encourages sustainable practices in orbit.          
+          </p>
         </div>
       </section>
 

@@ -825,6 +825,15 @@ WELCOME VIEW
   padding-top: 2em;
   height: 0;
   overflow: hidden;
+  margin: 1em auto 1.5em;
+}
+
+@media (min-width: 600px) {
+  .welcome__iframe-wrapper{
+    margin-bottom: 2em;
+    margi-top: 1em;
+    max-width: 890px;
+  }
 }
 
 .welcome__iframe {
