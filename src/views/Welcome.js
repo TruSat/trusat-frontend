@@ -25,27 +25,24 @@ export default function Home() {
 
           <img
             className="welcome__image welcome__globe-image"
-            src={`https://trusat-assets.s3.amazonaws.com/welcome-illustration.png`}
+            src="https://trusat-assets.s3.amazonaws.com/welcome-illustration.png"
             alt="globe"
           ></img>
         </div>
 
         <div className="welcome__title-intro-wrapper">
-          <p className="welcome__large-copy--bold">
-            Space debris is a problem
-          </p>
+          <p className="welcome__large-copy--bold">Space debris is a problem</p>
           <p className="welcome__medium-copy--white">
-            The number of satellites is increasing by 10x. If we don’t limit satellite collisions, then fields of debris could cage us on Earth for generations.
+            The number of satellites is increasing by 10x. If we don’t limit
+            satellite collisions, then fields of debris could cage us on Earth
+            for generations.
           </p>
-          <p className="welcome__large-copy--bold">
-            You are the solution
-          </p>
+          <p className="welcome__large-copy--bold">You are the solution</p>
           <p className="welcome__medium-copy--white">
-          Use TruSat to find satellites and record their positions, creating a global record that deters bad practices in orbit.
+            Use TruSat to find satellites and record their positions, creating a
+            global record that deters bad practices in orbit.
           </p>
-          <p className="welcome__large-copy--bold">
-            How?
-          </p>
+          <p className="welcome__large-copy--bold">How?</p>
           <p className="welcome__medium-copy--white welcome__medium-copy--last">
             Check out the explainer video.
           </p>
@@ -90,10 +87,20 @@ export default function Home() {
               is a clear sky.
             </p>
             <p className="welcome__small-copy--white">
-            TruSat shows you when and where to look to see satellites that are the highest priority to monitor. When you record an observation, you’ll be credited in the <NavLink className="app__nav-link static-page__link" to="/catalog">TruSat Catalog</NavLink>, and the satellite will be added to your collection.
+              TruSat shows you when and where to look to see satellites that are
+              the highest priority to monitor. When you record an observation,
+              you’ll be credited in the{" "}
+              <NavLink
+                className="app__nav-link static-page__link"
+                to="/catalog"
+              >
+                TruSat Catalog
+              </NavLink>
+              , and the satellite will be added to your collection.
             </p>
             <p className="welcome__small-copy--white">
-              Your observations are merged with data from a global community of trackers, creating a trusted record of satellite behavior.
+              Your observations are merged with data from a global community of
+              trackers, creating a trusted record of satellite behavior.
             </p>
             <NavLink className="app__nav-link" to="/signup">
               <RoundedButton
@@ -109,9 +116,9 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">Join the build</h2>
             <p className="welcome__small-copy--white">
-              TruSat is in its early alpha stage, and is entirely open
-              source. Join our developer mailing list to stay updated on
-              bounties, hackathons, and open issues.
+              TruSat is in its early alpha stage, and is entirely open source.
+              Join our developer mailing list to stay updated on bounties,
+              hackathons, and open issues.
             </p>
             <div className="welcome__mailing-list-wrapper">
               <form
@@ -165,10 +172,18 @@ export default function Home() {
           <div className="welcome__join-copy-wrapper">
             <h2 className="welcome__sub-header--white">How TruSat works</h2>
             <p className="welcome__small-copy--white">
-              Space is wild. There’s been no way to ensure responsible practices in orbit, because there’s been no open, widely-trusted source of data about satellite behavior. 
+              Space is wild. There’s been no way to ensure responsible practices
+              in orbit, because there’s been no open, widely-trusted source of
+              data about satellite behavior.
             </p>
             <p className="welcome__small-copy--white">
-              To fill this gap, the TruSat system is designed to enable the emerging space sustainability community to task a global network of citizen satellite observers to track satellites of interest. TruSat’s open software merges observations from around the planet into a decentralized record of orbital positions suitable for measuring orbital behavior against sustainability standards.             </p>
+              To fill this gap, the TruSat system is designed to enable the
+              emerging space sustainability community to task a global network
+              of citizen satellite observers to track satellites of interest.
+              TruSat’s open software merges observations from around the planet
+              into a decentralized record of orbital positions suitable for
+              measuring orbital behavior against sustainability standards.{" "}
+            </p>
             <NavLink className="app__nav-link" to="/whitepaper">
               <RoundedButton
                 addStyles="welcome__join-button"
