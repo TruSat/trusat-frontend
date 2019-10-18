@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import jwt_decode from "jwt-decode";
 import { checkJwt } from "./auth/auth-helpers";
+import { setCookies } from "./app/app-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import NavBar from "./app/components/NavBar";
@@ -20,6 +21,7 @@ import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "./app/components/CookieBanner";
+import Footer from "./app/components/Footer";
 import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import FAQ from "./views/FAQ";
@@ -29,6 +31,7 @@ import Terms from "./views/Terms";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
+  const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   useEffect(() => {
     // get jwt from local storage which is decoded to return the user ethereum address
@@ -46,49 +49,71 @@ export default function App() {
       });
     };
 
+    const retrieveCookieChoice = () => {
+      // true or false
+      const allowCookies = localStorage.getItem("trusat-allow-cookies");
+      if (allowCookies) {
+        setCookies();
+      }
+    };
+    // get users choice on cookie banner from last visit
+    if (localStorage.getItem("trusat-allow-cookies")) {
+      setIsBannerOpen(false);
+      retrieveCookieChoice();
+    }
+
     if (localStorage.getItem("trusat-jwt")) {
       retrieveJwtAndGetUserData();
     }
   }, [authDispatch]);
 
   return (
-    <Router>
-      {/* Shown on mobile view */}
-      <BurgerMenu right />
-      <MobileHeader />
-      {/* Shown on desktop view */}
-      <NavBar />
-      <Route
-        path="/"
-        render={({ location }) => {
-          ReactGA.pageview(location.pathname + location.search);
-        }}
-      />
+    <div className="app">
+      <Router>
+        {/* Shown on mobile view */}
+        <BurgerMenu right />
+        <MobileHeader />
+        {/* Shown on desktop view */}
+        <NavBar />
+        <Route
+          path="/"
+          render={({ location }) => {
+            ReactGA.pageview(location.pathname + location.search);
+          }}
+        />
 
-      <Switch>
-        <Route exact path="/" component={Welcome} />
-        <Route path="/catalog/:catalogFilter" component={Catalog} />
-        <Route path="/submit" component={Submit} />
-        <Route path="/object/:number" component={ObjectInfo} />
-        <Route exact path="/profile/:address" component={Profile} />
-        <Route exact path="/settings" component={AccountSettings} />
-        <Route path="/settings/metamask" component={MetamaskImport} />
-        <Route path="/about" component={About} />
-        <Route path="/how" component={HowTo} />
-        <Route path="/login" component={LogIn} />
-        <Route path="/signup" component={SignUp} />
-        <Route exact path="/claim" component={ClaimAccount} />
-        <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-        <Route path="/whitepaper" component={Whitepaper} />
-        <Route path="/faq" component={FAQ}></Route>
-        <Route path="/charter" component={Charter} />
-        <Route path="/privacy" component={PrivacyPolicy} />
-        <Route path="/terms" component={Terms} />
-        <Route component={NoMatch} />
-      </Switch>
-      {/* Returns footer when closed */}
-      <CookieBanner />
-    </Router>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/catalog/:catalogFilter" component={Catalog} />
+          <Route path="/submit" component={Submit} />
+          <Route path="/object/:number" component={ObjectInfo} />
+          <Route exact path="/profile/:address" component={Profile} />
+          <Route exact path="/settings" component={AccountSettings} />
+          <Route path="/settings/metamask" component={MetamaskImport} />
+          <Route path="/about" component={About} />
+          <Route path="/how" component={HowTo} />
+          <Route path="/login" component={LogIn} />
+          <Route path="/signup" component={SignUp} />
+          <Route exact path="/claim" component={ClaimAccount} />
+          <Route path="/claim/:jwt" component={VerifyClaimAccount} />
+          <Route path="/whitepaper" component={Whitepaper} />
+          <Route path="/faq" component={FAQ}></Route>
+          <Route path="/charter" component={Charter} />
+          <Route path="/privacy" component={PrivacyPolicy} />
+          <Route path="/terms" component={Terms} />
+          <Route component={NoMatch} />
+        </Switch>
+
+        {isBannerOpen ? (
+          <CookieBanner
+            isBannerOpen={isBannerOpen}
+            setIsBannerOpen={setIsBannerOpen}
+          />
+        ) : (
+          <Footer />
+        )}
+      </Router>
+    </div>
   );
 }
 

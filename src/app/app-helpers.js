@@ -2,9 +2,20 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
+import ReactGA from "react-ga";
+
+export const setCookies = () => {
+  ReactGA.initialize("UA-149300298-1");
+};
 
 export const deleteCookie = cookieName => {
   document.cookie = `${cookieName}= ; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/;`;
+};
+
+export const deleteCookies = () => {
+  deleteCookie("_ga");
+  deleteCookie("_gat");
+  deleteCookie("_gid");
 };
 
 export const API_ROOT =

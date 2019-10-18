@@ -1,6 +1,9 @@
 /* ----------
 APP
 ---------- */
+.app {
+}
+
 .app__show-on-mobile {
   display: block;
 }
@@ -1200,9 +1203,8 @@ COOKIE BANNER
 Footer
 ---------- */
 .footer {
-  bottom: 0;
-  margin: 0 auto;
   position: fixed;
+  bottom: 0;
   width: 100%;
 }
 
