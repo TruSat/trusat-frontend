@@ -49,6 +49,7 @@ export default function SignupForm({ setIsSuccess }) {
 
     if (inputsAreValid) {
       setIsError(false);
+      setIsSuccess(false);
       authDispatch({ type: "AUTHENTICATING", payload: true });
       // create a new wallet for user
       const wallet = createWallet();

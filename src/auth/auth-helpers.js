@@ -107,7 +107,8 @@ export const signUp = async ({ email, address, signedMessage, secret }) => {
         secret: secret
       })
     );
-    return result.data.jwt;
+    // returns true is successful - i.e. the user receives an email
+    return result.data;
   } catch (error) {
     return false;
   }
