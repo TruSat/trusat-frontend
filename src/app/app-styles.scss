@@ -1243,24 +1243,42 @@ HOW TO VIEW
   margin-top: 0.5em;
 }
 
-.how-to__step-wrapper2 {
+.how-to__step-wrapper {
   display: flex;
 }
 
+@media (min-width: 600px) {
+  .how-to__step-wrapper {
+    border-top: 1px solid $tertiary-color;
+    padding-top: 1em;
+    margin-bottom: 2em;
+  }
+}
+
 .how-to__step__number {
-  border: 1px solid red;
+  flex-basis: 50px;
+  font-size: $extra-large-font-size;
+  min-width: 50px;
 }
+
 .how-to__step__image-wrapper {
-  border: 1px solid green;
+
+  
 }
+
 .how-to__step__description {
-  border: 1px solid yellow;
+  padding-left: 0; 
+}
+
+@media (min-width: 600px) {
+  .how-to__step__description {
+    padding-left: 1em;
+  }
 }
 
 .how-to__screenshot {
   width: 100%;
 }
-
 
 @media (min-width: 600px) {
   .how-to__sub-header--top {
@@ -1280,25 +1298,6 @@ HOW TO VIEW
   }
 }
 
-.how-to__step-image-wrapper {
-  background: #c4c4c4;
-  width: 100%;
-  height: 206px;
-  margin-bottom: 1em;
-}
-
-@media (min-width: 600px) {
-  .how-to__step-image-wrapper {
-    margin-bottom: 0;
-    width: 360px;
-  }
-}
-
-@media (min-width: 600px) {
-  .how-to__step-copy-wrapper {
-    margin-left: 1em;
-  }
-}
 
 /* ----------
 CHARTER VIEW

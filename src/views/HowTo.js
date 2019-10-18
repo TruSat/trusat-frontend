@@ -18,7 +18,7 @@ export default function HowTo() {
         <p className="static-page__copy">
           To determine a satellite’s orbit, you need two basic pieces of information:
         </p>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             1.
           </div>
@@ -31,7 +31,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             2.
           </div>
@@ -57,7 +57,7 @@ export default function HowTo() {
         <p className="static-page__copy">
           If you look up for long enough, you’ll see a star-like point of light moving continuously across the night sky.  That’s a satellite! Spotting your first satellite this way, without worrying about timing it, is a good way to get acquainted with the night sky, and how satellites move through it (if it blinks, it’s probably an airplane).        
         </p>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             1.
           </div>
@@ -70,7 +70,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             2.
           </div>
@@ -83,7 +83,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             3.
           </div>
@@ -125,7 +125,7 @@ export default function HowTo() {
         <p className="static-page__copy">
           SkyView allows you to search their catalog for a satellite then the AR features of the app point you in the direction of the satellite you’re looking for. Apps like SkyView are best for impromptu satellite spotting sessions.
         </p>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             1.
           </div>
@@ -142,7 +142,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             2.
           </div>
@@ -159,7 +159,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             3.
           </div>
@@ -176,7 +176,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             4.
           </div>
@@ -193,7 +193,7 @@ export default function HowTo() {
             </p>
           </div>
         </div>
-        <div className="how-to__step-wrapper2">
+        <div className="how-to__step-wrapper">
           <div className="how-to__step__number">
             5.
           </div>
