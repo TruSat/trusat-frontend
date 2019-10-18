@@ -1021,11 +1021,13 @@ WELCOME VIEW
   padding: 0;
 }
 
-.welcome__partners-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin: 2em 0em 5em 0em;
+.welcome__partners-list__logo-wrapper {
+  flex-basis: 120px;
+  margin-right: 40px;
+}
+
+.welcome__partners-list__logo {
+  width: 100%;
 }
 
 .welcome__mailing-list-wrapper {
@@ -1190,15 +1192,18 @@ ABOUT VIEW
   }
 }
 
+.static-page__sub-header--margin_fix {
+  margin-bottom: 2em;
+}
 
-.about__partners-wrapper {
+.welcome__partners-wrapper {
   margin: 1em 0em 1em 0em;
 }
 
-.about__partners-list {
+.welcome__partners-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: space-start;
   margin: 2em 0em 5em 0em;
 }
 

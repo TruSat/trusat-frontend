@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
+import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 
 
 export default function About() {
@@ -72,7 +73,7 @@ export default function About() {
         </div>
 
         <div className="about__block-wrapper">
-          <h2 className="static-page__sub-header">LINKS</h2>
+          <h2 className="static-page__sub-header static-page__sub-header--margin_fix">LINKS</h2>
           <div className="about__block-pair">
             <div className="about__block--left">
               <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/faq">
@@ -133,111 +134,114 @@ export default function About() {
  
         <div className="about__partners-wrapper">
           <h2 className="static-page__sub-header">PARTNERS</h2>
-          <div className="about__partners-list">
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
+          <div className="welcome__partners-list">
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
           </div>
         </div>
-        <h2 className="static-page__sub-header about__sub-header--top">
-          Press
-        </h2>
-        <p className="static-page__copy">
-          Space News — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            The Blockchain-based Satellite Catalog to Keep Space Clean
-          </a>
-        </p>
-        <p className="static-page__copy">
-          Tech Crunch — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            Here’s the Headline for the Story
-          </a>
-        </p>
-        <p className="static-page__copy">
-          New York Times — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            Blockchain in Outer Space Might Just Work
-          </a>
-        </p>
+        <div className="about__block-wrapper">
+          <h2 className="static-page__sub-header about__sub-header--top">
+            PRESS
+          </h2>
+          <p className="static-page__copy">
+            Space News — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              The Blockchain-based Satellite Catalog to Keep Space Clean
+            </a>
+          </p>
+          <p className="static-page__copy">
+            Tech Crunch — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              Here’s the Headline for the Story
+            </a>
+          </p>
+          <p className="static-page__copy">
+            New York Times — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              Blockchain in Outer Space Might Just Work
+            </a>
+          </p>
+        </div>
+        <div className="about__block-wrapper">
+          <h2 className="static-page__sub-header about__sub-header--top">
+            FOLLOW TRUSAT
+          </h2>
+          <p className="static-page__copy">
+            Follow ConsenSys Space for TruSat project updates on {" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/PlanetaryResourcesInc/"
+            >
+              Facebook
+            </a>
+            ,{" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/planetaryrsrcs"
+            >
+              Twitter
+            </a>,{" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/PlanetaryResourcesInc/"
+            >
+              Github
+            </a>,{" and "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/planetaryrsrcs"
+            >
+              Instagram
+            </a>
+          </p>
+          
 
-        <p className="static-page__copy">
-          Follow project updates on{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.facebook.com/PlanetaryResourcesInc/"
-          >
-            Facebook
-          </a>{" "}
-          and{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/planetaryrsrcs"
-          >
-            Twitter
-          </a>
-        </p>
+
+
+          
+        </div>
 
 
       </section>
