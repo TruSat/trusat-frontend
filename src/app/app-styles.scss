@@ -1324,9 +1324,6 @@ COOKIE BANNER
 Footer
 ---------- */
 .footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
 }
 
 .footer__content {
@@ -1349,6 +1346,9 @@ Footer
   height: auto;
   margin: 0 0.5em;
   width: 30px;
+}
+
+.footer__instagram-icon {
 }
 
 .footer__icon--last {
