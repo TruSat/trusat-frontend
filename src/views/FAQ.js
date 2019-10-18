@@ -4,8 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function FAQ() {
   return (
     <div className="static-page__wrapper">
-
-<section className="static-page__section">
+      <section className="static-page__section">
         <h1 className="static-page__main-header">Frequently asked questions</h1>
         <h2 className="static-page__sub-header about__sub-header--top">
           LEARN ABOUT TRUSAT
@@ -120,13 +119,38 @@ export default function FAQ() {
         <h2 className="static-page__sub-header">MANAGING MY PROFILE</h2>
 
         <h3 className="about__question">
+          What is the secret you sent me when I created an account with my email
+          and a password?
+        </h3>
+        <p className="static-page__copy  about__answer">
+          In TruSat the identity of all users is represented by an Ethereum
+          address. You can see your address by hovering over your name in your
+          profile page!
+          <div className="static-page__copy  about__answer"></div>
+          When you sign up via the email/password flow, the following process
+          happens under the hood: 1. An Ethereum wallet is created for you. 2.
+          Your wallet is then encrypted with the password that you provide to
+          create a unique “Secret”. 3. This secret is then emailed to the email
+          address you provided.
+        </p>
+        <p className="static-page__copy  about__answer">
+          When you need to sign in again you must verify that you are the owner
+          of the Ethereum address tied to your identity by providing the secret
+          and the password you chose. Therefore it is vital that you take care
+          to store your secret and password somewhere safe. See your settings
+          page for a handy guide on how to migrate away from the
+          email/password/secret login flow to a more streamlined and secure
+          one-click login via MetaMask.
+        </p>
+
+        <h3 className="about__question">
           Do I need a MetaMask Account to submit an observation?
         </h3>
         <p className="static-page__copy  about__answer">
           A MetaMask account is only necessary if you would like to add an
           additional level of security to your data. If you choose to connect
           your TruSat account to Metamask, you will unlock additional features
-          on your profile. To create a Metamask account, please visit
+          on your profile. To create a Metamask account, please visit{` `}
           <a
             className="static-page__link"
             target="_blank"
