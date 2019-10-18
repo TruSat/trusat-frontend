@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import HowToAppScreenshotPlaceholder from "../assets/how_to-sky_view-placeholder.png";
+
 
 export default function HowTo() {
   return (
@@ -101,44 +103,118 @@ export default function HowTo() {
         <p className="static-page__copy">
           The next level is looking at the right place at the right time to see a specific satellite. There are two easy methods to determine when and where to look in the night sky
         </p>
+      </section>
+      <section className="static-page__section">
+        <h2 className="static-page__sub-header">Augmented reality mobile apps</h2>
+        <p className="static-page__copy">
+          If you happen to be outside at night and want to spot a satellite on a whim, a smartphone app like SkyView (  
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://play.google.com/store/apps/details?id=com.t11.skyviewfree&hl=en_US"
+          >Android</a>{" "} and{" "}  
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://apps.apple.com/us/app/skyview-lite/id413936865"
+          >Apple</a>) 
+          will do most of the work for you.  >>> [Step by step with screen shots of SkyView]
+        </p>
+        <p className="static-page__copy">
+          SkyView allows you to search their catalog for a satellite then the AR features of the app point you in the direction of the satellite you’re looking for. Apps like SkyView are best for impromptu satellite spotting sessions.
+        </p>
         <div className="how-to__step-wrapper2">
           <div className="how-to__step__number">
-            A.
+            1.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                className="how-to__screenshot"
+                src={HowToAppScreenshotPlaceholder}
+                alt="Skyview screenshot"
+              ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              If you happen to be outside at night and want to spot a satellite on a whim, a smartphone app like SkyView (  
-              <a
-                className="static-page__link"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://play.google.com/store/apps/details?id=com.t11.skyviewfree&hl=en_US"
-              >Android</a>{" "} and{" "}  
-              <a
-                className="static-page__link"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://apps.apple.com/us/app/skyview-lite/id413936865"
-              >Apple</a>) 
-              will do most of the work for you.  >>> [Step by step with screen shots of SkyView]
-            </p>
-            <p className="static-page__copy">
-              SkyView allows you to search their catalog for a satellite then the AR features of the app point you in the direction of the satellite you’re looking for. Apps like SkyView are best for impromptu satellite spotting sessions.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
             </p>
           </div>
         </div>
         <div className="how-to__step-wrapper2">
           <div className="how-to__step__number">
-            B.
+            2.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                className="how-to__screenshot"
+                src={HowToAppScreenshotPlaceholder}
+                alt="Skyview screenshot"
+              ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            </p>
+          </div>
+        </div>
+        <div className="how-to__step-wrapper2">
+          <div className="how-to__step__number">
+            3.
+          </div>
+          <div className="how-to__step__image-wrapper">
+            <img
+                className="how-to__screenshot"
+                src={HowToAppScreenshotPlaceholder}
+                alt="Skyview screenshot"
+              ></img>
+          </div>
+          <div className="how-to__step__description">
+            <p className="static-page__copy">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            </p>
+          </div>
+        </div>
+        <div className="how-to__step-wrapper2">
+          <div className="how-to__step__number">
+            4.
+          </div>
+          <div className="how-to__step__image-wrapper">
+            <img
+                className="how-to__screenshot"
+                src={HowToAppScreenshotPlaceholder}
+                alt="Skyview screenshot"
+              ></img>
+          </div>
+          <div className="how-to__step__description">
+            <p className="static-page__copy">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            </p>
+          </div>
+        </div>
+        <div className="how-to__step-wrapper2">
+          <div className="how-to__step__number">
+            5.
+          </div>
+          <div className="how-to__step__image-wrapper">
+            <img
+                className="how-to__screenshot"
+                src={HowToAppScreenshotPlaceholder}
+                alt="Skyview screenshot"
+              ></img>
+          </div>
+          <div className="how-to__step__description">
+            <p className="static-page__copy">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="static-page__section">
+        <h2 className="static-page__sub-header">Star maps</h2>
+        <p className="static-page__copy">
               If you want to find a specific satellite, we recommend planning ahead because satellites in Low Earth Orbit (LEO) do not appear at the same spot and time each day.
             </p>
             <p className="static-page__copy">
@@ -161,8 +237,6 @@ export default function HowTo() {
             <p className="static-page__copy">
               The International Space Station (ISS) is a good satellite to start with because it is quite bright (brighter than some planets).  And there are people onboard! This video will walk you through using Heavens Above to plan your satellite hunt.
             </p>
-          </div>
-        </div>
       </section>
 
       <section className="static-page__section">
