@@ -110,10 +110,23 @@ export default function HowTo() {
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              If you want to find a specific satellite, we recommend planning ahead because satellites in Low Earth Orbit (LEO) do not appear at the same spot and time each day.  The International Space Station (ISS) is a good satellite to start with because it is quite bright (brighter than some planets).  And there are people onboard! This video will walk you through using Heavens Above to plan your satellite hunt.
+              If you happen to be outside at night and want to spot a satellite on a whim, a smartphone app like SkyView (  
+              <a
+                className="static-page__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://play.google.com/store/apps/details?id=com.t11.skyviewfree&hl=en_US"
+              >Android</a>{" "} and{" "}  
+              <a
+                className="static-page__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://apps.apple.com/us/app/skyview-lite/id413936865"
+              >Apple</a>) 
+              will do most of the work for you.  >>> [Step by step with screen shots of SkyView]
             </p>
             <p className="static-page__copy">
-              Sites like HeavensAbove and CalSky will tell you all the times a particular satellite will be visible at your location, which passes will be easiest for you to see, and plot the satellite’s path along star maps.
+              SkyView allows you to search their catalog for a satellite then the AR features of the app point you in the direction of the satellite you’re looking for. Apps like SkyView are best for impromptu satellite spotting sessions.
             </p>
           </div>
         </div>
@@ -126,10 +139,27 @@ export default function HowTo() {
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              If you happen to be outside at night and want to spot a satellite on a whim, a smartphone app like SkyView will do most of the work for you.  >>> [Step by step with screen shots of SkyView]
+              If you want to find a specific satellite, we recommend planning ahead because satellites in Low Earth Orbit (LEO) do not appear at the same spot and time each day.
             </p>
             <p className="static-page__copy">
-              Smartphone apps like SkyView (Android, Apple) allow you to search their catalog for a satellite then the AR features of the app point you in the direction of the satellite you’re looking for. Apps like SkyView are best for impromptu satellite spotting sessions.
+              Sites like{" "}  
+              <a
+                className="static-page__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.heavens-above.com/PassSummary.aspx?satid=25544&lat=0&lng=0&loc=Unspecified&alt=0&tz=UCT"
+              >Heavens Above</a>{" "}  
+              and{" "}  
+              <a
+                className="static-page__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://www.calsky.com/cs.cgi?cha=12&sec=4"
+              >CalSky</a>{" "} 
+              will tell you all the times a particular satellite will be visible at your location, which passes will be easiest for you to see, and plot the satellite’s path along star maps.
+            </p>
+            <p className="static-page__copy">
+              The International Space Station (ISS) is a good satellite to start with because it is quite bright (brighter than some planets).  And there are people onboard! This video will walk you through using Heavens Above to plan your satellite hunt.
             </p>
           </div>
         </div>
@@ -166,7 +196,13 @@ export default function HowTo() {
           At this time, translating basic observation data (time and location) into a format readable by version 0.1 TruSat Prototype requires a relatively advanced workflow, including use of free third-party software, and is not recommended for all but the most committed.
         </p>
         <p className="static-page__copy">
-          If you are that person and want to become a TruSat Alpha Test Pilot, please email support@trusat.org and we’ll help walk you through the process and get you set up with the necessary software tools. 
+          If you are that person and want to become a TruSat Alpha Test Pilot, please email{" "}
+          <a
+                className="static-page__link"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="mailto:support@trusat.org"
+              >support@trusat.org</a>{" "}and we’ll help walk you through the process and get you set up with the necessary software tools. 
         </p>
       </section>
 
