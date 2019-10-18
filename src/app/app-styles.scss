@@ -1101,6 +1101,11 @@ STATIC PAGE VIEW
   text-decoration: underline;
 }
 
+.static-page__link--highlight {
+  color: $primary-highlight-color;
+  text-decoration: underline;
+}
+
 /* ---------- 
 WHITEPAPER VIEW
 ---------- */
@@ -1126,7 +1131,7 @@ ABOUT VIEW
   font-family: $display-font;
   font-size: 20px;
   font-weight: $light-weight;
-  line-height: 30px;
+  line-height: 25px;
 }
 
 .static-page__main-header--small {
@@ -1179,6 +1184,7 @@ ABOUT VIEW
 @media (min-width: 600px) {
   .about__block--right {
     padding-left: 1em;
+    padding-top: 0.15em; //Fix for mystery misalignment
     flex: 1 1 230px;
     width: 200px;
   }
