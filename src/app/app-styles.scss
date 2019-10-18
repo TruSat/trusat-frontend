@@ -771,12 +771,11 @@ WELCOME VIEW
   }
 }
 
-// flip middle join wrapper order on mobile
-@media (max-width: 600px) {
+@media (max-width: 770px) {
   .welcome__illustration-join-wrapper {
     flex-wrap: wrap;
   }
-
+  // flip middle join wrapper order on mobile
   .welcome__illustration-join-wrapper--center {
     flex-direction: column-reverse;
   }
@@ -799,6 +798,13 @@ WELCOME VIEW
 
   .welcome__illustration-wrapper--right {
     margin-left: 3em;
+  }
+}
+
+@media (max-width: 770px) {
+  .welcome__illustration-wrapper--left,
+  .welcome__illustration-wrapper--right {
+    margin: 0 auto;
   }
 }
 
@@ -985,7 +991,8 @@ WELCOME VIEW
 }
 
 .welcome__small-copy__ul {
-  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
   list-style: disc outside;
   margin-left: 1.1em;
   font-size: 18px;
