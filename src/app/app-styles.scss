@@ -1081,6 +1081,7 @@ STATIC PAGE VIEW
   border-bottom: 1px solid $primary-text-color;
   margin: 3em 0em 0.5em 0em;
   padding-bottom: 0.25em;
+  text-transform: uppercase;
   width: 100%;
 }
 
@@ -1231,9 +1232,32 @@ ABOUT VIEW
 /* ----------
 HOW TO VIEW 
 ---------- */
+.static-page__wrapper--how-to {
+  font-family: $display-font;
+  font-size: 20px;
+  font-weight: $light-weight;
+  line-height: 25px;
+}
+
 .how-to__sub-header--top {
   margin-top: 0.5em;
 }
+
+.how-to__step-wrapper2 {
+  display: flex;
+}
+
+.how-to__step__number {
+  border: 1px solid red;
+}
+.how-to__step__image-wrapper {
+  border: 1px solid green;
+}
+.how-to__step__description {
+  border: 1px solid yellow;
+}
+
+
 
 @media (min-width: 600px) {
   .how-to__sub-header--top {
