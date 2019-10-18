@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TwitterIcon from "../../assets/TwitterIcon.png";
+import InstagramIcon from "../../assets/InstagramIcon.png";
 import FacebookIcon from "../../assets/FacebookIcon.png";
 import GithubIcon from "../../assets/GithubIcon.png";
 import DiscordIcon from "../../assets/DiscordIcon.svg";
@@ -24,6 +25,17 @@ export default function Footer() {
             href="http://your_url_here.html"
           >
             <img className="footer__icon" src={TwitterIcon} alt="twitter"></img>
+          </a>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="http://your_url_here.html"
+          >
+            <img
+              className="footer__icon footer__instagram-icon"
+              src={InstagramIcon}
+              alt="instagram"
+            ></img>
           </a>
           <a
             target="_blank"
