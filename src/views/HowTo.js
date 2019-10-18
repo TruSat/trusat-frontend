@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import HowToAppScreenshotPlaceholder from "../assets/how_to-sky_view-placeholder.png";
+import IconClock from "../assets/icon-clock.svg";
+import IconLocation from "../assets/icon-location.svg";
 
 
 export default function HowTo() {
@@ -23,7 +25,11 @@ export default function HowTo() {
             1.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                  className="how-to__screenshot"
+                  src={IconClock}
+                  alt="Skyview screenshot"
+                ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -36,7 +42,11 @@ export default function HowTo() {
             2.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                  className="how-to__screenshot"
+                  src={IconLocation}
+                  alt="Skyview screenshot"
+                ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
