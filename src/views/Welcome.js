@@ -112,10 +112,13 @@ export default function Home() {
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white">How can I help?</h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
-                By joining us
+                Join us so we can keep you posted
               </p>
               <p className="welcome__small-copy--white">
-                We’re working on features to make satellite tracking easier for everyone. To stay posted on these features, or learn more about contributing to the project yourself, sign up here:
+              TruSat’s first release—the TruSat Catalog—gives existing satellite trackers a live index of satellite positions, but does not yet assist with capturing observations. So we’re working on features to make satellite tracking easier for everyone. 
+              </p>
+              <p className="welcome__small-copy--white">
+                Sign up to stay posted on new features, hackathons, bounties, and governance:
               </p>
               <NavLink className="app__nav-link" to="/signup">
                 <RoundedButton
