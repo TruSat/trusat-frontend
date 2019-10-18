@@ -1174,7 +1174,7 @@ ABOUT VIEW
 @media (min-width: 600px) {
   .about__block--left {
     width: 200px;
-    flex: 0 0 230px;
+    flex: 0 0 250px;
   }
 }
 
@@ -1188,6 +1188,12 @@ ABOUT VIEW
     flex: 1 1 230px;
     width: 200px;
   }
+}
+
+
+.about__illustration {
+  height: auto;
+  width: 100%;
 }
 
 .static-page__sub-header--margin_fix {
