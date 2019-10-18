@@ -1327,15 +1327,31 @@ Footer
 }
 
 .footer__content {
+  align-items: center;
   display: flex;
-  justify-content: space-between;
-  padding: 1em 2em;
+  flex-direction: column-reverse;
+  padding: 1em;
+}
+
+@media (min-width: 600px) {
+  .footer__content {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 1em 2em;
+  }
 }
 
 .footer__text-links-wrapper {
   display: flex;
   align-items: center;
   font-size: $extra-small-font-size;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .footer__text-links-wrapper {
+    margin-top: none;
+  }
 }
 
 .footer__text-link {
