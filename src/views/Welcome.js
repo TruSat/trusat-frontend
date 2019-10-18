@@ -33,13 +33,16 @@ export default function Home() {
 
           <div className="welcome__title-intro-wrapper">
             <p className="welcome__large-copy--bold">
-              Space debris is a problem. <br className="app__hide-on-mobile"></br>You are the solution.
+              Space debris is a problem.{" "}
+              <br className="app__hide-on-mobile"></br>You are the solution.
             </p>
             <p className="welcome__medium-copy--white">
-              The number of satellites is increasing by 25x. Collisions threaten the technology we depend on every day, and our spacefaring future.          
+              The number of satellites is increasing by 25x. Collisions threaten
+              the technology we depend on every day, and our spacefaring future.
             </p>
             <p className="welcome__large-copy--bold">
-              Welcome to the sport <br className="app__hide-on-mobile"></br>of satellite tracking:
+              Welcome to the sport <br className="app__hide-on-mobile"></br>of
+              satellite tracking:
             </p>
             <div className="welcome__iframe-wrapper">
               <iframe
@@ -57,7 +60,9 @@ export default function Home() {
               ></iframe>
             </div>
             <p className="welcome__medium-copy--white">
-              Use TruSat to find satellites in the sky with your naked eye, record their positions, and help create a planetary record that encourages sustainable practices in orbit.          
+              Use TruSat to find satellites in the sky with your naked eye,
+              record their positions, and help create a planetary record that
+              encourages sustainable practices in orbit.
             </p>
           </div>
         </section>
@@ -65,19 +70,34 @@ export default function Home() {
         {/* SECTION/GRADIENT TWO */}
         <section className="welcome__section--two">
           <div className="welcome__illustration-join-wrapper">
-            <img
-              className="welcome__illustration welcome__illustration--left"
-              src={IllustrationPlaceholder}
-              alt="Illustration"
-            ></img>
+            <div className="welcome__illustration-wrapper--left">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
+
             <div className="welcome__join-copy-wrapper">
-              <h2 className="welcome__sub-header--white">Satellite tracking? <span className="welcome__small-copy--emoticon">¯\_(ツ)_/¯</span></h2>
+              <h2 className="welcome__sub-header--white">
+                Satellite tracking?{" "}
+                <span className="welcome__small-copy--emoticon">
+                  ¯\_(ツ)_/¯
+                </span>
+              </h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
                 It’s fun, relaxing, and all you need is a clear sky
               </p>
               <ul className="welcome__small-copy__ul">
-                <li>TruSat will show you to when and where to look to see satellites that are the highest priority to monitor. </li>
-                <li>When you record an observation, you’ll be credited in the TruSat Catalog, and the satellite will be added to your collection.</li>
+                <li className="welcome__small-copy__li">
+                  TruSat will show you to when and where to look to see
+                  satellites that are the highest priority to monitor.{" "}
+                </li>
+                <li>
+                  When you record an observation, you’ll be credited in the
+                  TruSat Catalog, and the satellite will be added to your
+                  collection.
+                </li>
                 <li>Never seen a sat? We’ll show you how.</li>
               </ul>
             </div>
@@ -90,35 +110,50 @@ export default function Home() {
                 Earth needs a transparent record of satellite behavior.
               </p>
               <p className="welcome__small-copy--white">
-                Space is wild. There’s been no way to ensure responsible practices in orbit, because there’s been no trusted source of orbital data. To fill this gap, TruSat tasks a global network of citizens to track satellites of interest. 
+                Space is wild. There’s been no way to ensure responsible
+                practices in orbit, because there’s been no trusted source of
+                orbital data. To fill this gap, TruSat tasks a global network of
+                citizens to track satellites of interest.
               </p>
               <p className="welcome__small-copy--white">
-                TruSat merges many individual observations into one planetary record of orbital positions. This allows the world to measure satellite behavior against international standards of sustainability. Learn more            
+                TruSat merges many individual observations into one planetary
+                record of orbital positions. This allows the world to measure
+                satellite behavior against international standards of
+                sustainability. Learn more
               </p>
             </div>
-            <img
-              className="welcome__illustration welcome__illustration--right"
-              src={IllustrationPlaceholder}
-              alt="Illustration"
-            ></img>
+            <div className="welcome__illustration-wrapper--right">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
           </div>
 
           <div className="welcome__illustration-join-wrapper">
-            <img
-              className="welcome__illustration welcome__illustration--left"
-              src={IllustrationPlaceholder}
-              alt="Illustration"
-            ></img>
+            <div className="welcome__illustration-wrapper--left">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
+
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white">How can I help?</h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
                 Join us so we can keep you posted
               </p>
               <p className="welcome__small-copy--white">
-              TruSat’s first release—the TruSat Catalog—gives existing satellite trackers a live index of satellite positions, but does not yet assist with capturing observations. So we’re working on features to make satellite tracking easier for everyone. 
+                TruSat’s first release—the TruSat Catalog—gives existing
+                satellite trackers a live index of satellite positions, but does
+                not yet assist with capturing observations. So we’re working on
+                features to make satellite tracking easier for everyone.
               </p>
               <p className="welcome__small-copy--white">
-                Sign up to stay posted on new features, hackathons, bounties, and governance:
+                Sign up to stay posted on new features, hackathons, bounties,
+                and governance:
               </p>
               <NavLink className="app__nav-link" to="/signup">
                 <RoundedButton
@@ -176,7 +211,9 @@ export default function Home() {
                 noValidate
               >
                 <div className="welcome__mailing-list-inputs">
-                  <h2 className="welcome__sub-header--white">Stay in the loop</h2>
+                  <h2 className="welcome__sub-header--white">
+                    Stay in the loop
+                  </h2>
                   <p className="welcome__small-copy--white">
                     Join the mailing list to stay posted on the project
                   </p>

@@ -729,7 +729,6 @@ WELCOME VIEW
 }
 
 .welcome__globe-image {
-  // max-width: 650px;
   margin-top: -3em;
 }
 
@@ -784,26 +783,27 @@ WELCOME VIEW
 }
 
 .welcome__illustration {
+  height: auto;
   width: 100%;
 }
 
 @media (min-width: 600px) {
   .welcome__illustration {
-    max-width: 360px;
-    max-height: 360px;
+    width: 360px;
+    height: auto;
   }
 
-  .welcome__illustration--left {
+  .welcome__illustration-wrapper--left {
     margin-right: 3em;
   }
 
-  .welcome__illustration--right {
+  .welcome__illustration-wrapper--right {
     margin-left: 3em;
   }
 }
 
 .welcome__join-copy-wrapper {
-  width: 100%;
+  flex-wrap: wrap;
 }
 
 .welcome__sub-header--white {
@@ -815,10 +815,6 @@ WELCOME VIEW
 }
 
 @media (min-width: 600px) {
-  .welcome__join-copy-wrapper {
-    min-width: 350px;
-  }
-
   .welcome__sub-header--white {
     margin-bottom: none;
   }
@@ -989,10 +985,14 @@ WELCOME VIEW
 }
 
 .welcome__small-copy__ul {
+  border: 1px solid red;
   list-style: disc outside;
   margin-left: 1.1em;
   font-size: 18px;
   line-height: 22px;
+}
+
+.welcome__small-copy__li {
 }
 
 .welcome__small-copy__ul li {
