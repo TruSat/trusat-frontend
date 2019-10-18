@@ -742,7 +742,6 @@ WELCOME VIEW
 
 .welcome__title-intro-wrapper {
   margin: -2em 1em 1em 1em;
-  position: relative;
   text-align: center;
 }
 
@@ -839,9 +838,8 @@ WELCOME VIEW
 }
 
 @media (min-width: 600px) {
-  .welcome__iframe-wrapper{
+  .welcome__iframe-wrapper {
     margin-bottom: 2em;
-    margi-top: 1em;
     max-width: 890px;
   }
 }
@@ -964,7 +962,7 @@ WELCOME VIEW
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 3.5em;
-    padding: 0 12em;
+    padding: 0 25%;
   }
 }
 
@@ -1093,7 +1091,6 @@ STATIC PAGE VIEW
   margin-bottom: 1em;
 }
 
-
 @media (min-width: 600px) {
   .static-page__copy {
     font-size: 20px;
@@ -1172,18 +1169,16 @@ ABOUT VIEW
 }
 
 .about__block--left {
-
 }
 
 @media (min-width: 600px) {
   .about__block--left {
     width: 200px;
-    flex: 0 0 230px
+    flex: 0 0 230px;
   }
 }
 
 .about__block--right {
-
 }
 
 @media (min-width: 600px) {
