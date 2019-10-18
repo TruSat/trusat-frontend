@@ -784,7 +784,6 @@ WELCOME VIEW
 }
 
 .welcome__illustration {
-  margin-bottom: 1em;
   width: 100%;
 }
 
@@ -1085,10 +1084,18 @@ STATIC PAGE VIEW
 }
 
 .static-page__copy {
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 25px;
+  line-height: 22px;
   margin-bottom: 1em;
+}
+
+
+@media (min-width: 600px) {
+  .static-page__copy {
+    font-size: 20px;
+    line-height: 25px;
+  }
 }
 
 .static-page__link {
@@ -1116,6 +1123,70 @@ WHITEPAPER VIEW
 /* ---------- 
 ABOUT VIEW  
 ---------- */
+
+.about__about-trusat-section {
+  font-family: $display-font;
+  font-size: 20px;
+  font-weight: $light-weight;
+  line-height: 30px;
+}
+
+.static-page__main-header--small {
+  color: $primary-highlight-color;
+  font-size: 24px;
+  line-height: 30px;
+}
+
+@media (min-width: 600px) {
+  .static-page__main-header--small {
+    font-size: 36px;
+    line-height: 45px;
+  }
+}
+
+.about__deck {
+  margin-top: 1em;
+}
+
+.about__block-wrapper {
+  margin-top: 4em;
+}
+
+.about__block-pair {
+  display: block;
+  margin-bottom: 2em;
+}
+
+@media (min-width: 600px) {
+  .about__block-pair {
+    display: flex;
+  }
+}
+
+.about__block--left {
+
+}
+
+@media (min-width: 600px) {
+  .about__block--left {
+    width: 200px;
+    flex: 0 0 230px
+  }
+}
+
+.about__block--right {
+
+}
+
+@media (min-width: 600px) {
+  .about__block--right {
+    padding-left: 1em;
+    flex: 1 1 230px;
+    width: 200px;
+  }
+}
+
+
 .about__partners-wrapper {
   margin: 1em 0em 1em 0em;
 }

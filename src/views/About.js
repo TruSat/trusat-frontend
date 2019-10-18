@@ -1,40 +1,80 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
+
 
 export default function About() {
   return (
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
-        <h1 className="static-page__main-header">About Trusat</h1>
-        <h2 className="static-page__sub-header about__sub-header--top">
-          WHAT IS TRUSAT?
-        </h2>
-        <p className="static-page__copy">
-          TruSat is an open source, citizen-powered space sustainability tool
-          designed to assess satellite operations against sustainability
-          standards. TruSat depends on satellite observers like you making and
-          reporting satellite observations. TruSat’s Proof of Satellite software
-          engine assembles observations of a satellite from around the world
-          into a record of the satellite’s orbital position suitable for
-          assessing orbital behavior against sustainability standards
+        <h1 className="static-page__main-header--small">TruSat is a citizen-powered, open source system for creating a globally-accessible, trusted record of satellite orbital positions.</h1>
+        <p className="static-page__copy about__deck">
+          TruSat is primarily designed to enable the assessment of satellite operations in the context of space sustainability standards.
         </p>
-        <p className="static-page__copy">
-          Version 0.1 of TruSat was developed by{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://consensys.space"
-          >
-            ConsenSys Space.
-          </a>{" "}
-          TruSat is ConsenSys Space’s first step on its mission to democratize,
-          diversify, and decentralize space endeavors. TruSat aims to enable any
-          person on Earth to be a direct contributor to the long-term
-          sustainability of outer space, whether by spotting satellites,
-          developing the software that eases the process of making and reporting
-          satellite observations, or writing or translating documentation
-        </p>
+
+        <div className="about__block-wrapper">
+
+        <div className="about__block-pair">
+          <div className="about__block--left">
+            <img
+              className="welcome__illustration welcome__illustration--left"
+              src={IllustrationPlaceholderWide}
+              alt="Illustration"
+            ></img>
+          </div>
+          <div className="about__block--right">
+            <p className="static-page__copy">
+              Citizen satellite trackers are the eyes of the TruSat system.
+            </p>
+          </div>
+        </div>
+        <div className="about__block-pair">
+          <div className="about__block--left">
+            <img
+              className="welcome__illustration welcome__illustration--left"
+              src={IllustrationPlaceholderWide}
+              alt="Illustration"
+            ></img>
+          </div>
+          <div className="about__block--right">
+            <p className="static-page__copy">
+              The TruSat software merges observations of a satellite from around the world into a transparent record of its location.          
+            </p>
+          </div>
+        </div>
+        <div className="about__block-pair">
+          <div className="about__block--left">
+            <img
+              className="welcome__illustration welcome__illustration--left"
+              src={IllustrationPlaceholderWide}
+              alt="Illustration"
+            ></img>
+          </div>
+          <div className="about__block--right">
+            <p className="static-page__copy">
+              Space sustainability advocates keep the system focused on the highest space sustainability priorities.  And they can use TruSat’s transparent record to foster accountability for sustainable orbital operations.
+            </p>
+          </div>
+        </div>
+        <div className="about__block-pair">
+          <div className="about__block--left">
+            <img
+              className="welcome__illustration welcome__illustration--left"
+              src={IllustrationPlaceholderWide}
+              alt="Illustration"
+            ></img>
+          </div>
+          <div className="about__block--right">
+            <p className="static-page__copy">
+              The TruSat Open Source Community maintains and advances the TruSat software.
+            </p>
+          </div>
+        </div>
+        </div>
+
+
+
+
         <h2 className="static-page__sub-header">LINKS</h2>
         <p className="static-page__copy">
           <NavLink className="app__nav-link static-page__link" to="/whitepaper">
