@@ -68,7 +68,6 @@ OBJECT INFO
 
 @media (min-width: 600px) {
   .object-info__header-info-wrapper {
-    // display: flex;
     display: inline;
     font-size: $extra-small-font-size;
   }
@@ -166,6 +165,12 @@ OBJECT INFO
   color: $secondary-theme-color;
   text-decoration-line: underline;
   margin-bottom: 0.5em;
+}
+
+.object-info__limited-info-message {
+  color: $primary-highlight-color;
+  font-size: $large-font-size;
+  margin-bottom: 1em;
 }
 
 /* ----------
