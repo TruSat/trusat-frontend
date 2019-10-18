@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import Arrow from "../assets/Arrow.svg";
+import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
 
@@ -10,116 +10,196 @@ export default function Home() {
 
   return (
     <div className="welcome__wrapper">
-      {/* SECTION/GRADIENT ONE */}
-      <section className="welcome__section--one">
-        <div className="welcome__title-logo-wrapper">
-          <img
-            className="welcome__image welcome__logo-image"
-            src={TrusatLogoBig}
-            alt="Trusat logo"
-          ></img>
-
-          <h2 className="welcome__trusat-tagline">
-            CITIZEN-LED SATELLITE TRACKING
-          </h2>
-
-          <img
-            className="welcome__image welcome__globe-image"
-            src="https://trusat-assets.s3.amazonaws.com/welcome-illustration.png"
-            alt="globe"
-          ></img>
-        </div>
-
-        <div className="welcome__title-intro-wrapper">
-          <p className="welcome__large-copy--bold">Space debris is a problem</p>
-          <p className="welcome__medium-copy--white">
-            The number of satellites is increasing by 10x. If we don’t limit
-            satellite collisions, then fields of debris could cage us on Earth
-            for generations.
-          </p>
-          <p className="welcome__large-copy--bold">You are the solution</p>
-          <p className="welcome__medium-copy--white">
-            Use TruSat to find satellites and record their positions, creating a
-            global record that deters bad practices in orbit.
-          </p>
-          <p className="welcome__large-copy--bold">How?</p>
-          <p className="welcome__medium-copy--white welcome__medium-copy--last">
-            Check out the explainer video.
-          </p>
-          <div className="welcome_arrow-wrapper">
+      <div className="welcome__content__wrapper">
+        {/* SECTION/GRADIENT ONE */}
+        <section className="welcome__section--one">
+          <div className="welcome__title-logo-wrapper">
             <img
-              className="welcome__image welcome__arrow-image"
-              src={Arrow}
-              alt="down arrow"
+              className="welcome__image welcome__logo-image"
+              src={TrusatLogoBig}
+              alt="Trusat logo"
+            ></img>
+
+            <h2 className="welcome__trusat-tagline">
+              OPEN SOURCE SPACE SUSTAINABILITY
+            </h2>
+
+            <img
+              className="welcome__image welcome__globe-image"
+              src={`https://trusat-assets.s3.amazonaws.com/welcome-illustration.png`}
+              alt="globe"
             ></img>
           </div>
-        </div>
 
-        <div className="welcome__iframe-wrapper">
-          <iframe
-            className="welcome__iframe"
-            title="pale blue dot video"
-            src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
-            frameBorder="0"
-            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen="allowfullscreen"
-            mozallowullscreen="mozallowfullscreen"
-            msallowfullscreen="msallowfullscreen"
-            oallowfullscreen="oallowfullscreen"
-            webkitallowfullscreen="webkitallowfullscreen"
-            modestbranding="1"
-          ></iframe>
-        </div>
-      </section>
-
-      {/* SECTION/GRADIENT TWO */}
-      <section className="welcome__section--two">
-        <div className="welcome__illustration-join-wrapper">
-          <img
-            className="welcome__illustration welcome__illustration--left"
-            src={IllustrationPlaceholder}
-            alt="Illustration"
-          ></img>
-          <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Join the trackers</h2>
-            <p className="welcome__small-copy--white">
-              We’ll show you how to spot satellites. It’s fun, and all you need
-              is a clear sky.
+          <div className="welcome__title-intro-wrapper">
+            <p className="welcome__large-copy--bold">
+              Space debris is a problem.{" "}
+              <br className="app__hide-on-mobile"></br>You are the solution.
             </p>
-            <p className="welcome__small-copy--white">
-              TruSat shows you when and where to look to see satellites that are
-              the highest priority to monitor. When you record an observation,
-              you’ll be credited in the{" "}
-              <NavLink
-                className="app__nav-link static-page__link"
-                to="/catalog"
-              >
-                TruSat Catalog
-              </NavLink>
-              , and the satellite will be added to your collection.
+            <p className="welcome__medium-copy--white">
+              The number of satellites is increasing by 25x. Collisions threaten
+              the technology we depend on every day, and our spacefaring future.
             </p>
-            <p className="welcome__small-copy--white">
-              Your observations are merged with data from a global community of
-              trackers, creating a trusted record of satellite behavior.
+            <p className="welcome__large-copy--bold">
+              Welcome to the sport <br className="app__hide-on-mobile"></br>of
+              satellite tracking:
             </p>
-            <NavLink className="app__nav-link" to="/signup">
-              <RoundedButton
-                addStyles="welcome__join-button"
-                color="orange"
-                text="START TRACKING"
-              />
-            </NavLink>
+            <div className="welcome__iframe-wrapper">
+              <iframe
+                className="welcome__iframe"
+                title="pale blue dot video"
+                src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen="allowfullscreen"
+                mozallowullscreen="mozallowfullscreen"
+                msallowfullscreen="msallowfullscreen"
+                oallowfullscreen="oallowfullscreen"
+                webkitallowfullscreen="webkitallowfullscreen"
+                modestbranding="1"
+              ></iframe>
+            </div>
+            <p className="welcome__medium-copy--white">
+              Use TruSat to find satellites in the sky with your naked eye,
+              record their positions, and help create a planetary record that
+              encourages sustainable practices in orbit.
+            </p>
           </div>
-        </div>
+        </section>
 
-        <div className="welcome__illustration-join-wrapper welcome__illustration-join-wrapper--center">
-          <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">Join the build</h2>
-            <p className="welcome__small-copy--white">
-              TruSat is in its early alpha stage, and is entirely open source.
-              Join our developer mailing list to stay updated on bounties,
-              hackathons, and open issues.
-            </p>
+        {/* SECTION/GRADIENT TWO */}
+        <section className="welcome__section--two">
+          <div className="welcome__illustration-join-wrapper">
+            <div className="welcome__illustration-wrapper--left">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
+
+            <div className="welcome__join-copy-wrapper">
+              <h2 className="welcome__sub-header--white">
+                Satellite tracking?{" "}
+                <span className="welcome__small-copy--emoticon">
+                  ¯\_(ツ)_/¯
+                </span>
+              </h2>
+              <p className="welcome__small-copy--white welcome__small-copy--bold">
+                It’s fun, relaxing, and all you need is a clear sky
+              </p>
+              <ul className="welcome__small-copy__ul">
+                <li className="welcome__small-copy__li">
+                  TruSat will show you to when and where to look to see
+                  satellites that are the highest priority to monitor.{" "}
+                </li>
+                <li>
+                  When you record an observation, you’ll be credited in the
+                  TruSat Catalog, and the satellite will be added to your
+                  collection.
+                </li>
+                <li>Never seen a sat? We’ll show you how.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="welcome__illustration-join-wrapper welcome__illustration-join-wrapper--center">
+            <div className="welcome__join-copy-wrapper">
+              <h2 className="welcome__sub-header--white">Why track sats?</h2>
+              <p className="welcome__small-copy--white welcome__small-copy--bold">
+                Earth needs a transparent record of satellite behavior.
+              </p>
+              <p className="welcome__small-copy--white">
+                Space is wild. There’s been no way to ensure responsible
+                practices in orbit, because there’s been no trusted source of
+                orbital data. To fill this gap, TruSat tasks a global network of
+                citizens to track satellites of interest.
+              </p>
+              <p className="welcome__small-copy--white">
+                TruSat merges many individual observations into one planetary
+                record of orbital positions. This allows the world to measure
+                satellite behavior against international standards of
+                sustainability. Learn more
+              </p>
+            </div>
+            <div className="welcome__illustration-wrapper--right">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
+          </div>
+
+          <div className="welcome__illustration-join-wrapper">
+            <div className="welcome__illustration-wrapper--left">
+              <img
+                className="welcome__illustration"
+                src={IllustrationPlaceholder}
+                alt="Illustration"
+              ></img>
+            </div>
+
+            <div className="welcome__join-copy-wrapper">
+              <h2 className="welcome__sub-header--white">How can I help?</h2>
+              <p className="welcome__small-copy--white welcome__small-copy--bold">
+                Join us so we can keep you posted
+              </p>
+              <p className="welcome__small-copy--white">
+                TruSat’s first release—the TruSat Catalog—gives existing
+                satellite trackers a live index of satellite positions, but does
+                not yet assist with capturing observations. So we’re working on
+                features to make satellite tracking easier for everyone.
+              </p>
+              <p className="welcome__small-copy--white">
+                Sign up to stay posted on new features, hackathons, bounties,
+                and governance:
+              </p>
+              <NavLink className="app__nav-link" to="/signup">
+                <RoundedButton
+                  addStyles="welcome__join-button"
+                  color="orange"
+                  text="JOIN THE COMMUNITY"
+                />
+              </NavLink>
+            </div>
+          </div>
+        </section>
+
+        {/* SECTION/GRADIENT THREE */}
+        <section className="welcome__section--three">
+          <div className="about__partners-wrapper">
+            <h2 className="static-page__sub-header">PARTNERS</h2>
+            <div className="welcome__partners-list">
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div className="welcome__bottom__wrapper">
+        <div className="welcome__content__wrapper">
+          {/* SECTION/GRADIENT FOUR */}
+          <section className="welcome__section--four">
             <div className="welcome__mailing-list-wrapper">
               <form
                 action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
@@ -131,12 +211,18 @@ export default function Home() {
                 noValidate
               >
                 <div className="welcome__mailing-list-inputs">
+                  <h2 className="welcome__sub-header--white">
+                    Stay in the loop
+                  </h2>
+                  <p className="welcome__small-copy--white">
+                    Join the mailing list to stay posted on the project
+                  </p>
                   <div className="welcome__input-button-wrapper">
                     <input
                       required
                       name="EMAIL"
                       id="mce-EMAIL"
-                      className="welcome__input welcome__input--white"
+                      className="welcome__input"
                       type="email"
                       placeholder="Your email"
                       value={email}
@@ -155,142 +241,9 @@ export default function Home() {
                 </div>
               </form>
             </div>
-          </div>
-          <img
-            className="welcome__illustration welcome__illustration--right"
-            src={IllustrationPlaceholder}
-            alt="Illustration"
-          ></img>
+          </section>
         </div>
-
-        <div className="welcome__illustration-join-wrapper">
-          <img
-            className="welcome__illustration welcome__illustration--left"
-            src={IllustrationPlaceholder}
-            alt="Illustration"
-          ></img>
-          <div className="welcome__join-copy-wrapper">
-            <h2 className="welcome__sub-header--white">How TruSat works</h2>
-            <p className="welcome__small-copy--white">
-              Space is wild. There’s been no way to ensure responsible practices
-              in orbit, because there’s been no open, widely-trusted source of
-              data about satellite behavior.
-            </p>
-            <p className="welcome__small-copy--white">
-              To fill this gap, the TruSat system is designed to enable the
-              emerging space sustainability community to task a global network
-              of citizen satellite observers to track satellites of interest.
-              TruSat’s open software merges observations from around the planet
-              into a decentralized record of orbital positions suitable for
-              measuring orbital behavior against sustainability standards.{" "}
-            </p>
-            <NavLink className="app__nav-link" to="/whitepaper">
-              <RoundedButton
-                addStyles="welcome__join-button"
-                color="orange"
-                text="LEARN MORE"
-              />
-            </NavLink>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION/GRADIENT THREE */}
-      <section className="welcome__section--three">
-        <div className="welcome__partners-wrapper">
-          <h2 className="welcome__sub-header--white">Partners</h2>
-          <div className="welcome__partners-list">
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION/GRADIENT FOUR */}
-      <section className="welcome__section--four">
-        <div className="welcome__mailing-list-wrapper">
-          <form
-            action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-            method="post"
-            id="mc-embedded-subscribe-form"
-            name="mc-embedded-subscribe-form"
-            className="validate"
-            target="_blank"
-            noValidate
-          >
-            <div className="welcome__mailing-list-inputs">
-              <h2 className="welcome__sub-header--black">Stay in the loop</h2>
-              <p className="welcome__small-copy--black">
-                Join the mailing list to stay posted on the project
-              </p>
-              <div className="welcome__input-button-wrapper">
-                <input
-                  required
-                  name="EMAIL"
-                  id="mce-EMAIL"
-                  className="welcome__input"
-                  type="email"
-                  placeholder="Your email"
-                  value={email}
-                  onChange={event => setEmail(event.target.value)}
-                ></input>
-                <RoundedButton
-                  type="submit"
-                  name="subscribe"
-                  addStyles="welcome__subscribe-button"
-                  color="black"
-                  text="SUBSCRIBE"
-                  id="mc-embedded-subscribe"
-                  onSubmit={() => setEmail("")}
-                />
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
+      </div>
     </div>
   );
 }

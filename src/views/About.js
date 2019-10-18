@@ -1,176 +1,290 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
+import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
+import RoundedButton from "../app/components/RoundedButton";
+
+
 
 export default function About() {
+  const [email, setEmail] = useState("");
+
   return (
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
-        <h1 className="static-page__main-header">About Trusat</h1>
-        <h2 className="static-page__sub-header about__sub-header--top">
-          WHAT IS TRUSAT?
-        </h2>
-        <p className="static-page__copy">
-          TruSat is an open source, citizen-powered space sustainability tool
-          designed to assess satellite operations against sustainability
-          standards. TruSat depends on satellite observers like you making and
-          reporting satellite observations. TruSat’s Proof of Satellite software
-          engine assembles observations of a satellite from around the world
-          into a record of the satellite’s orbital position suitable for
-          assessing orbital behavior against sustainability standards
+        <h1 className="static-page__main-header--small">TruSat is a citizen-powered, open source system for creating a globally-accessible, trusted record of satellite orbital positions.</h1>
+        <p className="static-page__copy about__deck">
+          TruSat is primarily designed to enable the assessment of satellite operations in the context of space sustainability standards.
         </p>
-        <p className="static-page__copy">
-          Version 0.1 of TruSat was developed by{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://consensys.space"
-          >
-            ConsenSys Space.
-          </a>{" "}
-          TruSat is ConsenSys Space’s first step on its mission to democratize,
-          diversify, and decentralize space endeavors. TruSat aims to enable any
-          person on Earth to be a direct contributor to the long-term
-          sustainability of outer space, whether by spotting satellites,
-          developing the software that eases the process of making and reporting
-          satellite observations, or writing or translating documentation
-        </p>
-        <h2 className="static-page__sub-header">LINKS</h2>
-        <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
-            The TruSat white paper
-          </NavLink>{" "}
-          — A technical deep dive into how TruSat works.
-        </p>
-        <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/charter">
-            The TruSat Charter
-          </NavLink>{" "}
-          — An outline of TruSat’s initial governance.
-        </p>
-        <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/faq">
-            FAQ
-          </NavLink>{" "}
-          — Frequently asked questions
-        </p>
-        <p className="static-page__copy">
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://discordapp.com"
-          >
-            TruSat's community chat
-          </a>{" "}
-          — A Discord channel to discuss the project and get help.
-        </p>
-        <p className="static-page__copy">
-          Follow project updates on{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.facebook.com/PlanetaryResourcesInc/"
-          >
-            Facebook
-          </a>{" "}
-          and{" "}
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://twitter.com/planetaryrsrcs"
-          >
-            Twitter
-          </a>
-        </p>
-        <div className="about__partners-wrapper">
-          <h2 className="static-page__sub-header">PARTNERS</h2>
-          <div className="about__partners-list">
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
-            <div
-              style={{
-                background: "#C4C4C4",
-                borderRadius: "50%",
-                height: "120px",
-                marginBottom: "1em",
-                width: "120px"
-              }}
-            ></div>
+
+        <div className="about__block-wrapper">
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <img
+                className="welcome__illustration welcome__illustration--left"
+                src={IllustrationPlaceholderWide}
+                alt="Illustration"
+              ></img>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                Citizen satellite trackers are the eyes of the TruSat system.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <img
+                className="welcome__illustration welcome__illustration--left"
+                src={IllustrationPlaceholderWide}
+                alt="Illustration"
+              ></img>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                The TruSat software merges observations of a satellite from around the world into a transparent record of its location.          
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <img
+                className="welcome__illustration welcome__illustration--left"
+                src={IllustrationPlaceholderWide}
+                alt="Illustration"
+              ></img>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                Space sustainability advocates keep the system focused on the highest space sustainability priorities.  And they can use TruSat’s transparent record to foster accountability for sustainable orbital operations.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <img
+                className="welcome__illustration welcome__illustration--left"
+                src={IllustrationPlaceholderWide}
+                alt="Illustration"
+              ></img>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                The TruSat Open Source Community maintains and advances the TruSat software.
+              </p>
+            </div>
           </div>
         </div>
-        <h2 className="static-page__sub-header about__sub-header--top">
-          Press
-        </h2>
-        <p className="static-page__copy">
-          Space News — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            The Blockchain-based Satellite Catalog to Keep Space Clean
-          </a>
-        </p>
-        <p className="static-page__copy">
-          Tech Crunch — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            Here’s the Headline for the Story
-          </a>
-        </p>
-        <p className="static-page__copy">
-          New York Times — 
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://spacenews.com/"
-          >
-            Blockchain in Outer Space Might Just Work
-          </a>
-        </p>
+
+        <div className="about__block-wrapper">
+          <h2 className="static-page__sub-header static-page__sub-header--margin_fix">LINKS</h2>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/faq">
+                Frequently asked questions
+              </NavLink>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                Learn about the ins and outs of TruSat.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/whitepaper">
+                The TruSat white paper
+              </NavLink>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                A technical deep dive into how TruSat works.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/charter">
+                The TruSat Charter
+              </NavLink>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+              An outline of TruSat’s initial governance.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <a
+                className="static-page__link static-page__link--highlight"
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://discordapp.com"
+              >
+                TruSat chat
+              </a>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                A Discord community chat to discuss the project and get help.
+              </p>
+            </div>
+          </div>
+        </div>
+
+
+
+ 
+        <div className="about__partners-wrapper">
+          <h2 className="static-page__sub-header">PARTNERS</h2>
+          <div className="welcome__partners-list">
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
+            <div className="welcome__partners-list__logo-wrapper">
+              <img
+                className="welcome__partners-list__logo"
+                src={PartnerLogoSWF}
+                alt="Secure World Foundation Logo"
+              ></img>
+            </div>
+          </div>
+        </div>
+        <div className="about__block-wrapper">
+          <h2 className="static-page__sub-header about__sub-header--top">
+            PRESS
+          </h2>
+          <p className="static-page__copy">
+            Space News — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              The Blockchain-based Satellite Catalog to Keep Space Clean
+            </a>
+          </p>
+          <p className="static-page__copy">
+            Tech Crunch — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              Here’s the Headline for the Story
+            </a>
+          </p>
+          <p className="static-page__copy">
+            New York Times — 
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://spacenews.com/"
+            >
+              Blockchain in Outer Space Might Just Work
+            </a>
+          </p>
+        </div>
+        <div className="about__block-wrapper">
+          <h2 className="static-page__sub-header about__sub-header--top">
+            FOLLOW TRUSAT
+          </h2>
+          <p className="static-page__copy">
+            Follow ConsenSys Space for TruSat project updates on {" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/PlanetaryResourcesInc/"
+            >
+              Facebook
+            </a>
+            ,{" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/planetaryrsrcs"
+            >
+              Twitter
+            </a>,{" "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/PlanetaryResourcesInc/"
+            >
+              Github
+            </a>,{" and "}
+            <a
+              className="static-page__link"
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://twitter.com/planetaryrsrcs"
+            >
+              Instagram
+            </a>
+          </p>
+          
+          <div className="welcome__mailing-list-wrapper">
+              <form
+                action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+                method="post"
+                id="mc-embedded-subscribe-form"
+                name="mc-embedded-subscribe-form"
+                className="validate"
+                target="_blank"
+                noValidate
+              >
+                <div className="welcome__mailing-list-inputs">
+                  <p className="welcome__small-copy--white">
+                    Join the mailing list to stay posted on the project
+                  </p>
+                  <div className="welcome__input-button-wrapper">
+                    <input
+                      required
+                      name="EMAIL"
+                      id="mce-EMAIL"
+                      className="welcome__input"
+                      type="email"
+                      placeholder="Your email"
+                      value={email}
+                      onChange={event => setEmail(event.target.value)}
+                    ></input>
+                    <RoundedButton
+                      type="submit"
+                      name="subscribe"
+                      addStyles="welcome__subscribe-button"
+                      color="orange"
+                      text="SUBSCRIBE"
+                      id="mc-embedded-subscribe"
+                      onSubmit={() => setEmail("")}
+                    />
+                  </div>
+                </div>
+              </form>
+            </div>
+
+
+
+        </div>
+
+
       </section>
 
     </div>
