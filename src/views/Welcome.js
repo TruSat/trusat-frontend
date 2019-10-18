@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import Arrow from "../assets/Arrow.svg";
+import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
 
@@ -133,54 +133,30 @@ export default function Home() {
 
         {/* SECTION/GRADIENT THREE */}
         <section className="welcome__section--three">
-          <div className="welcome__partners-wrapper">
-            <h2 className="welcome__sub-header--white">Partners</h2>
+          <div className="about__partners-wrapper">
+            <h2 className="static-page__sub-header">PARTNERS</h2>
             <div className="welcome__partners-list">
-              <div
-                style={{
-                  background: "#C4C4C4",
-                  borderRadius: "50%",
-                  height: "120px",
-                  marginBottom: "1em",
-                  width: "120px"
-                }}
-              ></div>
-              <div
-                style={{
-                  background: "#C4C4C4",
-                  borderRadius: "50%",
-                  height: "120px",
-                  marginBottom: "1em",
-                  width: "120px"
-                }}
-              ></div>
-              <div
-                style={{
-                  background: "#C4C4C4",
-                  borderRadius: "50%",
-                  height: "120px",
-                  marginBottom: "1em",
-                  width: "120px"
-                }}
-              ></div>
-              <div
-                style={{
-                  background: "#C4C4C4",
-                  borderRadius: "50%",
-                  height: "120px",
-                  marginBottom: "1em",
-                  width: "120px"
-                }}
-              ></div>
-              <div
-                style={{
-                  background: "#C4C4C4",
-                  borderRadius: "50%",
-                  height: "120px",
-                  marginBottom: "1em",
-                  width: "120px"
-                }}
-              ></div>
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
+              <div className="welcome__partners-list__logo-wrapper">
+                <img
+                  className="welcome__partners-list__logo"
+                  src={PartnerLogoSWF}
+                  alt="Secure World Foundation Logo"
+                ></img>
+              </div>
             </div>
           </div>
         </section>
