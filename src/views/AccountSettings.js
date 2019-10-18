@@ -61,6 +61,7 @@ function UserSettings({ history }) {
 
   const logout = () => {
     localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-allow-cookies");
     history.push(`/`);
     window.location.reload();
   };

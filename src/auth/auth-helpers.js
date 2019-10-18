@@ -178,6 +178,7 @@ export const checkJwt = async jwt => {
     // otherwise remove jwt from localstorage refresh browser
   } else {
     localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-allow-cookies"); // delete their previously chosen option
     window.location.reload();
   }
 };

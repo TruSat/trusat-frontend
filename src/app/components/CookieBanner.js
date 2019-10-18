@@ -1,24 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-import ReactGA from "react-ga";
-import { deleteCookie } from "../app-helpers";
+import { setCookies, deleteCookies } from "../app-helpers";
 import Button from "../../app/components/Button";
-import Footer from "../components/Footer";
 
-export default function CookieBanner() {
-  const [isOpen, setIsOpen] = useState(true);
-
-  const setCookies = () => {
-    ReactGA.initialize("UA-149300298-1");
-  };
-
-  const deleteCookies = () => {
-    deleteCookie("_ga");
-    deleteCookie("_gat");
-    deleteCookie("_gid");
-  };
-
-  return isOpen ? (
+export default function CookieBanner({ isBannerOpen, setIsBannerOpen }) {
+  return isBannerOpen ? (
     <div className="cookie-banner">
       <p className="cookie-banner__message">
         We use cookies to improve this product.
@@ -26,8 +12,9 @@ export default function CookieBanner() {
       <div className="cookie-banner__button-wrapper">
         <Button
           onClick={() => {
+            localStorage.setItem("trusat-allow-cookies", true);
             setCookies();
-            setIsOpen(false);
+            setIsBannerOpen(false);
           }}
           color="white"
           text="OK"
@@ -35,8 +22,9 @@ export default function CookieBanner() {
         ></Button>
         <Button
           onClick={() => {
+            localStorage.setItem("trusat-allow-cookies", false);
             deleteCookies();
-            setIsOpen(false);
+            setIsBannerOpen(false);
           }}
           color="black"
           text="No Thanks"
@@ -46,7 +34,5 @@ export default function CookieBanner() {
         <p className="cookie-banner__link">Read our privacy policy</p>
       </NavLink>
     </div>
-  ) : (
-    <Footer />
-  );
+  ) : null;
 }
