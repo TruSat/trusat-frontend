@@ -6,8 +6,12 @@ export default function ClaimAccount() {
   const [email, setEmail] = useState("");
   const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
   const [isSuccess, setIsSuccess] = useState(false);
+  const [isNotSuccess, setIsNotSuccess] = useState(false);
 
   const claimAccount = async () => {
+    setIsSuccess(false);
+    setIsSuccess(false);
+
     await doPost(`/claimAccount`);
     await withData(
       JSON.stringify({
@@ -16,8 +20,15 @@ export default function ClaimAccount() {
     );
     setEmail("");
 
-    if (data && !isError) {
+    console.log(`data = `, data);
+
+    // tell user to check their email
+    if (data.result === true && !isError) {
       setIsSuccess(true);
+    }
+    // tell user TruSat does not have anything on file for that email address
+    if (data.result === false && !isError) {
+      setIsNotSuccess(true);
     }
   };
 
@@ -46,6 +57,11 @@ export default function ClaimAccount() {
       {isSuccess ? (
         <p className="claim-account__message">
           Check your email for further instructions!
+        </p>
+      ) : null}
+      {isNotSuccess ? (
+        <p className="claim-account__message">
+          The email you provided does not have an account with TruSat!
         </p>
       ) : null}
       {isError ? (
