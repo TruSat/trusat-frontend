@@ -1067,13 +1067,16 @@ JOIN VIEW
 .join__wrapper {
   margin: 0 auto;
   padding: 2em 1em;
-  // text-align: center;
 }
 
 @media (min-width: 600px) {
   .join__wrapper {
     padding: 3em 4em;
   }
+}
+
+.join__header {
+  text-align: center;
 }
 
 .join__logo-image {
@@ -1129,24 +1132,44 @@ JOIN VIEW
 }
 
 .join__content-wrapper {
-  display: flex;
+
+}
+
+@media (min-width: 600px) {
+  .join__content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+  }
 }
 
 .join__mailing-list-content-wrapper {
-  border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   text-align: start;
-  width: 50%;
+}
+
+@media (min-width: 600px) {
+  .join__mailing-list-content-wrapper{
+    width: 50%;
+  }
 }
 
 .join__image-wrapper {
-  border: 1px solid red;
   position: relative;
-  width: 50%;
+}
+
+@media (min-width: 600px) {
+  .join__image-wrapper  {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    padding-left: 2em;
+    width: 50%;
+  }
 }
 
 .join__image {
+  object-fit: contain;
   position: absloute;
   width: 100%;
   height: auto;

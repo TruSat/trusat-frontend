@@ -7,14 +7,23 @@ import TestPilots from "../app/components/TestPilots";
 export default function Join() {
   return (
     <div className="join__wrapper">
-      <img
-        className="join__image join__logo-image"
-        src={TrusatLogoBig}
-        alt="Trusat logo"
-      ></img>
-      <h2 className="join__trusat-tagline">OPEN SOURCE SPACE SUSTAINABILITY</h2>
+      <div className="join__header">
+        <img
+          className="join__image join__logo-image"
+          src={TrusatLogoBig}
+          alt="Trusat logo"
+        ></img>
+        <h2 className="join__trusat-tagline">OPEN SOURCE SPACE SUSTAINABILITY</h2>
+      </div>
 
       <div className="join__content-wrapper">
+        <div className="join__image-wrapper">
+          <img
+            className="join__image"
+            src={JoinOpenSource}
+            alt="open source team"
+          ></img>
+        </div>
         <div className="join__mailing-list-content-wrapper">
           <h2 className="join__sub-header">Join the Community</h2>
           <p className="join__copy">
@@ -22,13 +31,6 @@ export default function Join() {
             governance:
           </p>
           <MailingListForm />
-        </div>
-        <div className="join__image-wrapper">
-          <img
-            className="join__image"
-            src={JoinOpenSource}
-            alt="open source team"
-          ></img>
         </div>
       </div>
 

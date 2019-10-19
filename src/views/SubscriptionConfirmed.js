@@ -1,5 +1,6 @@
 import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
+import { NavLink } from "react-router-dom";
 
 export default function SubscriptionConfirmed() {
   return (
@@ -21,19 +22,34 @@ export default function SubscriptionConfirmed() {
           Please check your inbox for a welcome email.  You will receive updates about new features and opportunities to get involved in building both the software and community powering TruSat.
           </p>
           <p className="static-page__copy static-page__copy--bold">
-          Join the conversation
+          <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://discordapp.com/invite/MEyA2Ns"
+            >Join the conversation
+            </a>
           </p>
           <p className="static-page__copy">
           Chat with your fellow TruSat community members and the people behind TruSat. Ask questions, share ideas.
           </p>
           <p className="static-page__copy static-page__copy--bold">
-          Learn how to track satellites
+            <NavLink
+              className="app__nav-link static-page__link"
+              to="/how"
+            >
+              Learn how to track satellites
+            </NavLink>
           </p>
           <p className="static-page__copy">
           Try your hand at sat spotting and build your skills
           </p>
           <p className="static-page__copy static-page__copy--bold">
-          Learn more about TruSat
+          <NavLink
+              className="app__nav-link static-page__link"
+              to="/faq"
+            >
+              Learn more about TruSat
+            </NavLink>
           </p>
           <p className="static-page__copy">
           Who’s behind TruSat, why does it exist, how does it work?
