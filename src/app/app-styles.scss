@@ -1207,7 +1207,6 @@ MAILING LIST FORM
 
 /* ----------
 STATIC PAGE VIEW 
-- /whitepaper
 - /about
 - /howto
 - /charter
@@ -1276,23 +1275,6 @@ STATIC PAGE VIEW
 }
 
 /* ---------- 
-WHITEPAPER VIEW
----------- */
-.whitepaper__link-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-}
-
-.white-paper__nav-link {
-  margin-bottom: 1em;
-}
-
-.white-paper__section-link {
-  text-decoration: none;
-}
-
-/* ---------- 
 ABOUT VIEW  
 ---------- */
 .about__about-trusat-section {
@@ -1355,7 +1337,6 @@ ABOUT VIEW
     width: 200px;
   }
 }
-
 
 .about__illustration {
   height: auto;
@@ -1431,7 +1412,7 @@ HOW TO VIEW
 }
 
 .how-to__step__description {
-  padding-left: 0; 
+  padding-left: 0;
 }
 
 @media (min-width: 600px) {
@@ -1461,7 +1442,6 @@ HOW TO VIEW
     flex-direction: row;
   }
 }
-
 
 /* ----------
 CHARTER VIEW
@@ -1559,10 +1539,6 @@ Footer
   margin: 0 0.5em;
   width: 30px;
 }
-
-.footer__instagram-icon {
-}
-
 .footer__icon--last {
   margin: none;
 }
