@@ -77,6 +77,13 @@ export default function Info() {
             </div>
           </div>
         </div>
+        <div className="object__header__buttons app__hide-on-mobile">
+          <NavLink className="app__nav-link" to="/submit">
+            <span className="catalog__button catalog__get-data-button">
+              Submit observations
+            </span>
+          </NavLink>
+        </div>
       </section>
 
       <section className="object-info__background-section-wrapper">

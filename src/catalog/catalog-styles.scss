@@ -10,6 +10,7 @@ CATALOG
 .catalog__header-wrapper {
   align-content: center;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   text-align: right;
 }

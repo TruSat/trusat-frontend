@@ -173,6 +173,11 @@ OBJECT INFO
   margin-bottom: 1em;
 }
 
+.object__header__buttons {
+  flex-grow: 1;
+  text-align: right;
+}
+
 /* ----------
 OBJECT OBSERVATIONS NAV
 ---------- */
