@@ -1067,7 +1067,7 @@ JOIN VIEW
 .join__wrapper {
   margin: 0 auto;
   padding: 2em 1em;
-  text-align: center;
+  // text-align: center;
 }
 
 @media (min-width: 600px) {
@@ -1600,6 +1600,6 @@ SUBSCRIPTION CONFIRMED
   font-size: 36px;
   font-weight: bold;
   line-height: 44px;
-  margin-top: 5em;
+  margin-top: 2em;
   text-align: start;
 }
