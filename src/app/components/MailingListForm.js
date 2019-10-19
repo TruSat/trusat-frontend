@@ -5,7 +5,11 @@ export default function MailingListForm({ testPilots }) {
 
   return (
     <form
-      action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+      action={
+        testPilots
+          ? `https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=a76fc2d9aa`
+          : `https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71`
+      }
       method="post"
       id="mc-embedded-subscribe-form"
       name="mc-embedded-subscribe-form"
@@ -24,26 +28,15 @@ export default function MailingListForm({ testPilots }) {
           value={email}
           onChange={event => setEmail(event.target.value)}
         ></input>
-        {testPilots ? (
-          <input
-            style={{ display: "none" }}
-            type="checkbox"
-            value="2"
-            name="group[24881][2]"
-            id="mce-group[24881]-24881-1"
-            checked={true}
-          ></input>
-        ) : null}
         <button
           type="submit"
           name="subscribe"
           className="mailing-list__subscribe-button"
           color="white"
-          text="SUBSCRIBE"
           id="mc-embedded-subscribe"
           onSubmit={() => setEmail("")}
         >
-          Subscribe
+          SUBSCRIBE
         </button>
       </div>
     </form>
