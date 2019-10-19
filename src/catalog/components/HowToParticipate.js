@@ -7,7 +7,7 @@ export default function HowToParticipate({ catalogFilter }) {
     <div className="catalog__how-to-wrapper">
       <h2 className="catalog__how-to-text">WHAT IS THIS?</h2>
         <p className="catalog__sidebar-text">
-          This catalog is TruSat's first app. It shows active satellite trackers where satellites are going next, so trackers can add new observations. The dataset was seeded by {" "}
+          This catalog is TruSat's first app. It shows active satellite trackers where satellites are going next, so trackers can capture new observations. It was seeded with data from {" "}
           <a
                 className="catalog__link--lowlight"
                 target="_blank"

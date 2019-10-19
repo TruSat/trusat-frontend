@@ -8,18 +8,19 @@ export default function sketch(p) {
 
   // Colors for adge
   const pallette = [
-    "#FC7756", // salmon
-    "#004F85", // blue
-    "#090914", //dark blue
-    "white"
+		'#FC7756', // salmon
+		'#db3f33', // mars
+		'#004F85', // blue
+		'#090914', // dark blue
+		'white'
   ];
 
   // Configure processing drawing
   p.setup = () => {
     p.createCanvas(canvasSize, canvasSize, p.SVG);
-    //p.noLoop();
+    // p.noLoop();
     p.rectMode(p.CENTER);
-    p.noStroke();
+    p.strokeJoin(p.ROUND);
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
@@ -34,88 +35,97 @@ export default function sketch(p) {
   };
 
   p.draw = () => {
-    // Color first shape (based on Sat's age using Sat ID number range)
+
+    let color1
+    let color2
+
+    // Color first hexagon (based on Sat's age using Sat ID number range)
     if (noradNumber < 20000) {
-      p.fill(pallette[0]);
+      color1 = pallette[0]
     } else if (noradNumber < 40000) {
-      p.fill(pallette[1]);
+      color1 = pallette[1]
     } else {
-      p.fill(pallette[3]);
+      color1 = pallette[2]
     }
 
-    // Draw first shape (hexagon only)
-    drawHexagon();
+    // Draw first hexagon
+    p.stroke(color1);
+    drawHexagon1();
 
-    // Draw first shape (based arbitrarily on last digit in Sat ID)
-    if (lastDigit <= 3) {
-      drawHexagon();
-    } else if (lastDigit <= 6) {
-      drawDiamond();
-    } else {
-      drawCircle();
-    }
-
-    // Color second shape (based on Sat's age using Sat ID number range)
+    // Color second hexagon (based on Sat's age using Sat ID number range)
     if (noradNumber < 20000) {
-      p.fill(pallette[1]);
+      color2 = pallette[2]
     } else if (noradNumber < 40000) {
-      p.fill(pallette[0]);
+      color2 = pallette[0]
     } else {
-      p.fill(pallette[2]);
+      color2 = pallette[1]
     }
 
-    // Draw second shape (based arbitrarily on second-to-last digit in Sat ID)
-    if (secondToLastDigit <= 3) {
-      drawHexagon(0.8);
-    } else if (secondToLastDigit <= 6) {
-      drawDiamond(0.8);
-    } else {
-      drawCircle(0.7);
-    }
+    // Draw second hexagon
+    p.fill(color2);
+    p.stroke(color2);
+    drawHexagon2();
+
+    // Draw highlight
+    drawHighlight();
+
+    // Draw lowlight
+    drawLowlight();
+    p.blendMode(p.NORMAL);
 
     // Draw number text
+    p.noStroke();
     p.textAlign(p.CENTER);
     p.textSize(10);
-    p.fill(pallette[3]);
+    p.fill(pallette[4]);
     p.text(noradNumber, canvasSize / 2, canvasSize / 2 + 3);
   };
 
   // Polygon drawers
-  function drawCircle(sizeFactor = 1) {
-    p.ellipse(
-      canvasSize / 2,
-      canvasSize / 2,
-      canvasSize * sizeFactor,
-      canvasSize * sizeFactor
-    );
-  }
-
-  function drawDiamond(sizeFactor = 1) {
-    drawPolygon(
-      canvasSize / 2,
-      canvasSize / 2,
-      (canvasSize / 2) * sizeFactor,
-      4
-    );
-  }
-
-  function drawHexagon(sizeFactor = 1) {
-    drawPolygon(
-      canvasSize / 2,
-      canvasSize / 2,
-      (canvasSize / 2) * sizeFactor,
-      6
-    );
-  }
-
-  function drawPolygon(x, y, radius, npoints) {
-    let angle = p.TWO_PI / npoints;
+  function drawHexagon1() {
+    p.noFill();
     p.beginShape();
-    for (let a = 0; a < p.TWO_PI; a += angle) {
-      let sx = x + p.cos(a) * radius;
-      let sy = y + p.sin(a) * radius;
-      p.vertex(sx, sy);
-    }
+    p.vertex(24, 0.953);
+    p.vertex(43.919, 12.453);
+    p.vertex(43.919, 35.453);
+    p.vertex(24, 46.953);
+    p.vertex(4.081, 35.453);
+    p.vertex(4.081, 12.453);
     p.endShape(p.CLOSE);
-  }
+  };
+
+  function drawHexagon2() {
+    p.beginShape();
+    p.vertex(24, 4.953);
+    p.vertex(40.454, 14.453);
+    p.vertex(40.454, 33.453);
+    p.vertex(24, 42.953);
+    p.vertex(7.546, 33.453);
+    p.vertex(7.546, 14.453);
+    p.endShape(p.CLOSE);
+  };
+  
+  function drawHighlight(color) {
+    p.blendMode(p.SCREEN);
+    p.noFill()
+    p.stroke(255, 255, 255, 75);
+    p.beginShape();
+    p.vertex(7.546, 14.453);
+    p.vertex(24, 4.953);
+    p.vertex(40.454, 14.453);
+    p.endShape();
+  };
+  
+  
+  function drawLowlight(color) {
+    p.blendMode(p.MULTIPLY);
+    p.noFill();
+    p.stroke(8, 17, 34, 100);
+    p.beginShape();
+    p.vertex(40.454, 33.453);
+    p.vertex(24, 42.953);
+    p.vertex(7.546, 33.453);
+    p.endShape();
+  };
+  
 }
