@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { ethers } from "ethers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
@@ -113,13 +113,6 @@ export default function LoginForm() {
         <button className="email-form__button--white">
           {isAuthenticating ? `...Loading` : `Log in`}
         </button>
-      </div>
-
-      <div className="email-form__link-to-login-wrapper">
-        <p>Dont' have an account?</p>
-        <NavLink className="app__nav-link" to="/signup">
-          <p className="email-form__sign-up-text">Sign up</p>
-        </NavLink>
       </div>
     </form>
   );
