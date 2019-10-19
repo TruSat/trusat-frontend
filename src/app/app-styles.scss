@@ -1505,8 +1505,6 @@ FAQ view
   margin-top: 1em;
 }
 
-
-
 /* ----------
 COOKIE BANNER
 ---------- */
@@ -1584,14 +1582,16 @@ Footer
 .footer__text-link {
   margin-right: 1em;
 }
-
-.footer__icon {
+/* ----------
+SOCIAL ICONS
+---------- */
+.social-icon {
   height: auto;
   margin: 0 0.5em;
   width: 30px;
 }
 
-.footer__icon--last {
+.social-icon--last {
   margin: none;
 }
 
