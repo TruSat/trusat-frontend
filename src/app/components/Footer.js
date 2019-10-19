@@ -4,7 +4,6 @@ import TwitterIcon from "../../assets/TwitterIcon.png";
 import InstagramIcon from "../../assets/InstagramIcon.png";
 import FacebookIcon from "../../assets/FacebookIcon.png";
 import GithubIcon from "../../assets/GithubIcon.png";
-import DiscordIcon from "../../assets/DiscordIcon.svg";
 
 export default function Footer() {
   return (
