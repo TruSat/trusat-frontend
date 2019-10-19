@@ -6,14 +6,15 @@ export default function SubscriptionConfirmed() {
   return (
     <div>
       <div className="static-page__wrapper join__wrapper">
-        <img
-          className="join__image join__logo-image"
-          src={TrusatLogoBig}
-          alt="Trusat logo"
-        ></img>
-        <h2 className="join__trusat-tagline">
-          OPEN SOURCE SPACE SUSTAINABILITY
-        </h2>
+        <div className="join__header">
+          <img
+            className="join__image join__logo-image"
+            src={TrusatLogoBig}
+            alt="Trusat logo"
+          ></img>
+          <h2 className="join__trusat-tagline">OPEN SOURCE SPACE SUSTAINABILITY</h2>
+        </div>
+
         <p className="subscription-confirmed__copy">Signup Confirmed</p>
           <p className="static-page__copy">
           Launched on October 21, 2019, you are among the earliest members this global open source community dedicated to preserving our spacefaring future.  TruSat is currently a prototype, with only a fraction of its planned functionality.  As an early member, you’ll have opportunities to shape TruSat at every stage.   
