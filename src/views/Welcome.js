@@ -155,7 +155,7 @@ export default function Home() {
                 Sign up to stay posted on new features, hackathons, bounties,
                 and governance:
               </p>
-              <NavLink className="app__nav-link" to="/signup">
+              <NavLink className="app__nav-link" to="/join">
                 <RoundedButton
                   addStyles="welcome__join-button"
                   color="orange"
