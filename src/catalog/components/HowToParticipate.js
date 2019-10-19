@@ -9,7 +9,7 @@ export default function HowToParticipate({ catalogFilter }) {
       <NavLink className="app__nav-link" to="/how">
         <p className="catalog__link-text">Learn how to track satellites</p>
       </NavLink>
-      <div className="catalog__button-wrapper">
+      <div className="catalog__button-wrapper app__hide-on-desktop">
         {catalogFilter === "priorities" || catalogFilter === "all" ? (
           <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
         ) : null}

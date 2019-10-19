@@ -6,8 +6,20 @@ CATALOG
   max-width: 1000px;
 }
 
+.catalog__header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
 .catalog__header {
+  border: 1px solid red;
   @include view-title;
+}
+
+.catalog__header__buttons {
+  border: 1px solid green;
+  margin-top: 2em;
 }
 
 @media (min-width: 600px) {
@@ -112,8 +124,8 @@ HOW TO PARTICIPATE
   display: inline-block;
   margin-bottom: 1em;
   padding: 0.5em 1em;
-  width: 40%;
   text-align: center;
+  white-space: nowrap;
 }
 
 .catalog__link {

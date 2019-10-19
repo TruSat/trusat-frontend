@@ -46,7 +46,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
         className="catalog__button catalog__get-data-button"
         onClick={fetchData}
       >
-        Get data
+        Download predictions
       </span>
 
       {textFile ? (
