@@ -27,8 +27,7 @@ export default function Join() {
         <div className="join__mailing-list-content-wrapper">
           <h2 className="join__sub-header">Join the Community</h2>
           <p className="join__copy">
-            Sign up to stay posted on new features, hackathons, bounties and
-            governance:
+            Be the first to know about new features, opportunities to join the software build, and what you can do to grow TruSat into a powerful tool for space sustainability.  
           </p>
           <MailingListForm />
         </div>

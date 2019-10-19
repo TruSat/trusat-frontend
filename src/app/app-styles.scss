@@ -1076,7 +1076,14 @@ JOIN VIEW
 }
 
 .join__header {
+  margin-bottom: 3em;
   text-align: center;
+}
+
+@media (min-width: 600px) {
+  .join__header {
+    margin-bottom: 6em;
+  }
 }
 
 .join__logo-image {
@@ -1132,13 +1139,14 @@ JOIN VIEW
 }
 
 .join__content-wrapper {
-
+  margin-bottom: 4em;
 }
 
 @media (min-width: 600px) {
   .join__content-wrapper {
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 6em
   }
 }
 
@@ -1146,10 +1154,12 @@ JOIN VIEW
   display: flex;
   flex-direction: column;
   text-align: start;
+  margin-top: 1em;
 }
 
 @media (min-width: 600px) {
   .join__mailing-list-content-wrapper{
+    margin-top: 0;
     width: 50%;
   }
 }
@@ -1183,13 +1193,13 @@ MAILING LIST FORM
   position: relative;
   height: 40px;
   margin-top: 1em;
-  max-width: 550px;
+  max-width: 320px;
   width: 95%;
 }
 
 @media (min-width: 600px) {
   .mailing-list__input-button-wrapper {
-    width: 100%;
+    max-width: 500px;
   }
 }
 
@@ -1222,6 +1232,11 @@ MAILING LIST FORM
   border-radius: 4px;
   font-weight: 500;
   padding: 0.5em 2em;
+  white-space: nowrap;
+}
+
+.mailing-list__subscribe-button--test-pilots {
+  color: $primary-theme-color;
 }
 
 /* ----------
@@ -1587,7 +1602,6 @@ TEST PILOTS
   align-items: center;
   display: flex;
   text-align: start;
-  margin-top: 3em;
 }
 
 .test-pilots__header {
@@ -1599,9 +1613,9 @@ TEST PILOTS
 }
 
 .test-pilots__image-wrapper {
+  align-self: start;
   position: relative;
   margin-right: 1em;
-  width: 100px;
 }
 
 .test-pilots__image {
@@ -1610,13 +1624,21 @@ TEST PILOTS
 }
 
 .test-pilots__copy-wrapper {
-  margin-left: 1em;
+  margin-left: 0;
+}
+
+@media (min-width: 600px) {
+  .test-pilots__copy-wrapper{
+    margin-left: 1em;
+  }
 }
 
 .test-pilots__copy {
   font-size: 18px;
   line-height: 22px;
 }
+
+
 
 /* ----------
 SUBSCRIPTION CONFIRMED 

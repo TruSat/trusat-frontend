@@ -31,12 +31,19 @@ export default function MailingListForm({ testPilots }) {
         <button
           type="submit"
           name="subscribe"
-          className="mailing-list__subscribe-button"
+          className="mailing-list__subscribe-button
+          {testPilots
+            ? `mailing-list__subscribe-button--test-pilots`
+            : ``
+            }"
           color="white"
           id="mc-embedded-subscribe"
           onSubmit={() => setEmail("")}
         >
-          SUBSCRIBE
+          {testPilots
+          ? `SIGN UP`
+          : `JOIN`
+          }
         </button>
       </div>
     </form>
