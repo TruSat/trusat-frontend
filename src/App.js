@@ -15,6 +15,7 @@ import About from "./views/About";
 import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
+import Join from "./views/Join";
 import ObjectInfo from "./views/ObjectInfo";
 import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
@@ -28,6 +29,7 @@ import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
+import MailistListWelcome from "./views/MailingListWelcome";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -92,6 +94,7 @@ export default function App() {
           <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/about" component={About} />
           <Route path="/how" component={HowTo} />
+          <Route path="/join" component={Join}></Route>
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/claim" component={ClaimAccount} />
@@ -101,6 +104,11 @@ export default function App() {
           <Route path="/charter" component={Charter} />
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
+          {/* User is sent to this route when they complete a mail chimp sign up */}
+          <Route
+            path="/subscription-confirmed"
+            component={MailistListWelcome}
+          />
           <Route component={NoMatch} />
         </Switch>
 

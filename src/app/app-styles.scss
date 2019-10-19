@@ -123,6 +123,21 @@ APP
   cursor: pointer;
 }
 
+.app__orange-button--small {
+  align-self: flex-start;
+  background: $primary-highlight-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 0.5em 2em;
+}
+
+.app__orange-buttton--small:hover {
+  cursor: pointer;
+}
+
 /* ----------
 TOOLTIP
 ---------- */
@@ -344,6 +359,10 @@ NAV BAR
   .nav-bar__join-button:hover {
     cursor: pointer;
   }
+}
+
+.nav-bar__log-in-text {
+  margin-right: 2em;
 }
 
 /* ----------
@@ -1047,6 +1066,146 @@ WELCOME VIEW
 }
 
 /* ----------
+JOIN VIEW 
+---------- */
+.join__wrapper {
+  margin: 0 auto;
+  padding: 2em 1em;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .join__wrapper {
+    padding: 3em 4em;
+  }
+}
+
+.join__logo-image {
+  max-width: 260px;
+}
+
+@media (min-width: 600px) {
+  .join__logo-image {
+    max-width: 300px;
+  }
+}
+
+.join__trusat-tagline {
+  font-size: 16px;
+  letter-spacing: 0.08em;
+  line-height: 19px;
+  margin: 1em 0;
+  position: relative;
+}
+
+@media (min-width: 600px) {
+  .join__trusat-tagline {
+    font-size: 24px;
+    line-height: 37px;
+    margin: 1em 0;
+  }
+}
+
+.join__sub-header {
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 39px;
+}
+
+@media (min-width: 600px) {
+  .join__sub-header {
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+  }
+}
+
+.join__copy {
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 600px) {
+  .join__copy {
+    margin-bottom: 0.75em;
+  }
+}
+
+.join__content-wrapper {
+  display: flex;
+}
+
+.join__mailing-list-content-wrapper {
+  border: 1px solid yellow;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  width: 50%;
+}
+
+.join__image-wrapper {
+  border: 1px solid red;
+  position: relative;
+  width: 50%;
+}
+
+.join__image {
+  position: absloute;
+  width: 100%;
+  height: auto;
+}
+
+/* ----------
+MAILING LIST FORM
+---------- */
+.mailing-list__input-button-wrapper {
+  display: flex;
+  position: relative;
+  height: 40px;
+  margin-top: 1em;
+  max-width: 550px;
+  width: 95%;
+}
+
+@media (min-width: 600px) {
+  .mailing-list__input-button-wrapper {
+    width: 100%;
+  }
+}
+
+.mailing-list__input {
+  background: transparent;
+  border: 1px solid $primary-text-color;
+  border-right: none;
+  color: $primary-text-color;
+  box-sizing: border-box;
+  flex: 1;
+  font-family: roboto;
+  font-size: 20px;
+  padding-left: 0.5em;
+  width: 400px;
+}
+
+.mailing-list__input::placeholder {
+  color: $primary-text-color;
+}
+.mailing-list__input--white::placeholder {
+  color: $primary-text-color;
+}
+
+.mailing-list__subscribe-button {
+  align-self: flex-start;
+  background: $primary-highlight-color;
+  height: 41px;
+  right: -15px;
+  border: 1px solid $primary-highlight-color;
+  border-radius: 4px;
+  font-weight: 500;
+  padding: 0.5em 2em;
+}
+
+/* ----------
 STATIC PAGE VIEW 
 - /whitepaper
 - /about
@@ -1135,7 +1294,6 @@ WHITEPAPER VIEW
 /* ---------- 
 ABOUT VIEW  
 ---------- */
-
 .about__about-trusat-section {
   font-family: $display-font;
   font-size: 20px;
@@ -1376,4 +1534,42 @@ Footer
 
 .footer__icon--last {
   margin: none;
+}
+
+/* ----------
+TEST PILOTS
+---------- */
+.test-pilots__wrapper {
+  align-items: center;
+  display: flex;
+  text-align: start;
+  margin-top: 3em;
+}
+
+.test-pilots__header {
+  line-height: 22px;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.test-pilots__image-wrapper {
+  position: relative;
+  margin-right: 1em;
+  width: 100px;
+}
+
+.test-pilots__image {
+  height: auto;
+  width: 100%;
+}
+
+.test-pilots__copy-wrapper {
+  margin-left: 1em;
+}
+
+.test-pilots__copy {
+  font-size: 18px;
+  line-height: 22px;
 }
