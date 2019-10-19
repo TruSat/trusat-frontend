@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import TestPilots from "../app/components/TestPilots";
 
 export default function FAQ() {
   return (
@@ -97,7 +98,9 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          These instructions will walk you through it.
+          <NavLink className="app__nav-link static-page__link" to="/how">
+                This tutorial
+              </NavLink> will walk you through it.
           </p>
         </div>
 
@@ -107,8 +110,9 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          The version 0.1 TruSat software released on October 21, 2019 is an engineering prototype intended for testing and refining core elements for generating orbit predictions from observations of a satellite from multiple points around Earth.  This early prototype has only a fraction of TruSat’s planned features and functionality.  Notably absent in this first release are features for easing the process of making and submitting satellite observations; it relies on a relatively manual workflow for formatting observation data for submission.  Accordingly, we recommend only the most committed “test pilots” submit satellite observations through this prototype.  If you want to be a test pilot, contact us.
+          The version 0.1 TruSat software released on October 21, 2019 is an engineering prototype intended for testing and refining core elements for generating orbit predictions from observations of a satellite from multiple points around Earth.  This early prototype has only a fraction of TruSat’s planned features and functionality.  Notably absent in this first release are features for easing the process of making and submitting satellite observations; it relies on a relatively manual workflow for formatting observation data for submission.  Accordingly, we recommend only the most committed “test pilots” submit satellite observations through this prototype.  If you want to be a test pilot, sign up:
           </p>
+          <TestPilots />
         </div>
 
         <h3 className="about__question">
@@ -116,10 +120,16 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          The smartphone app depicted in the TruSat video is a representation of how accessible and seamless we aim to make the process of making and reporting satellite observations.  We are exploring several avenues of utilizing ubiquitous consumer devices to automate and simplify the process as much as possible, including smartphone apps and features for automatically extracting Initial Orbit Determination data from digital photographs.  ConsenSys Space is planning to host hackathons to build many of these features.  Whether you want to share your ideas for these features or help to build them, we hope you’ll join the TruSat Community.
+          The smartphone app depicted in the TruSat video is a representation of how accessible and seamless we aim to make the process of making and reporting satellite observations.  We are exploring several avenues of utilizing ubiquitous consumer devices to automate and simplify the process as much as possible, including smartphone apps and features for automatically extracting Initial Orbit Determination data from digital photographs.  ConsenSys Space is planning to host hackathons to build many of these features.  Whether you want to share your ideas for these features or help to build them, we hope you’ll 
+          {" "}<NavLink className="app__nav-link static-page__link" to="/join">
+            join the TruSat Community
+          </NavLink>.
           </p>
           <p className="static-page__copy ">
-          In the meantime, several smartphone apps such as SkyView offer augmented reality features that take much of the manual work out of finding a satellite in the night sky.  See how you can use a smartphone app to find satellites here.
+          In the meantime, several smartphone apps such as SkyView offer augmented reality features that take much of the manual work out of finding a satellite in the night sky.  
+          {" "}<NavLink className="app__nav-link static-page__link" to="/how">
+            See how you can use a smartphone app to find satellites here
+          </NavLink>.
           </p>
         </div>
 
@@ -128,7 +138,11 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          While many satellites are visible to the naked eye in locations without much light pollution, a pair of binoculars and accurate clock will enable you to reliably observe and track satellites.  As explained in these instructional materials, a range of smartphone apps and online resources will tell you when and where in the sky to look, based on your location.  If you have a digital SLR camera and tripod, you can use it to make satellite observations, as explained here. 
+          While many satellites are visible to the naked eye in locations without much light pollution, a pair of binoculars and accurate clock will enable you to reliably observe and track satellites.  As explained in 
+          {" "}<NavLink className="app__nav-link static-page__link" to="/how">
+          these instructional materials 
+          </NavLink>,
+          a range of smartphone apps and online resources will tell you when and where in the sky to look, based on your location.  If you have a digital SLR camera and tripod, you can use it to make satellite observations, as explained here. 
           </p>
         </div>
         </section>
@@ -149,7 +163,10 @@ export default function FAQ() {
           TruSat’s algorithms for calculating orbits and confidence assessments will be continuously refined by TruSat’s open source community. 
           </p>
           <p className="static-page__copy ">
-          The version 0.2 release will add “Mission” functionality, enabling space sustainability advocates to prioritize satellites for observation according to sustainability, in accordance with the TruSat Charter.
+          The version 0.2 release will add “Mission” functionality, enabling space sustainability advocates to prioritize satellites for observation according to sustainability, in accordance with the 
+          {" "}<NavLink className="app__nav-link static-page__link" to="/join">
+            TruSat Charter
+          </NavLink>.
           </p>
           <p className="static-page__copy ">
           The TruSat roadmap contemplates a progressive decentralization of the TruSat system and its governance, in connection with a migration to Ethereum mainnet.  Migration to Ethereum mainnet will enable a range of enhancements to security, trust architecture, and the introduction of extrinsic incentives for participation.
@@ -161,10 +178,13 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          TruSat depends on the diverse skillsets of its global Open Source Community, from developing new software features to creating content in multiple languages to enable people around the world to participate and contribute.  To learn more about these opportunities, please join the Community.
+          TruSat depends on the diverse skillsets of its global Open Source Community, from developing new software features to creating content in multiple languages to enable people around the world to participate and contribute.  To learn more about these opportunities, please 
+          {" "}<NavLink className="app__nav-link static-page__link" to="/join">
+            join the Community
+          </NavLink>.
           </p>
           <p className="static-page__copy ">
-          If you wish to further explore how to contribute, please contact ConsenSys Space Community Manager, Kim Macharia at Kim.Macharia@consensys.net. 
+          If you wish to further explore how to contribute, please contact ConsenSys Space Community Manager, Kim Macharia at <a href="mailto:Kim.Macharia@consensys.net">Kim.Macharia@consensys.net.</a>.
           </p>
         </div>
         </section>
@@ -200,7 +220,9 @@ export default function FAQ() {
         </h3>
         <div className="about__answer">
           <p className="static-page__copy ">
-          The TruSat Charter specifies the governance arrangements for the TruSat System and Open Source Community.  The Charter will be regularly revised to meet the governance needs of the Community and to give effect to its Guiding Principles.  Each version of the Charter is identified by an Epoch: a period measured in time or milestones in which that version is in effect. 
+          {" "}<NavLink className="app__nav-link static-page__link" to="/join">
+            The TruSat Charter
+          </NavLink>{" "}specifies the governance arrangements for the TruSat System and Open Source Community.  The Charter will be regularly revised to meet the governance needs of the Community and to give effect to its Guiding Principles.  Each version of the Charter is identified by an Epoch: a period measured in time or milestones in which that version is in effect. 
           </p>
           <p className="static-page__copy ">
           Governance of the TruSat Community will be progressively decentralized.  Epochs 1 and 2 are experimental “incubation” periods for both the Software and the Community.  Beginning in Epoch 2, Open Source Community contributions will be integral to building out the Software Roadmap.  Whereas Community governance will initially be based upon a “benevolent leader” model—in which ConsenSys Space makes decisions in consultation with the TruSat Partners—the governance model will progressively evolve toward a “meritocratic model” in step with the growth of Community contributions to the software. 
