@@ -286,7 +286,7 @@ NAV BAR
 
   .nav-bar__button--lowlight {
     background-color: transparent;
-    border: 1px solid $primary-text-color;
+    border: 1px solid $secondary-theme-color;
     color: $primary-text-color;
     display: inline-block;
     text-align: center;
@@ -1203,7 +1203,6 @@ MAILING LIST FORM
 
 /* ----------
 STATIC PAGE VIEW 
-- /whitepaper
 - /about
 - /howto
 - /charter
@@ -1243,6 +1242,7 @@ STATIC PAGE VIEW
   border-bottom: 1px solid $primary-text-color;
   margin: 3em 0em 0.5em 0em;
   padding-bottom: 0.25em;
+  text-transform: uppercase;
   width: 100%;
 }
 
@@ -1268,23 +1268,6 @@ STATIC PAGE VIEW
 .static-page__link--highlight {
   color: $primary-highlight-color;
   text-decoration: underline;
-}
-
-/* ---------- 
-WHITEPAPER VIEW
----------- */
-.whitepaper__link-wrapper {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1em;
-}
-
-.white-paper__nav-link {
-  margin-bottom: 1em;
-}
-
-.white-paper__section-link {
-  text-decoration: none;
 }
 
 /* ---------- 
@@ -1335,7 +1318,7 @@ ABOUT VIEW
 @media (min-width: 600px) {
   .about__block--left {
     width: 200px;
-    flex: 0 0 230px;
+    flex: 0 0 250px;
   }
 }
 
@@ -1349,6 +1332,11 @@ ABOUT VIEW
     flex: 1 1 230px;
     width: 200px;
   }
+}
+
+.about__illustration {
+  height: auto;
+  width: 100%;
 }
 
 .static-page__sub-header--margin_fix {
@@ -1386,8 +1374,51 @@ ABOUT VIEW
 /* ----------
 HOW TO VIEW 
 ---------- */
+.static-page__wrapper--how-to {
+  font-family: $display-font;
+  font-size: 20px;
+  font-weight: $light-weight;
+  line-height: 25px;
+}
+
 .how-to__sub-header--top {
   margin-top: 0.5em;
+}
+
+.how-to__step-wrapper {
+  display: flex;
+}
+
+@media (min-width: 600px) {
+  .how-to__step-wrapper {
+    border-top: 1px solid $tertiary-color;
+    padding-top: 1em;
+    margin-bottom: 2em;
+  }
+}
+
+.how-to__step__number {
+  flex-basis: 50px;
+  font-size: $extra-large-font-size;
+  min-width: 50px;
+}
+
+.how-to__step__image-wrapper {
+  min-width: 100px;
+}
+
+.how-to__step__description {
+  padding-left: 0;
+}
+
+@media (min-width: 600px) {
+  .how-to__step__description {
+    padding-left: 1em;
+  }
+}
+
+.how-to__screenshot {
+  width: 100%;
 }
 
 @media (min-width: 600px) {
@@ -1405,26 +1436,6 @@ HOW TO VIEW
 @media (min-width: 600px) {
   .how-to__step-wrapper {
     flex-direction: row;
-  }
-}
-
-.how-to__step-image-wrapper {
-  background: #c4c4c4;
-  width: 100%;
-  height: 206px;
-  margin-bottom: 1em;
-}
-
-@media (min-width: 600px) {
-  .how-to__step-image-wrapper {
-    margin-bottom: 0;
-    width: 360px;
-  }
-}
-
-@media (min-width: 600px) {
-  .how-to__step-copy-wrapper {
-    margin-left: 1em;
   }
 }
 
@@ -1524,10 +1535,6 @@ Footer
   margin: 0 0.5em;
   width: 30px;
 }
-
-.footer__instagram-icon {
-}
-
 .footer__icon--last {
   margin: none;
 }

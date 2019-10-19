@@ -1,18 +1,31 @@
 /* ----------
 CATALOG
 ---------- */
+
 .catalog__wrapper {
   margin: 2em 1em;
   max-width: 1000px;
+}
+
+.catalog__header-wrapper {
+  align-content: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: right;
 }
 
 .catalog__header {
   @include view-title;
 }
 
+.catalog__header__buttons {
+  margin-top: 2em;
+}
+
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 4em auto;
+    margin: 0 auto;
     padding: 0 2em;
   }
   .catalog__header {
@@ -87,7 +100,7 @@ HOW TO PARTICIPATE
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
-    min-width: 250px;
+    min-width: 230px;
   }
 
   .catalog__button {
@@ -109,11 +122,12 @@ HOW TO PARTICIPATE
 .catalog__button {
   border: 1px solid $secondary-theme-color;
   border-radius: 4px;
+  color: $secondary-theme-color;
   display: inline-block;
   margin-bottom: 1em;
   padding: 0.5em 1em;
-  width: 40%;
   text-align: center;
+  white-space: nowrap;
 }
 
 .catalog__link {
@@ -121,20 +135,31 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin: 1em 1em 1em 0;
+  margin: 1em 0;
+}
+
+@media (min-width: 600px) {
+  .catalog__get-data-button {
+    margin-left: 1em;
+  }
 }
 
 .catalog__get-data-button:hover {
   cursor: pointer;
 }
 
-.catalog__link-text-wrapper {
+.catalog__sidebar-text-wrapper {
   margin-top: 2em;
 }
 
-.catalog__link-text {
+.catalog__sidebar-text {
   color: $secondary-theme-color;
-  text-decoration-line: underline;
+  line-height: 20px;
+}
+
+.catalog__link--lowlight {
+  color: $secondary-theme-color;
+  text-decoration: underline;
 }
 
 /* ----------

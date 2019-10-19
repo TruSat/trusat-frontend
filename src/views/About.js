@@ -21,7 +21,7 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <img
-                className="welcome__illustration welcome__illustration--left"
+                className="about__illustration"
                 src={IllustrationPlaceholderWide}
                 alt="Illustration"
               ></img>
@@ -35,7 +35,7 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <img
-                className="welcome__illustration welcome__illustration--left"
+                className="about__illustration"
                 src={IllustrationPlaceholderWide}
                 alt="Illustration"
               ></img>
@@ -49,7 +49,7 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <img
-                className="welcome__illustration welcome__illustration--left"
+                className="about__illustration"
                 src={IllustrationPlaceholderWide}
                 alt="Illustration"
               ></img>
@@ -63,7 +63,7 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <img
-                className="welcome__illustration welcome__illustration--left"
+                className="about__illustration"
                 src={IllustrationPlaceholderWide}
                 alt="Illustration"
               ></img>
