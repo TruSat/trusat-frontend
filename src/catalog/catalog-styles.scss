@@ -135,7 +135,13 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin: 1em 0 1em 1em;
+  margin: 1em 0;
+}
+
+@media (min-width: 600px) {
+  .catalog__get-data-button {
+    margin-left: 1em;
+  }
 }
 
 .catalog__get-data-button:hover {
@@ -155,8 +161,6 @@ HOW TO PARTICIPATE
   color: $secondary-theme-color;
   text-decoration: underline;
 }
-
-
 
 /* ----------
 CATALOG NAV BAR
