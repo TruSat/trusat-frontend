@@ -1261,6 +1261,10 @@ STATIC PAGE VIEW
   }
 }
 
+.static-page__copy--bold {
+  font-weight: bold;
+}
+
 .static-page__link {
   color: $primary-text-color;
   text-decoration: underline;
@@ -1378,15 +1382,18 @@ ABOUT VIEW
 }
 
 .about__question {
+  font-family: $main-font;
   font-size: 20px;
   font-weight: bold;
-  line-height: 24px;
+  line-height: 25px;
   letter-spacing: 0.05em;
   margin-bottom: 0.5em;
   margin: 1em 0em 0.5em 0em;
 }
 
 .about__answer {
+  font-family: $main-font;
+  line-height: 27px;
   margin-bottom: 2em;
 }
 
@@ -1469,9 +1476,18 @@ CHARTER VIEW
 /* ----------
 FAQ view
 ---------- */
+.static-page__wrapper--faq {
+  font-family: $display-font;
+  font-size: 20px;
+  font-weight: $light-weight;
+  line-height: 25px;
+}
+
 .faq__sub-header {
   margin-top: 1em;
 }
+
+
 
 /* ----------
 COOKIE BANNER

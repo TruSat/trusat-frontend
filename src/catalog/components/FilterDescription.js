@@ -5,7 +5,7 @@ export default function FilterDescription({ catalogFilter }) {
     {
       filter: "priorities",
       copy:
-        "The satellites most in need of monitering by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it."
+        "The satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it."
     },
     {
       filter: "undisclosed",
