@@ -24,7 +24,7 @@ CATALOG
 
 @media (min-width: 600px) {
   .catalog__wrapper {
-    margin: 4em auto;
+    margin: 0 auto;
     padding: 0 2em;
   }
   .catalog__header {
@@ -121,6 +121,7 @@ HOW TO PARTICIPATE
 .catalog__button {
   border: 1px solid $secondary-theme-color;
   border-radius: 4px;
+  color: $secondary-theme-color;
   display: inline-block;
   margin-bottom: 1em;
   padding: 0.5em 1em;
