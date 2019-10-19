@@ -53,16 +53,9 @@ export default function Footer() {
             rel="noopener noreferrer"
             href="http://your_url_here.html"
           >
-            <img className="footer__icon" src={GithubIcon} alt="github"></img>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
             <img
               className="footer__icon footer__icon--last"
-              src={DiscordIcon}
+              src={GithubIcon}
               alt="github"
             ></img>
           </a>
