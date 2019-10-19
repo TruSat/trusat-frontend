@@ -67,7 +67,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
-            {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
+            {obj.object_merged_description}
           </NavLink>
         </td>
         <td className="table__table-data app__hide-on-mobile">
