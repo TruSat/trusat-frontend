@@ -29,7 +29,7 @@ import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
-import MailistListWelcome from "./views/MailingListWelcome";
+import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -107,7 +107,7 @@ export default function App() {
           {/* User is sent to this route when they complete a mail chimp sign up */}
           <Route
             path="/subscription-confirmed"
-            component={MailistListWelcome}
+            component={SubscriptionConfirmed}
           />
           <Route component={NoMatch} />
         </Switch>
