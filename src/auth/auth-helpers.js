@@ -83,7 +83,7 @@ export const signMessage = ({ nonce, wallet }) => {
         nonceHash,
         wallet.signingKey.privateKey
       );
-      // TODO remove web3 as a dependency for signing messages
+      // TODO remove web3 as a dependency for signing messages and use ethers
       // const signedMessage = await wallet.signMessage(nonceHash);
       return signedMessage;
     } catch (error) {
@@ -159,7 +159,6 @@ export const retrieveMetamaskJwt = async ({
         signedMessage: metamaskSignedMessage
       })
     );
-
     return result.data.jwt;
   } catch (error) {
     return false;
@@ -167,8 +166,8 @@ export const retrieveMetamaskJwt = async ({
 };
 
 export const checkJwt = async jwt => {
-  // expiry time of JWT
   const { exp } = await jwt_decode(jwt);
+
   // get UNIX current time
   const currentTime = Math.round(+new Date() / 1000);
   // if jwt is of type string and has not expired, return from the function

@@ -1,9 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import TwitterIcon from "../../assets/TwitterIcon.png";
-import InstagramIcon from "../../assets/InstagramIcon.png";
-import FacebookIcon from "../../assets/FacebookIcon.png";
-import GithubIcon from "../../assets/GithubIcon.png";
+import SocialIcons from "../../app/components/SocialIcons";
 
 export default function Footer() {
   return (
@@ -17,48 +14,7 @@ export default function Footer() {
             Privacy
           </NavLink>
         </div>
-        <div>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
-            <img className="footer__icon" src={TwitterIcon} alt="twitter"></img>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
-            <img
-              className="footer__icon footer__instagram-icon"
-              src={InstagramIcon}
-              alt="instagram"
-            ></img>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
-            <img
-              className="footer__icon"
-              src={FacebookIcon}
-              alt="facebook"
-            ></img>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
-            <img
-              className="footer__icon footer__icon--last"
-              src={GithubIcon}
-              alt="github"
-            ></img>
-          </a>
-        </div>
+        <SocialIcons />
       </div>
     </div>
   );
