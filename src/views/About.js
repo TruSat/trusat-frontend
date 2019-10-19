@@ -4,17 +4,19 @@ import IllustrationPlaceholderWide from "../assets/welcome-illustration-placehol
 import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 import RoundedButton from "../app/components/RoundedButton";
 
-
-
 export default function About() {
   const [email, setEmail] = useState("");
 
   return (
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
-        <h1 className="static-page__main-header--small">TruSat is a citizen-powered, open source system for creating a globally-accessible, trusted record of satellite orbital positions.</h1>
+        <h1 className="static-page__main-header--small">
+          TruSat is a citizen-powered, open source system for creating a
+          globally-accessible, trusted record of satellite orbital positions.
+        </h1>
         <p className="static-page__copy about__deck">
-          TruSat is primarily designed to enable the assessment of satellite operations in the context of space sustainability standards.
+          TruSat is primarily designed to enable the assessment of satellite
+          operations in the context of space sustainability standards.
         </p>
 
         <div className="about__block-wrapper">
@@ -42,7 +44,8 @@ export default function About() {
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                The TruSat software merges observations of a satellite from around the world into a transparent record of its location.          
+                The TruSat software merges observations of a satellite from
+                around the world into a transparent record of its location.
               </p>
             </div>
           </div>
@@ -56,7 +59,10 @@ export default function About() {
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                Space sustainability advocates keep the system focused on the highest space sustainability priorities.  And they can use TruSat’s transparent record to foster accountability for sustainable orbital operations.
+                Space sustainability advocates keep the system focused on the
+                highest space sustainability priorities. And they can use
+                TruSat’s transparent record to foster accountability for
+                sustainable orbital operations.
               </p>
             </div>
           </div>
@@ -70,17 +76,23 @@ export default function About() {
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                The TruSat Open Source Community maintains and advances the TruSat software.
+                The TruSat Open Source Community maintains and advances the
+                TruSat software.
               </p>
             </div>
           </div>
         </div>
 
         <div className="about__block-wrapper">
-          <h2 className="static-page__sub-header static-page__sub-header--margin_fix">LINKS</h2>
+          <h2 className="static-page__sub-header static-page__sub-header--margin_fix">
+            LINKS
+          </h2>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/faq">
+              <NavLink
+                className="app__nav-link static-page__link static-page__link--highlight"
+                to="/faq"
+              >
                 Frequently asked questions
               </NavLink>
             </div>
@@ -92,7 +104,10 @@ export default function About() {
           </div>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/whitepaper">
+              <NavLink
+                className="app__nav-link static-page__link static-page__link--highlight"
+                to="/whitepaper"
+              >
                 The TruSat white paper
               </NavLink>
             </div>
@@ -104,13 +119,16 @@ export default function About() {
           </div>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink className="app__nav-link static-page__link static-page__link--highlight" to="/charter">
+              <NavLink
+                className="app__nav-link static-page__link static-page__link--highlight"
+                to="/charter"
+              >
                 The TruSat Charter
               </NavLink>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-              An outline of TruSat’s initial governance.
+                An outline of TruSat’s initial governance.
               </p>
             </div>
           </div>
@@ -120,7 +138,7 @@ export default function About() {
                 className="static-page__link static-page__link--highlight"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://discordapp.com"
+                href="https://discordapp.com/invite/MEyA2Ns"
               >
                 TruSat chat
               </a>
@@ -133,9 +151,6 @@ export default function About() {
           </div>
         </div>
 
-
-
- 
         <div className="about__partners-wrapper">
           <h2 className="static-page__sub-header">PARTNERS</h2>
           <div className="welcome__partners-list">
@@ -205,7 +220,7 @@ export default function About() {
             FOLLOW TRUSAT
           </h2>
           <p className="static-page__copy">
-            Follow ConsenSys Space for TruSat project updates on {" "}
+            Follow ConsenSys Space for TruSat project updates on{" "}
             <a
               className="static-page__link"
               target="_blank"
@@ -222,7 +237,8 @@ export default function About() {
               href="https://twitter.com/planetaryrsrcs"
             >
               Twitter
-            </a>,{" "}
+            </a>
+            ,{" "}
             <a
               className="static-page__link"
               target="_blank"
@@ -230,7 +246,8 @@ export default function About() {
               href="https://www.facebook.com/PlanetaryResourcesInc/"
             >
               Github
-            </a>,{" and "}
+            </a>
+            ,{" and "}
             <a
               className="static-page__link"
               target="_blank"
@@ -240,53 +257,47 @@ export default function About() {
               Instagram
             </a>
           </p>
-          
+
           <div className="welcome__mailing-list-wrapper">
-              <form
-                action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-                method="post"
-                id="mc-embedded-subscribe-form"
-                name="mc-embedded-subscribe-form"
-                className="validate"
-                target="_blank"
-                noValidate
-              >
-                <div className="welcome__mailing-list-inputs">
-                  <p className="welcome__small-copy--white">
-                    Join the mailing list to stay posted on the project
-                  </p>
-                  <div className="welcome__input-button-wrapper">
-                    <input
-                      required
-                      name="EMAIL"
-                      id="mce-EMAIL"
-                      className="welcome__input"
-                      type="email"
-                      placeholder="Your email"
-                      value={email}
-                      onChange={event => setEmail(event.target.value)}
-                    ></input>
-                    <RoundedButton
-                      type="submit"
-                      name="subscribe"
-                      addStyles="welcome__subscribe-button"
-                      color="orange"
-                      text="SUBSCRIBE"
-                      id="mc-embedded-subscribe"
-                      onSubmit={() => setEmail("")}
-                    />
-                  </div>
+            <form
+              action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
+              method="post"
+              id="mc-embedded-subscribe-form"
+              name="mc-embedded-subscribe-form"
+              className="validate"
+              target="_blank"
+              noValidate
+            >
+              <div className="welcome__mailing-list-inputs">
+                <p className="welcome__small-copy--white">
+                  Join the mailing list to stay posted on the project
+                </p>
+                <div className="welcome__input-button-wrapper">
+                  <input
+                    required
+                    name="EMAIL"
+                    id="mce-EMAIL"
+                    className="welcome__input"
+                    type="email"
+                    placeholder="Your email"
+                    value={email}
+                    onChange={event => setEmail(event.target.value)}
+                  ></input>
+                  <RoundedButton
+                    type="submit"
+                    name="subscribe"
+                    addStyles="welcome__subscribe-button"
+                    color="orange"
+                    text="SUBSCRIBE"
+                    id="mc-embedded-subscribe"
+                    onSubmit={() => setEmail("")}
+                  />
                 </div>
-              </form>
-            </div>
-
-
-
+              </div>
+            </form>
+          </div>
         </div>
-
-
       </section>
-
     </div>
   );
 }

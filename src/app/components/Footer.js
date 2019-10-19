@@ -4,7 +4,6 @@ import TwitterIcon from "../../assets/TwitterIcon.png";
 import InstagramIcon from "../../assets/InstagramIcon.png";
 import FacebookIcon from "../../assets/FacebookIcon.png";
 import GithubIcon from "../../assets/GithubIcon.png";
-import DiscordIcon from "../../assets/DiscordIcon.svg";
 
 export default function Footer() {
   return (
@@ -53,16 +52,9 @@ export default function Footer() {
             rel="noopener noreferrer"
             href="http://your_url_here.html"
           >
-            <img className="footer__icon" src={GithubIcon} alt="github"></img>
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="http://your_url_here.html"
-          >
             <img
               className="footer__icon footer__icon--last"
-              src={DiscordIcon}
+              src={GithubIcon}
               alt="github"
             ></img>
           </a>
