@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import jwt_decode from "jwt-decode";
 import { checkJwt } from "./auth/auth-helpers";
 import { setCookies } from "./app/app-helpers";
@@ -30,6 +30,8 @@ import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
+import TestPilotConfirmed from "./views/TestPilotConfirmed";
+import DiscordChatIcon from "./app/components/DicordChatButton";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -109,6 +111,7 @@ export default function App() {
             path="/subscription-confirmed"
             component={SubscriptionConfirmed}
           />
+          <Route path="/test-pilot-confirmed" component={TestPilotConfirmed} />
           <Route component={NoMatch} />
         </Switch>
 
@@ -118,7 +121,10 @@ export default function App() {
             setIsBannerOpen={setIsBannerOpen}
           />
         ) : (
-          <Footer />
+          <Fragment>
+            <Footer />
+            <DiscordChatIcon />
+          </Fragment>
         )}
       </Router>
     </div>
