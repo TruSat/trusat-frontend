@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTrusatPostApi } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
 
@@ -8,20 +8,7 @@ export default function ClaimAccount() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [isNotSuccess, setIsNotSuccess] = useState(false);
 
-  const claimAccount = async () => {
-    setIsSuccess(false);
-    setIsSuccess(false);
-
-    await doPost(`/claimAccount`);
-    await withData(
-      JSON.stringify({
-        email: email
-      })
-    );
-    setEmail("");
-
-    console.log(`data = `, data);
-
+  useEffect(() => {
     // tell user to check their email
     if (data.result === true && !isError) {
       setIsSuccess(true);
@@ -30,6 +17,19 @@ export default function ClaimAccount() {
     if (data.result === false && !isError) {
       setIsNotSuccess(true);
     }
+  }, [data, isError]);
+
+  const claimAccount = async () => {
+    setIsSuccess(false);
+    setIsNotSuccess(false);
+
+    await doPost(`/claimAccount`);
+    await withData(
+      JSON.stringify({
+        email: email
+      })
+    );
+    setEmail("");
   };
 
   return isLoading ? (
