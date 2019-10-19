@@ -163,19 +163,24 @@ function NavBar(props) {
         </div>
       </div>
 
-      {/* Show Join button when user is not logged in */}
-      {!userAddress ? (
-        <NavLink className="app__nav-link" to="/login">
-          <JoinButton path={path} />
+      <div>
+        <NavLink className="app__nav-link nav-bar__log-in-text" to="/login">
+          LOG IN
         </NavLink>
-      ) : (
-        // Show "submit data" button if user is logged in
-        <NavLink className="app__nav-link" to="/submit">
-          <span className="nav-bar__join-button nav-bar__button--lowlight">
-            Submit data
-          </span>
-        </NavLink>
-      )}
+        {/* Show Join button when user is not logged in */}
+        {!userAddress ? (
+          <NavLink className="app__nav-link" to="/join">
+            <JoinButton path={path} />
+          </NavLink>
+        ) : (
+          // Show "submit data" button if user is logged in
+          <NavLink className="app__nav-link" to="/submit">
+            <span className="nav-bar__join-button nav-bar__button--lowlight">
+              Submit data
+            </span>
+          </NavLink>
+        )}
+      </div>
     </div>
   );
 }
