@@ -289,6 +289,12 @@ CATALOG TABLE
   border-bottom: 1px solid $tertiary-color;
 }
 
+.catalog-table__body-row:hover {
+  background-color: $tertiary-color;
+}
+
+
+
 .table-paginator {
   margin: 1.5em;
 }
