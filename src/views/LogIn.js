@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import LoginOptions from "../auth/components/LoginOptions";
 import { useAuthState } from "../auth/auth-context";
+import TestPilots from "../app/components/TestPilots";
 
 export default function LogIn() {
   const { userAddress } = useAuthState();
@@ -18,7 +19,10 @@ export default function LogIn() {
           </NavLink>
         </div>
       ) : (
-        <LoginOptions />
+        <Fragment>
+          <LoginOptions />
+          <TestPilots />
+        </Fragment>
       )}
     </div>
   );
