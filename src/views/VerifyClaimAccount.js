@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import { createWallet, createSecret } from "../auth/auth-helpers";
-import { useTrusatPostApi } from "../app/app-helpers";
+import { API_ROOT } from "../app/app-helpers";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
 
@@ -15,24 +16,11 @@ export default function VerifyClaimAccount({ match }) {
   const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
     false
   );
-  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { userAddress } = useAuthState();
   const authDispatch = useAuthDispatch();
-
-  useEffect(() => {
-    const logUserIn = async () => {
-      authDispatch({ type: "SET_JWT", payload: data.jwt });
-      const { address } = await jwt_decode(data.jwt);
-      authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-      localStorage.setItem("trusat-jwt", data.jwt);
-      setIsSuccess(true);
-    };
-
-    if (data.length !== 0) {
-      logUserIn();
-    }
-  }, [data, authDispatch]);
 
   const inputsAreValid = () => {
     setShowInvalidPasswordError(false);
@@ -58,21 +46,34 @@ export default function VerifyClaimAccount({ match }) {
   };
 
   const verifyClaimAccount = async () => {
+    setIsLoading(true);
+    setIsSuccess(false);
+    setIsError(false);
+
     if (inputsAreValid()) {
       const wallet = createWallet();
       const secret = createSecret(wallet.signingKey.privateKey, password);
 
-      await doPost(`/verifyClaimAccount`);
-      await withData(
-        JSON.stringify({
-          jwt: match.params.jwt,
-          address: wallet.signingKey.address,
-          secret: secret
-        })
-      );
-
+      try {
+        const response = await axios.post(
+          `${API_ROOT}/verifyClaimAccount`,
+          JSON.stringify({
+            jwt: match.params.jwt,
+            address: wallet.signingKey.address,
+            secret: secret
+          })
+        );
+        setIsSuccess(true);
+        authDispatch({ type: "SET_JWT", payload: response.data.jwt });
+        const { address } = await jwt_decode(response.data.jwt);
+        authDispatch({ type: "SET_USER_ADDRESS", payload: address });
+        localStorage.setItem("trusat-jwt", response.data.jwt);
+      } catch (err) {
+        setIsError(true);
+      }
       setPassword("");
       setRetypedPassword("");
+      setIsLoading(false);
     }
   };
 
