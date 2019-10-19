@@ -57,7 +57,7 @@ export default function MultipleObservationForm() {
       submissionJwt = jwt;
     }
     // check if jwt is valid and hasn't expired before submission
-    checkJwt(jwt);
+    await checkJwt(submissionJwt);
 
     try {
       const result = await axios.post(
