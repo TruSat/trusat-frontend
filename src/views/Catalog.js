@@ -8,8 +8,6 @@ import HowToParticipate from "../catalog/components/HowToParticipate";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
 import { NavLink } from "react-router-dom";
 
-
-
 function Catalog({ match }) {
   const catalogFilter = match.params.catalogFilter;
   // Used by TablePaginator component rendered under the CatalogTable
@@ -20,11 +18,10 @@ function Catalog({ match }) {
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header__buttons app__hide-on-mobile">
-          <a>
-            {catalogFilter === "priorities" || catalogFilter === "all" ? (
-              <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
-            ) : null}
-          </a>
+          {catalogFilter === "priorities" || catalogFilter === "all" ? (
+            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          ) : null}
+
           <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button catalog__get-data-button">
               Submit observations

@@ -2,7 +2,7 @@ import React from "react";
 
 export default function PrivacyPolicy() {
   return (
-    <div className="privacy-policy__wrapper">
+    <div className="pdf__wrapper">
       <embed
         src="https://bitcoin.org/bitcoin.pdf"
         type="application/pdf"
