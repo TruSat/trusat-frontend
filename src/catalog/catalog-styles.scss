@@ -1,24 +1,24 @@
 /* ----------
 CATALOG
 ---------- */
+
 .catalog__wrapper {
   margin: 2em 1em;
   max-width: 1000px;
 }
 
 .catalog__header-wrapper {
+  align-content: center;
   display: flex;
   justify-content: space-between;
-  align-content: center;
+  text-align: right;
 }
 
 .catalog__header {
-  border: 1px solid red;
   @include view-title;
 }
 
 .catalog__header__buttons {
-  border: 1px solid green;
   margin-top: 2em;
 }
 
@@ -99,7 +99,7 @@ HOW TO PARTICIPATE
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
-    min-width: 250px;
+    min-width: 230px;
   }
 
   .catalog__button {
@@ -133,7 +133,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin: 1em 1em 1em 0;
+  margin: 1em 0 1em 1em;
 }
 
 .catalog__get-data-button:hover {
