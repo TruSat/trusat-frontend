@@ -1,35 +1,36 @@
-import React, { useState, useEffect } from "react";
-import { useTrusatPostApi } from "../app/app-helpers";
+import React, { useState } from "react";
+import axios from "axios";
+import { API_ROOT } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
 
 export default function ClaimAccount() {
   const [email, setEmail] = useState("");
-  const [{ isLoading, isError, data }, doPost, withData] = useTrusatPostApi();
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isNotSuccess, setIsNotSuccess] = useState(false);
 
-  useEffect(() => {
-    // tell user to check their email
-    if (data.result === true && !isError) {
-      setIsSuccess(true);
-    }
-    // tell user TruSat does not have anything on file for that email address
-    if (data.result === false && !isError) {
-      setIsNotSuccess(true);
-    }
-  }, [data, isError]);
-
   const claimAccount = async () => {
+    setIsLoading(true);
     setIsSuccess(false);
     setIsNotSuccess(false);
 
-    await doPost(`/claimAccount`);
-    await withData(
-      JSON.stringify({
-        email: email
-      })
-    );
+    try {
+      const response = await axios.post(
+        `${API_ROOT}/claimAccount`,
+        JSON.stringify({
+          email: email
+        })
+      );
+
+      if (response.data.result === true && !isError) {
+        setIsSuccess(true);
+      }
+    } catch (err) {
+      setIsError(true);
+    }
     setEmail("");
+    setIsLoading(false);
   };
 
   return isLoading ? (

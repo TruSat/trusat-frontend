@@ -10,28 +10,28 @@ export default function SocialIcons() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="http://your_url_here.html"
+        href="https://twitter.com/consensys_space/"
       >
         <img className="social-icon" src={TwitterIcon} alt="twitter"></img>
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="http://your_url_here.html"
+        href="https://instagram.com/consensys_space/"
       >
         <img className="social-icon" src={InstagramIcon} alt="instagram"></img>
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="http://your_url_here.html"
+        href="https://facebook.com/consensys.space"
       >
         <img className="social-icon" src={FacebookIcon} alt="facebook"></img>
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="http://your_url_here.html"
+        href="https://github.com/consensys-space"
       >
         <img
           className="social-icon social-icon__last"
