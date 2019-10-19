@@ -1,6 +1,8 @@
 import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import { NavLink } from "react-router-dom";
+import SocialIcons from "../app/components/SocialIcons";
+
 
 export default function TestPilotConfirmed() {
   return (
@@ -48,7 +50,7 @@ export default function TestPilotConfirmed() {
             </NavLink>
           </p>
           <p className="static-page__copy">
-          Follow us:  [Twitter] [Facebook]
+          Follow us:  <SocialIcons />
           </p>
       </div>
     </div>

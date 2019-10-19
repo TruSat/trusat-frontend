@@ -1,6 +1,8 @@
 import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import { NavLink } from "react-router-dom";
+import SocialIcons from "../app/components/SocialIcons";
+
 
 export default function SubscriptionConfirmed() {
   return (
@@ -58,9 +60,7 @@ export default function SubscriptionConfirmed() {
           <p className="static-page__copy static-page__copy--bold">
           Follow us
           </p>
-          <p className="static-page__copy">
-          [Twitter] [Facebook]
-          </p>
+          <SocialIcons />
       </div>
     </div>
   );

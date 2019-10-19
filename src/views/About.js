@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
 import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 import RoundedButton from "../app/components/RoundedButton";
+import SocialIcons from "../app/components/SocialIcons";
 
 export default function About() {
   const [email, setEmail] = useState("");
@@ -219,44 +220,7 @@ export default function About() {
           <h2 className="static-page__sub-header about__sub-header--top">
             FOLLOW TRUSAT
           </h2>
-          <p className="static-page__copy">
-            Follow ConsenSys Space for TruSat project updates on{" "}
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.facebook.com/PlanetaryResourcesInc/"
-            >
-              Facebook
-            </a>
-            ,{" "}
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://twitter.com/planetaryrsrcs"
-            >
-              Twitter
-            </a>
-            ,{" "}
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.facebook.com/PlanetaryResourcesInc/"
-            >
-              Github
-            </a>
-            ,{" and "}
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://twitter.com/planetaryrsrcs"
-            >
-              Instagram
-            </a>
-          </p>
+          <SocialIcons />
 
           <div className="welcome__mailing-list-wrapper">
             <form
