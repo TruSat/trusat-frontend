@@ -25,16 +25,8 @@ export default function MultipleObservationForm() {
 
   const getBurnerJwt = async () => {
     const wallet = createWallet();
-
-    console.log(`burner address = `, wallet.signingKey.address);
-
     const nonce = await retrieveNonce({ address: wallet.signingKey.address });
-
-    console.log(`burnernonce = `, nonce);
-
     const signedMessage = signMessage({ nonce, wallet });
-
-    console.log(`burner signed message = `, signedMessage);
 
     const jwt = await retrieveJwt({
       address: wallet.signingKey.address,
