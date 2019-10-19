@@ -142,14 +142,21 @@ HOW TO PARTICIPATE
   cursor: pointer;
 }
 
-.catalog__link-text-wrapper {
+.catalog__sidebar-text-wrapper {
   margin-top: 2em;
 }
 
-.catalog__link-text {
+.catalog__sidebar-text {
   color: $secondary-theme-color;
-  text-decoration-line: underline;
+  line-height: 20px;
 }
+
+.catalog__link--lowlight {
+  color: $secondary-theme-color;
+  text-decoration: underline;
+}
+
+
 
 /* ----------
 CATALOG NAV BAR
