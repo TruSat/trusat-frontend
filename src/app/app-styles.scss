@@ -1496,6 +1496,7 @@ COOKIE BANNER
 Footer
 ---------- */
 .footer {
+  margin-right: 4em;
 }
 
 .footer__content {
@@ -1535,6 +1536,7 @@ Footer
   margin: 0 0.5em;
   width: 30px;
 }
+
 .footer__icon--last {
   margin: none;
 }
@@ -1586,4 +1588,18 @@ SUBSCRIPTION CONFIRMED
   line-height: 44px;
   margin-top: 5em;
   text-align: start;
+}
+
+/* ----------
+DISCORD CHAT BUTTON
+---------- */
+.discord-chat-button__wrapper {
+  bottom: 0;
+  position: fixed;
+  right: 1em;
+}
+
+.discord-chat-button__icon {
+  height: auto;
+  width: 60px;
 }
