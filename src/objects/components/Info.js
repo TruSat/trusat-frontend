@@ -11,7 +11,6 @@ import ObjectBadge from "../../app/components/ObjectBadge";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
-  console.log(objectInfo);
 
   return (
     <React.Fragment>
@@ -38,10 +37,12 @@ export default function Info() {
           <div className="object-info__header-info-wrapper">
             <div className="object-info__header-info-wrapper__group">
               <p className="object-info__small-text">
-                {objectInfo.observation_quality}
+                {objectInfo.observation_quality}%
               </p>
               &nbsp;
-              <p className="object-info__small-text--grey">CONFIDENCE FROM&nbsp;</p>
+              <p className="object-info__small-text--grey">
+                CONFIDENCE FROM&nbsp;
+              </p>
             </div>
             <div className="object-info__header-info-wrapper__group object-info__header-info-wrapper__group--last">
               <p className="object-info__small-text">
@@ -55,7 +56,9 @@ export default function Info() {
               <p className="object-info__small-text--grey">LAST SEEN</p>
               &nbsp;
               <p className="object-info__small-text">
-                {objectInfo.time_last_tracked}
+                {objectInfo.time_last_tracked
+                  ? objectInfo.time_last_tracked.substring(0, 10)
+                  : null}
               </p>
               &nbsp;
             </div>

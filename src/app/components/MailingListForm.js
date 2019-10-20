@@ -29,7 +29,6 @@ export default function MailingListForm({ testPilots }) {
           onChange={event => setEmail(event.target.value)}
         ></input>
         <button
-          mailing-list__subscribe-button--test-pilots
           type="submit"
           name="subscribe"
           className={

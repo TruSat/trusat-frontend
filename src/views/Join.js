@@ -32,7 +32,7 @@ export default function Join() {
             software build, and what you can do to grow TruSat into a powerful
             tool for space sustainability.
           </p>
-          <MailingListForm />
+          <MailingListForm testPilots={false} />
         </div>
       </div>
 

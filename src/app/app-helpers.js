@@ -177,5 +177,7 @@ export const toolTipCopy = {
   cross_track_error: "how far from the predict track the observation is",
   weight:
     "relative amount of influence this observation has over orbital prediction",
-  user: "user who made observation"
+  user: "user who made observation",
+  observation_station:
+    "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots."
 };
