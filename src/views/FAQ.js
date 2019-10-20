@@ -239,6 +239,11 @@ export default function FAQ() {
 
       <section className="static-page__section">
         <p className="static-page__copy">
+          Curious for a technical deep dive into how TruSat works? Check out the {" "}<NavLink className="app__nav-link static-page__link" to="/whitepaper">
+            TruSat white paper
+          </NavLink>.
+        </p>
+        <p className="static-page__copy">
           Have any other questions? Reach out to us at{" "}
           <a className="static-page__link" href="mailto:support@trusat.org">
             support@trusat.org
