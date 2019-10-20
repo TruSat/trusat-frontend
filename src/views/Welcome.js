@@ -112,7 +112,7 @@ export default function Home() {
               </p>
               <p className="welcome__small-copy--white">
                 Space is wild. There’s been no way to ensure responsible
-                practices in orbit, because there’s been no trusted source of
+                practices in orbit, because there has been no trusted source of
                 orbital data. To fill this gap, TruSat tasks a global network of
                 citizens to track satellites of interest.
               </p>
@@ -120,7 +120,10 @@ export default function Home() {
                 TruSat merges many individual observations into one planetary
                 record of orbital positions. This allows the world to measure
                 satellite behavior against international standards of
-                sustainability. Learn more
+                sustainability.{" "}
+                <NavLink className="app__nav-link app__link" to="/about">
+                  Learn more
+                </NavLink>
               </p>
             </div>
             <div className="welcome__illustration-wrapper--right">
@@ -181,46 +184,7 @@ export default function Home() {
               Join the mailing list to stay posted on the project
             </p>
             <div className="welcome__mailing-list-wrapper">
-              <MailingListForm />
-              {/* <form
-                action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-                method="post"
-                id="mc-embedded-subscribe-form"
-                name="mc-embedded-subscribe-form"
-                className="validate"
-                target="_blank"
-                noValidate
-              >
-                <div className="welcome__mailing-list-inputs">
-                  <h2 className="welcome__sub-header--white">
-                    Stay in the loop
-                  </h2>
-                  <p className="welcome__small-copy--white">
-                    Join the mailing list to stay posted on the project
-                  </p>
-                  <div className="welcome__input-button-wrapper">
-                    <input
-                      required
-                      name="EMAIL"
-                      id="mce-EMAIL"
-                      className="welcome__input"
-                      type="email"
-                      placeholder="Your email"
-                      value={email}
-                      onChange={event => setEmail(event.target.value)}
-                    ></input>
-                    <RoundedButton
-                      type="submit"
-                      name="subscribe"
-                      addStyles="welcome__subscribe-button"
-                      color="orange"
-                      text="SUBSCRIBE"
-                      id="mc-embedded-subscribe"
-                      onSubmit={() => setEmail("")}
-                    />
-                  </div>
-                </div>
-              </form> */}
+              <MailingListForm testPilots={false} />
             </div>
           </section>
         </div>

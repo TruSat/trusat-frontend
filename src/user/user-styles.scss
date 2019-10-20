@@ -95,6 +95,10 @@ PROFILE SETTINGS
   margin-right: 1em;
 }
 
+.profile-settings__setting-value {
+  line-height: $medium-line-height;
+}
+
 .edit-profile-settings-input {
   background: black;
   border-radius: 4px;

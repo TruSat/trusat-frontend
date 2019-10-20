@@ -106,8 +106,8 @@ export default function SignupForm({ setIsSuccess }) {
           <Fragment>
             <p className="app__error-message">
               We already have an account in our records for this email address.
-              If you already created an an account, please check your email
-              inbox for the secret we sent you upon sign up.
+              If you already created an account, please check your email inbox
+              for the secret we sent you upon sign up.
             </p>
             <p className="app__error-message">
               If you have not previously signed up please go

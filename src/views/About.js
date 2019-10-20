@@ -1,7 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
-
-import RoundedButton from "../app/components/RoundedButton";
 import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
 import MailingListForm from "../app/components/MailingListForm";
@@ -150,46 +148,7 @@ export default function About() {
             </div>
           </div>
         </div>
-
         <Partners />
-        {/* <div className="about__block-wrapper">
-          <h2 className="static-page__sub-header about__sub-header--top">
-            PRESS
-          </h2>
-          <p className="static-page__copy">
-            Publication Name — 
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://spacenews.com/"
-            >
-              Article Title
-            </a>
-          </p>
-          <p className="static-page__copy">
-            Publication Name — 
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://spacenews.com/"
-            >
-              Article Title
-            </a>
-          </p>
-          <p className="static-page__copy">
-            Publication Name — 
-            <a
-              className="static-page__link"
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://spacenews.com/"
-            >
-              Article Title
-            </a>
-          </p>
-        </div> */}
         <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             FOLLOW TRUSAT
@@ -200,7 +159,7 @@ export default function About() {
             <p className="welcome__small-copy--white">
               Join the mailing list to stay posted on the project
             </p>
-            <MailingListForm />
+            <MailingListForm testPilots={false} />
           </div>
         </div>
       </section>
