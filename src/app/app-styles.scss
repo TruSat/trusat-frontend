@@ -44,6 +44,10 @@ APP
   text-decoration: none;
 }
 
+.app__link {
+  color: $primary-text-color;
+}
+
 .app__button--white {
   align-self: flex-start;
   background: $primary-text-color;
@@ -1056,7 +1060,6 @@ WELCOME VIEW
 
 .welcome__partners-list__logo-wrapper > a {
   text-decoration: none;
-  
 }
 
 .welcome__partners-list__logo {
