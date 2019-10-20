@@ -48,6 +48,7 @@ OBJECT INFO
 
 .object-info__header {
   font-family: $display-font;
+  letter-spacing: -0.02em;
 }
 
 @media (max-width: 600px) {
@@ -55,8 +56,9 @@ OBJECT INFO
     color: $primary-highlight-color;
     font-size: $extra-large-font-size;
     font-weight: 300;
-    letter-spacing: -0.02em;
     line-height: 42px;
+    margin-bottom: 0.25em;
+    margin-top: 0.25em;
     text-align: center;
   }
 }
@@ -65,6 +67,7 @@ OBJECT INFO
   .object-info__header {
     @include view-title--desktop;
     text-align: left;
+    margin-bottom: 0.18em;
   }
 }
 
@@ -75,7 +78,6 @@ OBJECT INFO
 @media (min-width: 600px) {
   .object-info__header-info-wrapper {
     display: inline;
-    font-size: $extra-small-font-size;
     text-align: left;
   }
 }
@@ -83,8 +85,6 @@ OBJECT INFO
 .object-info__header-info-wrapper__group {
   display: inline-block;
   line-height: 16px;
-  // margin-bottom: 0.25em;
-  // margin-right: 1em;
 }
 
 @media (min-width: 600px) {
@@ -96,8 +96,8 @@ OBJECT INFO
 .object-info__small-text,
 .object-info__small-text--grey {
   display: inline-block;
-  font-size: $extra-small-font-size;
-  text-transform: uppercase;
+  font-size: $small-font-size;
+  margin-bottom: 0.5em;
 }
 
 .object-info__small-text--grey {
@@ -107,6 +107,7 @@ OBJECT INFO
 .object-info__large-text {
   @include body-text--large-desktop;
 }
+
 
 @media (max-width: 600px) {
   .object-info__norad-number-wrapper {

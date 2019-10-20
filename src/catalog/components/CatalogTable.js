@@ -47,7 +47,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               />
               &nbsp;
               <div className="catalog-table__object-data-wrapper__objectName">
-                {toolTip(obj.object_name, obj.object_norad_number)}
+                {obj.object_name}
               </div>
             </div>
           </NavLink>
@@ -83,9 +83,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
           >
-            {obj.username_last_tracked
-              ? toolTip(obj.username_last_tracked, obj.address_last_tracked)
-              : shortenAddressToolTip(obj.address_last_tracked)}
+            {obj.username_last_tracked}
           </NavLink>
         </td>
       </tr>

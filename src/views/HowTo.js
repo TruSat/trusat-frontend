@@ -170,7 +170,7 @@ export default function HowTo() {
         </p>
       </section>
       <section className="static-page__section">
-        <h2 className="static-page__sub-header">
+        <h2 className="static-page__sub-header  static-page__sub-header--no-underline">
           Augmented reality mobile apps
         </h2>
         <p className="static-page__copy">
@@ -285,7 +285,7 @@ export default function HowTo() {
       </section>
 
       <section className="static-page__section">
-        <h2 className="static-page__sub-header">HEAVENS ABOVE AND CALSKY</h2>
+        <h2 className="static-page__sub-header static-page__sub-header--no-underline">HEAVENS ABOVE AND CALSKY</h2>
         <p className="static-page__copy">
           If you want to find a specific satellite, we recommend planning ahead
           because satellites in Low Earth Orbit (LEO) do not appear at the same
