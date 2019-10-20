@@ -111,6 +111,7 @@ export default function VerifyClaimAccount({ match }) {
           <div className="email-form__checkbox-and-message-wrapper">
             <input
               required
+              className="email-form__checkbox"
               type="checkbox"
               checked={understandMessage}
               onChange={() => setUnderstandMessage(!understandMessage)}
