@@ -3,7 +3,7 @@ export default function sketch(p) {
   let noradNumber = 12345;
   let lastDigit = 0;
   let secondToLastDigit = 0;
-  let quality = 0;
+  // let quality = 0;
   let canvasSize = 200;
 
   // Colors for adge
@@ -28,9 +28,9 @@ export default function sketch(p) {
       lastDigit = Number(String(props.noradNumber).charAt(4));
       secondToLastDigit = Number(String(props.noradNumber).charAt(3));
     }
-    if (props.quality !== null) {
-      quality = props.quality;
-    }
+    // if (props.quality !== null) {
+    //   quality = props.quality;
+    // }
   };
 
   p.draw = () => {

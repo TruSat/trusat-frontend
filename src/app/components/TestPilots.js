@@ -5,7 +5,7 @@ import MailingListForm from "./MailingListForm";
 export default function TestPilots() {
   return (
     <div className="test-pilots__wrapper">
-      <div className="test-pilots__image-wrapper">
+      <div className="test-pilots__image-wrapper app__hide-on-mobile">
         <img
           className="test-pilots__image"
           src={CellphoneSatWatcher}
@@ -14,10 +14,9 @@ export default function TestPilots() {
       </div>
 
       <div className="test-pilots__copy-wrapper">
-        <h2 className="test-pilots__header">We're seeking test pilots</h2>
+        <h2 className="test-pilots__header">Seeking test pilots</h2>
         <p className="test-pilots__copy">
-          Interested in recording and contributing satellite observations right
-          now? Set up an account
+        TruSat is currently an early-stage prototype. While upcoming releases will make it much easier to make and submit satellite observations, submitting satellite observations through the prototype is a relatively manual process, only for the most committed satellite spotters.  If you are this courageous test pilot, submit your email to be set up with an account: 
         </p>
         <MailingListForm testPilots={true} />
       </div>

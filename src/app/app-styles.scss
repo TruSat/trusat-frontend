@@ -1067,12 +1067,22 @@ JOIN VIEW
 .join__wrapper {
   margin: 0 auto;
   padding: 2em 1em;
-  // text-align: center;
 }
 
 @media (min-width: 600px) {
   .join__wrapper {
     padding: 3em 4em;
+  }
+}
+
+.join__header {
+  margin-bottom: 3em;
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .join__header {
+    margin-bottom: 6em;
   }
 }
 
@@ -1129,24 +1139,47 @@ JOIN VIEW
 }
 
 .join__content-wrapper {
-  display: flex;
+  margin-bottom: 4em;
+}
+
+@media (min-width: 600px) {
+  .join__content-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    margin-bottom: 6em;
+  }
 }
 
 .join__mailing-list-content-wrapper {
-  border: 1px solid yellow;
   display: flex;
   flex-direction: column;
   text-align: start;
-  width: 50%;
+  margin-top: 1em;
+}
+
+@media (min-width: 600px) {
+  .join__mailing-list-content-wrapper {
+    margin-top: 0;
+    width: 50%;
+  }
 }
 
 .join__image-wrapper {
-  border: 1px solid red;
   position: relative;
-  width: 50%;
+}
+
+@media (min-width: 600px) {
+  .join__image-wrapper {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: row;
+    padding-left: 2em;
+    width: 50%;
+  }
 }
 
 .join__image {
+  object-fit: contain;
   position: absloute;
   width: 100%;
   height: auto;
@@ -1157,30 +1190,42 @@ MAILING LIST FORM
 ---------- */
 .mailing-list__input-button-wrapper {
   display: flex;
-  position: relative;
+  flex-wrap: wrap;
   height: 40px;
-  margin-top: 1em;
-  max-width: 550px;
-  width: 95%;
+  margin: 1em 0;
+  width: 100%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 400px) {
   .mailing-list__input-button-wrapper {
-    width: 100%;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input-button-wrapper {
+    flex-wrap: nowrap;
+    max-width: 600px;
   }
 }
 
 .mailing-list__input {
   background: transparent;
   border: 1px solid $primary-text-color;
-  border-right: none;
   color: $primary-text-color;
   box-sizing: border-box;
-  flex: 1;
   font-family: roboto;
   font-size: 20px;
+  height: 41px;
+  max-width: 400px;
   padding-left: 0.5em;
-  width: 400px;
+  width: 100%;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input {
+    border-right: none;
+  }
 }
 
 .mailing-list__input::placeholder {
@@ -1191,14 +1236,23 @@ MAILING LIST FORM
 }
 
 .mailing-list__subscribe-button {
-  align-self: flex-start;
   background: $primary-highlight-color;
   height: 41px;
-  right: -15px;
   border: 1px solid $primary-highlight-color;
   border-radius: 4px;
   font-weight: 500;
+  margin: 0.5em 0;
   padding: 0.5em 2em;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__subscribe-button {
+    margin: 0em;
+  }
+}
+
+.mailing-list__subscribe-button--test-pilots {
+  color: $primary-theme-color;
 }
 
 /* ----------
@@ -1553,6 +1607,10 @@ SOCIAL ICONS
   width: 30px;
 }
 
+.social-icon--first {
+  margin-left: 0;
+}
+
 .social-icon--last {
   margin: none;
 }
@@ -1564,7 +1622,6 @@ TEST PILOTS
   align-items: center;
   display: flex;
   text-align: start;
-  margin-top: 3em;
 }
 
 .test-pilots__header {
@@ -1576,9 +1633,9 @@ TEST PILOTS
 }
 
 .test-pilots__image-wrapper {
+  align-self: start;
   position: relative;
   margin-right: 1em;
-  width: 100px;
 }
 
 .test-pilots__image {
@@ -1587,7 +1644,13 @@ TEST PILOTS
 }
 
 .test-pilots__copy-wrapper {
-  margin-left: 1em;
+  margin-left: 0;
+}
+
+@media (min-width: 600px) {
+  .test-pilots__copy-wrapper {
+    margin-left: 1em;
+  }
 }
 
 .test-pilots__copy {
@@ -1604,6 +1667,10 @@ SUBSCRIPTION CONFIRMED
   line-height: 44px;
   margin-top: 2em;
   text-align: start;
+}
+
+.subscription-confirmed__link {
+  color: $primary-text-color;
 }
 
 /* ----------
