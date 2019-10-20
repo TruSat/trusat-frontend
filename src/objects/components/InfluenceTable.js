@@ -58,9 +58,10 @@ export default function InfluenceTable() {
           {obj.observation_cross_track_error}
         </td>
         <td className="table__weight-data">
-          {obj.observation_weight
+          {/* {obj.observation_weight
             ? obj.observation_weight.toString().substring(0, 5)
-            : null}
+            : null} */}
+          TBD
         </td>
       </tr>
     ));

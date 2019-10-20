@@ -29,14 +29,15 @@ export default function ProfileHeader() {
         profileData.user_address.toLowerCase() ? (
           <div className="profile__header-settings-link-wrapper">
             <NavLink className="app__nav-link" to="/settings">
-              <span className="app__black-button--small app__black-button--settings">Settings</span>
+              <span className="app__black-button--small app__black-button--settings">
+                Settings
+              </span>
             </NavLink>
           </div>
         ) : null}
       </div>
 
       <div className="profile__button-data-wrapper">
-
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
             <p className="profile__header-info-data-value profile__header-info-data-value--lowlight">
@@ -78,9 +79,10 @@ export default function ProfileHeader() {
           {profileData.observation_count !== "0" ? (
             <div className="profile__header-info-data-label">
               <p className="profile__header-info-data-value">
-                {profileData.average_observation_quality
+                {/* {profileData.average_observation_quality
                   ? profileData.average_observation_quality
-                  : `?`}
+                  : `?`} */}
+                TBD
               </p>
               &nbsp; <p>AVG. ACCURACY</p>
             </div>

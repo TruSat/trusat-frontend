@@ -60,9 +60,10 @@ export default function UserSightingsTable() {
               : null}
           </td>
           <td className="table__weight-data">
-            {obj.observation_weight
+            {/* {obj.observation_weight
               ? obj.observation_weight.toString().substring(0, 5)
-              : null}
+              : null} */}
+            TBD
           </td>
         </tr>
       );

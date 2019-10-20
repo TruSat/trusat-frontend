@@ -42,7 +42,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               ) : null}
               <ObjectBadge
                 noradNumber={obj.object_norad_number}
-                quality={obj.object_observation_quality}
+                // quality={obj.object_observation_quality}
                 size={"small"}
               />
               &nbsp;
