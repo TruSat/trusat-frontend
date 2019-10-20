@@ -89,10 +89,15 @@ PROFILE SETTINGS
 }
 
 .profile-settings__setting-label {
+  //border: 1px solid red;
   color: $secondary-theme-color;
   font-size: $extra-small-font-size;
   line-height: $medium-line-height;
   margin-right: 1em;
+}
+
+.profile-settings__setting-value {
+  line-height: $medium-line-height;
 }
 
 .edit-profile-settings-input {

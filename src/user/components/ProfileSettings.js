@@ -1,10 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Redirect } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
-import { shortenAddressToolTip, toolTip } from "../../app/app-helpers";
+import {
+  shortenAddressToolTip,
+  toolTip,
+  toolTipCopy
+} from "../../app/app-helpers";
 
 // TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({
@@ -43,32 +47,38 @@ export default function ProfileSettings({
               setSetting={setNewUsername}
             />
           ) : (
-            <p>{profileData.user_name}</p>
+            <p className="profile-settings__setting-value">
+              {profileData.user_name}
+            </p>
           )}
         </div>
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">ETH ADDRESS</label>
-          <p>{shortenAddressToolTip(userAddress)}</p>
+          <p className="profile-settings__setting-value">
+            {shortenAddressToolTip(userAddress)}
+          </p>
           <CopyText textToCopy={userAddress} />
         </div>
 
-        <div className="profile-settings__setting-wrapper">
-          <label className="profile-settings__setting-label">EMAIL</label>
-          {showEditProfileInputs ? (
-            <EditProfileSettingInput
-              setting={newEmail}
-              setSetting={setNewEmail}
-            />
-          ) : (
-            <p>
-              {toolTip(
-                profileData.email ? profileData.email : "none",
-                "This is the address you want to use to recover this account"
-              )}
-            </p>
-          )}
-        </div>
+        {profileData.email ? (
+          <div className="profile-settings__setting-wrapper">
+            <label className="profile-settings__setting-label">EMAIL</label>
+            {showEditProfileInputs ? (
+              <EditProfileSettingInput
+                setting={newEmail}
+                setSetting={setNewEmail}
+              />
+            ) : (
+              <p className="profile-settings__setting-value">
+                {toolTip(
+                  profileData.email,
+                  "This is the address you want to use to recover this account."
+                )}
+              </p>
+            )}
+          </div>
+        ) : null}
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">LOCATION</label>
@@ -78,7 +88,7 @@ export default function ProfileSettings({
               setSetting={setNewLocation}
             />
           ) : (
-            <p>
+            <p className="profile-settings__setting-value">
               {profileData.user_location
                 ? profileData.user_location
                 : "undisclosed"}
@@ -96,21 +106,28 @@ export default function ProfileSettings({
               onChange={event => setNewBio(event.target.value)}
             ></textarea>
           ) : (
-            <p>{profileData.user_bio}</p>
+            <p className="profile-settings__setting-value">
+              {profileData.user_bio}
+            </p>
           )}
         </div>
       </div>
 
       <div className="profile-settings__observation-wrapper">
         <h2 className="profile-settings__heading">OBSERVATION STATIONS</h2>
+
         <div className="profile-settings__station-text-wrapper">
-          {profileData.observation_stations.length !== 0
-            ? profileData.observation_stations.map(station => {
-                return (
-                  <p className="profile-settings__station-text">{station}</p>
-                );
-              })
-            : "None found"}
+          {profileData.observation_stations.length !== 0 ? (
+            profileData.observation_stations.map(station => {
+              return (
+                <p className="profile-settings__station-text">{station}</p>
+              );
+            })
+          ) : (
+            <Fragment>
+              {toolTip(`None... ?`, toolTipCopy.observation_station)}
+            </Fragment>
+          )}
         </div>
       </div>
     </section>
