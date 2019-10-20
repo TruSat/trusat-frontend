@@ -56,16 +56,20 @@ PROFILE
   margin-top: 0.5em;
 }
 
+
+
 @media (min-width: 600px) {
   .profile__button-data-wrapper {
     margin-top: 1em;
   }
 }
 
-.profile__header-settings-link {
-  color: $secondary-theme-color;
-}
 
+.profile__header-settings-link {
+  margin-top: 10px;
+  color: $secondary-theme-color;
+  text-decoration: underline;
+}
 
 .profile__header-settings-link:hover {
   color: $primary-text-color;
