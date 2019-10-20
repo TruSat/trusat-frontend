@@ -46,7 +46,8 @@ export default function ObjectsCollectedTable() {
           ) : null}
         </td>
         <td className="table__table-data app__hide-on-mobile">
-          {obj.observation_quality}
+          {/* {obj.observation_quality} */}
+          TBD
         </td>
         <td className="table__table-data">
           <NavLink

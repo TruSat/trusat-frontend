@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
+import { emails } from "../app/app-helpers";
 
 export default function FAQ() {
   return (
@@ -391,8 +392,8 @@ export default function FAQ() {
         </p>
         <p className="static-page__copy">
           Have any other questions? Reach out to us at{" "}
-          <a className="static-page__link" href="mailto:support@trusat.org">
-            support@trusat.org
+          <a className="static-page__link" href={`mailto:${emails.support}`}>
+            {emails.support}
           </a>
         </p>
       </section>
