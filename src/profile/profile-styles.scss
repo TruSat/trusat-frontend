@@ -154,6 +154,16 @@ PROFILE
   padding: 0.5em 0;
 }
 
+.profile__none-yet-wrapper {
+  border: 1px dashed $tertiary-color;
+  border-top: 0;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-top: -0.25em;
+  padding: 2em 0 2.5em;
+}
+
 /* ----------
 PROFILE TABLE 
 ---------- */

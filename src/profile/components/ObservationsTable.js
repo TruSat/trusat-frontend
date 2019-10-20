@@ -97,7 +97,7 @@ export default function ObservationsTable() {
           </tbody>
         </table>
       ) : (
-        <div className="profiile__none-yet-wrapper">
+        <div className="profile__none-yet-wrapper">
           <NavLink className="app__nav-link" to="/how">
             <p className="profile__none-yet-text">None yet</p>
             <span className="app__yellow-button--small">
