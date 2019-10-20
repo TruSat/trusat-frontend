@@ -1329,6 +1329,11 @@ STATIC PAGE VIEW
   width: 100%;
 }
 
+.static-page__sub-header--no-underline {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
 .static-page__copy {
   font-size: 18px;
   font-weight: 300;
