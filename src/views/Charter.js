@@ -127,11 +127,15 @@ export default function Charter() {
         </p>
 
         {/* TODO - make a numbered list */}
-        <ul>
-          <li>ConsenSys Space</li>
-          <li>Secure World Foundation</li>
-          <li>Professor Moriba Jah, University of Texas at Austin</li>
-          <li>Society of Women in Space Exploration (SWISE)</li>
+        <ul className="charter-list">
+          <li className="static-page__copy">1. ConsenSys Space</li>
+          <li className="static-page__copy">2. Secure World Foundation</li>
+          <li className="static-page__copy">
+            3. Professor Moriba Jah, University of Texas at Austin
+          </li>
+          <li className="static-page__copy">
+            4. Society of Women in Space Exploration (SWISE)
+          </li>
         </ul>
 
         <p className="static-page__copy">
@@ -172,8 +176,8 @@ export default function Charter() {
         </p>
 
         {/* TODO - make a numbered list */}
-        <ul>
-          <li>
+        <ul className="charter-list">
+          <li className="static-page__copy">
             Specify a transparent process for tasking the TruSat System in Epoch
             2. The v0.2 release is expected to add Missions: functionality
             enabling space sustainability advocates to request data on specified
@@ -182,7 +186,7 @@ export default function Charter() {
             including a definition of the “sustainability purposes” for which
             the system may be tasked.
           </li>
-          <li>
+          <li className="static-page__copy">
             Specify a detailed open source governance framework for Epoch 2. The
             partners foresee this framework will be based upon a “benevolent
             leader” model in Epoch 2, in which ConsenSys Space will exercise
@@ -190,7 +194,7 @@ export default function Charter() {
             Partners, on the way to a “meritocratic” governance model in future
             Epochs.
           </li>
-          <li>
+          <li className="static-page__copy">
             Specify the open source license(s) under which each component of the
             TruSat Software will be licensed, and with which all contributions
             must be compliant.
