@@ -1280,6 +1280,7 @@ MAILING LIST FORM
   height: 41px;
   line-height: 1.25%;
   margin: 0.5em 0;
+  min-width: 170px; // stops button text squeezing on re-size
   padding: 0.5em 2em;
 }
 
@@ -1542,6 +1543,16 @@ HOW TO VIEW
 @media (min-width: 600px) {
   .how-to__step-wrapper {
     flex-direction: row;
+  }
+}
+// stops sign up button wrapping over copy below
+.how-to__copy--with-margin {
+  margin-top: 4em;
+}
+
+@media (min-width: 400px) {
+  .how-to__copy--with-margin {
+    margin-top: 1em;
   }
 }
 
