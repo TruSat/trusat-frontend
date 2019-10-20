@@ -1,49 +1,63 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useCatalogState } from "../catalog-context";
+import React, { useState, useEffect, Fragment } from "react";
+import { API_ROOT, axiosWithCache } from "../../app/app-helpers";
+import Spinner from "../../app/components/Spinner";
 
-export default function DownloadCatalogFilterTleButton() {
-  const { catalogFilter } = useCatalogState();
-  const [tleString, setTleString] = useState("");
+export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
+  const [textFile, setTextFile] = useState(null);
 
   useEffect(() => {
-    if (catalogFilter === "priorities" || catalogFilter === "all") {
-      axios
-        .get(`https://api.consensys.space:8080/tle/trusat_${catalogFilter}.txt`)
-        .then(res => {
-          setTleString(res.data);
-        })
-        .catch(err => console.log(err));
-    }
+    setTextFile(null);
   }, [catalogFilter]);
 
-  const downloadTles = () => {
-    let textFile = null;
+  const fetchData = async () => {
+    setIsError(false);
+    setIsLoading(true);
 
-    const data = new Blob([tleString], { type: "text/plain" });
+    try {
+      const result = await axiosWithCache(
+        `${API_ROOT}/tle/trusat_${catalogFilter}.txt`
+      );
 
-    // If replacing a previously generated file, revoke the object URL to avoid memory leaks.
-    if (textFile !== null) {
-      window.URL.revokeObjectURL(textFile);
+      let textFile = null;
+
+      const dataToDownload = new Blob([result.data], {
+        type: "text/plain"
+      });
+      // If replacing a previously generated file, revoke the object URL to avoid memory leaks.
+      if (textFile !== null) {
+        window.URL.revokeObjectURL(textFile);
+      }
+      setTextFile(window.URL.createObjectURL(dataToDownload));
+    } catch (error) {
+      setIsError(true);
     }
-
-    textFile = window.URL.createObjectURL(data);
-
-    return textFile;
+    setIsLoading(false);
   };
 
-  return (
-    // only give option to download if user chooses "priorities" or "all" as a catalog filter
-    tleString ? (
-      <a
-        className="catalog__link"
-        href={downloadTles()}
-        download={`trusat_${catalogFilter}.txt`}
+  return isError ? (
+    <p className="app__error-message">Something went wrong ...</p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
+    <Fragment>
+      <span
+        className="catalog__button catalog__get-data-button"
+        onClick={fetchData}
       >
-        <span className="catalog__button catalog__get-data-button">
-          Get data
-        </span>
-      </a>
-    ) : null
+        Download predictions
+      </span>
+
+      {textFile ? (
+        <a
+          className="catalog__link"
+          href={textFile}
+          download={`trusat_${catalogFilter}.txt`}
+        >
+          download
+        </a>
+      ) : null}
+    </Fragment>
   );
 }

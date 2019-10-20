@@ -1,210 +1,133 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import React, { useEffect, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
-import axios from "axios";
-import ObjectBadge from "../../assets/ObjectBadge.svg";
-import { renderFlag, shortenAddress } from "../../app/helpers";
+import ObjectBadge from "../../app/components/ObjectBadge";
+import {
+  useTrusatGetApi,
+  renderFlag,
+  toolTip,
+  shortenAddressToolTip,
+  toolTipCopy
+} from "../../app/app-helpers";
+import TablePaginator from "../../app/components/TablePaginator";
 
-function CatalogTable({ match, range, setRange }) {
-  const catalogFilter = match.params.catalogFilter;
-  const [showTable, setShowTable] = useState(false);
-  const [tableData, setTableData] = useState([]);
+export default function CatalogTable({ catalogFilter, range, setRange }) {
+  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    setShowTable(false);
-    if (catalogFilter) {
-      axios
-        .get(`https://api.consensys.space:8080/catalog/${catalogFilter}`)
-        .then(result => {
-          setTableData(result.data);
-          setShowTable(true);
-        })
-        .catch(err => {
-          console.log(err);
-          setTableData([]);
-        });
-    }
-  }, [catalogFilter, setTableData]);
+    doFetch(`/catalog/${catalogFilter}`);
+  }, [catalogFilter, doFetch]);
 
-  const renderCatalogTable = () => {
+  const renderCatalogRows = () => {
     const { start, end } = range;
-    const rangeData = tableData.slice(start, end);
-    console.log(rangeData);
+
+    const rangeData = data.slice(start, end);
 
     return rangeData.map(obj => (
       <tr
-        key={rangeData.indexOf(obj)}
+        key={data.indexOf(obj)}
         className="table__body-row catalog-table__body-row"
       >
-        <td className="table__table-data">
+        <td className="table__table-data table__table-data--big_rows">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
-                <p>
-                  {tableData.indexOf(obj) + 1}
+                <p className="catalog-table__object-data-wrapper__priorityRank">
+                  {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
               ) : null}
-              <img
-                className="table__object-badge"
-                src={ObjectBadge}
-                alt="Object Badge"
-              ></img>
-              <p>&nbsp;{obj.object_name}</p>
+              <ObjectBadge
+                noradNumber={obj.object_norad_number}
+                // quality={obj.object_observation_quality}
+                size={"small"}
+              />
+              &nbsp;
+              <div className="catalog-table__object-data-wrapper__objectName">
+                {obj.object_name}
+              </div>
             </div>
           </NavLink>
         </td>
-        <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
 
-        <td className="table__table-data app__hide-on-mobile">
-          {obj.object_primary_purpose}&nbsp;{obj.object_secondary_purpose}
+        <td className="table__table-data catalog-table__table-data--originWrapper">
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {renderFlag(obj.object_origin)}
+          </NavLink>
+        </td>
+
+        <td className="table__table-data app__hide-on-mobile catalog-table__table-data--purposeWrapper">
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {obj.object_merged_description}
+          </NavLink>
         </td>
         <td className="table__table-data app__hide-on-mobile">
-          {obj.object_observation_quality}%
+          <NavLink
+            className="app__nav-link"
+            to={`/object/${obj.object_norad_number}`}
+          >
+            {/* {obj.object_observation_quality}% */}
+            TBD
+          </NavLink>
         </td>
-        <td className="table__weight-data">
-          {obj.username
-            ? obj.username_last_tracked
-            : shortenAddress(obj.address_last_tracked)}
+        <td className="table__table-data catalog-table__table-data--usernameWrapper">
+          <NavLink
+            className="app__nav-link"
+            to={`/profile/${obj.address_last_tracked}`}
+          >
+            {obj.username_last_tracked}
+          </NavLink>
         </td>
       </tr>
     ));
   };
 
-  return showTable ? (
-    <React.Fragment>
-      <div>
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    <Fragment>
+      {isError ? (
+        <p className="app__error-message">Something went wrong ...</p>
+      ) : (
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
-              <th className="table__header-text">OBJECT</th>
-              <th className="table__header-text">ORIGIN</th>
-              <th className="table__header-text app__hide-on-mobile">
-                PURPOSE
+              <th className="table__header-text">
+                {toolTip("OBJECT", toolTipCopy.object)}
+              </th>
+              <th className="table__header-text">
+                {toolTip("ORIGIN", toolTipCopy.origin)}
               </th>
               <th className="table__header-text app__hide-on-mobile">
-                CONFIDENCE
+                {toolTip("PURPOSE", toolTipCopy.purpose)}
               </th>
-              <th className="table__header-text">LAST SEEN BY</th>
+              <th className="table__header-text app__hide-on-mobile">
+                {toolTip("CONFIDENCE", toolTipCopy.confidence)}
+              </th>
+              <th className="table__header-text catalog-table__table-data--usernameWrapper">
+                {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
+              </th>
             </tr>
           </thead>
-          <tbody className="table__body">{renderCatalogTable()}</tbody>
+          <tbody className="table__body">{renderCatalogRows()}</tbody>
         </table>
-      </div>
-
-      <div style={{ margin: "1em", textAlign: "center" }}>
-        <p>
-          {range.start + 1}-
-          {range.end > tableData.length ? tableData.length : range.end} of{" "}
-          {tableData.length}
-        </p>
-        <button
-          onClick={() => {
-            if (range.start !== 0) {
-              setRange(currentRange => ({
-                start: currentRange.start - 10,
-                end: currentRange.end - 10
-              }));
-            }
-          }}
-        >
-          Left
-        </button>
-        <button
-          onClick={() => {
-            if (range.end < tableData.length) {
-              setRange(currentRange => ({
-                start: currentRange.start + 10,
-                end: currentRange.end + 10
-              }));
-            }
-          }}
-        >
-          Right
-        </button>
-      </div>
-    </React.Fragment>
-  ) : (
-    <Spinner />
+      )}
+      {data.length > 10 ? (
+        <TablePaginator
+          tableDataLength={data.length}
+          range={range}
+          setRange={setRange}
+        />
+      ) : null}
+    </Fragment>
   );
 }
-
-// GET request
-// /catalog/priorities
-// limit to 100
-// sorted by priority
-const priorities = [
-  {
-    object_norad_number: "12345", // This is not rendered but will be used to create the route for the "object view"
-    object_name: "sl-27",
-    object_origin: "russia",
-    object_type: "rocket body",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926", // timestamp
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  },
-  {
-    object_norad_number: "12345",
-    object_name: "abrixas rocket",
-    object_origin: "usa",
-    object_type: "satelitte",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926",
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  },
-  {
-    object_norad_number: "12345",
-    object_name: "sl-27",
-    object_origin: "russia",
-    object_type: "rocket body",
-    object_primary_purpose: "military",
-    object_secondary_purpose: "communications",
-    object_observation_quality: "66",
-    time_last_tracked: "1565803593926",
-    address_last_tracked: "0x1863a72A0244D603Dcd00CeD99b94d517207716a",
-    username_last_tracked: "username"
-  }
-];
-
-// GET request
-// /catalog/undisclosed
-// Same JSON structure as above
-// but only contains those objects that are not found in the public (government) dataset
-// limit to 100
-// Sorted by priority probably makes sense?
-const undisclosed = [{}];
-
-// GET request
-// /catalog/debris
-// Same JSON structure as above
-// but only contains those items that are described as "debris" - the "harder to find"s.
-// limit to 100
-// Sorted by priority probably makes sensse?
-const debris = [{}];
-
-// GET request
-// /catalog/latest
-// Same JSON structure as above
-// Perhaps only "new" objects added to the database, maybe in the last month?
-// limit to 100
-// Need to ask Mike/Chris what is best here. By Latest maybe we can sort by highest confidence?
-const latest = [{}];
-
-// GET request
-// /catalog/all
-// Same JSON structure as above
-// Every item in the database
-// limit to 100
-// Not sure what is best way to sort this?
-const all = [{}];
-
-export default withRouter(CatalogTable);

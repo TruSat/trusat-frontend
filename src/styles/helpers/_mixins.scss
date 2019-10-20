@@ -5,8 +5,9 @@ Text
 @mixin view-title {
   color: $primary-highlight-color;
   letter-spacing: $tight-spacing;
+  font-family: $display-font;
   font-size: $extra-extra-large-font-size;
-  font-weight: $light-weight;
+  font-weight: $thin-weight;
 }
 
 @mixin view-title--desktop {
@@ -26,24 +27,28 @@ Text
   color: $primary-text-color;
   font-size: $medium-font-size;
   font-weight: $regular-weight;
+  line-height: $medium-line-height;
 }
 
 @mixin body-text--large-desktop {
   color: $primary-text-color;
   font-size: $large-font-size;
   font-weight: $light-weight;
+  line-height: $large-line-height;
 }
 
 @mixin body-text--medium {
   color: $primary-text-color;
   font-size: $small-font-size;
   font-weight: $regular-weight;
+  line-height: $medium-line-height;
 }
 
 @mixin body-text--small {
   color: $primary-text-color;
   font-size: $extra-small-font-size;
   font-weight: $regular-weight;
+  line-height: $small-line-height;
 }
 
 @mixin label-text {

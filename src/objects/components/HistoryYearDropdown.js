@@ -1,51 +1,70 @@
-import React, { useState } from "react";
-import HistoryMonthDropdown from "./HistoryMonthDropdown";
+import React, { useState, useEffect } from "react";
+import { useTrusatGetApi } from "../../app/app-helpers";
+import HistoryMonthTable from "./HistoryMonthTable";
+import { useObjectsState } from "../../objects/objects-context";
+import Spinner from "../../app/components/Spinner";
 
-export default function HistoryTable() {
-  const [yearChosen, setYearChosen] = useState("");
+export default function HistoryYearDropdown() {
+  const { noradNumber, yearLaunched } = useObjectsState();
+  const [yearChosen, setYearChosen] = useState(null);
+  const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
-  const years = [
-    "2019",
-    "2018",
-    "2017",
-    "2016",
-    "2015",
-    "2014",
-    "2013",
-    "2012",
-    "2011"
-  ];
+  useEffect(() => {
+    if (noradNumber && yearChosen) {
+      doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
+    }
+    if (yearChosen === null) {
+      setYearChosen(2019);
+    }
+  }, [noradNumber, yearLaunched, yearChosen, doFetch, data]);
 
-  return (
-    <section className="history-year-dropdown">
-      {years.map(year => {
-        return (
-          <div key={year} className="history-year-dropdown__row">
-            <h1
-              onClick={() => {
-                if (year !== yearChosen) {
-                  setYearChosen(year);
-                } else {
-                  setYearChosen("");
-                }
-              }}
-            >
-              <p
-                className={
-                  year === yearChosen
-                    ? "history-year-dropdown__year-text--highlight"
-                    : "history-year-dropdown__year-text"
-                }
-              >
-                {year}
-              </p>
-            </h1>
-            {yearChosen === year ? (
-              <HistoryMonthDropdown yearNumber={yearChosen} />
-            ) : null}
-          </div>
-        );
-      })}
-    </section>
+  const renderMonthTables = () => {
+    return Object.keys(data)
+      .filter(monthKey => data[monthKey])
+      .map(monthKey => (
+        <HistoryMonthTable
+          key={monthKey}
+          monthName={monthKey}
+          monthData={data[monthKey]}
+        />
+      ));
+  };
+
+  const currentYear = new Date().getFullYear();
+  const yearRows = [];
+
+  for (let i = currentYear; i >= yearLaunched && i >= 1998; i--) {
+    yearRows.push(
+      <div key={i} className="history-year-dropdown__row">
+        <h1
+          onClick={() => {
+            if (i !== yearChosen) {
+              setYearChosen(i);
+            } else {
+              setYearChosen("");
+            }
+          }}
+        >
+          <p
+            className={
+              i === yearChosen
+                ? "history-year-dropdown__year-text--highlight"
+                : "history-year-dropdown__year-text"
+            }
+          >
+            {i}
+          </p>
+        </h1>
+        {yearChosen === i ? renderMonthTables() : null}
+      </div>
+    );
+  }
+
+  return isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : isLoading ? (
+    <Spinner />
+  ) : (
+    <section className="history-year-dropdown">{yearRows}</section>
   );
 }

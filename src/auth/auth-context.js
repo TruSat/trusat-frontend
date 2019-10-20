@@ -8,20 +8,14 @@ function authReducer(state, action) {
     case "AUTHENTICATING": {
       return { ...state, isAuthenticating: action.payload };
     }
-    case "AUTHENTICATED": {
-      return { ...state, isAuth: action.payload };
-    }
     case "SET_AUTH_TYPE": {
       return { ...state, authType: action.payload };
     }
-    case "SET_EMAIL": {
-      return { ...state, email: action.payload };
-    }
-    case "SET_BURNER": {
-      return { ...state, burner: action.payload };
-    }
     case "SET_JWT": {
       return { ...state, jwt: action.payload };
+    }
+    case "SET_USER_ADDRESS": {
+      return { ...state, userAddress: action.payload };
     }
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
@@ -32,11 +26,9 @@ function authReducer(state, action) {
 function AuthProvider({ children }) {
   const [state, dispatch] = React.useReducer(authReducer, {
     isAuthenticating: false,
-    isAuth: false,
     authType: "",
-    email: "",
-    burner: {},
-    jwt: ""
+    jwt: "none",
+    userAddress: ""
   });
 
   return (

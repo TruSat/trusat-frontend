@@ -1,11 +1,20 @@
 /* -----
 COLORS
 ----- */
-$primary-theme-color: #1f1f1f;
-$secondary-theme-color: #a5a5a5;
+$primary-theme-color: #081122;
+$secondary-theme-color: #838891;
 $primary-text-color: #ffffff;
-$tertiary-color: #4f4f4f;
-$primary-highlight-color: #ffbd3c;
+$tertiary-color: #043053;
+$tertiary-color--light: #8197A9;
+$primary-highlight-color: #FC7756;
+
+/*
+FONT FAMILIES
+*/
+$main-font: "Roboto", sans-serif;
+$display-font: "Montserrat", sans-serif;
+
+
 /*
 FONT SIZES
 */
@@ -16,20 +25,21 @@ $large-font-size: 24px;
 $extra-large-font-size: 36px;
 $extra-extra-large-font-size: 76px;
 
-/* -----
+/*
 FONT WEIGHT
 ----- */
 $thin-weight: 100;
-$light-weight: 200;
-$regular-weight: 600;
+$light-weight: 300;
+$regular-weight: 400;
 $bold-weight: bold;
+$black-weight: 700;
 
 /*
 LINE HEIGHTS
 */
-$small-line-height: 14px;
-$medium-line-height: 19px;
-$large-line-height: 28px;
+$small-line-height: 15px;
+$medium-line-height: 25px;
+$large-line-height: 30px;
 $extra-large-line-height: 56px;
 $extra-large-line-height--desktop: 66px;
 

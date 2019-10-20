@@ -1,0 +1,159 @@
+/* ---------
+BLOCKIE
+---------- */
+.blockie {
+  border-radius: 50%;
+}
+
+/* ---------- 
+PROFILE
+---------- */
+.profile__wrapper {
+  margin: 1em 1em;
+  max-width: 1000px;
+}
+
+@media (min-width: 600px) {
+  .profile__wrapper {
+    margin: 3em auto;
+    padding: 0 2em;
+  }
+}
+
+.profile__header-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__blockie-name-wrapper {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 600px) {
+  .profile__blockie-name-wrapper {
+    flex-wrap: nowrap;
+  }
+}
+
+.profile__header-username {
+  color: $primary-highlight-color;
+  font-family: $display-font;
+  font-size: 36px;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .profile__header-username {
+    @include view-title--desktop;
+    margin-left: 0.5em;
+    margin-top: 0;
+  }
+}
+
+.profile__button-data-wrapper {
+  margin-top: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .profile__button-data-wrapper {
+    margin-top: 1em;
+  }
+}
+
+.profile__header-settings-link-wrapper {
+  text-align: left;
+  width: 100%;
+  margin-right: 0;
+}
+
+@media (min-width: 600px) {
+  .profile__header-settings-link-wrapper {
+    text-align: right;
+  }
+}
+
+.app__black-button--settings {
+  margin-top: 1em;
+}
+
+.profile__header-data-wrapper {
+  align-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  text-transform: uppercase;
+}
+
+.profile__header-info-data-label {
+  @include label-text;
+  display: flex;
+  margin: 1em 2em 0em 0em;
+}
+
+@media (min-width: 600px) {
+  .profile__header-info-data-label {
+    @include label-text;
+    align-items: center;
+    display: flex;
+    margin: none;
+  }
+}
+
+.profile__header-info-data-value {
+  color: $primary-text-color;
+  font-size: $extra-small-font-size;
+}
+
+.profile__header-info-data-value--lowlight {
+  color: $secondary-theme-color;
+}
+
+@media (min-width: 600px) {
+  .profile__header-info-data-value {
+    color: $primary-text-color;
+    font-size: $extra-small-font-size;
+  }
+}
+
+.profile__bio-text {
+  @include body-text--large-desktop;
+  margin-top: 1em;
+}
+
+.profile__objects-tracked-wrapper {
+  margin-top: 3em;
+}
+
+.profile__sub-heading {
+  @include section-title;
+  border-bottom: 1px solid $primary-text-color;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+.profile__your-observations-wrapper {
+  margin-top: 5em;
+}
+
+.profile__none-yet-text {
+  @include body-text--large-desktop;
+  color: $secondary-theme-color;
+  padding: 0.5em 0;
+}
+
+/* ----------
+PROFILE TABLE 
+---------- */
+.profile-table__body-row {
+  border-bottom: 1px solid $tertiary-color;
+}
+
+.profile-table__data-wrapper {
+  align-items: center;
+  display: flex;
+}
+
+.profile-table__purpose-text {
+  display: flex;
+}

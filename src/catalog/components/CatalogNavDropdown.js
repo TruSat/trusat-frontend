@@ -1,38 +1,57 @@
 import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import Select from "react-select";
-import { useCatalogState, useCatalogDispatch } from "../catalog-context";
 
 const options = [
   { value: "priorities", label: "PRIORITIES" },
+  { value: "latest", label: "LAUNCHES" },
   { value: "undisclosed", label: "UNDISCLOSED" },
   { value: "debris", label: "DEBRIS" },
-  { value: "latest", label: "LATEST" },
   { value: "all", label: "ALL" }
 ];
 
-function NavDropdown({ history, setRange }) {
+function NavDropdown({ catalogFilter, history, setRange }) {
   const [selectedOption, setSelectedOption] = useState("");
-  const { catalogFilter } = useCatalogState();
-  const catalogDispatch = useCatalogDispatch();
 
   useEffect(() => {
-    options.map(option => {
-      if (option.value === catalogFilter) {
-        setSelectedOption(option);
-      }
-    });
+    options
+      .filter(option => option.value === catalogFilter)
+      .map(option => setSelectedOption(option));
   }, [catalogFilter, setSelectedOption]);
 
   const handleChange = newSelectedOption => {
     setRange({ start: 0, end: 10 });
 
-    catalogDispatch({
-      type: "SET_CATALOG_FILTER",
-      payload: newSelectedOption.value
-    });
-
     history.push(`/catalog/${newSelectedOption.value}`);
+  };
+
+  const colorStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      backgroundColor: "transparent",
+      border: "1px solid white",
+      fontSize: "20px",
+      fontWeight: "bold",
+      padding: "0.25em"
+    }),
+
+    menu: (provided, state) => ({
+      ...provided,
+      backgroundColor: "transparent",
+      marginTop: "0"
+    }),
+
+    singleValue: (provided, state) => ({
+      color: "white",
+    }),
+
+    option: (provided, state) => ({
+      ...provided,
+      background: "#043053",
+      borderBottom: "1px solid #4f4f4f",
+      color: state.isSelected ? "#FC7756" : "white",
+      padding: "1em"
+    })
   };
 
   return (
@@ -41,14 +60,7 @@ function NavDropdown({ history, setRange }) {
         value={selectedOption}
         onChange={handleChange}
         options={options}
-        theme={theme => ({
-          ...theme,
-          colors: {
-            ...theme.colors,
-            primary25: "black",
-            primary: "#ffbd3c"
-          }
-        })}
+        styles={colorStyles}
       />
     </div>
   );

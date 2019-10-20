@@ -1,4 +1,19 @@
+html {
+  box-sizing: border-box;
+  height: 100%;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 body {
   background: $primary-theme-color;
   color: $primary-text-color;
+  min-height: 100%;
+  overflow-x: hidden;
+  padding-bottom: 6rem;
+  position: relative;
 }

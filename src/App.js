@@ -1,11 +1,9 @@
-import React, { useEffect } from "react";
-import axios from "axios";
+import React, { useState, useEffect, Fragment } from "react";
 import jwt_decode from "jwt-decode";
-import { ethers } from "ethers";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { checkJwt } from "./auth/auth-helpers";
+import { setCookies } from "./app/app-helpers";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
-import { useUserDispatch } from "./user/user-context";
-import { ObjectsProvider } from "./objects/objects-context";
 import NavBar from "./app/components/NavBar";
 import MobileHeader from "./app/components/MobileHeader";
 import Catalog from "./views/Catalog";
@@ -17,89 +15,129 @@ import About from "./views/About";
 import HowTo from "./views/HowTo";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
+import Join from "./views/Join";
 import ObjectInfo from "./views/ObjectInfo";
 import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
 import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
+import CookieBanner from "./app/components/CookieBanner";
+import Footer from "./app/components/Footer";
+import Charter from "./views/Charter";
+import Whitepaper from "./views/Whitepaper";
+import FAQ from "./views/FAQ";
+import ReactGA from "react-ga";
+import PrivacyPolicy from "./views/PrivacyPolicy";
+import Terms from "./views/Terms";
+import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
+import TestPilotConfirmed from "./views/TestPilotConfirmed";
+import DiscordChatIcon from "./app/components/DiscordChatIcon";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
-  const userDispatch = useUserDispatch();
+  const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   useEffect(() => {
-    // get jwt from local storage
-    // utilized for authentication and is decoded to return users ethereum address
-    const retrieveJwt = () => {
+    // get jwt from local storage which is decoded to return the user ethereum address
+    const retrieveJwtAndGetUserData = async () => {
       const jwt = localStorage.getItem("trusat-jwt");
+      // checks if jwt is valid and hasn't expired
+      checkJwt(jwt);
+
+      const { address } = await jwt_decode(jwt);
+
       authDispatch({ type: "SET_JWT", payload: jwt });
-      authDispatch({ type: "AUTHENTICATED", payload: true });
-
-      const { address } = jwt_decode(jwt);
-      userDispatch({ type: "SET_USER_ADDRESS", payload: address });
-
-      axios
-        .post(
-          `https://api.consensys.space:8080/profile`,
-          JSON.stringify({
-            jwt: jwt,
-            addresss: address
-            // leo's for testing
-            // address: "0x5C760Ba09C12E4fd33be49f1B05E6E1e648EB312"
-          })
-        )
-        .then(result => {
-          userDispatch({ type: "SET_USER_DATA", payload: result.data });
-          userDispatch({ type: "SHOW_USER_PROFILE", payload: true });
-        })
-        .catch(err => console.log(err));
-    };
-    // private key for "burner wallet"
-    // will be called if user has submitted an observation without signing up to TruSat
-    const retrieveWallet = () => {
-      const privateKey = localStorage.getItem("trusat-private-key");
-      const wallet = new ethers.Wallet(privateKey);
-
-      authDispatch({ type: "SET_BURNER", payload: wallet });
-      userDispatch({
+      authDispatch({
         type: "SET_USER_ADDRESS",
-        payload: wallet.signingKey.address
+        payload: address
       });
-      authDispatch({ type: "SET_AUTH_TYPE", payload: "burner" });
     };
 
-    if (localStorage.getItem("trusat-private-key")) {
-      retrieveWallet();
+    const retrieveCookieChoice = () => {
+      // true or false
+      const allowCookies = localStorage.getItem("trusat-allow-cookies");
+      if (allowCookies) {
+        setCookies();
+      }
+    };
+    // get users choice on cookie banner from last visit
+    if (localStorage.getItem("trusat-allow-cookies")) {
+      setIsBannerOpen(false);
+      retrieveCookieChoice();
     }
 
     if (localStorage.getItem("trusat-jwt")) {
-      retrieveJwt();
+      retrieveJwtAndGetUserData();
     }
-  }, [authDispatch, userDispatch]);
+  }, [authDispatch]);
 
   return (
-    <Router>
-      {/* Shown on mobile view */}
-      <BurgerMenu left />
-      <MobileHeader />
-      {/* Shown on desktop view */}
-      <NavBar />
+    <div className="app">
+      <Router>
+        {/* Shown on mobile view */}
+        <BurgerMenu right />
+        <MobileHeader />
+        {/* Shown on desktop view */}
+        <NavBar />
+        <Route
+          path="/"
+          render={({ location }) => {
+            ReactGA.pageview(location.pathname + location.search);
+          }}
+        />
 
-      <Route exact path="/" component={Welcome} />
-      <Route path="/catalog/:catalogFilter" component={Catalog} />
-      <Route path="/submit" component={Submit} />
-      <ObjectsProvider>
-        <Route path="/object/:number" component={ObjectInfo} />
-      </ObjectsProvider>
-      <Route path="/profile/:address" component={Profile} />
-      <Route exact path="/settings" component={AccountSettings} />
-      <Route path="/settings/metamask" component={MetamaskImport} />
-      <Route path="/about" component={About} />
-      <Route path="/how" component={HowTo} />
-      <Route path="/login" component={LogIn} />
-      <Route path="/signup" component={SignUp} />
-      <Route exact path="/claim" component={ClaimAccount} />
-      <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-    </Router>
+        <Switch>
+          <Route exact path="/" component={Welcome} />
+          <Route path="/catalog/:catalogFilter" component={Catalog} />
+          <Route path="/submit" component={Submit} />
+          <Route path="/object/:number" component={ObjectInfo} />
+          <Route exact path="/profile/:address" component={Profile} />
+          <Route exact path="/settings" component={AccountSettings} />
+          <Route path="/settings/metamask" component={MetamaskImport} />
+          <Route path="/about" component={About} />
+          <Route path="/how" component={HowTo} />
+          <Route path="/join" component={Join}></Route>
+          <Route path="/login" component={LogIn} />
+          <Route path="/signup" component={SignUp} />
+          <Route exact path="/claim" component={ClaimAccount} />
+          <Route path="/claim/:jwt" component={VerifyClaimAccount} />
+          <Route path="/whitepaper" component={Whitepaper} />
+          <Route path="/faq" component={FAQ}></Route>
+          <Route path="/charter" component={Charter} />
+          <Route path="/privacy" component={PrivacyPolicy} />
+          <Route path="/terms" component={Terms} />
+          {/* User is sent to this route when they complete a mail chimp sign up */}
+          <Route
+            path="/subscription-confirmed"
+            component={SubscriptionConfirmed}
+          />
+          <Route path="/test-pilot-confirmed" component={TestPilotConfirmed} />
+          <Route component={NoMatch} />
+        </Switch>
+
+        {isBannerOpen ? (
+          <CookieBanner
+            isBannerOpen={isBannerOpen}
+            setIsBannerOpen={setIsBannerOpen}
+          />
+        ) : (
+          <Fragment>
+            <Footer />
+            <DiscordChatIcon />
+          </Fragment>
+        )}
+      </Router>
+    </div>
+  );
+}
+
+function NoMatch({ location }) {
+  return (
+    <div>
+      <h3 className="app__error-message">
+        <code>{location.pathname}</code> is not a route in TruSat. Please check
+        that you entered the correct URL
+      </h3>
+    </div>
   );
 }

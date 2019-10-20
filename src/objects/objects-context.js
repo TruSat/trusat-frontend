@@ -11,8 +11,14 @@ function objectsReducer(state, action) {
     case "SET_OBJECT_ORIGIN": {
       return { ...state, objectOrigin: action.payload };
     }
+    case "SET_OBJECT_BACKGROUND": {
+      return { ...state, objectBackground: action.payload };
+    }
     case "SET_OBJECT_INFO": {
       return { ...state, objectInfo: action.payload };
+    }
+    case "SET_YEAR_LAUNCHED": {
+      return { ...state, yearLaunched: action.payload };
     }
     case "SET_OBSERVATION_FILTER": {
       return { ...state, observationFilter: action.payload };
@@ -27,7 +33,9 @@ function ObjectsProvider({ children }) {
   const [state, dispatch] = React.useReducer(objectsReducer, {
     noradNumber: "",
     objectOrigin: "",
+    objectBackground: "",
     objectInfo: {},
+    yearLaunched: "",
     observationFilter: "influence"
   });
 
@@ -43,7 +51,7 @@ function ObjectsProvider({ children }) {
 function useObjectsState() {
   const context = React.useContext(ObjectsStateContext);
   if (context === undefined) {
-    throw new Error(`useAuthState must be used with an AuthProvider`);
+    throw new Error(`useObjectsState must be used with a ObjectsProvider`);
   }
   return context;
 }
@@ -51,7 +59,7 @@ function useObjectsState() {
 function useObjectsDispatch() {
   const context = React.useContext(ObjectsDispatchContext);
   if (context === undefined) {
-    throw new Error(`useAuthDispatch must be used within an AuthProvider`);
+    throw new Error(`useObjectsDispatch must be used within a ObjectsProvider`);
   }
   return context;
 }

@@ -1,28 +1,23 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useTrusatGetApi } from "../../app/app-helpers";
 import { useObjectsState } from "../objects-context";
+import Spinner from "../../app/components/Spinner";
 
 export default function DownloadObjectTleButton() {
   const { noradNumber } = useObjectsState();
   const [tleString, setTleString] = useState("");
+  const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    axios
-      .post(
-        `https://api.consensys.space:8080/tle/object`,
-        JSON.stringify({ norad_number: noradNumber })
-      )
-      .then(res => {
-        setTleString(res.data);
-      })
-      .catch(err => console.log(err));
-  }, [noradNumber]);
+    doFetch(`/tle/object?norad_number=${noradNumber}`);
+
+    setTleString(data);
+  }, [noradNumber, doFetch, data]);
 
   const downloadTles = () => {
     let textFile = null;
 
     const data = new Blob([tleString], { type: "text/plain" });
-
     // If replacing a previously generated file, revoke the object URL to avoid memory leaks.
     if (textFile !== null) {
       window.URL.revokeObjectURL(textFile);
@@ -32,15 +27,18 @@ export default function DownloadObjectTleButton() {
 
     return textFile;
   };
-
-  // only show download option if system can find a TLE for this object
-  return tleString ? (
+  // only show download option if database has a TLE for this object
+  return isLoading ? (
+    <Spinner />
+  ) : isError ? (
+    <p className="app__error-message">Something went wrong...</p>
+  ) : tleString ? (
     <a
-      className="object-observations__get-data-link "
+      className="catalog__link"
       href={downloadTles()}
       download={`trusat_${noradNumber}.txt`}
     >
-      Get data
+      <span className="catalog__button catalog__get-data-button">Get TLE</span>
     </a>
   ) : null;
 }

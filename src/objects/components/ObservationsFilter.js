@@ -1,9 +1,9 @@
 import React from "react";
-import { useUserState } from "../../user/user-context";
+import { useAuthState } from "../../auth/auth-context";
 import { useObjectsState, useObjectsDispatch } from "../objects-context";
 
 export default function ObservationsFilter() {
-  const { userAddress } = useUserState();
+  const { userAddress } = useAuthState();
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
 
@@ -30,7 +30,7 @@ export default function ObservationsFilter() {
               })
             }
           >
-            INFLUENCE
+            OBSERVATIONS
           </span>
         </div>
 

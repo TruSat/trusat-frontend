@@ -1,19 +1,15 @@
 import React from "react";
 
-import { useCatalogState } from "../catalog-context";
-
-export default function FilterDescription() {
-  const { catalogFilter } = useCatalogState();
-
+export default function FilterDescription({ catalogFilter }) {
   const filterDescriptions = [
     {
       filter: "priorities",
       copy:
-        "This is a hitlist of satellites most in need of amateur observations. Higher priority sats include recent launches, changes in orbit, or lesser known orbits."
+        "The satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it."
     },
     {
       filter: "undisclosed",
-      copy: "The classified satellites of the TruSat catalog."
+      copy: "These satellites do not appear in public space object catalogs."
     },
     {
       filter: "debris",
@@ -22,21 +18,19 @@ export default function FilterDescription() {
     },
     {
       filter: "latest",
-      copy: "The most recently tracked objects in the catalog."
+      copy: "The most recently launched objects in the catalog need fresh observations."
     },
     { filter: "all", copy: "All objects of the TruSat catalog." }
   ];
 
-  return filterDescriptions.map(description => {
-    if (description.filter === catalogFilter) {
-      return (
-        <p
-          key={`${description.filter} copy`}
-          className="catalog__filter-description"
-        >
-          {description.copy}
-        </p>
-      );
-    }
-  });
+  return filterDescriptions
+    .filter(description => description.filter === catalogFilter)
+    .map(description => (
+      <p
+        key={`${description.filter} copy`}
+        className="catalog__filter-description"
+      >
+        {description.copy}
+      </p>
+    ));
 }

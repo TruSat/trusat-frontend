@@ -1,8 +1,10 @@
-# sathunt-frontend
+# trusat-frontend
+
+TruSat is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space). Check out the project [here](https://trusat.org).
 
 ## Get Started
 
-Clone the repo, `cd` into it and then run the following commands:
+This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). To get started clone the repo, `cd` into it and run the following commands:
 
 ```
 git checkout --track origin/dev
@@ -10,22 +12,14 @@ git checkout --track origin/dev
 yarn install && yarn start
 ```
 
-## Maintaining Repo
+## Tests
 
-[Style Guide](https://github.com/agis/git-style-guide)
-With the addition of commits to the master branch are done through PRs (Pull Request).
+Run the tests with the following command:
 
-## Releasing Versions
+```
+yarn test
+```
 
-Modified from [pyorbital](https://github.com/pytroll/pyorbital/blob/master/RELEASING.md)
+## Contributing
 
-1. checkout master
-2. pull from repo
-3. run the unittests
-4. create a tag with the new version number, starting with a 'v'. eg:
-
-`git tag v0.1.1 -m "Version 0.1.1`
-[Version Numbering](semver.org)
-
-5. push changes to github `git push --follow-tags`
-6. check verification tools
+We very much welcome contributions, especially those that tackle open issues. If you wish to contribute, either open an issue then make a pull request or make a pull request against a currently open issue. Check out this [Style Guide](https://github.com/agis/git-style-guide) for some tips on best practices when contributing.
