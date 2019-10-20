@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
@@ -164,14 +164,16 @@ function NavBar(props) {
       </div>
 
       <div>
-        <NavLink className="app__nav-link nav-bar__log-in-text" to="/login">
-          LOG IN
-        </NavLink>
         {/* Show Join button when user is not logged in */}
         {!userAddress ? (
-          <NavLink className="app__nav-link" to="/join">
-            <JoinButton path={path} />
-          </NavLink>
+          <Fragment>
+            <NavLink className="app__nav-link nav-bar__log-in-text" to="/login">
+              LOG IN
+            </NavLink>
+            <NavLink className="app__nav-link" to="/join">
+              <JoinButton path={path} />
+            </NavLink>
+          </Fragment>
         ) : (
           // Show "submit data" button if user is logged in
           <NavLink className="app__nav-link" to="/submit">
