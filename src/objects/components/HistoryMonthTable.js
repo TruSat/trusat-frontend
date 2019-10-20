@@ -48,7 +48,8 @@ export default function HistoryMonthTable({ monthName, monthData }) {
           {observation.observation_cross_track_error}
         </td>
         <td className="table__weight-data">
-          {observation.observation_weight}%
+          {/* {observation.observation_weight}% */}
+          TBD
         </td>
       </tr>
     ));

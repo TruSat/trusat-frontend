@@ -41,7 +41,6 @@ export default function ProfileHeader() {
       </div>
 
       <div className="profile__button-data-wrapper">
-
         <div className="profile__header-data-wrapper">
           <div className="profile__header-info-data-label">
             <p className="profile__header-info-data-value profile__header-info-data-value--lowlight">
@@ -83,9 +82,10 @@ export default function ProfileHeader() {
           {profileData.observation_count !== "0" ? (
             <div className="profile__header-info-data-label">
               <p className="profile__header-info-data-value">
-                {profileData.average_observation_quality
+                {/* {profileData.average_observation_quality
                   ? profileData.average_observation_quality
-                  : `?`}
+                  : `?`} */}
+                TBD
               </p>
               &nbsp; <p>AVG. ACCURACY</p>
             </div>

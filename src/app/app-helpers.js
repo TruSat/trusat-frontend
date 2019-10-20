@@ -111,7 +111,7 @@ export const useTrusatPostApi = () => {
 
 export const renderFlag = code => {
   if (!code) {
-    return <p className="table__small-text">unknown</p>;
+    return null;
   } else if (!code.includes("/")) {
     return (
       <div className="app__tool-tip-wrapper" data-tip={code}>
@@ -180,4 +180,10 @@ export const toolTipCopy = {
   user: "user who made observation",
   observation_station:
     "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots."
+};
+
+export const emails = {
+  support: "help@beta.trusat.org",
+  submit: "submit@beta.trusat.org",
+  remove: "remove@beta.trusat.org"
 };

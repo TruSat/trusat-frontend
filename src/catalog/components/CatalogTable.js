@@ -42,7 +42,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               ) : null}
               <ObjectBadge
                 noradNumber={obj.object_norad_number}
-                quality={obj.object_observation_quality}
+                // quality={obj.object_observation_quality}
                 size={"small"}
               />
               &nbsp;
@@ -75,7 +75,8 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
           >
-            {obj.object_observation_quality}%
+            {/* {obj.object_observation_quality}% */}
+            TBD
           </NavLink>
         </td>
         <td className="table__table-data catalog-table__table-data--usernameWrapper">

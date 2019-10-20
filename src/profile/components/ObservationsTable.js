@@ -42,9 +42,10 @@ export default function ObservationsTable() {
           {observation.observation_cross_track_error}
         </td>
         <td className="table__table-data">
-          {observation.observation_weight
+          {/* {observation.observation_weight
             ? observation.observation_weight.toString().substring(0, 5)
-            : null}
+            : null} */}
+          TBD
         </td>
       </tr>
     ));

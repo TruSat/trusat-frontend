@@ -10,7 +10,7 @@ export default function ObjectBadge({ noradNumber, quality, size, addStyles }) {
       <P5Wrapper
         sketch={size === "small" ? SketchSmall : SketchLarge}
         noradNumber={noradNumber}
-        quality={quality}
+        // quality={quality}
       ></P5Wrapper>
     </div>
   );
