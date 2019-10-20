@@ -10,6 +10,21 @@ export default function Partners() {
             className="static-page__link"
             target="_blank"
             rel="noopener noreferrer"
+            href="https://consensys.space"
+          >
+            <img
+              className="welcome__partners-list__logo"
+              src="https://trusat-assets.s3.amazonaws.com/partner_logo-consensys_space.png"
+              alt="ConsenSys Space logo"
+            ></img>
+            ConsenSys Space
+          </a>
+        </div>
+        <div className="welcome__partners-list__logo-wrapper">
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
             href="https://swfound.org/"
           >
             <img
@@ -40,29 +55,14 @@ export default function Partners() {
             className="static-page__link"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://www.linkedin.com/in/jahniverse/"
+            href="https://sites.utexas.edu/moriba/"
           >
             <img
               className="welcome__partners-list__logo"
               src="https://trusat-assets.s3.amazonaws.com/partner_logo-moriba_jah.png"
               alt="Moriba Jah portrait"
             ></img>
-            Moriba Jah
-          </a>
-        </div>
-        <div className="welcome__partners-list__logo-wrapper">
-          <a
-            className="static-page__link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://consensys.space"
-          >
-            <img
-              className="welcome__partners-list__logo"
-              src="https://trusat-assets.s3.amazonaws.com/partner_logo-consensys_space.png"
-              alt="ConsenSys Space logo"
-            ></img>
-            ConsenSys Space
+            Professor Moriba Jah, University of Texas at Austin
           </a>
         </div>
       </div>

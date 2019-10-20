@@ -96,7 +96,7 @@ export default function About() {
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                Learn about the ins and outs of TruSat.
+                Learn the ins and outs of TruSat.
               </p>
             </div>
           </div>
@@ -126,7 +126,7 @@ export default function About() {
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                An outline of TruSat’s initial governance.
+                TruSat's governance arrangements
               </p>
             </div>
           </div>
@@ -156,7 +156,7 @@ export default function About() {
           <SocialIcons />
 
           <div className="about__mailing-list-wrapper">
-            <p className="welcome__small-copy--white">
+            <p className="">
               Join the mailing list to stay posted on the project
             </p>
             <MailingListForm testPilots={false} />
