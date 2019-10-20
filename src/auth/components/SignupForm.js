@@ -149,6 +149,7 @@ export default function SignupForm({ setIsSuccess }) {
 
         <div className="email-form__checkbox-and-message-wrapper">
           <input
+            className="email-form__checkbox"
             required
             type="checkbox"
             checked={understandMessage}

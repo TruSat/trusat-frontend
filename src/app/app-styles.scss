@@ -500,6 +500,18 @@ EMAIL FORM
   margin: 0.5em 0 0.5em 0;
 }
 
+.email-form__checkbox {
+  border: 1px solid yellow;
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  transform: scale(2);
+  padding: 10px;
+  margin-right: 1em;
+}
+
 .email-form__button-wrapper {
   align-items: center;
   display: flex;
@@ -1508,9 +1520,6 @@ CHARTER VIEW
 ---------- */
 .charter__sub-header {
   margin-top: 1em;
-}
-
-.charter-list-item {
 }
 
 .charter-list-item {
