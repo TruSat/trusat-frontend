@@ -5,7 +5,6 @@ import IconLocation from "../assets/icon-location.svg";
 import IconLowlight from "../assets/icon-lowlight.svg";
 import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
-import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
 
 
 

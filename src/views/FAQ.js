@@ -1,7 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
-import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
 
 
 export default function FAQ() {
