@@ -56,7 +56,9 @@ export default function Info() {
               <p className="object-info__small-text--grey">LAST SEEN</p>
               &nbsp;
               <p className="object-info__small-text">
-                {objectInfo.time_last_tracked}
+                {objectInfo.time_last_tracked
+                  ? objectInfo.time_last_tracked.substring(0, 10)
+                  : null}
               </p>
               &nbsp;
             </div>
