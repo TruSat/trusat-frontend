@@ -17,6 +17,7 @@ export default function ObjectsCollectedTable() {
   const renderObjectsCollectedRows = () => {
     const { start, end } = range;
     const rangeData = profileData.objects_observed.slice(start, end);
+    console.log(rangeData);
 
     return rangeData.map(obj => (
       <tr

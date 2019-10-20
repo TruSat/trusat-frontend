@@ -11,6 +11,7 @@ import ObjectBadge from "../../app/components/ObjectBadge";
 
 export default function Info() {
   const { noradNumber, objectInfo } = useObjectsState();
+  console.log(objectInfo);
 
   return (
     <React.Fragment>
@@ -101,13 +102,14 @@ export default function Info() {
               </p>
             </div>
           </div>
-          {objectInfo.object_purpose ? (
+          {objectInfo.object_primary_purpose ||
+          objectInfo.object_secondary_purpose ? (
             <div className="object-info__purpose-wrapper">
               <p className="object-info__info-label">PURPOSE</p>
               <p className="object-info__large-text">
-                {objectInfo.object_purpose}
+                {objectInfo.object_purpose ? objectInfo.object_purpose : null}
                 {objectInfo.object_secondary_purpose
-                  ? `/${objectInfo.object_secondary_purpose}`
+                  ? ` - ${objectInfo.object_secondary_purpose}`
                   : null}
               </p>
             </div>
