@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
+
 import RoundedButton from "../app/components/RoundedButton";
+import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
 import MailingListForm from "../app/components/MailingListForm";
 
 export default function About() {
-  const [email, setEmail] = useState("");
-
   return (
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
@@ -152,32 +151,7 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about__partners-wrapper">
-          <h2 className="static-page__sub-header">PARTNERS</h2>
-          <div className="welcome__partners-list">
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-          </div>
-        </div>
+        <Partners />
         {/* <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             PRESS

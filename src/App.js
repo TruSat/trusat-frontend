@@ -31,7 +31,7 @@ import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
-import DiscordChatIcon from "./app/components/DicordChatButton";
+import DiscordChatIcon from "./app/components/DiscordChatIcon";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
