@@ -21,6 +21,7 @@ export default function sketch(p) {
     // p.noLoop();
     p.rectMode(p.CENTER);
     p.strokeJoin(p.ROUND);
+    p.strokeWeight(2)
   };
 
   p.myCustomRedrawAccordingToNewPropsHandler = function(props) {
@@ -75,7 +76,7 @@ export default function sketch(p) {
     // Draw number text
     p.noStroke();
     p.textAlign(p.CENTER);
-    p.textSize(10);
+    p.textSize(12);
     p.fill(pallette[4]);
     p.text(noradNumber, canvasSize / 2, canvasSize / 2 + 3);
   };
@@ -84,23 +85,23 @@ export default function sketch(p) {
   function drawHexagon1() {
     p.noFill();
     p.beginShape();
-    p.vertex(24, 0.953);
-    p.vertex(43.919, 12.453);
-    p.vertex(43.919, 35.453);
-    p.vertex(24, 46.953);
-    p.vertex(4.081, 35.453);
-    p.vertex(4.081, 12.453);
+    p.vertex(75, 3);
+    p.vertex(137.354, 39);
+    p.vertex(137.354, 111);
+    p.vertex(75, 147);
+    p.vertex(12.646, 111);
+    p.vertex(12.646, 39);
     p.endShape(p.CLOSE);
   }
 
   function drawHexagon2() {
     p.beginShape();
-    p.vertex(24, 4.953);
-    p.vertex(40.454, 14.453);
-    p.vertex(40.454, 33.453);
-    p.vertex(24, 42.953);
-    p.vertex(7.546, 33.453);
-    p.vertex(7.546, 14.453);
+    p.vertex(75, 15.522);
+    p.vertex(126.51, 45.261);
+    p.vertex(126.51, 104.739);
+    p.vertex(75, 134.478);
+    p.vertex(23.49, 104.739);
+    p.vertex(23.49, 45.261);
     p.endShape(p.CLOSE);
   }
 
@@ -109,9 +110,9 @@ export default function sketch(p) {
     p.noFill();
     p.stroke(255, 255, 255, 75);
     p.beginShape();
-    p.vertex(7.546, 14.453);
-    p.vertex(24, 4.953);
-    p.vertex(40.454, 14.453);
+    p.vertex(23.49, 45.261);
+    p.vertex(75, 15.522);
+    p.vertex(126.51, 45.261);
     p.endShape();
   }
 
@@ -120,9 +121,9 @@ export default function sketch(p) {
     p.noFill();
     p.stroke(8, 17, 34, 100);
     p.beginShape();
-    p.vertex(40.454, 33.453);
-    p.vertex(24, 42.953);
-    p.vertex(7.546, 33.453);
+    p.vertex(126.51, 104.739);
+    p.vertex(75, 134.478);
+    p.vertex(23.49, 104.739);
     p.endShape();
   }
 }
