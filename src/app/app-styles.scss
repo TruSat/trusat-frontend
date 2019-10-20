@@ -1047,8 +1047,9 @@ WELCOME VIEW
 }
 
 .welcome__partners-list__logo-wrapper {
-  margin-right: 40px;
+  margin-right: 10px;
   margin-bottom: 30px;
+  flex-basis: 200px;
 }
 
 .welcome__partners-list__logo {
@@ -1408,7 +1409,7 @@ ABOUT VIEW
 .welcome__partners-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-start;
+  justify-content: flex-start;
   margin: 2em 0em 5em 0em;
 }
 
