@@ -1,8 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
-import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
+import Partners from "../app/components/Partners";
 import RoundedButton from "../app/components/RoundedButton";
 import MailingListForm from "../app/components/MailingListForm";
 
@@ -170,32 +169,7 @@ export default function Home() {
 
         {/* SECTION/GRADIENT THREE */}
         <section className="welcome__section--three">
-          <div className="about__partners-wrapper">
-            <h2 className="static-page__sub-header">PARTNERS</h2>
-            <div className="welcome__partners-list">
-              <div className="welcome__partners-list__logo-wrapper">
-                <img
-                  className="welcome__partners-list__logo"
-                  src={PartnerLogoSWF}
-                  alt="Secure World Foundation Logo"
-                ></img>
-              </div>
-              <div className="welcome__partners-list__logo-wrapper">
-                <img
-                  className="welcome__partners-list__logo"
-                  src={PartnerLogoSWF}
-                  alt="Secure World Foundation Logo"
-                ></img>
-              </div>
-              <div className="welcome__partners-list__logo-wrapper">
-                <img
-                  className="welcome__partners-list__logo"
-                  src={PartnerLogoSWF}
-                  alt="Secure World Foundation Logo"
-                ></img>
-              </div>
-            </div>
-          </div>
+          <Partners />
         </section>
       </div>
       <div className="welcome__bottom__wrapper">
