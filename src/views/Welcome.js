@@ -112,7 +112,7 @@ export default function Home() {
               </p>
               <p className="welcome__small-copy--white">
                 Space is wild. There’s been no way to ensure responsible
-                practices in orbit, because there’s been no trusted source of
+                practices in orbit, because there has been no trusted source of
                 orbital data. To fill this gap, TruSat tasks a global network of
                 citizens to track satellites of interest.
               </p>
@@ -120,7 +120,10 @@ export default function Home() {
                 TruSat merges many individual observations into one planetary
                 record of orbital positions. This allows the world to measure
                 satellite behavior against international standards of
-                sustainability. Learn more
+                sustainability.{" "}
+                <NavLink className="app__nav-link app__link" to="/about">
+                  Learn more
+                </NavLink>
               </p>
             </div>
             <div className="welcome__illustration-wrapper--right">
