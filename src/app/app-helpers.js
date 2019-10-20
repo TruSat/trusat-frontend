@@ -183,7 +183,7 @@ export const toolTipCopy = {
 };
 
 export const emails = {
-  support: "support@trusat.org",
-  submit: "submit@trusat.org",
-  remove: "remove@trusat.org"
+  support: "help@beta.trusat.org",
+  submit: "submit@beta.trusat.org",
+  remove: "remove@beta.trusat.org"
 };
