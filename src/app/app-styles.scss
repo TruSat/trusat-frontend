@@ -720,6 +720,7 @@ WELCOME VIEW
 
 .welcome__logo-image {
   max-width: 260px;
+  position: relative;
 }
 
 @media (min-width: 600px) {
@@ -1269,7 +1270,7 @@ STATIC PAGE VIEW
 .static-page__wrapper {
   background: $primary-theme-color;
   padding: 2em 1em;
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
