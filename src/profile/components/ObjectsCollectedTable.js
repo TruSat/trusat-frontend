@@ -17,7 +17,6 @@ export default function ObjectsCollectedTable() {
   const renderObjectsCollectedRows = () => {
     const { start, end } = range;
     const rangeData = profileData.objects_observed.slice(start, end);
-    console.log(rangeData);
 
     return rangeData.map(obj => (
       <tr
@@ -38,14 +37,13 @@ export default function ObjectsCollectedTable() {
         </td>
         <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
         <td className="table__table-data app__hide-on-mobile">
+          {obj.object_type ? <p>{obj.object_type}</p> : null}
           {obj.object_primary_purpose ? (
-            <p>
-              {obj.object_primary_purpose}&nbsp;
-              {obj.object_secondary_purpose}
-            </p>
-          ) : (
-            <p>unknown</p>
-          )}
+            <p>{` - ${obj.object_primary_purpose}`}</p>
+          ) : null}
+          {obj.object_secondary_purpose ? (
+            <p>{` - ${obj.object_secondary_purpose}`}</p>
+          ) : null}
         </td>
         <td className="table__table-data app__hide-on-mobile">
           {obj.observation_quality}

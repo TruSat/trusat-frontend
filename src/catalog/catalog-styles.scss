@@ -145,6 +145,8 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button:hover {
+  border-color: $primary-text-color;
+  color: $primary-text-color;
   cursor: pointer;
 }
 
@@ -296,8 +298,6 @@ CATALOG TABLE
 .catalog-table__body-row:hover {
   background-color: $tertiary-color;
 }
-
-
 
 .table-paginator {
   margin: 1.5em;
