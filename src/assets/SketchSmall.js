@@ -8,11 +8,11 @@ export default function sketch(p) {
 
   // Colors for adge
   const pallette = [
-		'#FC7756', // salmon
-		'#db3f33', // mars
-		'#004F85', // blue
-		'#090914', // dark blue
-		'white'
+    "#FC7756", // salmon
+    "#db3f33", // mars
+    "#004F85", // blue
+    "#090914", // dark blue
+    "white"
   ];
 
   // Configure processing drawing
@@ -35,17 +35,16 @@ export default function sketch(p) {
   };
 
   p.draw = () => {
-
-    let color1
-    let color2
+    let color1;
+    let color2;
 
     // Color first hexagon (based on Sat's age using Sat ID number range)
     if (noradNumber < 20000) {
-      color1 = pallette[0]
+      color1 = pallette[0];
     } else if (noradNumber < 40000) {
-      color1 = pallette[1]
+      color1 = pallette[1];
     } else {
-      color1 = pallette[2]
+      color1 = pallette[2];
     }
 
     // Draw first hexagon
@@ -54,11 +53,11 @@ export default function sketch(p) {
 
     // Color second hexagon (based on Sat's age using Sat ID number range)
     if (noradNumber < 20000) {
-      color2 = pallette[2]
+      color2 = pallette[2];
     } else if (noradNumber < 40000) {
-      color2 = pallette[0]
+      color2 = pallette[0];
     } else {
-      color2 = pallette[1]
+      color2 = pallette[1];
     }
 
     // Draw second hexagon
@@ -71,7 +70,7 @@ export default function sketch(p) {
 
     // Draw lowlight
     drawLowlight();
-    p.blendMode(p.NORMAL);
+    p.blendMode(p.BLEND);
 
     // Draw number text
     p.noStroke();
@@ -92,7 +91,7 @@ export default function sketch(p) {
     p.vertex(4.081, 35.453);
     p.vertex(4.081, 12.453);
     p.endShape(p.CLOSE);
-  };
+  }
 
   function drawHexagon2() {
     p.beginShape();
@@ -103,20 +102,19 @@ export default function sketch(p) {
     p.vertex(7.546, 33.453);
     p.vertex(7.546, 14.453);
     p.endShape(p.CLOSE);
-  };
-  
+  }
+
   function drawHighlight(color) {
     p.blendMode(p.SCREEN);
-    p.noFill()
+    p.noFill();
     p.stroke(255, 255, 255, 75);
     p.beginShape();
     p.vertex(7.546, 14.453);
     p.vertex(24, 4.953);
     p.vertex(40.454, 14.453);
     p.endShape();
-  };
-  
-  
+  }
+
   function drawLowlight(color) {
     p.blendMode(p.MULTIPLY);
     p.noFill();
@@ -126,6 +124,5 @@ export default function sketch(p) {
     p.vertex(24, 42.953);
     p.vertex(7.546, 33.453);
     p.endShape();
-  };
-  
+  }
 }
