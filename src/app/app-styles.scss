@@ -1252,6 +1252,10 @@ MAILING LIST FORM
   }
 }
 
+.mailing-list__subscribe-button:hover {
+  cursor: pointer;
+}
+
 .mailing-list__subscribe-button--test-pilots {
   color: $primary-theme-color;
 }
