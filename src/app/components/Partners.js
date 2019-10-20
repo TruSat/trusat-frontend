@@ -12,41 +12,70 @@ export default function Partners() {
       <h2 className="static-page__sub-header">PARTNERS</h2>
       <div className="welcome__partners-list">
         <div className="welcome__partners-list__logo-wrapper">
-          <img
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://swfound.org/"
+          >
+            <img
             className="welcome__partners-list__logo"
             // src="https://trusat-assets.s3.amazonaws.com/partner_logo-swf.png"
             src={PartnerSWF} //DELETE THIS LINE
-            alt="Secure World Foundation Logo"
+            alt="Secure World Foundation logo"
           ></img>
-          <div></div>
+            Secure World Foundation
+          </a>
         </div>
         <div className="welcome__partners-list__logo-wrapper">
-          <img
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.swise.org/"
+          >
+            <img
             className="welcome__partners-list__logo"
             // src="https://trusat-assets.s3.amazonaws.com/partner_logo-swise.png"
             src={PartnerSWISE} //DELETE THIS LINE
-            alt="Secure World Foundation Logo"
+            alt="Society of Women in Space Exploration logo"
           ></img>
-          <div></div>
+            Society of Women in Space Exploration
+          </a>
         </div>
         <div className="welcome__partners-list__logo-wrapper">
-          <img
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.linkedin.com/in/jahniverse/"
+          >
+            <img
             className="welcome__partners-list__logo"
             // src="https://trusat-assets.s3.amazonaws.com/partner_logo-moriba.png"
             src={PartnerMoribaJah} //DELETE THIS LINE
-            alt="Secure World Foundation Logo"
+            alt="Moriba Jah portrait"
           ></img>
-          <div></div>
+            Moriba Jah
+          </a>
         </div>
         <div className="welcome__partners-list__logo-wrapper">
-          <img
+          <a
+            className="static-page__link"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://consensys.space"
+          >
+            <img
             className="welcome__partners-list__logo"
             // src="https://trusat-assets.s3.amazonaws.com/partner_logo-consensys_space.png"
             src={PartnerConsenSysSpace} //DELETE THIS LINE
-            alt="Secure World Foundation Logo"
+            alt="ConsenSys Space logo"
           ></img>
-          <div></div>
+            ConsenSys Space
+          </a>
         </div>
+
       </div>
     </div>
   );
