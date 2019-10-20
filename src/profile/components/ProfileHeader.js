@@ -28,8 +28,13 @@ export default function ProfileHeader() {
         {userAddress.toLowerCase() ===
         profileData.user_address.toLowerCase() ? (
           <div className="profile__header-settings-link-wrapper">
+            <NavLink className="app__nav-link" to="/submit">
+              <span className="catalog__button catalog__get-data-button">
+                Submit observations
+              </span>
+            </NavLink>
             <NavLink className="app__nav-link" to="/settings">
-              <span className="app__black-button--small app__black-button--settings">Settings</span>
+              <span className="profile__header-settings-link">Settings</span>
             </NavLink>
           </div>
         ) : null}

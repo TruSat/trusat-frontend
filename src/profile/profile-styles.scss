@@ -62,6 +62,16 @@ PROFILE
   }
 }
 
+.profile__header-settings-link {
+  color: $secondary-theme-color;
+}
+
+
+.profile__header-settings-link:hover {
+  color: $primary-text-color;
+}
+
+
 .profile__header-settings-link-wrapper {
   text-align: left;
   width: 100%;
@@ -71,6 +81,8 @@ PROFILE
 @media (min-width: 600px) {
   .profile__header-settings-link-wrapper {
     text-align: right;
+    display: flex;
+    flex-direction: column;
   }
 }
 

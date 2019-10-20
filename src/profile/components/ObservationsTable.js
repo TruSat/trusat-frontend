@@ -57,50 +57,55 @@ export default function ObservationsTable() {
           ? "YOUR OBSERVATIONS"
           : "OBSERVATIONS"}
       </h2>
-      <table className="table">
-        <thead className="table__header">
-          <tr>
-            <td className="table__header-text">
-              {toolTip("DATE", toolTipCopy.date)}
-            </td>
-            <td className="table__header-text">
-              {toolTip("OBJECT", toolTipCopy.object)}
-            </td>
-            <td className="table__header-text">
-              <div className="app__hide-on-mobile">
-                {toolTip("POSITION ERR.", toolTipCopy.position_error)}
-              </div>
-              <p className="app__hide-on-desktop">POS ERR.</p>
-            </td>
-            <td className="table__header-text">
-              <div className="app__hide-on-mobile">
-                {toolTip("TIME ERR.", toolTipCopy.time_error)}
-              </div>
-              <p className="app__hide-on-desktop">TIME ERR.</p>
-            </td>
-            <td className="table__header-text">
-              <div className="app__hide-on-mobile">
-                {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
-              </div>
-            </td>
-            <td className="table__header-text">
-              <div className="app__hide-on-mobile">
-                {toolTip("WEIGHT", toolTipCopy.weight)}
-              </div>
-              <p className="app__hide-on-desktop">WT.</p>
-            </td>
-          </tr>
-        </thead>
-        <tbody className="table__body">
-          {profileData.observation_history.length !== 0 ? (
-            renderYourObservationsRows()
-          ) : (
+      {profileData.observation_history.length !== 0 ? (
+        <table className="table">
+          <thead className="table__header">
             <tr>
-              <td className="profile__none-yet-text">None yet</td>
+              <td className="table__header-text">
+                {toolTip("DATE", toolTipCopy.date)}
+              </td>
+              <td className="table__header-text">
+                {toolTip("OBJECT", toolTipCopy.object)}
+              </td>
+              <td className="table__header-text">
+                <div className="app__hide-on-mobile">
+                  {toolTip("POSITION ERR.", toolTipCopy.position_error)}
+                </div>
+                <p className="app__hide-on-desktop">POS ERR.</p>
+              </td>
+              <td className="table__header-text">
+                <div className="app__hide-on-mobile">
+                  {toolTip("TIME ERR.", toolTipCopy.time_error)}
+                </div>
+                <p className="app__hide-on-desktop">TIME ERR.</p>
+              </td>
+              <td className="table__header-text">
+                <div className="app__hide-on-mobile">
+                  {toolTip("CROSS TRACK ERR.", toolTipCopy.cross_track_error)}
+                </div>
+              </td>
+              <td className="table__header-text">
+                <div className="app__hide-on-mobile">
+                  {toolTip("WEIGHT", toolTipCopy.weight)}
+                </div>
+                <p className="app__hide-on-desktop">WT.</p>
+              </td>
             </tr>
-          )}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="table__body">
+              renderYourObservationsRows()
+          </tbody>
+        </table>
+      ) : (
+        <div className="profiile__none-yet-wrapper">
+          <NavLink className="app__nav-link" to="/how">
+            <p className="profile__none-yet-text">None yet</p>
+            <span className="app__yellow-button--small">
+              Learn how to track Satellites
+            </span>
+          </NavLink>
+        </div>
+      )}
 
       {profileData.observation_history.length > 10 ? (
         <TablePaginator

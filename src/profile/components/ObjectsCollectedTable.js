@@ -89,13 +89,8 @@ export default function ObjectsCollectedTable() {
           <tbody className="table__body">{renderObjectsCollectedRows()}</tbody>
         </table>
       ) : (
-        <div>
-          <NavLink className="app__nav-link" to="/how">
-            <p className="profile__none-yet-text">None yet</p>
-            <span className="app__yellow-button--small">
-              How to track Satellites
-            </span>
-          </NavLink>
+        <div className="profiile__none-yet-wrapper">
+          <span className="profile__none-yet-text">None yet</span>
         </div>
       )}
 
