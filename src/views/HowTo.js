@@ -6,8 +6,6 @@ import IconLowlight from "../assets/icon-lowlight.svg";
 import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
 
-
-
 export default function HowTo() {
   return (
     <div className="static-page__wrapper static-page__wrapper--how-to">
@@ -40,10 +38,10 @@ export default function HowTo() {
           <div className="how-to__step__number">1.</div>
           <div className="how-to__step__image-wrapper">
             <img
-                  className="how-to__screenshot"
-                  src={IconTime}
-                  alt="Icon: Clock"
-                ></img>
+              className="how-to__screenshot"
+              src={IconTime}
+              alt="Icon: Clock"
+            ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -56,10 +54,10 @@ export default function HowTo() {
           <div className="how-to__step__number">2.</div>
           <div className="how-to__step__image-wrapper">
             <img
-                  className="how-to__screenshot"
-                  src={IconLocation}
-                  alt="Icon: Map pin"
-                ></img>
+              className="how-to__screenshot"
+              src={IconLocation}
+              alt="Icon: Map pin"
+            ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -96,15 +94,13 @@ export default function HowTo() {
           through it (if it blinks, it’s probably an airplane).
         </p>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">
-            1.
-          </div>
+          <div className="how-to__step__number">1.</div>
           <div className="how-to__step__image-wrapper">
             <img
-                className="how-to__screenshot"
-                src={IconTime}
-                alt="Icon: Clock"
-              ></img>
+              className="how-to__screenshot"
+              src={IconTime}
+              alt="Icon: Clock"
+            ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -118,15 +114,13 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">
-            2.
-          </div>
+          <div className="how-to__step__number">2.</div>
           <div className="how-to__step__image-wrapper">
             <img
-                className="how-to__screenshot"
-                src={IconLowlight}
-                alt="Icon: Low light"
-              ></img>
+              className="how-to__screenshot"
+              src={IconLowlight}
+              alt="Icon: Low light"
+            ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -138,15 +132,13 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">
-            3.
-          </div>
+          <div className="how-to__step__number">3.</div>
           <div className="how-to__step__image-wrapper">
             <img
-                className="how-to__screenshot"
-                src={IconRelaxing}
-                alt="Icon: Relaxing"
-              ></img>
+              className="how-to__screenshot"
+              src={IconRelaxing}
+              alt="Icon: Relaxing"
+            ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -285,7 +277,9 @@ export default function HowTo() {
       </section>
 
       <section className="static-page__section">
-        <h2 className="static-page__sub-header static-page__sub-header--no-underline">HEAVENS ABOVE AND CALSKY</h2>
+        <h2 className="static-page__sub-header static-page__sub-header--no-underline">
+          HEAVENS ABOVE AND CALSKY
+        </h2>
         <p className="static-page__copy">
           If you want to find a specific satellite, we recommend planning ahead
           because satellites in Low Earth Orbit (LEO) do not appear at the same
@@ -360,11 +354,13 @@ export default function HowTo() {
           software, and is not recommended for all but the most committed.
         </p>
         <p className="static-page__copy">
-          If you are that person and want to become a TruSat Alpha Test Pilot, please sign up here:  
-          <MailingListForm testPilots={true} /> 
+          If you are that person and want to become a TruSat Alpha Test Pilot,
+          please sign up here:
         </p>
-        <p className="static-page__copy">
-          We’ll help walk you through the process and get you set up with the necessary software tools.
+        <MailingListForm testPilots={true} />
+        <p className="static-page__copy how-to__copy--with-margin">
+          We’ll help walk you through the process and get you set up with the
+          necessary software tools.
         </p>
       </section>
     </div>

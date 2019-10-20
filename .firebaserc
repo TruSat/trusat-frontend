@@ -1,6 +1,6 @@
 {
   "projects": {
     "default": "trusat",
-    "production": "trusat-production"
+    "staging": "trusat"
   }
 }
