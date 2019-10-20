@@ -299,6 +299,10 @@ NAV BAR
     padding: 0.5em 1.5em;
   }
 
+  .nav-bar__button--lowlight:hover {
+    border-color: $primary-text-color;
+  }
+
   .nav-bar {
     align-items: center;
     background: $tertiary-color;
@@ -445,6 +449,7 @@ TABLE PAGINATOR
 }
 
 .table-paginator__button-text:hover {
+  color: $primary-text-color;
   cursor: pointer;
 }
 
@@ -1083,10 +1088,6 @@ WELCOME VIEW
   padding: 0 1.5em 0 0;
 }
 
-.welcome__mailing-list-inputs {
-  margin: 2em 0;
-}
-
 /* ----------
 JOIN VIEW 
 ---------- */
@@ -1263,10 +1264,11 @@ MAILING LIST FORM
 
 .mailing-list__subscribe-button {
   background: $primary-highlight-color;
-  height: 41px;
   border: 1px solid $primary-highlight-color;
   border-radius: 4px;
   font-weight: 500;
+  height: 41px;
+  line-height: 1.25%;
   margin: 0.5em 0;
   padding: 0.5em 2em;
 }
