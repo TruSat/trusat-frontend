@@ -178,44 +178,44 @@ export default function About() {
             </div>
           </div>
         </div>
-        <div className="about__block-wrapper">
+        {/* <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             PRESS
           </h2>
           <p className="static-page__copy">
-            Space News — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              The Blockchain-based Satellite Catalog to Keep Space Clean
+              Article Title
             </a>
           </p>
           <p className="static-page__copy">
-            Tech Crunch — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              Here’s the Headline for the Story
+              Article Title
             </a>
           </p>
           <p className="static-page__copy">
-            New York Times — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              Blockchain in Outer Space Might Just Work
+              Article Title
             </a>
           </p>
-        </div>
+        </div> */}
         <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             FOLLOW TRUSAT
