@@ -57,19 +57,26 @@ OBJECT INFO
     font-weight: 300;
     letter-spacing: -0.02em;
     line-height: 42px;
+    text-align: center;
   }
 }
 
 @media (min-width: 600px) {
   .object-info__header {
     @include view-title--desktop;
+    text-align: left;
   }
+}
+
+.object-info__header-info-wrapper {
+  text-align: center;
 }
 
 @media (min-width: 600px) {
   .object-info__header-info-wrapper {
     display: inline;
     font-size: $extra-small-font-size;
+    text-align: left;
   }
 }
 
