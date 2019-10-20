@@ -174,7 +174,7 @@ function NavBar(props) {
               <JoinButton path={path} />
             </NavLink>
           </Fragment>
-        ): ""}
+        ): <div style={{ width: "96px" }}></div>}
       </div>
     </div>
   );
