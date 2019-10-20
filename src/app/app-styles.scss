@@ -324,7 +324,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--highlight--welcome {
     align-items: center;
-    border-bottom: 3px solid $primary-highlight-color;
+    border-bottom: 3px solid transparent;
     display: flex;
     height: 3.5em;
     margin: 0em 2em;
@@ -344,7 +344,7 @@ NAV BAR
   }
 
   .nav-bar__link--highlight--welcome {
-    color: $primary-text-color;
+    color: $tertiary-color--light;
     text-decoration: none;
   }
 
@@ -358,13 +358,18 @@ NAV BAR
   }
 
   .nav-bar__join-button--welcome {
-    background: $primary-text-color;
+    background: $primary-highlight-color;
     border-radius: 4px;
     color: $primary-theme-color;
     font-size: $small-font-size;
     margin-right: 1em;
     padding: 0.5em 2em;
   }
+
+  .nav-bar__link--highlight--welcome:hover {
+    cursor: default;
+  }
+
 
   .nav-bar__join-button:hover {
     cursor: pointer;
