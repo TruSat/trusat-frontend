@@ -49,6 +49,11 @@ APP
   text-decoration: underline;
 }
 
+.app__link:hover {
+  color: $primary-highlight-color;
+  cursor: pointer;
+}
+
 .app__button--white {
   align-self: flex-start;
   background: $primary-text-color;
@@ -174,12 +179,16 @@ ROUNDED BUTTON
 .app__rounded-button--orange {
   align-self: flex-start;
   background: $primary-highlight-color;
-  border-radius: 23px;
+  border-radius: 8px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   color: $primary-theme-color;
   font-weight: bold;
   line-height: 20px;
   padding: 0.75em 2em;
+}
+
+.app__rounded-button--orange:hover {
+  background: $primary-text-color;
 }
 
 .app__rounded-button--black,
@@ -366,6 +375,12 @@ NAV BAR
     padding: 0.5em 2em;
   }
 
+  .nav-bar__join-button--welcome:hover {
+    background-color: $primary-text-color;
+    color: $primary-theme-color;
+    cursor: pointer;
+  }
+
   .nav-bar__link--highlight--welcome:hover {
     cursor: default;
   }
@@ -379,6 +394,13 @@ NAV BAR
 .nav-bar__log-in-text {
   margin-right: 2em;
 }
+
+.nav-bar__log-in-text:hover {
+  color: $primary-highlight-color;
+  cursor: pointer;
+}
+
+
 
 /* ----------
 TABLE
@@ -1275,18 +1297,26 @@ MAILING LIST FORM
 .mailing-list__subscribe-button {
   background: $primary-highlight-color;
   border: 1px solid $primary-highlight-color;
-  border-radius: 4px;
-  font-weight: 500;
+  border-radius: 8px;
+  color: $primary-theme-color;
+  font-weight: bold;
   height: 41px;
   line-height: 1.25%;
   margin: 0.5em 0;
+  margin-left: -8px;
   min-width: 170px; // stops button text squeezing on re-size
   padding: 0.5em 2em;
+}
+
+.mailing-list__subscribe-button:hover {
+  background: $primary-text-color;
+  border: 1px solid $primary-text-color;
 }
 
 @media (min-width: 400px) {
   .mailing-list__subscribe-button {
     margin: 0em;
+    margin-left: -8px;
   }
 }
 
@@ -1672,6 +1702,11 @@ SOCIAL ICONS
   width: 30px;
 }
 
+.social-icon:hover {
+  border: 2px solid transparent;
+  cursor: pointer;
+}
+
 .social-icon--first {
   margin-left: 0;
 }
@@ -1750,4 +1785,9 @@ DISCORD CHAT BUTTON
 .discord-chat-button__icon {
   height: auto;
   width: 60px;
+}
+
+.discord-chat-button__icon:hover {
+  cursor: pointer;
+  border: 2px solid transparent;
 }
