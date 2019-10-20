@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import MultipleObservationForm from "../submissions/components/MultipleObservationForm";
+import { emails } from "../app/app-helpers";
 
 export default function Submit() {
   return (
@@ -11,8 +12,8 @@ export default function Submit() {
       <div>
         <p className="submit__text">
           Or submit observations to{" "}
-          <a href="mailto:submit@trusat.org" className="submit__link-text">
-            submit@TruSat.org
+          <a href={`mailto:${emails.submit}`} className="submit__link-text">
+            {emails.submit}
           </a>
         </p>
         <NavLink to="/how">

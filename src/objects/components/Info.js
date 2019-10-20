@@ -37,10 +37,13 @@ export default function Info() {
           <div className="object-info__header-info-wrapper">
             <div className="object-info__header-info-wrapper__group">
               <p className="object-info__small-text">
-                {objectInfo.observation_quality}%
+                {/* {objectInfo.observation_quality}% */}
+                TBD
               </p>
               &nbsp;
-              <p className="object-info__small-text--grey">confidence from&nbsp;</p>
+              <p className="object-info__small-text--grey">
+                confidence from&nbsp;
+              </p>
             </div>
             <div className="object-info__header-info-wrapper__group object-info__header-info-wrapper__group--last">
               <p className="object-info__small-text">
