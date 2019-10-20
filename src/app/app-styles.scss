@@ -1146,7 +1146,7 @@ JOIN VIEW
   .join__content-wrapper {
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 6em
+    margin-bottom: 6em;
   }
 }
 
@@ -1158,7 +1158,7 @@ JOIN VIEW
 }
 
 @media (min-width: 600px) {
-  .join__mailing-list-content-wrapper{
+  .join__mailing-list-content-wrapper {
     margin-top: 0;
     width: 50%;
   }
@@ -1169,7 +1169,7 @@ JOIN VIEW
 }
 
 @media (min-width: 600px) {
-  .join__image-wrapper  {
+  .join__image-wrapper {
     align-items: flex-start;
     display: flex;
     flex-direction: row;
@@ -1190,30 +1190,42 @@ MAILING LIST FORM
 ---------- */
 .mailing-list__input-button-wrapper {
   display: flex;
-  position: relative;
+  flex-wrap: wrap;
   height: 40px;
-  margin-top: 1em;
-  max-width: 320px;
-  width: 95%;
+  margin: 1em 0;
+  width: 100%;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 400px) {
   .mailing-list__input-button-wrapper {
-    max-width: 500px;
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input-button-wrapper {
+    flex-wrap: nowrap;
+    max-width: 600px;
   }
 }
 
 .mailing-list__input {
   background: transparent;
   border: 1px solid $primary-text-color;
-  border-right: none;
   color: $primary-text-color;
   box-sizing: border-box;
-  flex: 1;
   font-family: roboto;
   font-size: 20px;
+  height: 41px;
+  max-width: 400px;
   padding-left: 0.5em;
-  width: 400px;
+  width: 100%;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input {
+    border-right: none;
+  }
 }
 
 .mailing-list__input::placeholder {
@@ -1224,15 +1236,19 @@ MAILING LIST FORM
 }
 
 .mailing-list__subscribe-button {
-  align-self: flex-start;
   background: $primary-highlight-color;
   height: 41px;
-  right: -15px;
   border: 1px solid $primary-highlight-color;
   border-radius: 4px;
   font-weight: 500;
+  margin: 0.5em 0;
   padding: 0.5em 2em;
-  white-space: nowrap;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__subscribe-button {
+    margin: 0em;
+  }
 }
 
 .mailing-list__subscribe-button--test-pilots {
@@ -1632,7 +1648,7 @@ TEST PILOTS
 }
 
 @media (min-width: 600px) {
-  .test-pilots__copy-wrapper{
+  .test-pilots__copy-wrapper {
     margin-left: 1em;
   }
 }
@@ -1641,8 +1657,6 @@ TEST PILOTS
   font-size: 18px;
   line-height: 22px;
 }
-
-
 
 /* ----------
 SUBSCRIPTION CONFIRMED 
