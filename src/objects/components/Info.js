@@ -41,18 +41,19 @@ export default function Info() {
                 {objectInfo.observation_quality}
               </p>
               &nbsp;
-              <p className="object-info__small-text--grey">CONFIDENCE FROM&nbsp;</p>
+              <p className="object-info__small-text--grey">confidence from&nbsp;</p>
             </div>
             <div className="object-info__header-info-wrapper__group object-info__header-info-wrapper__group--last">
               <p className="object-info__small-text">
                 {objectInfo.number_users_tracked}
               </p>
               &nbsp;
-              <p className="object-info__small-text--grey">OBSERVERS</p>
+              <p className="object-info__small-text--grey">observers</p>
               &nbsp;
             </div>
+            <br></br>
             <div className="object-info__header-info-wrapper__group">
-              <p className="object-info__small-text--grey">LAST SEEN</p>
+              <p className="object-info__small-text--grey">Last seen</p>
               &nbsp;
               <p className="object-info__small-text">
                 {objectInfo.time_last_tracked}
@@ -60,7 +61,7 @@ export default function Info() {
               &nbsp;
             </div>
             <div className="object-info__header-info-wrapper__group">
-              <p className="object-info__small-text--grey">BY</p>
+              <p className="object-info__small-text--grey">by</p>
               &nbsp;
               <div className="object-info__small-text">
                 <NavLink
