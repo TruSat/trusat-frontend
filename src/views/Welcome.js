@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
 import IllustrationPlaceholder from "../assets/welcome-illustration-placeholder-square.png";
 import RoundedButton from "../app/components/RoundedButton";
+import MailingListForm from "../app/components/MailingListForm";
 
 export default function Home() {
-  const [email, setEmail] = useState("");
-
   return (
     <div className="welcome__wrapper">
       <div className="welcome__content__wrapper">
@@ -203,8 +202,13 @@ export default function Home() {
         <div className="welcome__content__wrapper">
           {/* SECTION/GRADIENT FOUR */}
           <section className="welcome__section--four">
+            <h2 className="welcome__sub-header--white">Stay in the loop</h2>
+            <p className="welcome__small-copy--white">
+              Join the mailing list to stay posted on the project
+            </p>
             <div className="welcome__mailing-list-wrapper">
-              <form
+              <MailingListForm />
+              {/* <form
                 action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
                 method="post"
                 id="mc-embedded-subscribe-form"
@@ -242,7 +246,7 @@ export default function Home() {
                     />
                   </div>
                 </div>
-              </form>
+              </form> */}
             </div>
           </section>
         </div>

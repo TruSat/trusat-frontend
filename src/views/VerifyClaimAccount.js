@@ -16,6 +16,7 @@ export default function VerifyClaimAccount({ match }) {
   const [showUnmatchedPasswordError, setShowUnmatchedPasswordError] = useState(
     false
   );
+  const [understandMessage, setUnderstandMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -107,6 +108,19 @@ export default function VerifyClaimAccount({ match }) {
             onChange={event => setRetypedPassword(event.target.value)}
             value={retypedPassword}
           ></input>
+          <div className="email-form__checkbox-and-message-wrapper">
+            <input
+              required
+              type="checkbox"
+              checked={understandMessage}
+              onChange={() => setUnderstandMessage(!understandMessage)}
+            ></input>
+            <p>
+              I understand I cannot change this password in the future, and that
+              TruSat cannot restore this password for me. I've saved it
+              somewhere safe.
+            </p>
+          </div>
 
           {showInvalidPasswordError ? (
             <div className="email-form__error">
