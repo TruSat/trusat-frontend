@@ -2,6 +2,7 @@
 APP
 ---------- */
 .app {
+  min-height: 100%;
 }
 
 .app__show-on-mobile {
@@ -1251,6 +1252,10 @@ MAILING LIST FORM
   }
 }
 
+.mailing-list__subscribe-button:hover {
+  cursor: pointer;
+}
+
 .mailing-list__subscribe-button--test-pilots {
   color: $primary-theme-color;
 }
@@ -1370,17 +1375,11 @@ ABOUT VIEW
   }
 }
 
-.about__block--left {
-}
-
 @media (min-width: 600px) {
   .about__block--left {
     width: 200px;
     flex: 0 0 250px;
   }
-}
-
-.about__block--right {
 }
 
 @media (min-width: 600px) {
@@ -1430,6 +1429,10 @@ ABOUT VIEW
   font-family: $main-font;
   line-height: 27px;
   margin-bottom: 2em;
+}
+
+.about__mailing-list-wrapper {
+  margin-top: 2em;
 }
 
 /* ----------
@@ -1507,6 +1510,13 @@ CHARTER VIEW
   margin-top: 1em;
 }
 
+.charter-list-item {
+}
+
+.charter-list-item {
+  margin-bottom: 0.5em;
+}
+
 /* ----------
 FAQ view
 ---------- */
@@ -1565,6 +1575,11 @@ Footer
 ---------- */
 .footer {
   margin-right: 4em;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .footer__content {

@@ -14,11 +14,14 @@ export default function HowTo() {
     <div className="static-page__wrapper static-page__wrapper--how-to">
       <section className="static-page__section">
         <img
-            className="about__illustration"
-            src={IllustrationPlaceholderWide}
-            alt="Illustration"
-          ></img>
-        <h1 className="static-page__main-header--small">Welcome to the sport of satellite tracking</h1>
+          className="about__illustration"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-evening-720px.png"
+          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-evening-720px.png, https://trusat-assets.s3.amazonaws.com/illustration-evening-100px.png"
+          alt="Illustration"
+        ></img>
+        <h1 className="static-page__main-header--small">
+          Welcome to the sport of satellite tracking
+        </h1>
         <p className="static-page__copy about__deck">
           Spotting satellites in the night sky can be a relaxing, rewarding
           activity. The serenity of contemplating the night sky, the thrill of

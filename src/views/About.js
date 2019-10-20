@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
-import PartnerLogoSWF from "../assets/partner-logo-swf.gif";
+
 import RoundedButton from "../app/components/RoundedButton";
+import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
+import MailingListForm from "../app/components/MailingListForm";
 
 export default function About() {
-  const [email, setEmail] = useState("");
-
   return (
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
@@ -25,7 +24,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src={IllustrationPlaceholderWide}
+                src="https://trusat-assets.s3.amazonaws.com/about-illustration-observation-250px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -39,7 +38,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src={IllustrationPlaceholderWide}
+                src="https://trusat-assets.s3.amazonaws.com/about-illustration-posat-250px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -54,7 +53,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src={IllustrationPlaceholderWide}
+                src="https://trusat-assets.s3.amazonaws.com/about-illustration-rules_night-250px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -71,7 +70,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src={IllustrationPlaceholderWide}
+                src="https://trusat-assets.s3.amazonaws.com/about-illustration-open_source-250px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -152,113 +151,56 @@ export default function About() {
           </div>
         </div>
 
-        <div className="about__partners-wrapper">
-          <h2 className="static-page__sub-header">PARTNERS</h2>
-          <div className="welcome__partners-list">
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-            <div className="welcome__partners-list__logo-wrapper">
-              <img
-                className="welcome__partners-list__logo"
-                src={PartnerLogoSWF}
-                alt="Secure World Foundation Logo"
-              ></img>
-            </div>
-          </div>
-        </div>
-        <div className="about__block-wrapper">
+        <Partners />
+        {/* <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             PRESS
           </h2>
           <p className="static-page__copy">
-            Space News — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              The Blockchain-based Satellite Catalog to Keep Space Clean
+              Article Title
             </a>
           </p>
           <p className="static-page__copy">
-            Tech Crunch — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              Here’s the Headline for the Story
+              Article Title
             </a>
           </p>
           <p className="static-page__copy">
-            New York Times — 
+            Publication Name — 
             <a
               className="static-page__link"
               target="_blank"
               rel="noopener noreferrer"
               href="https://spacenews.com/"
             >
-              Blockchain in Outer Space Might Just Work
+              Article Title
             </a>
           </p>
-        </div>
+        </div> */}
         <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             FOLLOW TRUSAT
           </h2>
           <SocialIcons />
 
-          <div className="welcome__mailing-list-wrapper">
-            <form
-              action="https://consensys.us4.list-manage.com/subscribe/post?u=d2289b46e82a459c8808b427c&amp;id=8b9ce58d71"
-              method="post"
-              id="mc-embedded-subscribe-form"
-              name="mc-embedded-subscribe-form"
-              className="validate"
-              target="_blank"
-              noValidate
-            >
-              <div className="welcome__mailing-list-inputs">
-                <p className="welcome__small-copy--white">
-                  Join the mailing list to stay posted on the project
-                </p>
-                <div className="welcome__input-button-wrapper">
-                  <input
-                    required
-                    name="EMAIL"
-                    id="mce-EMAIL"
-                    className="welcome__input"
-                    type="email"
-                    placeholder="Your email"
-                    value={email}
-                    onChange={event => setEmail(event.target.value)}
-                  ></input>
-                  <RoundedButton
-                    type="submit"
-                    name="subscribe"
-                    addStyles="welcome__subscribe-button"
-                    color="orange"
-                    text="SUBSCRIBE"
-                    id="mc-embedded-subscribe"
-                    onSubmit={() => setEmail("")}
-                  />
-                </div>
-              </div>
-            </form>
+          <div className="about__mailing-list-wrapper">
+            <p className="welcome__small-copy--white">
+              Join the mailing list to stay posted on the project
+            </p>
+            <MailingListForm />
           </div>
         </div>
       </section>

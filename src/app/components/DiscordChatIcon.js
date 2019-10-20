@@ -1,7 +1,7 @@
 import React from "react";
 import DiscordChatIcon from "../../assets/DiscordChatIcon.svg";
 
-export default function DicordChatButton() {
+export default function DicordChatIcon() {
   return (
     <div className="discord-chat-button__wrapper">
       <a

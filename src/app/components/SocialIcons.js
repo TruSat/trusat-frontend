@@ -1,8 +1,4 @@
 import React from "react";
-import TwitterIcon from "../../assets/TwitterIcon.png";
-import InstagramIcon from "../../assets/InstagramIcon.png";
-import FacebookIcon from "../../assets/FacebookIcon.png";
-import GithubIcon from "../../assets/GithubIcon.png";
 
 export default function SocialIcons() {
   return (
@@ -12,21 +8,33 @@ export default function SocialIcons() {
         rel="noopener noreferrer"
         href="https://twitter.com/consensys_space/"
       >
-        <img className="social-icon social-icon--first" src={TwitterIcon} alt="twitter"></img>
+        <img
+          className="social-icon social-icon--first"
+          src="https://trusat-assets.s3.amazonaws.com/TwitterIcon.png"
+          alt="twitter"
+        ></img>
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://facebook.com/consensys.space"
       >
-        <img className="social-icon" src={FacebookIcon} alt="facebook"></img>
+        <img
+          className="social-icon"
+          src="https://trusat-assets.s3.amazonaws.com/FacebookIcon.png"
+          alt="facebook"
+        ></img>
       </a>
       <a
         target="_blank"
         rel="noopener noreferrer"
         href="https://instagram.com/consensys_space/"
       >
-        <img className="social-icon" src={InstagramIcon} alt="instagram"></img>
+        <img
+          className="social-icon"
+          src="https://trusat-assets.s3.amazonaws.com/InstagramIcon.png"
+          alt="instagram"
+        ></img>
       </a>
       <a
         target="_blank"
@@ -35,7 +43,7 @@ export default function SocialIcons() {
       >
         <img
           className="social-icon social-icon__last"
-          src={GithubIcon}
+          src="https://trusat-assets.s3.amazonaws.com/GithubIcon.png"
           alt="github"
         ></img>
       </a>
