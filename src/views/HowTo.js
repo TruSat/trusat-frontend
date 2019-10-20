@@ -1,14 +1,25 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import HowToAppScreenshotPlaceholder from "../assets/how_to-sky_view-placeholder.png";
-import IconClock from "../assets/icon-clock.svg";
+import IconTime from "../assets/icon-time.svg";
 import IconLocation from "../assets/icon-location.svg";
+import IconLowlight from "../assets/icon-lowlight.svg";
+import IconRelaxing from "../assets/icon-relaxing.svg";
+import MailingListForm from "../app/components/MailingListForm";
+import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
+
+
 
 
 export default function HowTo() {
   return (
     <div className="static-page__wrapper static-page__wrapper--how-to">
       <section className="static-page__section">
+        <img
+            className="about__illustration"
+            src={IllustrationPlaceholderWide}
+            alt="Illustration"
+          ></img>
         <h1 className="static-page__main-header--small">Welcome to the sport of satellite tracking</h1>
         <p className="static-page__copy about__deck">
           Spotting satellites in the night sky can be a relaxing, rewarding activity.  The serenity of contemplating the night sky, the thrill of catching a satellite passing by at 28,000kph.  
@@ -27,8 +38,8 @@ export default function HowTo() {
           <div className="how-to__step__image-wrapper">
             <img
                   className="how-to__screenshot"
-                  src={IconClock}
-                  alt="Skyview screenshot"
+                  src={IconTime}
+                  alt="Icon: Clock"
                 ></img>
           </div>
           <div className="how-to__step__description">
@@ -45,7 +56,7 @@ export default function HowTo() {
             <img
                   className="how-to__screenshot"
                   src={IconLocation}
-                  alt="Skyview screenshot"
+                  alt="Icon: Map pin"
                 ></img>
           </div>
           <div className="how-to__step__description">
@@ -72,7 +83,11 @@ export default function HowTo() {
             1.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                className="how-to__screenshot"
+                src={IconTime}
+                alt="Icon: Clock"
+              ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -85,7 +100,11 @@ export default function HowTo() {
             2.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                className="how-to__screenshot"
+                src={IconLowlight}
+                alt="Icon: Low light"
+              ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -98,7 +117,11 @@ export default function HowTo() {
             3.
           </div>
           <div className="how-to__step__image-wrapper">
-            [image]
+            <img
+                className="how-to__screenshot"
+                src={IconRelaxing}
+                alt="Icon: Relaxing"
+              ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
@@ -223,7 +246,7 @@ export default function HowTo() {
       </section>
 
       <section className="static-page__section">
-        <h2 className="static-page__sub-header">Star maps</h2>
+        <h2 className="static-page__sub-header">HEAVENS ABOVE AND CALSKY</h2>
         <p className="static-page__copy">
               If you want to find a specific satellite, we recommend planning ahead because satellites in Low Earth Orbit (LEO) do not appear at the same spot and time each day.
             </p>
@@ -280,13 +303,11 @@ export default function HowTo() {
           At this time, translating basic observation data (time and location) into a format readable by version 0.1 TruSat Prototype requires a relatively advanced workflow, including use of free third-party software, and is not recommended for all but the most committed.
         </p>
         <p className="static-page__copy">
-          If you are that person and want to become a TruSat Alpha Test Pilot, please email{" "}
-          <a
-                className="static-page__link"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="mailto:support@trusat.org"
-              >support@trusat.org</a>{" "}and we’ll help walk you through the process and get you set up with the necessary software tools. 
+          If you are that person and want to become a TruSat Alpha Test Pilot, please sign up here:  
+          <MailingListForm testPilots={true} /> 
+        </p>
+        <p className="static-page__copy">
+          We’ll help walk you through the process and get you set up with the necessary software tools.
         </p>
       </section>
 

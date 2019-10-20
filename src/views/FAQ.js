@@ -1,11 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
+import IllustrationPlaceholderWide from "../assets/welcome-illustration-placeholder-16x9.png";
+
 
 export default function FAQ() {
   return (
     <div className="static-page__wrapper static-page__wrapper--faq">
       <section className="static-page__section">
+        <img
+                className="about__illustration"
+                src={IllustrationPlaceholderWide}
+                alt="Illustration"
+              ></img>
         <h1 className="static-page__main-header--small">Frequently asked questions</h1>
   
         <h2 className="static-page__sub-header about__sub-header--top">
