@@ -25,10 +25,10 @@ export default function Home() {
 
             <img
               className="welcome__image welcome__globe-image"
-              src={`https://trusat-assets.s3.amazonaws.com/trusat-globe--low-res.png`}
+              src={`https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png`}
               srcSet="
-              https://trusat-assets.s3.amazonaws.com/trusat-globe--high-res.png,
-              https://trusat-assets.s3.amazonaws.com/trusat-globe--low-res.png"
+              https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-800px.png,
+              https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png"
               alt="globe"
             ></img>
           </div>
@@ -75,7 +75,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src={IllustrationPlaceholder}
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -127,7 +127,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src={IllustrationPlaceholder}
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -137,7 +137,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src={IllustrationPlaceholder}
+                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
