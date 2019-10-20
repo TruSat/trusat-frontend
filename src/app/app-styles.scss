@@ -2,6 +2,7 @@
 APP
 ---------- */
 .app {
+  min-height: 100%;
 }
 
 .app__show-on-mobile {
@@ -1565,6 +1566,11 @@ Footer
 ---------- */
 .footer {
   margin-right: 4em;
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .footer__content {
