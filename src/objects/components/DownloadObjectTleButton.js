@@ -11,16 +11,13 @@ export default function DownloadObjectTleButton() {
   useEffect(() => {
     doFetch(`/tle/object?norad_number=${noradNumber}`);
 
-    if (data) {
-      setTleString(data);
-    }
+    setTleString(data);
   }, [noradNumber, doFetch, data]);
 
   const downloadTles = () => {
     let textFile = null;
 
     const data = new Blob([tleString], { type: "text/plain" });
-
     // If replacing a previously generated file, revoke the object URL to avoid memory leaks.
     if (textFile !== null) {
       window.URL.revokeObjectURL(textFile);
@@ -30,13 +27,12 @@ export default function DownloadObjectTleButton() {
 
     return textFile;
   };
-
-  // only show download option if system can find a TLE for this object
+  // only show download option if database has a TLE for this object
   return isLoading ? (
     <Spinner />
   ) : isError ? (
     <p className="app__error-message">Something went wrong...</p>
-  ) : tleString.length !== 0 ? (
+  ) : tleString ? (
     <a
       className="catalog__link"
       href={downloadTles()}
