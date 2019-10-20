@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
 
-
 export default function FAQ() {
   return (
     <div className="static-page__wrapper static-page__wrapper--faq">
@@ -312,8 +311,8 @@ export default function FAQ() {
           <p className="static-page__copy ">
             If you wish to further explore how to contribute, please contact
             ConsenSys Space Community Manager, Kim Macharia at{" "}
-            <a href="mailto:Kim.Macharia@consensys.net">
-              Kim.Macharia@consensys.net.
+            <a className="app__link" href="mailto:Kim.Macharia@consensys.net">
+              Kim.Macharia@consensys.net
             </a>
             .
           </p>
@@ -384,9 +383,11 @@ export default function FAQ() {
 
       <section className="static-page__section">
         <p className="static-page__copy">
-          Curious for a technical deep dive into how TruSat works? Check out the {" "}<NavLink className="app__nav-link static-page__link" to="/whitepaper">
+          Curious for a technical deep dive into how TruSat works? Check out the{" "}
+          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
             TruSat white paper
-          </NavLink>.
+          </NavLink>
+          .
         </p>
         <p className="static-page__copy">
           Have any other questions? Reach out to us at{" "}
