@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "trusat"
+    "default": "trusat",
+    "production": "trusat-production"
   }
 }
