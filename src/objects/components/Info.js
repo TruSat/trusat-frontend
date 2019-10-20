@@ -50,7 +50,7 @@ export default function Info() {
               <p className="object-info__small-text--grey">OBSERVERS</p>
               &nbsp;
             </div>
-            <div className="object-info__header-info-wrapper__group object-info__header-info-wrapper__group--no-margin">
+            <div className="object-info__header-info-wrapper__group">
               <p className="object-info__small-text--grey">LAST SEEN</p>
               &nbsp;
               <p className="object-info__small-text">
