@@ -44,6 +44,10 @@ APP
   text-decoration: none;
 }
 
+.app__link {
+  color: $primary-text-color;
+}
+
 .app__button--white {
   align-self: flex-start;
   background: $primary-text-color;
@@ -732,6 +736,7 @@ WELCOME VIEW
 
 .welcome__logo-image {
   max-width: 260px;
+  position: relative;
 }
 
 @media (min-width: 600px) {
@@ -1058,8 +1063,15 @@ WELCOME VIEW
 }
 
 .welcome__partners-list__logo-wrapper {
-  flex-basis: 120px;
-  margin-right: 40px;
+  flex-basis: 200px;
+  line-height: 20px;
+  margin-right: 10px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.welcome__partners-list__logo-wrapper > a {
+  text-decoration: none;
 }
 
 .welcome__partners-list__logo {
@@ -1281,7 +1293,7 @@ STATIC PAGE VIEW
 .static-page__wrapper {
   background: $primary-theme-color;
   padding: 2em 1em;
-  max-width: 720px;
+  max-width: 840px;
   margin: 0 auto;
 }
 
@@ -1419,7 +1431,7 @@ ABOUT VIEW
 .welcome__partners-list {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-start;
+  justify-content: flex-start;
   margin: 2em 0em 5em 0em;
 }
 
