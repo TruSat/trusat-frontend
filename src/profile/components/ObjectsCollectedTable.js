@@ -91,8 +91,8 @@ export default function ObjectsCollectedTable() {
           <tbody className="table__body">{renderObjectsCollectedRows()}</tbody>
         </table>
       ) : (
-        <div className="profiile__none-yet-wrapper">
-          <span className="profile__none-yet-text">None yet</span>
+        <div className="profile__none-yet-wrapper">
+          <p className="profile__none-yet-text">None yet</p>
         </div>
       )}
 
