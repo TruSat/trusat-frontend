@@ -29,21 +29,19 @@ export default function MailingListForm({ testPilots }) {
           onChange={event => setEmail(event.target.value)}
         ></input>
         <button
+          mailing-list__subscribe-button--test-pilots
           type="submit"
           name="subscribe"
-          className="mailing-list__subscribe-button
-          {testPilots
-            ? `mailing-list__subscribe-button--test-pilots`
-            : ``
-            }"
+          className={
+            testPilots
+              ? "mailing-list__subscribe-button mailing-list__subscribe-button--test-pilots"
+              : "mailing-list__subscribe-button"
+          }
           color="white"
           id="mc-embedded-subscribe"
           onSubmit={() => setEmail("")}
         >
-          {testPilots
-          ? `SIGN UP`
-          : `JOIN`
-          }
+          {testPilots ? `SIGN UP` : `JOIN`}
         </button>
       </div>
     </form>

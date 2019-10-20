@@ -27,7 +27,7 @@ export default function Home() {
             <img
               className="welcome__image welcome__globe-image"
               src={`https://trusat-assets.s3.amazonaws.com/trusat-globe--low-res.png`}
-              srcset="
+              srcSet="
               https://trusat-assets.s3.amazonaws.com/trusat-globe--high-res.png,
               https://trusat-assets.s3.amazonaws.com/trusat-globe--low-res.png"
               alt="globe"
