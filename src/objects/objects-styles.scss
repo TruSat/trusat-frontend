@@ -82,18 +82,15 @@ OBJECT INFO
 
 .object-info__header-info-wrapper__group {
   display: inline-block;
-  margin-bottom: 0.25em;
-  margin-right: 1em;
+  line-height: 16px;
+  // margin-bottom: 0.25em;
+  // margin-right: 1em;
 }
 
 @media (min-width: 600px) {
-  .object-info__header-info-wrapper__group {
+  .object-info__header-info-wrapper__group--last {
     margin-right: 2em;
   }
-}
-
-.object-info__header-info-wrapper__group--no-margin {
-  margin-right: 0.25em;
 }
 
 .object-info__small-text,
