@@ -256,7 +256,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--lowlight {
     border-bottom: 3px solid $tertiary-color;
-    color: #888888;
+    color: $tertiary-color--light;
     margin: 0em 2em;
   }
 
@@ -269,7 +269,7 @@ NAV BAR
   }
 
   .nav-bar__link--lowlight {
-    color: #888888;
+    color: $tertiary-color--light;
   }
 
   .nav-bar__link--lowlight:hover {
@@ -344,7 +344,7 @@ NAV BAR
   }
 
   .nav-bar__link--lowlight--welcome {
-    color: #838891;
+    color: $tertiary-color--light;
     text-decoration: none;
   }
 
