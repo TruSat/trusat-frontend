@@ -21,7 +21,9 @@ export default function LogIn() {
       ) : (
         <Fragment>
           <LoginOptions />
-          <TestPilots />
+          <div className="log-in__wrapper">
+            <TestPilots />
+          </div>
         </Fragment>
       )}
     </div>

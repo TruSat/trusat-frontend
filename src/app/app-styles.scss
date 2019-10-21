@@ -534,10 +534,10 @@ EMAIL FORM
 
 .email-form__input {
   align-self: flex-start;
-  background: black;
+  background: $tertiary-color;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid #cccccc;
+  border: 1px solid $secondary-theme-color;
   color: $primary-text-color;
   font-size: $medium-font-size;
   margin-bottom: 1em;
