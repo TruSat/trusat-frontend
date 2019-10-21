@@ -171,6 +171,10 @@ PROFILE TABLE
   border-bottom: 1px solid $tertiary-color;
 }
 
+.profile-table__body-row:hover {
+  background-color: $tertiary-color;
+}
+
 .profile-table__data-wrapper {
   align-items: center;
   display: flex;

@@ -44,7 +44,32 @@ APP
   text-decoration: none;
 }
 
-.app__nav-login-wrapper {
+.welcome__join-button-wrapper--welcome-top {
+  text-align: center;
+}
+
+.app__nav__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 2px;
+  left: -4px;
+}
+
+@media (max-width: 1150px) {
+  .app__nav__icon {
+    display: none;
+  }
+}
+
+@media (max-width: 1150px) {
+  .bm-item > .app__nav__icon {
+    display: inline-block;
+    position: relative;
+    top: 5px;
+    left: -8px;
+  }
 }
 
 .app__link,
@@ -274,7 +299,7 @@ NAV BAR
     border-bottom: 3px solid $primary-highlight-color;
     display: flex;
     height: 3.5em;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--highlight:hover {
@@ -284,7 +309,7 @@ NAV BAR
   .nav-bar__link-wrapper--lowlight {
     border-bottom: 3px solid $tertiary-color;
     color: $tertiary-color--light;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--lowlight:hover {
@@ -355,7 +380,7 @@ NAV BAR
     border-bottom: 3px solid transparent;
     display: flex;
     height: 3.5em;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--highlight--welcome:hover {
@@ -364,7 +389,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--lowlight--welcome {
     border-bottom: 3px solid transparent;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--lowlight--welcome:hover {
@@ -390,6 +415,7 @@ NAV BAR
     border-radius: 4px;
     color: $primary-theme-color;
     font-size: $small-font-size;
+    font-weight: 700;
     margin-right: 1em;
     padding: 0.5em 2em;
   }
@@ -409,8 +435,17 @@ NAV BAR
   }
 }
 
+@media (min-width: 1000px) {
+  .nav-bar__link-wrapper--highlight,
+  .nav-bar__link-wrapper--lowlight,
+  .nav-bar__link-wrapper--highlight--welcome,
+  .nav-bar__link-wrapper--lowlight--welcome {
+    margin: 0em 2em;
+  }
+}
+
 .nav-bar__log-in-text {
-  color: $secondary-theme-color;
+  color: $tertiary-color--light;
   margin-right: 2em;
 }
 
@@ -1048,12 +1083,20 @@ WELCOME VIEW
   margin-bottom: 2em;
 }
 
+.welcome__medium-copy--smaller-bottom {
+  margin-bottom: 1em;
+}
+
 @media (min-width: 600px) {
   .welcome__medium-copy--white {
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 3.5em;
     padding: 0 25%;
+  }
+
+  .welcome__medium-copy--smaller-bottom {
+    margin-bottom: 1em;
   }
 }
 
@@ -1119,12 +1162,18 @@ WELCOME VIEW
 }
 
 .welcome__partners-list__logo-wrapper {
-  flex-basis: 160px;
+  flex-basis: 110px;
+  text-align: center;
   font-size: $small-font-size;
   line-height: 20px;
   margin-right: 20px;
   margin-bottom: 30px;
-  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .welcome__partners-list__logo-wrapper {
+    flex-basis: 160px;
+  }
 }
 
 .welcome__partners-list__logo-wrapper:last-child {
@@ -1859,7 +1908,9 @@ DISCOURSE CHAT BUTTON
 
 .discourse-chat-button__icon {
   height: auto;
-  width: 60px;
+  width: 50px;
+  position: relative;
+  bottom: 4px;
 }
 
 .discourse-chat-button__icon:hover {
