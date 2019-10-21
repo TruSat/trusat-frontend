@@ -9,8 +9,8 @@ export default function FAQ() {
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src="https://trusat-assets.s3.amazonaws.com/illustration-trash-720px.png"
-          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-trash-720px.png, https://trusat-assets.s3.amazonaws.com/illustration-trash-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png"
+          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-trash2-100px.png"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">
@@ -279,7 +279,7 @@ export default function FAQ() {
             The version 0.2 release will add “Mission” functionality, enabling
             space sustainability advocates to prioritize satellites for
             observation according to sustainability, in accordance with the{" "}
-            <NavLink className="app__nav-link static-page__link" to="/join">
+            <NavLink className="app__nav-link static-page__link" to="/charter">
               TruSat Charter
             </NavLink>
             .
@@ -357,7 +357,7 @@ export default function FAQ() {
         <div className="about__answer">
           <p className="static-page__copy ">
             {" "}
-            <NavLink className="app__nav-link static-page__link" to="/join">
+            <NavLink className="app__nav-link static-page__link" to="/charter">
               The TruSat Charter
             </NavLink>{" "}
             specifies the governance arrangements for the TruSat System and Open
