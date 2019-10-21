@@ -79,7 +79,7 @@ function UserSettings({ history }) {
         newUsername={newUsername}
         setNewUsername={setNewUsername}
         newEmail={newEmail}
-        setNewEmail={setNewEmail}
+        // setNewEmail={setNewEmail}
         newLocation={newLocation}
         setNewLocation={setNewLocation}
         newBio={newBio}
