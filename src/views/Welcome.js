@@ -60,11 +60,20 @@ export default function Home() {
                 modestbranding="1"
               ></iframe>
             </div>
-            <p className="welcome__medium-copy--white">
+            <p className="welcome__medium-copy--white welcome__medium-copy--smaller-bottom">
               Use TruSat to find satellites in the sky with your naked eye,
               record their positions, and help create a planetary record that
               encourages sustainable practices in orbit.
             </p>
+          <NavLink className="app__nav-link" to="/join">
+            <div className="welcome__join-button-wrapper--welcome-top">
+              <RoundedButton
+                addStyles="welcome__join-button"
+                color="orange"
+                text="SIGN UP"
+              />
+            </div>
+          </NavLink>
           </div>
         </section>
 

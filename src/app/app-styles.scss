@@ -44,6 +44,10 @@ APP
   text-decoration: none;
 }
 
+.welcome__join-button-wrapper--welcome-top {
+  text-align: center;
+}
+
 
 
 .app__nav__icon {
@@ -416,6 +420,7 @@ NAV BAR
     border-radius: 4px;
     color: $primary-theme-color;
     font-size: $small-font-size;
+    font-weight: 700;
     margin-right: 1em;
     padding: 0.5em 2em;
   }
@@ -1083,12 +1088,20 @@ WELCOME VIEW
   margin-bottom: 2em;
 }
 
+.welcome__medium-copy--smaller-bottom {
+  margin-bottom: 1em;
+}
+
 @media (min-width: 600px) {
   .welcome__medium-copy--white {
     font-size: 18px;
     line-height: 22px;
     margin-bottom: 3.5em;
     padding: 0 25%;
+  }
+
+  .welcome__medium-copy--smaller-bottom {
+    margin-bottom: 1em;
   }
 }
 
