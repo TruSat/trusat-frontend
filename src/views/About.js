@@ -103,11 +103,20 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <NavLink
-                className="app__nav-link static-page__link static-page__link--highlight"
+                className="app__nav-link static-page__link static-page__link--highlight app__hide-on-mobile"
                 to="/whitepaper"
               >
                 The TruSat white paper
               </NavLink>
+              <a
+                className="static-page__link static-page__link--highlight app__hide-on-desktop"
+                target="_blank"
+                and
+                rel="noopener noreferrer"
+                href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
+              >
+                The TruSat white paper
+              </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
@@ -136,14 +145,14 @@ export default function About() {
                 className="static-page__link static-page__link--highlight"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://discordapp.com/invite/MEyA2Ns"
+                href="https://discuss.trusat.org/"
               >
                 TruSat chat
               </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                A Discord community chat to discuss the project and get help.
+                A community forum to discuss the project and get help.
               </p>
             </div>
           </div>

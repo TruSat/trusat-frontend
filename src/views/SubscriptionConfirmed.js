@@ -36,7 +36,7 @@ export default function SubscriptionConfirmed() {
             className="subscription-confirmed__link app__link"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://discordapp.com/invite/MEyA2Ns"
+            href="https://discuss.trusat.org/"
           >
             Join the conversation
           </a>
@@ -46,7 +46,10 @@ export default function SubscriptionConfirmed() {
           TruSat. Ask questions, share ideas.
         </p>
         <p className="static-page__copy static-page__copy--bold join__subheader">
-          <NavLink className="app__nav-link static-page__link app__link" to="/how">
+          <NavLink
+            className="app__nav-link static-page__link app__link"
+            to="/how"
+          >
             Learn how to track satellites
           </NavLink>
         </p>
@@ -54,14 +57,19 @@ export default function SubscriptionConfirmed() {
           Try your hand at sat spotting and build your skills
         </p>
         <p className="static-page__copy static-page__copy--bold join__subheader">
-          <NavLink className="app__nav-link static-page__link app__link" to="/faq">
+          <NavLink
+            className="app__nav-link static-page__link app__link"
+            to="/faq"
+          >
             Learn more about TruSat
           </NavLink>
         </p>
         <p className="static-page__copy">
           Who’s behind TruSat, why does it exist, how does it work?
         </p>
-        <p className="static-page__copy static-page__copy--bold join__subheader">Follow us</p>
+        <p className="static-page__copy static-page__copy--bold join__subheader">
+          Follow us
+        </p>
         <SocialIcons />
       </div>
     </div>

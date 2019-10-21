@@ -93,9 +93,7 @@ export default function ObservationsTable() {
               </td>
             </tr>
           </thead>
-          <tbody className="table__body">
-              renderYourObservationsRows()
-          </tbody>
+          <tbody className="table__body">{renderYourObservationsRows()}</tbody>
         </table>
       ) : (
         <div className="profile__none-yet-wrapper">

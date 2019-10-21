@@ -46,17 +46,19 @@ export default function TestPilotConfirmed() {
             className="app__link"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://discordapp.com/invite/MEyA2Ns"
+            href="https://discuss.trusat.org/"
           >
             Join the test pilots discussion channel
           </a>
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__link" to="/whitepaper">
+          <NavLink className="app__link" to="/how">
             Build your satellite tracking skills
           </NavLink>
         </p>
-        <p className="static-page__copy static-page__copy--bold join__subheader">Follow us</p>
+        <p className="static-page__copy static-page__copy--bold join__subheader">
+          Follow us
+        </p>
         <SocialIcons />
       </div>
     </div>
