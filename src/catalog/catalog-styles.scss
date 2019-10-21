@@ -20,7 +20,7 @@ CATALOG
 }
 
 .catalog__header__buttons {
-  margin-top: 2em;
+  margin-top: 3em;
 }
 
 @media (min-width: 600px) {
@@ -100,7 +100,7 @@ HOW TO PARTICIPATE
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
-    min-width: 230px;
+    width: 230px;
   }
 
   .catalog__button {
@@ -135,7 +135,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-  margin: 1em 0;
+
 }
 
 @media (min-width: 600px) {
@@ -144,6 +144,7 @@ HOW TO PARTICIPATE
   }
 }
 
+.catalog__button:hover,
 .catalog__get-data-button:hover {
   border-color: $primary-text-color;
   color: $primary-text-color;
@@ -163,6 +164,12 @@ HOW TO PARTICIPATE
   color: $secondary-theme-color;
   text-decoration: underline;
 }
+
+.catalog__link--lowlight:hover {
+  color: $primary-text-color;
+  text-decoration: underline;
+}
+
 
 /* ----------
 CATALOG NAV BAR

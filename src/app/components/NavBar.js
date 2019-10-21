@@ -174,14 +174,7 @@ function NavBar(props) {
               <JoinButton path={path} />
             </NavLink>
           </Fragment>
-        ) : (
-          // Show "submit data" button if user is logged in
-          <NavLink className="app__nav-link" to="/submit">
-            <span className="nav-bar__join-button nav-bar__button--lowlight">
-              Submit data
-            </span>
-          </NavLink>
-        )}
+        ): <div style={{ width: "96px" }}></div>}
       </div>
     </div>
   );
