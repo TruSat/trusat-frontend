@@ -1418,6 +1418,10 @@ STATIC PAGE VIEW
   text-decoration: underline;
 }
 
+.static-page__link--highlight:hover {
+  color: $primary-text-color;
+}
+
 /* ---------- 
 ABOUT VIEW  
 ---------- */
@@ -1495,6 +1499,16 @@ ABOUT VIEW
   justify-content: flex-start;
   margin: 2em 0em 5em 0em;
 }
+
+.static-page__partner-link {
+  color: $primary-text-color;
+}
+
+.static-page__partner-link:hover {
+  color: $primary-highlight-color;
+}
+
+
 
 .about__sub-header--top {
   margin-top: 1em;

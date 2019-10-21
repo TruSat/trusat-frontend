@@ -7,7 +7,7 @@ export default function Partners() {
       <div className="welcome__partners-list">
         <div className="welcome__partners-list__logo-wrapper">
           <a
-            className="static-page__link"
+            className="static-page__partner-link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://consensys.space"
@@ -22,7 +22,7 @@ export default function Partners() {
         </div>
         <div className="welcome__partners-list__logo-wrapper">
           <a
-            className="static-page__link"
+            className="static-page__partner-link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://swfound.org/"
@@ -37,7 +37,7 @@ export default function Partners() {
         </div>
         <div className="welcome__partners-list__logo-wrapper">
           <a
-            className="static-page__link"
+            className="static-page__partner-link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.swise.org/"
@@ -52,7 +52,7 @@ export default function Partners() {
         </div>
         <div className="welcome__partners-list__logo-wrapper">
           <a
-            className="static-page__link"
+            className="static-page__partner-link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://sites.utexas.edu/moriba/"
