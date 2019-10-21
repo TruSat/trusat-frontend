@@ -3,6 +3,10 @@ import { NavLink } from "react-router-dom";
 import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
 import MailingListForm from "../app/components/MailingListForm";
+import IlloObservation from "../assets/illustration-observation2-360px.png"; 
+import IlloPosat from "../assets/illustration-posat2-360px.png";
+import IlloGameplan from "../assets/illustration-gameplan-360px.png";
+import IlloOpenSource from "../assets/illustration-open_source-360px.png";
 
 export default function About() {
   return (
@@ -22,7 +26,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/about-illustration-observation-250px.png"
+                src={IlloObservation}
                 alt="Illustration"
               ></img>
             </div>
@@ -36,7 +40,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/about-illustration-posat-250px.png"
+                src={IlloPosat}
                 alt="Illustration"
               ></img>
             </div>
@@ -51,7 +55,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/about-illustration-rules_night-250px.png"
+                src={IlloGameplan}
                 alt="Illustration"
               ></img>
             </div>
@@ -68,7 +72,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/about-illustration-open_source-250px.png"
+                src={IlloOpenSource}
                 alt="Illustration"
               ></img>
             </div>
