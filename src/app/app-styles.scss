@@ -1591,11 +1591,18 @@ HOW TO VIEW
 }
 
 .how-to__step__image-wrapper {
-  width: 100px;
+  // width: 100px;
 }
 
+@media (max-width: 600px) {
+  .how-to__step__icon-wrapper {
+    max-width: 100px;
+  }
+}
+
+
 @media (min-width: 600px) {
-  .how-to__step__image-wrapper {
+  .how-to__step__icon-wrapper {
     min-width: 100px;
   }
 }

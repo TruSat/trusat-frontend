@@ -36,7 +36,7 @@ export default function HowTo() {
         </p>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
@@ -52,7 +52,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLocation}
@@ -95,7 +95,7 @@ export default function HowTo() {
         </p>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
@@ -115,7 +115,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLowlight}
@@ -133,7 +133,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">3.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconRelaxing}
