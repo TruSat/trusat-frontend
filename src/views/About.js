@@ -145,14 +145,14 @@ export default function About() {
                 className="static-page__link static-page__link--highlight"
                 target="_blank"
                 rel="noopener noreferrer"
-                href="https://discordapp.com/invite/MEyA2Ns"
+                href="https://discuss.trusat.org/"
               >
                 TruSat chat
               </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                A Discord community chat to discuss the project and get help.
+                A community forum to discuss the project and get help.
               </p>
             </div>
           </div>
