@@ -24,4 +24,3 @@ yarn-error.log*
 
 .firebaserc
 .firebase
-secrets.js
