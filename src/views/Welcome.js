@@ -74,7 +74,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -113,9 +113,7 @@ export default function Home() {
                 Earth needs a transparent record of satellite behavior.
               </p>
               <p className="welcome__small-copy--white">
-                Space is wild. There’s been no way to ensure responsible
-                practices in orbit, because there has been no trusted source of
-                orbital data. To fill this gap, TruSat tasks a global network of
+                Space is wild. Creating strong incentives for responsible practices in orbit requires a trusted record of orbital positions. To fill this gap, TruSat tasks a global network of
                 citizens to track satellites of interest.
               </p>
               <p className="welcome__small-copy--white">
@@ -131,7 +129,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
