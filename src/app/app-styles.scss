@@ -895,6 +895,11 @@ WELCOME VIEW
 .welcome__sub-header--white {
   margin: 0.25em 0em;
 }
+@media (min-width: 600px) {
+  .welcome__sub-header--nowrap {
+    white-space: nowrap;
+  }
+}
 
 .welcome__join-button {
   margin-top: 1em;

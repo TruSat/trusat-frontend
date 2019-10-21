@@ -80,7 +80,7 @@ export default function Home() {
             </div>
 
             <div className="welcome__join-copy-wrapper">
-              <h2 className="welcome__sub-header--white">
+              <h2 className="welcome__sub-header--white welcome__sub-header--nowrap">
                 Satellite tracking?{" "}
                 <span className="welcome__small-copy--emoticon">
                   ¯\_(ツ)_/¯
