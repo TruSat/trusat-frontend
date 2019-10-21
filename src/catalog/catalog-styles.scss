@@ -226,7 +226,7 @@ CATALOG NAV BAR
   width: 0.9em;
   height: 0.9em;
   position: relative;
-  top: 0px;
+  top: -1px;
   left: -1px;
 }
 
@@ -241,7 +241,7 @@ CATALOG NAV BAR
   display: inline-block;
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1000px) {
   .catalog-filter-label {
     padding-left: 4px;
   }
