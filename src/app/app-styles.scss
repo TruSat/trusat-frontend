@@ -44,6 +44,9 @@ APP
   text-decoration: none;
 }
 
+.app__nav-login-wrapper {
+}
+
 .app__link,
 .app__link:visited {
   color: $primary-text-color;
@@ -620,13 +623,13 @@ BURGER MENU
   /* Our sidebar item styling */
   text-decoration: none;
   margin-bottom: 10px;
-  color: #d1d1d1;
+  color: $primary-text-color;
   transition: color 0.2s;
 }
 
 /* Change color on hover */
 .bm-item:hover {
-  color: white;
+  color: $primary-text-color;
 }
 
 /* The rest copied directly from react-burger-menu docs */
@@ -649,7 +652,7 @@ BURGER MENU
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: white;
+  background: $primary-text-color;
 }
 
 /* Position and sizing of clickable cross button */
@@ -660,12 +663,12 @@ BURGER MENU
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: $primary-text-color;
 }
 
 /* General sidebar styles */
 .bm-menu {
-  background: #2d2d2d;
+  background: $tertiary-color;
   padding: 1em;
   font-size: $extra-large-font-size;
   line-height: 50px;
@@ -683,7 +686,7 @@ BURGER MENU
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: $primary-theme-color;
 }
 
 /* ----------
@@ -895,6 +898,7 @@ WELCOME VIEW
 .welcome__sub-header--white {
   margin: 0.25em 0em;
 }
+
 @media (min-width: 600px) {
   .welcome__sub-header--nowrap {
     white-space: nowrap;

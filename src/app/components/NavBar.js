@@ -163,7 +163,7 @@ function NavBar(props) {
         </div>
       </div>
 
-      <div>
+      <div class="app__nav-login-wrapper">
         {/* Show Join button when user is not logged in */}
         {!userAddress ? (
           <Fragment>
