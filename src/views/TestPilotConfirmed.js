@@ -52,11 +52,13 @@ export default function TestPilotConfirmed() {
           </a>
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__link" to="/whitepaper">
+          <NavLink className="app__link" to="/how">
             Build your satellite tracking skills
           </NavLink>
         </p>
-        <p className="static-page__copy static-page__copy--bold join__subheader">Follow us</p>
+        <p className="static-page__copy static-page__copy--bold join__subheader">
+          Follow us
+        </p>
         <SocialIcons />
       </div>
     </div>
