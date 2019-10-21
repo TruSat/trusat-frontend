@@ -1600,10 +1600,17 @@ HOW TO VIEW
   }
 }
 
-
 @media (min-width: 600px) {
   .how-to__step__icon-wrapper {
     min-width: 100px;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .how-to__step__image-wrapper {
+    min-width: 200px;
+    width: 200px;
   }
 }
 

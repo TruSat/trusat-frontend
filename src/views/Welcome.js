@@ -48,8 +48,8 @@ export default function Home() {
             <div className="welcome__iframe-wrapper">
               <iframe
                 className="welcome__iframe"
-                title="pale blue dot video"
-                src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
+                title="TruSat explainer video"
+                src="https://www.youtube.com/embed/H-J7zngl6xE"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen="allowfullscreen"
