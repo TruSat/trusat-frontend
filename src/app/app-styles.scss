@@ -47,6 +47,23 @@ APP
 .app__nav-login-wrapper {
 }
 
+
+.app__nav__icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  position: relative;
+  top: 2px;
+  left: -4px;
+}
+
+@media (max-width: 1150px) {
+  .app__nav__icon  {
+    display: none;
+  }
+}
+
+
 .app__link,
 .app__link:visited {
   color: $primary-text-color;
@@ -274,7 +291,7 @@ NAV BAR
     border-bottom: 3px solid $primary-highlight-color;
     display: flex;
     height: 3.5em;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--highlight:hover {
@@ -284,7 +301,7 @@ NAV BAR
   .nav-bar__link-wrapper--lowlight {
     border-bottom: 3px solid $tertiary-color;
     color: $tertiary-color--light;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--lowlight:hover {
@@ -355,7 +372,7 @@ NAV BAR
     border-bottom: 3px solid transparent;
     display: flex;
     height: 3.5em;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--highlight--welcome:hover {
@@ -364,7 +381,7 @@ NAV BAR
 
   .nav-bar__link-wrapper--lowlight--welcome {
     border-bottom: 3px solid transparent;
-    margin: 0em 2em;
+    margin: 0em 1em;
   }
 
   .nav-bar__link-wrapper--lowlight--welcome:hover {
@@ -406,6 +423,15 @@ NAV BAR
 
   .nav-bar__join-button:hover {
     cursor: pointer;
+  }
+}
+
+@media (min-width: 1000px) {
+  .nav-bar__link-wrapper--highlight,
+  .nav-bar__link-wrapper--lowlight, 
+  .nav-bar__link-wrapper--highlight--welcome, 
+  .nav-bar__link-wrapper--lowlight--welcome {
+    margin: 0em 2em;
   }
 }
 
