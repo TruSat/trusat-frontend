@@ -2,7 +2,6 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
 import { emails } from "../app/app-helpers";
-import IlloTrash from "../assets/illustration-trash2-840px.png";
 
 export default function FAQ() {
   return (
@@ -10,9 +9,8 @@ export default function FAQ() {
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src={IlloTrash}
-          // src="https://trusat-assets.s3.amazonaws.com/illustration-trash-720px.png"
-          // srcSet="https://trusat-assets.s3.amazonaws.com/illustration-trash-720px.png, https://trusat-assets.s3.amazonaws.com/illustration-trash-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png"
+          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-trash2-100px.png"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">

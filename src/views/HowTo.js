@@ -4,7 +4,6 @@ import IconLocation from "../assets/icon-location.svg";
 import IconLowlight from "../assets/icon-lowlight.svg";
 import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
-import IlloObservation from "../assets/illustration-observation2-840px.png"; 
 
 export default function HowTo() {
   return (
@@ -12,8 +11,8 @@ export default function HowTo() {
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src={IlloObservation}
-          // srcSet="https://trusat-assets.s3.amazonaws.com/illustration-evening-720px.png, https://trusat-assets.s3.amazonaws.com/illustration-evening-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png"
+          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-360px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-100px.png"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">
