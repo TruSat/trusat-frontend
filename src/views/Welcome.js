@@ -4,6 +4,10 @@ import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
 import RoundedButton from "../app/components/RoundedButton";
 import MailingListForm from "../app/components/MailingListForm";
+import IlloObservationSquare from "../assets/illustration-observation2-square-540px.png"; 
+import IlloPosatSquare from "../assets/illustration-posat2-square-540px.png"; 
+import IlloOpenSourceSquare from "../assets/illustration-open_source2-square-540px.png"; 
+
 
 export default function Home() {
   return (
@@ -83,7 +87,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
+                src={IlloObservationSquare}
                 alt="Illustration"
               ></img>
             </div>
@@ -138,7 +142,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
+                src={IlloPosatSquare}
                 alt="Illustration"
               ></img>
             </div>
@@ -148,7 +152,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source-square-540px.png"
+                src={IlloOpenSourceSquare}
                 alt="Illustration"
               ></img>
             </div>
