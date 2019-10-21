@@ -30,9 +30,18 @@ export default function CookieBanner({ isBannerOpen, setIsBannerOpen }) {
           text="No Thanks"
         ></Button>
       </div>
-      <NavLink className="app__nav-link" to="/policy">
+      <NavLink className="app__nav-link app__hide-on-mobile" to="/policy">
         <p className="cookie-banner__link">Read our privacy policy</p>
       </NavLink>
+      <a
+        className="cookie-banner__link app__hide-on-desktop"
+        target="_blank"
+        and
+        rel="noopener noreferrer"
+        href="https://trusat-assets.s3.amazonaws.com/trusat.org_privacy_policy.pdf"
+      >
+        Read our privacy policy
+      </a>
     </div>
   ) : null;
 }
