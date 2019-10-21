@@ -3,10 +3,9 @@ import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
 import ReactGA from "react-ga";
-import { googleTrackingId } from "../secrets";
 
 export const setCookies = () => {
-  ReactGA.initialize(googleTrackingId);
+  ReactGA.initialize(process.env.GOOGLE_TRACKING_ID);
 };
 
 export const deleteCookie = cookieName => {
