@@ -64,19 +64,19 @@ export default function ProfileSettings({
         {profileData.email ? (
           <div className="profile-settings__setting-wrapper">
             <label className="profile-settings__setting-label">EMAIL</label>
-            {showEditProfileInputs ? (
+            {/* {showEditProfileInputs ? (
               <EditProfileSettingInput
                 setting={newEmail}
                 setSetting={setNewEmail}
               />
-            ) : (
-              <p className="profile-settings__setting-value">
-                {toolTip(
-                  profileData.email,
-                  "This is the address you want to use to recover this account."
-                )}
-              </p>
-            )}
+            ) : ( */}
+            <p className="profile-settings__setting-value">
+              {toolTip(
+                profileData.email,
+                "This is the address you want to use to recover this account."
+              )}
+            </p>
+            {/* )} */}
           </div>
         ) : null}
 
