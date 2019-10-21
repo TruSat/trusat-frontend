@@ -48,8 +48,6 @@ APP
   text-align: center;
 }
 
-
-
 .app__nav__icon {
   display: inline-block;
   width: 1em;
@@ -60,22 +58,19 @@ APP
 }
 
 @media (max-width: 1150px) {
-  .app__nav__icon  {
+  .app__nav__icon {
     display: none;
   }
 }
 
 @media (max-width: 1150px) {
-  .bm-item > .app__nav__icon  {
+  .bm-item > .app__nav__icon {
     display: inline-block;
     position: relative;
     top: 5px;
     left: -8px;
   }
 }
-
-
-
 
 .app__link,
 .app__link:visited {
@@ -442,8 +437,8 @@ NAV BAR
 
 @media (min-width: 1000px) {
   .nav-bar__link-wrapper--highlight,
-  .nav-bar__link-wrapper--lowlight, 
-  .nav-bar__link-wrapper--highlight--welcome, 
+  .nav-bar__link-wrapper--lowlight,
+  .nav-bar__link-wrapper--highlight--welcome,
   .nav-bar__link-wrapper--lowlight--welcome {
     margin: 0em 2em;
   }
@@ -1180,7 +1175,6 @@ WELCOME VIEW
     flex-basis: 160px;
   }
 }
-
 
 .welcome__partners-list__logo-wrapper:last-child {
   margin-right: 0;
