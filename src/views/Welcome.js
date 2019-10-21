@@ -100,8 +100,8 @@ export default function Home() {
               </p>
               <ul className="welcome__small-copy__ul">
                 <li className="welcome__small-copy__li">
-                  TruSat will show you to when and where to look to see
-                  satellites that are the highest priority to monitor.{" "}
+                  TruSat will show you when and where to look to see satellites
+                  that are the highest priority to monitor.{" "}
                 </li>
                 <li>
                   Record an observation to update the world's understanding of
