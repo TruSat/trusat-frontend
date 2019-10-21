@@ -5,9 +5,8 @@ export default function DicordChatIcon() {
   return (
     <div className="discord-chat-button__wrapper">
       <a
-        target="_blank"
         rel="noopener noreferrer"
-        href="https://discordapp.com/invite/MEyA2Ns"
+        href="https://discuss.trusat.org/"
       >
         <img
           className="discord-chat-button__icon"
