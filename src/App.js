@@ -31,7 +31,7 @@ import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
-import DiscourseChatIcon from "./app/components/DiscourseChatIcon";
+import ChatIcon from "./app/components/ChatIcon";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -123,7 +123,7 @@ export default function App() {
         ) : (
           <Fragment>
             <Footer />
-            <DiscourseChatIcon />
+            <ChatIcon />
           </Fragment>
         )}
       </Router>
