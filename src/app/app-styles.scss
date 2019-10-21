@@ -1890,6 +1890,7 @@ SUBSCRIPTION CONFIRMED
 DISCORD CHAT BUTTON
 ---------- */
 .discord-chat-button__wrapper {
+  // border: 8px solid transparent;
   bottom: 0;
   position: fixed;
   right: 1em;
@@ -1897,7 +1898,9 @@ DISCORD CHAT BUTTON
 
 .discord-chat-button__icon {
   height: auto;
-  width: 60px;
+  width: 50px;
+  position: relative;
+  bottom: 4px;
 }
 
 .discord-chat-button__icon:hover {

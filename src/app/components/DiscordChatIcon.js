@@ -1,5 +1,5 @@
 import React from "react";
-import DiscordChatIcon from "../../assets/DiscordChatIcon.svg";
+import DiscordChatIcon from "../../assets/icon-chat.svg";
 
 export default function DicordChatIcon() {
   return (
