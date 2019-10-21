@@ -95,9 +95,11 @@ export default function Home() {
                   satellites that are the highest priority to monitor.{" "}
                 </li>
                 <li>
-                  When you record an observation, you’ll be credited in the
-                  TruSat Catalog, and the satellite will be added to your
-                  collection.
+                  Record an observation to update the world's understanding of that satellite's orbit.
+                </li>
+                <li>
+                 Your tracked sats will be added to your collection, and your contribution to citizen science will be credited in the
+                  TruSat Catalog.
                 </li>
                 <li>Never seen a sat? We’ll show you how.</li>
               </ul>
@@ -147,17 +149,13 @@ export default function Home() {
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white">How can I help?</h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
-                Join us so we can keep you posted
+                Glad you asked!  Preserving our future in space requires all hands on deck.
               </p>
               <p className="welcome__small-copy--white">
-                TruSat’s first release—the TruSat Catalog—gives existing
-                satellite trackers a live index of satellite positions, but does
-                not yet assist with capturing observations. So we’re working on
-                features to make satellite tracking easier for everyone.
+              TruSat is an early prototype. To fulfill the vision, TruSat needs your talents, your ideas, your time.
               </p>
               <p className="welcome__small-copy--white">
-                Sign up to stay posted on new features, hackathons, bounties,
-                and governance:
+              Whether you want to track satellites, contribute to the software, or share TruSat with your community, we hope you’ll be part of the solution.
               </p>
               <NavLink className="app__nav-link" to="/join">
                 <RoundedButton

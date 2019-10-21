@@ -72,10 +72,11 @@ APP
   border-radius: 4px;
   color: $primary-theme-color;
   display: inline-block;
-  font-size: 20px;
+  font-size: $small-font-size;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 1em 2em;
+  text-transform: uppercase;
 }
 
 .app__button--white:hover {
@@ -105,10 +106,11 @@ APP
   border-radius: 4px;
   color: $primary-text-color;
   display: inline-block;
-  font-size: 20px;
+  font-size: $small-font-size;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 1em 2em;
+  text-transform: uppercase;
 }
 
 .app__button--black:hover {
@@ -1643,7 +1645,7 @@ COOKIE BANNER
 .cookie-banner {
   background: $primary-highlight-color;
   bottom: 0;
-  box-shadow: 0px -3px 3px grey;
+  box-shadow: 0px -3px 6px $primary-theme-color;
   padding: 1em;
   position: fixed;
   width: 100%;
@@ -1662,6 +1664,7 @@ COOKIE BANNER
 }
 
 .cookie-banner__button-wrapper {
+  font-size: $small-font-size;
   margin-top: 1em;
 }
 
