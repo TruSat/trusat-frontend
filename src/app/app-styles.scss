@@ -58,7 +58,7 @@ APP
 .app__link--lowlight,
 .app__link--lowlight:visited {
   color: $secondary-theme-color;
-  text-decoration: underline
+  text-decoration: underline;
 }
 
 .app__link--lowlight:hover {
@@ -397,7 +397,6 @@ NAV BAR
     cursor: default;
   }
 
-
   .nav-bar__join-button:hover {
     cursor: pointer;
   }
@@ -411,8 +410,6 @@ NAV BAR
   color: $primary-highlight-color;
   cursor: pointer;
 }
-
-
 
 /* ----------
 TABLE
@@ -1315,7 +1312,6 @@ MAILING LIST FORM
   height: 41px;
   line-height: 1.25%;
   margin: 0.5em 0;
-  margin-left: -8px;
   min-width: 170px; // stops button text squeezing on re-size
   padding: 0.5em 2em;
 }
@@ -1507,8 +1503,6 @@ ABOUT VIEW
 .static-page__partner-link:hover {
   color: $primary-highlight-color;
 }
-
-
 
 .about__sub-header--top {
   margin-top: 1em;
