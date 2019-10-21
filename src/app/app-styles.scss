@@ -1167,13 +1167,20 @@ WELCOME VIEW
 }
 
 .welcome__partners-list__logo-wrapper {
-  flex-basis: 160px;
+  flex-basis: 110px;
+  text-align: center;
   font-size: $small-font-size;
   line-height: 20px;
   margin-right: 20px;
   margin-bottom: 30px;
-  text-align: center;
 }
+
+@media (min-width: 600px) {
+  .welcome__partners-list__logo-wrapper {
+    flex-basis: 160px;
+  }
+}
+
 
 .welcome__partners-list__logo-wrapper:last-child {
   margin-right: 0;
