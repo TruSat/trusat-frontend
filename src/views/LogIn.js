@@ -10,7 +10,7 @@ export default function LogIn() {
   return (
     <div className="log-in__wrapper">
       <h1 className="log-in__header">
-        {userAddress ? "YOU'RE LOGGED IN" : "LOG IN"}
+        {userAddress ? "You're logged in" : "Log in"}
       </h1>
       {userAddress ? (
         <div className="login__success-wrapper">
@@ -21,7 +21,7 @@ export default function LogIn() {
       ) : (
         <Fragment>
           <LoginOptions />
-          <div className="log-in__wrapper">
+          <div className="log-in__test-pilot-wrapper ">
             <TestPilots />
           </div>
         </Fragment>

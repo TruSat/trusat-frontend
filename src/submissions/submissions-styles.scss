@@ -3,7 +3,9 @@ SUBMIT
 ----------- */
 .submit__wrapper {
   margin: 2em 1em;
+  max-width: 1000px;
 }
+
 
 .submit__header {
   @include view-title;
@@ -12,7 +14,7 @@ SUBMIT
 
 @media (min-width: 600px) {
   .submit__wrapper {
-    margin: 2em 4em;
+    margin: 2em auto;
   }
   .submit__header {
     @include view-title--desktop;
@@ -51,7 +53,7 @@ MULTIPLE OBSERVATION FORM
 }
 
 .multiple-observation-form__textarea {
-  background: #1f1f1f;
+  background: $tertiary-color;;
   border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   box-sizing: border-box;
