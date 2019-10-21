@@ -30,10 +30,10 @@ export default function ObjectInfo({ match }) {
 
   useEffect(() => {
     // only fetch data for a potentially valid norad number
-    if (isValidNumber(noradNumber)) {
-      doFetch(`/object/info?norad_number=${noradNumber}`);
-    } else {
+    if (!isValidNumber(noradNumber)) {
       setIsNumberError(true);
+    } else {
+      doFetch(`/object/info?norad_number=${noradNumber}`);
     }
 
     if (data.length !== 0) {
