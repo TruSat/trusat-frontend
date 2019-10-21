@@ -1,11 +1,16 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ReactGA from "react-ga";
+import IconArrowUp from "../../assets/icon-arrow-up.svg"
+import IconRocket from "../../assets/icon-rocket.svg"
+import IconLock from "../../assets/icon-lock.svg"
+import IconTrash from "../../assets/icon-trash.svg"
+
 
 function CatalogNavBar({ catalogFilter, setRange, history }) {
   return (
     <div className="catalog-nav-bar__wrapper">
-      <span
+      <div
         className={
           catalogFilter === "priorities"
             ? "catalog-nav-bar__link--highlight"
@@ -20,10 +25,11 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           history.push("/catalog/priorities");
         }}
       >
-        PRIORITIES
-      </span>
+        <img className="catalog__icon" src={IconArrowUp} alt="icon"></img>
+        <span className="catalog-filter-label">PRIORITIES</span>
+      </div>
 
-      <span
+      <div
         className={
           catalogFilter === "latest"
             ? "catalog-nav-bar__link--highlight"
@@ -38,10 +44,11 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           history.push("/catalog/latest");
         }}
       >
-        LAUNCHES
-      </span>
+        <img className="catalog__icon" src={IconRocket} alt="icon"></img>
+        <span className="catalog-filter-label">LAUNCHES</span>
+      </div>
 
-      <span
+      <div
         className={
           catalogFilter === "undisclosed"
             ? "catalog-nav-bar__link--highlight"
@@ -56,10 +63,11 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           history.push("/catalog/undisclosed");
         }}
       >
-        UNDISCLOSED
-      </span>
+        <img className="catalog__icon" src={IconLock} alt="icon"></img>
+        <span className="catalog-filter-label">UNDISCLOSED</span>
+      </div>
 
-      <span
+      <div
         className={
           catalogFilter === "debris"
             ? "catalog-nav-bar__link--highlight"
@@ -74,10 +82,11 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           history.push("/catalog/debris");
         }}
       >
-        DEBRIS
-      </span>
+        <img className="catalog__icon" src={IconTrash} alt="icon"></img>
+        <span className="catalog-filter-label">DEBRIS</span>
+      </div>
 
-      <span
+      <div
         className={
           catalogFilter === "all"
             ? "catalog-nav-bar__link--highlight"
@@ -92,8 +101,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           history.push("/catalog/all");
         }}
       >
-        ALL
-      </span>
+        <span className="catalog-filter-label">ALL</span>
+      </div>
     </div>
   );
 }

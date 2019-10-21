@@ -65,15 +65,15 @@ export default function Home() {
               record their positions, and help create a planetary record that
               encourages sustainable practices in orbit.
             </p>
-          <NavLink className="app__nav-link" to="/join">
-            <div className="welcome__join-button-wrapper--welcome-top">
-              <RoundedButton
-                addStyles="welcome__join-button"
-                color="orange"
-                text="SIGN UP"
-              />
-            </div>
-          </NavLink>
+            <NavLink className="app__nav-link" to="/join">
+              <div className="welcome__join-button-wrapper--welcome-top">
+                <RoundedButton
+                  addStyles="welcome__join-button"
+                  color="orange"
+                  text="SIGN UP"
+                />
+              </div>
+            </NavLink>
           </div>
         </section>
 
@@ -83,7 +83,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -104,11 +104,13 @@ export default function Home() {
                   satellites that are the highest priority to monitor.{" "}
                 </li>
                 <li>
-                  Record an observation to update the world's understanding of that satellite's orbit.
+                  Record an observation to update the world's understanding of
+                  that satellite's orbit.
                 </li>
                 <li>
-                 Your tracked sats will be added to your collection, and your contribution to citizen science will be credited in the
-                  TruSat Catalog.
+                  Your tracked sats will be added to your collection, and your
+                  contribution to citizen science will be credited in the TruSat
+                  Catalog.
                 </li>
                 <li>Never seen a sat? We’ll show you how.</li>
               </ul>
@@ -122,7 +124,9 @@ export default function Home() {
                 Earth needs a transparent record of satellite behavior.
               </p>
               <p className="welcome__small-copy--white">
-                Space is wild. Creating strong incentives for responsible practices in orbit requires a trusted record of orbital positions. To fill this gap, TruSat tasks a global network of
+                Space is wild. Creating strong incentives for responsible
+                practices in orbit requires a trusted record of orbital
+                positions. To fill this gap, TruSat tasks a global network of
                 citizens to track satellites of interest.
               </p>
               <p className="welcome__small-copy--white">
@@ -138,7 +142,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -148,7 +152,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source2-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -156,13 +160,17 @@ export default function Home() {
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white">How can I help?</h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
-                Glad you asked!  Preserving our future in space requires all hands on deck.
+                Glad you asked! Preserving our future in space requires all
+                hands on deck.
               </p>
               <p className="welcome__small-copy--white">
-              TruSat is an early prototype. To fulfill the vision, TruSat needs your talents, your ideas, your time.
+                TruSat is an early prototype. To fulfill the vision, TruSat
+                needs your talents, your ideas, your time.
               </p>
               <p className="welcome__small-copy--white">
-              Whether you want to track satellites, contribute to the software, or share TruSat with your community, we hope you’ll be part of the solution.
+                Whether you want to track satellites, contribute to the
+                software, or share TruSat with your community, we hope you’ll be
+                part of the solution.
               </p>
               <NavLink className="app__nav-link" to="/join">
                 <RoundedButton
