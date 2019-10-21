@@ -8,26 +8,34 @@ export default function HowToSeeIt() {
 
   return (
     <div className="object-info__how-to-wrapper">
-      <h2 className="object-info__section-title">HOW TO SEE IT</h2>
-      <NavLink className="app__nav-link" to="/how">
-        <p className="object-info__link-text">Learn how to track satellites</p>
-      </NavLink>
-      {objectInfo.heavens_above_url ? (
+      <h2 className="object-info__section-title">TRACK THIS SAT</h2>
+      <p className="object-info__link-text">
+        <NavLink className="app__link--lowlight" to="/how">
+          Learn how to track satellites
+        </NavLink>
+      </p>
+      <p className="object-info__link-text">
+        See when and where to spot this at{" "}
+        {objectInfo.heavens_above_url ? (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href={objectInfo.heavens_above_url}
+            className="app__link--lowlight"
+          >
+            Heavens Above
+          </a>
+        ) : null}
+        {" "}or{" "}
         <a
           target="_blank"
           rel="noopener noreferrer"
-          href={objectInfo.heavens_above_url}
+          href={`https://www.calsky.com/csephem.cgi?&object=Satellite&number=${noradNumber}`}
+          className="app__link--lowlight"
         >
-          <p className="object-info__link-text">More info at Heavens Above</p>
+          Calsky
         </a>
-      ) : null}
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href={`https://www.calsky.com/csephem.cgi?&object=Satellite&number=${noradNumber}`}
-      >
-        <p className="object-info__link-text">More info at Calsky</p>
-      </a>
+        </p>
       <DownloadObjectTleButton />
     </div>
   );

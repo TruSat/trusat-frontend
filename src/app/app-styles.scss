@@ -44,13 +44,25 @@ APP
   text-decoration: none;
 }
 
-.app__link {
+.app__link,
+.app__link:visited {
   color: $primary-text-color;
   text-decoration: underline;
 }
 
 .app__link:hover {
   color: $primary-highlight-color;
+  cursor: pointer;
+}
+
+.app__link--lowlight,
+.app__link--lowlight:visited {
+  color: $secondary-theme-color;
+  text-decoration: underline
+}
+
+.app__link--lowlight:hover {
+  color: $secondary-theme-color;
   cursor: pointer;
 }
 
