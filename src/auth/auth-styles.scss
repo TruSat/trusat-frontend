@@ -85,6 +85,7 @@ LOG IN
 ---------- */
 .log-in__wrapper {
   margin: 2em 1em;
+  max-width: 1000px;
 }
 
 .log-in__header {
@@ -93,12 +94,16 @@ LOG IN
 
 @media (min-width: 600px) {
   .log-in__wrapper {
-    margin: 4em;
+    margin: 2em auto;
   }
 
   .log-in__header {
     @include view-title--desktop;
   }
+}
+
+.log-in__test-pilot-wrapper {
+  margin-top: 6em;
 }
 
 /* ----------

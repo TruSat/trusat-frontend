@@ -25,7 +25,7 @@ export default function TestPilotConfirmed() {
           TruSat and opening it up to the broadest possible community of
           contributors, and we’ll do our best to support you along the way.
         </p>
-        <p className="static-page__copy static-page__copy--bold">
+        <p className="static-page__copy static-page__copy--bold join__subheader">
           Here’s what to expect:
         </p>
         <p className="static-page__copy">
@@ -38,7 +38,7 @@ export default function TestPilotConfirmed() {
           software tools to format satellite observation data for submission to
           the TruSat v0.1 prototype.
         </p>
-        <p className="static-page__copy static-page__copy--bold">
+        <p className="static-page__copy static-page__copy--bold join__subheader">
           In the meantime, we invite you to:
         </p>
         <p className="static-page__copy">
@@ -52,13 +52,12 @@ export default function TestPilotConfirmed() {
           </a>
         </p>
         <p className="static-page__copy">
-          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
+          <NavLink className="app__link" to="/whitepaper">
             Build your satellite tracking skills
           </NavLink>
         </p>
-        <p className="static-page__copy">
-          Follow us: <SocialIcons />
-        </p>
+        <p className="static-page__copy static-page__copy--bold join__subheader">Follow us</p>
+        <SocialIcons />
       </div>
     </div>
   );

@@ -1,5 +1,4 @@
 import React from "react";
-import HowToAppScreenshotPlaceholder from "../assets/how_to-sky_view-placeholder.png";
 import IconTime from "../assets/icon-time.svg";
 import IconLocation from "../assets/icon-location.svg";
 import IconLowlight from "../assets/icon-lowlight.svg";
@@ -36,7 +35,7 @@ export default function HowTo() {
         </p>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
@@ -52,7 +51,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLocation}
@@ -95,7 +94,7 @@ export default function HowTo() {
         </p>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
@@ -115,7 +114,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLowlight}
@@ -133,7 +132,7 @@ export default function HowTo() {
         </div>
         <div className="how-to__step-wrapper">
           <div className="how-to__step__number">3.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step__icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconRelaxing}
@@ -185,8 +184,7 @@ export default function HowTo() {
           >
             Apple
           </a>
-          ) will do most of the work for you. >>> [Step by step with screen
-          shots of SkyView]
+          ) will do most of the work for you.
         </p>
         <p className="static-page__copy">
           SkyView allows you to search their catalog for a satellite then the AR
@@ -199,14 +197,15 @@ export default function HowTo() {
           <div className="how-to__step__image-wrapper">
             <img
               className="how-to__screenshot"
-              src={HowToAppScreenshotPlaceholder}
+              src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-1.png"
               alt="Skyview screenshot"
             ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
+              SkyView provides an AR fueled viewing experience that makes it fun
+              and easy to spot bright satellites and other luminous objects in
+              space.
             </p>
           </div>
         </div>
@@ -215,14 +214,17 @@ export default function HowTo() {
           <div className="how-to__step__image-wrapper">
             <img
               className="how-to__screenshot"
-              src={HowToAppScreenshotPlaceholder}
+              src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-2.png"
               alt="Skyview screenshot"
             ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
+              To find a specific satellite, simply use the search bar to look
+              for objects like the International Space Station or click on
+              Brightest Satellites for a full list of options. The paid version
+              of the app has a more comprehensive list of satellites than the
+              free version.
             </p>
           </div>
         </div>
@@ -231,14 +233,16 @@ export default function HowTo() {
           <div className="how-to__step__image-wrapper">
             <img
               className="how-to__screenshot"
-              src={HowToAppScreenshotPlaceholder}
+              src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-3.png"
               alt="Skyview screenshot"
             ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
+              SkyView will then return you to the AR experience. Move your phone
+              in the direction on the on-screen arrow to find your chosen
+              object. SkyView will show you where the satellite has recently
+              passed as well its predicted path
             </p>
           </div>
         </div>
@@ -247,30 +251,15 @@ export default function HowTo() {
           <div className="how-to__step__image-wrapper">
             <img
               className="how-to__screenshot"
-              src={HowToAppScreenshotPlaceholder}
+              src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-4.png"
               alt="Skyview screenshot"
             ></img>
           </div>
           <div className="how-to__step__description">
             <p className="static-page__copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
-            </p>
-          </div>
-        </div>
-        <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">5.</div>
-          <div className="how-to__step__image-wrapper">
-            <img
-              className="how-to__screenshot"
-              src={HowToAppScreenshotPlaceholder}
-              alt="Skyview screenshot"
-            ></img>
-          </div>
-          <div className="how-to__step__description">
-            <p className="static-page__copy">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor
+              Once you have found your satellite, you can learn more information
+              about its history and how it is currently used by clicking the
+              info icon at the bottom of the AR experience.{" "}
             </p>
           </div>
         </div>
@@ -325,7 +314,7 @@ export default function HowTo() {
           <iframe
             className="welcome__iframe"
             title="pale blue dot video"
-            src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
+            src="https://www.youtube.com/embed/DmSL1MweU7M"
             frameBorder="0"
             allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen="allowfullscreen"
