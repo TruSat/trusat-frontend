@@ -46,7 +46,7 @@ export default function TestPilotConfirmed() {
             className="app__link"
             target="_blank"
             rel="noopener noreferrer"
-            href="https://discordapp.com/invite/MEyA2Ns"
+            href="https://discuss.trusat.org/"
           >
             Join the test pilots discussion channel
           </a>

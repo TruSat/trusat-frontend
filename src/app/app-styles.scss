@@ -1646,7 +1646,6 @@ HOW TO VIEW
 
 @media (min-width: 600px) {
   .how-to__step__number {
-
   }
 }
 
@@ -1665,7 +1664,6 @@ HOW TO VIEW
     min-width: 100px;
   }
 }
-
 
 @media (min-width: 600px) {
   .how-to__step__image-wrapper {
@@ -1698,7 +1696,6 @@ HOW TO VIEW
   display: flex;
   margin-top: 1em;
 }
-
 
 // stops sign up button wrapping over copy below
 .how-to__copy--with-margin {
@@ -1901,29 +1898,28 @@ SUBSCRIPTION CONFIRMED
 }
 
 .join__subheader,
-.join__subheader > a{
+.join__subheader > a {
   margin-top: 2em;
   margin-bottom: 0.5em;
 }
 
 /* ----------
-DISCORD CHAT BUTTON
+DISCOURSE CHAT BUTTON
 ---------- */
-.discord-chat-button__wrapper {
-  // border: 8px solid transparent;
+.discourse-chat-button__wrapper {
   bottom: 0;
   position: fixed;
   right: 1em;
 }
 
-.discord-chat-button__icon {
+.discourse-chat-button__icon {
   height: auto;
   width: 50px;
   position: relative;
   bottom: 4px;
 }
 
-.discord-chat-button__icon:hover {
+.discourse-chat-button__icon:hover {
   cursor: pointer;
   border: 2px solid transparent;
 }
