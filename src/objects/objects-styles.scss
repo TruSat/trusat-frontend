@@ -33,6 +33,7 @@ OBJECT INFO
   }
 }
 
+
 @media (max-width: 600px) {
   .object-info__badge-wrapper {
     margin: 0 auto;
@@ -43,6 +44,9 @@ OBJECT INFO
 @media (min-width: 600px) {
   .object-info__badge-wrapper {
     margin-right: 1em;
+  }
+  .object-info__header-section-wrapper > .object-info__badge-wrapper {
+    margin-left: -12px;
   }
 }
 
@@ -84,7 +88,6 @@ OBJECT INFO
 
 .object-info__header-info-wrapper__group {
   display: inline-block;
-  line-height: 16px;
 }
 
 @media (min-width: 600px) {
@@ -119,7 +122,7 @@ OBJECT INFO
 @media (min-width: 600px) {
   .object-info__background-section-wrapper {
     display: flex;
-    margin: 4em 0 8em;
+    margin: 4em 0 4em;
   }
 }
 
@@ -140,6 +143,11 @@ OBJECT INFO
   .object-info__how-to-wrapper {
     margin-bottom: 5em;
   }
+}
+
+.object-info__how-to-wrapper {
+  width: 230px;
+  max-width: 230px;
 }
 
 .object-info__section-title {
@@ -168,8 +176,16 @@ OBJECT INFO
 
 .object-info__link-text {
   color: $secondary-theme-color;
+  line-height: 19px;
+  margin-bottom: 0.75em;
+}
+
+.object-info__link-text a{
   text-decoration-line: underline;
-  margin-bottom: 0.5em;
+}
+
+.object-info__link-text a:hover {
+  color: $primary-text-color;
 }
 
 .object-info__limited-info-message {
