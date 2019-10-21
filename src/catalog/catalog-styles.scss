@@ -216,6 +216,40 @@ CATALOG NAV BAR
   color: $primary-text-color;
 }
 
+.catalog-nav-bar__link--highlight,
+.catalog-nav-bar__link--lowlight {
+  display: flex;
+}
+
+.catalog__icon {
+  display: inline-block;
+  width: 0.9em;
+  height: 0.9em;
+  position: relative;
+  top: -1px;
+  left: -1px;
+}
+
+
+@media (max-width: 1000px) {
+  .catalog__icon  {
+    display: none;
+  }
+}
+
+.catalog-filter-label {
+  display: inline-block;
+}
+
+@media (min-width: 1000px) {
+  .catalog-filter-label {
+    padding-left: 4px;
+  }
+}
+
+
+
+
 /* ----------
 CATALOG TABLE
 ---------- */
