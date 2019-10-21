@@ -48,8 +48,8 @@ export default function Home() {
             <div className="welcome__iframe-wrapper">
               <iframe
                 className="welcome__iframe"
-                title="pale blue dot video"
-                src="https://www.youtube.com/embed/YYWaJ7Hd7fQ"
+                title="TruSat explainer video"
+                src="https://www.youtube.com/embed/H-J7zngl6xE"
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen="allowfullscreen"
@@ -74,13 +74,13 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
 
             <div className="welcome__join-copy-wrapper">
-              <h2 className="welcome__sub-header--white">
+              <h2 className="welcome__sub-header--white welcome__sub-header--nowrap">
                 Satellite tracking?{" "}
                 <span className="welcome__small-copy--emoticon">
                   ¯\_(ツ)_/¯
@@ -95,9 +95,11 @@ export default function Home() {
                   satellites that are the highest priority to monitor.{" "}
                 </li>
                 <li>
-                  When you record an observation, you’ll be credited in the
-                  TruSat Catalog, and the satellite will be added to your
-                  collection.
+                  Record an observation to update the world's understanding of that satellite's orbit.
+                </li>
+                <li>
+                 Your tracked sats will be added to your collection, and your contribution to citizen science will be credited in the
+                  TruSat Catalog.
                 </li>
                 <li>Never seen a sat? We’ll show you how.</li>
               </ul>
@@ -111,9 +113,7 @@ export default function Home() {
                 Earth needs a transparent record of satellite behavior.
               </p>
               <p className="welcome__small-copy--white">
-                Space is wild. There’s been no way to ensure responsible
-                practices in orbit, because there has been no trusted source of
-                orbital data. To fill this gap, TruSat tasks a global network of
+                Space is wild. Creating strong incentives for responsible practices in orbit requires a trusted record of orbital positions. To fill this gap, TruSat tasks a global network of
                 citizens to track satellites of interest.
               </p>
               <p className="welcome__small-copy--white">
@@ -129,7 +129,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat-square-540px.png"
                 alt="Illustration"
               ></img>
             </div>
@@ -147,17 +147,13 @@ export default function Home() {
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white">How can I help?</h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
-                Join us so we can keep you posted
+                Glad you asked!  Preserving our future in space requires all hands on deck.
               </p>
               <p className="welcome__small-copy--white">
-                TruSat’s first release—the TruSat Catalog—gives existing
-                satellite trackers a live index of satellite positions, but does
-                not yet assist with capturing observations. So we’re working on
-                features to make satellite tracking easier for everyone.
+              TruSat is an early prototype. To fulfill the vision, TruSat needs your talents, your ideas, your time.
               </p>
               <p className="welcome__small-copy--white">
-                Sign up to stay posted on new features, hackathons, bounties,
-                and governance:
+              Whether you want to track satellites, contribute to the software, or share TruSat with your community, we hope you’ll be part of the solution.
               </p>
               <NavLink className="app__nav-link" to="/join">
                 <RoundedButton

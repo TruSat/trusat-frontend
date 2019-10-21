@@ -44,6 +44,9 @@ APP
   text-decoration: none;
 }
 
+.app__nav-login-wrapper {
+}
+
 .app__link,
 .app__link:visited {
   color: $primary-text-color;
@@ -72,10 +75,11 @@ APP
   border-radius: 4px;
   color: $primary-theme-color;
   display: inline-block;
-  font-size: 20px;
+  font-size: $small-font-size;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 1em 2em;
+  text-transform: uppercase;
 }
 
 .app__button--white:hover {
@@ -105,10 +109,11 @@ APP
   border-radius: 4px;
   color: $primary-text-color;
   display: inline-block;
-  font-size: 20px;
+  font-size: $small-font-size;
   font-weight: 500;
   line-height: 23px;
-  padding: 1em 3em;
+  padding: 1em 2em;
+  text-transform: uppercase;
 }
 
 .app__button--black:hover {
@@ -303,11 +308,13 @@ NAV BAR
     border-radius: 4px;
     color: $primary-theme-color;
     font-size: $small-font-size;
+    font-weight: bold;
     margin-right: 1em;
     padding: 0.5em 2em;
   }
 
   .nav-bar__join-button:hover {
+    background-color: $primary-text-color;
     cursor: pointer;
   }
 
@@ -403,11 +410,12 @@ NAV BAR
 }
 
 .nav-bar__log-in-text {
+  color: $secondary-theme-color;
   margin-right: 2em;
 }
 
 .nav-bar__log-in-text:hover {
-  color: $primary-highlight-color;
+  color: $primary-text-color;
   cursor: pointer;
 }
 
@@ -529,10 +537,10 @@ EMAIL FORM
 
 .email-form__input {
   align-self: flex-start;
-  background: black;
+  background: $tertiary-color;
   box-sizing: border-box;
   border-radius: 4px;
-  border: 1px solid #cccccc;
+  border: 1px solid $secondary-theme-color;
   color: $primary-text-color;
   font-size: $medium-font-size;
   margin-bottom: 1em;
@@ -615,13 +623,13 @@ BURGER MENU
   /* Our sidebar item styling */
   text-decoration: none;
   margin-bottom: 10px;
-  color: #d1d1d1;
+  color: $primary-text-color;
   transition: color 0.2s;
 }
 
 /* Change color on hover */
 .bm-item:hover {
-  color: white;
+  color: $primary-text-color;
 }
 
 /* The rest copied directly from react-burger-menu docs */
@@ -644,7 +652,7 @@ BURGER MENU
 
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: white;
+  background: $primary-text-color;
 }
 
 /* Position and sizing of clickable cross button */
@@ -655,12 +663,12 @@ BURGER MENU
 
 /* Color/shape of close button cross */
 .bm-cross {
-  background: #bdc3c7;
+  background: $primary-text-color;
 }
 
 /* General sidebar styles */
 .bm-menu {
-  background: #2d2d2d;
+  background: $tertiary-color;
   padding: 1em;
   font-size: $extra-large-font-size;
   line-height: 50px;
@@ -678,7 +686,7 @@ BURGER MENU
 
 /* Styling of overlay */
 .bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
+  background: $primary-theme-color;
 }
 
 /* ----------
@@ -889,6 +897,12 @@ WELCOME VIEW
 
 .welcome__sub-header--white {
   margin: 0.25em 0em;
+}
+
+@media (min-width: 600px) {
+  .welcome__sub-header--nowrap {
+    white-space: nowrap;
+  }
 }
 
 .welcome__join-button {
@@ -1133,13 +1147,15 @@ WELCOME VIEW
 JOIN VIEW 
 ---------- */
 .join__wrapper {
-  margin: 0 auto;
+  margin: 0 1em;
   padding: 2em 1em;
 }
 
 @media (min-width: 600px) {
   .join__wrapper {
     padding: 3em 4em;
+    margin: 0 auto;
+    max-width: 1000px;
   }
 }
 
@@ -1214,7 +1230,7 @@ JOIN VIEW
   .join__content-wrapper {
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 6em;
+    margin-bottom: 10em;
   }
 }
 
@@ -1241,7 +1257,7 @@ JOIN VIEW
     align-items: flex-start;
     display: flex;
     flex-direction: row;
-    padding-left: 2em;
+    padding-left: 3em;
     width: 50%;
   }
 }
@@ -1303,6 +1319,10 @@ MAILING LIST FORM
   color: $primary-text-color;
 }
 
+.mailing-list__input--test-pilots {
+  border: 1px solid $tertiary-color--light;
+}
+
 .mailing-list__subscribe-button {
   background: $primary-highlight-color;
   border: 1px solid $primary-highlight-color;
@@ -1312,7 +1332,7 @@ MAILING LIST FORM
   height: 41px;
   line-height: 1.25%;
   margin: 0.5em 0;
-  min-width: 170px; // stops button text squeezing on re-size
+  min-width: 150px; // stops button text squeezing on re-size
   padding: 0.5em 2em;
 }
 
@@ -1333,6 +1353,8 @@ MAILING LIST FORM
 }
 
 .mailing-list__subscribe-button--test-pilots {
+  background-color: $secondary-theme-color;
+  border: 1px solid $secondary-theme-color;
   color: $primary-theme-color;
 }
 
@@ -1544,6 +1566,13 @@ HOW TO VIEW
 
 .how-to__step-wrapper {
   display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .how-to__step-wrapper {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 600px) {
@@ -1556,12 +1585,38 @@ HOW TO VIEW
 
 .how-to__step__number {
   flex-basis: 50px;
-  font-size: $extra-large-font-size;
   min-width: 50px;
+  font-size: $extra-large-font-size;
+}
+
+@media (min-width: 600px) {
+  .how-to__step__number {
+
+  }
 }
 
 .how-to__step__image-wrapper {
-  min-width: 100px;
+  // width: 100px;
+}
+
+@media (max-width: 600px) {
+  .how-to__step__icon-wrapper {
+    max-width: 100px;
+  }
+}
+
+@media (min-width: 600px) {
+  .how-to__step__icon-wrapper {
+    min-width: 100px;
+  }
+}
+
+
+@media (min-width: 600px) {
+  .how-to__step__image-wrapper {
+    min-width: 200px;
+    width: 200px;
+  }
 }
 
 .how-to__step__description {
@@ -1586,15 +1641,10 @@ HOW TO VIEW
 
 .how-to__step-wrapper {
   display: flex;
-  flex-direction: column;
   margin-top: 1em;
 }
 
-@media (min-width: 600px) {
-  .how-to__step-wrapper {
-    flex-direction: row;
-  }
-}
+
 // stops sign up button wrapping over copy below
 .how-to__copy--with-margin {
   margin-top: 4em;
@@ -1637,7 +1687,7 @@ COOKIE BANNER
 .cookie-banner {
   background: $primary-highlight-color;
   bottom: 0;
-  box-shadow: 0px -3px 3px grey;
+  box-shadow: 0px -3px 6px $primary-theme-color;
   padding: 1em;
   position: fixed;
   width: 100%;
@@ -1656,6 +1706,7 @@ COOKIE BANNER
 }
 
 .cookie-banner__button-wrapper {
+  font-size: $small-font-size;
   margin-top: 1em;
 }
 
@@ -1774,6 +1825,7 @@ TEST PILOTS
 }
 
 .test-pilots__copy {
+  color: $secondary-theme-color;
   font-size: 18px;
   line-height: 22px;
 }
@@ -1782,15 +1834,21 @@ TEST PILOTS
 SUBSCRIPTION CONFIRMED 
 ---------- */
 .subscription-confirmed__copy {
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 44px;
+  font-size: $extra-large-font-size;
+  color: $primary-highlight-color;
   margin-top: 2em;
+  margin-bottom: 0.5em;
   text-align: start;
 }
 
 .subscription-confirmed__link {
   color: $primary-text-color;
+}
+
+.join__subheader,
+.join__subheader > a{
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 }
 
 /* ----------
