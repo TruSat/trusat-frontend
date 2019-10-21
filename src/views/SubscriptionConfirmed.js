@@ -31,9 +31,9 @@ export default function SubscriptionConfirmed() {
           about new features and opportunities to get involved in building both
           the software and community powering TruSat.
         </p>
-        <p className="static-page__copy static-page__copy--bold">
+        <p className="static-page__copy static-page__copy--bold join__subheader">
           <a
-            className="subscription-confirmed__link"
+            className="subscription-confirmed__link app__link"
             target="_blank"
             rel="noopener noreferrer"
             href="https://discordapp.com/invite/MEyA2Ns"
@@ -45,23 +45,23 @@ export default function SubscriptionConfirmed() {
           Chat with your fellow TruSat community members and the people behind
           TruSat. Ask questions, share ideas.
         </p>
-        <p className="static-page__copy static-page__copy--bold">
-          <NavLink className="app__nav-link static-page__link" to="/how">
+        <p className="static-page__copy static-page__copy--bold join__subheader">
+          <NavLink className="app__nav-link static-page__link app__link" to="/how">
             Learn how to track satellites
           </NavLink>
         </p>
         <p className="static-page__copy">
           Try your hand at sat spotting and build your skills
         </p>
-        <p className="static-page__copy static-page__copy--bold">
-          <NavLink className="app__nav-link static-page__link" to="/faq">
+        <p className="static-page__copy static-page__copy--bold join__subheader">
+          <NavLink className="app__nav-link static-page__link app__link" to="/faq">
             Learn more about TruSat
           </NavLink>
         </p>
         <p className="static-page__copy">
           Who’s behind TruSat, why does it exist, how does it work?
         </p>
-        <p className="static-page__copy static-page__copy--bold">Follow us</p>
+        <p className="static-page__copy static-page__copy--bold join__subheader">Follow us</p>
         <SocialIcons />
       </div>
     </div>

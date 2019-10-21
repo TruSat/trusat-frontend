@@ -1834,15 +1834,21 @@ TEST PILOTS
 SUBSCRIPTION CONFIRMED 
 ---------- */
 .subscription-confirmed__copy {
-  font-size: 36px;
-  font-weight: bold;
-  line-height: 44px;
+  font-size: $extra-large-font-size;
+  color: $primary-highlight-color;
   margin-top: 2em;
+  margin-bottom: 0.5em;
   text-align: start;
 }
 
 .subscription-confirmed__link {
   color: $primary-text-color;
+}
+
+.join__subheader,
+.join__subheader > a{
+  margin-top: 2em;
+  margin-bottom: 0.5em;
 }
 
 /* ----------
