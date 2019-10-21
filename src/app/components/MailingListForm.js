@@ -22,7 +22,11 @@ export default function MailingListForm({ testPilots }) {
           required
           name="EMAIL"
           id="mce-EMAIL"
-          className="mailing-list__input"
+          className={
+            testPilots
+              ? "mailing-list__input mailing-list__input--test-pilots"
+              : "mailing-list__input"
+          }
           type="email"
           placeholder="Your email"
           value={email}

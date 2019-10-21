@@ -308,11 +308,13 @@ NAV BAR
     border-radius: 4px;
     color: $primary-theme-color;
     font-size: $small-font-size;
+    font-weight: bold;
     margin-right: 1em;
     padding: 0.5em 2em;
   }
 
   .nav-bar__join-button:hover {
+    background-color: $primary-text-color;
     cursor: pointer;
   }
 
@@ -408,11 +410,12 @@ NAV BAR
 }
 
 .nav-bar__log-in-text {
+  color: $secondary-theme-color;
   margin-right: 2em;
 }
 
 .nav-bar__log-in-text:hover {
-  color: $primary-highlight-color;
+  color: $primary-text-color;
   cursor: pointer;
 }
 
@@ -1144,13 +1147,15 @@ WELCOME VIEW
 JOIN VIEW 
 ---------- */
 .join__wrapper {
-  margin: 0 auto;
+  margin: 0 1em;
   padding: 2em 1em;
 }
 
 @media (min-width: 600px) {
   .join__wrapper {
     padding: 3em 4em;
+    margin: 0 auto;
+    max-width: 1000px;
   }
 }
 
@@ -1225,7 +1230,7 @@ JOIN VIEW
   .join__content-wrapper {
     display: flex;
     flex-direction: row-reverse;
-    margin-bottom: 6em;
+    margin-bottom: 10em;
   }
 }
 
@@ -1252,7 +1257,7 @@ JOIN VIEW
     align-items: flex-start;
     display: flex;
     flex-direction: row;
-    padding-left: 2em;
+    padding-left: 3em;
     width: 50%;
   }
 }
@@ -1314,6 +1319,10 @@ MAILING LIST FORM
   color: $primary-text-color;
 }
 
+.mailing-list__input--test-pilots {
+  border: 1px solid $tertiary-color--light;
+}
+
 .mailing-list__subscribe-button {
   background: $primary-highlight-color;
   border: 1px solid $primary-highlight-color;
@@ -1323,7 +1332,7 @@ MAILING LIST FORM
   height: 41px;
   line-height: 1.25%;
   margin: 0.5em 0;
-  min-width: 170px; // stops button text squeezing on re-size
+  min-width: 150px; // stops button text squeezing on re-size
   padding: 0.5em 2em;
 }
 
@@ -1344,6 +1353,8 @@ MAILING LIST FORM
 }
 
 .mailing-list__subscribe-button--test-pilots {
+  background-color: $secondary-theme-color;
+  border: 1px solid $secondary-theme-color;
   color: $primary-theme-color;
 }
 
@@ -1814,6 +1825,7 @@ TEST PILOTS
 }
 
 .test-pilots__copy {
+  color: $secondary-theme-color;
   font-size: 18px;
   line-height: 22px;
 }
