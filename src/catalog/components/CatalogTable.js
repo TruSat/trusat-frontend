@@ -84,7 +84,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
           >
-            {obj.username_last_tracked}
+            {toolTip(obj.username_last_tracked, obj.address_last_tracked)}
           </NavLink>
         </td>
       </tr>
