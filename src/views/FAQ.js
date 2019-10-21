@@ -2,8 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import TestPilots from "../app/components/TestPilots";
 import { emails } from "../app/app-helpers";
-import IlloTrash from "../assets/illustration-trash2-840px.png"; 
-
+import IlloTrash from "../assets/illustration-trash2-840px.png";
 
 export default function FAQ() {
   return (
@@ -282,7 +281,7 @@ export default function FAQ() {
             The version 0.2 release will add “Mission” functionality, enabling
             space sustainability advocates to prioritize satellites for
             observation according to sustainability, in accordance with the{" "}
-            <NavLink className="app__nav-link static-page__link" to="/join">
+            <NavLink className="app__nav-link static-page__link" to="/charter">
               TruSat Charter
             </NavLink>
             .
@@ -360,7 +359,7 @@ export default function FAQ() {
         <div className="about__answer">
           <p className="static-page__copy ">
             {" "}
-            <NavLink className="app__nav-link static-page__link" to="/join">
+            <NavLink className="app__nav-link static-page__link" to="/charter">
               The TruSat Charter
             </NavLink>{" "}
             specifies the governance arrangements for the TruSat System and Open
