@@ -1561,6 +1561,13 @@ HOW TO VIEW
 
 .how-to__step-wrapper {
   display: flex;
+  flex-direction: column;
+}
+
+@media (min-width: 600px) {
+  .how-to__step-wrapper {
+    flex-direction: row;
+  }
 }
 
 @media (min-width: 600px) {
@@ -1573,12 +1580,26 @@ HOW TO VIEW
 
 .how-to__step__number {
   flex-basis: 50px;
-  font-size: $extra-large-font-size;
   min-width: 50px;
+  font-size: $extra-large-font-size;
+  border: 1px solid red;
+}
+
+@media (min-width: 600px) {
+  .how-to__step__number {
+
+  }
 }
 
 .how-to__step__image-wrapper {
-  min-width: 100px;
+  width: 100px;
+  border: 1px solid green;
+}
+
+@media (min-width: 600px) {
+  .how-to__step__image-wrapper {
+    min-width: 100px;
+  }
 }
 
 .how-to__step__description {
@@ -1603,15 +1624,10 @@ HOW TO VIEW
 
 .how-to__step-wrapper {
   display: flex;
-  flex-direction: column;
   margin-top: 1em;
 }
 
-@media (min-width: 600px) {
-  .how-to__step-wrapper {
-    flex-direction: row;
-  }
-}
+
 // stops sign up button wrapping over copy below
 .how-to__copy--with-margin {
   margin-top: 4em;
