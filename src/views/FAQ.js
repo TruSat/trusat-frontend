@@ -386,13 +386,13 @@ export default function FAQ() {
         <p className="static-page__copy">
           Curious for a technical deep dive into how TruSat works? Check out the{" "}
           <NavLink
-            className="app__nav-link static-page__link app__hide-on-mobile"
+            className="app__nav-link static-page__link app__hide-on-mobile app__hide-on-tablet"
             to="/whitepaper"
           >
             TruSat white paper
           </NavLink>
           <a
-            className="static-page__link app__hide-on-desktop"
+            className="static-page__link app__show-on-tablet app__hide-on-desktop"
             target="_blank"
             and
             rel="noopener noreferrer"

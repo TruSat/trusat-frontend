@@ -103,13 +103,13 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <NavLink
-                className="app__nav-link static-page__link static-page__link--highlight app__hide-on-mobile"
+                className="app__nav-link static-page__link static-page__link--highlight app__hide-on-mobile app__hide-on-tablet"
                 to="/whitepaper"
               >
                 The TruSat white paper
               </NavLink>
               <a
-                className="static-page__link static-page__link--highlight app__hide-on-desktop"
+                className="static-page__link static-page__link--highlight app__show-on-tablet app__hide-on-desktop"
                 target="_blank"
                 and
                 rel="noopener noreferrer"
