@@ -1,10 +1,6 @@
 /* ----------
 APP
 ---------- */
-.app {
-  min-height: 100%;
-}
-
 .app__show-on-mobile {
   display: block;
 }
@@ -22,6 +18,18 @@ APP
 @media (max-width: 600px) {
   .app__hide-on-mobile {
     display: none;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 800px) {
+  .app__hide-on-tablet {
+    display: none;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 800px) {
+  .app__show-on-tablet {
+    display: block;
   }
 }
 
