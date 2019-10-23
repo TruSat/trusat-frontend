@@ -5,7 +5,10 @@ import ReactTooltip from "react-tooltip";
 import ReactGA from "react-ga";
 
 export const setCookies = () => {
-  ReactGA.initialize(process.env.GOOGLE_TRACKING_ID);
+  const REACT_APP_GOOGLE_TRACKING_ID =
+    process.env.REACT_APP_GOOGLE_TRACKING_ID || null;
+
+  ReactGA.initialize(REACT_APP_GOOGLE_TRACKING_ID);
 };
 
 export const deleteCookie = cookieName => {
