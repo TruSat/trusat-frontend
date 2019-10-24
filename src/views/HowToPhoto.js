@@ -22,10 +22,10 @@ export default function HowToPhoto() {
       <section className="static-page__section">
         <h2 className="static-page__sub-header">The advantage of photos</h2>
         <p className="static-page__copy">
-          Much like utilizing binoculars, the objective is to ultimately to
-          measure the precise location of a satellite at a specific time, but
-          creates a permanent digital record which can be computer-processed for
-          accuracy and automation.
+          Much like utilizing binoculars, the objective is ultimately to measure
+          the precise location of a satellite at a specific time, but creates a
+          permanent digital record which can be computer-processed for accuracy
+          and automation.
         </p>
         <p className="static-page__copy">
           By pointing your camera at the star pattern and taking a series of
