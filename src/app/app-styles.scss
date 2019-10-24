@@ -1716,6 +1716,20 @@ HOW TO VIEW
   }
 }
 
+
+.howto__ul {
+  display: flex;
+  flex-direction: column;
+  list-style: disc outside;
+  margin-left: 1.1em;
+  font-size: 20px;
+  line-height: 25px;
+}
+
+.howto__ul > li {
+  margin-bottom: 0.5em;
+}
+
 /* ----------
 CHARTER VIEW
 ---------- */
