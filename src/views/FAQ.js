@@ -253,6 +253,58 @@ export default function FAQ() {
             observations, as explained here.
           </p>
         </div>
+
+        <h3 className="about__question">
+          What is the secret that was emailed to me when I created an account?
+        </h3>
+        <div className="about__answer">
+          <p className="static-page__copy">
+            In TruSat the identity of users is verified by a unique address
+            found in their Ethereum wallet. You can see your address by hovering
+            over your name in your profile page. When you sign up with an email
+            and password, the following process happens under the hood:
+          </p>
+          <ul className="about__ul">
+            <li className="static-page__copy">
+              An Ethereum wallet is created for you in your browser (TruSat
+              never has access to your wallet)
+            </li>
+            <li className="static-page__copy">
+              The wallet is then encrypted with the password you provided to
+              create a unique "Secret"
+            </li>
+            <li className="static-page__copy">This secret is emailed to you</li>
+          </ul>
+          <p className="static-page__copy">
+            In future when you need to sign in again you must verify that you
+            are the owner of the Ethereum address tied to your identity by
+            providing two things:
+          </p>
+          <ul className="about__ul">
+            <li className="static-page__copy">The secret</li>
+            <li className="static-page__copy">
+              The password (now used to decrypt your wallet)
+            </li>
+          </ul>
+          <p className="static-page__copy">
+            Therefore it is vital that you take care to store your secret and
+            password somewhere safe. If you wish to protect your identity
+            (wallet) in a more secure way, perhaps you can consider the browser
+            plugin{" "}
+            <a
+              className="app__link"
+              target="_blank"
+              and
+              rel="noopener noreferrer"
+              href="https://metamask.io"
+            >
+              MetaMask
+            </a>
+            . See your settings page for a handy guide on how to migrate away
+            from the email/password/secret login flow to a more streamlined and
+            secure one-click login via MetaMask.
+          </p>
+        </div>
       </section>
 
       <section className="static-page__section">
