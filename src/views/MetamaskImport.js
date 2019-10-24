@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import { useAuthState } from "../auth/auth-context";
 import StepOne from "../user/components/StepOne";
 import StepTwo from "../user/components/StepTwo";
@@ -10,7 +10,9 @@ import StepFive from "../user/components/StepFive";
 export default function MetamaskImport() {
   const [step, setStep] = useState(1);
   const [privateKey, setPrivateKey] = useState("");
-  const { authType } = useAuthState();
+  const { authType, userAddress } = useAuthState();
+
+  console.log(userAddress);
 
   useEffect(() => {
     if (authType === "metamask") {
@@ -18,7 +20,7 @@ export default function MetamaskImport() {
     }
   }, [authType]);
 
-  return (
+  return userAddress ? (
     <section className="metamask-import__wrapper">
       <NavLink className="app__nav-link" to="/settings">
         <p className="metamask-import__link-to-account-text">
@@ -32,5 +34,11 @@ export default function MetamaskImport() {
       <StepFour step={step} setStep={setStep} />
       <StepFive step={step} />
     </section>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/login"
+      }}
+    />
   );
 }
