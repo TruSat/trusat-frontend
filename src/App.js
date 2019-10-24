@@ -13,6 +13,7 @@ import Profile from "./views/Profile";
 import AccountSettings from "./views/AccountSettings";
 import About from "./views/About";
 import HowTo from "./views/HowTo";
+import HowToPhoto from "./views/HowToPhoto";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import Join from "./views/Join";
@@ -96,6 +97,7 @@ export default function App() {
           <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/about" component={About} />
           <Route path="/how" component={HowTo} />
+          <Route path="/photo" component={HowToPhoto} />
           <Route path="/join" component={Join}></Route>
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />

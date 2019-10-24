@@ -4,6 +4,8 @@ import IconLocation from "../assets/icon-location.svg";
 import IconLowlight from "../assets/icon-lowlight.svg";
 import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
+import { NavLink } from "react-router-dom";
+
 
 export default function HowTo() {
   return (
@@ -352,6 +354,21 @@ export default function HowTo() {
           necessary software tools.
         </p>
       </section>
+
+
+      <section className="static-page__section">
+        <h2 className="static-page__sub-header">
+          Satellite Tracking with a Digital Camera
+        </h2>
+        <p className="static-page__copy">
+          You can use a camera to help spot satellites and record their positions. 
+          {" "}<NavLink className="app__nav-link app__link" to="/photo">
+            Here's
+          </NavLink>{" "}
+          an intro to the topic.
+        </p>
+      </section>
+
     </div>
   );
 }
