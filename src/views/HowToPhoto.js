@@ -23,20 +23,20 @@ export default function HowToPhoto() {
         <h2 className="static-page__sub-header">The advantage of photos</h2>
         <p className="static-page__copy">
           Much like utilizing binoculars, the objective is ultimately to measure
-          the precise location of a satellite at a specific time, but creates a
-          permanent digital record which can be computer-processed for accuracy
-          and automation.
+          the precise location of a satellite at a specific time. Photos help
+          create a permanent digital record that can be computer-processed for
+          accuracy and automation.
         </p>
         <p className="static-page__copy">
           By pointing your camera at the star pattern and taking a series of
           pictures, the satellite will appear as a short arc against a star
-          background — which can be used for a precision position reference.
+          background — which can be used for a precise position reference.
         </p>
         <p className="static-page__copy">
           The camera electronics are more sensitive than your eyes, and even
           with a short exposure of a few seconds, you can see stars and
           satellites invisible to the unaided eye. Using free software, you can
-          convert these images into formatted observations records which can be
+          convert these images into formatted observation records which can be
           submitted to the TruSat catalog.
         </p>
       </section>
@@ -68,8 +68,8 @@ export default function HowToPhoto() {
             href="https://www.heavens-above.com/"
           >
             Heavens-Above
-          </a>
-          . website to predict visible satellite passes for your location:
+          </a>{" "}
+          website to predict visible satellite passes for your location:
         </p>
         <div className="welcome__iframe-wrapper">
           <iframe
@@ -87,10 +87,10 @@ export default function HowToPhoto() {
           ></iframe>
         </div>
         <p className="static-page__copy">
-          You will need to experiment with your camera settings including
-          exposure durations necessary to capture enough starts to serve as a
-          position reference for any satellite tracks you may capture. A quick
-          way to determine if your images are good for satellite tracking is to
+          You will need to experiment with your camera settings, such as setting
+          exposure durations long enough to capture enough stars to serve as a
+          position reference for any satellite arcs you may capture. A quick way
+          to determine if your images are good for satellite tracking is to
           submit a picture to{" "}
           <a
             className="static-page__link"
@@ -98,9 +98,9 @@ export default function HowToPhoto() {
             rel="noopener noreferrer"
             href="http://nova.astrometry.net/"
           >
-            nova.astrometry.net
-          </a>
-          . If the site is able to compute the precise pointing of your camera,
+            nova.astrometry.net.
+          </a>{" "}
+          If the site is able to compute the precise direction of your camera,
           you are on your way to satellite observing!
         </p>
       </section>
@@ -127,7 +127,7 @@ export default function HowToPhoto() {
             IODEntry
           </a>{" "}
           to assist converting the information in your picture into a formatted
-          observations records which can be submitted to the TruSat catalog.
+          observation records which can be submitted to the TruSat catalog.
         </p>
         <p className="static-page__copy">
           More advanced users familiar with compiling open source software can
@@ -156,8 +156,8 @@ export default function HowToPhoto() {
         <h2 className="static-page__sub-header">Seeking test pilots</h2>
         <p className="static-page__copy">
           At this time, translating basic observation data (time and location)
-          into a format readable by version 0.1 TruSat Prototype requires a
-          relatively advanced workflow, including use of free third-party
+          into a format readable by version 0.1 of the TruSat Prototype requires
+          a relatively advanced workflow, including use of free third-party
           software, and is not recommended for all but the most committed.
         </p>
         <p className="static-page__copy">
