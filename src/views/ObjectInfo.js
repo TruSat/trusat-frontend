@@ -12,7 +12,7 @@ import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 import { useTrusatGetApi } from "../app/app-helpers";
 
-// Check if noradNumber from url is not more than 5 chracters long
+// Check if noradNumber from url is not more than 5 characters long
 // and if it only contains numbers
 const isValidNumber = number => {
   if (number.length > 5 || /^\d+$/.test(number) === false) {

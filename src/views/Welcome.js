@@ -24,10 +24,10 @@ export default function Home() {
 
             <img
               className="welcome__image welcome__globe-image"
-              src={`https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png`}
-              srcSet="
-              https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-800px.png,
-              https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png"
+              src={`https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg`}
+              // srcSet="
+              // https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-800px.png,
+              // https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png"
               alt="globe"
             ></img>
           </div>
