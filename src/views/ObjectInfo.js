@@ -11,7 +11,6 @@ import {
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 import { useTrusatGetApi } from "../app/app-helpers";
-import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from "constants";
 
 // Check if noradNumber from url is not more than 5 characters long
 // and if it only contains numbers
