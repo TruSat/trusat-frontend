@@ -25,8 +25,8 @@ export default function HowToSeeIt() {
           >
             Heavens Above
           </a>
-        ) : null}
-        {" "}or{" "}
+        ) : null}{" "}
+        or{" "}
         <a
           target="_blank"
           rel="noopener noreferrer"
@@ -35,7 +35,7 @@ export default function HowToSeeIt() {
         >
           Calsky
         </a>
-        </p>
+      </p>
       <DownloadObjectTleButton />
     </div>
   );
