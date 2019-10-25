@@ -6,7 +6,6 @@ import {
   useTrusatGetApi,
   renderFlag,
   toolTip,
-  shortenAddressToolTip,
   toolTipCopy
 } from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
@@ -42,7 +41,6 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               ) : null}
               <ObjectBadge
                 noradNumber={obj.object_norad_number}
-                // quality={obj.object_observation_quality}
                 size={"small"}
               />
               &nbsp;

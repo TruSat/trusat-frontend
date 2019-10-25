@@ -36,7 +36,6 @@ export default function CookieBanner({ isBannerOpen, setIsBannerOpen }) {
       <a
         className="cookie-banner__link app__hide-on-desktop"
         target="_blank"
-        and
         rel="noopener noreferrer"
         href="https://trusat-assets.s3.amazonaws.com/trusat.org_privacy_policy.pdf"
       >
