@@ -16,7 +16,6 @@ export default function Footer() {
           <a
             className="app__link footer__text-link app__hide-on-desktop"
             target="_blank"
-            and
             rel="noopener noreferrer"
             href="https://trusat-assets.s3.amazonaws.com/trusat_terms_of_use.pdf"
           >
@@ -31,7 +30,6 @@ export default function Footer() {
           <a
             className="app__link footer__text-link app__hide-on-desktop"
             target="_blank"
-            and
             rel="noopener noreferrer"
             href="https://trusat-assets.s3.amazonaws.com/trusat.org_privacy_policy.pdf"
           >
