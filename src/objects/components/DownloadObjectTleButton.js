@@ -9,7 +9,9 @@ export default function DownloadObjectTleButton() {
   const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    doFetch(`/tle/object?norad_number=${noradNumber}`);
+    if (noradNumber && data.length === 0) {
+      doFetch(`/tle/object?norad_number=${noradNumber}`);
+    }
 
     setTleString(data);
   }, [noradNumber, doFetch, data]);
