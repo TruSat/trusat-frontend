@@ -24,13 +24,15 @@ export default function Info() {
         </p>
       )}
       <section className="object-info__header-section-wrapper">
-        <div className="object-info__badge-wrapper">
-          <ObjectBadge
-            noradNumber={noradNumber}
-            size="large"
-            addStyles={`object-badge__wrapper--object-view`}
-          />
-        </div>
+        {noradNumber ? (
+          <div className="object-info__badge-wrapper">
+            <ObjectBadge
+              noradNumber={noradNumber}
+              size="large"
+              addStyles={`object-badge__wrapper--object-view`}
+            />
+          </div>
+        ) : null}
 
         <div>
           <h1 className="object-info__header">{objectInfo.object_name}</h1>

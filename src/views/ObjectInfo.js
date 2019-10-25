@@ -11,6 +11,7 @@ import {
 import FilterDescription from "../objects/components/FilterDescription";
 import Spinner from "../app/components/Spinner";
 import { useTrusatGetApi } from "../app/app-helpers";
+import { SSL_OP_NETSCAPE_DEMO_CIPHER_CHANGE_BUG } from "constants";
 
 // Check if noradNumber from url is not more than 5 characters long
 // and if it only contains numbers
@@ -29,13 +30,14 @@ export default function ObjectInfo({ match }) {
   const [isNumberError, setIsNumberError] = useState(false);
 
   useEffect(() => {
-    // only fetch data for a potentially valid norad number
-    if (!isValidNumber(noradNumber)) {
-      setIsNumberError(true);
-    } else {
+    if (isValidNumber(noradNumber) && data.length === 0) {
       doFetch(`/object/info?norad_number=${noradNumber}`);
+    } else if (!isValidNumber(noradNumber)) {
+      setIsNumberError(true);
     }
+  }, [noradNumber, data, doFetch]);
 
+  useEffect(() => {
     if (data.length !== 0) {
       objectsDispatch({ type: "SET_NORAD_NUMBER", payload: noradNumber });
       objectsDispatch({ type: "SET_OBJECT_INFO", payload: data });
@@ -48,7 +50,7 @@ export default function ObjectInfo({ match }) {
         payload: data.year_launched
       });
     }
-  }, [noradNumber, data, doFetch, objectsDispatch]);
+  }, [noradNumber, data, objectsDispatch]);
 
   return isNumberError ? (
     <p className="app__error-message">
