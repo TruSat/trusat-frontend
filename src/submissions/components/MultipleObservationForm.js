@@ -81,7 +81,6 @@ export default function MultipleObservationForm() {
         <textarea
           required
           className="multiple-observation-form__textarea"
-          // TODO - better placeholder text, and placeholder IODs that aren't user specific.
           placeholder={`Paste your observations in this field, one observation per line like so:
           
 12345 98 123A   2007 G 20081122112233444 56 14 1122334+112233 39 S
