@@ -6,7 +6,6 @@ SUBMIT
   max-width: 1000px;
 }
 
-
 .submit__header {
   @include view-title;
   font-size: $extra-large-font-size;
@@ -53,13 +52,28 @@ MULTIPLE OBSERVATION FORM
 }
 
 .multiple-observation-form__textarea {
-  background: $tertiary-color;;
+  background: $tertiary-color;
   border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   box-sizing: border-box;
   color: $primary-text-color;
+  line-height: 1.2;
   padding: 1em;
   resize: none;
+}
+
+.multiple-observation-form__textarea::placeholder {
+  line-height: 1.2;
+}
+.multiple-observation-form__textarea::-ms-input-placeholder {
+  line-height: 1.2;
+}
+.multiple-observation-form__textarea::-moz-placeholder {
+  line-height: 1.2;
+}
+// chrome
+.multiple-observation-form__textarea::-webkit-input-placeholder {
+  line-height: 1.2em;
 }
 
 .multiple-observation-form__success-message {
