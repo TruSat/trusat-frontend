@@ -4,6 +4,7 @@ import { checkJwt } from "./auth/auth-helpers";
 import { setCookies } from "./app/app-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
+import ScrollToTop from "./app/components/ScrollToTop";
 import NavBar from "./app/components/NavBar";
 import MobileHeader from "./app/components/MobileHeader";
 import Catalog from "./views/Catalog";
@@ -75,6 +76,7 @@ export default function App() {
   return (
     <div className="app">
       <Router>
+        <ScrollToTop />
         {/* Shown on mobile view */}
         <BurgerMenu right />
         <MobileHeader />
