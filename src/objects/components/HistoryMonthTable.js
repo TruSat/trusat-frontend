@@ -98,7 +98,6 @@ export default function HistoryMonthTable({ monthName, monthData }) {
         </thead>
         <tbody>{renderDayRows()}</tbody>
       </table>
-      {/* TODO - set tableDataLength to the observation count */}
       {monthData.length > 10 ? (
         <TablePaginator
           tableDataLength={monthData.length}

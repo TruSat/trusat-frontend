@@ -111,7 +111,6 @@ export default function About() {
               <a
                 className="static-page__link static-page__link--highlight app__show-on-tablet app__hide-on-desktop"
                 target="_blank"
-                and
                 rel="noopener noreferrer"
                 href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
               >
