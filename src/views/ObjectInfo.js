@@ -15,7 +15,7 @@ import { useTrusatGetApi } from "../app/app-helpers";
 // Check if noradNumber from url is not more than 5 characters long
 // and if it only contains numbers
 const isValidNumber = number => {
-  if (number.length > 5 || /^\d+$/.test(number) === false) {
+  if (number < 1 || /^(\d{1,5})$/.test(number) === false) {
     return false;
   }
   return true;
