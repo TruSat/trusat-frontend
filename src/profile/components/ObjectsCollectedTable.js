@@ -37,14 +37,15 @@ export default function ObjectsCollectedTable() {
         </td>
         <td className="table__table-data">{renderFlag(obj.object_origin)}</td>
         <td className="table__table-data app__hide-on-mobile">
-          {/* {obj.object_type ? <p>{obj.object_type}</p> : null}
+          {obj.object_type ? <p>{obj.object_type}</p> : null}
           {obj.object_primary_purpose ? (
             <p>{` - ${obj.object_primary_purpose}`}</p>
           ) : null}
           {obj.object_secondary_purpose ? (
             <p>{` - ${obj.object_secondary_purpose}`}</p>
-          ) : null} */}
-          {obj.object_merged_purpose}
+          ) : null}
+          {/* TODO - utilize data created by bounty here instead of concatenating three values */}
+          {/* {obj.object_merged_purpose} */}
         </td>
         <td className="table__table-data app__hide-on-mobile">
           {/* {obj.observation_quality} */}
