@@ -52,10 +52,6 @@ APP
   text-decoration: none;
 }
 
-.welcome__join-button-wrapper--welcome-top {
-  text-align: center;
-}
-
 .app__nav__icon {
   display: inline-block;
   width: 1em;
@@ -135,70 +131,6 @@ APP
   cursor: pointer;
 }
 
-.app__button--black {
-  align-self: flex-start;
-  background: $primary-theme-color;
-  border: 1px solid $tertiary-color;
-  border-radius: 4px;
-  color: $primary-text-color;
-  display: inline-block;
-  font-size: $small-font-size;
-  font-weight: 500;
-  line-height: 23px;
-  padding: 1em 2em;
-  text-transform: uppercase;
-}
-
-.app__button--black:hover {
-  cursor: pointer;
-}
-
-.app__black-button--small {
-  align-self: flex-start;
-  background: $primary-theme-color;
-  border: 1px solid #c4c4c4;
-  border-radius: 4px;
-  color: $primary-text-color;
-  display: inline-block;
-  font-weight: 500;
-  line-height: 23px;
-  padding: 0.5em 2em;
-}
-
-.app__black-button--small:hover {
-  cursor: pointer;
-}
-
-.app__yellow-button--small {
-  align-self: flex-start;
-  background: $primary-highlight-color;
-  border-radius: 4px;
-  color: $primary-theme-color;
-  display: inline-block;
-  font-weight: 500;
-  line-height: 23px;
-  padding: 0.5em 2em;
-}
-
-.app__yellow-buttton--small:hover {
-  cursor: pointer;
-}
-
-.app__orange-button--small {
-  align-self: flex-start;
-  background: $primary-highlight-color;
-  border-radius: 4px;
-  color: $primary-theme-color;
-  display: inline-block;
-  font-weight: 500;
-  line-height: 23px;
-  padding: 0.5em 2em;
-}
-
-.app__orange-buttton--small:hover {
-  cursor: pointer;
-}
-
 /* ----------
 TOOLTIP
 ---------- */
@@ -214,18 +146,6 @@ TOOLTIP
 /* ----------
 ROUNDED BUTTON
 ---------- */
-.app__rounded-button--black {
-  align-self: flex-start;
-  background: $primary-theme-color;
-  border-radius: 23px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  color: $primary-text-color;
-  display: inline-block;
-  font-weight: bold;
-  line-height: 20px;
-  padding: 0.5em 2em;
-}
-
 .app__rounded-button--orange {
   align-self: flex-start;
   background: $primary-highlight-color;
@@ -241,7 +161,6 @@ ROUNDED BUTTON
   background: $primary-text-color;
 }
 
-.app__rounded-button--black,
 .app__rounded-button--orange:hover {
   cursor: pointer;
 }
@@ -252,13 +171,6 @@ MOBILE HEADER
 .mobile-header {
   background: $tertiary-color;
   padding: 1em;
-}
-
-.mobile-header__app-title {
-  font-size: $medium-line-height;
-  font-weight: 900;
-  line-height: $medium-line-height;
-  letter-spacing: 0.2em;
 }
 
 @media (min-width: 800px) {
@@ -364,14 +276,6 @@ NAV BAR
     border-color: $primary-text-color;
   }
 
-  .nav-bar {
-    align-items: center;
-    background: $tertiary-color;
-    border: 3px solid $tertiary-color;
-    display: flex;
-    height: 3.5em;
-    justify-content: space-between;
-  }
   // changes to nav bar shown on welcome page
   .nav-bar--welcome {
     align-items: center;
@@ -478,7 +382,6 @@ TABLE
   padding: 0.5em 2em 1em 0em;
   text-align: left;
 }
-
 // used in HistoryMonthTable
 .table__month-text {
   @include label-text--highlight;
@@ -487,8 +390,8 @@ TABLE
 
 .table__header-weight-text {
   @include label-text;
-  padding-right: none;
   padding-left: 0;
+  padding-right: none;
   text-align: left;
 }
 
@@ -519,16 +422,13 @@ TABLE PAGINATOR
 ---------- */
 .table-paginator {
   display: flex;
-  justify-self: center;
-  margin: 1em 0;
+  justify-content: center;
 }
 
 .table-paginator__button-wrapper {
   color: $secondary-theme-color;
   display: flex;
   font-size: $extra-small-font-size;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .table-paginator__middle-text {
@@ -543,9 +443,6 @@ TABLE PAGINATOR
 /* ----------
 OBJECT BADGE
 ---------- */
-.object-badge__wrapper {
-}
-
 .object-badge__wrapper--object-view {
   justify-content: center;
   display: flex;
@@ -581,7 +478,6 @@ EMAIL FORM
 .email-form__input {
   align-self: flex-start;
   background: $tertiary-color;
-  box-sizing: border-box;
   border-radius: 4px;
   border: 1px solid $secondary-theme-color;
   color: $primary-text-color;
@@ -592,21 +488,21 @@ EMAIL FORM
 }
 
 .email-form__checkbox-and-message-wrapper {
-  display: flex;
   align-items: flex-start;
+  display: flex;
   margin: 0.5em 0 0.5em 0;
 }
 
 .email-form__checkbox {
   border: 1px solid yellow;
+  margin-right: 1em;
+  padding: 10px;
   /* Double-sized Checkboxes */
   -ms-transform: scale(2); /* IE */
   -moz-transform: scale(2); /* FF */
   -webkit-transform: scale(2); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
   transform: scale(2);
-  padding: 10px;
-  margin-right: 1em;
 }
 
 .email-form__button-wrapper {
@@ -617,7 +513,7 @@ EMAIL FORM
   text-align: center;
 }
 
-.email-form__button--black {
+.email-form__button--cancel {
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   display: inline-block;
@@ -627,7 +523,7 @@ EMAIL FORM
   padding: 1em 2em;
 }
 
-.email-form__button--black:hover {
+.email-form__button--cancel:hover {
   cursor: pointer;
 }
 
@@ -646,7 +542,9 @@ EMAIL FORM
   cursor: pointer;
 }
 
-.email-form__sign-up-text,
+.email-form__link-to-login-wrapper {
+  margin-top: 1em;
+}
 .email-form__log-in-text {
   text-decoration: underline;
   margin-top: 1em;
@@ -670,13 +568,10 @@ BURGER MENU
   transition: color 0.2s;
 }
 
-/* Change color on hover */
 .bm-item:hover {
   color: $primary-text-color;
 }
-
 /* The rest copied directly from react-burger-menu docs */
-
 /* Position and sizing of burger button */
 .bm-burger-button {
   position: fixed;
@@ -685,30 +580,25 @@ BURGER MENU
   right: 10px;
   top: 10px;
 }
-
-// anything bigger than an ipad
+// Dont display burger menu on any device wider than tablet (iPad)
 @media (min-width: 800px) {
   .bm-burger-button {
     display: none;
   }
 }
-
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
   background: $primary-text-color;
 }
-
 /* Position and sizing of clickable cross button */
 .bm-cross-button {
   height: 24px;
   width: 24px;
 }
-
 /* Color/shape of close button cross */
 .bm-cross {
   background: $primary-text-color;
 }
-
 /* General sidebar styles */
 .bm-menu {
   background: $tertiary-color;
@@ -716,17 +606,14 @@ BURGER MENU
   font-size: $extra-large-font-size;
   line-height: 50px;
 }
-
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {
   fill: #373a47;
 }
-
 /* Wrapper for item list */
 .bm-item-list {
   color: $primary-text-color;
 }
-
 /* Styling of overlay */
 .bm-overlay {
   background: $primary-theme-color;
@@ -747,7 +634,6 @@ COPY TEXT
   cursor: pointer;
 }
 
-// TODO color of font for these messages?
 .app__loading-message {
   color: $primary-highlight-color;
   font-size: $large-font-size;
@@ -769,13 +655,13 @@ WELCOME VIEW
   font-family: $display-font;
 }
 
-.welcome__content__wrapper {
+.welcome__content-wrapper {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 1.5em;
 }
 
-.welcome__bottom__wrapper {
+.welcome__bottom-wrapper {
   background-color: $tertiary-color;
 }
 
@@ -796,8 +682,6 @@ WELCOME VIEW
 
 .welcome__section--four {
   padding: 4em 0 4em 0;
-  max-width: 1080px;
-  margin: 0 auto;
 }
 
 @media (min-width: 600px) {
@@ -874,15 +758,6 @@ WELCOME VIEW
   .welcome__title-intro-wrapper {
     margin: -7em 2em 1em 2em;
   }
-}
-
-.welcome_arrow-wrapper {
-  width: 100%;
-  text-align: center;
-}
-
-.welcome__arrow-image {
-  max-width: 20px;
 }
 
 .welcome__illustration-join-wrapper {
@@ -963,12 +838,12 @@ WELCOME VIEW
 }
 
 .welcome__iframe-wrapper {
+  height: 0;
+  margin: 1em auto 1.5em;
+  overflow: hidden;
   position: relative;
   padding-bottom: 56.25%;
   padding-top: 2em;
-  height: 0;
-  overflow: hidden;
-  margin: 1em auto 1.5em;
 }
 
 @media (min-width: 600px) {
@@ -986,45 +861,6 @@ WELCOME VIEW
   height: 100%;
 }
 
-.welcome__input-button-wrapper {
-  display: flex;
-  position: relative;
-  height: 40px;
-  margin-top: 1em;
-  max-width: 550px;
-  width: 95%;
-}
-
-@media (min-width: 600px) {
-  .welcome__input-button-wrapper {
-    width: 100%;
-  }
-}
-
-.welcome__input {
-  background: transparent;
-  border: 1px solid $primary-text-color;
-  box-sizing: border-box;
-  flex: 1;
-  font-family: roboto;
-  font-size: 20px;
-  padding-left: 0.5em;
-  width: 400px;
-}
-
-.welcome__input::placeholder {
-  color: $primary-text-color;
-}
-
-.welcome__input--white {
-  border: 1px solid $primary-text-color;
-  color: $primary-text-color;
-}
-
-.welcome__input--white::placeholder {
-  color: $primary-text-color;
-}
-
 .welcome__subscribe-button {
   position: absolute;
   height: 40px;
@@ -1036,14 +872,6 @@ WELCOME VIEW
   .welcome__subscribe-button {
     right: -20px;
   }
-}
-
-.welcome__sub-header--black {
-  color: $primary-theme-color;
-  font-size: 48px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: 59px;
 }
 
 .welcome__sub-header--white {
@@ -1060,12 +888,6 @@ WELCOME VIEW
   }
 }
 
-.welcome__large-copy {
-  font-size: 24px;
-  line-height: 30px;
-  margin-bottom: 0.5em;
-}
-
 .welcome__large-copy--bold {
   font-size: 24px;
   font-weight: bold;
@@ -1074,11 +896,6 @@ WELCOME VIEW
 }
 
 @media (min-width: 600px) {
-  .welcome__large-copy {
-    font-size: 48px;
-    line-height: 60px;
-  }
-
   .welcome__large-copy--bold {
     font-size: 48px;
     line-height: 60px;
@@ -1108,17 +925,6 @@ WELCOME VIEW
   }
 }
 
-.welcome__medium-copy--last {
-  margin-bottom: 1em;
-}
-
-.welcome__small-copy--black {
-  color: #081122;
-  font-size: 18px;
-  line-height: 22px;
-  margin-bottom: 12px;
-}
-
 .welcome__small-copy--white {
   font-size: 18px;
   line-height: 22px;
@@ -1130,7 +936,7 @@ WELCOME VIEW
   font-size: 18px;
 }
 
-.welcome__small-copy__ul {
+.welcome__ul {
   display: flex;
   flex-direction: column;
   list-style: disc outside;
@@ -1139,20 +945,11 @@ WELCOME VIEW
   line-height: 22px;
 }
 
-.welcome__small-copy__li {
-}
-
-.welcome__small-copy__ul li {
+.welcome__li {
   margin-bottom: 0.5em;
 }
 
 @media (min-width: 600px) {
-  .welcome__small-copy--black {
-    font-size: 18px;
-    line-height: 24px;
-    margin-bottom: 0.75em;
-  }
-
   .welcome__small-copy--white {
     font-size: 18px;
     line-height: 24px;
@@ -1160,44 +957,138 @@ WELCOME VIEW
   }
 }
 
-.welcome__small-copy--emoticon {
+.welcome__emoticon {
   font-size: 18px;
   white-space: nowrap;
 }
 
-.welcome__partners-wrapper {
-  padding: 0;
+/* ----------
+PARTNERS
+---------- */
+.partners__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  margin: 2em 0em 5em 0em;
 }
 
-.welcome__partners-list__logo-wrapper {
+.partners__logo-wrapper {
   flex-basis: 110px;
-  text-align: center;
   font-size: $small-font-size;
   line-height: 20px;
   margin-right: 20px;
   margin-bottom: 30px;
+  text-align: center;
 }
 
 @media (min-width: 600px) {
-  .welcome__partners-list__logo-wrapper {
+  .partners__logo-wrapper {
     flex-basis: 160px;
   }
 }
 
-.welcome__partners-list__logo-wrapper:last-child {
+.partners__logo-wrapper:last-child {
   margin-right: 0;
 }
 
-.welcome__partners-list__logo-wrapper > a {
+.partners__logo-wrapper > a {
   text-decoration: none;
 }
 
-.welcome__partners-list__logo {
+.partners__logo {
   width: 100%;
 }
 
 .welcome__mailing-list-wrapper {
   padding: 0 1.5em 0 0;
+}
+
+.welcome__partners-wrapper {
+  margin: 1em 0em 1em 0em;
+}
+
+/* ----------
+MAILING LIST FORM
+---------- */
+.mailing-list__input-button-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  height: 40px;
+  margin: 1em 0;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input-button-wrapper {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input-button-wrapper {
+    flex-wrap: nowrap;
+    max-width: 600px;
+  }
+}
+
+.mailing-list__input {
+  background: transparent;
+  border: 1px solid $primary-text-color;
+  color: $primary-text-color;
+  font-family: roboto;
+  font-size: 20px;
+  height: 41px;
+  max-width: 400px;
+  padding-left: 0.5em;
+  width: 100%;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__input {
+    border-right: none;
+  }
+}
+
+.mailing-list__input::placeholder {
+  color: $primary-text-color;
+}
+
+.mailing-list__input--test-pilots {
+  border: 1px solid $tertiary-color--light;
+}
+
+.mailing-list__button {
+  background: $primary-highlight-color;
+  border: 1px solid $primary-highlight-color;
+  border-radius: 8px;
+  color: $primary-theme-color;
+  font-weight: bold;
+  height: 41px;
+  line-height: 1.25%;
+  margin: 0.5em 0;
+  min-width: 170px; // stops button text squeezing on re-size
+  padding: 0.5em 2em;
+}
+
+.mailing-list__button:hover {
+  background: $primary-text-color;
+  border: 1px solid $primary-text-color;
+}
+
+@media (min-width: 400px) {
+  .mailing-list__button {
+    margin: 0em;
+    margin-left: -8px;
+  }
+}
+
+.mailing-list__button:hover {
+  cursor: pointer;
+}
+
+.mailing-list__button--test-pilots {
+  background-color: $secondary-theme-color;
+  border: 1px solid $secondary-theme-color;
+  color: $primary-theme-color;
 }
 
 /* ----------
@@ -1327,95 +1218,6 @@ JOIN VIEW
 }
 
 /* ----------
-MAILING LIST FORM
----------- */
-.mailing-list__input-button-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  height: 40px;
-  margin: 1em 0;
-  width: 100%;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input-button-wrapper {
-    margin-bottom: 0;
-  }
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input-button-wrapper {
-    flex-wrap: nowrap;
-    max-width: 600px;
-  }
-}
-
-.mailing-list__input {
-  background: transparent;
-  border: 1px solid $primary-text-color;
-  color: $primary-text-color;
-  box-sizing: border-box;
-  font-family: roboto;
-  font-size: 20px;
-  height: 41px;
-  max-width: 400px;
-  padding-left: 0.5em;
-  width: 100%;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input {
-    border-right: none;
-  }
-}
-
-.mailing-list__input::placeholder {
-  color: $primary-text-color;
-}
-.mailing-list__input--white::placeholder {
-  color: $primary-text-color;
-}
-
-.mailing-list__input--test-pilots {
-  border: 1px solid $tertiary-color--light;
-}
-
-.mailing-list__subscribe-button {
-  background: $primary-highlight-color;
-  border: 1px solid $primary-highlight-color;
-  border-radius: 8px;
-  color: $primary-theme-color;
-  font-weight: bold;
-  height: 41px;
-  line-height: 1.25%;
-  margin: 0.5em 0;
-  min-width: 170px; // stops button text squeezing on re-size
-  padding: 0.5em 2em;
-}
-
-.mailing-list__subscribe-button:hover {
-  background: $primary-text-color;
-  border: 1px solid $primary-text-color;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__subscribe-button {
-    margin: 0em;
-    margin-left: -8px;
-  }
-}
-
-.mailing-list__subscribe-button:hover {
-  cursor: pointer;
-}
-
-.mailing-list__subscribe-button--test-pilots {
-  background-color: $secondary-theme-color;
-  border: 1px solid $secondary-theme-color;
-  color: $primary-theme-color;
-}
-
-/* ----------
 STATIC PAGE VIEW 
 - /about
 - /howto
@@ -1448,6 +1250,20 @@ STATIC PAGE VIEW
   .static-page__main-header {
     font-size: 76px;
     line-height: 89px;
+  }
+}
+
+.static-page__main-header--small {
+  color: $primary-highlight-color;
+  font-size: 24px;
+  line-height: 30px;
+  margin-top: 0.5em;
+}
+
+@media (min-width: 600px) {
+  .static-page__main-header--small {
+    font-size: 36px;
+    line-height: 45px;
   }
 }
 
@@ -1497,6 +1313,18 @@ STATIC PAGE VIEW
   color: $primary-text-color;
 }
 
+.static-page__sub-header--margin_fix {
+  margin-bottom: 2em;
+}
+
+.static-page__partner-link {
+  color: $primary-text-color;
+}
+
+.static-page__partner-link:hover {
+  color: $primary-highlight-color;
+}
+
 /* ---------- 
 ABOUT VIEW  
 ---------- */
@@ -1505,20 +1333,6 @@ ABOUT VIEW
   font-size: 20px;
   font-weight: $light-weight;
   line-height: 25px;
-}
-
-.static-page__main-header--small {
-  color: $primary-highlight-color;
-  font-size: 24px;
-  line-height: 30px;
-  margin-top: 0.5em;
-}
-
-@media (min-width: 600px) {
-  .static-page__main-header--small {
-    font-size: 36px;
-    line-height: 45px;
-  }
 }
 
 .about__deck {
@@ -1561,47 +1375,8 @@ ABOUT VIEW
   width: 100%;
 }
 
-.static-page__sub-header--margin_fix {
-  margin-bottom: 2em;
-}
-
-.welcome__partners-wrapper {
-  margin: 1em 0em 1em 0em;
-}
-
-.welcome__partners-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  margin: 2em 0em 5em 0em;
-}
-
-.static-page__partner-link {
-  color: $primary-text-color;
-}
-
-.static-page__partner-link:hover {
-  color: $primary-highlight-color;
-}
-
 .about__sub-header--top {
   margin-top: 1em;
-}
-
-.about__question {
-  font-family: $main-font;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 25px;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5em;
-  margin: 1em 0em 0.5em 0em;
-}
-
-.about__answer {
-  font-family: $main-font;
-  line-height: 27px;
-  margin-bottom: 2em;
 }
 
 .about__mailing-list-wrapper {
@@ -1616,7 +1391,7 @@ ABOUT VIEW
 /* ----------
 HOW TO VIEW 
 ---------- */
-.static-page__wrapper--how-to {
+.how-to__wrapper {
   font-family: $display-font;
   font-size: 20px;
   font-weight: $light-weight;
@@ -1630,6 +1405,7 @@ HOW TO VIEW
 .how-to__step-wrapper {
   display: flex;
   flex-direction: column;
+  margin-top: 1em;
 }
 
 @media (min-width: 600px) {
@@ -1646,46 +1422,37 @@ HOW TO VIEW
   }
 }
 
-.how-to__step__number {
+.how-to__step-number {
   flex-basis: 50px;
   min-width: 50px;
   font-size: $extra-large-font-size;
 }
 
-@media (min-width: 600px) {
-  .how-to__step__number {
-  }
-}
-
-.how-to__step__image-wrapper {
-  // width: 100px;
-}
-
 @media (max-width: 600px) {
-  .how-to__step__icon-wrapper {
+  .how-to__step-icon-wrapper {
     max-width: 100px;
   }
 }
 
 @media (min-width: 600px) {
-  .how-to__step__icon-wrapper {
+  .how-to__step-icon-wrapper {
     min-width: 100px;
   }
 }
 
 @media (min-width: 600px) {
-  .how-to__step__image-wrapper {
+  .how-to__step-image-wrapper {
     min-width: 200px;
     width: 200px;
   }
 }
 
-.how-to__step__description {
+.how-to__step-description {
   padding-left: 0;
 }
 
 @media (min-width: 600px) {
-  .how-to__step__description {
+  .how-to__step-description {
     padding-left: 1em;
   }
 }
@@ -1700,11 +1467,6 @@ HOW TO VIEW
   }
 }
 
-.how-to__step-wrapper {
-  display: flex;
-  margin-top: 1em;
-}
-
 // stops sign up button wrapping over copy below
 .how-to__copy--with-margin {
   margin-top: 4em;
@@ -1716,8 +1478,7 @@ HOW TO VIEW
   }
 }
 
-
-.howto__ul {
+.how-to__ul {
   display: flex;
   flex-direction: column;
   list-style: disc outside;
@@ -1726,7 +1487,7 @@ HOW TO VIEW
   line-height: 25px;
 }
 
-.howto__ul > li {
+.how-to__ul > li {
   margin-bottom: 0.5em;
 }
 
@@ -1737,14 +1498,10 @@ CHARTER VIEW
   margin-top: 1em;
 }
 
-.charter-list-item {
-  margin-bottom: 0.5em;
-}
-
 /* ----------
 FAQ view
 ---------- */
-.static-page__wrapper--faq {
+.faq__wrapper {
   font-family: $display-font;
   font-size: 20px;
   font-weight: $light-weight;
@@ -1753,6 +1510,22 @@ FAQ view
 
 .faq__sub-header {
   margin-top: 1em;
+}
+
+.faq__question {
+  font-family: $main-font;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 25px;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5em;
+  margin: 1em 0em 0.5em 0em;
+}
+
+.faq__answer {
+  font-family: $main-font;
+  line-height: 27px;
+  margin-bottom: 2em;
 }
 
 /* ----------
@@ -1799,12 +1572,11 @@ COOKIE BANNER
 Footer
 ---------- */
 .footer {
-  margin-right: 4em;
-
-  position: absolute;
-  right: 0;
   bottom: 0;
   left: 0;
+  margin-right: 4em;
+  position: absolute;
+  right: 0;
 }
 
 .footer__content {
@@ -1823,8 +1595,8 @@ Footer
 }
 
 .footer__text-links-wrapper {
-  display: flex;
   align-items: center;
+  display: flex;
   font-size: $extra-small-font-size;
   margin-top: 0.5em;
 }
@@ -1838,6 +1610,7 @@ Footer
 .footer__text-link {
   margin-right: 1em;
 }
+
 /* ----------
 SOCIAL ICONS
 ---------- */
@@ -1878,8 +1651,6 @@ TEST PILOTS
 }
 
 .test-pilots__image-wrapper {
-  align-self: start;
-  position: relative;
   margin-right: 1em;
 }
 
@@ -1935,10 +1706,10 @@ DISCOURSE CHAT BUTTON
 }
 
 .discourse-chat-button__icon {
-  height: auto;
-  width: 50px;
-  position: relative;
   bottom: 4px;
+  height: auto;
+  position: relative;
+  width: 50px;
 }
 
 .discourse-chat-button__icon:hover {

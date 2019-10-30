@@ -8,11 +8,9 @@ function MobileHeader(props) {
 
   return (
     <div className={path === "/" ? "app__hide" : "mobile-header"}>
-      <div className="mobile-header__app-title">
-        <NavLink className="app__nav-link" to="/">
-          <img src={TrusatLogoSmallWhite} alt="trusat logo"></img>
-        </NavLink>
-      </div>
+      <NavLink className="app__nav-link" to="/">
+        <img src={TrusatLogoSmallWhite} alt="trusat logo"></img>
+      </NavLink>
     </div>
   );
 }

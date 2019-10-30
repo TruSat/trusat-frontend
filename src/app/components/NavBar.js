@@ -4,12 +4,12 @@ import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
-import IconWave from "../../assets/icon-wave.svg"
-import IconGlobe from "../../assets/icon-globe.svg"
-import IconSat from "../../assets/icon-satellite.svg"
-import IconLight from "../../assets/icon-light.svg"
-import IconUser from "../../assets/icon-user.svg"
-import IconQuestion from "../../assets/icon-question.svg"
+import IconWave from "../../assets/icon-wave.svg";
+import IconGlobe from "../../assets/icon-globe.svg";
+import IconSat from "../../assets/icon-satellite.svg";
+import IconLight from "../../assets/icon-light.svg";
+import IconUser from "../../assets/icon-user.svg";
+import IconQuestion from "../../assets/icon-question.svg";
 
 function NavBar(props) {
   const path = props.location.pathname;

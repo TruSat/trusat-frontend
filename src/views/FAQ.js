@@ -5,7 +5,7 @@ import { emails } from "../app/app-helpers";
 
 export default function FAQ() {
   return (
-    <div className="static-page__wrapper static-page__wrapper--faq">
+    <div className="static-page__wrapper faq__wrapper">
       <section className="static-page__section">
         <img
           className="about__illustration"
@@ -20,8 +20,8 @@ export default function FAQ() {
         <h2 className="static-page__sub-header about__sub-header--top">
           What Problems is TruSat Designed to Solve?
         </h2>
-        <h3 className="about__question">What is space sustainability?</h3>
-        <div className="about__answer">
+        <h3 className="faq__question">What is space sustainability?</h3>
+        <div className="faq__answer">
           <p className="static-page__copy">
             Space sustainability is about preserving the use of outer space, and
             all of its socioeconomic benefits, for present and future
@@ -49,10 +49,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           How does satellite tracking relate to space sustainability?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy">
             There is no air traffic control-like authority directing this
             growing space traffic. Enlightened satellite operators, governments,
@@ -66,10 +66,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           Don’t governments and companies already track objects in space?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             A handful of national governments track objects in space for
             national security purposes, and make a portion of their data
@@ -88,8 +88,8 @@ export default function FAQ() {
           How TruSat Works
         </h2>
 
-        <h3 className="about__question">What is TruSat?</h3>
-        <div className="about__answer">
+        <h3 className="faq__question">What is TruSat?</h3>
+        <div className="faq__answer">
           <p className="static-page__copy ">
             TruSat is an open source, citizen-powered system for creating a
             trusted record of satellite orbits in service of the long-term
@@ -112,10 +112,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           Who uses TruSat’s record of satellite orbits?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             TruSat’s data is openly available without restriction to anyone who
             chooses to use it. TruSat is designed to provide space
@@ -127,10 +127,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           Why should anyone trust TruSat’s record of satellite orbits
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             TruSat is architected for trust. Whereas trust in existing sources
             of SSA data depend on trust in the humans and institutions in the
@@ -155,8 +155,8 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">Why a citizen-powered system?</h3>
-        <div className="about__answer">
+        <h3 className="faq__question">Why a citizen-powered system?</h3>
+        <div className="faq__answer">
           <p className="static-page__copy ">
             The diversity of observations of a satellite (by geography,
             nationality, etc.) help to promote trust in the resulting data.
@@ -174,8 +174,8 @@ export default function FAQ() {
           Using the TruSat Prototype
         </h2>
 
-        <h3 className="about__question">How do I track satellites?</h3>
-        <div className="about__answer">
+        <h3 className="faq__question">How do I track satellites?</h3>
+        <div className="faq__answer">
           <p className="static-page__copy ">
             <NavLink className="app__nav-link static-page__link" to="/how">
               This tutorial
@@ -184,10 +184,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           What does “prototype” mean in the context of TruSat?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             The version 0.1 TruSat software released on October 21, 2019 is an
             engineering prototype intended for testing and refining core
@@ -204,10 +204,10 @@ export default function FAQ() {
           <TestPilots />
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           Where is the smartphone app for tracking satellites?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             The smartphone app depicted in the TruSat video is a representation
             of how accessible and seamless we aim to make the process of making
@@ -235,10 +235,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           What equipment do I need to observe a satellite?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             While many satellites are visible to the naked eye in locations
             without much light pollution, a pair of binoculars and accurate
@@ -254,10 +254,10 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           What is the secret that was emailed to me when I created an account?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy">
             In TruSat the identity of users is verified by a unique address
             found in their Ethereum wallet. You can see your address by hovering
@@ -312,10 +312,10 @@ export default function FAQ() {
           Building TruSat’s Future
         </h2>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           What does the TruSat roadmap look like?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             Features and functionality that ease the process of making and
             submitting satellite observations, making TruSat accessible to the
@@ -345,11 +345,11 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">
+        <h3 className="faq__question">
           How can I contribute to TruSat other than by making satellite
           observations?
         </h3>
-        <div className="about__answer">
+        <div className="faq__answer">
           <p className="static-page__copy ">
             TruSat depends on the diverse skillsets of its global Open Source
             Community, from developing new software features to creating content
@@ -377,7 +377,7 @@ export default function FAQ() {
           Who is behind TruSat?
         </h2>
 
-        <h3 className="about__question">Who built TruSat?</h3>
+        <h3 className="faq__question">Who built TruSat?</h3>
         <div className="about__answer">
           <p className="static-page__copy ">
             ConsenSys Space developed the version 0.1 release of TruSat, and is
@@ -387,7 +387,7 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">How does TruSat make money?</h3>
+        <h3 className="faq__question">How does TruSat make money?</h3>
         <div className="about__answer">
           <p className="static-page__copy ">
             As the TruSat.org domain signifies, TruSat is designed to generate a
@@ -405,8 +405,8 @@ export default function FAQ() {
           </p>
         </div>
 
-        <h3 className="about__question">How is TruSat governed?</h3>
-        <div className="about__answer">
+        <h3 className="faq__question">How is TruSat governed?</h3>
+        <div className="faq__answer">
           <p className="static-page__copy ">
             {" "}
             <NavLink className="app__nav-link static-page__link" to="/charter">
@@ -450,9 +450,8 @@ export default function FAQ() {
             rel="noopener noreferrer"
             href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
           >
-            The TruSat white paper
+            The TruSat white paper.
           </a>
-          .
         </p>
         <p className="static-page__copy">
           Have any other questions? Reach out to us at{" "}
