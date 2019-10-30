@@ -1,25 +1,23 @@
 /* ----------
 CATALOG
 ---------- */
-
 .catalog__wrapper {
   margin: 2em 1em;
   max-width: 1000px;
 }
 
 .catalog__header-wrapper {
-  align-content: center;
+  align-items: center;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  text-align: right;
 }
 
 .catalog__header {
   @include view-title;
 }
 
-.catalog__header__buttons {
+.catalog__header-buttons-wrapper {
   margin-top: 3.25em;
 }
 
@@ -31,7 +29,6 @@ CATALOG
   .catalog__header {
     @include view-title--desktop;
     margin: 0.5em 0;
-    // display: none;
   }
 }
 
@@ -135,7 +132,6 @@ HOW TO PARTICIPATE
 }
 
 .catalog__get-data-button {
-
 }
 
 @media (min-width: 600px) {
@@ -169,7 +165,6 @@ HOW TO PARTICIPATE
   color: $primary-text-color;
   text-decoration: underline;
 }
-
 
 /* ----------
 CATALOG NAV BAR
@@ -230,9 +225,8 @@ CATALOG NAV BAR
   left: -1px;
 }
 
-
 @media (max-width: 1000px) {
-  .catalog__icon  {
+  .catalog__icon {
     display: none;
   }
 }
@@ -246,9 +240,6 @@ CATALOG NAV BAR
     padding-left: 4px;
   }
 }
-
-
-
 
 /* ----------
 CATALOG TABLE
@@ -294,9 +285,8 @@ CATALOG TABLE
   }
 }
 
-
 .catalog-table__object-data-wrapper__objectName {
-  box-sizing: border-box; 
+  box-sizing: border-box;
   font-size: $extra-small-font-size;
   padding-left: 0.25em;
   // border: 1px solid white;
@@ -318,7 +308,6 @@ CATALOG TABLE
   }
 }
 
-
 @media (min-width: 800px) {
   .catalog-table__table-data--purposeWrapper {
     padding-right: 3em;
@@ -326,7 +315,6 @@ CATALOG TABLE
     min-width: 12em;
   }
 }
-
 
 @media (min-width: 800px) {
   .catalog-table__table-data--originWrapper {
