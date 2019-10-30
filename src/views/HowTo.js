@@ -6,15 +6,13 @@ import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
 import { NavLink } from "react-router-dom";
 
-
 export default function HowTo() {
   return (
     <div className="static-page__wrapper static-page__wrapper--how-to">
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png"
-          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-360px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.jpg"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">
@@ -355,20 +353,19 @@ export default function HowTo() {
         </p>
       </section>
 
-
       <section className="static-page__section">
         <h2 className="static-page__sub-header">
           Satellite Tracking with a Digital Camera
         </h2>
         <p className="static-page__copy">
-          You can use a camera to help spot satellites and record their positions. 
-          {" "}<NavLink className="app__nav-link app__link" to="/photo">
+          You can use a camera to help spot satellites and record their
+          positions.{" "}
+          <NavLink className="app__nav-link app__link" to="/photo">
             Here's
           </NavLink>{" "}
           an intro to the topic.
         </p>
       </section>
-
     </div>
   );
 }

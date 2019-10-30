@@ -21,7 +21,7 @@ export default function Join() {
         <div className="join__image-wrapper">
           <img
             className="join__image"
-            src="https://trusat-assets.s3.amazonaws.com/JoinOpenSource.png"
+            src="https://trusat-assets.s3.amazonaws.com/JoinOpenSource.jpg"
             alt="open source team"
           ></img>
         </div>
