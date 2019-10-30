@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { API_ROOT, axiosWithCache } from "../../app/app-helpers";
 import Spinner from "../../app/components/Spinner";
+import ReactGA from "react-ga";
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,14 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
     <Fragment>
       <span
         className="catalog__button catalog__get-data-button"
-        onClick={fetchData}
+        onClick={() => {
+          ReactGA.event({
+            category: "TLEs",
+            action: `User downloaded ${catalogFilter} TLEs`,
+            label: "Multiple TLE download"
+          });
+          fetchData();
+        }}
       >
         Download predictions
       </span>

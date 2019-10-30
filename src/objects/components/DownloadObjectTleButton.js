@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useTrusatGetApi } from "../../app/app-helpers";
 import { useObjectsState } from "../objects-context";
 import Spinner from "../../app/components/Spinner";
+import ReactGA from "react-ga";
 
 export default function DownloadObjectTleButton() {
   const { noradNumber } = useObjectsState();
@@ -40,7 +41,18 @@ export default function DownloadObjectTleButton() {
       href={downloadTles()}
       download={`trusat_${noradNumber}.txt`}
     >
-      <span className="catalog__button">Download prediction</span>
+      <span
+        className="catalog__button"
+        onClick={() => {
+          ReactGA.event({
+            category: "TLEs",
+            action: `User downloaded TLE for object ${noradNumber}`,
+            label: "Single TLE download"
+          });
+        }}
+      >
+        Download prediction
+      </span>
     </a>
   ) : null;
 }
