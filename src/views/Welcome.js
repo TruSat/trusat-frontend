@@ -4,6 +4,7 @@ import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
 import RoundedButton from "../app/components/RoundedButton";
 import MailingListForm from "../app/components/MailingListForm";
+import ReactGA from "react-ga";
 
 export default function Home() {
   return (
@@ -65,7 +66,17 @@ export default function Home() {
               record their positions, and help create a planetary record that
               encourages sustainable practices in orbit.
             </p>
-            <NavLink className="app__nav-link" to="/join">
+            <NavLink
+              className="app__nav-link"
+              to="/join"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Onboarding",
+                  action: "Clicked join button",
+                  label: "Top of page join button"
+                });
+              }}
+            >
               <div className="welcome__join-button-wrapper--welcome-top">
                 <RoundedButton
                   addStyles="welcome__join-button"
@@ -172,7 +183,17 @@ export default function Home() {
                 software, or share TruSat with your community, we hope you’ll be
                 part of the solution.
               </p>
-              <NavLink className="app__nav-link" to="/join">
+              <NavLink
+                className="app__nav-link"
+                to="/join"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked join button",
+                    label: "Bottom of page join button"
+                  });
+                }}
+              >
                 <RoundedButton
                   addStyles="welcome__join-button"
                   color="orange"
