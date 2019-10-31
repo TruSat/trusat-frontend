@@ -127,7 +127,20 @@ APP
   padding: 0.5em 2em;
 }
 
-.app__white-button--small:hover {
+.app__black-button--small {
+  align-self: flex-start;
+  background: $primary-theme-color;
+  border: 1px solid $primary-text-color;
+  border-radius: 4px;
+  color: $primary-text-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 0.5em 2em;
+}
+
+.app__white-button--small:hover,
+.app__black-button--small:hover {
   cursor: pointer;
 }
 

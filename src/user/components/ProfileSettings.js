@@ -10,12 +10,9 @@ import {
   toolTipCopy
 } from "../../app/app-helpers";
 
-// TODO make the profile info from API call on /profile available and rendered here
 export default function ProfileSettings({
   newUsername,
   setNewUsername,
-  newEmail,
-  setNewEmail,
   newBio,
   setNewBio,
   newLocation,
@@ -55,28 +52,22 @@ export default function ProfileSettings({
 
         <div className="profile-settings__setting-wrapper">
           <label className="profile-settings__setting-label">ETH ADDRESS</label>
-          <p className="profile-settings__setting-value">
+          <div className="profile-settings__setting-value">
             {shortenAddressToolTip(userAddress)}
-          </p>
+          </div>
           <CopyText textToCopy={userAddress} />
         </div>
 
         {profileData.email ? (
           <div className="profile-settings__setting-wrapper">
             <label className="profile-settings__setting-label">EMAIL</label>
-            {/* {showEditProfileInputs ? (
-              <EditProfileSettingInput
-                setting={newEmail}
-                setSetting={setNewEmail}
-              />
-            ) : ( */}
+
             <p className="profile-settings__setting-value">
               {toolTip(
                 profileData.email,
                 "This is the address you want to use to recover this account."
               )}
             </p>
-            {/* )} */}
           </div>
         ) : null}
 

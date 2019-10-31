@@ -142,7 +142,8 @@ PRIVACY SETTINGS
   margin-top: 3em;
 }
 
-.privacy-settings__heading {
+.privacy-settings__heading,
+.security-settings__heading {
   @include section-title;
   border: 1px solid $secondary-theme-color;
   border-left: none;
@@ -151,37 +152,6 @@ PRIVACY SETTINGS
   justify-content: space-between;
   margin-bottom: 1em;
   padding: 0.5em 0;
-}
-
-.privacy-settings__edit-button-text {
-  color: #a5a5a5;
-  font-style: normal;
-  font-weight: normal;
-  font-size: $small-font-size;
-  line-height: $medium-line-height;
-  text-decoration: underline;
-}
-
-.privacy-settings__edit-button-text:hover {
-  cursor: pointer;
-}
-
-.privacy-settings__setting-wrapper {
-  align-items: center;
-  display: flex;
-  margin: 1em 0;
-}
-
-.privacy-settings__setting-checkbox {
-}
-
-.privacy-settings__setting-label {
-  font-size: $medium-font-size;
-  line-height: $medium-line-height;
-}
-
-.privacy-settings__image {
-  margin-right: 0.25em;
 }
 
 .privacy-settings__remove-text {
@@ -195,17 +165,6 @@ SECURITY SETTINGS
 ---------- */
 .security-settings__wrapper {
   margin-top: 3em;
-}
-
-.security-settings__heading {
-  @include section-title;
-  border: 1px solid $secondary-theme-color;
-  border-left: none;
-  border-right: none;
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1em;
-  padding: 0.5em 0;
 }
 
 .security-settings__info-text {
@@ -236,11 +195,6 @@ METAMASK IMPORT
   @include view-title--desktop;
   margin-bottom: 0.25em;
 }
-
-// .metamask-import__sub-header {
-//   font-size: $extra-large-font-size;
-//   margin: 0.5em 0em 1em 0em;
-// }
 
 .metamask-import__step-header-wrapper {
   display: flex;
