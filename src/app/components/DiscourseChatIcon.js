@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 
 export default function DicordChatIcon() {
   return (
@@ -7,6 +8,13 @@ export default function DicordChatIcon() {
         target="_blank"
         rel="noopener noreferrer"
         href="https://discuss.trusat.org/"
+        onClick={() => {
+          ReactGA.event({
+            category: "Outbound link",
+            action: `Clicked a social link`,
+            label: `Clicked Discuss link`
+          });
+        }}
       >
         <img
           className="discourse-chat-button__icon"
