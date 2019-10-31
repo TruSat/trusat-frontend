@@ -1,6 +1,7 @@
 import React from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import MetaMask from "../../auth/components/MetaMask";
+import ReactGA from "react-ga";
 
 export default function StepFive({ step, setStep }) {
   return (
@@ -50,7 +51,10 @@ export default function StepFive({ step, setStep }) {
             >
               BACK
             </span>
-            <MetaMask buttonText={`I've confirmed connected in MetaMask`} />
+            <MetaMask
+              buttonText={`I've confirmed connection in MetaMask`}
+              GAEvent={true}
+            />
           </div>
         </div>
       ) : null}

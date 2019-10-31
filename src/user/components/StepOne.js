@@ -1,5 +1,6 @@
 import React from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
+import ReactGA from "react-ga";
 
 export default function StepOne({ step, setStep }) {
   return (
@@ -62,6 +63,11 @@ export default function StepOne({ step, setStep }) {
               // if metamask plugin IS found
               if (window.ethereum) {
                 setStep(2);
+                ReactGA.event({
+                  category: "MetaMask",
+                  action: `Securing account with MetaMask flow`,
+                  label: `Finished Step ONE by adding MetaMask plugin`
+                });
                 // if metamask plugin ISN'T found
               } else {
                 alert("You do not have the MetaMask plugin installed!");

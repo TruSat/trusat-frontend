@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import { decryptSecret } from "../../auth/auth-helpers";
+import ReactGA from "react-ga";
 
 export default function StepTwo({ step, setStep, setPrivateKey }) {
   const [secret, setSecret] = useState("");
@@ -94,7 +95,17 @@ export default function StepTwo({ step, setStep, setPrivateKey }) {
               >
                 BACK
               </span>
-              <button type="submit" className="app__white-button--small">
+              <button
+                type="submit"
+                className="app__white-button--small"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "MetaMask",
+                    action: `Securing account with MetaMask flow`,
+                    label: `Finished Step TWO by providing secret and password`
+                  });
+                }}
+              >
                 NEXT
               </button>
             </div>

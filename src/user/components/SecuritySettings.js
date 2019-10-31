@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ReactGA from "react-ga";
 
 export default function SecuritySettings() {
   return (
@@ -26,7 +27,16 @@ export default function SecuritySettings() {
       </div>
 
       <NavLink className="app__nav-link" to="/settings/metamask">
-        <span className="app__white-button--small">
+        <span
+          className="app__white-button--small"
+          onClick={() => {
+            ReactGA.event({
+              category: "MetaMask",
+              action: `Securing account with MetaMask flow`,
+              label: `Started the process`
+            });
+          }}
+        >
           Secure your account with MetaMask
         </span>
       </NavLink>
