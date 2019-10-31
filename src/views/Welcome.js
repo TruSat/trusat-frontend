@@ -145,7 +145,17 @@ export default function Home() {
                 record of orbital positions. This allows the world to measure
                 satellite behavior against international standards of
                 sustainability.{" "}
-                <NavLink className="app__nav-link app__link" to="/about">
+                <NavLink
+                  className="app__nav-link app__link"
+                  to="/about"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Internal Link",
+                      action: `Clicked Learn`,
+                      label: `Clicked Learn More on Welcome Page`
+                    });
+                  }}
+                >
                   Learn more
                 </NavLink>
               </p>
