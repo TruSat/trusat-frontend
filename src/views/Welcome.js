@@ -73,7 +73,7 @@ export default function Home() {
                 ReactGA.event({
                   category: "Onboarding",
                   action: "Clicked join button",
-                  label: "Top of page join button"
+                  label: "Top of Welcome page join button"
                 });
               }}
             >
@@ -190,7 +190,7 @@ export default function Home() {
                   ReactGA.event({
                     category: "Onboarding",
                     action: "Clicked join button",
-                    label: "Bottom of page join button"
+                    label: "Bottom of Welcome page join button"
                   });
                 }}
               >
@@ -218,7 +218,10 @@ export default function Home() {
               Join the mailing list to stay posted on the project
             </p>
             <div className="welcome__mailing-list-wrapper">
-              <MailingListForm testPilots={false} />
+              <MailingListForm
+                testPilots={false}
+                eventLabel={"Welcome page subcribe button"}
+              />
             </div>
           </section>
         </div>
