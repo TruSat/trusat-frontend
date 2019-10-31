@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ReactGA from "react-ga";
 
 export default function MailingListForm({ testPilots, eventLabel }) {
-  console.log(eventLabel);
   const [email, setEmail] = useState();
 
   return (
