@@ -47,9 +47,9 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
         className="catalog__button catalog__get-data-button"
         onClick={() => {
           ReactGA.event({
-            category: "TLEs",
-            action: `User downloaded ${catalogFilter} TLEs`,
-            label: "Multiple TLE download"
+            category: "TLE usage",
+            action: `Clicked download predictions button`,
+            label: `Download TLEs from ${catalogFilter}`
           });
           fetchData();
         }}

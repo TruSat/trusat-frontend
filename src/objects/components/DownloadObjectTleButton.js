@@ -45,9 +45,9 @@ export default function DownloadObjectTleButton() {
         className="catalog__button"
         onClick={() => {
           ReactGA.event({
-            category: "TLEs",
-            action: `User downloaded TLE for object ${noradNumber}`,
-            label: "Single TLE download"
+            category: "TLE usage",
+            action: `Clicked download predictions button`,
+            label: `Downloaded TLE for sat ${noradNumber}`
           });
         }}
       >
