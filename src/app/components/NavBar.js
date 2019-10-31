@@ -4,12 +4,12 @@ import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
-import IconWave from "../../assets/icon-wave.svg"
-import IconGlobe from "../../assets/icon-globe.svg"
-import IconSat from "../../assets/icon-satellite.svg"
-import IconLight from "../../assets/icon-light.svg"
-import IconUser from "../../assets/icon-user.svg"
-import IconQuestion from "../../assets/icon-question.svg"
+import IconWave from "../../assets/icon-wave.svg";
+import IconGlobe from "../../assets/icon-globe.svg";
+import IconSat from "../../assets/icon-satellite.svg";
+import IconLight from "../../assets/icon-light.svg";
+import IconUser from "../../assets/icon-user.svg";
+import IconQuestion from "../../assets/icon-question.svg";
 
 function NavBar(props) {
   const path = props.location.pathname;
@@ -110,7 +110,7 @@ function NavBar(props) {
                 : "nav-bar__link-wrapper--lowlight"
             }
           >
-            <NavLink
+            <a
               className={
                 path === `/whitepaper`
                   ? "app__nav-link nav-bar__link--highlight"
@@ -118,11 +118,13 @@ function NavBar(props) {
                   ? "app__nav-link nav-bar__link--lowlight--welcome"
                   : "app__nav-link nav-bar__link--lowlight"
               }
-              to={`/whitepaper`}
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
             >
               <img className="app__nav__icon" src={IconLight} alt="icon"></img>
               WHITE PAPER
-            </NavLink>
+            </a>
           </div>
         )}
 
