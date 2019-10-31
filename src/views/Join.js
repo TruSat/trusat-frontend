@@ -32,7 +32,10 @@ export default function Join() {
             software build, and what you can do to grow TruSat into a powerful
             tool for space sustainability.
           </p>
-          <MailingListForm testPilots={false} />
+          <MailingListForm
+            testPilots={false}
+            eventLabel={"Join page subscribe button"}
+          />
         </div>
       </div>
 

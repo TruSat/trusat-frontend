@@ -167,7 +167,10 @@ export default function About() {
             <p className="">
               Join the mailing list to stay posted on the project
             </p>
-            <MailingListForm testPilots={false} />
+            <MailingListForm
+              testPilots={false}
+              eventLabel={"About page subscribe button"}
+            />
           </div>
         </div>
       </section>
