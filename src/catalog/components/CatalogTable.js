@@ -34,7 +34,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           >
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
-                <p className="catalog-table__object-data-wrapper__priorityRank">
+                <p className="catalog-table__object-data-wrapper--priority-rank">
                   {data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
@@ -44,14 +44,14 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
                 size={"small"}
               />
               &nbsp;
-              <div className="catalog-table__object-data-wrapper__objectName">
+              <div className="catalog-table__object-data-wrapper--object-name">
                 {obj.object_name}
               </div>
             </div>
           </NavLink>
         </td>
 
-        <td className="table__table-data catalog-table__table-data--originWrapper">
+        <td className="table__table-data catalog-table__table-data--origin-wrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -60,7 +60,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           </NavLink>
         </td>
 
-        <td className="table__table-data app__hide-on-mobile catalog-table__table-data--purposeWrapper">
+        <td className="table__table-data app__hide-on-mobile catalog-table__table-data--purpose-wrapper">
           <NavLink
             className="app__nav-link"
             to={`/object/${obj.object_norad_number}`}
@@ -77,7 +77,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             TBD
           </NavLink>
         </td>
-        <td className="table__table-data catalog-table__table-data--usernameWrapper">
+        <td className="table__table-data catalog-table__table-data--username-wrapper">
           <NavLink
             className="app__nav-link"
             to={`/profile/${obj.address_last_tracked}`}
@@ -111,7 +111,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
               <th className="table__header-text app__hide-on-mobile">
                 {toolTip("CONFIDENCE", toolTipCopy.confidence)}
               </th>
-              <th className="table__header-text catalog-table__table-data--usernameWrapper">
+              <th className="table__header-text catalog-table__table-data--username-wrapper">
                 {toolTip("LAST SEEN BY", toolTipCopy.last_seen_by)}
               </th>
             </tr>
