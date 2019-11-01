@@ -94,3 +94,80 @@ MULTIPLE OBSERVATION FORM
 .multiple-observation-form__cancel-button {
   margin-right: 1em;
 }
+
+/* ----------
+SINGLE OBSERVATION FORM 
+---------- */
+.single-observation-form {
+  margin-top: 1em;
+}
+
+.single-observation-form__date-time-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.single-observation-form__date-input {
+  width: 45%;
+}
+
+.single-observation-form__time-input {
+  width: 45%;
+}
+
+.single-observation-form__object-wrapper {
+  margin-bottom: 3em;
+}
+
+.single-observation-form__object-input {
+  width: 100%;
+}
+
+.single-observation-form__ascension-declination-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3em;
+}
+
+.single-observation-form__behavior-brightness-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.single-observation-form__behavior-select-wrapper {
+  width: 65%;
+}
+
+.single-observation-form__behavior-select {
+  width: 100%;
+}
+
+.single-observation-form__brightness-input-wrapper {
+  width: 25%;
+}
+
+.single-observation-form__brightness-input {
+  width: 100%;
+}
+
+.single-observation-form__conditions-wrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+
+.single-observation-form__conditions-wrapper span {
+  background: white;
+  border-radius: 5px;
+  color: black;
+  padding: 1em;
+}
+
+.single-observation-form__button-wrapper {
+  margin-top: 2em;
+}
+
+.single-observation-form__cancel-button {
+  margin-right: 1em;
+}
