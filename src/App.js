@@ -116,6 +116,23 @@ export default function App() {
             component={SubscriptionConfirmed}
           />
           <Route path="/test-pilot-confirmed" component={TestPilotConfirmed} />
+          {/* TLE Routes */}
+          <Route
+            path="/tle/priorities"
+            component={() => {
+              window.location.href =
+                "https://api.trusat.org:8080/tle/trusat_priorities.txt";
+              return null;
+            }}
+          />
+          <Route
+            path="/tle/all"
+            component={() => {
+              window.location.href =
+                "https://api.trusat.org:8080/tle/trusat_all.txt";
+              return null;
+            }}
+          />
           <Route component={NoMatch} />
         </Switch>
 

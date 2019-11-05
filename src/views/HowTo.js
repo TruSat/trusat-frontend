@@ -6,15 +6,13 @@ import IconRelaxing from "../assets/icon-relaxing.svg";
 import MailingListForm from "../app/components/MailingListForm";
 import { NavLink } from "react-router-dom";
 
-
 export default function HowTo() {
   return (
-    <div className="static-page__wrapper static-page__wrapper--how-to">
+    <div className="static-page__wrapper how-to__wrapper">
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png"
-          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-360px.png, https://trusat-assets.s3.amazonaws.com/illustration-observation2-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-840px.jpg"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">
@@ -36,15 +34,15 @@ export default function HowTo() {
           information:
         </p>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__icon-wrapper">
+          <div className="how-to__step-number">1.</div>
+          <div className="how-to__step-icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
               alt="Icon: Clock"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               The time at which you observe the satellite cross an imaginary
               line between two known stars
@@ -52,15 +50,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__icon-wrapper">
+          <div className="how-to__step-number">2.</div>
+          <div className="how-to__step-icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLocation}
               alt="Icon: Map pin"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               Your location on Earth when you made this observation (Latitude,
               Longitude, and Altitude)
@@ -95,8 +93,8 @@ export default function HowTo() {
           through it (if it blinks, it’s probably an airplane).
         </p>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__icon-wrapper">
+          <div className="how-to__step-number">1.</div>
+          <div className="how-to__step-icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconTime}
@@ -115,15 +113,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__icon-wrapper">
+          <div className="how-to__step-number">2.</div>
+          <div className="how-to__step-icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconLowlight}
               alt="Icon: Low light"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               If it’s a clear night and you’re in an area without too much light
               pollution, you’ll be able to see a number of satellites with your
@@ -133,15 +131,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">3.</div>
-          <div className="how-to__step__icon-wrapper">
+          <div className="how-to__step-number">3.</div>
+          <div className="how-to__step-icon-wrapper">
             <img
               className="how-to__screenshot"
               src={IconRelaxing}
               alt="Icon: Relaxing"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               Train your eyes (or binoculars) on a fixed point in the night sky
               and wait. Relax, breathe deeply, and contemplate just how large
@@ -195,15 +193,15 @@ export default function HowTo() {
           spotting sessions.
         </p>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">1.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step-number">1.</div>
+          <div className="how-to__step-image-wrapper">
             <img
               className="how-to__screenshot"
               src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-1.png"
               alt="Skyview screenshot"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               SkyView provides an AR fueled viewing experience that makes it fun
               and easy to spot bright satellites and other luminous objects in
@@ -212,15 +210,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">2.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step-number">2.</div>
+          <div className="how-to__step-image-wrapper">
             <img
               className="how-to__screenshot"
               src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-2.png"
               alt="Skyview screenshot"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               To find a specific satellite, simply use the search bar to look
               for objects like the International Space Station or click on
@@ -231,15 +229,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">3.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step-number">3.</div>
+          <div className="how-to__step-image-wrapper">
             <img
               className="how-to__screenshot"
               src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-3.png"
               alt="Skyview screenshot"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               SkyView will then return you to the AR experience. Move your phone
               in the direction on the on-screen arrow to find your chosen
@@ -249,15 +247,15 @@ export default function HowTo() {
           </div>
         </div>
         <div className="how-to__step-wrapper">
-          <div className="how-to__step__number">4.</div>
-          <div className="how-to__step__image-wrapper">
+          <div className="how-to__step-number">4.</div>
+          <div className="how-to__step-image-wrapper">
             <img
               className="how-to__screenshot"
               src="https://trusat-assets.s3.amazonaws.com/howto-skyview-screenshot-4.png"
               alt="Skyview screenshot"
             ></img>
           </div>
-          <div className="how-to__step__description">
+          <div className="how-to__step-description">
             <p className="static-page__copy">
               Once you have found your satellite, you can learn more information
               about its history and how it is currently used by clicking the
@@ -355,20 +353,19 @@ export default function HowTo() {
         </p>
       </section>
 
-
       <section className="static-page__section">
         <h2 className="static-page__sub-header">
           Satellite Tracking with a Digital Camera
         </h2>
         <p className="static-page__copy">
-          You can use a camera to help spot satellites and record their positions. 
-          {" "}<NavLink className="app__nav-link app__link" to="/photo">
+          You can use a camera to help spot satellites and record their
+          positions.{" "}
+          <NavLink className="app__nav-link app__link" to="/photo">
             Here's
           </NavLink>{" "}
           an intro to the topic.
         </p>
       </section>
-
     </div>
   );
 }

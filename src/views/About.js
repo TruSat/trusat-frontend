@@ -22,7 +22,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-360px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-360px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -36,7 +36,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-360px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-360px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -51,7 +51,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-gameplan-360px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-gameplan-360px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -68,7 +68,7 @@ export default function About() {
             <div className="about__block--left">
               <img
                 className="about__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source-360px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source-360px.jpg"
                 alt="Illustration"
               ></img>
             </div>
