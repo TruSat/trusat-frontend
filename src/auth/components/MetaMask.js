@@ -7,9 +7,10 @@ import {
   handleMetamaskConnect
 } from "../auth-helpers";
 import Web3 from "web3";
+import ReactGA from "react-ga";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
-export default function MetaMask({ buttonText }) {
+export default function MetaMask({ buttonText, GAEvent }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
   const [isError, setIsError] = useState(false);
@@ -18,6 +19,13 @@ export default function MetaMask({ buttonText }) {
     if (window.ethereum.selectedAddress) {
       authDispatch({ type: "AUTHENTICATING", payload: true });
       handleMetamaskAuth();
+      if (GAEvent) {
+        ReactGA.event({
+          category: "MetaMask",
+          action: `Securing account with MetaMask flow`,
+          label: `Finished the process by confirming connection in MetaMask and signing a message`
+        });
+      }
       // if user has metamask but isn't signed into the plugin
     } else {
       handleMetamaskConnect();

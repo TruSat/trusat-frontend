@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import ReactGA from "react-ga";
 
-export default function MailingListForm({ testPilots }) {
+export default function MailingListForm({ testPilots, eventLabel }) {
   const [email, setEmail] = useState();
 
   return (
@@ -42,7 +43,18 @@ export default function MailingListForm({ testPilots }) {
           }
           color="white"
           id="mc-embedded-subscribe"
-          onSubmit={() => setEmail("")}
+          onClick={() => {
+            if (eventLabel) {
+              ReactGA.event({
+                category: "Onboarding",
+                action: "Subscribed to mailing list",
+                label: eventLabel
+              });
+            }
+          }}
+          onSubmit={() => {
+            setEmail("");
+          }}
         >
           {testPilots ? `SIGN UP` : `JOIN`}
         </button>

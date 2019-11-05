@@ -1,4 +1,5 @@
 import React from "react";
+import ReactGA from "react-ga";
 
 export default function SocialIcons() {
   return (
@@ -7,6 +8,13 @@ export default function SocialIcons() {
         target="_blank"
         rel="noopener noreferrer"
         href="https://twitter.com/consensys_space/"
+        onClick={() => {
+          ReactGA.event({
+            category: "Outbound link",
+            action: `Clicked a social link`,
+            label: `Clicked Twiter link`
+          });
+        }}
       >
         <img
           className="social-icon social-icon--first"
@@ -18,6 +26,13 @@ export default function SocialIcons() {
         target="_blank"
         rel="noopener noreferrer"
         href="https://facebook.com/consensys.space"
+        onClick={() => {
+          ReactGA.event({
+            category: "Outbound link",
+            action: `Clicked a social link`,
+            label: `Clicked Facebook link`
+          });
+        }}
       >
         <img
           className="social-icon"
@@ -29,6 +44,13 @@ export default function SocialIcons() {
         target="_blank"
         rel="noopener noreferrer"
         href="https://instagram.com/consensys_space/"
+        onClick={() => {
+          ReactGA.event({
+            category: "Outbound link",
+            action: `Clicked a social link`,
+            label: `Clicked Instagram link`
+          });
+        }}
       >
         <img
           className="social-icon"
@@ -40,6 +62,13 @@ export default function SocialIcons() {
         target="_blank"
         rel="noopener noreferrer"
         href="https://github.com/consensys-space"
+        onClick={() => {
+          ReactGA.event({
+            category: "Outbound link",
+            action: `Clicked a social link`,
+            label: `Clicked Github link`
+          });
+        }}
       >
         <img
           className="social-icon social-icon__last"

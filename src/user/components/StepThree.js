@@ -1,6 +1,7 @@
 import React from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import CopyText from "../../app/components/CopyText";
+import ReactGA from "react-ga";
 
 export default function StepThree({ privateKey, step, setStep }) {
   return (
@@ -57,6 +58,11 @@ export default function StepThree({ privateKey, step, setStep }) {
               className="app__white-button--small"
               onClick={async () => {
                 window.ethereum.enable().catch(console.error);
+                ReactGA.event({
+                  category: "MetaMask",
+                  action: `Securing account with MetaMask flow`,
+                  label: `Finished Step THREE by importing Private Key to MetaMask`
+                });
                 setStep(4);
               }}
             >

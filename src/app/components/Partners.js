@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import ReactGA from "react-ga";
 
 export default function Partners() {
   return (
@@ -11,6 +12,13 @@ export default function Partners() {
             target="_blank"
             rel="noopener noreferrer"
             href="https://consensys.space"
+            onClick={() => {
+              ReactGA.event({
+                category: "Outbound link",
+                action: `Clicked a partner link`,
+                label: `Clicked ConsenSys Space link`
+              });
+            }}
           >
             <img
               className="partners__logo"
@@ -26,6 +34,13 @@ export default function Partners() {
             target="_blank"
             rel="noopener noreferrer"
             href="https://swfound.org/"
+            onClick={() => {
+              ReactGA.event({
+                category: "Outbound link",
+                action: `Clicked a partner link`,
+                label: `Clicked SWF link`
+              });
+            }}
           >
             <img
               className="partners__logo"
@@ -41,6 +56,13 @@ export default function Partners() {
             target="_blank"
             rel="noopener noreferrer"
             href="https://www.swise.org/"
+            onClick={() => {
+              ReactGA.event({
+                category: "Outbound link",
+                action: `Clicked a partner link`,
+                label: `Clicked SWISE link`
+              });
+            }}
           >
             <img
               className="partners__logo"
@@ -56,6 +78,13 @@ export default function Partners() {
             target="_blank"
             rel="noopener noreferrer"
             href="https://sites.utexas.edu/moriba/"
+            onClick={() => {
+              ReactGA.event({
+                category: "Outbound link",
+                action: `Clicked a partner link`,
+                label: `Clicked Moriba Jah link`
+              });
+            }}
           >
             <img
               className="partners__logo"

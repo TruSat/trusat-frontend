@@ -12,8 +12,6 @@ export default function MetamaskImport() {
   const [privateKey, setPrivateKey] = useState("");
   const { authType, userAddress } = useAuthState();
 
-  console.log(userAddress);
-
   useEffect(() => {
     if (authType === "metamask") {
       setStep(5);
