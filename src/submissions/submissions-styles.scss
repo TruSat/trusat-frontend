@@ -102,72 +102,75 @@ SINGLE OBSERVATION FORM
   margin-top: 1em;
 }
 
-.single-observation-form__date-time-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1em;
-}
-
-.single-observation-form__date-input {
-  width: 45%;
-}
-
-.single-observation-form__time-input {
-  width: 45%;
-}
-
-.single-observation-form__object-wrapper {
+// Station conditions block
+.station-conditions__section {
+  border: 1px solid red;
   margin-bottom: 3em;
 }
 
-.single-observation-form__object-input {
-  width: 100%;
+.station-conditions__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 2em;
+  padding-bottom: 0.25em;
 }
 
-.single-observation-form__ascension-declination-wrapper {
+.station-conditions__location-checkbox-wrapper {
+  border: 1px solid yellow;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3em;
+  margin-bottom: 2em;
 }
 
-.single-observation-form__behavior-brightness-wrapper {
+.station-conditions__location-wrapper {
+}
+
+.station-conditions__checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.station-conditions__date-time-wrapper {
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__time-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.station-conditions__conditions-wrapper {
+  border: 1px solid yellow;
+}
+
+.station-conditions__conditions-buttons-wrapper {
   display: flex;
   justify-content: space-between;
 }
 
-.single-observation-form__behavior-select-wrapper {
-  width: 65%;
-}
-
-.single-observation-form__behavior-select {
-  width: 100%;
-}
-
-.single-observation-form__brightness-input-wrapper {
-  width: 25%;
-}
-
-.single-observation-form__brightness-input {
-  width: 100%;
-}
-
-.single-observation-form__conditions-wrapper {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1em;
-}
-
-.single-observation-form__conditions-wrapper span {
-  background: white;
+.station-conditions__button {
+  border: 1px solid grey;
   border-radius: 5px;
-  color: black;
   padding: 1em;
 }
 
-.single-observation-form__button-wrapper {
-  margin-top: 2em;
+// Object Position block
+.object-position__section {
+  border: 1px solid red;
 }
 
-.single-observation-form__cancel-button {
-  margin-right: 1em;
+.object-position__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 1em;
+  padding-bottom: 0.25em;
+}
+
+.object-position__object-wrapper {
+  border: 1px solid yellow;
+}
+
+.object-position__object-input {
+  width: 100%;
 }

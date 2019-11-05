@@ -2,18 +2,20 @@ import React, { useState, Fragment, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 export default function SingleObservationForm() {
-  const [object, setObject] = useState("12345 98 123LEO");
+  // STATION CONDITIONS
   // Defaults to 9999 for users who don't have a station number
   const [station, setStation] = useState(9999);
-  const [conditions, setConditions] = useState("B");
+  const [cloudedOut, setCloudedOut] = useState(false);
+  const [observerUnavailable, setObserverUnavailable] = useState(false);
   // date, time and time uncertainty
   const [date, setDate] = useState("20191103");
   const [time, setTime] = useState("112233444");
   const [timeUncertainty, setTimeUncertainty] = useState(15);
-
+  const [conditions, setConditions] = useState("B");
+  // OBJECT POSITION
+  const [object, setObject] = useState("12345 98 123LEO");
   const [angleFormatCode, setAngleFormatCode] = useState(5);
   const [epochCode, setEpochCode] = useState(6);
-
   // right ascension OR azimuth
   const [rightAscensionOrAzimuth, setRightAscensionOrAzimuth] = useState(
     1122334
@@ -24,21 +26,21 @@ export default function SingleObservationForm() {
   );
   // positional uncertainty
   const [positionalUncertainty, setPositionalUncertainty] = useState(46);
-
+  // BEHAVIOR
   // Behavior, Brightness and Conditions
-  const [behavior, setBehavior] = useState("H");
-  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
+  const [flashPeriod, setFlashPeriod] = useState(` 10000`);
   // AKA visual magnitude
   const [brightness, setBrightness] = useState(`070`);
   const [magnitudeUncertainty, setMagnitudeUncertainty] = useState("10");
-  const [flashPeriod, setFlashPeriod] = useState(` 10000`);
+  const [behavior, setBehavior] = useState("H");
+  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
 
   // The IOD string to be updated.
   const [IOD, setIOD] = useState("");
 
   useEffect(() => {
     setIOD(
-      `${object} ${station} ${conditions} ${date} ${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElivation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${brightness} ${magnitudeUncertainty} ${flashPeriod}`
+      `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElivation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${brightness} ${magnitudeUncertainty} ${flashPeriod}`
     );
   }, [
     object,
@@ -84,57 +86,140 @@ export default function SingleObservationForm() {
           handleSubmit();
         }}
       >
-        {/* Date and Time */}
-        <div className="single-observation-form__date-time-wrapper">
-          <input
-            className="single-observation-form__date-input"
-            type="date"
-            onChange={event => {
-              console.log(event.target.value);
-              setDate(event.target.value.replace(/-/g, ""));
-            }}
-            max={maxDate}
-          />
-          <input
-            className="single-observation-form__time-input"
-            onChange={event => setTime(event.target.value)}
-            value={time}
-            placeholder="HHMMSSsss"
-          />
-        </div>
+        {/* STATION CONDITIONS */}
+        <section className="station-conditions__section">
+          <h2 className="station-conditions__heading">STATION CONDITIONS</h2>
+          <div className="station-conditions__location-checkbox-wrapper">
+            <div className="station-conditions__location-wrapper">
+              <label>Station Location</label>
+              <input
+                type="number"
+                value={station}
+                onChange={event => setStation(event.target.value)}
+              />
+            </div>
+            {/* checkboxes */}
+            <div className="station-conditions__checkbox-wrapper">
+              <label>
+                <input type="checkbox" value={cloudedOut}></input>
+                Clouded Out
+              </label>
+              <label>
+                <input type="checkbox" value={observerUnavailable}></input>
+                Observer Unavailable
+              </label>
+            </div>
+          </div>
+          {/* Date, time and time uncertainty */}
+          <div className="station-conditions__date-time-wrapper">
+            <div>
+              <label>Time of observation</label>
+              <div>
+                <input
+                  className=""
+                  type="date"
+                  onChange={event => {
+                    console.log(event.target.value);
+                    setDate(event.target.value.replace(/-/g, ""));
+                  }}
+                  max={maxDate}
+                />
+                <input
+                  className=""
+                  onChange={event => setTime(event.target.value)}
+                  value={time}
+                  placeholder="HHMMSSsss"
+                />
+              </div>
+            </div>
+            <div className="station-conditions__time-uncertainty-wrapper">
+              <label>Time uncertainty</label>
+              <select></select>
+            </div>
+          </div>
+          {/* Conditions */}
+          <div className="station-conditions__conditions-wrapper">
+            <label>Conditions (optional)</label>
+            <div className="station-conditions__conditions-buttons-wrapper">
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("E")}
+              >
+                Excellent
+              </span>
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("G")}
+              >
+                Good
+              </span>
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("F")}
+              >
+                Fair
+              </span>
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("P")}
+              >
+                Poor
+              </span>
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("B")}
+              >
+                Bad
+              </span>
+              <span
+                className="station-conditions__button"
+                onClick={() => setConditions("T")}
+              >
+                Terrible
+              </span>
+            </div>
+          </div>
+        </section>
 
-        {/* Object name/number */}
-        <div className="single-observation-form__object-wrapper">
-          <input
-            className="single-observation-form__object-input"
-            type="text"
-            onChange={event => setObject(event.target.value)}
-            value={object}
-            placeholder="Object"
-          />
-        </div>
-
-        {/* Right ascension and declination */}
-        <div className="single-observation-form__ascension-declination-wrapper">
-          <div>
-            <p>Right ascension</p>
+        <section className="object-position__section">
+          <h2 className="object-position__heading">OBJECT POSITION</h2>
+          {/* Object name/number */}
+          <div className="object-position__object-wrapper">
             <input
-              type="number"
-              onChange={event => setRightAscensionOrAzimuth(event.target.value)}
-              value={rightAscensionOrAzimuth}
-              placeholder="HHMMSS"
+              className="object-position__object-input"
+              type="text"
+              onChange={event => setObject(event.target.value)}
+              value={object}
+              placeholder="Object"
             />
           </div>
-          <div>
-            <p>Declination</p>
-            <input
-              type="number"
-              onChange={event => setDeclinationOrElevation(event.target.value)}
-              value={declinationOrElivation}
-              placeholder="HHMMSS"
-            />
+
+          {/* Right ascension and declination */}
+          <div className="single-observation-form__ascension-declination-wrapper">
+            <div>
+              <p>Right ascension</p>
+              <input
+                type="number"
+                onChange={event =>
+                  setRightAscensionOrAzimuth(event.target.value)
+                }
+                value={rightAscensionOrAzimuth}
+                placeholder="HHMMSS"
+              />
+            </div>
+            <div>
+              <p>Declination</p>
+              <input
+                type="number"
+                onChange={event =>
+                  setDeclinationOrElevation(event.target.value)
+                }
+                value={declinationOrElivation}
+                placeholder="HHMMSS"
+              />
+            </div>
           </div>
-        </div>
+        </section>
 
         {/* Behavior and Brightness */}
         <div className="single-observation-form__behavior-brightness-wrapper">
@@ -185,16 +270,6 @@ export default function SingleObservationForm() {
               value={brightness}
             />
           </div>
-        </div>
-
-        {/* Conditions */}
-        <div className="single-observation-form__conditions-wrapper">
-          <span onClick={() => setConditions("E")}>Excellent</span>
-          <span onClick={() => setConditions("G")}>Good</span>
-          <span onClick={() => setConditions("F")}>Fair</span>
-          <span onClick={() => setConditions("P")}>Poor</span>
-          <span onClick={() => setConditions("B")}>Bad</span>
-          <span onClick={() => setConditions("T")}>Terrible</span>
         </div>
 
         {/* Cancel and Submit buttons */}
