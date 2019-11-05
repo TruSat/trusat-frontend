@@ -108,7 +108,7 @@ export default function HowTo() {
               enough to cast light reflected by the satellite. The best time to
               spot a satellite is 30 - 90 minutes after sunset or before
               sunrise. Expect to see more stars than you can quickly count when
-              scanning thethis sky in that time frame.
+              scanning the sky in that time frame.
             </p>
           </div>
         </div>
