@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 export default function SingleObservationForm() {
   // STATION CONDITIONS
   // Defaults to 9999 for users who don't have a station number
-  const [station, setStation] = useState(9999);
+  const [station, setStation] = useState("9999");
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   // date, time and time uncertainty
@@ -28,8 +28,7 @@ export default function SingleObservationForm() {
   // positional uncertainty
   const [positionalUncertainty, setPositionalUncertainty] = useState(46);
   // BEHAVIOR
-  // Behavior, Brightness and Conditions
-  const [flashPeriod, setFlashPeriod] = useState(` 10000`);
+
   // Brightness - AKA visual magnitude
   const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
   const [visualMagnitude, setVisualMagnitude] = useState(`070`);
@@ -37,6 +36,8 @@ export default function SingleObservationForm() {
     "10"
   );
   const [behavior, setBehavior] = useState("H");
+  // Behavior, Brightness and Conditions
+  const [flashPeriod, setFlashPeriod] = useState(` 10000`);
 
   const [remarks, setRemarks] = useState("");
 
@@ -324,7 +325,7 @@ export default function SingleObservationForm() {
                   <option value="-">-</option>
                 </select>
                 <select
-                  className="object-behavior__visual-magnitude-select"
+                  className="object-behavior__brightness-select"
                   type="number"
                   onChange={event => setVisualMagnitude(event.target.value)}
                   value={visualMagnitude}
@@ -338,8 +339,34 @@ export default function SingleObservationForm() {
             </div>
             <div className="object-behavior__brightness-uncertainty-wrapper">
               <label>Brightness uncertainty</label>
-              <select>
-                <option></option>
+              <select
+                className="object-behavior__brightness-uncertainty-select"
+                onChange={event =>
+                  setVisualMagnitudeUncertainty(event.target.value)
+                }
+                value={visualMagnitudeUncertainty}
+              >
+                <option value="01">0.1</option>
+                <option value="02">0.2</option>
+                <option value="03">0.3</option>
+                <option value="04">0.4</option>
+                <option value="05">0.5</option>
+                <option value="06">0.6</option>
+              </select>
+            </div>
+            <div className="object-behavior__flash-period-wrapper">
+              <label>Flash Period</label>
+              <select
+                className="object-behavior__flash-period-select"
+                onChange={event => setFlashPeriod(event.target.value)}
+                value={flashPeriod}
+              >
+                <option value="01">0.1</option>
+                <option value="02">0.2</option>
+                <option value="03">0.3</option>
+                <option value="04">0.4</option>
+                <option value="05">0.5</option>
+                <option value="06">0.6</option>
               </select>
             </div>
           </div>
