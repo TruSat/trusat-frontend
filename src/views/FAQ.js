@@ -9,8 +9,7 @@ export default function FAQ() {
       <section className="static-page__section">
         <img
           className="about__illustration"
-          src="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png"
-          srcSet="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.png, https://trusat-assets.s3.amazonaws.com/illustration-trash2-100px.png"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-trash2-840px.jpg"
           alt="Illustration"
         ></img>
         <h1 className="static-page__main-header--small">
