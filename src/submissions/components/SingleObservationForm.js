@@ -14,6 +14,7 @@ export default function SingleObservationForm() {
   const [conditions, setConditions] = useState("B");
   // OBJECT POSITION
   const [object, setObject] = useState("12345 98 123LEO");
+  // position format in the UI
   const [angleFormatCode, setAngleFormatCode] = useState(5);
   const [epochCode, setEpochCode] = useState(6);
   // right ascension OR azimuth
@@ -194,10 +195,44 @@ export default function SingleObservationForm() {
             />
           </div>
 
+          <div className="object-position__angle-epoch-wrapper">
+            <div className="object-position__angle-wrapper">
+              <label>Position format</label>
+              <select
+                selected={angleFormatCode}
+                onChange={event => setAngleFormatCode(event.target.value)}
+                defaultValue={"2"}
+              >
+                <option value="1">RA: HHMMSSs / Dec: DDMMSS</option>
+                <option value="2">RA: HHMMmmm / Dec: DDMMmm</option>
+                <option value="3">RA: HHMMmmm / Dec : DDdddd</option>
+                <option value="4">AZ: DDDMMSS / EL: DDMMSS</option>
+                <option value="5">AZ: DDDMMmm / EL: DDMMmm</option>
+                <option value="6">AZ: DDDdddd / EL: DDdddd</option>
+                <option value="7">RA: HHMMSSs / EL: DDdddd</option>
+              </select>
+            </div>
+            <div className="object-position__epoch-wrapper">
+              <label>Epoch code</label>
+              <select
+                selected={epochCode}
+                onChange={event => setEpochCode(event.target.value)}
+              >
+                <option value="0">of date</option>
+                <option value="1">1855</option>
+                <option value="2">1875</option>
+                <option value="3">1900</option>
+                <option value="4">1950</option>
+                <option value="5">2000</option>
+                <option value="6">2050</option>
+              </select>
+            </div>
+          </div>
+
           {/* Right ascension and declination */}
-          <div className="single-observation-form__ascension-declination-wrapper">
-            <div>
-              <p>Right ascension</p>
+          <div className="object-position__ascension-declination-wrapper">
+            <div className="object-position__ascension-wrapper">
+              <label>Right ascension</label>
               <input
                 type="number"
                 onChange={event =>
@@ -207,8 +242,8 @@ export default function SingleObservationForm() {
                 placeholder="HHMMSS"
               />
             </div>
-            <div>
-              <p>Declination</p>
+            <div className="object-position__declination-wrapper">
+              <label>Declination</label>
               <input
                 type="number"
                 onChange={event =>
@@ -218,59 +253,79 @@ export default function SingleObservationForm() {
                 placeholder="HHMMSS"
               />
             </div>
+            <div className="object-position__position-uncertainty-wrapper">
+              <label>Position uncertainty</label>
+              <select
+                selected={positionalUncertainty}
+                onChange={event => setPositionalUncertainty(event.target.value)}
+              >
+                <option value="34">0.0003</option>
+                <option value="56">0.05</option>
+                <option value="17">0.1</option>
+                <option value="97">0.9</option>
+                <option value="18">1</option>
+                <option value="28">2</option>
+                <option value="58">5</option>
+                <option value="19">10</option>
+                <option value="29">20</option>
+                <option value="99">90</option>
+              </select>
+            </div>
           </div>
         </section>
 
-        {/* Behavior and Brightness */}
-        <div className="single-observation-form__behavior-brightness-wrapper">
-          <div className="single-observation-form__behavior-select-wrapper">
-            <p>Behavior</p>
-            <select
-              className="single-observation-form__behavior-select"
-              onChange={event => setBehavior(event.target.value)}
-              placeholder="Behavior"
-              selected={behavior}
-              defaultValue={"choose"}
-            >
-              <option value="choose" disabled hidden></option>
-              <option value="E">
-                Unusually faint because of eclipse exit/entrance
-              </option>
-              <option value="F">Constant flash period</option>
-              <option value="I">Irregular</option>
-              <option value="R">Regular variations</option>
-              <option value="S">Steady</option>
-              <option value="X">Irregular flash period</option>
-              <option value="B">
-                Time zero for averaging several flash cycles
-              </option>
-              <option value="H">One flash in a series</option>
-              <option value="P">
-                end time for averaging several flash cycles. Time interval from
-                last "B" report divided by flash period reported on this line
-                gives number of flashes that occurred since "B".
-              </option>
-              <option value="A">
-                became visible (was invisible); use E for eclipse exit
-              </option>
-              <option value="D">
-                Object in field of view, but not visible
-              </option>
-              <option value="M">Brightest</option>
-              <option value="N">Faintest</option>
-              <option value="V">Best seen using averted vision</option>
-            </select>
+        <section className="object-behavior__section">
+          {/* Behavior and Brightness */}
+          <div className="single-observation-form__behavior-brightness-wrapper">
+            <div className="single-observation-form__behavior-select-wrapper">
+              <p>Behavior</p>
+              <select
+                className="single-observation-form__behavior-select"
+                onChange={event => setBehavior(event.target.value)}
+                placeholder="Behavior"
+                selected={behavior}
+                defaultValue={"choose"}
+              >
+                <option value="choose" disabled hidden></option>
+                <option value="E">
+                  Unusually faint because of eclipse exit/entrance
+                </option>
+                <option value="F">Constant flash period</option>
+                <option value="I">Irregular</option>
+                <option value="R">Regular variations</option>
+                <option value="S">Steady</option>
+                <option value="X">Irregular flash period</option>
+                <option value="B">
+                  Time zero for averaging several flash cycles
+                </option>
+                <option value="H">One flash in a series</option>
+                <option value="P">
+                  end time for averaging several flash cycles. Time interval
+                  from last "B" report divided by flash period reported on this
+                  line gives number of flashes that occurred since "B".
+                </option>
+                <option value="A">
+                  became visible (was invisible); use E for eclipse exit
+                </option>
+                <option value="D">
+                  Object in field of view, but not visible
+                </option>
+                <option value="M">Brightest</option>
+                <option value="N">Faintest</option>
+                <option value="V">Best seen using averted vision</option>
+              </select>
+            </div>
+            <div className="single-observation-form__brightness-input-wrapper">
+              <p>Brightness</p>
+              <input
+                className="single-observation-form__brightness-input"
+                type="number"
+                onChange={event => setBrightness(event.target.value)}
+                value={brightness}
+              />
+            </div>
           </div>
-          <div className="single-observation-form__brightness-input-wrapper">
-            <p>Brightness</p>
-            <input
-              className="single-observation-form__brightness-input"
-              type="number"
-              onChange={event => setBrightness(event.target.value)}
-              value={brightness}
-            />
-          </div>
-        </div>
+        </section>
 
         {/* Cancel and Submit buttons */}
         <div className="single-observation-form__button-wrapper">

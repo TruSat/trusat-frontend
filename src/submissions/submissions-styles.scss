@@ -159,6 +159,7 @@ SINGLE OBSERVATION FORM
 // Object Position block
 .object-position__section {
   border: 1px solid red;
+  margin-bottom: 3em;
 }
 
 .object-position__heading {
@@ -169,8 +170,52 @@ SINGLE OBSERVATION FORM
 
 .object-position__object-wrapper {
   border: 1px solid yellow;
+  margin-bottom: 2em;
 }
 
 .object-position__object-input {
   width: 100%;
+}
+
+.object-position__angle-epoch-wrapper {
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.object-position__angle-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__epoch-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__ascension-declination-wrapper {
+  border: 1px solid yellow;
+  display: flex;
+  justify-content: space-between;
+}
+
+.object-position__ascension-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__declination-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__position-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+// Behavior block
+.object-behavior__section {
+  border: 1px solid red;
 }
