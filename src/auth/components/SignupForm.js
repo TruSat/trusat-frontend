@@ -178,7 +178,7 @@ export default function SignupForm({ setIsSuccess }) {
 
         <div className="email-form__button-wrapper">
           <NavLink className="app__nav-link" to="/">
-            <span className="email-form__button--black">Cancel</span>
+            <span className="email-form__button--cancel">Cancel</span>
           </NavLink>
 
           <button type="submit" className="email-form__button--white">

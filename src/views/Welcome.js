@@ -4,11 +4,12 @@ import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
 import RoundedButton from "../app/components/RoundedButton";
 import MailingListForm from "../app/components/MailingListForm";
+import ReactGA from "react-ga";
 
 export default function Home() {
   return (
     <div className="welcome__wrapper">
-      <div className="welcome__content__wrapper">
+      <div className="welcome__content-wrapper">
         {/* SECTION/GRADIENT ONE */}
         <section className="welcome__section--one">
           <div className="welcome__title-logo-wrapper">
@@ -24,10 +25,7 @@ export default function Home() {
 
             <img
               className="welcome__image welcome__globe-image"
-              src={`https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg`}
-              // srcSet="
-              // https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-800px.png,
-              // https://trusat-assets.s3.amazonaws.com/illustration-cover-square2-200px.png"
+              src="https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg"
               alt="globe"
             ></img>
           </div>
@@ -65,7 +63,17 @@ export default function Home() {
               record their positions, and help create a planetary record that
               encourages sustainable practices in orbit.
             </p>
-            <NavLink className="app__nav-link" to="/join">
+            <NavLink
+              className="app__nav-link"
+              to="/join"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Onboarding",
+                  action: "Clicked join button",
+                  label: "Top of Welcome page join button"
+                });
+              }}
+            >
               <div className="welcome__join-button-wrapper--welcome-top">
                 <RoundedButton
                   addStyles="welcome__join-button"
@@ -83,7 +91,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -91,28 +99,28 @@ export default function Home() {
             <div className="welcome__join-copy-wrapper">
               <h2 className="welcome__sub-header--white welcome__sub-header--nowrap">
                 Satellite tracking?{" "}
-                <span className="welcome__small-copy--emoticon">
-                  ¯\_(ツ)_/¯
-                </span>
+                <span className="welcome__emoticon">¯\_(ツ)_/¯</span>
               </h2>
               <p className="welcome__small-copy--white welcome__small-copy--bold">
                 It’s fun, relaxing, and all you need is a clear sky
               </p>
-              <ul className="welcome__small-copy__ul">
-                <li className="welcome__small-copy__li">
-                  TruSat will show you when and where to look to see satellites
-                  that are the highest priority to monitor.{" "}
+              <ul className="welcome__ul">
+                <li className="welcome__li">
+                  TruSat will show you to when and where to look to see
+                  satellites that are the highest priority to monitor.{" "}
                 </li>
-                <li>
+                <li className="welcome__li">
                   Record an observation to update the world's understanding of
                   that satellite's orbit.
                 </li>
-                <li>
+                <li className="welcome__li">
                   Your tracked sats will be added to your collection, and your
                   contribution to citizen science will be credited in the TruSat
                   Catalog.
                 </li>
-                <li>Never seen a sat? We’ll show you how.</li>
+                <li className="welcome__li">
+                  Never seen a sat? We’ll show you how.
+                </li>
               </ul>
             </div>
           </div>
@@ -134,7 +142,17 @@ export default function Home() {
                 record of orbital positions. This allows the world to measure
                 satellite behavior against international standards of
                 sustainability.{" "}
-                <NavLink className="app__nav-link app__link" to="/about">
+                <NavLink
+                  className="app__nav-link app__link"
+                  to="/about"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Internal Link",
+                      action: `Clicked Learn`,
+                      label: `Clicked Learn More on Welcome Page`
+                    });
+                  }}
+                >
                   Learn more
                 </NavLink>
               </p>
@@ -142,7 +160,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--right">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -152,7 +170,7 @@ export default function Home() {
             <div className="welcome__illustration-wrapper--left">
               <img
                 className="welcome__illustration"
-                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source2-square-540px.png"
+                src="https://trusat-assets.s3.amazonaws.com/illustration-open_source2-square-540px.jpg"
                 alt="Illustration"
               ></img>
             </div>
@@ -172,7 +190,17 @@ export default function Home() {
                 software, or share TruSat with your community, we hope you’ll be
                 part of the solution.
               </p>
-              <NavLink className="app__nav-link" to="/join">
+              <NavLink
+                className="app__nav-link"
+                to="/join"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked join button",
+                    label: "Bottom of Welcome page join button"
+                  });
+                }}
+              >
                 <RoundedButton
                   addStyles="welcome__join-button"
                   color="orange"
@@ -188,8 +216,8 @@ export default function Home() {
           <Partners />
         </section>
       </div>
-      <div className="welcome__bottom__wrapper">
-        <div className="welcome__content__wrapper">
+      <div className="welcome__bottom-wrapper">
+        <div className="welcome__content-wrapper">
           {/* SECTION/GRADIENT FOUR */}
           <section className="welcome__section--four">
             <h2 className="welcome__sub-header--white">Stay in the loop</h2>
@@ -197,7 +225,10 @@ export default function Home() {
               Join the mailing list to stay posted on the project
             </p>
             <div className="welcome__mailing-list-wrapper">
-              <MailingListForm testPilots={false} />
+              <MailingListForm
+                testPilots={false}
+                eventLabel={"Welcome page subcribe button"}
+              />
             </div>
           </section>
         </div>

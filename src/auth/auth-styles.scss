@@ -46,21 +46,8 @@ SIGN UP
 }
 
 /* ----------
-SIGNUP SUCCESS
----------- */
-.sign-up-success__message-text {
-  @include body-text--medium;
-  margin: 1em 0;
-}
-
-/* ----------
 LOG IN OPTIONS
 ---------- */
-.email-form {
-  display: flex;
-  flex-direction: column;
-}
-
 .log-in-options__wrapper {
   display: flex;
   margin: 2em 0em 2em 0em;

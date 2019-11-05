@@ -21,7 +21,7 @@ export default function Join() {
         <div className="join__image-wrapper">
           <img
             className="join__image"
-            src="https://trusat-assets.s3.amazonaws.com/JoinOpenSource.png"
+            src="https://trusat-assets.s3.amazonaws.com/JoinOpenSource.jpg"
             alt="open source team"
           ></img>
         </div>
@@ -32,7 +32,10 @@ export default function Join() {
             software build, and what you can do to grow TruSat into a powerful
             tool for space sustainability.
           </p>
-          <MailingListForm testPilots={false} />
+          <MailingListForm
+            testPilots={false}
+            eventLabel={"Join page subscribe button"}
+          />
         </div>
       </div>
 

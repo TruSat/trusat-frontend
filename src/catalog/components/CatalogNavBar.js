@@ -1,11 +1,10 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import ReactGA from "react-ga";
-import IconArrowUp from "../../assets/icon-arrow-up.svg"
-import IconRocket from "../../assets/icon-rocket.svg"
-import IconLock from "../../assets/icon-lock.svg"
-import IconTrash from "../../assets/icon-trash.svg"
-
+import IconArrowUp from "../../assets/icon-arrow-up.svg";
+import IconRocket from "../../assets/icon-rocket.svg";
+import IconLock from "../../assets/icon-lock.svg";
+import IconTrash from "../../assets/icon-trash.svg";
 
 function CatalogNavBar({ catalogFilter, setRange, history }) {
   return (
@@ -20,7 +19,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           setRange({ start: 0, end: 10 });
           ReactGA.event({
             category: "Catalog",
-            action: "User selected priorities filter"
+            action: "User chose a filter",
+            label: "priorities"
           });
           history.push("/catalog/priorities");
         }}
@@ -39,7 +39,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           setRange({ start: 0, end: 10 });
           ReactGA.event({
             category: "Catalog",
-            action: "User selected latest filter"
+            action: "User chose a filter",
+            label: "latest"
           });
           history.push("/catalog/latest");
         }}
@@ -58,7 +59,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           setRange({ start: 0, end: 10 });
           ReactGA.event({
             category: "Catalog",
-            action: "User selected undisclosed filter"
+            action: "User chose a filter",
+            label: "undisclosed"
           });
           history.push("/catalog/undisclosed");
         }}
@@ -77,7 +79,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           setRange({ start: 0, end: 10 });
           ReactGA.event({
             category: "Catalog",
-            action: "User selected debris filter"
+            action: "User chose a filter",
+            label: "debris"
           });
           history.push("/catalog/debris");
         }}
@@ -96,7 +99,8 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
           setRange({ start: 0, end: 10 });
           ReactGA.event({
             category: "Catalog",
-            action: "User selected all filter"
+            action: "User chose a filter",
+            label: "all"
           });
           history.push("/catalog/all");
         }}

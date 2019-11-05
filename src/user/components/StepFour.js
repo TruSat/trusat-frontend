@@ -50,7 +50,10 @@ export default function StepFive({ step, setStep }) {
             >
               BACK
             </span>
-            <MetaMask buttonText={`I've confirmed connected in MetaMask`} />
+            <MetaMask
+              buttonText={`I've confirmed connection in MetaMask`}
+              GAEvent={true}
+            />
           </div>
         </div>
       ) : null}

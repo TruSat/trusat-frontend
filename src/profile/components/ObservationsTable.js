@@ -4,6 +4,7 @@ import { toolTip, toolTipCopy } from "../../app/app-helpers";
 import { useProfileState } from "../profile-context";
 import { useAuthState } from "../../auth/auth-context";
 import TablePaginator from "../../app/components/TablePaginator";
+import ReactGA from "react-ga";
 
 export default function ObservationsTable() {
   const { userAddress } = useAuthState();
@@ -99,7 +100,16 @@ export default function ObservationsTable() {
         <div className="profile__none-yet-wrapper">
           <NavLink className="app__nav-link" to="/how">
             <p className="profile__none-yet-text">None yet</p>
-            <span className="app__yellow-button--small">
+            <span
+              className="app__yellow-button--small"
+              onClick={() => {
+                ReactGA.event({
+                  category: "Internal Link",
+                  action: `Clicked Learn`,
+                  label: `Clicked Learn How on Profile Page`
+                });
+              }}
+            >
               Learn how to track Satellites
             </span>
           </NavLink>

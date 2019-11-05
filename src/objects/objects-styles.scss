@@ -33,7 +33,6 @@ OBJECT INFO
   }
 }
 
-
 @media (max-width: 600px) {
   .object-info__badge-wrapper {
     margin: 0 auto;
@@ -86,12 +85,12 @@ OBJECT INFO
   }
 }
 
-.object-info__header-info-wrapper__group {
+.object-info__header-info-wrapper--first-group {
   display: inline-block;
 }
 
 @media (min-width: 600px) {
-  .object-info__header-info-wrapper__group--last {
+  .object-info__header-info-wrapper--last-group {
     margin-right: 2em;
   }
 }
@@ -110,7 +109,6 @@ OBJECT INFO
 .object-info__large-text {
   @include body-text--large-desktop;
 }
-
 
 @media (max-width: 600px) {
   .object-info__norad-number-wrapper {
@@ -180,12 +178,8 @@ OBJECT INFO
   margin-bottom: 0.75em;
 }
 
-.object-info__link-text a{
+.object-info__link-text a {
   text-decoration-line: underline;
-}
-
-.object-info__link-text a:hover {
-  color: $primary-text-color;
 }
 
 .object-info__limited-info-message {
@@ -202,13 +196,6 @@ OBJECT INFO
 /* ----------
 OBJECT OBSERVATIONS NAV
 ---------- */
-.object-observations__header {
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  line-height: 19px;
-  margin-bottom: 0.5em;
-}
-
 @media (max-width: 600px) {
   .object-observations__filter-table-wrapper {
     width: 100%;
@@ -260,11 +247,6 @@ OBJECT OBSERVATIONS NAV
 .object-observations__nav-link--lowlight:hover,
 .object-observations__nav-link--hightlight:hover {
   cursor: pointer;
-}
-
-.object-observations__get-data-link-wrapper {
-  border-bottom: 3px solid $primary-theme-color;
-  padding-bottom: 0.5em;
 }
 
 .object-observation__filter-explainer {

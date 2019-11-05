@@ -43,7 +43,7 @@ export default function HowToPhoto() {
 
       <section className="static-page__section">
         <h2 className="static-page__sub-header">What's needed</h2>
-        <ul className="howto__ul static-page__copy">
+        <ul className="how-to__ul static-page__copy">
           <li className="">
             {" "}
             Digital SLR camera (or another digital camera with shutter controls)
