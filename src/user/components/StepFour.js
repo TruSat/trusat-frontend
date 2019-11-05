@@ -1,7 +1,6 @@
 import React from "react";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import MetaMask from "../../auth/components/MetaMask";
-import ReactGA from "react-ga";
 
 export default function StepFive({ step, setStep }) {
   return (
