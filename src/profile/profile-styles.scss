@@ -86,10 +86,6 @@ PROFILE
   }
 }
 
-.app__black-button--settings {
-  margin-top: 1em;
-}
-
 .profile__header-data-wrapper {
   align-items: start;
   display: flex;
@@ -140,8 +136,8 @@ PROFILE
 .profile__sub-heading {
   @include section-title;
   border-bottom: 1px solid $primary-text-color;
-  padding-bottom: 0.5em;
   margin-bottom: 0.25em;
+  padding-bottom: 0.5em;
 }
 
 .profile__your-observations-wrapper {

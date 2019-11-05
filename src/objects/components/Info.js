@@ -37,7 +37,7 @@ export default function Info() {
         <div>
           <h1 className="object-info__header">{objectInfo.object_name}</h1>
           <div className="object-info__header-info-wrapper">
-            <div className="object-info__header-info-wrapper__group">
+            <div className="object-info__header-info-wrapper--first-group">
               <p className="object-info__small-text">
                 {/* {objectInfo.observation_quality}% */}
                 TBD
@@ -47,7 +47,7 @@ export default function Info() {
                 confidence from&nbsp;
               </p>
             </div>
-            <div className="object-info__header-info-wrapper__group object-info__header-info-wrapper__group--last">
+            <div className="object-info__header-info-wrapper--first-group object-info__header-info-wrapper--last-group">
               <p className="object-info__small-text">
                 {objectInfo.number_users_tracked}
               </p>
@@ -56,7 +56,7 @@ export default function Info() {
               &nbsp;
             </div>
             <br></br>
-            <div className="object-info__header-info-wrapper__group">
+            <div className="object-info__header-info-wrapper--first-group">
               <p className="object-info__small-text--grey">Last seen</p>
               &nbsp;
               <p className="object-info__small-text">
@@ -66,7 +66,7 @@ export default function Info() {
               </p>
               &nbsp;
             </div>
-            <div className="object-info__header-info-wrapper__group">
+            <div className="object-info__header-info-wrapper--first-group">
               <p className="object-info__small-text--grey">by</p>
               &nbsp;
               <div className="object-info__small-text">

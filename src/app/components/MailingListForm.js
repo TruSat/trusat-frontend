@@ -37,8 +37,8 @@ export default function MailingListForm({ testPilots }) {
           name="subscribe"
           className={
             testPilots
-              ? "mailing-list__subscribe-button mailing-list__subscribe-button--test-pilots"
-              : "mailing-list__subscribe-button"
+              ? "mailing-list__button mailing-list__button--test-pilots"
+              : "mailing-list__button"
           }
           color="white"
           id="mc-embedded-subscribe"

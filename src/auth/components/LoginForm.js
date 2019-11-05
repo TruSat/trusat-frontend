@@ -108,7 +108,7 @@ export default function LoginForm() {
 
       <div className="email-form__button-wrapper">
         <NavLink className="app__nav-link" to="/">
-          <span className="email-form__button--black">Cancel</span>
+          <span className="email-form__button--cancel">Cancel</span>
         </NavLink>
         <button className="email-form__button--white">
           {isAuthenticating ? `...Loading` : `Log in`}
