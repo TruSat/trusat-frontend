@@ -104,7 +104,7 @@ SINGLE OBSERVATION FORM
 
 // Station conditions block
 .station-conditions__section {
-  border: 1px solid red;
+  border: 3px dotted grey;
   margin-bottom: 3em;
 }
 
@@ -115,13 +115,15 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__location-checkbox-wrapper {
-  border: 1px solid yellow;
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
 }
 
 .station-conditions__location-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .station-conditions__checkbox-wrapper {
@@ -130,7 +132,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__date-time-wrapper {
-  border: 1px solid yellow;
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
@@ -142,7 +144,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__conditions-wrapper {
-  border: 1px solid yellow;
+  border: 1px solid red;
 }
 
 .station-conditions__conditions-buttons-wrapper {
@@ -158,7 +160,7 @@ SINGLE OBSERVATION FORM
 
 // Object Position block
 .object-position__section {
-  border: 1px solid red;
+  border: 3px dotted grey;
   margin-bottom: 3em;
 }
 
@@ -169,7 +171,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-position__object-wrapper {
-  border: 1px solid yellow;
+  border: 1px solid red;
   margin-bottom: 2em;
 }
 
@@ -178,7 +180,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-position__angle-epoch-wrapper {
-  border: 1px solid yellow;
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
@@ -194,10 +196,14 @@ SINGLE OBSERVATION FORM
   flex-direction: column;
 }
 
-.object-position__ascension-declination-wrapper {
-  border: 1px solid yellow;
+.object-position__ascension-declination-uncertainty-wrapper {
+  border: 1px solid red;
   display: flex;
   justify-content: space-between;
+}
+
+.object-position__ascension-declination-wrapper {
+  display: flex;
 }
 
 .object-position__ascension-wrapper {
@@ -215,7 +221,39 @@ SINGLE OBSERVATION FORM
   flex-direction: column;
 }
 
-// Behavior block
+// Object Behavior block
 .object-behavior__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.object-behavior__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 1em;
+  padding-bottom: 0.25em;
+}
+
+.object-behavior__visibility-flash-wrapper {
   border: 1px solid red;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-brightness-uncertainty-wrapper {
+  border: 1px solid red;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-wrapper {
+}
+
+.object-behavior__brightness-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__remarks-wrapper {
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
 }

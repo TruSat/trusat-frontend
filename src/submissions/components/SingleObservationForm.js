@@ -30,18 +30,22 @@ export default function SingleObservationForm() {
   // BEHAVIOR
   // Behavior, Brightness and Conditions
   const [flashPeriod, setFlashPeriod] = useState(` 10000`);
-  // AKA visual magnitude
-  const [brightness, setBrightness] = useState(`070`);
-  const [magnitudeUncertainty, setMagnitudeUncertainty] = useState("10");
-  const [behavior, setBehavior] = useState("H");
+  // Brightness - AKA visual magnitude
   const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
+  const [visualMagnitude, setVisualMagnitude] = useState(`070`);
+  const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
+    "10"
+  );
+  const [behavior, setBehavior] = useState("H");
+
+  const [remarks, setRemarks] = useState("");
 
   // The IOD string to be updated.
   const [IOD, setIOD] = useState("");
 
   useEffect(() => {
     setIOD(
-      `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElivation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${brightness} ${magnitudeUncertainty} ${flashPeriod}`
+      `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElivation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${visualMagnitude} ${visualMagnitudeUncertainty} ${flashPeriod}`
     );
   }, [
     object,
@@ -57,21 +61,12 @@ export default function SingleObservationForm() {
     positionalUncertainty,
     behavior,
     visualMagnitudeSign,
-    brightness,
-    magnitudeUncertainty,
+    visualMagnitude,
+    visualMagnitudeUncertainty,
     flashPeriod
   ]);
 
-  const handleSubmit = () => {
-    console.log({
-      date,
-      time,
-      object,
-      behavior,
-      brightness,
-      conditions
-    });
-  };
+  const handleSubmit = () => {};
 
   const today = new Date();
   const maxDate = `${today.getFullYear()}-${today.getMonth() +
@@ -184,7 +179,6 @@ export default function SingleObservationForm() {
 
         <section className="object-position__section">
           <h2 className="object-position__heading">OBJECT POSITION</h2>
-          {/* Object name/number */}
           <div className="object-position__object-wrapper">
             <input
               className="object-position__object-input"
@@ -228,31 +222,33 @@ export default function SingleObservationForm() {
               </select>
             </div>
           </div>
-
           {/* Right ascension and declination */}
-          <div className="object-position__ascension-declination-wrapper">
-            <div className="object-position__ascension-wrapper">
-              <label>Right ascension</label>
-              <input
-                type="number"
-                onChange={event =>
-                  setRightAscensionOrAzimuth(event.target.value)
-                }
-                value={rightAscensionOrAzimuth}
-                placeholder="HHMMSS"
-              />
+          <div className="object-position__ascension-declination-uncertainty-wrapper">
+            <div className="object-position__ascension-declination-wrapper">
+              <div className="object-position__ascension-wrapper">
+                <label>Right ascension</label>
+                <input
+                  type="number"
+                  onChange={event =>
+                    setRightAscensionOrAzimuth(event.target.value)
+                  }
+                  value={rightAscensionOrAzimuth}
+                  placeholder="HHMMSS"
+                />
+              </div>
+              <div className="object-position__declination-wrapper">
+                <label>Declination</label>
+                <input
+                  type="number"
+                  onChange={event =>
+                    setDeclinationOrElevation(event.target.value)
+                  }
+                  value={declinationOrElivation}
+                  placeholder="HHMMSS"
+                />
+              </div>
             </div>
-            <div className="object-position__declination-wrapper">
-              <label>Declination</label>
-              <input
-                type="number"
-                onChange={event =>
-                  setDeclinationOrElevation(event.target.value)
-                }
-                value={declinationOrElivation}
-                placeholder="HHMMSS"
-              />
-            </div>
+
             <div className="object-position__position-uncertainty-wrapper">
               <label>Position uncertainty</label>
               <select
@@ -275,55 +271,85 @@ export default function SingleObservationForm() {
         </section>
 
         <section className="object-behavior__section">
-          {/* Behavior and Brightness */}
-          <div className="single-observation-form__behavior-brightness-wrapper">
-            <div className="single-observation-form__behavior-select-wrapper">
-              <p>Behavior</p>
-              <select
-                className="single-observation-form__behavior-select"
-                onChange={event => setBehavior(event.target.value)}
-                placeholder="Behavior"
-                selected={behavior}
-                defaultValue={"choose"}
-              >
-                <option value="choose" disabled hidden></option>
-                <option value="E">
-                  Unusually faint because of eclipse exit/entrance
-                </option>
-                <option value="F">Constant flash period</option>
-                <option value="I">Irregular</option>
-                <option value="R">Regular variations</option>
-                <option value="S">Steady</option>
-                <option value="X">Irregular flash period</option>
-                <option value="B">
-                  Time zero for averaging several flash cycles
-                </option>
-                <option value="H">One flash in a series</option>
-                <option value="P">
-                  end time for averaging several flash cycles. Time interval
-                  from last "B" report divided by flash period reported on this
-                  line gives number of flashes that occurred since "B".
-                </option>
-                <option value="A">
-                  became visible (was invisible); use E for eclipse exit
-                </option>
-                <option value="D">
-                  Object in field of view, but not visible
-                </option>
-                <option value="M">Brightest</option>
-                <option value="N">Faintest</option>
-                <option value="V">Best seen using averted vision</option>
+          <h2 className="object-behavior__heading">BEHAVIOR (OPTIONAL)</h2>
+          <div className="object-behavior__visibility-flash-wrapper">
+            <label>Visibility and flash period</label>
+            <select
+              className="object-behavior__behavior-select"
+              onChange={event => setBehavior(event.target.value)}
+              placeholder="Behavior"
+              selected={behavior}
+              defaultValue={"choose"}
+            >
+              <option value="choose" disabled hidden></option>
+              <option value="E">
+                Unusually faint because of eclipse exit/entrance
+              </option>
+              <option value="F">Constant flash period</option>
+              <option value="I">Irregular</option>
+              <option value="R">Regular variations</option>
+              <option value="S">Steady</option>
+              <option value="X">Irregular flash period</option>
+              <option value="B">
+                Time zero for averaging several flash cycles
+              </option>
+              <option value="H">One flash in a series</option>
+              <option value="P">
+                end time for averaging several flash cycles. Time interval from
+                last "B" report divided by flash period reported on this line
+                gives number of flashes that occurred since "B".
+              </option>
+              <option value="A">
+                became visible (was invisible); use E for eclipse exit
+              </option>
+              <option value="D">
+                Object in field of view, but not visible
+              </option>
+              <option value="M">Brightest</option>
+              <option value="N">Faintest</option>
+              <option value="V">Best seen using averted vision</option>
+            </select>
+          </div>
+          <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
+            <div className="object-behavior__brightness-wrapper">
+              <label>Brightness</label>
+              <div>
+                <select
+                  className="object-behavior__visual-magnitude-sign-select"
+                  onChange={event => setVisualMagnitudeSign(event.target.value)}
+                  value={visualMagnitudeSign}
+                  defaultValue={"+"}
+                >
+                  <option value="+">+</option>
+                  <option value="-">-</option>
+                </select>
+                <select
+                  className="object-behavior__visual-magnitude-select"
+                  type="number"
+                  onChange={event => setVisualMagnitude(event.target.value)}
+                  value={visualMagnitude}
+                >
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                </select>
+              </div>
+            </div>
+            <div className="object-behavior__brightness-uncertainty-wrapper">
+              <label>Brightness uncertainty</label>
+              <select>
+                <option></option>
               </select>
             </div>
-            <div className="single-observation-form__brightness-input-wrapper">
-              <p>Brightness</p>
-              <input
-                className="single-observation-form__brightness-input"
-                type="number"
-                onChange={event => setBrightness(event.target.value)}
-                value={brightness}
-              />
-            </div>
+          </div>
+          <div className="object-behavior__remarks-wrapper">
+            <label>Remarks</label>
+            <textarea
+              placeholder="What else is noteworthy?"
+              value={remarks}
+              onChange={event => setRemarks(event.target.value)}
+            ></textarea>
           </div>
         </section>
 
@@ -343,11 +369,3 @@ export default function SingleObservationForm() {
     </Fragment>
   );
 }
-
-// QUESTIONS
-// 1. what is format for date
-// 2. what is format for time
-// 3. What is the format for object? and will we use API to search database for object names/numbers?
-// 4. what are the options for 'behavior' and how are they formatted
-// 5. How is conditions formatted
-// 6. What inputs are mandatory?
