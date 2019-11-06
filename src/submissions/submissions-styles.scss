@@ -115,7 +115,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__location-checkbox-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
@@ -132,7 +132,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__date-time-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
@@ -144,7 +144,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__conditions-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
 }
 
 .station-conditions__conditions-buttons-wrapper {
@@ -171,7 +171,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-position__object-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   margin-bottom: 2em;
 }
 
@@ -180,7 +180,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-position__angle-epoch-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
@@ -197,7 +197,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-position__ascension-declination-uncertainty-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   justify-content: space-between;
 }
@@ -211,7 +211,7 @@ SINGLE OBSERVATION FORM
   flex-direction: column;
 }
 
-.object-position__declination-wrapper {
+.object-position__declination-elevation-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -233,13 +233,15 @@ SINGLE OBSERVATION FORM
   padding-bottom: 0.25em;
 }
 
-.object-behavior__visibility-flash-wrapper {
-  border: 1px solid red;
+.object-behavior__visibility-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  flex-direction: column;
   margin-bottom: 2em;
 }
 
 .object-behavior__brightness-brightness-uncertainty-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   margin-bottom: 2em;
 }
@@ -258,7 +260,7 @@ SINGLE OBSERVATION FORM
 }
 
 .object-behavior__remarks-wrapper {
-  border: 1px solid red;
+  //border: 3px solid red;
   display: flex;
   flex-direction: column;
 }

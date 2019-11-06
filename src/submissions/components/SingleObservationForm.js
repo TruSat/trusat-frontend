@@ -9,24 +9,27 @@ export default function SingleObservationForm() {
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   // date, time and time uncertainty
   const [date, setDate] = useState("20191103");
-  const [time, setTime] = useState("112233444");
-  const [timeUncertainty, setTimeUncertainty] = useState(18);
-  const [conditions, setConditions] = useState("B");
+  const [time, setTime] = useState("213045000");
+  const [timeUncertainty, setTimeUncertainty] = useState("18");
+  const [conditions, setConditions] = useState("\xa0");
   // OBJECT POSITION
   const [object, setObject] = useState("12345 98 123LEO");
   // position format in the UI
-  const [angleFormatCode, setAngleFormatCode] = useState(2);
-  const [epochCode, setEpochCode] = useState(0);
+  const [angleFormatCode, setAngleFormatCode] = useState("2");
+  const [epochCode, setEpochCode] = useState("5");
   // right ascension OR azimuth
   const [rightAscensionOrAzimuth, setRightAscensionOrAzimuth] = useState(
-    1122334
+    "1122333"
+  );
+  const [declinationOrElevationSign, setDeclinationOrElevationSign] = useState(
+    "+"
   );
   // declinatiion OR Elevation
-  const [declinationOrElivation, setDeclinationOrElevation] = useState(
-    `+112233`
+  const [declinationOrElevation, setDeclinationOrElevation] = useState(
+    "112233"
   );
   // positional uncertainty
-  const [positionalUncertainty, setPositionalUncertainty] = useState(46);
+  const [positionalUncertainty, setPositionalUncertainty] = useState("18");
   // BEHAVIOR
 
   // Brightness - AKA visual magnitude
@@ -45,7 +48,7 @@ export default function SingleObservationForm() {
 
   useEffect(() => {
     setIOD(
-      `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElivation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${visualMagnitude} ${visualMagnitudeUncertainty} ${flashPeriod}`
+      `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElevationSign}${declinationOrElevation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${visualMagnitude} ${visualMagnitudeUncertainty} ${flashPeriod}`
     );
   }, [
     object,
@@ -57,7 +60,8 @@ export default function SingleObservationForm() {
     angleFormatCode,
     epochCode,
     rightAscensionOrAzimuth,
-    declinationOrElivation,
+    declinationOrElevationSign,
+    declinationOrElevation,
     positionalUncertainty,
     behavior,
     visualMagnitudeSign,
@@ -74,7 +78,12 @@ export default function SingleObservationForm() {
 
   return (
     <Fragment>
-      <p style={{ color: "orange" }}>{IOD}</p>
+      <p style={{ color: "orange", marginBottom: "1em" }}>
+        IOD = {IOD}
+        {` `}
+        {remarks}
+      </p>
+      <p style={{ color: "orange" }}>IOD length = {IOD.length}</p>
       <form
         className="single-observation-form"
         onSubmit={event => {
@@ -89,9 +98,15 @@ export default function SingleObservationForm() {
             <div className="station-conditions__location-wrapper">
               <label>Station Location</label>
               <input
+                required
                 type="number"
                 value={station}
-                onChange={event => setStation(event.target.value)}
+                onChange={event => {
+                  if (event.target.value.length < 5) {
+                    setStation(event.target.value);
+                  }
+                }}
+                placeholder="####"
               />
             </div>
             {/* checkboxes */}
@@ -120,10 +135,10 @@ export default function SingleObservationForm() {
               <label>Time of observation</label>
               <div>
                 <input
+                  required
                   className=""
                   type="date"
                   onChange={event => {
-                    console.log(event.target.value);
                     setDate(event.target.value.replace(/-/g, ""));
                   }}
                   max={maxDate}
@@ -142,16 +157,16 @@ export default function SingleObservationForm() {
                 onChange={event => setTimeUncertainty(event.target.value)}
                 value={timeUncertainty}
               >
-                <option value="15">0.001 sec</option>
-                <option value="56">0.05 sec</option>
-                <option value="17">0.1 sec</option>
-                <option value="97">0.9 sec</option>
-                <option value="18">1 sec</option>
-                <option value="28">2 sec</option>
-                <option value="58">5 sec</option>
-                <option value="19">10 sec</option>
-                <option value="29">20 sec</option>
-                <option value="99">90 sec</option>
+                <option value="15">0.001 seconds</option>
+                <option value="56">0.05 seconds</option>
+                <option value="17">0.1 seconds</option>
+                <option value="97">0.9 seconds</option>
+                <option value="18">1.0 seconds</option>
+                <option value="28">2.0 seconds</option>
+                <option value="58">5.0 seconds</option>
+                <option value="19">10.0 seconds</option>
+                <option value="29">20.0 seconds</option>
+                <option value="99">90.0 seconds</option>
               </select>
             </div>
           </div>
@@ -199,6 +214,7 @@ export default function SingleObservationForm() {
           </div>
         </section>
 
+        {/* OBJECT POSITION */}
         <section className="object-position__section">
           <h2 className="object-position__heading">OBJECT POSITION</h2>
           <div className="object-position__object-wrapper">
@@ -233,16 +249,74 @@ export default function SingleObservationForm() {
               <label>Epoch code</label>
               {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
               <select
-                selected={epochCode}
+                value={
+                  Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                    ? "0"
+                    : epochCode
+                }
                 onChange={event => setEpochCode(event.target.value)}
               >
                 <option value="0">0 or blank = of date</option>
-                <option value="1">1 = 1855</option>
-                <option value="2">2 = 1875</option>
-                <option value="3">3 = 1900</option>
-                <option value="4">4 = 1950</option>
-                <option value="5">5 = 2000</option>
-                <option value="6">6 = 2050</option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="1"
+                >
+                  1 = 1855
+                </option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="2"
+                >
+                  2 = 1875
+                </option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="3"
+                >
+                  3 = 1900
+                </option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="4"
+                >
+                  4 = 1950
+                </option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="5"
+                >
+                  5 = 2000
+                </option>
+                <option
+                  disabled={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? true
+                      : false
+                  }
+                  value="6"
+                >
+                  6 = 2050
+                </option>
               </select>
             </div>
           </div>
@@ -251,7 +325,9 @@ export default function SingleObservationForm() {
             <div className="object-position__ascension-declination-wrapper">
               <div className="object-position__ascension-wrapper">
                 <label>
-                  {angleFormatCode < 4 ? "Right ascension" : "Azimuth"}
+                  {angleFormatCode < 4 || angleFormatCode > 6
+                    ? "Right ascension"
+                    : "Azimuth"}
                 </label>
                 <input
                   type="number"
@@ -259,53 +335,101 @@ export default function SingleObservationForm() {
                     setRightAscensionOrAzimuth(event.target.value)
                   }
                   value={rightAscensionOrAzimuth}
-                  placeholder="HHMMSS"
+                  placeholder={
+                    angleFormatCode === "1"
+                      ? "HHMMSSs"
+                      : angleFormatCode === "2"
+                      ? "HHMMmmm"
+                      : angleFormatCode === "3"
+                      ? "HHMMmmm"
+                      : angleFormatCode === "4"
+                      ? "DDDMMSS"
+                      : angleFormatCode === "5"
+                      ? "DDDMMmm"
+                      : angleFormatCode === "6"
+                      ? "DDDdddd"
+                      : angleFormatCode === "7"
+                      ? "HHMMSSs"
+                      : null
+                  }
                 />
               </div>
-              <div className="object-position__declination-wrapper">
-                <label>Declination</label>
-                <input
-                  type="number"
-                  onChange={event =>
-                    setDeclinationOrElevation(event.target.value)
-                  }
-                  value={declinationOrElivation}
-                  placeholder="HHMMSS"
-                />
+              <div className="object-position__declination-elevation-wrapper">
+                <label>
+                  {angleFormatCode < 4 || angleFormatCode > 6
+                    ? "Declination"
+                    : "Elevation"}
+                </label>
+                <div>
+                  <select
+                    className="object-position__visual-magnitude-sign-select"
+                    onChange={event =>
+                      setDeclinationOrElevationSign(event.target.value)
+                    }
+                    value={declinationOrElevationSign}
+                  >
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                  </select>
+                  <input
+                    type="number"
+                    onChange={event =>
+                      setDeclinationOrElevation(event.target.value)
+                    }
+                    value={declinationOrElevation}
+                    placeholder={
+                      angleFormatCode === "1"
+                        ? "DDMMSS"
+                        : angleFormatCode === "2"
+                        ? "DDMMmm"
+                        : angleFormatCode === "3"
+                        ? "DDdddd"
+                        : angleFormatCode === "4"
+                        ? "DDMMSS"
+                        : angleFormatCode === "5"
+                        ? "DDMMmm"
+                        : angleFormatCode === "6"
+                        ? "DDdddd"
+                        : angleFormatCode === "7"
+                        ? "DDdddd"
+                        : null
+                    }
+                  />
+                </div>
               </div>
             </div>
 
             <div className="object-position__position-uncertainty-wrapper">
               <label>Position uncertainty</label>
               <select
-                selected={positionalUncertainty}
+                value={positionalUncertainty}
                 onChange={event => setPositionalUncertainty(event.target.value)}
               >
-                <option value="34">0.0003</option>
-                <option value="56">0.05</option>
-                <option value="17">0.1</option>
-                <option value="97">0.9</option>
-                <option value="18">1</option>
-                <option value="28">2</option>
-                <option value="58">5</option>
-                <option value="19">10</option>
-                <option value="29">20</option>
-                <option value="99">90</option>
+                <option value="34">0.0003 seconds</option>
+                <option value="56">0.05 seconds</option>
+                <option value="17">0.1 seconds</option>
+                <option value="97">0.9 seconds</option>
+                <option value="18">1.0 seconds</option>
+                <option value="28">2.0 seconds</option>
+                <option value="58">5.0 seconds</option>
+                <option value="19">10.0 seconds</option>
+                <option value="29">20.0 seconds</option>
+                <option value="99">90.0 seconds</option>
               </select>
             </div>
           </div>
         </section>
 
+        {/* BEHAVIOR */}
         <section className="object-behavior__section">
           <h2 className="object-behavior__heading">BEHAVIOR (OPTIONAL)</h2>
-          <div className="object-behavior__visibility-flash-wrapper">
+          <div className="object-behavior__visibility-wrapper">
             <label>Visibility</label>
             <select
               className="object-behavior__behavior-select"
               onChange={event => setBehavior(event.target.value)}
               placeholder="Behavior"
-              selected={behavior}
-              defaultValue={"choose"}
+              value={"choose"}
             >
               <option value="choose" disabled hidden></option>
               <option value="E">
@@ -344,7 +468,6 @@ export default function SingleObservationForm() {
                   className="object-behavior__visual-magnitude-sign-select"
                   onChange={event => setVisualMagnitudeSign(event.target.value)}
                   value={visualMagnitudeSign}
-                  defaultValue={"+"}
                 >
                   <option value="+">+</option>
                   <option value="-">-</option>
@@ -404,6 +527,13 @@ export default function SingleObservationForm() {
             ></textarea>
           </div>
         </section>
+
+        <p style={{ color: "orange", marginBottom: "1em" }}>
+          IOD = {IOD}
+          {` `}
+          {remarks}
+        </p>
+        <p style={{ color: "orange" }}>IOD length = {IOD.length}</p>
 
         {/* Cancel and Submit buttons */}
         <div className="single-observation-form__button-wrapper">
