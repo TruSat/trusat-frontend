@@ -10,13 +10,13 @@ export default function SingleObservationForm() {
   // date, time and time uncertainty
   const [date, setDate] = useState("20191103");
   const [time, setTime] = useState("112233444");
-  const [timeUncertainty, setTimeUncertainty] = useState(15);
+  const [timeUncertainty, setTimeUncertainty] = useState(18);
   const [conditions, setConditions] = useState("B");
   // OBJECT POSITION
   const [object, setObject] = useState("12345 98 123LEO");
   // position format in the UI
-  const [angleFormatCode, setAngleFormatCode] = useState(5);
-  const [epochCode, setEpochCode] = useState(6);
+  const [angleFormatCode, setAngleFormatCode] = useState(2);
+  const [epochCode, setEpochCode] = useState(0);
   // right ascension OR azimuth
   const [rightAscensionOrAzimuth, setRightAscensionOrAzimuth] = useState(
     1122334
@@ -38,7 +38,6 @@ export default function SingleObservationForm() {
   const [behavior, setBehavior] = useState("H");
   // Behavior, Brightness and Conditions
   const [flashPeriod, setFlashPeriod] = useState(` 10000`);
-
   const [remarks, setRemarks] = useState("");
 
   // The IOD string to be updated.
@@ -98,11 +97,19 @@ export default function SingleObservationForm() {
             {/* checkboxes */}
             <div className="station-conditions__checkbox-wrapper">
               <label>
-                <input type="checkbox" value={cloudedOut}></input>
+                <input
+                  type="checkbox"
+                  checked={cloudedOut}
+                  onChange={() => setCloudedOut(!cloudedOut)}
+                ></input>
                 Clouded Out
               </label>
               <label>
-                <input type="checkbox" value={observerUnavailable}></input>
+                <input
+                  type="checkbox"
+                  checked={observerUnavailable}
+                  onChange={() => setObserverUnavailable(!observerUnavailable)}
+                ></input>
                 Observer Unavailable
               </label>
             </div>
@@ -131,7 +138,21 @@ export default function SingleObservationForm() {
             </div>
             <div className="station-conditions__time-uncertainty-wrapper">
               <label>Time uncertainty</label>
-              <select></select>
+              <select
+                onChange={event => setTimeUncertainty(event.target.value)}
+                value={timeUncertainty}
+              >
+                <option value="15">0.001 sec</option>
+                <option value="56">0.05 sec</option>
+                <option value="17">0.1 sec</option>
+                <option value="97">0.9 sec</option>
+                <option value="18">1 sec</option>
+                <option value="28">2 sec</option>
+                <option value="58">5 sec</option>
+                <option value="19">10 sec</option>
+                <option value="29">20 sec</option>
+                <option value="99">90 sec</option>
+              </select>
             </div>
           </div>
           {/* Conditions */}
@@ -196,30 +217,32 @@ export default function SingleObservationForm() {
               <select
                 selected={angleFormatCode}
                 onChange={event => setAngleFormatCode(event.target.value)}
-                defaultValue={"2"}
+                // default is 2
+                value={angleFormatCode}
               >
-                <option value="1">RA: HHMMSSs / Dec: DDMMSS</option>
-                <option value="2">RA: HHMMmmm / Dec: DDMMmm</option>
-                <option value="3">RA: HHMMmmm / Dec : DDdddd</option>
-                <option value="4">AZ: DDDMMSS / EL: DDMMSS</option>
-                <option value="5">AZ: DDDMMmm / EL: DDMMmm</option>
-                <option value="6">AZ: DDDdddd / EL: DDdddd</option>
-                <option value="7">RA: HHMMSSs / EL: DDdddd</option>
+                <option value="1">1: RA/DEC = HHMMSSs+DDMMSS MX</option>
+                <option value="2">2: RA/DEC = HHMMmmm+DDMMmm MX</option>
+                <option value="3">3: RA/DEC = HHMMmmm+DDdddd MX</option>
+                <option value="4">4: AZ/EL = DDDMMSS+DDMMSS MX</option>
+                <option value="5">5: AZ/EL = DDDMMmm+DDMMmm MX</option>
+                <option value="6">6: AZ/EL = DDDdddd+DDdddd MX</option>
+                <option value="7">7: RA/DEC = HHMMSSs+DDdddd MX</option>
               </select>
             </div>
             <div className="object-position__epoch-wrapper">
               <label>Epoch code</label>
+              {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
               <select
                 selected={epochCode}
                 onChange={event => setEpochCode(event.target.value)}
               >
-                <option value="0">of date</option>
-                <option value="1">1855</option>
-                <option value="2">1875</option>
-                <option value="3">1900</option>
-                <option value="4">1950</option>
-                <option value="5">2000</option>
-                <option value="6">2050</option>
+                <option value="0">0 or blank = of date</option>
+                <option value="1">1 = 1855</option>
+                <option value="2">2 = 1875</option>
+                <option value="3">3 = 1900</option>
+                <option value="4">4 = 1950</option>
+                <option value="5">5 = 2000</option>
+                <option value="6">6 = 2050</option>
               </select>
             </div>
           </div>
@@ -227,7 +250,9 @@ export default function SingleObservationForm() {
           <div className="object-position__ascension-declination-uncertainty-wrapper">
             <div className="object-position__ascension-declination-wrapper">
               <div className="object-position__ascension-wrapper">
-                <label>Right ascension</label>
+                <label>
+                  {angleFormatCode < 4 ? "Right ascension" : "Azimuth"}
+                </label>
                 <input
                   type="number"
                   onChange={event =>
@@ -274,7 +299,7 @@ export default function SingleObservationForm() {
         <section className="object-behavior__section">
           <h2 className="object-behavior__heading">BEHAVIOR (OPTIONAL)</h2>
           <div className="object-behavior__visibility-flash-wrapper">
-            <label>Visibility and flash period</label>
+            <label>Visibility</label>
             <select
               className="object-behavior__behavior-select"
               onChange={event => setBehavior(event.target.value)}
