@@ -8,9 +8,9 @@ export default function Submit() {
   return (
     <div className="submit__wrapper">
       <h1 className="submit__header">Submit Observations</h1>
-      <h2 className="submit__sub-header">Submit preformatted data</h2>
-      <MultipleObservationForm />
-      <div>
+      {/* <h2 className="submit__sub-header">Submit preformatted data</h2>
+      <MultipleObservationForm /> */}
+      {/* <div>
         <p className="submit__text">
           Or submit observations to{" "}
           <a href={`mailto:${emails.submit}`} className="submit__link-text">
@@ -20,7 +20,7 @@ export default function Submit() {
         <NavLink to="/how">
           <p className="submit__link-text">Help</p>
         </NavLink>
-      </div>
+      </div> */}
       <h2 className="submit__sub-header">Or enter an individual observation</h2>
       <SingleObservationForm />
     </div>
