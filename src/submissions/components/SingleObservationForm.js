@@ -4,46 +4,42 @@ import { NavLink } from "react-router-dom";
 export default function SingleObservationForm() {
   // STATION CONDITIONS
   // Defaults to 9999 for users who don't have a station number
-  const [station, setStation] = useState("9999");
+  const [station, setStation] = useState(`    `); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
-  // date, time and time uncertainty
-  const [date, setDate] = useState("20191103");
-  const [time, setTime] = useState("213045000");
-  const [timeUncertainty, setTimeUncertainty] = useState("18");
-  const [conditions, setConditions] = useState("\xa0");
+  const [date, setDate] = useState(``); // 8 chars
+  const [time, setTime] = useState(``); // 9 chars
+  const [timeUncertainty, setTimeUncertainty] = useState(`18`); // 2 chars
+  const [conditions, setConditions] = useState(` `); // 1 char
   // OBJECT POSITION
-  const [object, setObject] = useState("12345 98 123LEO");
+  const [object, setObject] = useState(``); // 16 chars
   // position format in the UI
-  const [angleFormatCode, setAngleFormatCode] = useState("2");
-  const [epochCode, setEpochCode] = useState("5");
-  // right ascension OR azimuth
+  const [angleFormatCode, setAngleFormatCode] = useState(`2`); // 1 char
+  const [epochCode, setEpochCode] = useState(`5`); // 1 char
   const [rightAscensionOrAzimuth, setRightAscensionOrAzimuth] = useState(
-    "1122333"
+    `       `
   );
   const [declinationOrElevationSign, setDeclinationOrElevationSign] = useState(
-    "+"
-  );
+    `+`
+  ); // 1 char
   // declinatiion OR Elevation
   const [declinationOrElevation, setDeclinationOrElevation] = useState(
-    "112233"
-  );
+    `      `
+  ); // 6 chars
   // positional uncertainty
-  const [positionalUncertainty, setPositionalUncertainty] = useState("18");
+  const [positionalUncertainty, setPositionalUncertainty] = useState(`18`); // 2 chars
   // BEHAVIOR
-
-  const [behavior, setBehavior] = useState(` `); // 1 char
-
-  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
-  const [visualMagnitude, setVisualMagnitude] = useState(`070`);
+  const [behavior, setBehavior] = useState(``); // 1 char
+  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+"); // 1 char
+  const [visualMagnitude, setVisualMagnitude] = useState(`   `); // 3 chars
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
     "10"
   );
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
   const [remarks, setRemarks] = useState("");
-
-  // The IOD string to be updated.
+  // IOD STRING
   const [IOD, setIOD] = useState("");
+  console.log(IOD);
 
   useEffect(() => {
     setIOD(
@@ -143,6 +139,7 @@ export default function SingleObservationForm() {
                   max={maxDate}
                 />
                 <input
+                  type="number"
                   className=""
                   onChange={event => setTime(event.target.value)}
                   value={time}
@@ -218,8 +215,9 @@ export default function SingleObservationForm() {
           <h2 className="object-position__heading">OBJECT POSITION</h2>
           <div className="object-position__object-wrapper">
             <input
-              className="object-position__object-input"
               type="text"
+              required
+              className="object-position__object-input"
               onChange={event => setObject(event.target.value)}
               value={object}
               placeholder="Object"
@@ -427,10 +425,11 @@ export default function SingleObservationForm() {
             <select
               className="object-behavior__behavior-select"
               onChange={event => setBehavior(event.target.value)}
-              placeholder="Behavior"
-              value={"choose"}
+              value={behavior}
             >
-              <option value="choose" disabled hidden></option>
+              <option value="" disabled hidden>
+                Choose Behavior
+              </option>
               <option value="E">
                 Unusually faint because of eclipse exit/entrance
               </option>
@@ -477,12 +476,12 @@ export default function SingleObservationForm() {
                   onChange={event => setVisualMagnitude(event.target.value)}
                   value={visualMagnitude}
                 >
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="4">5</option>
-                  <option value="4">6</option>
+                  <option value="010">1</option>
+                  <option value="020">2</option>
+                  <option value="030">3</option>
+                  <option value="040">4</option>
+                  <option value="050">5</option>
+                  <option value="060">6</option>
                 </select>
               </div>
             </div>
@@ -495,14 +494,14 @@ export default function SingleObservationForm() {
                 }
                 value={visualMagnitudeUncertainty}
               >
-                <option value="01">0.1</option>
-                <option value="02">0.2</option>
-                <option value="03">0.3</option>
-                <option value="04">0.4</option>
-                <option value="05">0.5</option>
-                <option value="10">1</option>
-                <option value="15">1.5</option>
-                <option value="20">2</option>
+                <option value={`01`}>0.1</option>
+                <option value={`02`}>0.2</option>
+                <option value={`03`}>0.3</option>
+                <option value={`04`}>0.4</option>
+                <option value={`05`}>0.5</option>
+                <option value={`10`}>1</option>
+                <option value={`15`}>1.5</option>
+                <option value={`20`}>2</option>
               </select>
             </div>
             <div className="object-behavior__flash-period-wrapper">
@@ -512,22 +511,22 @@ export default function SingleObservationForm() {
                 onChange={event => setFlashPeriod(event.target.value)}
                 value={flashPeriod}
               >
-                <option value="05000">0.5 seconds</option>
-                <option value="10000">1 seconds</option>
-                <option value="15000">1.5 seconds</option>
-                <option value="20000">2 seconds</option>
-                <option value="25000">2.5 seconds</option>
-                <option value="30000">3 seconds</option>
-                <option value="35000">3.5 seconds</option>
-                <option value="40000">4 seconds</option>
-                <option value="45000">4.5 seconds</option>
-                <option value="50000">5 seconds</option>
-                <option value="55000">5.5 seconds</option>
-                <option value="60000">6 seconds</option>
-                <option value="65000">6.5 seconds</option>
-                <option value="70000">7 seconds</option>
-                <option value="75000">7.5 seconds</option>
-                <option value="80000">8 seconds</option>
+                <option value={` 05000`}>0.5 seconds</option>
+                <option value={` 10000`}>1 seconds</option>
+                <option value={` 15000`}>1.5 seconds</option>
+                <option value={` 20000`}>2 seconds</option>
+                <option value={` 25000`}>2.5 seconds</option>
+                <option value={` 30000`}>3 seconds</option>
+                <option value={` 35000`}>3.5 seconds</option>
+                <option value={` 40000`}>4 seconds</option>
+                <option value={` 45000`}>4.5 seconds</option>
+                <option value={` 50000`}>5 seconds</option>
+                <option value={` 55000`}>5.5 seconds</option>
+                <option value={` 60000`}>6 seconds</option>
+                <option value={` 65000`}>6.5 seconds</option>
+                <option value={` 70000`}>7 seconds</option>
+                <option value={` 75000`}>7.5 seconds</option>
+                <option value={` 80000`}>8 seconds</option>
               </select>
             </div>
           </div>
