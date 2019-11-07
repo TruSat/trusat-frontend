@@ -47,6 +47,7 @@ SUBMIT
 /* ----------
 MULTIPLE OBSERVATION FORM
 ---------- */
+
 .multiple-observation-form {
   margin-bottom: 1em;
 }
@@ -100,7 +101,20 @@ SINGLE OBSERVATION FORM
 ---------- */
 .single-observation-form {
   margin-top: 1em;
+  max-width: 720px;
 }
+
+
+label {
+  font-size: $small-font-size;
+  margin-bottom: 0.5em;
+}
+
+input,
+select {
+  height: 48px;
+}
+
 
 // Station conditions block
 .station-conditions__section {
@@ -108,8 +122,10 @@ SINGLE OBSERVATION FORM
   margin-bottom: 3em;
 }
 
-.station-conditions__heading {
+.single-observation-form__heading {
   border-bottom: 1px solid $primary-text-color;
+  font-size: $medium-font-size;
+  font-weight: $bold-weight;
   margin-bottom: 2em;
   padding-bottom: 0.25em;
 }
@@ -192,12 +208,6 @@ SINGLE OBSERVATION FORM
   margin-bottom: 3em;
 }
 
-.object-position__heading {
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 1em;
-  padding-bottom: 0.25em;
-}
-
 .object-position__object-wrapper {
   //border: 3px solid red;
   margin-bottom: 2em;
@@ -273,12 +283,6 @@ SINGLE OBSERVATION FORM
   margin-bottom: 3em;
 }
 
-.object-behavior__heading {
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 1em;
-  padding-bottom: 0.25em;
-}
-
 .object-behavior__visibility-wrapper {
   //border: 3px solid red;
   display: flex;
@@ -292,7 +296,18 @@ SINGLE OBSERVATION FORM
   margin-bottom: 2em;
 }
 
-.object-behavior__brightness-wrapper {
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper {
+  flex-basis: 33.33%;
+}
+
+.object-behavior__brightness {
+  display: flex;
+}
+
+.object-behavior__brightness-select {
+  flex-grow: 1;
 }
 
 .object-behavior__brightness-uncertainty-wrapper {
@@ -311,18 +326,6 @@ SINGLE OBSERVATION FORM
   flex-direction: column;
 }
 
-
-label {
-  font-size: $small-font-size;
-  margin-bottom: 0.5em;
-}
-
-input,
-select {
-  border: 1px solid red;
-  height: 48px;
-}
-
-div {
-  border: 1px solid blue;
+.object-behavior__remarks-wrapper > textarea {
+  padding: 20px;
 }
