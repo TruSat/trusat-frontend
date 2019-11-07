@@ -115,7 +115,7 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__location-checkbox-wrapper {
-  //border: 3px solid red;
+  // border: 3px solid red;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -125,11 +125,25 @@ SINGLE OBSERVATION FORM
 .station-conditions__location-wrapper {
   display: flex;
   flex-direction: column;
+  flex-grow: 2;
 }
 
 .station-conditions__checkbox-wrapper {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
+}
+
+.station-conditions__date-time-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__date-time-wrapper {
+  // display: flex;
+  // flex-direction: column;
 }
 
 .station-conditions__date-time-wrapper {
@@ -280,4 +294,8 @@ input,
 select {
   border: 1px solid red;
   height: 48px;
+}
+
+div {
+  border: 1px solid blue;
 }
