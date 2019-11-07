@@ -125,13 +125,13 @@ SINGLE OBSERVATION FORM
 .station-conditions__location-wrapper {
   display: flex;
   flex-direction: column;
-  flex-grow: 2;
+  flex-basis: 66%;
 }
 
 .station-conditions__checkbox-wrapper {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  flex-basis: 33.33%;
 }
 
 .station-conditions__date-time-uncertainty-wrapper {
@@ -144,18 +144,16 @@ SINGLE OBSERVATION FORM
 .station-conditions__date-time-wrapper {
   display: flex;
   flex-direction: column;
-}
-
-.station-conditions__date-time-wrapper {
-  //border: 3px solid red;
-  display: flex;
+  flex-basis: 66.66%;
   justify-content: space-between;
   margin-bottom: 2em;
 }
 
+
 .station-conditions__time-uncertainty-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%;
 }
 
 .station-conditions__conditions-wrapper {
@@ -169,8 +167,13 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__button {
+  align-items: center;
   border: 1px solid grey;
   border-radius: 5px;
+  display: flex;
+  flex-basis: 16%;
+  height: 100px;
+  justify-content: center;
   padding: 1em;
 }
 
@@ -206,11 +209,13 @@ SINGLE OBSERVATION FORM
 .object-position__angle-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 66.66%;
 }
 
 .object-position__epoch-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%
 }
 
 .object-position__ascension-declination-uncertainty-wrapper {
@@ -223,21 +228,34 @@ SINGLE OBSERVATION FORM
 .object-position__ascension-declination-wrapper {
   display: flex;
   flex-wrap: wrap;
+  flex-basis: 66.66%;
 }
 
 .object-position__ascension-wrapper {
   display: flex;
+  flex-basis: 50%;
   flex-direction: column;
 }
 
 .object-position__declination-elevation-wrapper {
   display: flex;
+  flex-basis: 50%;
   flex-direction: column;
+}
+
+.object-position__declination-elevation-wrapper-inner {
+  display: flex;
+}
+
+.object-position__visual-declination-elevation {
+  flex-grow: 1;
+  border:1px solid green;
 }
 
 .object-position__position-uncertainty-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%;
 }
 
 // Object Behavior block

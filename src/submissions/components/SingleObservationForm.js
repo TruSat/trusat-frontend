@@ -369,6 +369,7 @@ export default function SingleObservationForm() {
                     <option value="-">-</option>
                   </select>
                   <input
+                    className="object-position__visual-declination-elevation"
                     type="number"
                     onChange={event =>
                       setDeclinationOrElevation(event.target.value)
