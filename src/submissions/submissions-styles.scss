@@ -117,6 +117,7 @@ SINGLE OBSERVATION FORM
 .station-conditions__location-checkbox-wrapper {
   //border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 2em;
 }
@@ -149,6 +150,7 @@ SINGLE OBSERVATION FORM
 
 .station-conditions__conditions-buttons-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
@@ -182,6 +184,7 @@ SINGLE OBSERVATION FORM
 .object-position__angle-epoch-wrapper {
   //border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 2em;
 }
@@ -199,11 +202,13 @@ SINGLE OBSERVATION FORM
 .object-position__ascension-declination-uncertainty-wrapper {
   //border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .object-position__ascension-declination-wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .object-position__ascension-wrapper {
@@ -263,4 +268,16 @@ SINGLE OBSERVATION FORM
   //border: 3px solid red;
   display: flex;
   flex-direction: column;
+}
+
+
+label {
+  font-size: $small-font-size;
+  margin-bottom: 0.5em;
+}
+
+input,
+select {
+  border: 1px solid red;
+  height: 48px;
 }
