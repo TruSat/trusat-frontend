@@ -1,24 +1,25 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { useTrusatGetApi } from "../../app/app-helpers";
+import { stat } from "fs";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
-  // Defaults to 9999 for users who don't have a station number
-  const [station, setStation] = useState(`    `); // 4 chars
+  const [station, setStation] = useState(``); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   const [date, setDate] = useState(``); // 8 chars
-  const [time, setTime] = useState(``); // 9 chars
+  const [time, setTime] = useState(`         `); // 9 chars
   const [timeUncertainty, setTimeUncertainty] = useState(`18`); // 2 chars
   const [conditions, setConditions] = useState(` `); // 1 char
   // OBJECT POSITION
-  const [object, setObject] = useState(``); // 16 chars
+  const [object, setObject] = useState(``); // 15 chars
   // position format in the UI
   const [angleFormatCode, setAngleFormatCode] = useState(`2`); // 1 char
   const [epochCode, setEpochCode] = useState(`5`); // 1 char
   const [rightAscensionOrAzimuth, setRightAscensionOrAzimuth] = useState(
     `       `
-  );
+  ); // 7 chars
   const [declinationOrElevationSign, setDeclinationOrElevationSign] = useState(
     `+`
   ); // 1 char
@@ -29,7 +30,7 @@ export default function SingleObservationForm() {
   // positional uncertainty
   const [positionalUncertainty, setPositionalUncertainty] = useState(`18`); // 2 chars
   // BEHAVIOR
-  const [behavior, setBehavior] = useState(``); // 1 char
+  const [behavior, setBehavior] = useState(` `); // 1 char
   const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+"); // 1 char
   const [visualMagnitude, setVisualMagnitude] = useState(`   `); // 3 chars
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
@@ -40,6 +41,11 @@ export default function SingleObservationForm() {
   // IOD STRING
   const [IOD, setIOD] = useState("");
   console.log(IOD);
+
+  // VALIDATION ERROR MESSAGING
+  const [isStationLengthError, setIsStationLengthError] = useState(false);
+
+  // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     setIOD(
@@ -65,7 +71,24 @@ export default function SingleObservationForm() {
     flashPeriod
   ]);
 
-  const handleSubmit = () => {};
+  // useEffect(() => {
+  //   doFetch(`/findObject/${object}`);
+
+  //   console.log(data);
+  // }, [object, doFetch, data]);
+
+  useEffect(() => {
+    console.log(station.length);
+    if (station.length !== 0 && station.length !== 4) {
+      setIsStationLengthError(true);
+    } else {
+      setIsStationLengthError(false);
+    }
+  }, [station]);
+
+  const handleSubmit = () => {
+    console.log("Submitted!!");
+  };
 
   const today = new Date();
   const maxDate = `${today.getFullYear()}-${today.getMonth() +
@@ -98,11 +121,20 @@ export default function SingleObservationForm() {
                 value={station}
                 onChange={event => {
                   if (event.target.value.length < 5) {
+                    // limit input to 4 chars
                     setStation(event.target.value);
                   }
                 }}
                 placeholder="####"
+                style={
+                  isStationLengthError ? { border: "2px dotted red" } : null
+                }
               />
+              {isStationLengthError ? (
+                <p className="app__error-message">
+                  Station must be a numerical value of 4 characters
+                </p>
+              ) : null}
             </div>
             {/* checkboxes */}
             <div className="station-conditions__checkbox-wrapper">
@@ -110,7 +142,11 @@ export default function SingleObservationForm() {
                 <input
                   type="checkbox"
                   checked={cloudedOut}
-                  onChange={() => setCloudedOut(!cloudedOut)}
+                  onChange={() => {
+                    setCloudedOut(!cloudedOut);
+                    setObserverUnavailable(false);
+                    setConditions("C");
+                  }}
                 ></input>
                 Clouded Out
               </label>
@@ -118,7 +154,11 @@ export default function SingleObservationForm() {
                 <input
                   type="checkbox"
                   checked={observerUnavailable}
-                  onChange={() => setObserverUnavailable(!observerUnavailable)}
+                  onChange={() => {
+                    setObserverUnavailable(!observerUnavailable);
+                    setCloudedOut(false);
+                    setConditions("O");
+                  }}
                 ></input>
                 Observer Unavailable
               </label>
@@ -132,16 +172,28 @@ export default function SingleObservationForm() {
                 <input
                   required
                   className="station-conditions__date"
-                  type="date"
+                  type="number"
+                  placeholder="YYYYMMDD"
+                  // onChange={event => {
+                  //   setDate(event.target.value.replace(/-/g, ""));
+                  // }}
+                  value={date}
                   onChange={event => {
-                    setDate(event.target.value.replace(/-/g, ""));
+                    // limit input to 8 chars
+                    if (event.target.value.length < 9) {
+                      setDate(event.target.value);
+                    }
                   }}
-                  max={maxDate}
                 />
                 <input
                   type="number"
                   className="station-conditions__time"
-                  onChange={event => setTime(event.target.value)}
+                  onChange={event => {
+                    // limit input to 9 chars
+                    if (event.target.value.length < 10) {
+                      setTime(event.target.value);
+                    }
+                  }}
                   value={time}
                   placeholder="HHMMSSsss"
                 />
@@ -218,7 +270,12 @@ export default function SingleObservationForm() {
               type="text"
               required
               className="object-position__object-input"
-              onChange={event => setObject(event.target.value)}
+              onChange={event => {
+                // limit input to 15 chars
+                if (event.target.value.length < 16) {
+                  setObject(event.target.value);
+                }
+              }}
               value={object}
               placeholder="Object"
             />
@@ -398,7 +455,7 @@ export default function SingleObservationForm() {
             </div>
 
             <div className="object-position__position-uncertainty-wrapper">
-              <label>Position uncertainty</label>
+              <label>Positional uncertainty</label>
               <select
                 value={positionalUncertainty}
                 onChange={event => setPositionalUncertainty(event.target.value)}
@@ -428,7 +485,7 @@ export default function SingleObservationForm() {
               onChange={event => setBehavior(event.target.value)}
               value={behavior}
             >
-              <option value="" disabled hidden>
+              <option value={` `} disabled hidden>
                 Choose Behavior
               </option>
               <option value="E">
