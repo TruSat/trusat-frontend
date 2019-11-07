@@ -149,6 +149,15 @@ SINGLE OBSERVATION FORM
   margin-bottom: 2em;
 }
 
+.station-conditions__date-time-wrapper-inner {
+  display: flex;
+}
+
+.station-conditions__date,
+.station-conditions__time {
+  flex-basis: 50%;
+}
+
 
 .station-conditions__time-uncertainty-wrapper {
   display: flex;

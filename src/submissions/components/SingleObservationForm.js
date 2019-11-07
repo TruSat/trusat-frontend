@@ -128,10 +128,10 @@ export default function SingleObservationForm() {
           <div className="station-conditions__date-time-uncertainty-wrapper">
             <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
-              <div>
+              <div class="station-conditions__date-time-wrapper-inner">
                 <input
                   required
-                  className=""
+                  className="station-conditions__date"
                   type="date"
                   onChange={event => {
                     setDate(event.target.value.replace(/-/g, ""));
@@ -140,7 +140,7 @@ export default function SingleObservationForm() {
                 />
                 <input
                   type="number"
-                  className=""
+                  className="station-conditions__time"
                   onChange={event => setTime(event.target.value)}
                   value={time}
                   placeholder="HHMMSSsss"
