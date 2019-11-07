@@ -357,7 +357,7 @@ export default function SingleObservationForm() {
                     ? "Declination"
                     : "Elevation"}
                 </label>
-                <div>
+                <div className="object-position__declination-elevation-wrapper-inner">
                   <select
                     className="object-position__visual-magnitude-sign-select"
                     onChange={event =>
