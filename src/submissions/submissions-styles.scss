@@ -134,7 +134,7 @@ SINGLE OBSERVATION FORM
   flex-grow: 1;
 }
 
-.station-conditions__date-time-wrapper {
+.station-conditions__date-time-uncertainty-wrapper {
   //border: 3px solid red;
   display: flex;
   justify-content: space-between;
@@ -142,8 +142,8 @@ SINGLE OBSERVATION FORM
 }
 
 .station-conditions__date-time-wrapper {
-  // display: flex;
-  // flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .station-conditions__date-time-wrapper {

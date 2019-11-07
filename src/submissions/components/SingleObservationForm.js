@@ -125,8 +125,8 @@ export default function SingleObservationForm() {
             </div>
           </div>
           {/* Date, time and time uncertainty */}
-          <div className="station-conditions__date-time-wrapper">
-            <div>
+          <div className="station-conditions__date-time-uncertainty-wrapper">
+            <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
               <div>
                 <input
