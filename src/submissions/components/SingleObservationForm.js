@@ -32,15 +32,14 @@ export default function SingleObservationForm() {
   const [positionalUncertainty, setPositionalUncertainty] = useState("18");
   // BEHAVIOR
 
-  // Brightness - AKA visual magnitude
+  const [behavior, setBehavior] = useState(` `); // 1 char
+
   const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+");
   const [visualMagnitude, setVisualMagnitude] = useState(`070`);
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
     "10"
   );
-  const [behavior, setBehavior] = useState("H");
-  // Behavior, Brightness and Conditions
-  const [flashPeriod, setFlashPeriod] = useState(` 10000`);
+  const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
   const [remarks, setRemarks] = useState("");
 
   // The IOD string to be updated.
@@ -462,7 +461,7 @@ export default function SingleObservationForm() {
           </div>
           <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
             <div className="object-behavior__brightness-wrapper">
-              <label>Brightness</label>
+              <label>Visual Magnitude (Brightness)</label>
               <div>
                 <select
                   className="object-behavior__visual-magnitude-sign-select"
@@ -482,6 +481,8 @@ export default function SingleObservationForm() {
                   <option value="2">2</option>
                   <option value="3">3</option>
                   <option value="4">4</option>
+                  <option value="4">5</option>
+                  <option value="4">6</option>
                 </select>
               </div>
             </div>
@@ -499,7 +500,9 @@ export default function SingleObservationForm() {
                 <option value="03">0.3</option>
                 <option value="04">0.4</option>
                 <option value="05">0.5</option>
-                <option value="06">0.6</option>
+                <option value="10">1</option>
+                <option value="15">1.5</option>
+                <option value="20">2</option>
               </select>
             </div>
             <div className="object-behavior__flash-period-wrapper">
@@ -509,19 +512,29 @@ export default function SingleObservationForm() {
                 onChange={event => setFlashPeriod(event.target.value)}
                 value={flashPeriod}
               >
-                <option value="01">0.1</option>
-                <option value="02">0.2</option>
-                <option value="03">0.3</option>
-                <option value="04">0.4</option>
-                <option value="05">0.5</option>
-                <option value="06">0.6</option>
+                <option value="05000">0.5 seconds</option>
+                <option value="10000">1 seconds</option>
+                <option value="15000">1.5 seconds</option>
+                <option value="20000">2 seconds</option>
+                <option value="25000">2.5 seconds</option>
+                <option value="30000">3 seconds</option>
+                <option value="35000">3.5 seconds</option>
+                <option value="40000">4 seconds</option>
+                <option value="45000">4.5 seconds</option>
+                <option value="50000">5 seconds</option>
+                <option value="55000">5.5 seconds</option>
+                <option value="60000">6 seconds</option>
+                <option value="65000">6.5 seconds</option>
+                <option value="70000">7 seconds</option>
+                <option value="75000">7.5 seconds</option>
+                <option value="80000">8 seconds</option>
               </select>
             </div>
           </div>
           <div className="object-behavior__remarks-wrapper">
             <label>Remarks</label>
             <textarea
-              placeholder="What else is noteworthy?"
+              placeholder="Brief comments placed here will be recorded with the observation record."
               value={remarks}
               onChange={event => setRemarks(event.target.value)}
             ></textarea>
