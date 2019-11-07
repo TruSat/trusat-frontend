@@ -94,3 +94,173 @@ MULTIPLE OBSERVATION FORM
 .multiple-observation-form__cancel-button {
   margin-right: 1em;
 }
+
+/* ----------
+SINGLE OBSERVATION FORM 
+---------- */
+.single-observation-form {
+  margin-top: 1em;
+}
+
+// Station conditions block
+.station-conditions__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.station-conditions__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 2em;
+  padding-bottom: 0.25em;
+}
+
+.station-conditions__location-checkbox-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__location-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.station-conditions__checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.station-conditions__date-time-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__time-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.station-conditions__conditions-wrapper {
+  //border: 3px solid red;
+}
+
+.station-conditions__conditions-buttons-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.station-conditions__button {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 1em;
+}
+
+// Object Position block
+.object-position__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.object-position__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 1em;
+  padding-bottom: 0.25em;
+}
+
+.object-position__object-wrapper {
+  //border: 3px solid red;
+  margin-bottom: 2em;
+}
+
+.object-position__object-input {
+  width: 100%;
+}
+
+.object-position__angle-epoch-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.object-position__angle-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__epoch-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__ascension-declination-uncertainty-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  justify-content: space-between;
+}
+
+.object-position__ascension-declination-wrapper {
+  display: flex;
+}
+
+.object-position__ascension-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__declination-elevation-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-position__position-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+// Object Behavior block
+.object-behavior__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.object-behavior__heading {
+  border-bottom: 1px solid $primary-text-color;
+  margin-bottom: 1em;
+  padding-bottom: 0.25em;
+}
+
+.object-behavior__visibility-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-brightness-uncertainty-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-wrapper {
+}
+
+.object-behavior__brightness-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__flash-period-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__remarks-wrapper {
+  //border: 3px solid red;
+  display: flex;
+  flex-direction: column;
+}
