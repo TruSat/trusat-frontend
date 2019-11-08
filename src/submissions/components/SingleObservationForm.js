@@ -1,7 +1,6 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { useTrusatGetApi } from "../../app/app-helpers";
-import { stat } from "fs";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
@@ -43,7 +42,15 @@ export default function SingleObservationForm() {
   console.log(IOD);
 
   // VALIDATION ERROR MESSAGING
-  const [isStationLengthError, setIsStationLengthError] = useState(false);
+  const numRegEx = /^\d+$/; // checks if string only contains numbers
+
+  const today = new Date(); // get todays date
+  const maxDate = `${today.getFullYear()}-${today.getMonth() +
+    1}-${today.getDate()}`; // get max date
+  const [isStationError, setIsStationError] = useState(false);
+  const [isDateError, setIsDateError] = useState(false);
+  const [isTimeError, setIsTimeError] = useState(false);
+  const [isObjectError, setIsObjectError] = useState(false);
 
   // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
@@ -77,22 +84,45 @@ export default function SingleObservationForm() {
   //   console.log(data);
   // }, [object, doFetch, data]);
 
+  // Handles Input error messaging in UI
   useEffect(() => {
-    console.log(station.length);
-    if (station.length !== 0 && station.length !== 4) {
-      setIsStationLengthError(true);
+    // station is mandatory, must be 4 chars long, all numbers
+    if (station.length !== 4 || !numRegEx.test(station)) {
+      setIsStationError(true);
     } else {
-      setIsStationLengthError(false);
+      setIsStationError(false);
     }
-  }, [station]);
+
+    // date is mandatory, must be 8 chars long, all numbers
+    if (date.length !== 8 || !numRegEx.test(date)) {
+      setIsDateError(true);
+    } else {
+      setIsDateError(false);
+    }
+
+    // if any other value than whitespace is found
+    if (/\S/.test(time)) {
+      // time must be 9 chars, all numbers
+      if (time.length !== 9 || !numRegEx.test(time)) {
+        setIsTimeError(true);
+      } else {
+        setIsTimeError(false);
+      }
+    } else {
+      setIsTimeError(false);
+    }
+
+    // object is mandatory, must be 8 chars long
+    if (object.length !== 15) {
+      setIsObjectError(true);
+    } else {
+      setIsObjectError(false);
+    }
+  }, [station, date, time, numRegEx, object]);
 
   const handleSubmit = () => {
     console.log("Submitted!!");
   };
-
-  const today = new Date();
-  const maxDate = `${today.getFullYear()}-${today.getMonth() +
-    1}-${today.getDate()}`;
 
   return (
     <Fragment>
@@ -111,7 +141,9 @@ export default function SingleObservationForm() {
       >
         {/* STATION CONDITIONS */}
         <section className="station-conditions__section">
-          <h2 className="single-observation-form__heading">STATION CONDITIONS</h2>
+          <h2 className="single-observation-form__heading">
+            STATION CONDITIONS
+          </h2>
           <div className="station-conditions__location-checkbox-wrapper">
             <div className="station-conditions__location-wrapper">
               <label>Station Location</label>
@@ -121,16 +153,13 @@ export default function SingleObservationForm() {
                 value={station}
                 onChange={event => {
                   if (event.target.value.length < 5) {
-                    // limit input to 4 chars
                     setStation(event.target.value);
                   }
                 }}
                 placeholder="####"
-                style={
-                  isStationLengthError ? { border: "2px dotted red" } : null
-                }
+                style={isStationError ? { border: "2px solid red" } : null}
               />
-              {isStationLengthError ? (
+              {isStationError ? (
                 <p className="app__error-message">
                   Station must be a numerical value of 4 characters
                 </p>
@@ -168,7 +197,7 @@ export default function SingleObservationForm() {
           <div className="station-conditions__date-time-uncertainty-wrapper">
             <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
-              <div class="station-conditions__date-time-wrapper-inner">
+              <div className="station-conditions__date-time-wrapper-inner">
                 <input
                   required
                   className="station-conditions__date"
@@ -184,7 +213,9 @@ export default function SingleObservationForm() {
                       setDate(event.target.value);
                     }
                   }}
+                  style={isDateError ? { border: "2px solid red" } : null}
                 />
+
                 <input
                   type="number"
                   className="station-conditions__time"
@@ -196,8 +227,21 @@ export default function SingleObservationForm() {
                   }}
                   value={time}
                   placeholder="HHMMSSsss"
+                  style={isTimeError ? { border: "2px solid red" } : null}
                 />
               </div>
+              {isDateError ? (
+                <p className="app__error-message">
+                  Date must be a numerical value of 8 characters in the
+                  following format: YYYYMMDD
+                </p>
+              ) : null}
+              {isTimeError ? (
+                <p className="app__error-message">
+                  Time must be a numerical value of 9 characters representing
+                  UTC time in the following format: HHMMSSsss
+                </p>
+              ) : null}
             </div>
             <div className="station-conditions__time-uncertainty-wrapper">
               <label>Time uncertainty</label>
@@ -278,7 +322,14 @@ export default function SingleObservationForm() {
               }}
               value={object}
               placeholder="Object"
+              style={isObjectError ? { border: "2px solid red" } : null}
             />
+            {isObjectError ? (
+              <p className="app__error-message">
+                Enter a valid Object or International Designation number for the
+                object you are reporting an observation for.
+              </p>
+            ) : null}
           </div>
 
           <div className="object-position__angle-epoch-wrapper">
@@ -477,7 +528,9 @@ export default function SingleObservationForm() {
 
         {/* BEHAVIOR */}
         <section className="object-behavior__section">
-          <h2 className="single-observation-form__heading">BEHAVIOR (OPTIONAL)</h2>
+          <h2 className="single-observation-form__heading">
+            BEHAVIOR (OPTIONAL)
+          </h2>
           <div className="object-behavior__visibility-wrapper">
             <label>Visibility</label>
             <select
