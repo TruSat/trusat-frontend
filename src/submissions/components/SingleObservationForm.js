@@ -111,7 +111,7 @@ export default function SingleObservationForm() {
       >
         {/* STATION CONDITIONS */}
         <section className="station-conditions__section">
-          <h2 className="station-conditions__heading">STATION CONDITIONS</h2>
+          <h2 className="single-observation-form__heading">STATION CONDITIONS</h2>
           <div className="station-conditions__location-checkbox-wrapper">
             <div className="station-conditions__location-wrapper">
               <label>Station Location</label>
@@ -165,13 +165,13 @@ export default function SingleObservationForm() {
             </div>
           </div>
           {/* Date, time and time uncertainty */}
-          <div className="station-conditions__date-time-wrapper">
-            <div>
+          <div className="station-conditions__date-time-uncertainty-wrapper">
+            <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
-              <div>
+              <div class="station-conditions__date-time-wrapper-inner">
                 <input
                   required
-                  className=""
+                  className="station-conditions__date"
                   type="number"
                   placeholder="YYYYMMDD"
                   // onChange={event => {
@@ -187,7 +187,7 @@ export default function SingleObservationForm() {
                 />
                 <input
                   type="number"
-                  className=""
+                  className="station-conditions__time"
                   onChange={event => {
                     // limit input to 9 chars
                     if (event.target.value.length < 10) {
@@ -264,7 +264,7 @@ export default function SingleObservationForm() {
 
         {/* OBJECT POSITION */}
         <section className="object-position__section">
-          <h2 className="object-position__heading">OBJECT POSITION</h2>
+          <h2 className="single-observation-form__heading">OBJECT POSITION</h2>
           <div className="object-position__object-wrapper">
             <input
               type="text"
@@ -414,7 +414,7 @@ export default function SingleObservationForm() {
                     ? "Declination"
                     : "Elevation"}
                 </label>
-                <div>
+                <div className="object-position__declination-elevation-wrapper-inner">
                   <select
                     className="object-position__visual-magnitude-sign-select"
                     onChange={event =>
@@ -426,6 +426,7 @@ export default function SingleObservationForm() {
                     <option value="-">-</option>
                   </select>
                   <input
+                    className="object-position__visual-declination-elevation"
                     type="number"
                     onChange={event =>
                       setDeclinationOrElevation(event.target.value)
@@ -476,7 +477,7 @@ export default function SingleObservationForm() {
 
         {/* BEHAVIOR */}
         <section className="object-behavior__section">
-          <h2 className="object-behavior__heading">BEHAVIOR (OPTIONAL)</h2>
+          <h2 className="single-observation-form__heading">BEHAVIOR (OPTIONAL)</h2>
           <div className="object-behavior__visibility-wrapper">
             <label>Visibility</label>
             <select
@@ -518,7 +519,7 @@ export default function SingleObservationForm() {
           <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
             <div className="object-behavior__brightness-wrapper">
               <label>Visual Magnitude (Brightness)</label>
-              <div>
+              <div className="object-behavior__brightness">
                 <select
                   className="object-behavior__visual-magnitude-sign-select"
                   onChange={event => setVisualMagnitudeSign(event.target.value)}

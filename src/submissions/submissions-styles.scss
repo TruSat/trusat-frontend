@@ -47,6 +47,7 @@ SUBMIT
 /* ----------
 MULTIPLE OBSERVATION FORM
 ---------- */
+
 .multiple-observation-form {
   margin-bottom: 1em;
 }
@@ -100,7 +101,20 @@ SINGLE OBSERVATION FORM
 ---------- */
 .single-observation-form {
   margin-top: 1em;
+  max-width: 720px;
 }
+
+
+label {
+  font-size: $small-font-size;
+  margin-bottom: 0.5em;
+}
+
+input,
+select {
+  height: 48px;
+}
+
 
 // Station conditions block
 .station-conditions__section {
@@ -108,15 +122,18 @@ SINGLE OBSERVATION FORM
   margin-bottom: 3em;
 }
 
-.station-conditions__heading {
+.single-observation-form__heading {
   border-bottom: 1px solid $primary-text-color;
+  font-size: $medium-font-size;
+  font-weight: $bold-weight;
   margin-bottom: 2em;
   padding-bottom: 0.25em;
 }
 
 .station-conditions__location-checkbox-wrapper {
-  //border: 3px solid red;
+  // border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 2em;
 }
@@ -124,23 +141,44 @@ SINGLE OBSERVATION FORM
 .station-conditions__location-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 66%;
 }
 
 .station-conditions__checkbox-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%;
 }
 
-.station-conditions__date-time-wrapper {
+.station-conditions__date-time-uncertainty-wrapper {
   //border: 3px solid red;
   display: flex;
   justify-content: space-between;
   margin-bottom: 2em;
 }
 
+.station-conditions__date-time-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 66.66%;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__date-time-wrapper-inner {
+  display: flex;
+}
+
+.station-conditions__date,
+.station-conditions__time {
+  flex-basis: 50%;
+}
+
+
 .station-conditions__time-uncertainty-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%;
 }
 
 .station-conditions__conditions-wrapper {
@@ -149,12 +187,18 @@ SINGLE OBSERVATION FORM
 
 .station-conditions__conditions-buttons-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .station-conditions__button {
+  align-items: center;
   border: 1px solid grey;
   border-radius: 5px;
+  display: flex;
+  flex-basis: 16%;
+  height: 100px;
+  justify-content: center;
   padding: 1em;
 }
 
@@ -162,12 +206,6 @@ SINGLE OBSERVATION FORM
 .object-position__section {
   border: 3px dotted grey;
   margin-bottom: 3em;
-}
-
-.object-position__heading {
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 1em;
-  padding-bottom: 0.25em;
 }
 
 .object-position__object-wrapper {
@@ -182,6 +220,7 @@ SINGLE OBSERVATION FORM
 .object-position__angle-epoch-wrapper {
   //border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 2em;
 }
@@ -189,48 +228,59 @@ SINGLE OBSERVATION FORM
 .object-position__angle-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 66.66%;
 }
 
 .object-position__epoch-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%
 }
 
 .object-position__ascension-declination-uncertainty-wrapper {
   //border: 3px solid red;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 }
 
 .object-position__ascension-declination-wrapper {
   display: flex;
+  flex-wrap: wrap;
+  flex-basis: 66.66%;
 }
 
 .object-position__ascension-wrapper {
   display: flex;
+  flex-basis: 50%;
   flex-direction: column;
 }
 
 .object-position__declination-elevation-wrapper {
   display: flex;
+  flex-basis: 50%;
   flex-direction: column;
+}
+
+.object-position__declination-elevation-wrapper-inner {
+  display: flex;
+}
+
+.object-position__visual-declination-elevation {
+  flex-grow: 1;
+  border:1px solid green;
 }
 
 .object-position__position-uncertainty-wrapper {
   display: flex;
   flex-direction: column;
+  flex-basis: 33.33%;
 }
 
 // Object Behavior block
 .object-behavior__section {
   border: 3px dotted grey;
   margin-bottom: 3em;
-}
-
-.object-behavior__heading {
-  border-bottom: 1px solid $primary-text-color;
-  margin-bottom: 1em;
-  padding-bottom: 0.25em;
 }
 
 .object-behavior__visibility-wrapper {
@@ -246,7 +296,18 @@ SINGLE OBSERVATION FORM
   margin-bottom: 2em;
 }
 
-.object-behavior__brightness-wrapper {
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper {
+  flex-basis: 33.33%;
+}
+
+.object-behavior__brightness {
+  display: flex;
+}
+
+.object-behavior__brightness-select {
+  flex-grow: 1;
 }
 
 .object-behavior__brightness-uncertainty-wrapper {
@@ -263,4 +324,8 @@ SINGLE OBSERVATION FORM
   //border: 3px solid red;
   display: flex;
   flex-direction: column;
+}
+
+.object-behavior__remarks-wrapper > textarea {
+  padding: 20px;
 }
