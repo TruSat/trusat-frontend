@@ -567,6 +567,12 @@ export default function SingleObservationForm() {
                       : null
                   }
                 />
+                {isRightAscensionOrAzimuthError ? (
+                  <p className="app__error-message">
+                    Enter a valid numerical value for Right Ascension or Azimuth
+                    referencing the position format you chose above
+                  </p>
+                ) : null}
               </div>
               <div className="object-position__declination-elevation-wrapper">
                 <label>
@@ -618,6 +624,12 @@ export default function SingleObservationForm() {
                         : null
                     }
                   />
+                  {isDeclinationOrElevationError ? (
+                    <p className="app__error-message">
+                      Enter a valid numerical value for Declination or Elevation
+                      referencing the position format you chose above
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </div>
