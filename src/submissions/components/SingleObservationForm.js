@@ -1,7 +1,13 @@
 import React, { useState, Fragment, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { useTrusatGetApi } from "../../app/app-helpers";
-import { stat } from "fs";
+import axios from "axios";
+import { useAuthState } from "../../auth/auth-context";
+import Spinner from "../../app/components/Spinner";
+import { checkJwt } from "../../auth/auth-helpers";
+import { API_ROOT } from "../../app/app-helpers";
+import CircleCheck from "../../assets/CircleCheck.svg";
+
+// import { useTrusatGetApi } from "../../app/app-helpers";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
@@ -40,12 +46,36 @@ export default function SingleObservationForm() {
   const [remarks, setRemarks] = useState("");
   // IOD STRING
   const [IOD, setIOD] = useState("");
-  console.log(IOD);
-
   // VALIDATION ERROR MESSAGING
-  const [isStationLengthError, setIsStationLengthError] = useState(false);
+  const numRegEx = /^\d+$/; // checks if string only contains numbers
+  // const today = new Date(); // get todays date
+  // const maxDate = `${today.getFullYear()}-${today.getMonth() +
+  //   1}-${today.getDate()}`; // get max date
+  const [isStationError, setIsStationError] = useState(false);
+  const [isDateError, setIsDateError] = useState(false);
+  const [isTimeError, setIsTimeError] = useState(false);
+  const [isObjectError, setIsObjectError] = useState(false);
+  const [
+    isRightAscensionOrAzimuthError,
+    setIsRightAscensionOrAzimuthError
+  ] = useState(false);
+  const [
+    isDeclinationOrElevationError,
+    setIsDeclinationOrElevationError
+  ] = useState(false);
+
+  // const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
 
   // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+
+  // SUBMISSION UI STATES
+  const [isLoading, setIsLoading] = useState(false);
+  // server provides a count of accepted IODs - i.e. correct format and not duplicates
+  const [successCount, setSuccessCount] = useState(null);
+  // server provides these so we can render more specific error messages
+  const [errorMessages, setErrorMessages] = useState([]);
+  const { jwt } = useAuthState();
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIOD(
@@ -71,37 +101,138 @@ export default function SingleObservationForm() {
     flashPeriod
   ]);
 
+  // Input Validation
+  useEffect(() => {
+    // station is mandatory, must be 4 chars long, all numbers
+    if (station.length !== 4 || !numRegEx.test(station)) {
+      setIsStationError(true);
+    } else {
+      setIsStationError(false);
+    }
+
+    // date is mandatory, must be 8 chars long, all numbers
+    if (date.length !== 8 || !numRegEx.test(date)) {
+      setIsDateError(true);
+    } else {
+      setIsDateError(false);
+    }
+
+    // if time contains non-whitespace chars or is not 9 chars long
+    if (/\S/.test(time) || time.length !== 9) {
+      // time must be 9 chars, all numbers
+      if (time.length !== 9 || !numRegEx.test(time)) {
+        setIsTimeError(true);
+      } else {
+        setIsTimeError(false);
+      }
+    } else {
+      setIsTimeError(false);
+    }
+
+    // object is mandatory, must be 8 chars long
+    if (object.length !== 15) {
+      setIsObjectError(true);
+    } else {
+      setIsObjectError(false);
+    }
+
+    // if rightAscensionOrAzimuth contains non-whitespace chars or is not 9 chars long
+    if (
+      /\S/.test(rightAscensionOrAzimuth) ||
+      rightAscensionOrAzimuth.length !== 7
+    ) {
+      // rightAscensionOrAzimuth must be 7 chars, all numbers
+      if (
+        rightAscensionOrAzimuth.length !== 7 ||
+        !numRegEx.test(rightAscensionOrAzimuth)
+      ) {
+        setIsRightAscensionOrAzimuthError(true);
+      } else {
+        setIsRightAscensionOrAzimuthError(false);
+      }
+    } else {
+      setIsRightAscensionOrAzimuthError(false);
+    }
+
+    // if declinationOrElevation contains non-whitespace chars or is not 9 chars long
+    if (
+      /\S/.test(declinationOrElevation) ||
+      declinationOrElevation.length !== 6
+    ) {
+      // time must be 9 chars, all numbers
+      if (
+        declinationOrElevation.length !== 6 ||
+        !numRegEx.test(declinationOrElevation)
+      ) {
+        setIsDeclinationOrElevationError(true);
+      } else {
+        setIsDeclinationOrElevationError(false);
+      }
+    } else {
+      setIsDeclinationOrElevationError(false);
+    }
+  }, [
+    station,
+    date,
+    time,
+    numRegEx,
+    object,
+    rightAscensionOrAzimuth,
+    declinationOrElevation
+  ]);
+
+  // SEARCH FOR OBJECT IN DATABASE
   // useEffect(() => {
   //   doFetch(`/findObject/${object}`);
-
   //   console.log(data);
   // }, [object, doFetch, data]);
 
-  useEffect(() => {
-    console.log(station.length);
-    if (station.length !== 0 && station.length !== 4) {
-      setIsStationLengthError(true);
-    } else {
-      setIsStationLengthError(false);
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    setIsError(false);
+    setSuccessCount(null);
+    setErrorMessages([]);
+
+    // check if jwt is valid and hasn't expired before submission
+    await checkJwt(jwt);
+
+    // Only submit IOD if no validation errors found
+    if (
+      !isStationError &&
+      !isDateError &&
+      !isTimeError &&
+      !isObjectError &&
+      !isRightAscensionOrAzimuthError &&
+      !isDeclinationOrElevationError
+    ) {
+      try {
+        const result = await axios.post(
+          `${API_ROOT}/submitObservation`,
+          JSON.stringify({ jwt: jwt, multiple: IOD })
+        );
+
+        if (result.data.success !== 0) {
+          setSuccessCount(result.data.success);
+        } else if (result.data.error_messages.length !== 0) {
+          setErrorMessages(result.data.error_messages);
+        }
+      } catch (error) {
+        setIsError(true);
+      }
     }
-  }, [station]);
-
-  const handleSubmit = () => {
-    console.log("Submitted!!");
+    setIsLoading(false);
   };
-
-  const today = new Date();
-  const maxDate = `${today.getFullYear()}-${today.getMonth() +
-    1}-${today.getDate()}`;
 
   return (
     <Fragment>
-      <p style={{ color: "orange", marginBottom: "1em" }}>
+      <p style={{ color: "orange", marginBottom: "1em", whiteSpace: "pre" }}>
         IOD = {IOD}
         {` `}
         {remarks}
       </p>
-      <p style={{ color: "orange" }}>IOD length = {IOD.length}</p>
+      <p style={IOD.length === 80 ? { color: "green" } : { color: "red" }}>
+        IOD length = {IOD.length}
+      </p>
       <form
         className="single-observation-form"
         onSubmit={event => {
@@ -111,7 +242,9 @@ export default function SingleObservationForm() {
       >
         {/* STATION CONDITIONS */}
         <section className="station-conditions__section">
-          <h2 className="single-observation-form__heading">STATION CONDITIONS</h2>
+          <h2 className="single-observation-form__heading">
+            STATION CONDITIONS
+          </h2>
           <div className="station-conditions__location-checkbox-wrapper">
             <div className="station-conditions__location-wrapper">
               <label>Station Location</label>
@@ -121,16 +254,13 @@ export default function SingleObservationForm() {
                 value={station}
                 onChange={event => {
                   if (event.target.value.length < 5) {
-                    // limit input to 4 chars
                     setStation(event.target.value);
                   }
                 }}
                 placeholder="####"
-                style={
-                  isStationLengthError ? { border: "2px dotted red" } : null
-                }
+                style={isStationError ? { border: "2px solid red" } : null}
               />
-              {isStationLengthError ? (
+              {isStationError ? (
                 <p className="app__error-message">
                   Station must be a numerical value of 4 characters
                 </p>
@@ -168,7 +298,7 @@ export default function SingleObservationForm() {
           <div className="station-conditions__date-time-uncertainty-wrapper">
             <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
-              <div class="station-conditions__date-time-wrapper-inner">
+              <div className="station-conditions__date-time-wrapper-inner">
                 <input
                   required
                   className="station-conditions__date"
@@ -184,7 +314,9 @@ export default function SingleObservationForm() {
                       setDate(event.target.value);
                     }
                   }}
+                  style={isDateError ? { border: "2px solid red" } : null}
                 />
+
                 <input
                   type="number"
                   className="station-conditions__time"
@@ -196,8 +328,21 @@ export default function SingleObservationForm() {
                   }}
                   value={time}
                   placeholder="HHMMSSsss"
+                  style={isTimeError ? { border: "2px solid red" } : null}
                 />
               </div>
+              {isDateError ? (
+                <p className="app__error-message">
+                  Date must be a numerical value of 8 characters in the
+                  following format: YYYYMMDD
+                </p>
+              ) : null}
+              {isTimeError ? (
+                <p className="app__error-message">
+                  Time must be a numerical value of 9 characters representing
+                  UTC time in the following format: HHMMSSsss
+                </p>
+              ) : null}
             </div>
             <div className="station-conditions__time-uncertainty-wrapper">
               <label>Time uncertainty</label>
@@ -278,7 +423,14 @@ export default function SingleObservationForm() {
               }}
               value={object}
               placeholder="Object"
+              style={isObjectError ? { border: "2px solid red" } : null}
             />
+            {isObjectError ? (
+              <p className="app__error-message">
+                Enter a valid Object or International Designation number for the
+                object you are reporting an observation for.
+              </p>
+            ) : null}
           </div>
 
           <div className="object-position__angle-epoch-wrapper">
@@ -385,9 +537,12 @@ export default function SingleObservationForm() {
                 </label>
                 <input
                   type="number"
-                  onChange={event =>
-                    setRightAscensionOrAzimuth(event.target.value)
-                  }
+                  onChange={event => {
+                    // limit input to 7 chars
+                    if (event.target.value.length < 8) {
+                      setRightAscensionOrAzimuth(event.target.value);
+                    }
+                  }}
                   value={rightAscensionOrAzimuth}
                   placeholder={
                     angleFormatCode === "1"
@@ -406,7 +561,18 @@ export default function SingleObservationForm() {
                       ? "HHMMSSs"
                       : null
                   }
+                  style={
+                    isRightAscensionOrAzimuthError
+                      ? { border: "2px solid red" }
+                      : null
+                  }
                 />
+                {isRightAscensionOrAzimuthError ? (
+                  <p className="app__error-message">
+                    Enter a valid numerical value for Right Ascension or Azimuth
+                    referencing the position format you chose above
+                  </p>
+                ) : null}
               </div>
               <div className="object-position__declination-elevation-wrapper">
                 <label>
@@ -428,9 +594,12 @@ export default function SingleObservationForm() {
                   <input
                     className="object-position__visual-declination-elevation"
                     type="number"
-                    onChange={event =>
-                      setDeclinationOrElevation(event.target.value)
-                    }
+                    onChange={event => {
+                      // limit input to 6 chars
+                      if (event.target.value.length < 7) {
+                        setDeclinationOrElevation(event.target.value);
+                      }
+                    }}
                     value={declinationOrElevation}
                     placeholder={
                       angleFormatCode === "1"
@@ -449,7 +618,18 @@ export default function SingleObservationForm() {
                         ? "DDdddd"
                         : null
                     }
+                    style={
+                      isDeclinationOrElevationError
+                        ? { border: "2px solid red" }
+                        : null
+                    }
                   />
+                  {isDeclinationOrElevationError ? (
+                    <p className="app__error-message">
+                      Enter a valid numerical value for Declination or Elevation
+                      referencing the position format you chose above
+                    </p>
+                  ) : null}
                 </div>
               </div>
             </div>
@@ -477,7 +657,9 @@ export default function SingleObservationForm() {
 
         {/* BEHAVIOR */}
         <section className="object-behavior__section">
-          <h2 className="single-observation-form__heading">BEHAVIOR (OPTIONAL)</h2>
+          <h2 className="single-observation-form__heading">
+            BEHAVIOR (OPTIONAL)
+          </h2>
           <div className="object-behavior__visibility-wrapper">
             <label>Visibility</label>
             <select
@@ -603,20 +785,56 @@ export default function SingleObservationForm() {
           {` `}
           {remarks}
         </p>
-        <p style={{ color: "orange" }}>IOD length = {IOD.length}</p>
+        <p
+          style={
+            IOD.length === 80
+              ? { color: "green", marginBottom: "1em" }
+              : { color: "red", marginBottom: "1em" }
+          }
+        >
+          IOD length = {IOD.length} characters
+        </p>
 
-        {/* Cancel and Submit buttons */}
-        <div className="single-observation-form__button-wrapper">
-          <NavLink className="app__nav-link" to="/catalog/priorities">
-            <span className="app__black-button--small single-observation-form__cancel-button">
-              CANCEL
-            </span>
-          </NavLink>
-          &nbsp;
-          <button type="submit" className="app__white-button--small">
-            SUBMIT
-          </button>
-        </div>
+        {/* Success message */}
+        {successCount > 0 ? (
+          <div className="app__success-message">
+            <img
+              className="multiple-observation-form__image"
+              src={CircleCheck}
+              alt="check"
+            ></img>
+            Thank you for your submission of {successCount}{" "}
+            {successCount === 1 ? "observation" : "observations"}!
+          </div>
+        ) : null}
+
+        {/* Failure messages */}
+        {errorMessages.length > 0 ? (
+          <Fragment>
+            <p className="app__error-message">Something went wrong!</p>
+            {errorMessages.map(message => {
+              return <p className="app__error-message">{message}</p>;
+            })}
+          </Fragment>
+        ) : null}
+
+        {isError ? (
+          <p className="app__error-message">Something went wrong...</p>
+        ) : isLoading ? (
+          <Spinner />
+        ) : (
+          <div className="single-observation-form__button-wrapper">
+            <NavLink className="app__nav-link" to="/catalog/priorities">
+              <span className="app__black-button--small single-observation-form__cancel-button">
+                CANCEL
+              </span>
+            </NavLink>
+            &nbsp;
+            <button type="submit" className="app__white-button--small">
+              SUBMIT
+            </button>
+          </div>
+        )}
       </form>
     </Fragment>
   );
