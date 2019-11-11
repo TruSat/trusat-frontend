@@ -4,7 +4,11 @@ import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import { checkJwt } from "../../auth/auth-helpers";
-import { API_ROOT } from "../../app/app-helpers";
+import {
+  API_ROOT,
+  QuestionMarkToolTip,
+  toolTipCopy
+} from "../../app/app-helpers";
 import CircleCheck from "../../assets/CircleCheck.svg";
 
 // import { useTrusatGetApi } from "../../app/app-helpers";
@@ -247,7 +251,12 @@ export default function SingleObservationForm() {
           </h2>
           <div className="station-conditions__location-checkbox-wrapper">
             <div className="station-conditions__location-wrapper">
-              <label>Station Location</label>
+              <label>
+                Station Location
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.station_location}
+                />
+              </label>
               <input
                 className="app__form__input"
                 required
@@ -279,7 +288,8 @@ export default function SingleObservationForm() {
                     setConditions("C");
                   }}
                 ></input>
-                Clouded Out
+                Clouded Out{" "}
+                <QuestionMarkToolTip toolTipText={toolTipCopy.clouded_out} />
               </label>
               <label>
                 <input
@@ -292,13 +302,21 @@ export default function SingleObservationForm() {
                   }}
                 ></input>
                 Observer Unavailable
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.observer_unavailable}
+                />
               </label>
             </div>
           </div>
           {/* Date, time and time uncertainty */}
           <div className="station-conditions__date-time-uncertainty-wrapper">
             <div className="station-conditions__date-time-wrapper">
-              <label>Time of observation</label>
+              <label>
+                Time of observation{" "}
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.time_of_observation}
+                />
+              </label>
               <div className="station-conditions__date-time-wrapper-inner">
                 <div className="station-conditions__date">
                   <input
@@ -320,7 +338,6 @@ export default function SingleObservationForm() {
                   />
                 </div>
                 <div className="station-conditions__time">
-
                   <input
                     type="number"
                     className="app__form__input"
@@ -350,7 +367,12 @@ export default function SingleObservationForm() {
               ) : null}
             </div>
             <div className="station-conditions__time-uncertainty-wrapper">
-              <label>Time uncertainty</label>
+              <label>
+                Time uncertainty{" "}
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.time_uncertainty}
+                />
+              </label>
               <select
                 className="app__form__input"
                 onChange={event => setTimeUncertainty(event.target.value)}
@@ -371,7 +393,10 @@ export default function SingleObservationForm() {
           </div>
           {/* Conditions */}
           <div className="station-conditions__conditions-wrapper">
-            <label>Conditions (optional)</label>
+            <label>
+              Sky Conditions (optional){" "}
+              <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
+            </label>
             <div className="station-conditions__conditions-buttons-wrapper">
               <span
                 className="station-conditions__button"
@@ -441,7 +466,12 @@ export default function SingleObservationForm() {
 
           <div className="object-position__angle-epoch-wrapper">
             <div className="object-position__angle-wrapper">
-              <label>Position format</label>
+              <label>
+                Position format{" "}
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.position_format}
+                />
+              </label>
               <select
                 className="app__form__input"
                 selected={angleFormatCode}
@@ -539,9 +569,19 @@ export default function SingleObservationForm() {
             <div className="object-position__ascension-declination-wrapper">
               <div className="object-position__ascension-wrapper">
                 <label>
-                  {angleFormatCode < 4 || angleFormatCode > 6
-                    ? "Right ascension"
-                    : "Azimuth"}
+                  {angleFormatCode < 4 || angleFormatCode > 6 ? (
+                    <Fragment>
+                      Right ascension{" "}
+                      <QuestionMarkToolTip
+                        toolTipText={toolTipCopy.right_ascension}
+                      />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      Azimuth{" "}
+                      <QuestionMarkToolTip toolTipText={toolTipCopy.azimuth} />
+                    </Fragment>
+                  )}
                 </label>
                 <input
                   className="app__form__input"
@@ -585,9 +625,21 @@ export default function SingleObservationForm() {
               </div>
               <div className="object-position__declination-elevation-wrapper">
                 <label>
-                  {angleFormatCode < 4 || angleFormatCode > 6
-                    ? "Declination"
-                    : "Elevation"}
+                  {angleFormatCode < 4 || angleFormatCode > 6 ? (
+                    <Fragment>
+                      Declination{" "}
+                      <QuestionMarkToolTip
+                        toolTipText={toolTipCopy.declination}
+                      />
+                    </Fragment>
+                  ) : (
+                    <Fragment>
+                      Elevation{" "}
+                      <QuestionMarkToolTip
+                        toolTipText={toolTipCopy.elevation}
+                      />
+                    </Fragment>
+                  )}
                 </label>
                 <div className="object-position__declination-elevation-wrapper-inner">
                   <select
@@ -644,7 +696,12 @@ export default function SingleObservationForm() {
             </div>
 
             <div className="object-position__position-uncertainty-wrapper">
-              <label>Positional uncertainty</label>
+              <label>
+                Positional uncertainty{` `}
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.position_uncertainty}
+                />
+              </label>
               <select
                 value={positionalUncertainty}
                 onChange={event => setPositionalUncertainty(event.target.value)}
@@ -671,7 +728,10 @@ export default function SingleObservationForm() {
             BEHAVIOR (OPTIONAL)
           </h2>
           <div className="object-behavior__visibility-wrapper">
-            <label>Visibility</label>
+            <label>
+              Visibility{" "}
+              <QuestionMarkToolTip toolTipText={toolTipCopy.visibility} />
+            </label>
             <select
               className="object-behavior__behavior-select app__form__input"
               onChange={event => setBehavior(event.target.value)}
@@ -710,7 +770,10 @@ export default function SingleObservationForm() {
           </div>
           <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
             <div className="object-behavior__brightness-wrapper">
-              <label>Visual Magnitude (Brightness)</label>
+              <label>
+                Visual Magnitude (Brightness){" "}
+                <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
+              </label>
               <div className="object-behavior__brightness">
                 <select
                   className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
@@ -736,7 +799,12 @@ export default function SingleObservationForm() {
               </div>
             </div>
             <div className="object-behavior__brightness-uncertainty-wrapper">
-              <label>Brightness uncertainty</label>
+              <label>
+                Brightness uncertainty{" "}
+                <QuestionMarkToolTip
+                  toolTipText={toolTipCopy.brightness_uncertainty}
+                />
+              </label>
               <select
                 className="object-behavior__brightness-uncertainty-select app__form__input"
                 onChange={event =>
@@ -755,7 +823,10 @@ export default function SingleObservationForm() {
               </select>
             </div>
             <div className="object-behavior__flash-period-wrapper">
-              <label>Flash Period</label>
+              <label>
+                Flash Period{" "}
+                <QuestionMarkToolTip toolTipText={toolTipCopy.flash_period} />
+              </label>
               <select
                 className="object-behavior__flash-period-select app__form__input"
                 onChange={event => setFlashPeriod(event.target.value)}
