@@ -104,12 +104,10 @@ SINGLE OBSERVATION FORM
   max-width: 720px;
 }
 
-
 label {
   font-size: $small-font-size;
   margin-bottom: 0.5em;
 }
-
 
 .single-observation-form__section {
   margin-bottom: 7em;
@@ -123,9 +121,7 @@ label {
   margin-bottom: 3.5em;
 }
 
-
 // Station conditions block
-
 .single-observation-form__heading {
   border-bottom: 1px solid $primary-text-color;
   font-size: $medium-font-size;
@@ -178,7 +174,6 @@ label {
   flex-basis: 50%;
 }
 
-
 .station-conditions__time-uncertainty-wrapper {
   display: flex;
   flex-direction: column;
@@ -221,6 +216,22 @@ label {
   width: 100%;
 }
 
+.object-position__search-results-wrapper {
+  //border: 1px solid grey;
+  display: flex;
+  padding: 0em 1em 1em 1em;
+}
+
+.object-position__search-result {
+  border: 1px solid grey;
+  border-radius: 5%;
+  padding: 0.5em;
+}
+
+.object-position__search-result:hover {
+  cursor: pointer;
+}
+
 .object-position__angle-epoch-wrapper {
   //border: 3px solid red;
   display: flex;
@@ -238,7 +249,7 @@ label {
 .object-position__epoch-wrapper {
   display: flex;
   flex-direction: column;
-  flex-basis: 33.33%
+  flex-basis: 33.33%;
 }
 
 .object-position__ascension-declination-uncertainty-wrapper {
@@ -272,7 +283,7 @@ label {
 
 .object-position__visual-declination-elevation {
   flex-grow: 1;
-  border:1px solid green;
+  border: 1px solid green;
 }
 
 .object-position__position-uncertainty-wrapper {
@@ -338,7 +349,6 @@ label {
 .object-behavior__remarks-wrapper > textarea {
   padding: 20px;
 }
-
 
 // grid gutter hack
 .station-conditions__location-wrapper,

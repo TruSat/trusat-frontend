@@ -24,7 +24,9 @@ export default function SingleObservationForm() {
   const [conditions, setConditions] = useState(` `); // 1 char
   const [isHiddenInputs, setIsHiddenInputs] = useState(false);
   // OBJECT POSITION
+  //const [objectSearchTerm, setObjectSearchTerm] = useState(``); // 15 chars
   const [object, setObject] = useState(``); // 15 chars
+  const [objectSearchResults, setObjectSearchResults] = useState([]); // renders a list under input field
   // position format in the UI
   const [angleFormatCode, setAngleFormatCode] = useState(`2`); // 1 char
   const [epochCode, setEpochCode] = useState(`5`); // 1 char
@@ -84,10 +86,10 @@ export default function SingleObservationForm() {
   //   1}-${today.getDate()}`; // get max date
 
   const isDateValid = date => {
-    const today = new Date(); // get todays date
-    console.log(`todays date = `, today);
-    const timeStamp = today.getTime();
-    console.log(`todays timestamp = `, timeStamp);
+    // const today = new Date(); // get todays date
+    // console.log(`todays date = `, today);
+    // const timeStamp = today.getTime();
+    // console.log(`todays timestamp = `, timeStamp);
     // const maxDate = `${today.getFullYear()}-${today.getMonth() +
     //   1}-${today.getDate()}`; // get max date
   };
@@ -211,20 +213,45 @@ export default function SingleObservationForm() {
   }, [conditions]);
 
   // SEARCH FOR OBJECT IN DATABASE
-  // useEffect(() => {
-  //   doFetch(`/findObject/${object}`);
-  //   console.log(data);
-  // }, [object, doFetch, data]);
+  useEffect(() => {
+    const fetchObject = async () => {
+      try {
+        const response = await axios(
+          `${API_ROOT}/findObject?objectName=${object}`
+        );
+        setObjectSearchResults(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    // start searching when user has entered more than 2 chars
+    if (object.length > 2) {
+      fetchObject();
+    }
+  }, [object]);
+
+  const renderObjectSearchResults = () => {
+    return objectSearchResults.map(obj => {
+      return (
+        <span
+          key={obj.norad_number}
+          className="object-position__search-result"
+          onClick={() => {
+            setObject(`${obj.norad_number} 98 123LEO`);
+            setObjectSearchResults([]);
+          }}
+        >{`${obj.name} = ${obj.norad_number} 98 123LEO`}</span>
+      );
+    });
+  };
 
   const handleSubmit = async () => {
     setIsLoading(true);
     setIsError(false);
     setSuccessCount(null);
     setErrorMessages([]);
-
     // check if jwt is valid and hasn't expired before submission
     await checkJwt(jwt);
-
     // Only submit IOD if no validation errors found
     if (
       !isStationError &&
@@ -494,6 +521,11 @@ export default function SingleObservationForm() {
                 placeholder="Search objects by name or number"
                 style={isObjectError ? { border: "2px solid red" } : null}
               />
+              {objectSearchResults.length !== 0 ? (
+                <div className="object-position__search-results-wrapper">
+                  {renderObjectSearchResults()}
+                </div>
+              ) : null}
               {isObjectError ? (
                 <p className="app__error-message">
                   Enter a valid Object or International Designation number for
