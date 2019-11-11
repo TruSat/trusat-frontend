@@ -656,10 +656,18 @@ COPY TEXT
 
 .app__success-message,
 .app__error-message {
-  color: $primary-highlight-color;
-  font-size: $large-font-size;
+  font-size: $small-font-size;
   margin: 1em 0;
 }
+
+.app__error-message {
+  color: $primary-highlight-color;
+}
+
+.app__success-message {
+  color: $tertiary-color;
+}
+
 
 /* ----------
 WELCOME VIEW
