@@ -111,11 +111,20 @@ label {
 }
 
 
-// Station conditions block
-.station-conditions__section {
-  border: 3px dotted grey;
-  margin-bottom: 3em;
+.single-observation-form__section {
+  margin-bottom: 7em;
 }
+
+.single-observation-form__section:first-of-type {
+  margin-top: 4em;
+}
+
+.single-observation-form__section:last-of-type {
+  margin-bottom: 3.5em;
+}
+
+
+// Station conditions block
 
 .single-observation-form__heading {
   border-bottom: 1px solid $primary-text-color;
@@ -150,7 +159,6 @@ label {
   //border: 3px solid red;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2em;
 }
 
 .station-conditions__date-time-wrapper {

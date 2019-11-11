@@ -241,7 +241,7 @@ export default function SingleObservationForm() {
         }}
       >
         {/* STATION CONDITIONS */}
-        <section className="station-conditions__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">
             STATION CONDITIONS
           </h2>
@@ -410,7 +410,7 @@ export default function SingleObservationForm() {
         </section>
 
         {/* OBJECT POSITION */}
-        <section className="object-position__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">OBJECT POSITION</h2>
           <div className="object-position__object-wrapper">
             <input
@@ -662,7 +662,7 @@ export default function SingleObservationForm() {
         </section>
 
         {/* BEHAVIOR */}
-        <section className="object-behavior__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">
             BEHAVIOR (OPTIONAL)
           </h2>
