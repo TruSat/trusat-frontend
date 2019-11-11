@@ -501,6 +501,10 @@ EMAIL FORM
   height: 48px;
 }
 
+.app__form__input--sign {
+  max-width: 60px;
+}
+
 .app__form__checkbox-and-message-wrapper {
   align-items: flex-start;
   display: flex;

@@ -587,7 +587,7 @@ export default function SingleObservationForm() {
                 </label>
                 <div className="object-position__declination-elevation-wrapper-inner">
                   <select
-                    className="object-position__visual-magnitude-sign-select app__form__input"
+                    className="object-position__visual-magnitude-sign-select app__form__input app__form__input--sign"
                     onChange={event =>
                       setDeclinationOrElevationSign(event.target.value)
                     }
@@ -709,7 +709,7 @@ export default function SingleObservationForm() {
               <label>Visual Magnitude (Brightness)</label>
               <div className="object-behavior__brightness">
                 <select
-                  className="object-behavior__visual-magnitude-sign-select app__form__input"
+                  className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
                   onChange={event => setVisualMagnitudeSign(event.target.value)}
                   value={visualMagnitudeSign}
                 >
