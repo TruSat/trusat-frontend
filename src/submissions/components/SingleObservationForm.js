@@ -53,9 +53,6 @@ export default function SingleObservationForm() {
   const [IOD, setIOD] = useState("");
   // VALIDATION ERROR MESSAGING
   const numRegEx = /^\d+$/; // checks if string only contains numbers
-  // const today = new Date(); // get todays date
-  // const maxDate = `${today.getFullYear()}-${today.getMonth() +
-  //   1}-${today.getDate()}`; // get max date
   const [isStationError, setIsStationError] = useState(false);
   const [isDateError, setIsDateError] = useState(false);
   const [isTimeError, setIsTimeError] = useState(false);
@@ -81,6 +78,19 @@ export default function SingleObservationForm() {
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
+
+  // const today = new Date(); // get todays date
+  // const maxDate = `${today.getFullYear()}-${today.getMonth() +
+  //   1}-${today.getDate()}`; // get max date
+
+  const isDateValid = date => {
+    const today = new Date(); // get todays date
+    console.log(`todays date = `, today);
+    const timeStamp = today.getTime();
+    console.log(`todays timestamp = `, timeStamp);
+    // const maxDate = `${today.getFullYear()}-${today.getMonth() +
+    //   1}-${today.getDate()}`; // get max date
+  };
 
   // Builds the IOD string
   useEffect(() => {
@@ -115,6 +125,8 @@ export default function SingleObservationForm() {
     } else {
       setIsStationError(false);
     }
+
+    isDateValid(date);
 
     // date is mandatory, must be 8 chars long, all numbers
     if (date.length !== 8 || !numRegEx.test(date)) {
@@ -346,7 +358,7 @@ export default function SingleObservationForm() {
                     required
                     className="app__form__input"
                     type="number"
-                    placeholder="Date: YYYYMMDD"
+                    placeholder="YYYYMMDD"
                     value={date}
                     onChange={event => {
                       // limit input to 8 chars
@@ -368,7 +380,7 @@ export default function SingleObservationForm() {
                       }
                     }}
                     value={time}
-                    placeholder="Time: HHMMSSsss"
+                    placeholder="HHMMSSsss"
                     style={isTimeError ? { border: "2px solid red" } : null}
                   />
                 </div>
@@ -479,7 +491,7 @@ export default function SingleObservationForm() {
                   }
                 }}
                 value={object}
-                placeholder="Object"
+                placeholder="Search objects by name or number"
                 style={isObjectError ? { border: "2px solid red" } : null}
               />
               {isObjectError ? (
@@ -774,7 +786,7 @@ export default function SingleObservationForm() {
                 value={behavior}
               >
                 <option value={` `} disabled hidden>
-                  Choose Behavior
+                  Select one
                 </option>
                 <option value="E">
                   Unusually faint because of eclipse exit/entrance
@@ -807,7 +819,7 @@ export default function SingleObservationForm() {
             <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
               <div className="object-behavior__brightness-wrapper">
                 <label>
-                  Visual Magnitude (Brightness){" "}
+                  Brightness{" "}
                   <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
                 </label>
                 <div className="object-behavior__brightness">
@@ -827,6 +839,9 @@ export default function SingleObservationForm() {
                     onChange={event => setVisualMagnitude(event.target.value)}
                     value={visualMagnitude}
                   >
+                    <option value={`   `} disabled hidden>
+                      Magnitude
+                    </option>
                     <option value="010">1</option>
                     <option value="020">2</option>
                     <option value="030">3</option>
