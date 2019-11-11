@@ -502,7 +502,7 @@ EMAIL FORM
 }
 
 .app__form__input--sign {
-  max-width: 60px;
+  max-width: 48px;
 }
 
 .app__form__checkbox-and-message-wrapper {
@@ -662,7 +662,7 @@ COPY TEXT
 .app__success-message,
 .app__error-message {
   font-size: $small-font-size;
-  margin: 1em 0;
+  margin: 0 0 1em;
 }
 
 .app__error-message {

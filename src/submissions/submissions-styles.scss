@@ -110,11 +110,6 @@ label {
   margin-bottom: 0.5em;
 }
 
-input,
-select {
-  height: 48px;
-}
-
 
 // Station conditions block
 .station-conditions__section {
@@ -148,6 +143,7 @@ select {
   display: flex;
   flex-direction: column;
   flex-basis: 33.33%;
+  margin-top: 1.75em;
 }
 
 .station-conditions__date-time-uncertainty-wrapper {
@@ -300,6 +296,11 @@ select {
 .object-behavior__brightness-uncertainty-wrapper,
 .object-behavior__flash-period-wrapper {
   flex-basis: 33.33%;
+}
+
+.object-behavior__brightness-wrapper {
+  display: flex;
+  flex-direction: column;
 }
 
 .object-behavior__brightness {
