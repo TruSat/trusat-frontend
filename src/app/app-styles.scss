@@ -469,7 +469,7 @@ EMAIL FORM
   @include view-title--desktop;
 }
 
-.email-form {
+.app__form {
   display: flex;
   flex-direction: column;
   max-width: 400px;
@@ -477,18 +477,18 @@ EMAIL FORM
 }
 
 @media (min-width: 600px) {
-  .email-form {
+  .app__form {
     min-width: 400px;
   }
 }
 
-.email-form__label {
+.app__form__label {
   font-size: $small-font-size;
   font-weight: $regular-weight;
   margin: 0.5em 0;
 }
 
-.email-form__input {
+.app__form__input {
   align-self: flex-start;
   background: $tertiary-color;
   border-radius: 4px;
@@ -498,15 +498,16 @@ EMAIL FORM
   margin-bottom: 1em;
   padding: 1em;
   width: 100%;
+  height: 48px;
 }
 
-.email-form__checkbox-and-message-wrapper {
+.app__form__checkbox-and-message-wrapper {
   align-items: flex-start;
   display: flex;
   margin: 0.5em 0 0.5em 0;
 }
 
-.email-form__checkbox {
+.app__form__checkbox {
   border: 1px solid yellow;
   margin-right: 1em;
   padding: 10px;
@@ -518,7 +519,7 @@ EMAIL FORM
   transform: scale(2);
 }
 
-.email-form__button-wrapper {
+.app__form__button-wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -526,7 +527,7 @@ EMAIL FORM
   text-align: center;
 }
 
-.email-form__button--cancel {
+.app__form__button--cancel {
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   display: inline-block;
@@ -536,11 +537,11 @@ EMAIL FORM
   padding: 1em 2em;
 }
 
-.email-form__button--cancel:hover {
+.app__form__button--cancel:hover {
   cursor: pointer;
 }
 
-.email-form__button--white {
+.app__form__button--white {
   background: $primary-text-color;
   border-radius: 4px;
   color: $primary-theme-color;
@@ -551,19 +552,19 @@ EMAIL FORM
   padding: 1em 2em;
 }
 
-.email-form__button--white:hover {
+.app__form__button--white:hover {
   cursor: pointer;
 }
 
-.email-form__link-to-login-wrapper {
+.app__form__link-to-login-wrapper {
   margin-top: 1em;
 }
-.email-form__log-in-text {
+.app__form__log-in-text {
   text-decoration: underline;
   margin-top: 1em;
 }
 
-.email-form__error {
+.app__form__error {
   color: $primary-highlight-color;
   margin-bottom: 1em;
 }

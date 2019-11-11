@@ -39,16 +39,16 @@ export default function ClaimAccount() {
     <div className="claim-account__wrapper">
       <h1 className="claim-account__header">Claim Account</h1>
       <form
-        className="email-form"
+        className="app__form"
         onSubmit={event => {
           event.preventDefault();
           claimAccount();
         }}
       >
-        <label className="email-form__label">EMAIL</label>
+        <label className="app__form__label">EMAIL</label>
         <input
           required
-          className="email-form__input"
+          className="app__form__input"
           type="email"
           onChange={event => setEmail(event.target.value)}
           value={email}
