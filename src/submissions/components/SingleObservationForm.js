@@ -22,6 +22,7 @@ export default function SingleObservationForm() {
   const [time, setTime] = useState(`         `); // 9 chars
   const [timeUncertainty, setTimeUncertainty] = useState(`18`); // 2 chars
   const [conditions, setConditions] = useState(` `); // 1 char
+  const [isHiddenInputs, setIsHiddenInputs] = useState(false);
   // OBJECT POSITION
   const [object, setObject] = useState(``); // 15 chars
   // position format in the UI
@@ -81,6 +82,7 @@ export default function SingleObservationForm() {
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
 
+  // Builds the IOD string
   useEffect(() => {
     setIOD(
       `${object} ${station} ${conditions} ${date}${time} ${timeUncertainty} ${angleFormatCode}${epochCode} ${rightAscensionOrAzimuth}${declinationOrElevationSign}${declinationOrElevation} ${positionalUncertainty} ${behavior}${visualMagnitudeSign}${visualMagnitude} ${visualMagnitudeUncertainty} ${flashPeriod}`
@@ -185,6 +187,17 @@ export default function SingleObservationForm() {
     declinationOrElevation
   ]);
 
+  // clear form fields and hide inputs that are not applicable
+  // when user selected 'Clouded Out' or 'Observer Unavailable'
+  useEffect(() => {
+    if (conditions === "C" || conditions === "O") {
+      setIsHiddenInputs(true);
+      setObject(`               `); // adds 15 chars of whitespace to the IOD string for object
+    } else {
+      setIsHiddenInputs(false);
+    }
+  }, [conditions]);
+
   // SEARCH FOR OBJECT IN DATABASE
   // useEffect(() => {
   //   doFetch(`/findObject/${object}`);
@@ -252,7 +265,7 @@ export default function SingleObservationForm() {
           <div className="station-conditions__location-checkbox-wrapper">
             <div className="station-conditions__location-wrapper">
               <label>
-                Station Location
+                Station Location{` `}
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
@@ -283,9 +296,14 @@ export default function SingleObservationForm() {
                   type="checkbox"
                   checked={cloudedOut}
                   onChange={() => {
-                    setCloudedOut(!cloudedOut);
-                    setObserverUnavailable(false);
-                    setConditions("C");
+                    if (!cloudedOut) {
+                      setCloudedOut(true);
+                      setObserverUnavailable(false);
+                      setConditions("C");
+                    } else if (cloudedOut) {
+                      setCloudedOut(false);
+                      setConditions(` `);
+                    }
                   }}
                 ></input>
                 Clouded Out{" "}
@@ -296,9 +314,14 @@ export default function SingleObservationForm() {
                   type="checkbox"
                   checked={observerUnavailable}
                   onChange={() => {
-                    setObserverUnavailable(!observerUnavailable);
-                    setCloudedOut(false);
-                    setConditions("O");
+                    if (!observerUnavailable) {
+                      setObserverUnavailable(true);
+                      setCloudedOut(false);
+                      setConditions("O");
+                    } else if (observerUnavailable) {
+                      setObserverUnavailable(false);
+                      setConditions(` `);
+                    }
                   }}
                 ></input>
                 Observer Unavailable
@@ -323,10 +346,7 @@ export default function SingleObservationForm() {
                     required
                     className="app__form__input"
                     type="number"
-                    placeholder="YYYYMMDD"
-                    // onChange={event => {
-                    //   setDate(event.target.value.replace(/-/g, ""));
-                    // }}
+                    placeholder="Date: YYYYMMDD"
                     value={date}
                     onChange={event => {
                       // limit input to 8 chars
@@ -348,7 +368,7 @@ export default function SingleObservationForm() {
                       }
                     }}
                     value={time}
-                    placeholder="HHMMSSsss"
+                    placeholder="Time: HHMMSSsss"
                     style={isTimeError ? { border: "2px solid red" } : null}
                   />
                 </div>
@@ -391,476 +411,492 @@ export default function SingleObservationForm() {
               </select>
             </div>
           </div>
+
           {/* Conditions */}
-          <div className="station-conditions__conditions-wrapper">
-            <label>
-              Sky Conditions (optional){" "}
-              <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
-            </label>
-            <div className="station-conditions__conditions-buttons-wrapper">
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("E")}
-              >
-                Excellent
-              </span>
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("G")}
-              >
-                Good
-              </span>
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("F")}
-              >
-                Fair
-              </span>
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("P")}
-              >
-                Poor
-              </span>
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("B")}
-              >
-                Bad
-              </span>
-              <span
-                className="station-conditions__button"
-                onClick={() => setConditions("T")}
-              >
-                Terrible
-              </span>
+          {isHiddenInputs ? null : (
+            <div className="station-conditions__conditions-wrapper">
+              <label>
+                Sky Conditions (optional){" "}
+                <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
+              </label>
+              <div className="station-conditions__conditions-buttons-wrapper">
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("E")}
+                >
+                  Excellent
+                </span>
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("G")}
+                >
+                  Good
+                </span>
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("F")}
+                >
+                  Fair
+                </span>
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("P")}
+                >
+                  Poor
+                </span>
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("B")}
+                >
+                  Bad
+                </span>
+                <span
+                  className="station-conditions__button"
+                  onClick={() => setConditions("T")}
+                >
+                  Terrible
+                </span>
+              </div>
             </div>
-          </div>
+          )}
         </section>
 
         {/* OBJECT POSITION */}
-        <section className="single-observation-form__section">
-          <h2 className="single-observation-form__heading">OBJECT POSITION</h2>
-          <div className="object-position__object-wrapper">
-            <input
-              type="text"
-              required
-              className="object-position__object-input app__form__input"
-              onChange={event => {
-                // limit input to 15 chars
-                if (event.target.value.length < 16) {
-                  setObject(event.target.value);
-                }
-              }}
-              value={object}
-              placeholder="Object"
-              style={isObjectError ? { border: "2px solid red" } : null}
-            />
-            {isObjectError ? (
-              <p className="app__error-message">
-                Enter a valid Object or International Designation number for the
-                object you are reporting an observation for.
-              </p>
-            ) : null}
-          </div>
+        {isHiddenInputs ? null : (
+          <section className="single-observation-form__section">
+            <h2 className="single-observation-form__heading">
+              OBJECT POSITION
+            </h2>
+            <div className="object-position__object-wrapper">
+              <input
+                type="text"
+                required
+                className="object-position__object-input app__form__input"
+                onChange={event => {
+                  // limit input to 15 chars
+                  if (event.target.value.length < 16) {
+                    setObject(event.target.value);
+                  }
+                }}
+                value={object}
+                placeholder="Object"
+                style={isObjectError ? { border: "2px solid red" } : null}
+              />
+              {isObjectError ? (
+                <p className="app__error-message">
+                  Enter a valid Object or International Designation number for
+                  the object you are reporting an observation for.
+                </p>
+              ) : null}
+            </div>
 
-          <div className="object-position__angle-epoch-wrapper">
-            <div className="object-position__angle-wrapper">
-              <label>
-                Position format{" "}
-                <QuestionMarkToolTip
-                  toolTipText={toolTipCopy.position_format}
-                />
-              </label>
-              <select
-                className="app__form__input"
-                selected={angleFormatCode}
-                onChange={event => setAngleFormatCode(event.target.value)}
-                // default is 2
-                value={angleFormatCode}
-              >
-                <option value="1">1: RA/DEC = HHMMSSs+DDMMSS MX</option>
-                <option value="2">2: RA/DEC = HHMMmmm+DDMMmm MX</option>
-                <option value="3">3: RA/DEC = HHMMmmm+DDdddd MX</option>
-                <option value="4">4: AZ/EL = DDDMMSS+DDMMSS MX</option>
-                <option value="5">5: AZ/EL = DDDMMmm+DDMMmm MX</option>
-                <option value="6">6: AZ/EL = DDDdddd+DDdddd MX</option>
-                <option value="7">7: RA/DEC = HHMMSSs+DDdddd MX</option>
-              </select>
-            </div>
-            <div className="object-position__epoch-wrapper">
-              <label>Epoch code</label>
-              {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
-              <select
-                className="app__form__input"
-                value={
-                  Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                    ? "0"
-                    : epochCode
-                }
-                onChange={event => setEpochCode(event.target.value)}
-              >
-                <option value="0">0 or blank = of date</option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="1"
-                >
-                  1 = 1855
-                </option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="2"
-                >
-                  2 = 1875
-                </option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="3"
-                >
-                  3 = 1900
-                </option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="4"
-                >
-                  4 = 1950
-                </option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="5"
-                >
-                  5 = 2000
-                </option>
-                <option
-                  disabled={
-                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
-                      ? true
-                      : false
-                  }
-                  value="6"
-                >
-                  6 = 2050
-                </option>
-              </select>
-            </div>
-          </div>
-          {/* Right ascension and declination */}
-          <div className="object-position__ascension-declination-uncertainty-wrapper">
-            <div className="object-position__ascension-declination-wrapper">
-              <div className="object-position__ascension-wrapper">
+            <div className="object-position__angle-epoch-wrapper">
+              <div className="object-position__angle-wrapper">
                 <label>
-                  {angleFormatCode < 4 || angleFormatCode > 6 ? (
-                    <Fragment>
-                      Right ascension{" "}
-                      <QuestionMarkToolTip
-                        toolTipText={toolTipCopy.right_ascension}
-                      />
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      Azimuth{" "}
-                      <QuestionMarkToolTip toolTipText={toolTipCopy.azimuth} />
-                    </Fragment>
-                  )}
+                  Position format{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.position_format}
+                  />
                 </label>
-                <input
+                <select
                   className="app__form__input"
-                  type="number"
-                  onChange={event => {
-                    // limit input to 7 chars
-                    if (event.target.value.length < 8) {
-                      setRightAscensionOrAzimuth(event.target.value);
-                    }
-                  }}
-                  value={rightAscensionOrAzimuth}
-                  placeholder={
-                    angleFormatCode === "1"
-                      ? "HHMMSSs"
-                      : angleFormatCode === "2"
-                      ? "HHMMmmm"
-                      : angleFormatCode === "3"
-                      ? "HHMMmmm"
-                      : angleFormatCode === "4"
-                      ? "DDDMMSS"
-                      : angleFormatCode === "5"
-                      ? "DDDMMmm"
-                      : angleFormatCode === "6"
-                      ? "DDDdddd"
-                      : angleFormatCode === "7"
-                      ? "HHMMSSs"
-                      : null
-                  }
-                  style={
-                    isRightAscensionOrAzimuthError
-                      ? { border: "2px solid red" }
-                      : null
-                  }
-                />
-                {isRightAscensionOrAzimuthError ? (
-                  <p className="app__error-message">
-                    Enter a valid numerical value for Right Ascension or Azimuth
-                    referencing the position format you chose above
-                  </p>
-                ) : null}
+                  selected={angleFormatCode}
+                  onChange={event => setAngleFormatCode(event.target.value)}
+                  // default is 2
+                  value={angleFormatCode}
+                >
+                  <option value="1">1: RA/DEC = HHMMSSs+DDMMSS MX</option>
+                  <option value="2">2: RA/DEC = HHMMmmm+DDMMmm MX</option>
+                  <option value="3">3: RA/DEC = HHMMmmm+DDdddd MX</option>
+                  <option value="4">4: AZ/EL = DDDMMSS+DDMMSS MX</option>
+                  <option value="5">5: AZ/EL = DDDMMmm+DDMMmm MX</option>
+                  <option value="6">6: AZ/EL = DDDdddd+DDdddd MX</option>
+                  <option value="7">7: RA/DEC = HHMMSSs+DDdddd MX</option>
+                </select>
               </div>
-              <div className="object-position__declination-elevation-wrapper">
-                <label>
-                  {angleFormatCode < 4 || angleFormatCode > 6 ? (
-                    <Fragment>
-                      Declination{" "}
-                      <QuestionMarkToolTip
-                        toolTipText={toolTipCopy.declination}
-                      />
-                    </Fragment>
-                  ) : (
-                    <Fragment>
-                      Elevation{" "}
-                      <QuestionMarkToolTip
-                        toolTipText={toolTipCopy.elevation}
-                      />
-                    </Fragment>
-                  )}
-                </label>
-                <div className="object-position__declination-elevation-wrapper-inner">
-                  <select
-                    className="object-position__visual-magnitude-sign-select app__form__input app__form__input--sign"
-                    onChange={event =>
-                      setDeclinationOrElevationSign(event.target.value)
+              <div className="object-position__epoch-wrapper">
+                <label>Epoch code</label>
+                {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
+                <select
+                  className="app__form__input"
+                  value={
+                    Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                      ? "0"
+                      : epochCode
+                  }
+                  onChange={event => setEpochCode(event.target.value)}
+                >
+                  <option value="0">0 or blank = of date</option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
                     }
-                    value={declinationOrElevationSign}
+                    value="1"
                   >
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                  </select>
+                    1 = 1855
+                  </option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
+                    }
+                    value="2"
+                  >
+                    2 = 1875
+                  </option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
+                    }
+                    value="3"
+                  >
+                    3 = 1900
+                  </option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
+                    }
+                    value="4"
+                  >
+                    4 = 1950
+                  </option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
+                    }
+                    value="5"
+                  >
+                    5 = 2000
+                  </option>
+                  <option
+                    disabled={
+                      Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
+                        ? true
+                        : false
+                    }
+                    value="6"
+                  >
+                    6 = 2050
+                  </option>
+                </select>
+              </div>
+            </div>
+            {/* Right ascension and declination */}
+            <div className="object-position__ascension-declination-uncertainty-wrapper">
+              <div className="object-position__ascension-declination-wrapper">
+                <div className="object-position__ascension-wrapper">
+                  <label>
+                    {angleFormatCode < 4 || angleFormatCode > 6 ? (
+                      <Fragment>
+                        Right ascension{" "}
+                        <QuestionMarkToolTip
+                          toolTipText={toolTipCopy.right_ascension}
+                        />
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        Azimuth{" "}
+                        <QuestionMarkToolTip
+                          toolTipText={toolTipCopy.azimuth}
+                        />
+                      </Fragment>
+                    )}
+                  </label>
                   <input
-                    className="object-position__visual-declination-elevation app__form__input"
+                    className="app__form__input"
                     type="number"
                     onChange={event => {
-                      // limit input to 6 chars
-                      if (event.target.value.length < 7) {
-                        setDeclinationOrElevation(event.target.value);
+                      // limit input to 7 chars
+                      if (event.target.value.length < 8) {
+                        setRightAscensionOrAzimuth(event.target.value);
                       }
                     }}
-                    value={declinationOrElevation}
+                    value={rightAscensionOrAzimuth}
                     placeholder={
                       angleFormatCode === "1"
-                        ? "DDMMSS"
+                        ? "HHMMSSs"
                         : angleFormatCode === "2"
-                        ? "DDMMmm"
+                        ? "HHMMmmm"
                         : angleFormatCode === "3"
-                        ? "DDdddd"
+                        ? "HHMMmmm"
                         : angleFormatCode === "4"
-                        ? "DDMMSS"
+                        ? "DDDMMSS"
                         : angleFormatCode === "5"
-                        ? "DDMMmm"
+                        ? "DDDMMmm"
                         : angleFormatCode === "6"
-                        ? "DDdddd"
+                        ? "DDDdddd"
                         : angleFormatCode === "7"
-                        ? "DDdddd"
+                        ? "HHMMSSs"
                         : null
                     }
                     style={
-                      isDeclinationOrElevationError
+                      isRightAscensionOrAzimuthError
                         ? { border: "2px solid red" }
                         : null
                     }
                   />
-                  {isDeclinationOrElevationError ? (
+                  {isRightAscensionOrAzimuthError ? (
                     <p className="app__error-message">
-                      Enter a valid numerical value for Declination or Elevation
-                      referencing the position format you chose above
+                      Enter a valid numerical value for Right Ascension or
+                      Azimuth referencing the position format you chose above
                     </p>
                   ) : null}
                 </div>
+                <div className="object-position__declination-elevation-wrapper">
+                  <label>
+                    {angleFormatCode < 4 || angleFormatCode > 6 ? (
+                      <Fragment>
+                        Declination{" "}
+                        <QuestionMarkToolTip
+                          toolTipText={toolTipCopy.declination}
+                        />
+                      </Fragment>
+                    ) : (
+                      <Fragment>
+                        Elevation{" "}
+                        <QuestionMarkToolTip
+                          toolTipText={toolTipCopy.elevation}
+                        />
+                      </Fragment>
+                    )}
+                  </label>
+                  <div className="object-position__declination-elevation-wrapper-inner">
+                    <select
+                      className="object-position__visual-magnitude-sign-select app__form__input app__form__input--sign"
+                      onChange={event =>
+                        setDeclinationOrElevationSign(event.target.value)
+                      }
+                      value={declinationOrElevationSign}
+                    >
+                      <option value="+">+</option>
+                      <option value="-">-</option>
+                    </select>
+                    <input
+                      className="object-position__visual-declination-elevation app__form__input"
+                      type="number"
+                      onChange={event => {
+                        // limit input to 6 chars
+                        if (event.target.value.length < 7) {
+                          setDeclinationOrElevation(event.target.value);
+                        }
+                      }}
+                      value={declinationOrElevation}
+                      placeholder={
+                        angleFormatCode === "1"
+                          ? "DDMMSS"
+                          : angleFormatCode === "2"
+                          ? "DDMMmm"
+                          : angleFormatCode === "3"
+                          ? "DDdddd"
+                          : angleFormatCode === "4"
+                          ? "DDMMSS"
+                          : angleFormatCode === "5"
+                          ? "DDMMmm"
+                          : angleFormatCode === "6"
+                          ? "DDdddd"
+                          : angleFormatCode === "7"
+                          ? "DDdddd"
+                          : null
+                      }
+                      style={
+                        isDeclinationOrElevationError
+                          ? { border: "2px solid red" }
+                          : null
+                      }
+                    />
+                    {isDeclinationOrElevationError ? (
+                      <p className="app__error-message">
+                        Enter a valid numerical value for Declination or
+                        Elevation referencing the position format you chose
+                        above
+                      </p>
+                    ) : null}
+                  </div>
+                </div>
+              </div>
+
+              <div className="object-position__position-uncertainty-wrapper">
+                <label>
+                  Positional uncertainty{` `}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.position_uncertainty}
+                  />
+                </label>
+                <select
+                  value={positionalUncertainty}
+                  onChange={event =>
+                    setPositionalUncertainty(event.target.value)
+                  }
+                  className="app__form__input"
+                >
+                  <option value="34">0.0003 seconds</option>
+                  <option value="56">0.05 seconds</option>
+                  <option value="17">0.1 seconds</option>
+                  <option value="97">0.9 seconds</option>
+                  <option value="18">1.0 seconds</option>
+                  <option value="28">2.0 seconds</option>
+                  <option value="58">5.0 seconds</option>
+                  <option value="19">10.0 seconds</option>
+                  <option value="29">20.0 seconds</option>
+                  <option value="99">90.0 seconds</option>
+                </select>
               </div>
             </div>
-
-            <div className="object-position__position-uncertainty-wrapper">
-              <label>
-                Positional uncertainty{` `}
-                <QuestionMarkToolTip
-                  toolTipText={toolTipCopy.position_uncertainty}
-                />
-              </label>
-              <select
-                value={positionalUncertainty}
-                onChange={event => setPositionalUncertainty(event.target.value)}
-                className="app__form__input"
-              >
-                <option value="34">0.0003 seconds</option>
-                <option value="56">0.05 seconds</option>
-                <option value="17">0.1 seconds</option>
-                <option value="97">0.9 seconds</option>
-                <option value="18">1.0 seconds</option>
-                <option value="28">2.0 seconds</option>
-                <option value="58">5.0 seconds</option>
-                <option value="19">10.0 seconds</option>
-                <option value="29">20.0 seconds</option>
-                <option value="99">90.0 seconds</option>
-              </select>
-            </div>
-          </div>
-        </section>
+          </section>
+        )}
 
         {/* BEHAVIOR */}
-        <section className="single-observation-form__section">
-          <h2 className="single-observation-form__heading">
-            BEHAVIOR (OPTIONAL)
-          </h2>
-          <div className="object-behavior__visibility-wrapper">
-            <label>
-              Visibility{" "}
-              <QuestionMarkToolTip toolTipText={toolTipCopy.visibility} />
-            </label>
-            <select
-              className="object-behavior__behavior-select app__form__input"
-              onChange={event => setBehavior(event.target.value)}
-              value={behavior}
-            >
-              <option value={` `} disabled hidden>
-                Choose Behavior
-              </option>
-              <option value="E">
-                Unusually faint because of eclipse exit/entrance
-              </option>
-              <option value="F">Constant flash period</option>
-              <option value="I">Irregular</option>
-              <option value="R">Regular variations</option>
-              <option value="S">Steady</option>
-              <option value="X">Irregular flash period</option>
-              <option value="B">
-                Time zero for averaging several flash cycles
-              </option>
-              <option value="H">One flash in a series</option>
-              <option value="P">
-                end time for averaging several flash cycles. Time interval from
-                last "B" report divided by flash period reported on this line
-                gives number of flashes that occurred since "B".
-              </option>
-              <option value="A">
-                became visible (was invisible); use E for eclipse exit
-              </option>
-              <option value="D">
-                Object in field of view, but not visible
-              </option>
-              <option value="M">Brightest</option>
-              <option value="N">Faintest</option>
-              <option value="V">Best seen using averted vision</option>
-            </select>
-          </div>
-          <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
-            <div className="object-behavior__brightness-wrapper">
+        {isHiddenInputs ? null : (
+          <section className="single-observation-form__section">
+            <h2 className="single-observation-form__heading">
+              BEHAVIOR (OPTIONAL)
+            </h2>
+            <div className="object-behavior__visibility-wrapper">
               <label>
-                Visual Magnitude (Brightness){" "}
-                <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
+                Visibility{" "}
+                <QuestionMarkToolTip toolTipText={toolTipCopy.visibility} />
               </label>
-              <div className="object-behavior__brightness">
+              <select
+                className="object-behavior__behavior-select app__form__input"
+                onChange={event => setBehavior(event.target.value)}
+                value={behavior}
+              >
+                <option value={` `} disabled hidden>
+                  Choose Behavior
+                </option>
+                <option value="E">
+                  Unusually faint because of eclipse exit/entrance
+                </option>
+                <option value="F">Constant flash period</option>
+                <option value="I">Irregular</option>
+                <option value="R">Regular variations</option>
+                <option value="S">Steady</option>
+                <option value="X">Irregular flash period</option>
+                <option value="B">
+                  Time zero for averaging several flash cycles
+                </option>
+                <option value="H">One flash in a series</option>
+                <option value="P">
+                  end time for averaging several flash cycles. Time interval
+                  from last "B" report divided by flash period reported on this
+                  line gives number of flashes that occurred since "B".
+                </option>
+                <option value="A">
+                  became visible (was invisible); use E for eclipse exit
+                </option>
+                <option value="D">
+                  Object in field of view, but not visible
+                </option>
+                <option value="M">Brightest</option>
+                <option value="N">Faintest</option>
+                <option value="V">Best seen using averted vision</option>
+              </select>
+            </div>
+            <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
+              <div className="object-behavior__brightness-wrapper">
+                <label>
+                  Visual Magnitude (Brightness){" "}
+                  <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
+                </label>
+                <div className="object-behavior__brightness">
+                  <select
+                    className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
+                    onChange={event =>
+                      setVisualMagnitudeSign(event.target.value)
+                    }
+                    value={visualMagnitudeSign}
+                  >
+                    <option value="+">+</option>
+                    <option value="-">-</option>
+                  </select>
+                  <select
+                    className="object-behavior__brightness-select app__form__input"
+                    type="number"
+                    onChange={event => setVisualMagnitude(event.target.value)}
+                    value={visualMagnitude}
+                  >
+                    <option value="010">1</option>
+                    <option value="020">2</option>
+                    <option value="030">3</option>
+                    <option value="040">4</option>
+                    <option value="050">5</option>
+                    <option value="060">6</option>
+                  </select>
+                </div>
+              </div>
+              <div className="object-behavior__brightness-uncertainty-wrapper">
+                <label>
+                  Brightness uncertainty{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.brightness_uncertainty}
+                  />
+                </label>
                 <select
-                  className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
-                  onChange={event => setVisualMagnitudeSign(event.target.value)}
-                  value={visualMagnitudeSign}
+                  className="object-behavior__brightness-uncertainty-select app__form__input"
+                  onChange={event =>
+                    setVisualMagnitudeUncertainty(event.target.value)
+                  }
+                  value={visualMagnitudeUncertainty}
                 >
-                  <option value="+">+</option>
-                  <option value="-">-</option>
+                  <option value={`01`}>0.1</option>
+                  <option value={`02`}>0.2</option>
+                  <option value={`03`}>0.3</option>
+                  <option value={`04`}>0.4</option>
+                  <option value={`05`}>0.5</option>
+                  <option value={`10`}>1</option>
+                  <option value={`15`}>1.5</option>
+                  <option value={`20`}>2</option>
                 </select>
+              </div>
+              <div className="object-behavior__flash-period-wrapper">
+                <label>
+                  Flash Period{" "}
+                  <QuestionMarkToolTip toolTipText={toolTipCopy.flash_period} />
+                </label>
                 <select
-                  className="object-behavior__brightness-select app__form__input"
-                  type="number"
-                  onChange={event => setVisualMagnitude(event.target.value)}
-                  value={visualMagnitude}
+                  className="object-behavior__flash-period-select app__form__input"
+                  onChange={event => setFlashPeriod(event.target.value)}
+                  value={flashPeriod}
                 >
-                  <option value="010">1</option>
-                  <option value="020">2</option>
-                  <option value="030">3</option>
-                  <option value="040">4</option>
-                  <option value="050">5</option>
-                  <option value="060">6</option>
+                  <option value={` 05000`}>0.5 seconds</option>
+                  <option value={` 10000`}>1 seconds</option>
+                  <option value={` 15000`}>1.5 seconds</option>
+                  <option value={` 20000`}>2 seconds</option>
+                  <option value={` 25000`}>2.5 seconds</option>
+                  <option value={` 30000`}>3 seconds</option>
+                  <option value={` 35000`}>3.5 seconds</option>
+                  <option value={` 40000`}>4 seconds</option>
+                  <option value={` 45000`}>4.5 seconds</option>
+                  <option value={` 50000`}>5 seconds</option>
+                  <option value={` 55000`}>5.5 seconds</option>
+                  <option value={` 60000`}>6 seconds</option>
+                  <option value={` 65000`}>6.5 seconds</option>
+                  <option value={` 70000`}>7 seconds</option>
+                  <option value={` 75000`}>7.5 seconds</option>
+                  <option value={` 80000`}>8 seconds</option>
                 </select>
               </div>
             </div>
-            <div className="object-behavior__brightness-uncertainty-wrapper">
-              <label>
-                Brightness uncertainty{" "}
-                <QuestionMarkToolTip
-                  toolTipText={toolTipCopy.brightness_uncertainty}
-                />
-              </label>
-              <select
-                className="object-behavior__brightness-uncertainty-select app__form__input"
-                onChange={event =>
-                  setVisualMagnitudeUncertainty(event.target.value)
-                }
-                value={visualMagnitudeUncertainty}
-              >
-                <option value={`01`}>0.1</option>
-                <option value={`02`}>0.2</option>
-                <option value={`03`}>0.3</option>
-                <option value={`04`}>0.4</option>
-                <option value={`05`}>0.5</option>
-                <option value={`10`}>1</option>
-                <option value={`15`}>1.5</option>
-                <option value={`20`}>2</option>
-              </select>
+            <div className="object-behavior__remarks-wrapper">
+              <label>Remarks</label>
+              <textarea
+                placeholder="Brief comments placed here will be recorded with the observation record."
+                value={remarks}
+                onChange={event => setRemarks(event.target.value)}
+                className="app__form__input"
+              ></textarea>
             </div>
-            <div className="object-behavior__flash-period-wrapper">
-              <label>
-                Flash Period{" "}
-                <QuestionMarkToolTip toolTipText={toolTipCopy.flash_period} />
-              </label>
-              <select
-                className="object-behavior__flash-period-select app__form__input"
-                onChange={event => setFlashPeriod(event.target.value)}
-                value={flashPeriod}
-              >
-                <option value={` 05000`}>0.5 seconds</option>
-                <option value={` 10000`}>1 seconds</option>
-                <option value={` 15000`}>1.5 seconds</option>
-                <option value={` 20000`}>2 seconds</option>
-                <option value={` 25000`}>2.5 seconds</option>
-                <option value={` 30000`}>3 seconds</option>
-                <option value={` 35000`}>3.5 seconds</option>
-                <option value={` 40000`}>4 seconds</option>
-                <option value={` 45000`}>4.5 seconds</option>
-                <option value={` 50000`}>5 seconds</option>
-                <option value={` 55000`}>5.5 seconds</option>
-                <option value={` 60000`}>6 seconds</option>
-                <option value={` 65000`}>6.5 seconds</option>
-                <option value={` 70000`}>7 seconds</option>
-                <option value={` 75000`}>7.5 seconds</option>
-                <option value={` 80000`}>8 seconds</option>
-              </select>
-            </div>
-          </div>
-          <div className="object-behavior__remarks-wrapper">
-            <label>Remarks</label>
-            <textarea
-              placeholder="Brief comments placed here will be recorded with the observation record."
-              value={remarks}
-              onChange={event => setRemarks(event.target.value)}
-              className="app__form__input"
-            ></textarea>
-          </div>
-        </section>
+          </section>
+        )}
 
         <p style={{ color: "orange", marginBottom: "1em" }}>
           IOD = {IOD}
