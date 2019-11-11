@@ -187,14 +187,14 @@ export default function SingleObservationForm() {
     declinationOrElevation
   ]);
 
-  // clear form fields and hide inputs that are not applicable
-  // when user selected 'Clouded Out' or 'Observer Unavailable'
+  // when 'Clouded Out' or 'Observer Unavailable' is selected, clear inputs that aren't applicable
   useEffect(() => {
     if (conditions === "C" || conditions === "O") {
       setIsHiddenInputs(true);
-      setObject(`               `); // adds 15 chars of whitespace to the IOD string for object
+      setObject(`               `); // 15 chars of whitespace to ensure a valid IOD format
     } else {
       setIsHiddenInputs(false);
+      setObject(``); // reset object value so that placeholder appears again
     }
   }, [conditions]);
 
@@ -515,7 +515,10 @@ export default function SingleObservationForm() {
                 </select>
               </div>
               <div className="object-position__epoch-wrapper">
-                <label>Epoch code</label>
+                <label>
+                  Epoch code{" "}
+                  <QuestionMarkToolTip toolTipText={toolTipCopy.epoch_code} />
+                </label>
                 {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
                 <select
                   className="app__form__input"

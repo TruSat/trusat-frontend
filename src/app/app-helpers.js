@@ -216,6 +216,8 @@ export const toolTipCopy = {
   `,
   position_format:
     "Different software may provide you with different formats for reporting position. This form supports the most common types.",
+  epoch_code:
+    "The year to which all of the time-based fields in the observation refer.",
   right_ascension:
     "The angular distance of a point east of the First Point of Aries, measured along the celestial equator and expressed in hours, minutes, and seconds.",
   declination:
@@ -231,7 +233,9 @@ export const toolTipCopy = {
   brightness:
     "A measure of the brightness of a celestial object. The lower the value, the brighter the object. The scale is logarithmic.",
   brightness_uncertainty:
-    "The margin of uncertainty for your brightness estimates"
+    "The margin of uncertainty for your brightness estimates",
+  flash_period:
+    "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light."
 };
 
 export const emails = {
