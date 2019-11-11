@@ -338,3 +338,24 @@ label {
 .object-behavior__remarks-wrapper > textarea {
   padding: 20px;
 }
+
+
+// grid gutter hack
+.station-conditions__location-wrapper,
+.station-conditions__date,
+.station-conditions__time,
+.station-conditions__time-uncertainty-wrapper,
+.station-conditions__conditions-wrapper,
+.object-position__object-wrapper,
+.object-position__angle-wrapper,
+.object-position__epoch-wrapper,
+.object-position__ascension-wrapper,
+.object-position__declination-elevation-wrapper,
+.object-position__position-uncertainty-wrapper,
+.object-behavior__visibility-wrapper,
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper,
+.object-behavior__remarks-wrapper {
+  padding-right: 24px;
+}

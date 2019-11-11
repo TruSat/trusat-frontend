@@ -300,37 +300,41 @@ export default function SingleObservationForm() {
             <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
               <div className="station-conditions__date-time-wrapper-inner">
-                <input
-                  required
-                  className="station-conditions__date app__form__input"
-                  type="number"
-                  placeholder="YYYYMMDD"
-                  // onChange={event => {
-                  //   setDate(event.target.value.replace(/-/g, ""));
-                  // }}
-                  value={date}
-                  onChange={event => {
-                    // limit input to 8 chars
-                    if (event.target.value.length < 9) {
-                      setDate(event.target.value);
-                    }
-                  }}
-                  style={isDateError ? { border: "2px solid red" } : null}
-                />
+                <div className="station-conditions__date">
+                  <input
+                    required
+                    className="app__form__input"
+                    type="number"
+                    placeholder="YYYYMMDD"
+                    // onChange={event => {
+                    //   setDate(event.target.value.replace(/-/g, ""));
+                    // }}
+                    value={date}
+                    onChange={event => {
+                      // limit input to 8 chars
+                      if (event.target.value.length < 9) {
+                        setDate(event.target.value);
+                      }
+                    }}
+                    style={isDateError ? { border: "2px solid red" } : null}
+                  />
+                </div>
+                <div className="station-conditions__time">
 
-                <input
-                  type="number"
-                  className="station-conditions__time app__form__input"
-                  onChange={event => {
-                    // limit input to 9 chars
-                    if (event.target.value.length < 10) {
-                      setTime(event.target.value);
-                    }
-                  }}
-                  value={time}
-                  placeholder="HHMMSSsss"
-                  style={isTimeError ? { border: "2px solid red" } : null}
-                />
+                  <input
+                    type="number"
+                    className="app__form__input"
+                    onChange={event => {
+                      // limit input to 9 chars
+                      if (event.target.value.length < 10) {
+                        setTime(event.target.value);
+                      }
+                    }}
+                    value={time}
+                    placeholder="HHMMSSsss"
+                    style={isTimeError ? { border: "2px solid red" } : null}
+                  />
+                </div>
               </div>
               {isDateError ? (
                 <p className="app__error-message">
