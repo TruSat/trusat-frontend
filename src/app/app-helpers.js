@@ -3,6 +3,7 @@ import axios from "axios";
 import { cacheAdapterEnhancer } from "axios-extensions";
 import ReactTooltip from "react-tooltip";
 import ReactGA from "react-ga";
+import QuestionMark from "../assets/QuestionMark.svg";
 
 export const setCookies = () => {
   const REACT_APP_GOOGLE_TRACKING_ID =
@@ -163,6 +164,15 @@ export const toolTip = (displayText, toolTipText) => {
   );
 };
 
+export const QuestionMarkToolTip = ({ toolTipText }) => {
+  return (
+    <div className="app__tool-tip-wrapper" data-tip={toolTipText}>
+      <img src={QuestionMark} alt={"question mark"}></img>
+      <ReactTooltip type="info" />
+    </div>
+  );
+};
+
 export const toolTipCopy = {
   object: "satellites and debris in orbit",
   origin: "country of origin",
@@ -182,7 +192,50 @@ export const toolTipCopy = {
     "relative amount of influence this observation has over orbital prediction",
   user: "user who made observation",
   observation_station:
-    "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots."
+    "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots.",
+  station_location: `If you don’t yet have a station number, please use “9999”, and tell us where you made your observation from by using the form at trusat.org/your-location`,
+  clouded_out:
+    "Check this if you want to indicate an attempt to observe that was prevented by adverse weather.",
+  observer_unavailable:
+    "Favorable weather, but observer not available to make satellite observations.",
+  time_of_observation:
+    "The UTC time you saw the satellite at the position specified below",
+  time_uncertainty:
+    "The margin of uncertainty, as a measure of time, for your estimated time of observation",
+  sky_conditions: `Excellent: No Moon/clouds, great seeing, minimal air/light pollution.
+  
+  Good: No Moon/clouds, conditions could be better, but not much.
+
+  Fair: Young/old Moon, some air/light pollution making fainter stars invisible.
+
+  Poor: Gibbous Moon, haze, more air/light pollution making more stars invisible.
+
+  Bad: Bright Moon, air/light pollution, some clouds; difficult.
+
+  Terrible: Bright Moon, air/light pollution, looking through clouds.
+  `,
+  position_format:
+    "Different software may provide you with different formats for reporting position. This form supports the most common types.",
+  epoch_code:
+    "The year to which all of the time-based fields in the observation refer.",
+  right_ascension:
+    "The angular distance of a point east of the First Point of Aries, measured along the celestial equator and expressed in hours, minutes, and seconds.",
+  declination:
+    "The angular distance of a body north or south of the celestial equator. North declination is considered positive and south, negative.",
+  azimuth:
+    "The angular distance measured towards the east, from north, along the astronomical horizon to the intersection of the great circle passing through the point and the astronomical zenith with the astronomical horizon.",
+  elevation:
+    "The angular distance measured positive toward the astronomical zenith from the astronomical horizon along the great circle passing through the point and the astronomical zenith.",
+  position_uncertainty:
+    "The margin of uncertainty,associated with the format code for your positional measurements.",
+  visibility:
+    "These are the standard optical behavior codes. Leave blank if there’s no data to note.",
+  brightness:
+    "A measure of the brightness of a celestial object. The lower the value, the brighter the object. The scale is logarithmic.",
+  brightness_uncertainty:
+    "The margin of uncertainty for your brightness estimates",
+  flash_period:
+    "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light."
 };
 
 export const emails = {
