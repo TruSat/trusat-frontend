@@ -86,32 +86,32 @@ export default function VerifyClaimAccount({ match }) {
       {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret */}
       {!isSuccess ? (
         <form
-          className="email-form"
+          className="app__form"
           onSubmit={event => {
             event.preventDefault();
             verifyClaimAccount();
           }}
         >
-          <label className="email-form__label">NEW PASSWORD</label>
+          <label className="app__form__label">NEW PASSWORD</label>
           <input
             required
-            className="email-form__input"
+            className="app__form__input"
             type="password"
             onChange={event => setPassword(event.target.value)}
             value={password}
           ></input>
-          <label className="email-form__label">RE-ENTER NEW PASSWORD</label>
+          <label className="app__form__label">RE-ENTER NEW PASSWORD</label>
           <input
             required
-            className="email-form__input"
+            className="app__form__input"
             type="password"
             onChange={event => setRetypedPassword(event.target.value)}
             value={retypedPassword}
           ></input>
-          <div className="email-form__checkbox-and-message-wrapper">
+          <div className="app__form__checkbox-and-message-wrapper">
             <input
               required
-              className="email-form__checkbox"
+              className="app__form__checkbox"
               type="checkbox"
               checked={understandMessage}
               onChange={() => setUnderstandMessage(!understandMessage)}
@@ -124,14 +124,14 @@ export default function VerifyClaimAccount({ match }) {
           </div>
 
           {showInvalidPasswordError ? (
-            <div className="email-form__error">
+            <div className="app__form__error">
               Please choose a password that is at least 8 characters long and
               contains one number
             </div>
           ) : null}
 
           {showUnmatchedPasswordError ? (
-            <div className="email-form__error">
+            <div className="app__form__error">
               The passwords you have entered do not match
             </div>
           ) : null}

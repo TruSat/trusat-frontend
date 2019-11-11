@@ -52,35 +52,35 @@ export default function StepTwo({ step, setStep, setPrivateKey }) {
             created for your account
           </p>
           <form
-            className="email-form"
+            className="app__form"
             onSubmit={event => {
               event.preventDefault();
               handleSubmit();
             }}
           >
-            <label className="email-form__label secret-form__label">
+            <label className="app__form__label secret-form__label">
               SECRET
             </label>
             <input
               required
-              className="email-form__input"
+              className="app__form__input"
               type="text"
               value={secret}
               onChange={event => setSecret(event.target.value)}
             ></input>
-            <label className="email-form__label secret-form__label">
+            <label className="app__form__label secret-form__label">
               PASSWORD
             </label>
             <input
               required
-              className="email-form__input"
+              className="app__form__input"
               type="password"
               value={password}
               onChange={event => setPassword(event.target.value)}
             ></input>
 
             {showPrivateKeyError ? (
-              <div className="email-form__error">
+              <div className="app__form__error">
                 Invalid password and secret code combination. Please make sure
                 you have enetered both correctly and try again.
               </div>

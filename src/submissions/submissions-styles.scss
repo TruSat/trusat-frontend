@@ -110,17 +110,21 @@ label {
   margin-bottom: 0.5em;
 }
 
-input,
-select {
-  height: 48px;
+
+.single-observation-form__section {
+  margin-bottom: 7em;
+}
+
+.single-observation-form__section:first-of-type {
+  margin-top: 4em;
+}
+
+.single-observation-form__section:last-of-type {
+  margin-bottom: 3.5em;
 }
 
 
 // Station conditions block
-.station-conditions__section {
-  border: 3px dotted grey;
-  margin-bottom: 3em;
-}
 
 .single-observation-form__heading {
   border-bottom: 1px solid $primary-text-color;
@@ -148,13 +152,13 @@ select {
   display: flex;
   flex-direction: column;
   flex-basis: 33.33%;
+  margin-top: 1.75em;
 }
 
 .station-conditions__date-time-uncertainty-wrapper {
   //border: 3px solid red;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 2em;
 }
 
 .station-conditions__date-time-wrapper {
@@ -302,6 +306,11 @@ select {
   flex-basis: 33.33%;
 }
 
+.object-behavior__brightness-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .object-behavior__brightness {
   display: flex;
 }
@@ -328,4 +337,25 @@ select {
 
 .object-behavior__remarks-wrapper > textarea {
   padding: 20px;
+}
+
+
+// grid gutter hack
+.station-conditions__location-wrapper,
+.station-conditions__date,
+.station-conditions__time,
+.station-conditions__time-uncertainty-wrapper,
+.station-conditions__conditions-wrapper,
+.object-position__object-wrapper,
+.object-position__angle-wrapper,
+.object-position__epoch-wrapper,
+.object-position__ascension-wrapper,
+.object-position__declination-elevation-wrapper,
+.object-position__position-uncertainty-wrapper,
+.object-behavior__visibility-wrapper,
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper,
+.object-behavior__remarks-wrapper {
+  padding-right: 24px;
 }

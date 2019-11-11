@@ -241,7 +241,7 @@ export default function SingleObservationForm() {
         }}
       >
         {/* STATION CONDITIONS */}
-        <section className="station-conditions__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">
             STATION CONDITIONS
           </h2>
@@ -249,6 +249,7 @@ export default function SingleObservationForm() {
             <div className="station-conditions__location-wrapper">
               <label>Station Location</label>
               <input
+                className="app__form__input"
                 required
                 type="number"
                 value={station}
@@ -299,37 +300,41 @@ export default function SingleObservationForm() {
             <div className="station-conditions__date-time-wrapper">
               <label>Time of observation</label>
               <div className="station-conditions__date-time-wrapper-inner">
-                <input
-                  required
-                  className="station-conditions__date"
-                  type="number"
-                  placeholder="YYYYMMDD"
-                  // onChange={event => {
-                  //   setDate(event.target.value.replace(/-/g, ""));
-                  // }}
-                  value={date}
-                  onChange={event => {
-                    // limit input to 8 chars
-                    if (event.target.value.length < 9) {
-                      setDate(event.target.value);
-                    }
-                  }}
-                  style={isDateError ? { border: "2px solid red" } : null}
-                />
+                <div className="station-conditions__date">
+                  <input
+                    required
+                    className="app__form__input"
+                    type="number"
+                    placeholder="YYYYMMDD"
+                    // onChange={event => {
+                    //   setDate(event.target.value.replace(/-/g, ""));
+                    // }}
+                    value={date}
+                    onChange={event => {
+                      // limit input to 8 chars
+                      if (event.target.value.length < 9) {
+                        setDate(event.target.value);
+                      }
+                    }}
+                    style={isDateError ? { border: "2px solid red" } : null}
+                  />
+                </div>
+                <div className="station-conditions__time">
 
-                <input
-                  type="number"
-                  className="station-conditions__time"
-                  onChange={event => {
-                    // limit input to 9 chars
-                    if (event.target.value.length < 10) {
-                      setTime(event.target.value);
-                    }
-                  }}
-                  value={time}
-                  placeholder="HHMMSSsss"
-                  style={isTimeError ? { border: "2px solid red" } : null}
-                />
+                  <input
+                    type="number"
+                    className="app__form__input"
+                    onChange={event => {
+                      // limit input to 9 chars
+                      if (event.target.value.length < 10) {
+                        setTime(event.target.value);
+                      }
+                    }}
+                    value={time}
+                    placeholder="HHMMSSsss"
+                    style={isTimeError ? { border: "2px solid red" } : null}
+                  />
+                </div>
               </div>
               {isDateError ? (
                 <p className="app__error-message">
@@ -347,6 +352,7 @@ export default function SingleObservationForm() {
             <div className="station-conditions__time-uncertainty-wrapper">
               <label>Time uncertainty</label>
               <select
+                className="app__form__input"
                 onChange={event => setTimeUncertainty(event.target.value)}
                 value={timeUncertainty}
               >
@@ -408,13 +414,13 @@ export default function SingleObservationForm() {
         </section>
 
         {/* OBJECT POSITION */}
-        <section className="object-position__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">OBJECT POSITION</h2>
           <div className="object-position__object-wrapper">
             <input
               type="text"
               required
-              className="object-position__object-input"
+              className="object-position__object-input app__form__input"
               onChange={event => {
                 // limit input to 15 chars
                 if (event.target.value.length < 16) {
@@ -437,6 +443,7 @@ export default function SingleObservationForm() {
             <div className="object-position__angle-wrapper">
               <label>Position format</label>
               <select
+                className="app__form__input"
                 selected={angleFormatCode}
                 onChange={event => setAngleFormatCode(event.target.value)}
                 // default is 2
@@ -455,6 +462,7 @@ export default function SingleObservationForm() {
               <label>Epoch code</label>
               {/* TO DO - Epoch value must be "blank" if AZ/EL is chosen for angleFormatCode */}
               <select
+                className="app__form__input"
                 value={
                   Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
                     ? "0"
@@ -536,6 +544,7 @@ export default function SingleObservationForm() {
                     : "Azimuth"}
                 </label>
                 <input
+                  className="app__form__input"
                   type="number"
                   onChange={event => {
                     // limit input to 7 chars
@@ -582,7 +591,7 @@ export default function SingleObservationForm() {
                 </label>
                 <div className="object-position__declination-elevation-wrapper-inner">
                   <select
-                    className="object-position__visual-magnitude-sign-select"
+                    className="object-position__visual-magnitude-sign-select app__form__input app__form__input--sign"
                     onChange={event =>
                       setDeclinationOrElevationSign(event.target.value)
                     }
@@ -592,7 +601,7 @@ export default function SingleObservationForm() {
                     <option value="-">-</option>
                   </select>
                   <input
-                    className="object-position__visual-declination-elevation"
+                    className="object-position__visual-declination-elevation app__form__input"
                     type="number"
                     onChange={event => {
                       // limit input to 6 chars
@@ -639,6 +648,7 @@ export default function SingleObservationForm() {
               <select
                 value={positionalUncertainty}
                 onChange={event => setPositionalUncertainty(event.target.value)}
+                className="app__form__input"
               >
                 <option value="34">0.0003 seconds</option>
                 <option value="56">0.05 seconds</option>
@@ -656,14 +666,14 @@ export default function SingleObservationForm() {
         </section>
 
         {/* BEHAVIOR */}
-        <section className="object-behavior__section">
+        <section className="single-observation-form__section">
           <h2 className="single-observation-form__heading">
             BEHAVIOR (OPTIONAL)
           </h2>
           <div className="object-behavior__visibility-wrapper">
             <label>Visibility</label>
             <select
-              className="object-behavior__behavior-select"
+              className="object-behavior__behavior-select app__form__input"
               onChange={event => setBehavior(event.target.value)}
               value={behavior}
             >
@@ -703,7 +713,7 @@ export default function SingleObservationForm() {
               <label>Visual Magnitude (Brightness)</label>
               <div className="object-behavior__brightness">
                 <select
-                  className="object-behavior__visual-magnitude-sign-select"
+                  className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
                   onChange={event => setVisualMagnitudeSign(event.target.value)}
                   value={visualMagnitudeSign}
                 >
@@ -711,7 +721,7 @@ export default function SingleObservationForm() {
                   <option value="-">-</option>
                 </select>
                 <select
-                  className="object-behavior__brightness-select"
+                  className="object-behavior__brightness-select app__form__input"
                   type="number"
                   onChange={event => setVisualMagnitude(event.target.value)}
                   value={visualMagnitude}
@@ -728,7 +738,7 @@ export default function SingleObservationForm() {
             <div className="object-behavior__brightness-uncertainty-wrapper">
               <label>Brightness uncertainty</label>
               <select
-                className="object-behavior__brightness-uncertainty-select"
+                className="object-behavior__brightness-uncertainty-select app__form__input"
                 onChange={event =>
                   setVisualMagnitudeUncertainty(event.target.value)
                 }
@@ -747,7 +757,7 @@ export default function SingleObservationForm() {
             <div className="object-behavior__flash-period-wrapper">
               <label>Flash Period</label>
               <select
-                className="object-behavior__flash-period-select"
+                className="object-behavior__flash-period-select app__form__input"
                 onChange={event => setFlashPeriod(event.target.value)}
                 value={flashPeriod}
               >
@@ -776,6 +786,7 @@ export default function SingleObservationForm() {
               placeholder="Brief comments placed here will be recorded with the observation record."
               value={remarks}
               onChange={event => setRemarks(event.target.value)}
+              className="app__form__input"
             ></textarea>
           </div>
         </section>
