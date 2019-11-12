@@ -10,6 +10,12 @@ import {
   toolTipCopy
 } from "../../app/app-helpers";
 import CircleCheck from "../../assets/CircleCheck.svg";
+import ConditionExcellent from "../../assets/ConditionExcellent.svg";
+import ConditionGood from "../../assets/ConditionGood.svg";
+import ConditionFair from "../../assets/ConditionFair.svg";
+import ConditionPoor from "../../assets/ConditionPoor.svg";
+import ConditionBad from "../../assets/ConditionBad.svg";
+import ConditionTerrible from "../../assets/ConditionTerrible.svg";
 
 // import { useTrusatGetApi } from "../../app/app-helpers";
 
@@ -24,7 +30,7 @@ export default function SingleObservationForm() {
   const [conditions, setConditions] = useState(` `); // 1 char
   const [isHiddenInputs, setIsHiddenInputs] = useState(false);
   // OBJECT POSITION
-  //const [objectSearchTerm, setObjectSearchTerm] = useState(``); // 15 chars
+  const [objectSearchTerm, setObjectSearchTerm] = useState(``); // 15 chars
   const [object, setObject] = useState(``); // 15 chars
   const [objectSearchResults, setObjectSearchResults] = useState([]); // renders a list under input field
   // position format in the UI
@@ -68,7 +74,7 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
 
-  // const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
+  //const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
 
   // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
@@ -80,10 +86,6 @@ export default function SingleObservationForm() {
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
-
-  // const today = new Date(); // get todays date
-  // const maxDate = `${today.getFullYear()}-${today.getMonth() +
-  //   1}-${today.getDate()}`; // get max date
 
   const isDateValid = date => {
     // const today = new Date(); // get todays date
@@ -118,6 +120,8 @@ export default function SingleObservationForm() {
     visualMagnitudeUncertainty,
     flashPeriod
   ]);
+
+  console.log(IOD);
 
   // Input Validation
   useEffect(() => {
@@ -217,7 +221,7 @@ export default function SingleObservationForm() {
     const fetchObject = async () => {
       try {
         const response = await axios(
-          `${API_ROOT}/findObject?objectName=${object}`
+          `${API_ROOT}/findObject?objectName=${objectSearchTerm}`
         );
         setObjectSearchResults(response.data);
       } catch (err) {
@@ -225,22 +229,51 @@ export default function SingleObservationForm() {
       }
     };
     // start searching when user has entered more than 2 chars
-    if (object.length > 2) {
+    if (objectSearchTerm.length > 2) {
       fetchObject();
     }
-  }, [object]);
+  }, [objectSearchTerm]);
 
   const renderObjectSearchResults = () => {
+    // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
+    const formatObject = ({ norad, cospar }) => {
+      let formattedNorad;
+
+      if (norad.toString().length !== 5) {
+        // append leading zeros to norad numbers less than 5 chars in length
+        const leadingZeros = "0".repeat(5 - norad.toString().length);
+        formattedNorad = `${leadingZeros}${norad}`;
+      } else {
+        // use norad if 5 chars in length
+        formattedNorad = norad;
+      }
+
+      const formattedCospar = `${cospar
+        .substring(2)
+        .replace(/-/g, ` `)}${" ".repeat(11 - cospar.length)}`;
+
+      return `${formattedNorad} ${formattedCospar}`;
+    };
+
     return objectSearchResults.map(obj => {
       return (
         <span
           key={obj.norad_number}
           className="object-position__search-result"
           onClick={() => {
-            setObject(`${obj.norad_number} 98 123LEO`);
+            setObject(
+              formatObject({
+                norad: obj.norad_number,
+                cospar: obj.cospar_id
+              })
+            );
+            setObjectSearchTerm(``);
             setObjectSearchResults([]);
           }}
-        >{`${obj.name} = ${obj.norad_number} 98 123LEO`}</span>
+        >{`${obj.name} = ${formatObject({
+          norad: obj.norad_number,
+          cospar: obj.cospar_id
+        })}`}</span>
       );
     });
   };
@@ -281,14 +314,6 @@ export default function SingleObservationForm() {
 
   return (
     <Fragment>
-      <p style={{ color: "orange", marginBottom: "1em", whiteSpace: "pre" }}>
-        IOD = {IOD}
-        {` `}
-        {remarks}
-      </p>
-      <p style={IOD.length === 80 ? { color: "green" } : { color: "red" }}>
-        IOD length = {IOD.length}
-      </p>
       <form
         className="single-observation-form"
         onSubmit={event => {
@@ -425,32 +450,33 @@ export default function SingleObservationForm() {
                 </p>
               ) : null}
             </div>
-            <div className="station-conditions__time-uncertainty-wrapper">
-              <label>
-                Time uncertainty{" "}
-                <QuestionMarkToolTip
-                  toolTipText={toolTipCopy.time_uncertainty}
-                />
-              </label>
-              <select
-                className="app__form__input"
-                onChange={event => setTimeUncertainty(event.target.value)}
-                value={timeUncertainty}
-              >
-                <option value="15">0.001 seconds</option>
-                <option value="56">0.05 seconds</option>
-                <option value="17">0.1 seconds</option>
-                <option value="97">0.9 seconds</option>
-                <option value="18">1.0 seconds</option>
-                <option value="28">2.0 seconds</option>
-                <option value="58">5.0 seconds</option>
-                <option value="19">10.0 seconds</option>
-                <option value="29">20.0 seconds</option>
-                <option value="99">90.0 seconds</option>
-              </select>
-            </div>
+            {isHiddenInputs ? null : (
+              <div className="station-conditions__time-uncertainty-wrapper">
+                <label>
+                  Time uncertainty{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.time_uncertainty}
+                  />
+                </label>
+                <select
+                  className="app__form__input"
+                  onChange={event => setTimeUncertainty(event.target.value)}
+                  value={timeUncertainty}
+                >
+                  <option value="15">0.001 seconds</option>
+                  <option value="56">0.05 seconds</option>
+                  <option value="17">0.1 seconds</option>
+                  <option value="97">0.9 seconds</option>
+                  <option value="18">1.0 seconds</option>
+                  <option value="28">2.0 seconds</option>
+                  <option value="58">5.0 seconds</option>
+                  <option value="19">10.0 seconds</option>
+                  <option value="29">20.0 seconds</option>
+                  <option value="99">90.0 seconds</option>
+                </select>
+              </div>
+            )}
           </div>
-
           {/* Conditions */}
           {isHiddenInputs ? null : (
             <div className="station-conditions__conditions-wrapper">
@@ -459,42 +485,86 @@ export default function SingleObservationForm() {
                 <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
               </label>
               <div className="station-conditions__conditions-buttons-wrapper">
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("E")}
-                >
+                <div>
+                  <img
+                    src={ConditionExcellent}
+                    alt="excellent conditions"
+                    className={
+                      conditions === "E"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("E")}
+                  ></img>
                   Excellent
-                </span>
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("G")}
-                >
+                </div>
+                <div>
+                  <img
+                    src={ConditionGood}
+                    alt="good conditions"
+                    className={
+                      conditions === "G"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("G")}
+                  ></img>
                   Good
-                </span>
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("F")}
-                >
+                </div>
+
+                <div>
+                  <img
+                    src={ConditionFair}
+                    alt="fair conditions"
+                    className={
+                      conditions === "F"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("F")}
+                  ></img>
                   Fair
-                </span>
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("P")}
-                >
+                </div>
+                <div>
+                  <img
+                    src={ConditionPoor}
+                    alt="poor conditions"
+                    className={
+                      conditions === "P"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("P")}
+                  ></img>
                   Poor
-                </span>
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("B")}
-                >
+                </div>
+
+                <div>
+                  <img
+                    src={ConditionBad}
+                    alt="bad conditions"
+                    className={
+                      conditions === "B"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("B")}
+                  ></img>
                   Bad
-                </span>
-                <span
-                  className="station-conditions__button"
-                  onClick={() => setConditions("T")}
-                >
+                </div>
+                <div>
+                  <img
+                    src={ConditionTerrible}
+                    alt="terrible conditions"
+                    className={
+                      conditions === "T"
+                        ? "station-conditions__button station-conditions__button--highlight"
+                        : "station-conditions__button"
+                    }
+                    onClick={() => setConditions("T")}
+                  ></img>
                   Terrible
-                </span>
+                </div>
               </div>
             </div>
           )}
@@ -507,30 +577,46 @@ export default function SingleObservationForm() {
               OBJECT POSITION
             </h2>
             <div className="object-position__object-wrapper">
-              <input
-                type="text"
-                required
-                className="object-position__object-input app__form__input"
-                onChange={event => {
-                  // limit input to 15 chars
-                  if (event.target.value.length < 16) {
-                    setObject(event.target.value);
-                  }
-                }}
-                value={object}
-                placeholder="Search objects by name or number"
-                style={isObjectError ? { border: "2px solid red" } : null}
-              />
+              <label>Object</label>
+              {/* Show object name if they have chosen one, search field if they haven't */}
+              {object ? (
+                <div>
+                  <span className="object-position__chosen-object">
+                    {object}
+                  </span>
+                  <span
+                    className="object-position__x-button"
+                    onClick={() => setObject(``)}
+                  >
+                    X
+                  </span>
+                </div>
+              ) : (
+                <input
+                  type="text"
+                  required
+                  className="app__form__input object-position__object-input"
+                  onChange={event => {
+                    // limit input to 15 chars
+                    if (event.target.value.length < 16) {
+                      setObjectSearchTerm(event.target.value);
+                    }
+                  }}
+                  value={object ? object : objectSearchTerm}
+                  placeholder="Search objects by Name or Norad/International Designation Number"
+                  style={isObjectError ? { border: "2px solid red" } : null}
+                />
+              )}
+              {isObjectError ? (
+                <p className="app__error-message">
+                  Enter a valid Object or International Designation number then
+                  select the Object you are submitting an observation for
+                </p>
+              ) : null}
               {objectSearchResults.length !== 0 ? (
                 <div className="object-position__search-results-wrapper">
                   {renderObjectSearchResults()}
                 </div>
-              ) : null}
-              {isObjectError ? (
-                <p className="app__error-message">
-                  Enter a valid Object or International Designation number for
-                  the object you are reporting an observation for.
-                </p>
               ) : null}
             </div>
 
@@ -760,14 +846,13 @@ export default function SingleObservationForm() {
                           : null
                       }
                     />
-                    {isDeclinationOrElevationError ? (
-                      <p className="app__error-message">
-                        Enter a valid numerical value for Declination or
-                        Elevation referencing the position format you chose
-                        above
-                      </p>
-                    ) : null}
                   </div>
+                  {isDeclinationOrElevationError ? (
+                    <p className="app__error-message">
+                      Enter a valid numerical value for Declination or Elevation
+                      referencing the position format you chose above
+                    </p>
+                  ) : null}
                 </div>
               </div>
 
@@ -948,19 +1033,16 @@ export default function SingleObservationForm() {
           </section>
         )}
 
-        <p style={{ color: "orange", marginBottom: "1em" }}>
-          IOD = {IOD}
-          {` `}
-          {remarks}
-        </p>
         <p
           style={
             IOD.length === 80
-              ? { color: "green", marginBottom: "1em" }
-              : { color: "red", marginBottom: "1em" }
+              ? { color: "green", marginBottom: "1em", whiteSpace: "pre" }
+              : { color: "red", marginBottom: "1em", whiteSpace: "pre" }
           }
         >
-          IOD length = {IOD.length} characters
+          {IOD}
+          {` `}
+          {remarks}
         </p>
 
         {/* Success message */}
