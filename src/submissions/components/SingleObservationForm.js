@@ -804,7 +804,7 @@ export default function SingleObservationForm() {
                   </label>
                   <div className="object-position__declination-elevation-wrapper-inner">
                     <select
-                      className="object-position__visual-magnitude-sign-select app__form__input app__form__input--sign"
+                      className="app__form__input app__form__input--sign"
                       onChange={event =>
                         setDeclinationOrElevationSign(event.target.value)
                       }
@@ -814,7 +814,7 @@ export default function SingleObservationForm() {
                       <option value="-">-</option>
                     </select>
                     <input
-                      className="object-position__visual-declination-elevation app__form__input"
+                      className="app__form__input"
                       type="number"
                       onChange={event => {
                         // limit input to 6 chars
@@ -941,7 +941,7 @@ export default function SingleObservationForm() {
                 </label>
                 <div className="object-behavior__brightness">
                   <select
-                    className="object-behavior__visual-magnitude-sign-select app__form__input app__form__input--sign"
+                    className="app__form__input app__form__input--sign"
                     onChange={event =>
                       setVisualMagnitudeSign(event.target.value)
                     }
@@ -1028,7 +1028,19 @@ export default function SingleObservationForm() {
                 value={remarks}
                 onChange={event => setRemarks(event.target.value)}
                 className="app__form__input"
+                maxLength={140}
               ></textarea>
+              {remarks ? (
+                <p
+                  style={
+                    remarks.length > 130
+                      ? { color: "red", textAlign: "right" }
+                      : { textAlign: "right" }
+                  }
+                >
+                  {140 - remarks.length}
+                </p>
+              ) : null}
             </div>
           </section>
         )}
