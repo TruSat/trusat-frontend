@@ -1025,6 +1025,9 @@ export default function SingleObservationForm({
                     <option value="040">4</option>
                     <option value="050">5</option>
                     <option value="060">6</option>
+                    <option value="070">7</option>
+                    <option value="080">8</option>
+                    <option value="090">9</option>
                   </select>
                 </div>
               </div>
