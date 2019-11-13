@@ -101,7 +101,7 @@ SINGLE OBSERVATION FORM
 ---------- */
 .single-observation-form {
   margin-top: 1em;
-  max-width: 720px;
+  max-width: 800px;
 }
 
 label {
@@ -313,11 +313,9 @@ input[type="number"] {
 }
 
 .object-position__declination-elevation-wrapper-inner {
+  border: 1px solid red;
   display: flex;
-}
-
-.object-position__visual-declination-elevation {
-  flex-grow: 1;
+  justify-content: space-between;
 }
 
 .object-position__position-uncertainty-wrapper {
