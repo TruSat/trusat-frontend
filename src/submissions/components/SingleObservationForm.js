@@ -377,6 +377,16 @@ export default function SingleObservationForm({
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
+                {` `}
+                Don't have a station number? Submit location{" "}
+                <a
+                  className="app__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://docs.google.com/forms/d/1SoQivnx_dZPku0eZKlPXnNwggH2XDtb-e4GpAMSvYE8/viewform?edit_requested=true"
+                >
+                  here
+                </a>
               </label>
               <input
                 className="app__form__input"
@@ -389,7 +399,7 @@ export default function SingleObservationForm({
                   }
                 }}
                 placeholder="####"
-                style={isStationError ? { border: "2px solid red" } : null}
+                style={isStationError ? { border: "2px solid #FC7756" } : null}
               />
               {isStationError ? (
                 <p className="app__error-message">
@@ -463,7 +473,7 @@ export default function SingleObservationForm({
                       }
                     }}
                     style={
-                      isDateFormatError ? { border: "2px solid red" } : null
+                      isDateFormatError ? { border: "2px solid #FC7756" } : null
                     }
                   />
                 </div>
@@ -480,7 +490,7 @@ export default function SingleObservationForm({
                     value={time}
                     placeholder="HHMMSSsss"
                     style={
-                      isTimeFormatError ? { border: "2px solid red" } : null
+                      isTimeFormatError ? { border: "2px solid #FC7756" } : null
                     }
                   />
                 </div>
@@ -658,7 +668,7 @@ export default function SingleObservationForm({
                   }}
                   value={object ? object : objectSearchTerm}
                   placeholder="Search objects by Name or Norad/International Designation Number"
-                  style={isObjectError ? { border: "2px solid red" } : null}
+                  style={isObjectError ? { border: "2px solid #FC7756" } : null}
                 />
               )}
               {isObjectError ? (
@@ -924,16 +934,12 @@ export default function SingleObservationForm({
                   }
                   className="app__form__input"
                 >
-                  <option value="34">0.0003 seconds</option>
-                  <option value="56">0.05 seconds</option>
                   <option value="17">0.1 seconds</option>
                   <option value="97">0.9 seconds</option>
                   <option value="18">1.0 seconds</option>
                   <option value="28">2.0 seconds</option>
                   <option value="58">5.0 seconds</option>
                   <option value="19">10.0 seconds</option>
-                  <option value="29">20.0 seconds</option>
-                  <option value="99">90.0 seconds</option>
                 </select>
               </div>
             </div>
@@ -948,7 +954,7 @@ export default function SingleObservationForm({
             </h2>
             <div className="object-behavior__visibility-wrapper">
               <label>
-                Visibility{" "}
+                Optical Behavior{" "}
                 <QuestionMarkToolTip toolTipText={toolTipCopy.visibility} />
               </label>
               <select
@@ -1019,6 +1025,9 @@ export default function SingleObservationForm({
                     <option value="040">4</option>
                     <option value="050">5</option>
                     <option value="060">6</option>
+                    <option value="070">7</option>
+                    <option value="080">8</option>
+                    <option value="090">9</option>
                   </select>
                 </div>
               </div>
@@ -1041,9 +1050,16 @@ export default function SingleObservationForm({
                   <option value={`03`}>0.3</option>
                   <option value={`04`}>0.4</option>
                   <option value={`05`}>0.5</option>
+                  <option value={`06`}>0.6</option>
+                  <option value={`07`}>0.7</option>
+                  <option value={`08`}>0.8</option>
+                  <option value={`09`}>0.9</option>
                   <option value={`10`}>1</option>
+                  <option value={`11`}>1.1</option>
+                  <option value={`12`}>1.2</option>
+                  <option value={`13`}>1.3</option>
+                  <option value={`14`}>1.4</option>
                   <option value={`15`}>1.5</option>
-                  <option value={`20`}>2</option>
                 </select>
               </div>
               <div className="object-behavior__flash-period-wrapper">
@@ -1100,7 +1116,9 @@ export default function SingleObservationForm({
         )}
 
         <div className="iod-wrapper">
-          <label>IOD {" "} <QuestionMarkToolTip toolTipText={toolTipCopy.iod} /></label>
+          <label>
+            IOD <QuestionMarkToolTip toolTipText={toolTipCopy.iod} />
+          </label>
           <div className="iod-wrapper-inner">
             <p
               className="iod"
