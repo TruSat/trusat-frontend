@@ -954,7 +954,7 @@ export default function SingleObservationForm({
             </h2>
             <div className="object-behavior__visibility-wrapper">
               <label>
-                Visibility{" "}
+                Optical Behavior{" "}
                 <QuestionMarkToolTip toolTipText={toolTipCopy.visibility} />
               </label>
               <select
