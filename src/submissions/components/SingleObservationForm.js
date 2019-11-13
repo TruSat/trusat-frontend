@@ -389,7 +389,7 @@ export default function SingleObservationForm({
                   }
                 }}
                 placeholder="####"
-                style={isStationError ? { border: "2px solid red" } : null}
+                style={isStationError ? { border: "2px solid #FC7756" } : null}
               />
               {isStationError ? (
                 <p className="app__error-message">
@@ -463,7 +463,7 @@ export default function SingleObservationForm({
                       }
                     }}
                     style={
-                      isDateFormatError ? { border: "2px solid red" } : null
+                      isDateFormatError ? { border: "2px solid #FC7756" } : null
                     }
                   />
                 </div>
@@ -480,7 +480,7 @@ export default function SingleObservationForm({
                     value={time}
                     placeholder="HHMMSSsss"
                     style={
-                      isTimeFormatError ? { border: "2px solid red" } : null
+                      isTimeFormatError ? { border: "2px solid #FC7756" } : null
                     }
                   />
                 </div>
@@ -658,7 +658,7 @@ export default function SingleObservationForm({
                   }}
                   value={object ? object : objectSearchTerm}
                   placeholder="Search objects by Name or Norad/International Designation Number"
-                  style={isObjectError ? { border: "2px solid red" } : null}
+                  style={isObjectError ? { border: "2px solid #FC7756" } : null}
                 />
               )}
               {isObjectError ? (
@@ -1100,7 +1100,9 @@ export default function SingleObservationForm({
         )}
 
         <div className="iod-wrapper">
-          <label>IOD {" "} <QuestionMarkToolTip toolTipText={toolTipCopy.iod} /></label>
+          <label>
+            IOD <QuestionMarkToolTip toolTipText={toolTipCopy.iod} />
+          </label>
           <div className="iod-wrapper-inner">
             <p
               className="iod"
