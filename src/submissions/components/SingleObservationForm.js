@@ -19,7 +19,9 @@ import ConditionTerrible from "../../assets/ConditionTerrible.svg";
 
 // import { useTrusatGetApi } from "../../app/app-helpers";
 
-export default function SingleObservationForm() {
+export default function SingleObservationForm({
+  setShowSingleObservationForm
+}) {
   // STATION CONDITIONS
   const [station, setStation] = useState(``); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
@@ -80,6 +82,7 @@ export default function SingleObservationForm() {
   // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   // SUBMISSION UI STATES
+  const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides a count of accepted IODs - i.e. correct format and not duplicates
   const [successCount, setSuccessCount] = useState(null);
@@ -292,6 +295,30 @@ export default function SingleObservationForm() {
       );
     });
   };
+
+  useEffect(() => {
+    if (
+      !isStationError &&
+      !isDateFormatError &&
+      !isTimeFormatError &&
+      !isDateAndTimeError &&
+      !isObjectError &&
+      !isRightAscensionOrAzimuthError &&
+      !isDeclinationOrElevationError
+    ) {
+      setShowSubmitButton(true);
+    } else {
+      setShowSubmitButton(false);
+    }
+  }, [
+    isStationError,
+    isDateFormatError,
+    isTimeFormatError,
+    isDateAndTimeError,
+    isObjectError,
+    isRightAscensionOrAzimuthError,
+    isDeclinationOrElevationError
+  ]);
 
   // submit the IOD
   const handleSubmit = async () => {
@@ -1113,13 +1140,17 @@ export default function SingleObservationForm() {
           <Spinner />
         ) : (
           <div className="single-observation-form__button-wrapper">
-            <NavLink className="app__nav-link" to="/catalog/priorities">
-              <span className="app__black-button--small single-observation-form__cancel-button">
-                CANCEL
-              </span>
-            </NavLink>
-            &nbsp;
-            <button type="submit" className="app__white-button--small">
+            <span
+              className="submit__single-observation-nav-button"
+              onClick={() => setShowSingleObservationForm(false)}
+            >
+              Or enter pre-formatted data
+            </span>
+
+            <button
+              className="submit__submit-button"
+              style={showSubmitButton ? { opacity: "1" } : { opacity: "0.5" }}
+            >
               SUBMIT
             </button>
           </div>
