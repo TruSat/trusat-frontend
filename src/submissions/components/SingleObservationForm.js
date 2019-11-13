@@ -353,6 +353,11 @@ export default function SingleObservationForm({
 
   return (
     <Fragment>
+      {jwt === "none" ? (
+        <p className="app__error-message">
+          Please log in to submit your observations
+        </p>
+      ) : null}
       <form
         className="single-observation-form"
         onSubmit={event => {
@@ -1142,12 +1147,14 @@ export default function SingleObservationForm({
               Or enter pre-formatted data
             </span>
 
-            <button
-              className="submit__submit-button"
-              style={showSubmitButton ? { opacity: "1" } : { opacity: "0.5" }}
-            >
-              SUBMIT
-            </button>
+            {jwt === "none" ? null : (
+              <button
+                className="submit__submit-button"
+                style={showSubmitButton ? { opacity: "1" } : { opacity: "0.5" }}
+              >
+                SUBMIT
+              </button>
+            )}
           </div>
         )}
       </form>
