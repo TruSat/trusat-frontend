@@ -8,12 +8,13 @@ import {
   retrieveJwt,
   checkJwt
 } from "../../auth/auth-helpers";
-import { NavLink } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
 
-export default function MultipleObservationForm() {
+export default function MultipleObservationForm({
+  setShowSingleObservationForm
+}) {
   const [isLoading, setIsLoading] = useState(false);
   const [pastedIODs, setPastedIODs] = useState(``);
   // server provides a count of accepted IODs - i.e. correct format and not duplicates
@@ -128,13 +129,18 @@ export default function MultipleObservationForm() {
         <Spinner />
       ) : (
         <div className="multiple-observation-form__button-wrapper">
-          <NavLink className="app__nav-link" to="/catalog/priorities">
-            <span className="app__black-button--small multiple-observation-form__cancel-button">
-              CANCEL
-            </span>
-          </NavLink>
+          <span
+            className="submit__single-observation-nav-button"
+            onClick={() => setShowSingleObservationForm(true)}
+          >
+            Or enter individual observation
+          </span>
           &nbsp;
-          <button type="submit" className="app__white-button--small">
+          <button
+            type="submit"
+            className="submit__submit-button"
+            style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+          >
             SUBMIT
           </button>
         </div>
