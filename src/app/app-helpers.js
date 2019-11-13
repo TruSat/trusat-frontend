@@ -235,7 +235,9 @@ export const toolTipCopy = {
   brightness_uncertainty:
     "The margin of uncertainty for your brightness estimates",
   flash_period:
-    "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light."
+    "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light.",
+  iod:
+    "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format."
 };
 
 export const emails = {

@@ -402,6 +402,22 @@ input[type="number"] {
   padding: 20px;
 }
 
+.iod-wrapper-inner {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.iod-wrapper-inner {
+  border: 1px solid $secondary-theme-color;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.iod {
+  font-family: monospace;
+  font-size: $small-font-size;
+}
+
 // grid gutter hack
 .station-conditions__location-wrapper,
 .station-conditions__date,

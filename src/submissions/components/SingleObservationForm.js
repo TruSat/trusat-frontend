@@ -1099,17 +1099,23 @@ export default function SingleObservationForm({
           </section>
         )}
 
-        <p
-          style={
-            IOD.length === 80
-              ? { color: "green", marginBottom: "1em", whiteSpace: "pre" }
-              : { color: "red", marginBottom: "1em", whiteSpace: "pre" }
-          }
-        >
-          {IOD}
-          {` `}
-          {remarks}
-        </p>
+        <div className="iod-wrapper">
+          <label>IOD {" "} <QuestionMarkToolTip toolTipText={toolTipCopy.iod} /></label>
+          <div className="iod-wrapper-inner">
+            <p
+              className="iod"
+              style={
+                IOD.length === 80
+                  ? { color: "white", whiteSpace: "pre" }
+                  : { color: "#FC7756", whiteSpace: "pre" }
+              }
+            >
+              {IOD}
+              {` `}
+              {remarks}
+            </p>
+          </div>
+        </div>
 
         {/* Success message */}
         {successCount > 0 ? (
