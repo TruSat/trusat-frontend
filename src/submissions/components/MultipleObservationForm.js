@@ -108,24 +108,33 @@ export default function MultipleObservationForm({
       ) : isLoading ? (
         <Spinner />
       ) : (
-        <div className="multiple-observation-form__button-wrapper">
-          <span
-            className="submit__single-observation-nav-button"
-            onClick={() => setShowSingleObservationForm(true)}
-          >
-            Or enter individual observation
-          </span>
-
-          {jwt === "none" ? null : (
-            <button
-              type="submit"
-              className="submit__submit-button"
-              style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+        <Fragment>
+          <div className="multiple-observation-form__button-wrapper">
+            <span
+              className="submit__single-observation-nav-button"
+              onClick={() => setShowSingleObservationForm(true)}
             >
-              SUBMIT
-            </button>
+              Or enter individual observation
+            </span>
+
+            {jwt === "none" ? null : (
+              <button
+                type="submit"
+                className="submit__submit-button"
+                style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+              >
+                SUBMIT
+              </button>
+            )}
+          </div>
+          {jwt === "none" ? null : (
+            <p className="submit__submit-warning">
+              Please keep in mind that this data will be automatically recorded
+              into TruSat's catalog of orbital positions, and factored into
+              orbital predictions for this object.
+            </p>
           )}
-        </div>
+        </Fragment>
       )}
     </form>
   );
