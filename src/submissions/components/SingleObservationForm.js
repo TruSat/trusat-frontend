@@ -62,8 +62,9 @@ export default function SingleObservationForm() {
   // VALIDATION ERROR MESSAGING
   const numRegEx = /^\d+$/; // checks if string only contains numbers
   const [isStationError, setIsStationError] = useState(false);
-  const [isDateError, setIsDateError] = useState(false);
-  const [isTimeError, setIsTimeError] = useState(false);
+  const [isDateFormatError, setIsDateFormatError] = useState(false);
+  const [isTimeFormatError, setIsTimeFormatError] = useState(false);
+  const [isDateAndTimeError, setIsDateAndTimeError] = useState(false);
   const [isObjectError, setIsObjectError] = useState(false);
   const [
     isRightAscensionOrAzimuthError,
@@ -86,32 +87,6 @@ export default function SingleObservationForm() {
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
-
-  const isDateValid = () => {
-    if (date.length === 8) {
-      const todayDate = new Date(); // get todays date
-      const todayTimeStamp = todayDate.getTime();
-      // convert date and time inputs to format readable by Date object
-      const observationDateTime = new Date(
-        `${[date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join("-")} ${[
-          time.slice(0, 2),
-          time.slice(2, 4),
-          time.slice(4, 6)
-        ]
-          .join(":")
-          .substring(0, 8)}`
-      );
-      const observationTimeStamp = observationDateTime.getTime();
-      // check if observation date is before current date
-      if (observationTimeStamp < todayTimeStamp) {
-        console.log(true);
-        return true;
-      } else {
-        console.log(false);
-        return false;
-      }
-    }
-  };
 
   // Builds the IOD string
   useEffect(() => {
@@ -138,6 +113,8 @@ export default function SingleObservationForm() {
     flashPeriod
   ]);
 
+  useEffect(() => {});
+
   // Input Validation
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
@@ -147,27 +124,47 @@ export default function SingleObservationForm() {
       setIsStationError(false);
     }
 
-    isDateValid(date);
-
-    isDateValid(date);
-
     // date is mandatory, must be 8 chars long, all numbers
     if (date.length !== 8 || !numRegEx.test(date)) {
-      setIsDateError(true);
+      setIsDateFormatError(true);
     } else {
-      setIsDateError(false);
+      setIsDateFormatError(false);
     }
 
     // if time contains non-whitespace chars or is not 9 chars long
     if (/\S/.test(time) || time.length !== 9) {
       // time must be 9 chars, all numbers
       if (time.length !== 9 || !numRegEx.test(time)) {
-        setIsTimeError(true);
+        setIsTimeFormatError(true);
       } else {
-        setIsTimeError(false);
+        setIsTimeFormatError(false);
       }
     } else {
-      setIsTimeError(false);
+      setIsTimeFormatError(false);
+    }
+
+    // Checks if observation date is before current date
+    if (date.length === 8) {
+      const todayDate = new Date(); // get todays date
+      const todayTimeStamp = todayDate.getTime();
+      // convert date and time inputs to format readable by Date object
+      // uses midnight for time if user hasn't added a time value
+      const observationDateTime = new Date(
+        `${[date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join("-")} ${
+          time === `         `
+            ? `00:00:00`
+            : [time.slice(0, 2), time.slice(2, 4), time.slice(4, 6)]
+                .join(":")
+                .substring(0, 8)
+        }`
+      );
+      const observationTimeStamp = observationDateTime.getTime();
+
+      if (observationTimeStamp > todayTimeStamp) {
+        setIsDateAndTimeError(true); // date of observation is after current time
+      } else {
+        setIsDateAndTimeError(false); // date of observation is before current time
+      }
     }
 
     // object is mandatory, must be 8 chars long
@@ -233,7 +230,7 @@ export default function SingleObservationForm() {
     }
   }, [conditions]);
 
-  // SEARCH FOR OBJECT IN DATABASE
+  // Search for objects in the database
   useEffect(() => {
     const fetchObject = async () => {
       try {
@@ -251,6 +248,7 @@ export default function SingleObservationForm() {
     }
   }, [objectSearchTerm]);
 
+  // Render results of search under the input field
   const renderObjectSearchResults = () => {
     // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
     const formatObject = ({ norad, cospar }) => {
@@ -295,6 +293,7 @@ export default function SingleObservationForm() {
     });
   };
 
+  // submit the IOD
   const handleSubmit = async () => {
     setIsLoading(true);
     setIsError(false);
@@ -305,8 +304,9 @@ export default function SingleObservationForm() {
     // Only submit IOD if no validation errors found
     if (
       !isStationError &&
-      !isDateError &&
-      !isTimeError &&
+      !isDateFormatError &&
+      !isTimeFormatError &&
+      !isDateAndTimeError &&
       !isObjectError &&
       !isRightAscensionOrAzimuthError &&
       !isDeclinationOrElevationError
@@ -435,7 +435,9 @@ export default function SingleObservationForm() {
                         setDate(event.target.value);
                       }
                     }}
-                    style={isDateError ? { border: "2px solid red" } : null}
+                    style={
+                      isDateFormatError ? { border: "2px solid red" } : null
+                    }
                   />
                 </div>
                 <div className="station-conditions__time">
@@ -450,20 +452,28 @@ export default function SingleObservationForm() {
                     }}
                     value={time}
                     placeholder="HHMMSSsss"
-                    style={isTimeError ? { border: "2px solid red" } : null}
+                    style={
+                      isTimeFormatError ? { border: "2px solid red" } : null
+                    }
                   />
                 </div>
               </div>
-              {isDateError ? (
+              {isDateFormatError ? (
                 <p className="app__error-message">
                   Date must be a numerical value of 8 characters in the
                   following format: YYYYMMDD
                 </p>
               ) : null}
-              {isTimeError ? (
+              {isTimeFormatError ? (
                 <p className="app__error-message">
                   Time must be a numerical value of 9 characters representing
                   UTC time in the following format: HHMMSSsss
+                </p>
+              ) : null}
+              {isDateAndTimeError ? (
+                <p className="app__error-message">
+                  You have entered a date/time for your observation that is in
+                  the future
                 </p>
               ) : null}
             </div>
