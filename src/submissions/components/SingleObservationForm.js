@@ -1047,9 +1047,16 @@ export default function SingleObservationForm({
                   <option value={`03`}>0.3</option>
                   <option value={`04`}>0.4</option>
                   <option value={`05`}>0.5</option>
+                  <option value={`06`}>0.6</option>
+                  <option value={`07`}>0.7</option>
+                  <option value={`08`}>0.8</option>
+                  <option value={`09`}>0.9</option>
                   <option value={`10`}>1</option>
+                  <option value={`11`}>1.1</option>
+                  <option value={`12`}>1.2</option>
+                  <option value={`13`}>1.3</option>
+                  <option value={`14`}>1.4</option>
                   <option value={`15`}>1.5</option>
-                  <option value={`20`}>2</option>
                 </select>
               </div>
               <div className="object-behavior__flash-period-wrapper">
