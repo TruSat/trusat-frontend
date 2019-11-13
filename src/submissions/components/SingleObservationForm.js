@@ -113,9 +113,33 @@ export default function SingleObservationForm() {
     flashPeriod
   ]);
 
-  useEffect(() => {});
+  // Checks if observation date is before current date
+  useEffect(() => {
+    if (date.length === 8) {
+      const todayDate = new Date(); // get todays date
+      const todayTimeStamp = todayDate.getTime();
+      // convert date and time inputs to format readable by Date object
+      // uses midnight for time if user hasn't added a time value
+      const observationDateTime = new Date(
+        `${[date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join("-")} ${
+          time === `         `
+            ? `00:00:00`
+            : [time.slice(0, 2), time.slice(2, 4), time.slice(4, 6)]
+                .join(":")
+                .substring(0, 8)
+        }`
+      );
+      const observationTimeStamp = observationDateTime.getTime();
 
-  // Input Validation
+      if (observationTimeStamp > todayTimeStamp) {
+        setIsDateAndTimeError(true); // date of observation is after current time
+      } else {
+        setIsDateAndTimeError(false); // date of observation is before current time
+      }
+    }
+  }, [date, time]);
+
+  // Input format validation
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
     if (station.length !== 4 || !numRegEx.test(station)) {
@@ -141,30 +165,6 @@ export default function SingleObservationForm() {
       }
     } else {
       setIsTimeFormatError(false);
-    }
-
-    // Checks if observation date is before current date
-    if (date.length === 8) {
-      const todayDate = new Date(); // get todays date
-      const todayTimeStamp = todayDate.getTime();
-      // convert date and time inputs to format readable by Date object
-      // uses midnight for time if user hasn't added a time value
-      const observationDateTime = new Date(
-        `${[date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join("-")} ${
-          time === `         `
-            ? `00:00:00`
-            : [time.slice(0, 2), time.slice(2, 4), time.slice(4, 6)]
-                .join(":")
-                .substring(0, 8)
-        }`
-      );
-      const observationTimeStamp = observationDateTime.getTime();
-
-      if (observationTimeStamp > todayTimeStamp) {
-        setIsDateAndTimeError(true); // date of observation is after current time
-      } else {
-        setIsDateAndTimeError(false); // date of observation is before current time
-      }
     }
 
     // object is mandatory, must be 8 chars long
