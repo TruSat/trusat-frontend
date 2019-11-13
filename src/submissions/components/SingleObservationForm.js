@@ -87,13 +87,30 @@ export default function SingleObservationForm() {
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
 
-  const isDateValid = date => {
-    // const today = new Date(); // get todays date
-    // console.log(`todays date = `, today);
-    // const timeStamp = today.getTime();
-    // console.log(`todays timestamp = `, timeStamp);
-    // const maxDate = `${today.getFullYear()}-${today.getMonth() +
-    //   1}-${today.getDate()}`; // get max date
+  const isDateValid = () => {
+    if (date.length === 8) {
+      const todayDate = new Date(); // get todays date
+      const todayTimeStamp = todayDate.getTime();
+      // convert date and time inputs to format readable by Date object
+      const observationDateTime = new Date(
+        `${[date.slice(0, 4), date.slice(4, 6), date.slice(6, 8)].join("-")} ${[
+          time.slice(0, 2),
+          time.slice(2, 4),
+          time.slice(4, 6)
+        ]
+          .join(":")
+          .substring(0, 8)}`
+      );
+      const observationTimeStamp = observationDateTime.getTime();
+      // check if observation date is before current date
+      if (observationTimeStamp < todayTimeStamp) {
+        console.log(true);
+        return true;
+      } else {
+        console.log(false);
+        return false;
+      }
+    }
   };
 
   // Builds the IOD string
@@ -121,8 +138,6 @@ export default function SingleObservationForm() {
     flashPeriod
   ]);
 
-  console.log(IOD);
-
   // Input Validation
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
@@ -131,6 +146,8 @@ export default function SingleObservationForm() {
     } else {
       setIsStationError(false);
     }
+
+    isDateValid(date);
 
     isDateValid(date);
 
