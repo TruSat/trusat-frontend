@@ -1,5 +1,4 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
@@ -16,8 +15,6 @@ import ConditionFair from "../../assets/ConditionFair.svg";
 import ConditionPoor from "../../assets/ConditionPoor.svg";
 import ConditionBad from "../../assets/ConditionBad.svg";
 import ConditionTerrible from "../../assets/ConditionTerrible.svg";
-
-// import { useTrusatGetApi } from "../../app/app-helpers";
 
 export default function SingleObservationForm({
   setShowSingleObservationForm
@@ -78,8 +75,6 @@ export default function SingleObservationForm({
   ] = useState(false);
 
   //const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
-
-  // const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
 
   // SUBMISSION UI STATES
   const [showSubmitButton, setShowSubmitButton] = useState(false);
@@ -142,7 +137,7 @@ export default function SingleObservationForm({
     }
   }, [date, time]);
 
-  // Input format validation
+  // Input field format validation
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
     if (station.length !== 4 || !numRegEx.test(station)) {
@@ -358,6 +353,11 @@ export default function SingleObservationForm({
 
   return (
     <Fragment>
+      {jwt === "none" ? (
+        <p className="app__error-message">
+          Please log in to submit your observations
+        </p>
+      ) : null}
       <form
         className="single-observation-form"
         onSubmit={event => {
@@ -1153,12 +1153,14 @@ export default function SingleObservationForm({
               Or enter pre-formatted data
             </span>
 
-            <button
-              className="submit__submit-button"
-              style={showSubmitButton ? { opacity: "1" } : { opacity: "0.5" }}
-            >
-              SUBMIT
-            </button>
+            {jwt === "none" ? null : (
+              <button
+                className="submit__submit-button"
+                style={showSubmitButton ? { opacity: "1" } : { opacity: "0.5" }}
+              >
+                SUBMIT
+              </button>
+            )}
           </div>
         )}
       </form>

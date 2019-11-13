@@ -1,13 +1,7 @@
 import React, { useState, Fragment } from "react";
 import axios from "axios";
 import { API_ROOT } from "../../app/app-helpers";
-import {
-  createWallet,
-  retrieveNonce,
-  signMessage,
-  retrieveJwt,
-  checkJwt
-} from "../../auth/auth-helpers";
+import { checkJwt } from "../../auth/auth-helpers";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
@@ -24,38 +18,19 @@ export default function MultipleObservationForm({
   const { jwt } = useAuthState();
   const [isError, setIsError] = useState(false);
 
-  const getBurnerJwt = async () => {
-    const wallet = createWallet();
-    const nonce = await retrieveNonce({ address: wallet.signingKey.address });
-    const signedMessage = signMessage({ nonce, wallet });
-
-    const jwt = await retrieveJwt({
-      address: wallet.signingKey.address,
-      signedMessage: signedMessage
-    });
-    return jwt;
-  };
-
   const handleSubmit = async () => {
     setIsLoading(true);
     setIsError(false);
     setSuccessCount(null);
     setErrorMessages([]);
 
-    let submissionJwt = "";
-    // create a burner and get a jwt for it if users wants to submit without signing up/in
-    if (jwt === "none") {
-      submissionJwt = await getBurnerJwt();
-    } else {
-      submissionJwt = jwt;
-    }
     // check if jwt is valid and hasn't expired before submission
-    await checkJwt(submissionJwt);
+    await checkJwt(jwt);
 
     try {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
-        JSON.stringify({ jwt: submissionJwt, multiple: pastedIODs })
+        JSON.stringify({ jwt: jwt, multiple: pastedIODs })
       );
       setPastedIODs("");
 
@@ -78,6 +53,11 @@ export default function MultipleObservationForm({
         handleSubmit();
       }}
     >
+      {jwt === "none" ? (
+        <p className="app__error-message">
+          Please log in to submit your observations
+        </p>
+      ) : null}
       <div style={{ display: "block" }}>
         <textarea
           required
@@ -135,14 +115,16 @@ export default function MultipleObservationForm({
           >
             Or enter individual observation
           </span>
-          &nbsp;
-          <button
-            type="submit"
-            className="submit__submit-button"
-            style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
-          >
-            SUBMIT
-          </button>
+
+          {jwt === "none" ? null : (
+            <button
+              type="submit"
+              className="submit__submit-button"
+              style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+            >
+              SUBMIT
+            </button>
+          )}
         </div>
       )}
     </form>
