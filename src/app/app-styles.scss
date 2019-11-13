@@ -493,7 +493,7 @@ EMAIL FORM
   background: $tertiary-color;
   border-radius: 4px;
   border: 1px solid $secondary-theme-color;
-  box-sizing: content-box;
+  box-sizing: border-box;
   color: $primary-text-color;
   font-size: $medium-font-size;
   height: 48px;
@@ -502,8 +502,12 @@ EMAIL FORM
   width: 100%;
 }
 
+textarea.app__form__input {
+  height: initial;
+}
+
 .app__form__input--sign {
-  max-width: 45px;
+  max-width: 60px;
 }
 
 .app__form__checkbox-and-message-wrapper {
