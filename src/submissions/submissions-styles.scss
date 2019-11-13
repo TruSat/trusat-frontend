@@ -334,9 +334,11 @@ input[type="number"] {
 }
 
 .object-position__declination-elevation-wrapper-inner {
-  border: 1px solid red;
   display: flex;
-  justify-content: space-between;
+}
+
+.object-position__declination-elevation {
+  width: 60%;
 }
 
 .object-position__position-uncertainty-wrapper {
@@ -398,6 +400,22 @@ input[type="number"] {
 
 .object-behavior__remarks-wrapper > textarea {
   padding: 20px;
+}
+
+.iod-wrapper-inner {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.iod-wrapper-inner {
+  border: 1px solid $secondary-theme-color;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.iod {
+  font-family: monospace;
+  font-size: $small-font-size;
 }
 
 // grid gutter hack
