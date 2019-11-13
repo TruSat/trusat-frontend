@@ -934,16 +934,12 @@ export default function SingleObservationForm({
                   }
                   className="app__form__input"
                 >
-                  <option value="34">0.0003 seconds</option>
-                  <option value="56">0.05 seconds</option>
                   <option value="17">0.1 seconds</option>
                   <option value="97">0.9 seconds</option>
                   <option value="18">1.0 seconds</option>
                   <option value="28">2.0 seconds</option>
                   <option value="58">5.0 seconds</option>
                   <option value="19">10.0 seconds</option>
-                  <option value="29">20.0 seconds</option>
-                  <option value="99">90.0 seconds</option>
                 </select>
               </div>
             </div>
