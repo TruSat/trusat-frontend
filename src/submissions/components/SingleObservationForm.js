@@ -377,6 +377,16 @@ export default function SingleObservationForm({
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
+                {` `}
+                Don't have a station number? Submit location{" "}
+                <a
+                  className="app__link"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href="https://docs.google.com/forms/d/1SoQivnx_dZPku0eZKlPXnNwggH2XDtb-e4GpAMSvYE8/viewform?edit_requested=true"
+                >
+                  here
+                </a>
               </label>
               <input
                 className="app__form__input"

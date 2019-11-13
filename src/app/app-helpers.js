@@ -193,7 +193,7 @@ export const toolTipCopy = {
   user: "user who made observation",
   observation_station:
     "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots.",
-  station_location: `If you don’t yet have a station number, please use “9999”, and tell us where you made your observation from by using the form at trusat.org/your-location`,
+  station_location: `If you don’t yet have a station number, please use “9999”, and tell us where you made your observation from by using the linked form`,
   clouded_out:
     "Check this if you want to indicate an attempt to observe that was prevented by adverse weather.",
   observer_unavailable:
