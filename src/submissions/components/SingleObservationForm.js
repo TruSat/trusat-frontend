@@ -49,10 +49,11 @@ export default function SingleObservationForm({
   const [positionalUncertainty, setPositionalUncertainty] = useState(`18`); // 2 chars
   // BEHAVIOR
   const [behavior, setBehavior] = useState(` `); // 1 char
-  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+"); // 1 char
+  const [showBehaviorOptions, setShowBehaviorOptions] = useState(false); // Utilized to render behavior options when user selected an optical behavior
+  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState(` `); // 1 char
   const [visualMagnitude, setVisualMagnitude] = useState(`   `); // 3 chars
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
-    "10"
+    `  `
   );
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
   const [remarks, setRemarks] = useState("");
@@ -305,6 +306,20 @@ export default function SingleObservationForm({
     });
   };
 
+  // Show behavior options when user chooses an Optical Behavior
+  useEffect(() => {
+    if (behavior !== ` `) {
+      setShowBehaviorOptions(true);
+      setVisualMagnitudeSign("+");
+      setVisualMagnitudeUncertainty("10");
+    } else {
+      setShowBehaviorOptions(false);
+      setVisualMagnitudeSign(` `); // ` char
+      setVisualMagnitudeUncertainty(`  `); // 2 chars
+    }
+  }, [behavior]);
+
+  // Only show submit button in full color when no errors present in form
   useEffect(() => {
     if (
       !isStationError &&
@@ -1020,105 +1035,110 @@ export default function SingleObservationForm({
                 <option value="V">Best seen using averted vision</option>
               </select>
             </div>
-            <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
-              <div className="object-behavior__brightness-wrapper">
-                <label>
-                  Brightness{" "}
-                  <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
-                </label>
-                <div className="object-behavior__brightness">
+            {showBehaviorOptions ? (
+              <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
+                <div className="object-behavior__brightness-wrapper">
+                  <label>
+                    Brightness{" "}
+                    <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
+                  </label>
+                  <div className="object-behavior__brightness">
+                    <select
+                      className="app__form__input app__form__input--sign"
+                      onChange={event =>
+                        setVisualMagnitudeSign(event.target.value)
+                      }
+                      value={visualMagnitudeSign}
+                    >
+                      <option value="+">+</option>
+                      <option value="-">-</option>
+                    </select>
+                    <select
+                      className="object-behavior__brightness-select app__form__input"
+                      type="number"
+                      onChange={event => setVisualMagnitude(event.target.value)}
+                      value={visualMagnitude}
+                    >
+                      <option value={`   `} disabled hidden>
+                        Magnitude
+                      </option>
+                      <option value="010">1</option>
+                      <option value="020">2</option>
+                      <option value="030">3</option>
+                      <option value="040">4</option>
+                      <option value="050">5</option>
+                      <option value="060">6</option>
+                      <option value="070">7</option>
+                      <option value="080">8</option>
+                      <option value="090">9</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="object-behavior__brightness-uncertainty-wrapper">
+                  <label>
+                    Brightness uncertainty{" "}
+                    <QuestionMarkToolTip
+                      toolTipText={toolTipCopy.brightness_uncertainty}
+                    />
+                  </label>
                   <select
-                    className="app__form__input app__form__input--sign"
+                    className="object-behavior__brightness-uncertainty-select app__form__input"
                     onChange={event =>
-                      setVisualMagnitudeSign(event.target.value)
+                      setVisualMagnitudeUncertainty(event.target.value)
                     }
-                    value={visualMagnitudeSign}
+                    value={visualMagnitudeUncertainty}
                   >
-                    <option value="+">+</option>
-                    <option value="-">-</option>
+                    <option value={`01`}>0.1</option>
+                    <option value={`02`}>0.2</option>
+                    <option value={`03`}>0.3</option>
+                    <option value={`04`}>0.4</option>
+                    <option value={`05`}>0.5</option>
+                    <option value={`06`}>0.6</option>
+                    <option value={`07`}>0.7</option>
+                    <option value={`08`}>0.8</option>
+                    <option value={`09`}>0.9</option>
+                    <option value={`10`}>1</option>
+                    <option value={`11`}>1.1</option>
+                    <option value={`12`}>1.2</option>
+                    <option value={`13`}>1.3</option>
+                    <option value={`14`}>1.4</option>
+                    <option value={`15`}>1.5</option>
                   </select>
+                </div>
+                <div className="object-behavior__flash-period-wrapper">
+                  <label>
+                    Flash Period{" "}
+                    <QuestionMarkToolTip
+                      toolTipText={toolTipCopy.flash_period}
+                    />
+                  </label>
                   <select
-                    className="object-behavior__brightness-select app__form__input"
-                    type="number"
-                    onChange={event => setVisualMagnitude(event.target.value)}
-                    value={visualMagnitude}
+                    className="object-behavior__flash-period-select app__form__input"
+                    onChange={event => setFlashPeriod(event.target.value)}
+                    value={flashPeriod}
                   >
-                    <option value={`   `} disabled hidden>
-                      Magnitude
-                    </option>
-                    <option value="010">1</option>
-                    <option value="020">2</option>
-                    <option value="030">3</option>
-                    <option value="040">4</option>
-                    <option value="050">5</option>
-                    <option value="060">6</option>
-                    <option value="070">7</option>
-                    <option value="080">8</option>
-                    <option value="090">9</option>
+                    <option value={`      `}>Not specified</option>
+                    <option value={` 05000`}>0.5 seconds</option>
+                    <option value={` 10000`}>1 seconds</option>
+                    <option value={` 15000`}>1.5 seconds</option>
+                    <option value={` 20000`}>2 seconds</option>
+                    <option value={` 25000`}>2.5 seconds</option>
+                    <option value={` 30000`}>3 seconds</option>
+                    <option value={` 35000`}>3.5 seconds</option>
+                    <option value={` 40000`}>4 seconds</option>
+                    <option value={` 45000`}>4.5 seconds</option>
+                    <option value={` 50000`}>5 seconds</option>
+                    <option value={` 55000`}>5.5 seconds</option>
+                    <option value={` 60000`}>6 seconds</option>
+                    <option value={` 65000`}>6.5 seconds</option>
+                    <option value={` 70000`}>7 seconds</option>
+                    <option value={` 75000`}>7.5 seconds</option>
+                    <option value={` 80000`}>8 seconds</option>
                   </select>
                 </div>
               </div>
-              <div className="object-behavior__brightness-uncertainty-wrapper">
-                <label>
-                  Brightness uncertainty{" "}
-                  <QuestionMarkToolTip
-                    toolTipText={toolTipCopy.brightness_uncertainty}
-                  />
-                </label>
-                <select
-                  className="object-behavior__brightness-uncertainty-select app__form__input"
-                  onChange={event =>
-                    setVisualMagnitudeUncertainty(event.target.value)
-                  }
-                  value={visualMagnitudeUncertainty}
-                >
-                  <option value={`01`}>0.1</option>
-                  <option value={`02`}>0.2</option>
-                  <option value={`03`}>0.3</option>
-                  <option value={`04`}>0.4</option>
-                  <option value={`05`}>0.5</option>
-                  <option value={`06`}>0.6</option>
-                  <option value={`07`}>0.7</option>
-                  <option value={`08`}>0.8</option>
-                  <option value={`09`}>0.9</option>
-                  <option value={`10`}>1</option>
-                  <option value={`11`}>1.1</option>
-                  <option value={`12`}>1.2</option>
-                  <option value={`13`}>1.3</option>
-                  <option value={`14`}>1.4</option>
-                  <option value={`15`}>1.5</option>
-                </select>
-              </div>
-              <div className="object-behavior__flash-period-wrapper">
-                <label>
-                  Flash Period{" "}
-                  <QuestionMarkToolTip toolTipText={toolTipCopy.flash_period} />
-                </label>
-                <select
-                  className="object-behavior__flash-period-select app__form__input"
-                  onChange={event => setFlashPeriod(event.target.value)}
-                  value={flashPeriod}
-                >
-                  <option value={`      `}>Not specified</option>
-                  <option value={` 05000`}>0.5 seconds</option>
-                  <option value={` 10000`}>1 seconds</option>
-                  <option value={` 15000`}>1.5 seconds</option>
-                  <option value={` 20000`}>2 seconds</option>
-                  <option value={` 25000`}>2.5 seconds</option>
-                  <option value={` 30000`}>3 seconds</option>
-                  <option value={` 35000`}>3.5 seconds</option>
-                  <option value={` 40000`}>4 seconds</option>
-                  <option value={` 45000`}>4.5 seconds</option>
-                  <option value={` 50000`}>5 seconds</option>
-                  <option value={` 55000`}>5.5 seconds</option>
-                  <option value={` 60000`}>6 seconds</option>
-                  <option value={` 65000`}>6.5 seconds</option>
-                  <option value={` 70000`}>7 seconds</option>
-                  <option value={` 75000`}>7.5 seconds</option>
-                  <option value={` 80000`}>8 seconds</option>
-                </select>
-              </div>
-            </div>
+            ) : null}
+
             <div className="object-behavior__remarks-wrapper">
               <label>Remarks</label>
               <textarea
