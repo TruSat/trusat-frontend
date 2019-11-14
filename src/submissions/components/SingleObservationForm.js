@@ -752,7 +752,7 @@ export default function SingleObservationForm({
                   }
                   onChange={event => setEpochCode(event.target.value)}
                 >
-                  <option value="0">0 or blank = of date</option>
+                  <option value="0">blank = of date</option>
                   <option
                     disabled={
                       Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
@@ -991,9 +991,7 @@ export default function SingleObservationForm({
                 onChange={event => setBehavior(event.target.value)}
                 value={behavior}
               >
-                <option value={` `} disabled hidden>
-                  Select one
-                </option>
+                <option value={` `}>Not specified</option>
                 <option value="E">
                   Unusually faint because of eclipse exit/entrance
                 </option>
@@ -1101,6 +1099,7 @@ export default function SingleObservationForm({
                   onChange={event => setFlashPeriod(event.target.value)}
                   value={flashPeriod}
                 >
+                  <option value={`      `}>Not specified</option>
                   <option value={` 05000`}>0.5 seconds</option>
                   <option value={` 10000`}>1 seconds</option>
                   <option value={` 15000`}>1.5 seconds</option>
