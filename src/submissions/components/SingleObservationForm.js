@@ -111,6 +111,30 @@ export default function SingleObservationForm({
     flashPeriod
   ]);
 
+  // Updates IOD when user toggles `Clouded Out` or `Observer Unavailable`
+  useEffect(() => {
+    if (conditions === "C" || conditions === "O") {
+      setObject(`               `); // 15 chars
+      setTimeUncertainty(`  `); // 2 chars
+      setAngleFormatCode(` `); // 1 char
+      setEpochCode(` `); // 1 char
+      setDeclinationOrElevationSign(` `); // 1 char
+      setPositionalUncertainty(`  `); // 2 chars
+      setVisualMagnitudeSign(` `); // 1 char
+      setVisualMagnitudeUncertainty(`  `); // 2 chars
+    } else {
+      // return all the 'default values' when user deselects either C or O
+      setObject(``); // 15 chars
+      setTimeUncertainty(`18`);
+      setAngleFormatCode(`2`);
+      setEpochCode(`5`);
+      setDeclinationOrElevationSign(`+`);
+      setPositionalUncertainty(`18`);
+      setVisualMagnitudeSign(`+`);
+      setVisualMagnitudeUncertainty(`10`);
+    }
+  }, [conditions]);
+
   // Checks if observation date is before current date
   useEffect(() => {
     if (date.length === 8) {
@@ -127,6 +151,7 @@ export default function SingleObservationForm({
                 .substring(0, 8)
         }`
       );
+      // TODO - add additional check to reject observations from too long ago
       const observationTimeStamp = observationDateTime.getTime();
 
       if (observationTimeStamp > todayTimeStamp) {
