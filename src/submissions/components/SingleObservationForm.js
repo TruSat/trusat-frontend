@@ -49,10 +49,11 @@ export default function SingleObservationForm({
   const [positionalUncertainty, setPositionalUncertainty] = useState(`18`); // 2 chars
   // BEHAVIOR
   const [behavior, setBehavior] = useState(` `); // 1 char
-  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState("+"); // 1 char
+  const [showBehaviorOptions, setShowBehaviorOptions] = useState(false); // Utilized to render behavior options when user selected an optical behavior
+  const [visualMagnitudeSign, setVisualMagnitudeSign] = useState(` `); // 1 char
   const [visualMagnitude, setVisualMagnitude] = useState(`   `); // 3 chars
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
-    "10"
+    `  `
   );
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
   const [remarks, setRemarks] = useState("");
@@ -73,8 +74,6 @@ export default function SingleObservationForm({
     isDeclinationOrElevationError,
     setIsDeclinationOrElevationError
   ] = useState(false);
-
-  //const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
 
   // SUBMISSION UI STATES
   const [showSubmitButton, setShowSubmitButton] = useState(false);
@@ -111,7 +110,33 @@ export default function SingleObservationForm({
     flashPeriod
   ]);
 
-  // Checks if observation date is before current date
+  // Updates IOD when user toggles `Clouded Out` or `Observer Unavailable`
+  useEffect(() => {
+    if (conditions === "C" || conditions === "O") {
+      setIsHiddenInputs(true); // clear N/A inputs
+      setObject(`               `); // 15 chars
+      setTimeUncertainty(`  `); // 2 chars
+      setAngleFormatCode(` `); // 1 char
+      setEpochCode(` `); // 1 char
+      setDeclinationOrElevationSign(` `); // 1 char
+      setPositionalUncertainty(`  `); // 2 chars
+      setVisualMagnitudeSign(` `); // 1 char
+      setVisualMagnitudeUncertainty(`  `); // 2 chars
+    } else {
+      setIsHiddenInputs(false); // shows all inputs again
+      // return all the 'default values' when user deselects either C or O
+      setObject(``); // 15 chars
+      setTimeUncertainty(`18`);
+      setAngleFormatCode(`2`);
+      setEpochCode(`5`);
+      setDeclinationOrElevationSign(`+`);
+      setPositionalUncertainty(`18`);
+      setVisualMagnitudeSign(`+`);
+      setVisualMagnitudeUncertainty(`10`);
+    }
+  }, [conditions]);
+
+  // Validates if observation date submitted is before current date
   useEffect(() => {
     if (date.length === 8) {
       const todayDate = new Date(); // get todays date
@@ -127,6 +152,7 @@ export default function SingleObservationForm({
                 .substring(0, 8)
         }`
       );
+      // TODO - add additional check to reject observations from too long ago
       const observationTimeStamp = observationDateTime.getTime();
 
       if (observationTimeStamp > todayTimeStamp) {
@@ -137,7 +163,7 @@ export default function SingleObservationForm({
     }
   }, [date, time]);
 
-  // Input field format validation
+  // Validates formats of form fields
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
     if (station.length !== 4 || !numRegEx.test(station)) {
@@ -217,17 +243,6 @@ export default function SingleObservationForm({
     declinationOrElevation
   ]);
 
-  // when 'Clouded Out' or 'Observer Unavailable' is selected, clear inputs that aren't applicable
-  useEffect(() => {
-    if (conditions === "C" || conditions === "O") {
-      setIsHiddenInputs(true);
-      setObject(`               `); // 15 chars of whitespace to ensure a valid IOD format
-    } else {
-      setIsHiddenInputs(false);
-      setObject(``); // reset object value so that placeholder appears again
-    }
-  }, [conditions]);
-
   // Search for objects in the database
   useEffect(() => {
     const fetchObject = async () => {
@@ -291,6 +306,20 @@ export default function SingleObservationForm({
     });
   };
 
+  // Show behavior options when user chooses an Optical Behavior
+  useEffect(() => {
+    if (behavior !== ` `) {
+      setShowBehaviorOptions(true);
+      setVisualMagnitudeSign("+");
+      setVisualMagnitudeUncertainty("10");
+    } else {
+      setShowBehaviorOptions(false);
+      setVisualMagnitudeSign(` `); // ` char
+      setVisualMagnitudeUncertainty(`  `); // 2 chars
+    }
+  }, [behavior]);
+
+  // Only show submit button in full color when no errors present in form
   useEffect(() => {
     if (
       !isStationError &&
@@ -544,10 +573,7 @@ export default function SingleObservationForm({
           {/* Conditions */}
           {isHiddenInputs ? null : (
             <div className="station-conditions__conditions-wrapper">
-              <label>
-                Sky Conditions (optional){" "}
-                <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
-              </label>
+              <label>Sky Conditions (optional) </label>
               <div className="station-conditions__conditions-buttons-wrapper">
                 <div>
                   <img
@@ -560,7 +586,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("E")}
                   ></img>
-                  Excellent
+                  Excellent{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_excellent}
+                  />
                 </div>
                 <div>
                   <img
@@ -573,7 +602,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("G")}
                   ></img>
-                  Good
+                  Good{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_good}
+                  />
                 </div>
 
                 <div>
@@ -587,7 +619,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("F")}
                   ></img>
-                  Fair
+                  Fair{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_fair}
+                  />
                 </div>
                 <div>
                   <img
@@ -600,7 +635,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("P")}
                   ></img>
-                  Poor
+                  Poor{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_poor}
+                  />
                 </div>
 
                 <div>
@@ -614,7 +652,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("B")}
                   ></img>
-                  Bad
+                  Bad{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_bad}
+                  />
                 </div>
                 <div>
                   <img
@@ -627,7 +668,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("T")}
                   ></img>
-                  Terrible
+                  Terrible{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_terrible}
+                  />
                 </div>
               </div>
             </div>
@@ -723,7 +767,7 @@ export default function SingleObservationForm({
                   }
                   onChange={event => setEpochCode(event.target.value)}
                 >
-                  <option value="0">0 or blank = of date</option>
+                  <option value="0">blank = of date</option>
                   <option
                     disabled={
                       Number(angleFormatCode) > 3 && Number(angleFormatCode) < 7
@@ -962,9 +1006,7 @@ export default function SingleObservationForm({
                 onChange={event => setBehavior(event.target.value)}
                 value={behavior}
               >
-                <option value={` `} disabled hidden>
-                  Select one
-                </option>
+                <option value={` `}>Not specified</option>
                 <option value="E">
                   Unusually faint because of eclipse exit/entrance
                 </option>
@@ -993,104 +1035,110 @@ export default function SingleObservationForm({
                 <option value="V">Best seen using averted vision</option>
               </select>
             </div>
-            <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
-              <div className="object-behavior__brightness-wrapper">
-                <label>
-                  Brightness{" "}
-                  <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
-                </label>
-                <div className="object-behavior__brightness">
+            {showBehaviorOptions ? (
+              <div className="object-behavior__brightness-brightness-uncertainty-wrapper">
+                <div className="object-behavior__brightness-wrapper">
+                  <label>
+                    Brightness{" "}
+                    <QuestionMarkToolTip toolTipText={toolTipCopy.brightness} />
+                  </label>
+                  <div className="object-behavior__brightness">
+                    <select
+                      className="app__form__input app__form__input--sign"
+                      onChange={event =>
+                        setVisualMagnitudeSign(event.target.value)
+                      }
+                      value={visualMagnitudeSign}
+                    >
+                      <option value="+">+</option>
+                      <option value="-">-</option>
+                    </select>
+                    <select
+                      className="object-behavior__brightness-select app__form__input"
+                      type="number"
+                      onChange={event => setVisualMagnitude(event.target.value)}
+                      value={visualMagnitude}
+                    >
+                      <option value={`   `} disabled hidden>
+                        Magnitude
+                      </option>
+                      <option value="010">1</option>
+                      <option value="020">2</option>
+                      <option value="030">3</option>
+                      <option value="040">4</option>
+                      <option value="050">5</option>
+                      <option value="060">6</option>
+                      <option value="070">7</option>
+                      <option value="080">8</option>
+                      <option value="090">9</option>
+                    </select>
+                  </div>
+                </div>
+                <div className="object-behavior__brightness-uncertainty-wrapper">
+                  <label>
+                    Brightness uncertainty{" "}
+                    <QuestionMarkToolTip
+                      toolTipText={toolTipCopy.brightness_uncertainty}
+                    />
+                  </label>
                   <select
-                    className="app__form__input app__form__input--sign"
+                    className="object-behavior__brightness-uncertainty-select app__form__input"
                     onChange={event =>
-                      setVisualMagnitudeSign(event.target.value)
+                      setVisualMagnitudeUncertainty(event.target.value)
                     }
-                    value={visualMagnitudeSign}
+                    value={visualMagnitudeUncertainty}
                   >
-                    <option value="+">+</option>
-                    <option value="-">-</option>
+                    <option value={`01`}>0.1</option>
+                    <option value={`02`}>0.2</option>
+                    <option value={`03`}>0.3</option>
+                    <option value={`04`}>0.4</option>
+                    <option value={`05`}>0.5</option>
+                    <option value={`06`}>0.6</option>
+                    <option value={`07`}>0.7</option>
+                    <option value={`08`}>0.8</option>
+                    <option value={`09`}>0.9</option>
+                    <option value={`10`}>1</option>
+                    <option value={`11`}>1.1</option>
+                    <option value={`12`}>1.2</option>
+                    <option value={`13`}>1.3</option>
+                    <option value={`14`}>1.4</option>
+                    <option value={`15`}>1.5</option>
                   </select>
+                </div>
+                <div className="object-behavior__flash-period-wrapper">
+                  <label>
+                    Flash Period{" "}
+                    <QuestionMarkToolTip
+                      toolTipText={toolTipCopy.flash_period}
+                    />
+                  </label>
                   <select
-                    className="object-behavior__brightness-select app__form__input"
-                    type="number"
-                    onChange={event => setVisualMagnitude(event.target.value)}
-                    value={visualMagnitude}
+                    className="object-behavior__flash-period-select app__form__input"
+                    onChange={event => setFlashPeriod(event.target.value)}
+                    value={flashPeriod}
                   >
-                    <option value={`   `} disabled hidden>
-                      Magnitude
-                    </option>
-                    <option value="010">1</option>
-                    <option value="020">2</option>
-                    <option value="030">3</option>
-                    <option value="040">4</option>
-                    <option value="050">5</option>
-                    <option value="060">6</option>
-                    <option value="070">7</option>
-                    <option value="080">8</option>
-                    <option value="090">9</option>
+                    <option value={`      `}>Not specified</option>
+                    <option value={` 05000`}>0.5 seconds</option>
+                    <option value={` 10000`}>1 seconds</option>
+                    <option value={` 15000`}>1.5 seconds</option>
+                    <option value={` 20000`}>2 seconds</option>
+                    <option value={` 25000`}>2.5 seconds</option>
+                    <option value={` 30000`}>3 seconds</option>
+                    <option value={` 35000`}>3.5 seconds</option>
+                    <option value={` 40000`}>4 seconds</option>
+                    <option value={` 45000`}>4.5 seconds</option>
+                    <option value={` 50000`}>5 seconds</option>
+                    <option value={` 55000`}>5.5 seconds</option>
+                    <option value={` 60000`}>6 seconds</option>
+                    <option value={` 65000`}>6.5 seconds</option>
+                    <option value={` 70000`}>7 seconds</option>
+                    <option value={` 75000`}>7.5 seconds</option>
+                    <option value={` 80000`}>8 seconds</option>
                   </select>
                 </div>
               </div>
-              <div className="object-behavior__brightness-uncertainty-wrapper">
-                <label>
-                  Brightness uncertainty{" "}
-                  <QuestionMarkToolTip
-                    toolTipText={toolTipCopy.brightness_uncertainty}
-                  />
-                </label>
-                <select
-                  className="object-behavior__brightness-uncertainty-select app__form__input"
-                  onChange={event =>
-                    setVisualMagnitudeUncertainty(event.target.value)
-                  }
-                  value={visualMagnitudeUncertainty}
-                >
-                  <option value={`01`}>0.1</option>
-                  <option value={`02`}>0.2</option>
-                  <option value={`03`}>0.3</option>
-                  <option value={`04`}>0.4</option>
-                  <option value={`05`}>0.5</option>
-                  <option value={`06`}>0.6</option>
-                  <option value={`07`}>0.7</option>
-                  <option value={`08`}>0.8</option>
-                  <option value={`09`}>0.9</option>
-                  <option value={`10`}>1</option>
-                  <option value={`11`}>1.1</option>
-                  <option value={`12`}>1.2</option>
-                  <option value={`13`}>1.3</option>
-                  <option value={`14`}>1.4</option>
-                  <option value={`15`}>1.5</option>
-                </select>
-              </div>
-              <div className="object-behavior__flash-period-wrapper">
-                <label>
-                  Flash Period{" "}
-                  <QuestionMarkToolTip toolTipText={toolTipCopy.flash_period} />
-                </label>
-                <select
-                  className="object-behavior__flash-period-select app__form__input"
-                  onChange={event => setFlashPeriod(event.target.value)}
-                  value={flashPeriod}
-                >
-                  <option value={` 05000`}>0.5 seconds</option>
-                  <option value={` 10000`}>1 seconds</option>
-                  <option value={` 15000`}>1.5 seconds</option>
-                  <option value={` 20000`}>2 seconds</option>
-                  <option value={` 25000`}>2.5 seconds</option>
-                  <option value={` 30000`}>3 seconds</option>
-                  <option value={` 35000`}>3.5 seconds</option>
-                  <option value={` 40000`}>4 seconds</option>
-                  <option value={` 45000`}>4.5 seconds</option>
-                  <option value={` 50000`}>5 seconds</option>
-                  <option value={` 55000`}>5.5 seconds</option>
-                  <option value={` 60000`}>6 seconds</option>
-                  <option value={` 65000`}>6.5 seconds</option>
-                  <option value={` 70000`}>7 seconds</option>
-                  <option value={` 75000`}>7.5 seconds</option>
-                  <option value={` 80000`}>8 seconds</option>
-                </select>
-              </div>
-            </div>
+            ) : null}
+
             <div className="object-behavior__remarks-wrapper">
               <label>Remarks</label>
               <textarea

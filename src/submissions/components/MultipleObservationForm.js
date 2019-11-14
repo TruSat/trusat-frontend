@@ -111,7 +111,7 @@ export default function MultipleObservationForm({
         <Fragment>
           <div className="multiple-observation-form__button-wrapper">
             <span
-              className="submit__single-observation-nav-button"
+              className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet"
               onClick={() => setShowSingleObservationForm(true)}
             >
               Or enter individual observation

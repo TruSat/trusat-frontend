@@ -202,18 +202,12 @@ export const toolTipCopy = {
     "The UTC time you saw the satellite at the position specified below",
   time_uncertainty:
     "The margin of uncertainty, as a measure of time, for your estimated time of observation",
-  sky_conditions: `Excellent: No Moon/clouds, great seeing, minimal air/light pollution.
-  
-  Good: No Moon/clouds, conditions could be better, but not much.
-
-  Fair: Young/old Moon, some air/light pollution making fainter stars invisible.
-
-  Poor: Gibbous Moon, haze, more air/light pollution making more stars invisible.
-
-  Bad: Bright Moon, air/light pollution, some clouds; difficult.
-
-  Terrible: Bright Moon, air/light pollution, looking through clouds.
-  `,
+  sky_conditions_excellent: `No Moon/clouds, great seeing, minimal air/light pollution.`,
+  sky_conditions_good: `No Moon/clouds, conditions could be better, but not much.`,
+  sky_conditions_fair: `Young/old Moon, some air/light pollution making fainter stars invisible.`,
+  sky_conditions_poor: `Gibbous Moon, haze, more air/light pollution making more stars invisible.`,
+  sky_conditions_bad: `Bright Moon, air/light pollution, some clouds; difficult.`,
+  sky_conditions_terrible: `Bright Moon, air/light pollution, looking through clouds.`,
   position_format:
     "Different software may provide you with different formats for reporting position. This form supports the most common types.",
   epoch_code:
