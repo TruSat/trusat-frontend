@@ -558,10 +558,7 @@ export default function SingleObservationForm({
           {/* Conditions */}
           {isHiddenInputs ? null : (
             <div className="station-conditions__conditions-wrapper">
-              <label>
-                Sky Conditions (optional){" "}
-                <QuestionMarkToolTip toolTipText={toolTipCopy.sky_conditions} />
-              </label>
+              <label>Sky Conditions (optional) </label>
               <div className="station-conditions__conditions-buttons-wrapper">
                 <div>
                   <img
@@ -574,7 +571,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("E")}
                   ></img>
-                  Excellent
+                  Excellent{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_excellent}
+                  />
                 </div>
                 <div>
                   <img
@@ -587,7 +587,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("G")}
                   ></img>
-                  Good
+                  Good{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_good}
+                  />
                 </div>
 
                 <div>
@@ -601,7 +604,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("F")}
                   ></img>
-                  Fair
+                  Fair{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_fair}
+                  />
                 </div>
                 <div>
                   <img
@@ -614,7 +620,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("P")}
                   ></img>
-                  Poor
+                  Poor{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_poor}
+                  />
                 </div>
 
                 <div>
@@ -628,7 +637,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("B")}
                   ></img>
-                  Bad
+                  Bad{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_bad}
+                  />
                 </div>
                 <div>
                   <img
@@ -641,7 +653,10 @@ export default function SingleObservationForm({
                     }
                     onClick={() => setConditions("T")}
                   ></img>
-                  Terrible
+                  Terrible{" "}
+                  <QuestionMarkToolTip
+                    toolTipText={toolTipCopy.sky_conditions_terrible}
+                  />
                 </div>
               </div>
             </div>
