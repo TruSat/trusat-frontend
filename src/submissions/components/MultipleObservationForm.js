@@ -5,6 +5,7 @@ import { checkJwt } from "../../auth/auth-helpers";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
+import ReactGA from "react-ga";
 
 export default function MultipleObservationForm({
   setShowSingleObservationForm
@@ -36,8 +37,18 @@ export default function MultipleObservationForm({
 
       if (result.data.success !== 0) {
         setSuccessCount(result.data.success);
+        ReactGA.event({
+          category: "Submissions",
+          action: "User clicked submit on MultipleObservationForm",
+          label: "Submission Success"
+        });
       } else if (result.data.error_messages.length !== 0) {
         setErrorMessages(result.data.error_messages);
+        ReactGA.event({
+          category: "Submissions",
+          action: "User clicked submit on MultipleObservationForm",
+          label: "Submission Failure"
+        });
       }
     } catch (error) {
       setIsError(true);
