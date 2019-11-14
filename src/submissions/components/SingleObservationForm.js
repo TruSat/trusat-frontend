@@ -15,6 +15,7 @@ import ConditionFair from "../../assets/ConditionFair.svg";
 import ConditionPoor from "../../assets/ConditionPoor.svg";
 import ConditionBad from "../../assets/ConditionBad.svg";
 import ConditionTerrible from "../../assets/ConditionTerrible.svg";
+import ReactGA from "react-ga";
 
 export default function SingleObservationForm({
   setShowSingleObservationForm
@@ -370,8 +371,18 @@ export default function SingleObservationForm({
 
         if (result.data.success !== 0) {
           setSuccessCount(result.data.success);
+          ReactGA.event({
+            category: "Submissions",
+            action: "User clicked submit on SingleObservationForm",
+            label: "Submission Success"
+          });
         } else if (result.data.error_messages.length !== 0) {
           setErrorMessages(result.data.error_messages);
+          ReactGA.event({
+            category: "Submissions",
+            action: "User clicked submit on SingleObservationForm",
+            label: "Submission Failure"
+          });
         }
       } catch (error) {
         setIsError(true);
