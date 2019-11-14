@@ -74,8 +74,6 @@ export default function SingleObservationForm({
     setIsDeclinationOrElevationError
   ] = useState(false);
 
-  //const iodRegEx = /^(\d{5}\s\d{2}\s\d{3}(?=[A-Z]+\s*)[\D\s]{3}(?<!\s\w)\s|\s{16})\d{4}\s[EGFPBTCO ]\s[\d+]{8}(\d*\s*$|(?=.{9})\d*\s*?\s\d{2}\s([1-7][\s0-6]\s(?=[\d\s*]{7})\d+\s*?[+-](?=[\d\s*]{6})\d+\s*?\s\d{2}|\s{20})(\s[EFIRSXBHPADMNV]([+-](?=[\d\s*?]{3})\d+\s*?\s(?=[\d\s*?]{2})\d+\s*?\s(\s+\d+$)?)?)?)/;
-
   // SUBMISSION UI STATES
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -114,6 +112,7 @@ export default function SingleObservationForm({
   // Updates IOD when user toggles `Clouded Out` or `Observer Unavailable`
   useEffect(() => {
     if (conditions === "C" || conditions === "O") {
+      setIsHiddenInputs(true); // clear N/A inputs
       setObject(`               `); // 15 chars
       setTimeUncertainty(`  `); // 2 chars
       setAngleFormatCode(` `); // 1 char
@@ -123,6 +122,7 @@ export default function SingleObservationForm({
       setVisualMagnitudeSign(` `); // 1 char
       setVisualMagnitudeUncertainty(`  `); // 2 chars
     } else {
+      setIsHiddenInputs(false); // shows all inputs again
       // return all the 'default values' when user deselects either C or O
       setObject(``); // 15 chars
       setTimeUncertainty(`18`);
@@ -135,7 +135,7 @@ export default function SingleObservationForm({
     }
   }, [conditions]);
 
-  // Checks if observation date is before current date
+  // Validates if observation date submitted is before current date
   useEffect(() => {
     if (date.length === 8) {
       const todayDate = new Date(); // get todays date
@@ -162,7 +162,7 @@ export default function SingleObservationForm({
     }
   }, [date, time]);
 
-  // Input field format validation
+  // Validates formats of form fields
   useEffect(() => {
     // station is mandatory, must be 4 chars long, all numbers
     if (station.length !== 4 || !numRegEx.test(station)) {
@@ -241,17 +241,6 @@ export default function SingleObservationForm({
     rightAscensionOrAzimuth,
     declinationOrElevation
   ]);
-
-  // when 'Clouded Out' or 'Observer Unavailable' is selected, clear inputs that aren't applicable
-  useEffect(() => {
-    if (conditions === "C" || conditions === "O") {
-      setIsHiddenInputs(true);
-      setObject(`               `); // 15 chars of whitespace to ensure a valid IOD format
-    } else {
-      setIsHiddenInputs(false);
-      setObject(``); // reset object value so that placeholder appears again
-    }
-  }, [conditions]);
 
   // Search for objects in the database
   useEffect(() => {
