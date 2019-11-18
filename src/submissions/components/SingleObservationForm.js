@@ -1191,8 +1191,6 @@ export default function SingleObservationForm({
               }
             >
               {IOD}
-              {` `}
-              {remarks}
             </p>
           </div>
         </div>
