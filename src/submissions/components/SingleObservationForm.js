@@ -55,7 +55,7 @@ export default function SingleObservationForm({
   const [visualMagnitude, setVisualMagnitude] = useState(`   `); // 3 chars
   const [visualMagnitudeUncertainty, setVisualMagnitudeUncertainty] = useState(
     `  `
-  );
+  ); // 2 chars
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
   const [remarks, setRemarks] = useState(``);
   // IOD STRING
@@ -110,6 +110,40 @@ export default function SingleObservationForm({
     flashPeriod
   ]);
 
+  // return all the 'default values'
+  const resetFormVariables = () => {
+    setStation(``); // 4 chars
+    setCloudedOut(false);
+    setObserverUnavailable(false);
+    setDate(``); // 8 chars
+    setTime(`         `); // 9 chars
+    setTimeUncertainty(`18`); // 2 chars
+    setConditions(` `); // 1 char
+    setObject(``); // 15 chars
+    setTimeUncertainty(`18`);
+    setAngleFormatCode(`2`);
+    setEpochCode(`5`);
+    setDeclinationOrElevationSign(`+`);
+    setPositionalUncertainty(`18`);
+    setIsHiddenInputs(false);
+    setObjectSearchTerm(``);
+    setObject(``);
+    setObjectSearchResults([]);
+    setAngleFormatCode(`2`);
+    setEpochCode(`5`);
+    setRightAscensionOrAzimuth(`       `); // 7 chars
+    setDeclinationOrElevationSign(`+`);
+    setDeclinationOrElevation(`      `); // 6 chars
+    setPositionalUncertainty(`18`); // 2 chars
+    setBehavior(` `); // 1 char
+    setShowBehaviorOptions(false);
+    setVisualMagnitudeSign(` `); // 1 char
+    setVisualMagnitude(`   `);
+    setVisualMagnitudeUncertainty(`  `); // 2 chars
+    setFlashPeriod(`      `); // 6 chars
+    setRemarks(``);
+  };
+
   // Updates IOD when user toggles `Clouded Out` or `Observer Unavailable`
   useEffect(() => {
     if (conditions === "C" || conditions === "O") {
@@ -121,18 +155,8 @@ export default function SingleObservationForm({
       setDeclinationOrElevationSign(` `); // 1 char
       setPositionalUncertainty(`  `); // 2 chars
       setVisualMagnitudeSign(` `); // 1 char
-      setVisualMagnitudeUncertainty(`  `); // 2 chars
     } else {
-      setIsHiddenInputs(false); // shows all inputs again
-      // return all the 'default values' when user deselects either C or O
-      setObject(``); // 15 chars
-      setTimeUncertainty(`18`);
-      setAngleFormatCode(`2`);
-      setEpochCode(`5`);
-      setDeclinationOrElevationSign(`+`);
-      setPositionalUncertainty(`18`);
-      setVisualMagnitudeSign(`+`);
-      setVisualMagnitudeUncertainty(`10`);
+      resetFormVariables();
     }
   }, [conditions]);
 
@@ -363,10 +387,6 @@ export default function SingleObservationForm({
       !isDeclinationOrElevationError
     ) {
       try {
-        console.log(
-          `IOD submitted = -${IOD}- which is ${IOD.length} chars long`
-        );
-
         const result = await axios.post(
           `${API_ROOT}/submitObservation`,
           JSON.stringify({ jwt: jwt, multiple: IOD })
@@ -379,6 +399,7 @@ export default function SingleObservationForm({
             action: "User clicked submit on SingleObservationForm",
             label: "Submission Success"
           });
+          resetFormVariables();
         } else if (result.data.error_messages.length !== 0) {
           setErrorMessages(result.data.error_messages);
           ReactGA.event({
