@@ -57,9 +57,9 @@ export default function SingleObservationForm({
     `  `
   );
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
-  const [remarks, setRemarks] = useState("");
+  const [remarks, setRemarks] = useState(``);
   // IOD STRING
-  const [IOD, setIOD] = useState("");
+  const [IOD, setIOD] = useState(``);
   // VALIDATION ERROR MESSAGING
   const numRegEx = /^\d+$/; // checks if string only contains numbers
   const [isStationError, setIsStationError] = useState(false);
@@ -75,15 +75,14 @@ export default function SingleObservationForm({
     isDeclinationOrElevationError,
     setIsDeclinationOrElevationError
   ] = useState(false);
-
   // SUBMISSION UI STATES
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  // server provides a count of accepted IODs - i.e. correct format and not duplicates
+  // server provides success and error messages upon submissions which are displayed in UI
   const [successCount, setSuccessCount] = useState(null);
-  // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
   const { jwt } = useAuthState();
+  // set to true if attempt to submit fails
   const [isError, setIsError] = useState(false);
 
   // Builds the IOD string
@@ -364,6 +363,10 @@ export default function SingleObservationForm({
       !isDeclinationOrElevationError
     ) {
       try {
+        console.log(
+          `IOD submitted = -${IOD}- which is ${IOD.length} chars long`
+        );
+
         const result = await axios.post(
           `${API_ROOT}/submitObservation`,
           JSON.stringify({ jwt: jwt, multiple: IOD })
