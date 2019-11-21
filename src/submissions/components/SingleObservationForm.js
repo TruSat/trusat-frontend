@@ -152,11 +152,14 @@ export default function SingleObservationForm({
       setTimeUncertainty(`  `); // 2 chars
       setAngleFormatCode(` `); // 1 char
       setEpochCode(` `); // 1 char
+      setDeclinationOrElevation();
+      setRightAscensionOrAzimuth(`       `); // 7 chars
       setDeclinationOrElevationSign(` `); // 1 char
+      setDeclinationOrElevation(`      `); // 6 chars
       setPositionalUncertainty(`  `); // 2 chars
       setVisualMagnitudeSign(` `); // 1 char
     } else {
-      resetFormVariables();
+      setIsHiddenInputs(false); // show relevant inputs when 'C' or 'O' is toggled off
     }
   }, [conditions]);
 
