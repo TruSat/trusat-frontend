@@ -57,23 +57,24 @@ export default function MultipleObservationForm({
   };
 
   return (
-    <form
-      className="multiple-observation-form"
-      onSubmit={event => {
-        event.preventDefault();
-        handleSubmit();
-      }}
-    >
+    <Fragment>
       {jwt === "none" ? (
         <p className="app__error-message">
-          Please log in to submit your observations
+          Please log in to submit your observations!!
         </p>
       ) : null}
-      <div style={{ display: "block" }}>
-        <textarea
-          required
-          className="multiple-observation-form__textarea"
-          placeholder={`Paste your observations in this field, one observation per line like so:
+      <form
+        className="multiple-observation-form"
+        onSubmit={event => {
+          event.preventDefault();
+          handleSubmit();
+        }}
+      >
+        <div style={{ display: "block" }}>
+          <textarea
+            required
+            className="multiple-observation-form__textarea"
+            placeholder={`Paste your observations in this field, one observation per line like so:
           
 12345 98 123A   2007 G 20081122112233444 56 14 1122334+112233 39 S
 12345 98 123A   2007 F 2008112211223344  56 25 1122   +1122   28 R+05  1
@@ -84,69 +85,70 @@ export default function MultipleObservationForm({
 12345 98 123UNK 2007 F 200811221123400   27                      P-010 05  10000
                 2007 O 20081122
                 2007 C 200811231130`}
-          value={pastedIODs}
-          onChange={event => setPastedIODs(event.target.value)}
-          rows="10"
-          cols="80"
-        />
+            value={pastedIODs}
+            onChange={event => setPastedIODs(event.target.value)}
+            rows="10"
+            cols="80"
+          />
 
-        {/* Success message */}
-        {successCount > 0 ? (
-          <div className="app__success-message">
-            <img
-              className="multiple-observation-form__image"
-              src={CircleCheck}
-              alt="check"
-            ></img>
-            Thank you for your submission of {successCount}{" "}
-            {successCount === 1 ? "observation" : "observations"}!
-          </div>
-        ) : null}
+          {/* Success message */}
+          {successCount > 0 ? (
+            <div className="app__success-message">
+              <img
+                className="multiple-observation-form__image"
+                src={CircleCheck}
+                alt="check"
+              ></img>
+              Thank you for your submission of {successCount}{" "}
+              {successCount === 1 ? "observation" : "observations"}!
+            </div>
+          ) : null}
 
-        {/* Failure messages */}
-        {errorMessages.length > 0 ? (
+          {/* Failure messages */}
+          {errorMessages.length > 0 ? (
+            <Fragment>
+              <p className="app__error-message">Something went wrong!</p>
+              {errorMessages.map(message => {
+                return <p className="app__error-message">{message}</p>;
+              })}
+            </Fragment>
+          ) : null}
+        </div>
+
+        {isError ? (
+          <p className="app__error-message">Something went wrong...</p>
+        ) : isLoading ? (
+          <Spinner />
+        ) : (
           <Fragment>
-            <p className="app__error-message">Something went wrong!</p>
-            {errorMessages.map(message => {
-              return <p className="app__error-message">{message}</p>;
-            })}
-          </Fragment>
-        ) : null}
-      </div>
-
-      {isError ? (
-        <p className="app__error-message">Something went wrong...</p>
-      ) : isLoading ? (
-        <Spinner />
-      ) : (
-        <Fragment>
-          <div className="multiple-observation-form__button-wrapper">
-            <span
-              className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet"
-              onClick={() => setShowSingleObservationForm(true)}
-            >
-              Or enter individual observation
-            </span>
-
-            {jwt === "none" ? null : (
-              <button
-                type="submit"
-                className="submit__submit-button"
-                style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+            <div className="multiple-observation-form__button-wrapper">
+              <span
+                className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet"
+                onClick={() => setShowSingleObservationForm(true)}
               >
-                SUBMIT
-              </button>
+                Or enter individual observation
+              </span>
+
+              {jwt === "none" ? null : (
+                <button
+                  type="submit"
+                  className="submit__submit-button"
+                  style={pastedIODs ? { opacity: "1" } : { opacity: "0.5" }}
+                >
+                  SUBMIT
+                </button>
+              )}
+            </div>
+            {jwt === "none" ? null : (
+              <p className="submit__submit-warning">
+                Please keep in mind that this data will be automatically
+                recorded into TruSat's catalog of orbital positions, and
+                factored into orbital predictions for this object.
+              </p>
             )}
-          </div>
-          {jwt === "none" ? null : (
-            <p className="submit__submit-warning">
-              Please keep in mind that this data will be automatically recorded
-              into TruSat's catalog of orbital positions, and factored into
-              orbital predictions for this object.
-            </p>
-          )}
-        </Fragment>
-      )}
-    </form>
+          </Fragment>
+        )}
+      </form>
+    </Fragment>
   );
 }
