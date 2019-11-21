@@ -232,6 +232,7 @@ export default function SingleObservationForm({
 
     // if rightAscensionOrAzimuth contains non-whitespace chars or is not 9 chars long
     if (
+      declinationOrElevationSign !== ` ` ||
       /\S/.test(rightAscensionOrAzimuth) ||
       rightAscensionOrAzimuth.length !== 7
     ) {
@@ -250,6 +251,7 @@ export default function SingleObservationForm({
 
     // if declinationOrElevation contains non-whitespace chars or is not 9 chars long
     if (
+      declinationOrElevationSign !== ` ` ||
       /\S/.test(declinationOrElevation) ||
       declinationOrElevation.length !== 6
     ) {
@@ -272,6 +274,7 @@ export default function SingleObservationForm({
     numRegEx,
     object,
     rightAscensionOrAzimuth,
+    declinationOrElevationSign,
     declinationOrElevation
   ]);
 
@@ -924,7 +927,7 @@ export default function SingleObservationForm({
                     }
                     style={
                       isRightAscensionOrAzimuthError
-                        ? { border: "2px solid red" }
+                        ? { border: "2px solid #FC7756" }
                         : null
                     }
                   />
@@ -961,8 +964,9 @@ export default function SingleObservationForm({
                       }
                       value={declinationOrElevationSign}
                     >
-                      <option value="+">+</option>
-                      <option value="-">-</option>
+                      <option value={` `}>N/A</option>
+                      <option value={`+`}>+</option>
+                      <option value={`-`}>-</option>
                     </select>
                     <input
                       className="app__form__input object-position__declination-elevation"
@@ -993,7 +997,7 @@ export default function SingleObservationForm({
                       }
                       style={
                         isDeclinationOrElevationError
-                          ? { border: "2px solid red" }
+                          ? { border: "2px solid #FC7756" }
                           : null
                       }
                     />
