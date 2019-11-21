@@ -138,7 +138,7 @@ export default function SingleObservationForm({
     setBehavior(` `); // 1 char
     setShowBehaviorOptions(false);
     setVisualMagnitudeSign(` `); // 1 char
-    setVisualMagnitude(`   `);
+    setVisualMagnitude(`   `); // 3 chars
     setVisualMagnitudeUncertainty(`  `); // 2 chars
     setFlashPeriod(`      `); // 6 chars
     setRemarks(``);
@@ -157,8 +157,13 @@ export default function SingleObservationForm({
       setDeclinationOrElevationSign(` `); // 1 char
       setDeclinationOrElevation(`      `); // 6 chars
       setPositionalUncertainty(`  `); // 2 chars
+      setBehavior(` `); // 1 char
       setVisualMagnitudeSign(` `); // 1 char
+      setVisualMagnitude(`   `); // 3 chars
+      setVisualMagnitudeUncertainty(`  `); // 2 chars
+      setFlashPeriod(`      `); // 6 chars
     } else {
+      setObject(``); // 15 chars
       setIsHiddenInputs(false); // show relevant inputs when 'C' or 'O' is toggled off
     }
   }, [conditions]);
