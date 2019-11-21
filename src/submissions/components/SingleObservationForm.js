@@ -172,7 +172,7 @@ export default function SingleObservationForm({
   useEffect(() => {
     if (date.length === 8) {
       const todayDate = new Date(); // get todays date
-      const todayTimeStamp = todayDate.getTime();
+      const tomorrowTimeStamp = todayDate.getTime() + 86400000;
       // convert date and time inputs to format readable by Date object
       // uses midnight for time if user hasn't added a time value
       const observationDateTime = new Date(
@@ -187,7 +187,7 @@ export default function SingleObservationForm({
       // TODO - add additional check to reject observations from too long ago
       const observationTimeStamp = observationDateTime.getTime();
 
-      if (observationTimeStamp > todayTimeStamp) {
+      if (observationTimeStamp > tomorrowTimeStamp) {
         setIsDateAndTimeError(true); // date of observation is after current time
       } else {
         setIsDateAndTimeError(false); // date of observation is before current time
