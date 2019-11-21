@@ -422,7 +422,10 @@ export default function SingleObservationForm({
       } catch (error) {
         setIsError(true);
       }
+    } else {
+      alert(`Please clear all errors in the form and try again`);
     }
+
     setIsLoading(false);
   };
 
