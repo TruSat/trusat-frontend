@@ -964,7 +964,7 @@ export default function SingleObservationForm({
                       }
                       value={declinationOrElevationSign}
                     >
-                      <option value={` `}>N/A</option>
+                      <option value={` `}>?</option>
                       <option value={`+`}>+</option>
                       <option value={`-`}>-</option>
                     </select>
