@@ -110,7 +110,7 @@ export default function SingleObservationForm({
     flashPeriod
   ]);
 
-  // return all the 'default values'
+  //  return all the 'default values' upon submit
   const resetFormVariables = () => {
     setStation(``); // 4 chars
     setCloudedOut(false);
@@ -163,7 +163,7 @@ export default function SingleObservationForm({
       setVisualMagnitudeUncertainty(`  `); // 2 chars
       setFlashPeriod(`      `); // 6 chars
     } else {
-      setObject(``); // 15 chars
+      setObject(``);
       setIsHiddenInputs(false); // show relevant inputs when 'C' or 'O' is toggled off
     }
   }, [conditions]);
