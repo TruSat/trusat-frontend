@@ -66,51 +66,51 @@ export default function LoginForm() {
     <p className="app__error-message">Something went wrong ...</p>
   ) : (
     <form
-      className="email-form"
+      className="app__form"
       onSubmit={event => {
         event.preventDefault();
         handleLogin();
       }}
     >
-      <label className="email-form__label">Email</label>
+      <label className="app__form__label">Email</label>
       <input
         required
         type="email"
-        className="email-form__input"
+        className="app__form__input"
         onChange={event => setEmail(event.target.value)}
         value={email}
       />
 
-      <label className="email-form__label">Password</label>
+      <label className="app__form__label">Password</label>
       <input
         required
         type="password"
-        className="email-form__input"
+        className="app__form__input"
         onChange={event => setPassword(event.target.value)}
         value={password}
       />
 
-      <label className="email-form__label">Secret code</label>
+      <label className="app__form__label">Secret code</label>
       <input
         required
         type="text"
-        className="email-form__input"
+        className="app__form__input"
         onChange={event => setSecret(event.target.value)}
         value={secret}
       />
 
       {showPrivateKeyError ? (
-        <div className="email-form__error">
+        <div className="app__form__error">
           Invalid password and secret code combination. Please make sure you
           have enetered both correctly and try again.
         </div>
       ) : null}
 
-      <div className="email-form__button-wrapper">
+      <div className="app__form__button-wrapper">
         <NavLink className="app__nav-link" to="/">
-          <span className="email-form__button--cancel">Cancel</span>
+          <span className="app__form__button--cancel">Cancel</span>
         </NavLink>
-        <button className="email-form__button--white">
+        <button className="app__form__button--white">
           {isAuthenticating ? `...Loading` : `Log in`}
         </button>
       </div>

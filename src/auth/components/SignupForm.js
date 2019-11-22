@@ -91,7 +91,7 @@ export default function SignupForm({ setIsSuccess }) {
   return (
     <Fragment>
       <form
-        className="email-form"
+        className="app__form"
         name="auth-form"
         onSubmit={event => {
           event.preventDefault();
@@ -123,33 +123,33 @@ export default function SignupForm({ setIsSuccess }) {
           </Fragment>
         ) : null}
 
-        <label className="email-form__label">Email</label>
+        <label className="app__form__label">Email</label>
         <input
           required
-          className="email-form__input"
+          className="app__form__input"
           type="email"
           onChange={event => setEmail(event.target.value)}
           value={email}
         />
 
-        <label className="email-form__label">Password</label>
+        <label className="app__form__label">Password</label>
         <input
           required
-          className="email-form__input"
+          className="app__form__input"
           type="password"
           onChange={event => setPassword(event.target.value)}
           value={password}
         />
         {showInvalidPasswordError ? (
-          <div className="email-form__error">
+          <div className="app__form__error">
             Please choose a password that is at least 8 characters long and
             contains one number
           </div>
         ) : null}
 
-        <div className="email-form__checkbox-and-message-wrapper">
+        <div className="app__form__checkbox-and-message-wrapper">
           <input
-            className="email-form__checkbox"
+            className="app__form__checkbox"
             required
             type="checkbox"
             checked={understandMessage}
@@ -162,34 +162,34 @@ export default function SignupForm({ setIsSuccess }) {
           </p>
         </div>
 
-        <label className="email-form__label">Retype password to confirm</label>
+        <label className="app__form__label">Retype password to confirm</label>
         <input
           required
-          className="email-form__input"
+          className="app__form__input"
           type="password"
           onChange={event => setRetypedPassword(event.target.value)}
           value={retypedPassword}
         />
         {showUnmatchedPasswordError ? (
-          <div className="email-form__error">
+          <div className="app__form__error">
             The passwords you have entered do not match
           </div>
         ) : null}
 
-        <div className="email-form__button-wrapper">
+        <div className="app__form__button-wrapper">
           <NavLink className="app__nav-link" to="/">
-            <span className="email-form__button--cancel">Cancel</span>
+            <span className="app__form__button--cancel">Cancel</span>
           </NavLink>
 
-          <button type="submit" className="email-form__button--white">
+          <button type="submit" className="app__form__button--white">
             {isAuthenticating ? `...Loading` : `Sign Up`}
           </button>
         </div>
 
-        <div className="email-form__link-to-login-wrapper">
+        <div className="app__form__link-to-login-wrapper">
           <p>Already a member?</p>
           <NavLink className="app__nav-link" to="/login">
-            <p className="email-form__log-in-text">Log in</p>
+            <p className="app__form__log-in-text">Log in</p>
           </NavLink>
         </div>
       </form>

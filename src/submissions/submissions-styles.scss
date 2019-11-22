@@ -44,11 +44,37 @@ SUBMIT
   text-decoration-line: underline;
 }
 
+.submit__single-observation-nav-button {
+  background: #004f85;
+  border-radius: 4px;
+  padding: 1em 2em;
+}
+
+.submit__single-observation-nav-button:hover {
+  cursor: pointer;
+}
+
+.submit__submit-button {
+  background: $primary-highlight-color;
+  color: $primary-theme-color;
+  border-radius: 4px;
+  padding: 1em 2em;
+}
+
+.submit__submit-button:hover {
+  cursor: pointer;
+}
+
+.submit__submit-warning {
+  margin-top: 1em;
+}
+
 /* ----------
 MULTIPLE OBSERVATION FORM
 ---------- */
 .multiple-observation-form {
   margin-bottom: 1em;
+  max-width: 800px;
 }
 
 .multiple-observation-form__textarea {
@@ -60,6 +86,7 @@ MULTIPLE OBSERVATION FORM
   line-height: 1.2;
   padding: 1em;
   resize: none;
+  width: 100%;
 }
 
 .multiple-observation-form__textarea::placeholder {
@@ -88,9 +115,334 @@ MULTIPLE OBSERVATION FORM
 }
 
 .multiple-observation-form__button-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
   margin-top: 2em;
 }
 
-.multiple-observation-form__cancel-button {
-  margin-right: 1em;
+/* ----------
+SINGLE OBSERVATION FORM 
+---------- */
+.single-observation-form {
+  margin-top: 1em;
+  max-width: 800px;
+}
+
+label {
+  font-size: $small-font-size;
+  margin-bottom: 0.5em;
+}
+
+.single-observation-form__section {
+  margin-bottom: 7em;
+}
+
+.single-observation-form__section:first-of-type {
+  margin-top: 4em;
+}
+
+.single-observation-form__section:last-of-type {
+  margin-bottom: 3.5em;
+}
+
+// Station conditions block
+.single-observation-form__heading {
+  border-bottom: 1px solid $primary-text-color;
+  font-size: $medium-font-size;
+  font-weight: $bold-weight;
+  margin-bottom: 2em;
+  padding-bottom: 0.25em;
+}
+
+.station-conditions__location-checkbox-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__location-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 66%;
+}
+
+.station-conditions__checkbox-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 33.33%;
+  margin-top: 1.75em;
+}
+
+.station-conditions__date-time-uncertainty-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.station-conditions__date-time-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 66.66%;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.station-conditions__date-time-wrapper-inner {
+  display: flex;
+}
+
+.station-conditions__date,
+.station-conditions__time {
+  flex-basis: 50%;
+}
+
+.station-conditions__time-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 33.33%;
+}
+
+.station-conditions__conditions-wrapper {
+}
+
+.station-conditions__conditions-buttons-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.station-conditions__button {
+  align-items: center;
+  border: 1px solid grey;
+  border-radius: 5px;
+  display: flex;
+  flex-basis: 16%;
+  height: 100px;
+  justify-content: center;
+  margin: 1em 0 0.5em 0;
+  padding: 1em;
+}
+
+.station-conditions__button:hover {
+  cursor: pointer;
+}
+
+// hide arrows on type number input fields
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.station-conditions__button--highlight {
+  border: 1px solid $primary-text-color;
+}
+
+// Object Position block
+.object-position__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.object-position__object-wrapper {
+  margin-bottom: 2em;
+}
+
+.object-position__object-input {
+  margin-top: 0.5em;
+}
+
+.object-position__chosen-object {
+  background: $tertiary-color;
+  border-radius: 4px;
+  border: 1px solid $secondary-theme-color;
+  color: $primary-text-color;
+  display: inline-block;
+  font-size: $medium-font-size;
+  margin: 0.5em 0.5em 0em 0em;
+  padding: 1em;
+}
+
+.object-position__x-button {
+  border: 1px solid grey;
+  border-radius: 50%;
+  padding: 0.5em;
+}
+
+.object-position__x-button:hover {
+  cursor: pointer;
+}
+
+.object-position__search-results-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.object-position__search-result {
+  border: 1px solid grey;
+  border-radius: 5px;
+  padding: 1em;
+  margin: 0.5em;
+}
+
+.object-position__search-result:hover {
+  cursor: pointer;
+}
+
+.object-position__angle-epoch-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2em;
+}
+
+.object-position__angle-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 66.66%;
+}
+
+.object-position__epoch-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 33.33%;
+}
+
+.object-position__ascension-declination-uncertainty-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.object-position__ascension-declination-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 66.66%;
+}
+
+.object-position__ascension-wrapper {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+}
+
+.object-position__declination-elevation-wrapper {
+  display: flex;
+  flex-basis: 50%;
+  flex-direction: column;
+}
+
+.object-position__declination-elevation-wrapper-inner {
+  display: flex;
+}
+
+.object-position__declination-elevation {
+  width: 60%;
+}
+
+.object-position__position-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 33.33%;
+}
+
+// Object Behavior block
+.object-behavior__section {
+  border: 3px dotted grey;
+  margin-bottom: 3em;
+}
+
+.object-behavior__visibility-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-brightness-uncertainty-wrapper {
+  display: flex;
+  margin-bottom: 2em;
+}
+
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper {
+  flex-basis: 33.33%;
+}
+
+.object-behavior__brightness-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__brightness {
+  display: flex;
+}
+
+.object-behavior__brightness-select {
+  flex-grow: 1;
+}
+
+.object-behavior__brightness-uncertainty-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__flash-period-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__remarks-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.object-behavior__remarks-wrapper > textarea {
+  padding: 20px;
+}
+
+.iod-wrapper-inner {
+  margin-top: 0.5em;
+  margin-bottom: 2em;
+}
+
+.iod-wrapper-inner {
+  border: 1px solid $secondary-theme-color;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.iod {
+  font-family: monospace;
+  font-size: $small-font-size;
+}
+
+// grid gutter hack
+.station-conditions__location-wrapper,
+.station-conditions__date,
+.station-conditions__time,
+.station-conditions__time-uncertainty-wrapper,
+.station-conditions__conditions-wrapper,
+.object-position__object-wrapper,
+.object-position__angle-wrapper,
+.object-position__epoch-wrapper,
+.object-position__ascension-wrapper,
+.object-position__declination-elevation-wrapper,
+.object-position__position-uncertainty-wrapper,
+.object-behavior__visibility-wrapper,
+.object-behavior__brightness-wrapper,
+.object-behavior__brightness-uncertainty-wrapper,
+.object-behavior__flash-period-wrapper,
+.object-behavior__remarks-wrapper {
+  padding-right: 24px;
+}
+
+.single-observation-form__button-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
