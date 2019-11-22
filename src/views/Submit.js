@@ -3,13 +3,11 @@ import { NavLink } from "react-router-dom";
 import MultipleObservationForm from "../submissions/components/MultipleObservationForm";
 import SingleObservationForm from "../submissions/components/SingleObservationForm";
 import { emails } from "../app/app-helpers";
-import { useAuthState } from "../auth/auth-context";
 
 export default function Submit() {
   const [showSingleObservationForm, setShowSingleObservationForm] = useState(
     false
   );
-  const { jwt } = useAuthState();
 
   return (
     <div className="submit__wrapper">
