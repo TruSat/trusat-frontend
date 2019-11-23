@@ -285,6 +285,7 @@ export default function SingleObservationForm({
         const response = await axios(
           `${API_ROOT}/findObject?objectName=${objectSearchTerm}`
         );
+        console.log(response.data);
         setObjectSearchResults(response.data);
       } catch (err) {
         console.log(err);
@@ -299,23 +300,25 @@ export default function SingleObservationForm({
   // Render results of search under the input field
   const renderObjectSearchResults = () => {
     // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
-    const formatObject = ({ norad, cospar }) => {
+    const formatObject = ({ norad_number, international_designator }) => {
       let formattedNorad;
 
-      if (norad.toString().length !== 5) {
+      if (norad_number.toString().length !== 5) {
         // append leading zeros to norad numbers less than 5 chars in length
-        const leadingZeros = "0".repeat(5 - norad.toString().length);
-        formattedNorad = `${leadingZeros}${norad}`;
+        const leadingZeros = "0".repeat(5 - norad_number.toString().length);
+        formattedNorad = `${leadingZeros}${norad_number}`;
       } else {
         // use norad if 5 chars in length
-        formattedNorad = norad;
+        formattedNorad = norad_number;
       }
 
-      const formattedCospar = `${cospar
+      const formattedInternationalDesignator = `${international_designator
         .substring(2)
-        .replace(/-/g, ` `)}${" ".repeat(11 - cospar.length)}`;
+        .replace(/-/g, ` `)}${" ".repeat(
+        11 - international_designator.length
+      )}`;
 
-      return `${formattedNorad} ${formattedCospar}`;
+      return `${formattedNorad} ${formattedInternationalDesignator}`;
     };
 
     return objectSearchResults.map(obj => {
@@ -326,16 +329,16 @@ export default function SingleObservationForm({
           onClick={() => {
             setObject(
               formatObject({
-                norad: obj.norad_number,
-                cospar: obj.cospar_id
+                norad_number: obj.norad_number,
+                international_designator: obj.international_designator
               })
             );
             setObjectSearchTerm(``);
             setObjectSearchResults([]);
           }}
         >{`${obj.name} = ${formatObject({
-          norad: obj.norad_number,
-          cospar: obj.cospar_id
+          norad_number: obj.norad_number,
+          international_designator: obj.international_designator
         })}`}</span>
       );
     });
