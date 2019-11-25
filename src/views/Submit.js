@@ -1,32 +1,20 @@
-import React, { Fragment, useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { Fragment } from "react";
+import { NavLink, useRouteMatch } from "react-router-dom";
 import MultipleObservationForm from "../submissions/components/MultipleObservationForm";
 import SingleObservationForm from "../submissions/components/SingleObservationForm";
 import { emails } from "../app/app-helpers";
 
 export default function Submit() {
-  const [showSingleObservationForm, setShowSingleObservationForm] = useState(
-    false
-  );
+  const { url } = useRouteMatch();
 
   return (
     <div className="submit__wrapper">
       <h1 className="submit__header">Submit Observations</h1>
-      {showSingleObservationForm ? (
-        <Fragment>
-          <h2 className="submit__sub-header">
-            Enter an individual observation
-          </h2>
-          <SingleObservationForm
-            setShowSingleObservationForm={setShowSingleObservationForm}
-          />
-        </Fragment>
-      ) : (
+      {/* Render multiple submission form */}
+      {url === "/submit" || url === "/submit/multiple" ? (
         <Fragment>
           <h2 className="submit__sub-header">Enter pre-formatted data</h2>
-          <MultipleObservationForm
-            setShowSingleObservationForm={setShowSingleObservationForm}
-          />
+          <MultipleObservationForm />
           <div>
             <p className="submit__text">
               Or submit observations to{" "}
@@ -39,6 +27,19 @@ export default function Submit() {
             </NavLink>
           </div>
         </Fragment>
+      ) : // Render single submission form
+      url === "/submit/single" ? (
+        <Fragment>
+          <h2 className="submit__sub-header">
+            Enter an individual observation
+          </h2>
+          <SingleObservationForm />
+        </Fragment>
+      ) : (
+        <h3 className="app__error-message">
+          <code>{url}</code> is not a route in TruSat. Please check that you
+          entered the correct URL
+        </h3>
       )}
     </div>
   );
