@@ -33,8 +33,6 @@ export default function VerifyClaimAccount({ match }) {
       if (currentTimestamp > exp) {
         setIsExpired(true);
       }
-
-      console.log(isExpired);
     };
 
     getExpiry();
