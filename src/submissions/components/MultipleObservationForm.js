@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { API_ROOT } from "../../app/app-helpers";
 import { checkJwt } from "../../auth/auth-helpers";
@@ -7,9 +8,7 @@ import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import ReactGA from "react-ga";
 
-export default function MultipleObservationForm({
-  setShowSingleObservationForm
-}) {
+export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);
   const [pastedIODs, setPastedIODs] = useState(``);
   // server provides a count of accepted IODs - i.e. correct format and not duplicates
@@ -122,12 +121,11 @@ export default function MultipleObservationForm({
         ) : (
           <Fragment>
             <div className="multiple-observation-form__button-wrapper">
-              <span
-                className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet"
-                onClick={() => setShowSingleObservationForm(true)}
-              >
-                Or enter individual observation
-              </span>
+              <NavLink className="app__nav-link" to="/submit/single">
+                <span className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet">
+                  Or enter individual observation
+                </span>
+              </NavLink>
 
               {jwt === "none" ? null : (
                 <button
