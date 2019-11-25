@@ -92,6 +92,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Welcome} />
           <Route path="/catalog/:catalogFilter" component={Catalog} />
+          <Route path="/submit/:form" component={Submit} />
           <Route path="/submit" component={Submit} />
           <Route path="/object/:number" component={ObjectInfo} />
           <Route exact path="/profile/:address" component={Profile} />
