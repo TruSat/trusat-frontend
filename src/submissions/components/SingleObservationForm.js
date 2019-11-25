@@ -1,4 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
+import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
@@ -17,9 +18,7 @@ import ConditionBad from "../../assets/ConditionBad.svg";
 import ConditionTerrible from "../../assets/ConditionTerrible.svg";
 import ReactGA from "react-ga";
 
-export default function SingleObservationForm({
-  setShowSingleObservationForm
-}) {
+export default function SingleObservationForm() {
   // STATION CONDITIONS
   const [station, setStation] = useState(``); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
@@ -1264,12 +1263,11 @@ export default function SingleObservationForm({
         ) : (
           <Fragment>
             <div className="single-observation-form__button-wrapper">
-              <span
-                className="submit__single-observation-nav-button"
-                onClick={() => setShowSingleObservationForm(false)}
-              >
-                Or enter pre-formatted data
-              </span>
+              <NavLink className="app__nav-link" to="/submit">
+                <span className="submit__single-observation-nav-button">
+                  Or enter pre-formatted data
+                </span>
+              </NavLink>
 
               {jwt === "none" ? null : (
                 <button
