@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
-import { createWallet, createSecret } from "../auth/auth-helpers";
+import { checkJwt, createWallet, createSecret } from "../auth/auth-helpers";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
@@ -52,6 +52,9 @@ export default function VerifyClaimAccount({ match }) {
     setIsError(false);
 
     if (inputsAreValid()) {
+      // checks if jwt in url is valid and hasn't expired
+      checkJwt(match.params.jwt);
+
       const wallet = createWallet();
       const secret = createSecret(wallet.signingKey.privateKey, password);
 
