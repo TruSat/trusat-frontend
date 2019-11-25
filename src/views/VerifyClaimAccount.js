@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
 import jwt_decode from "jwt-decode";
@@ -8,6 +8,7 @@ import { useAuthState, useAuthDispatch } from "../auth/auth-context";
 import Spinner from "../app/components/Spinner";
 
 export default function VerifyClaimAccount({ match }) {
+  const [isExpired, setIsExpired] = useState(false);
   const [password, setPassword] = useState("");
   const [retypedPassword, setRetypedPassword] = useState("");
   const [showInvalidPasswordError, setShowInvalidPasswordError] = useState(
@@ -22,6 +23,20 @@ export default function VerifyClaimAccount({ match }) {
   const [isSuccess, setIsSuccess] = useState(false);
   const { userAddress } = useAuthState();
   const authDispatch = useAuthDispatch();
+
+  useEffect(() => {
+    const getExpiry = async () => {
+      // get expiry timestamp for jwt and current timestamp
+      const { exp } = await jwt_decode(match.params.jwt);
+      const currentTimestamp = Math.floor(Date.now() / 1000);
+
+      if (currentTimestamp > exp) {
+        setIsExpired(true);
+      }
+    };
+
+    getExpiry();
+  }, [match.params.jwt, isExpired]);
 
   const inputsAreValid = () => {
     setShowInvalidPasswordError(false);
@@ -83,8 +98,10 @@ export default function VerifyClaimAccount({ match }) {
   ) : (
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
-      {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret */}
-      {!isSuccess ? (
+      {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret 
+      Or if JWT has expired after 24 hours
+      */}
+      {!isSuccess && !isExpired ? (
         <form
           className="app__form"
           onSubmit={event => {
@@ -136,10 +153,27 @@ export default function VerifyClaimAccount({ match }) {
             </div>
           ) : null}
 
-          <button type="submit" className="app__white-button--small">
-            Submit
-          </button>
+          {isExpired ? null : (
+            <button type="submit" className="app__white-button--small">
+              Submit
+            </button>
+          )}
         </form>
+      ) : null}
+
+      {isExpired ? (
+        <div>
+          <p className="claim-account__message">
+            You waited more than 24 hours to complete the claim account process.
+            Please start the process over again by returning to{" "}
+            <NavLink to="/claim" className="app__nav-link app__link">
+              here
+            </NavLink>
+            {` `}
+            and make sure to disregard all previous "claim account" emails you
+            may have received.
+          </p>
+        </div>
       ) : null}
 
       {isSuccess ? (
