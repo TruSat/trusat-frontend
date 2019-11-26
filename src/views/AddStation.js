@@ -35,7 +35,7 @@ export default function AddStation() {
         `${API_ROOT}/generateStation`,
         JSON.stringify({
           jwt: jwt,
-          station_name: stationName,
+          station: stationName,
           latitude: latitude,
           longitude: longitude,
           altitude: altitude,
