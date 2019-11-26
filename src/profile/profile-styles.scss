@@ -203,6 +203,10 @@ AddStation
   font-size: $small-font-size;
 }
 
+.station-form__textarea {
+  resize: none;
+}
+
 .station-form__button {
   background: #004f85;
   border-radius: 4px;

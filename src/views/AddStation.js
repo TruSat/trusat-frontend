@@ -1,14 +1,54 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { API_ROOT } from "../app/app-helpers";
+import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
 
 export default function AddStation() {
+  const { jwt } = useAuthState();
+  // form state
   const [stationName, setStationName] = useState(``);
   const [latitude, setLatitude] = useState(``);
   const [longitude, setlongitude] = useState(``);
   const [altitude, setAltitude] = useState(``);
   const [notes, setNotes] = useState(``);
+  const [isDefault, setIsDefault] = useState(false);
+  // submission state
+  const [isLoading, setIsLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
 
-  const submitLocation = () => {};
+  const resetFormValues = () => {
+    setStationName(``);
+    setLatitude(``);
+    setlongitude(``);
+    setAltitude(``);
+    setNotes(``);
+    setIsDefault(false);
+  };
+
+  const submitLocation = async () => {
+    setIsLoading(true);
+
+    // if no errors
+    try {
+      const result = axios.post(
+        `${API_ROOT}/generateStation`,
+        JSON.stringify({
+          jwt: jwt,
+          station_name: stationName,
+          latitude: latitude,
+          longitude: longitude,
+          altitude: altitude,
+          notes: notes,
+          default: isDefault
+        })
+      );
+    } catch (error) {
+      console.log(error);
+    }
+    setIsLoading(false);
+    resetFormValues();
+  };
 
   return (
     <div className="add-station">
@@ -30,9 +70,13 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={``} />
           </label>
           <input
+            required
+            type="text"
             className="app__form__input"
             value={stationName}
             onChange={event => setStationName(event.target.value)}
+            maxLength={30}
+            placeholder="e.g. Crater Lake Campground"
           ></input>
         </div>
         <div>
@@ -41,9 +85,17 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={``} />
           </label>
           <input
+            required
+            type="number"
             className="app__form__input"
             value={latitude}
-            onChange={event => setLatitude(event.target.value)}
+            onChange={event => {
+              // limit to 15 chars
+              if (event.target.value.length < 16) {
+                setLatitude(event.target.value);
+              }
+            }}
+            placeholder="e.g. 42.97473848"
           ></input>
         </div>
         <div>
@@ -52,9 +104,16 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={``} />
           </label>
           <input
+            required
+            type="number"
             className="app__form__input"
             value={longitude}
-            onChange={event => setlongitude(event.target.value)}
+            onChange={event => {
+              if (event.target.value.length < 16) {
+                setlongitude(event.target.value);
+              }
+            }}
+            placeholder="e.g. 25.3930"
           ></input>
         </div>
         <div>
@@ -63,9 +122,17 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={``} />
           </label>
           <input
+            required
+            type="number"
             className="app__form__input"
             value={altitude}
-            onChange={event => setAltitude(event.target.value)}
+            onChange={event => {
+              // limit to 10 chars
+              if (event.target.value.length < 11) {
+                setAltitude(event.target.value);
+              }
+            }}
+            placeholder="e.g. 394.4"
           ></input>
         </div>
         <div>
@@ -73,15 +140,30 @@ export default function AddStation() {
             <p>Notes (optional)</p>
             <QuestionMarkToolTip toolTipText={``} />
           </label>
-          <input
-            className="app__form__input"
+          <textarea
+            rows={4}
+            className="app__form__input station-form__textarea"
             value={notes}
             onChange={event => setNotes(event.target.value)}
-          ></input>
+            placeholder="e.g. equipment description"
+            maxLength={140}
+          ></textarea>
+          {notes.length !== 0 ? (
+            <p style={{ textAlign: "right" }}>{140 - notes.length}</p>
+          ) : null}
         </div>
         <div style={{ display: "flex", alignItems: "center" }}>
-          <input className="app__form__checkbox" type="checkbox"></input>
-          <label className="app__form__label station-form__label">
+          <input
+            id="default-checkbox"
+            className="app__form__checkbox"
+            type="checkbox"
+            value={isDefault}
+            onClick={() => setIsDefault(!isDefault)}
+          ></input>
+          <label
+            htmlFor="default-checkbox"
+            className="app__form__label station-form__label"
+          >
             <p>Make this my default observation location</p>
           </label>
         </div>
