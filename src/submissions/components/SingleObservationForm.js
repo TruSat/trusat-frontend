@@ -608,6 +608,7 @@ export default function SingleObservationForm() {
                   value={timeUncertainty}
                 >
                   <option value="15">0.001 seconds</option>
+                  <option value="16">0.01 seconds</option>
                   <option value="56">0.05 seconds</option>
                   <option value="17">0.1 seconds</option>
                   <option value="97">0.9 seconds</option>
