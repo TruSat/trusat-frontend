@@ -1,32 +1,58 @@
 import React, { useState, useEffect } from "react";
 import { useProfileState } from "../../profile/profile-context";
-import CircleCheck from "../../assets/CircleCheck.svg";
 import DeleteStation from "../../assets/DeleteStation.svg";
+import Button from "../../app/components/Button";
 
+// TODO - move this up inside the `AccountSettings` component and follow the same logic used to edit the profile settings
 export default function SavedLocations() {
   const { profileData } = useProfileState();
   const [isEditing, setIsEditing] = useState(false);
-  const [newStationName, setNewStationName] = useState(``);
-  const [newNotes, setNewNotes] = useState(``);
-
-  // TODO determine how to edit each name indepentantly of other station names, using the station ID
-  useEffect(() => {
-    setNewStationName(data.station_name);
-  }, []);
+  // this will be pulled from profileData - reference how this is done with profile settings
+  // this will be sent to the API
+  const [newLocationData, setNewLocationData] = useState([
+    {
+      station_name: "my backyard",
+      notes: "",
+      latitude: "12345",
+      longitude: "-54321",
+      altitude: "100",
+      station_id: "T0001",
+      observation_count: "500"
+    },
+    {
+      station_name: "Dads house",
+      notes: "at the beach",
+      latitude: "78901",
+      longitude: "-10987",
+      altitude: "150",
+      station_id: "T0002",
+      observation_count: "250"
+    },
+    {
+      station_name: "Cascades camping",
+      notes: "",
+      latitude: "23232",
+      longitude: "-32322",
+      altitude: "200",
+      station_id: "T0003",
+      observation_count: "100"
+    }
+  ]);
 
   const renderLocations = () => {
-    return data.map(station => (
+    return newLocationData.map(station => (
       <tr key={station.station_id}>
         <td>
           {isEditing ? (
-            <input
-              value={newStationName}
-              onChange={event => setNewStationName(event.target.value)}
-            />
+            <input value={station.station_name} />
           ) : (
             `${station.station_name}`
           )}
-          {station.notes ? <p>{station.notes}</p> : null}
+          {isEditing && station.notes ? (
+            <p>
+              <input value={station.notes} />
+            </p>
+          ) : null}
         </td>
         <td>
           {station.latitude}, {station.longitude}
@@ -34,9 +60,6 @@ export default function SavedLocations() {
         <td>{station.altitude}</td>
         <td>{station.station_id}</td>
         {isEditing ? null : <td>{station.observation_count}</td>}
-        <td>
-          {station.default ? <img src={CircleCheck} alt="Yes"></img> : null}
-        </td>
         {isEditing ? (
           <td>
             <img src={DeleteStation} alt="delete station"></img>
@@ -70,46 +93,20 @@ export default function SavedLocations() {
               <th>LAT.,LON.</th>
               <th>ALT.</th>
               <th>STATION ID</th>
-              <th># OF OBS.</th>
-              <th>DEFAULT</th>
+              <th>{isEditing ? null : `# OF OBS.`}</th>
             </tr>
           </thead>
           <tbody>{renderLocations()}</tbody>
         </table>
       </div>
+      {isEditing ? (
+        <Button
+          text="Save"
+          color="orange"
+          addStyles="saved-locations__save-button"
+          onClick={() => setIsEditing(false)}
+        />
+      ) : null}
     </div>
   );
 }
-
-const data = [
-  {
-    station_name: "my backyard",
-    notes: "",
-    latitude: "12345",
-    longitude: "-54321",
-    altitude: "100",
-    station_id: "T0001",
-    observation_count: "500",
-    default: true
-  },
-  {
-    station_name: "Dads house",
-    notes: "at the beach",
-    latitude: "78901",
-    longitude: "-10987",
-    altitude: "150",
-    station_id: "T0002",
-    observation_count: "250",
-    default: false
-  },
-  {
-    station_name: "Cascades camping",
-    notes: "",
-    latitude: "23232",
-    longitude: "-32322",
-    altitude: "200",
-    station_id: "T0003",
-    observation_count: "100",
-    default: false
-  }
-];

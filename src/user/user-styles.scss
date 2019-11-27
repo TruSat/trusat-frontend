@@ -133,6 +133,8 @@ PROFILE SETTINGS
 SAVED LOCATIONS
 ---------- */
 .saved-locations__wrapper {
+  display: flex;
+  flex-direction: column;
   margin-top: 3em;
   text-align: left;
   width: 100%;
@@ -143,6 +145,11 @@ SAVED LOCATIONS
     margin-top: 1em;
     max-width: 600px;
   }
+}
+
+.saved-locations__save-button {
+  align-self: flex-end;
+  margin-top: 1em;
 }
 
 /* ----------
