@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
+const geocoder = require("geocoder");
 
 export default function AddStation() {
   const { jwt } = useAuthState();
@@ -16,6 +17,12 @@ export default function AddStation() {
   // submission state
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  useEffect(() => {
+    geocoder.reverseGeocode(latitude, longitude, function(err, data) {
+      console.log(data);
+    });
+  }, [latitude, longitude]);
 
   const resetFormValues = () => {
     setStationName(``);
