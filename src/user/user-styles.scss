@@ -134,13 +134,14 @@ SAVED LOCATIONS
 ---------- */
 .saved-locations__wrapper {
   margin-top: 3em;
+  text-align: left;
   width: 100%;
 }
 
 @media (min-width: 600px) {
   .saved-locations__wrapper {
     margin-top: 1em;
-    max-width: 500px;
+    max-width: 600px;
   }
 }
 
