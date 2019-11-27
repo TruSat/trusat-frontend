@@ -65,19 +65,13 @@ PROFILE SETTINGS
   cursor: pointer;
 }
 
-.profile-settings__profile-wrapper,
-.profile-settings__observation-wrapper {
+.profile-settings__profile-wrapper {
   margin-top: 3em;
   width: 100%;
 }
 
 @media (min-width: 600px) {
   .profile-settings__profile-wrapper {
-    margin-top: 1em;
-    max-width: 500px;
-  }
-
-  .profile-settings__observation-wrapper {
     margin-top: 1em;
     max-width: 500px;
   }
@@ -133,6 +127,21 @@ PROFILE SETTINGS
 
 .profile-settings__station-text {
   margin-right: 0.5em;
+}
+
+/* ----------
+SAVED LOCATIONS
+---------- */
+.saved-locations__wrapper {
+  margin-top: 3em;
+  width: 100%;
+}
+
+@media (min-width: 600px) {
+  .saved-locations__wrapper {
+    margin-top: 1em;
+    max-width: 500px;
+  }
 }
 
 /* ----------
