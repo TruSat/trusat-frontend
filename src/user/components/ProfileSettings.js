@@ -1,14 +1,11 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { Redirect } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
 import CopyText from "../../app/components/CopyText";
-import {
-  shortenAddressToolTip,
-  toolTip,
-  toolTipCopy
-} from "../../app/app-helpers";
+import { shortenAddressToolTip, toolTip } from "../../app/app-helpers";
+import SavedLocations from "./SavedLocations";
 
 export default function ProfileSettings({
   newUsername,
@@ -104,23 +101,7 @@ export default function ProfileSettings({
         </div>
       </div>
 
-      <div className="profile-settings__observation-wrapper">
-        <h2 className="profile-settings__heading">OBSERVATION STATIONS</h2>
-
-        <div className="profile-settings__station-text-wrapper">
-          {profileData.observation_stations.length !== 0 ? (
-            profileData.observation_stations.map(station => {
-              return (
-                <p className="profile-settings__station-text">{station}</p>
-              );
-            })
-          ) : (
-            <Fragment>
-              {toolTip(`None... ?`, toolTipCopy.observation_station)}
-            </Fragment>
-          )}
-        </div>
-      </div>
+      <SavedLocations />
     </section>
   ) : (
     <Redirect
