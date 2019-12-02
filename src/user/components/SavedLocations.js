@@ -1,4 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
+import { NavLink } from "react-router-dom";
 import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
 import Button from "../../app/components/Button";
@@ -39,7 +40,7 @@ export default function SavedLocations() {
     }
   ]);
 
-  const editStationName = ({ newName, stationId }) => {
+  const editStationName = ({ stationId, newName }) => {
     setNewLocationData(
       newLocationData.map(station =>
         station.station_id === stationId
@@ -49,7 +50,7 @@ export default function SavedLocations() {
     );
   };
 
-  const editStationNotes = ({ newNotes, stationId }) => {
+  const editStationNotes = ({ stationId, newNotes }) => {
     setNewLocationData(
       newLocationData.map(station =>
         station.station_id === stationId
@@ -128,7 +129,7 @@ export default function SavedLocations() {
 
   return (
     <div className="saved-locations__wrapper">
-      <h2 className="profile-settings__heading">
+      <h2 className="saved-locations__heading">
         <p>SAVED LOCATIONS</p>
         {isEditing ? null : (
           <p
@@ -138,14 +139,15 @@ export default function SavedLocations() {
             Edit locations
           </p>
         )}
-
-        <p className="profile-settings__edit-button-text">Add location</p>
+        <NavLink className="app__nav-link" to="/settings/stations">
+          <p className="profile-settings__edit-button-text">Add location</p>
+        </NavLink>
       </h2>
 
       <div className="profile-settings__station-text-wrapper">
         <table className="table">
           <thead className="table__header">
-            <tr className="table__header-row">
+            <tr className="table__header-row locations-table__header-row">
               <th className="table__header-text">NAME</th>
               <th className="table__header-text">LAT.,LON.</th>
               <th className="table__header-text">ALT.</th>

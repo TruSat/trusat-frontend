@@ -141,11 +141,26 @@ SAVED LOCATIONS
   width: 100%;
 }
 
+.saved-locations__heading {
+  @include section-title;
+  border: 1px solid $secondary-theme-color;
+  border-left: none;
+  border-right: none;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5em;
+  padding: 0.5em 0;
+}
+
 @media (min-width: 600px) {
   .saved-locations__wrapper {
     margin-top: 1em;
     max-width: 600px;
   }
+}
+
+.locations-table__header-row {
+  border-bottom: 1px solid #4f4f4f;
 }
 
 .locations-table__table-data {
