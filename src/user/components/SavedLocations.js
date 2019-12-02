@@ -4,45 +4,18 @@ import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
 import Button from "../../app/components/Button";
 
-// TODO - move this up inside the `AccountSettings` component and follow the same logic used to edit the profile settings
-export default function SavedLocations() {
+export default function SavedLocations({
+  newStationData,
+  setNewStationData,
+  submitEdit
+}) {
+  // TODO - add station data from profileData to the table values, reference ProfileSettings component
   const { profileData } = useProfileState();
   const [isEditing, setIsEditing] = useState(false);
-  // this will be pulled from profileData - reference how this is done with profile settings
-  // this will be sent to the API
-  const [newLocationData, setNewLocationData] = useState([
-    {
-      station_name: "my backyard",
-      notes: "",
-      latitude: "12345",
-      longitude: "-54321",
-      altitude: "100",
-      station_id: "T0001",
-      observation_count: "500"
-    },
-    {
-      station_name: "Dads house",
-      notes: "at the beach",
-      latitude: "78901",
-      longitude: "-10987",
-      altitude: "150",
-      station_id: "T0002",
-      observation_count: "250"
-    },
-    {
-      station_name: "Cascades camping",
-      notes: "",
-      latitude: "23232",
-      longitude: "-32322",
-      altitude: "200",
-      station_id: "T0003",
-      observation_count: "100"
-    }
-  ]);
 
   const editStationName = ({ stationId, newName }) => {
-    setNewLocationData(
-      newLocationData.map(station =>
+    setNewStationData(
+      newStationData.map(station =>
         station.station_id === stationId
           ? { ...station, station_name: newName }
           : station
@@ -51,8 +24,8 @@ export default function SavedLocations() {
   };
 
   const editStationNotes = ({ stationId, newNotes }) => {
-    setNewLocationData(
-      newLocationData.map(station =>
+    setNewStationData(
+      newStationData.map(station =>
         station.station_id === stationId
           ? { ...station, notes: newNotes }
           : station
@@ -61,13 +34,13 @@ export default function SavedLocations() {
   };
 
   const deleteStation = stationId => {
-    setNewLocationData(
-      newLocationData.filter(station => station.station_id !== stationId)
+    setNewStationData(
+      newStationData.filter(station => station.station_id !== stationId)
     );
   };
 
   const renderLocations = () => {
-    return newLocationData.map(station => (
+    return newStationData.map(station => (
       <tr key={station.station_id}>
         <td className="locations-table__table-data">
           {isEditing ? (
