@@ -43,6 +43,7 @@ PROFILE SETTINGS
 
 .profile-settings__heading {
   @include section-title;
+  align-items: center;
   border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;
@@ -143,6 +144,7 @@ SAVED LOCATIONS
 
 .saved-locations__heading {
   @include section-title;
+  align-items: center;
   border: 1px solid $secondary-theme-color;
   border-left: none;
   border-right: none;

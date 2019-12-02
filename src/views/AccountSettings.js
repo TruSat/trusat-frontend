@@ -84,25 +84,24 @@ function UserSettings({ history }) {
         newBio={newBio}
         setNewBio={setNewBio}
       />
-      {showEditProfileInputs === true ? (
+      {showEditProfileInputs ? (
         <div className="account-settings__button-wrapper">
-          <span
-            className="app__white-button--small account-settings__cancel-button"
+          <Button
+            text="Cancel"
+            color="white"
+            addStyles="account-settings__cancel-button"
             onClick={() => {
               setShowEditProfileInputs(false);
             }}
-          >
-            Cancel
-          </span>
-          <span
-            className="app__black-button--small"
+          />
+          <Button
+            text="Save"
+            color="orange"
             onClick={() => {
               submitEdit();
               setShowEditProfileInputs(false);
             }}
-          >
-            Save
-          </span>
+          />
         </div>
       ) : null}
 
