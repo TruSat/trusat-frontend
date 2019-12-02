@@ -5,6 +5,7 @@ import { API_ROOT } from "../app/app-helpers";
 import { useProfileState } from "../profile/profile-context";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
+import SavedLocations from "../user/components/SavedLocations";
 import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
@@ -15,7 +16,6 @@ function UserSettings({ history }) {
   const { profileData } = useProfileState();
   const { jwt, userAddress } = useAuthState();
   // Profile settings
-  const [showEditProfileInputs, setShowEditProfileInputs] = useState(false);
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
   const [newLocation, setNewLocation] = useState("");
@@ -73,37 +73,20 @@ function UserSettings({ history }) {
   ) : (
     <div className="account-settings__wrapper">
       <h1 className="account-settings__header">Account Settings</h1>
-      <ProfileSettings
-        showEditProfileInputs={showEditProfileInputs}
-        setShowEditProfileInputs={setShowEditProfileInputs}
-        newUsername={newUsername}
-        setNewUsername={setNewUsername}
-        newEmail={newEmail}
-        newLocation={newLocation}
-        setNewLocation={setNewLocation}
-        newBio={newBio}
-        setNewBio={setNewBio}
-      />
-      {showEditProfileInputs ? (
-        <div className="account-settings__button-wrapper">
-          <Button
-            text="Cancel"
-            color="white"
-            addStyles="account-settings__cancel-button"
-            onClick={() => {
-              setShowEditProfileInputs(false);
-            }}
-          />
-          <Button
-            text="Save"
-            color="orange"
-            onClick={() => {
-              submitEdit();
-              setShowEditProfileInputs(false);
-            }}
-          />
-        </div>
-      ) : null}
+      <section className="profile-settings__wrapper">
+        <ProfileSettings
+          newUsername={newUsername}
+          setNewUsername={setNewUsername}
+          newEmail={newEmail}
+          newLocation={newLocation}
+          setNewLocation={setNewLocation}
+          newBio={newBio}
+          setNewBio={setNewBio}
+          submitEdit={submitEdit}
+        />
+
+        <SavedLocations />
+      </section>
 
       <PrivacySettings />
 
