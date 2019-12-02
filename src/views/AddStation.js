@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
+import Spinner from "../app/components/Spinner";
 const geocoder = require("geocoder");
 
 export default function AddStation() {
@@ -13,7 +14,7 @@ export default function AddStation() {
   const [longitude, setlongitude] = useState(``);
   const [altitude, setAltitude] = useState(``);
   const [notes, setNotes] = useState(``);
-  const [isDefault, setIsDefault] = useState(false);
+  // const [isDefault, setIsDefault] = useState(false);
   // submission state
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -30,12 +31,11 @@ export default function AddStation() {
     setlongitude(``);
     setAltitude(``);
     setNotes(``);
-    setIsDefault(false);
+    // setIsDefault(false);
   };
 
   const submitLocation = async () => {
     setIsLoading(true);
-
     // if no errors
     try {
       const result = axios.post(
@@ -46,8 +46,7 @@ export default function AddStation() {
           latitude: latitude,
           longitude: longitude,
           altitude: altitude,
-          notes: notes,
-          default: isDefault
+          notes: notes
         })
       );
     } catch (error) {
@@ -159,7 +158,7 @@ export default function AddStation() {
             <p style={{ textAlign: "right" }}>{140 - notes.length}</p>
           ) : null}
         </div>
-        <div style={{ display: "flex", alignItems: "center" }}>
+        {/* <div style={{ display: "flex", alignItems: "center" }}>
           <input
             id="default-checkbox"
             className="app__form__checkbox"
@@ -173,11 +172,14 @@ export default function AddStation() {
           >
             <p>Make this my default observation location</p>
           </label>
-        </div>
-
-        <button type="submit" className="station-form__button">
-          Add station
-        </button>
+        </div> */}
+        {isLoading ? (
+          <Spinner />
+        ) : (
+          <button type="submit" className="station-form__button">
+            Add station
+          </button>
+        )}
       </form>
     </div>
   );
