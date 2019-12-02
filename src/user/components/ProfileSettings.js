@@ -89,7 +89,7 @@ export default function ProfileSettings({
           {showEditProfileInputs ? (
             <textarea
               className="profile-settings__text-area"
-              maxlength="160"
+              maxLength="160"
               value={newBio}
               onChange={event => setNewBio(event.target.value)}
             ></textarea>
