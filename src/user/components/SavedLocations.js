@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
 import Button from "../../app/components/Button";
@@ -39,30 +39,87 @@ export default function SavedLocations() {
     }
   ]);
 
+  const editStationName = ({ newName, stationId }) => {
+    setNewLocationData(
+      newLocationData.map(station =>
+        station.station_id === stationId
+          ? { ...station, station_name: newName }
+          : station
+      )
+    );
+  };
+
+  const editStationNotes = ({ newNotes, stationId }) => {
+    setNewLocationData(
+      newLocationData.map(station =>
+        station.station_id === stationId
+          ? { ...station, notes: newNotes }
+          : station
+      )
+    );
+  };
+
+  const deleteStation = stationId => {
+    setNewLocationData(
+      newLocationData.filter(station => station.station_id !== stationId)
+    );
+  };
+
   const renderLocations = () => {
     return newLocationData.map(station => (
       <tr key={station.station_id}>
-        <td>
+        <td className="locations-table__table-data">
           {isEditing ? (
-            <input value={station.station_name} />
+            <input
+              className="edit-profile-settings-input"
+              value={station.station_name}
+              onChange={event =>
+                editStationName({
+                  newName: event.target.value,
+                  stationId: station.station_id
+                })
+              }
+            />
           ) : (
-            `${station.station_name}`
+            <Fragment>
+              <p className="locations-table__name-data">
+                {station.station_name}
+              </p>
+              <p>{station.notes ? station.notes : null}</p>
+            </Fragment>
           )}
           {isEditing && station.notes ? (
-            <p>
-              <input value={station.notes} />
+            <p style={{ marginTop: "1em" }}>
+              <input
+                className="edit-profile-settings-input"
+                value={station.notes}
+                onChange={event =>
+                  editStationNotes({
+                    newNotes: event.target.value,
+                    stationId: station.station_id
+                  })
+                }
+              />
             </p>
           ) : null}
         </td>
-        <td>
+        <td className="locations-table__table-data">
           {station.latitude}, {station.longitude}
         </td>
-        <td>{station.altitude}</td>
-        <td>{station.station_id}</td>
-        {isEditing ? null : <td>{station.observation_count}</td>}
+        <td className="locations-table__table-data">{station.altitude}</td>
+        <td className="locations-table__table-data">{station.station_id}</td>
+        {isEditing ? null : (
+          <td className="locations-table__table-data">
+            {station.observation_count}
+          </td>
+        )}
         {isEditing ? (
-          <td>
-            <img src={DeleteStation} alt="delete station"></img>
+          <td className="locations-table__table-data">
+            <img
+              src={DeleteStation}
+              alt="delete station"
+              onClick={() => deleteStation(station.station_id)}
+            ></img>
           </td>
         ) : null}
       </tr>
@@ -89,23 +146,35 @@ export default function SavedLocations() {
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
-              <th>NAME</th>
-              <th>LAT.,LON.</th>
-              <th>ALT.</th>
-              <th>STATION ID</th>
-              <th>{isEditing ? null : `# OF OBS.`}</th>
+              <th className="table__header-text">NAME</th>
+              <th className="table__header-text">LAT.,LON.</th>
+              <th className="table__header-text">ALT.</th>
+              <th className="table__header-text">STATION ID</th>
+              <th className="table__header-text">
+                {isEditing ? null : `# OF OBS.`}
+              </th>
             </tr>
           </thead>
           <tbody>{renderLocations()}</tbody>
         </table>
       </div>
       {isEditing ? (
-        <Button
-          text="Save"
-          color="orange"
-          addStyles="saved-locations__save-button"
-          onClick={() => setIsEditing(false)}
-        />
+        <div className="saved-locations__button-wrapper">
+          {/* Cancel will return the render to the profileData   */}
+          <Button
+            text="Cancel"
+            color="white"
+            addStyles="saved-locations__cancel-button"
+            onClick={() => setIsEditing(false)}
+          />
+
+          <Button
+            text="Save"
+            color="orange"
+            addStyles="saved-locations__save-button"
+            onClick={() => setIsEditing(false)}
+          />
+        </div>
       ) : null}
     </div>
   );

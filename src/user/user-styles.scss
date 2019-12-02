@@ -133,6 +133,7 @@ PROFILE SETTINGS
 SAVED LOCATIONS
 ---------- */
 .saved-locations__wrapper {
+  color: #a5a5a5;
   display: flex;
   flex-direction: column;
   margin-top: 3em;
@@ -147,9 +148,23 @@ SAVED LOCATIONS
   }
 }
 
-.saved-locations__save-button {
+.locations-table__table-data {
+  padding: 0.5em 1em 0.5em 0em;
+}
+
+.locations-table__name-data {
+  color: $primary-text-color;
+  font-size: $small-font-size;
+  padding: 0.5em 1em 0.5em 0em;
+}
+
+.saved-locations__button-wrapper {
   align-self: flex-end;
   margin-top: 1em;
+}
+
+.saved-locations__cancel-button {
+  margin-right: 1em;
 }
 
 /* ----------
