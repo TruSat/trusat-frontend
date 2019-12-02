@@ -82,7 +82,20 @@ function UserSettings({ history }) {
           username: newUsername,
           email: newEmail,
           bio: newBio,
-          location: newLocation
+          location: newLocation,
+          // TODO - send through the objects that are being changed, NOT the whole newStationData array above
+          new_station_name: [
+            {
+              station_id: "stationId",
+              station_name: "new station name heres"
+            }
+          ],
+          new_station_note: [
+            {
+              station_id: "stationId",
+              notes: "new notes here"
+            }
+          ]
         })
       );
     } catch (error) {
