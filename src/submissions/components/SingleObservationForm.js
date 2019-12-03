@@ -468,7 +468,21 @@ export default function SingleObservationForm() {
                   here
                 </a>
               </label>
-              <input
+              {/* TO DO
+              style form according to mike designs
+              add the default station to the input field usign the hook when the component mounts
+              add a link to add a station
+              set 9999 as the default so someone can create an IOD when not logged in */}
+              <select
+                className="app__form__input"
+                onChange={event => setStation(event.target.value)}
+                value={timeUncertainty}
+                style={isStationError ? { border: "2px solid #FC7756" } : null}
+              >
+                <option value="0001">Location nickname 47.23, -12</option>
+                <option value="0002">Location nickname 47.34, -12</option>
+              </select>
+              {/* <input
                 className="app__form__input"
                 required
                 type="number"
@@ -480,7 +494,7 @@ export default function SingleObservationForm() {
                 }}
                 placeholder="####"
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
-              />
+              /> */}
               {isStationError ? (
                 <p className="app__error-message">
                   Station must be a numerical value of 4 characters
