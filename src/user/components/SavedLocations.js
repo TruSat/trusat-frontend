@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
@@ -7,6 +7,12 @@ import Button from "../../app/components/Button";
 export default function SavedLocations({
   newStationData,
   setNewStationData,
+  newStationNames,
+  setNewStationNames,
+  newStationNotes,
+  setNewStationNotes,
+  deletedStations,
+  setDeletedStations,
   submitEdit
 }) {
   // TODO - add station data from profileData to the table values, reference ProfileSettings component
@@ -14,6 +20,7 @@ export default function SavedLocations({
   const [isEditing, setIsEditing] = useState(false);
 
   const editStationName = ({ stationId, newName }) => {
+    // used for table render
     setNewStationData(
       newStationData.map(station =>
         station.station_id === stationId
@@ -21,9 +28,12 @@ export default function SavedLocations({
           : station
       )
     );
+    // update the name for this given station
+    setNewStationNames({ ...newStationNames, [stationId]: newName });
   };
 
   const editStationNotes = ({ stationId, newNotes }) => {
+    // used for table render
     setNewStationData(
       newStationData.map(station =>
         station.station_id === stationId
@@ -31,12 +41,17 @@ export default function SavedLocations({
           : station
       )
     );
+    // Update the notes for this given station
+    setNewStationNotes({ ...newStationNotes, [stationId]: newNotes });
   };
 
   const deleteStation = stationId => {
+    // used for table render
     setNewStationData(
       newStationData.filter(station => station.station_id !== stationId)
     );
+    // add stationID to an array of stations to be deleted
+    setDeletedStations([...deletedStations, stationId]);
   };
 
   const renderLocations = () => {
@@ -147,7 +162,10 @@ export default function SavedLocations({
             text="Save"
             color="orange"
             addStyles="saved-locations__save-button"
-            onClick={() => setIsEditing(false)}
+            onClick={() => {
+              submitEdit();
+              setIsEditing(false);
+            }}
           />
         </div>
       ) : null}
