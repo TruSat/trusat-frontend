@@ -25,6 +25,13 @@ function UserSettings({ history }) {
   const [isError, setIsError] = useState(false);
 
   const [newStationData, setNewStationData] = useState([]);
+  const [newStationNames, setNewStationNames] = useState({});
+  const [newStationNotes, setNewStationNotes] = useState({});
+  const [deletedStations, setDeletedStations] = useState([]);
+
+  console.log(`newStationNames = `, newStationNames);
+  console.log(`newStationNotes`, newStationNotes);
+  console.log(`deleted stations`, deletedStations);
 
   useEffect(() => {
     // TODO - pull station data from profileData when API is set up
@@ -36,6 +43,7 @@ function UserSettings({ history }) {
     setNewBio(user_bio);
 
     // TODO - pull location data from profileData and update state with it instead
+    // used for table render
     setNewStationData([
       {
         station_name: "my backyard",
@@ -83,19 +91,9 @@ function UserSettings({ history }) {
           email: newEmail,
           bio: newBio,
           location: newLocation,
-          // TODO - send through the objects that are being changed, NOT the whole newStationData array above
-          new_station_name: [
-            {
-              station_id: "stationId",
-              station_name: "new station name heres"
-            }
-          ],
-          new_station_note: [
-            {
-              station_id: "stationId",
-              notes: "new notes here"
-            }
-          ]
+          new_station_names: newStationNames,
+          new_station_notes: newStationNotes,
+          deleted_stations: deletedStations
         })
       );
     } catch (error) {
@@ -135,6 +133,12 @@ function UserSettings({ history }) {
         <SavedLocations
           newStationData={newStationData}
           setNewStationData={setNewStationData}
+          newStationNames={newStationNames}
+          setNewStationNames={setNewStationNames}
+          newStationNotes={newStationNotes}
+          setNewStationNotes={setNewStationNotes}
+          deletedStations={deletedStations}
+          setDeletedStations={setDeletedStations}
           submitEdit={submitEdit}
         />
       </section>
