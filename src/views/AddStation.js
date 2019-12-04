@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
+import CircleCheck from "../assets/CircleCheck.svg";
 
 export default function AddStation() {
   const { jwt } = useAuthState();
@@ -175,10 +176,14 @@ export default function AddStation() {
           </label>
         </div> */}
         {successfullyAddedStation ? (
-          <p className="app__success-message">
-            You successfully added a new location which now has a station number
-            of {successfullyAddedStation}!
-          </p>
+          <Fragment>
+            <div className="app__success-message">
+              <img src={CircleCheck} alt="check"></img>
+              {` `}
+              You successfully added a new location and it's station number is{" "}
+              {successfullyAddedStation}!
+            </div>
+          </Fragment>
         ) : null}
         {isError ? (
           <p className="app__error-message">Something went wrong...</p>
