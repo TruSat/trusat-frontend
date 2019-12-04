@@ -8,6 +8,7 @@ import { shortenAddressToolTip, toolTip } from "../../app/app-helpers";
 export default function ProfileHeader() {
   const { userAddress } = useAuthState();
   const { profileData } = useProfileState();
+  console.log(profileData);
 
   return profileData.user_address ? (
     <section className="profile__header-wrapper">

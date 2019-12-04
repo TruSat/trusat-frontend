@@ -18,6 +18,36 @@ import ConditionBad from "../../assets/ConditionBad.svg";
 import ConditionTerrible from "../../assets/ConditionTerrible.svg";
 import ReactGA from "react-ga";
 
+const observation_stations = [
+  {
+    station_name: "my backyard",
+    notes: "",
+    latitude: "12345",
+    longitude: "-54321",
+    altitude: "100",
+    station_id: "T001",
+    observation_count: "500"
+  },
+  {
+    station_name: "Dads house",
+    notes: "at the beach",
+    latitude: "78901",
+    longitude: "-10987",
+    altitude: "150",
+    station_id: "T002",
+    observation_count: "250"
+  },
+  {
+    station_name: "Cascades camping",
+    notes: "",
+    latitude: "23232",
+    longitude: "-32322",
+    altitude: "200",
+    station_id: "T003",
+    observation_count: "100"
+  }
+];
+
 export default function SingleObservationForm() {
   // STATION CONDITIONS
   const [station, setStation] = useState(`9999`); // 4 chars
@@ -296,53 +326,6 @@ export default function SingleObservationForm() {
     }
   }, [objectSearchTerm]);
 
-  // Render results of search under the input field
-  const renderObjectSearchResults = () => {
-    // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
-    const formatObject = ({ norad_number, international_designator }) => {
-      let formattedNorad;
-
-      if (norad_number.toString().length !== 5) {
-        // append leading zeros to norad numbers less than 5 chars in length
-        const leadingZeros = "0".repeat(5 - norad_number.toString().length);
-        formattedNorad = `${leadingZeros}${norad_number}`;
-      } else {
-        // use norad if 5 chars in length
-        formattedNorad = norad_number;
-      }
-
-      const formattedInternationalDesignator = `${international_designator
-        .substring(2)
-        .replace(/-/g, ` `)}${" ".repeat(
-        11 - international_designator.length
-      )}`;
-
-      return `${formattedNorad} ${formattedInternationalDesignator}`;
-    };
-
-    return objectSearchResults.map(obj => {
-      return (
-        <span
-          key={obj.norad_number}
-          className="object-position__search-result"
-          onClick={() => {
-            setObject(
-              formatObject({
-                norad_number: obj.norad_number,
-                international_designator: obj.international_designator
-              })
-            );
-            setObjectSearchTerm(``);
-            setObjectSearchResults([]);
-          }}
-        >{`${obj.name} = ${formatObject({
-          norad_number: obj.norad_number,
-          international_designator: obj.international_designator
-        })}`}</span>
-      );
-    });
-  };
-
   // Show behavior options when user chooses an Optical Behavior
   useEffect(() => {
     if (behavior !== ` `) {
@@ -431,6 +414,62 @@ export default function SingleObservationForm() {
     setIsLoading(false);
   };
 
+  // Renders the users stations as options in the Station Location dropdown
+  const renderObservationStations = () => {
+    return observation_stations.map(station => (
+      <option key={station.station_id} value={station.station_id}>
+        {`${station.station_name} (${station.latitude}, ${station.longitude})`}
+      </option>
+    ));
+  };
+
+  // Render results of search under the input field
+  const renderObjectSearchResults = () => {
+    // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
+    const formatObject = ({ norad_number, international_designator }) => {
+      let formattedNorad;
+
+      if (norad_number.toString().length !== 5) {
+        // append leading zeros to norad numbers less than 5 chars in length
+        const leadingZeros = "0".repeat(5 - norad_number.toString().length);
+        formattedNorad = `${leadingZeros}${norad_number}`;
+      } else {
+        // use norad if 5 chars in length
+        formattedNorad = norad_number;
+      }
+
+      const formattedInternationalDesignator = `${international_designator
+        .substring(2)
+        .replace(/-/g, ` `)}${" ".repeat(
+        11 - international_designator.length
+      )}`;
+
+      return `${formattedNorad} ${formattedInternationalDesignator}`;
+    };
+
+    return objectSearchResults.map(obj => {
+      return (
+        <span
+          key={obj.norad_number}
+          className="object-position__search-result"
+          onClick={() => {
+            setObject(
+              formatObject({
+                norad_number: obj.norad_number,
+                international_designator: obj.international_designator
+              })
+            );
+            setObjectSearchTerm(``);
+            setObjectSearchResults([]);
+          }}
+        >{`${obj.name} = ${formatObject({
+          norad_number: obj.norad_number,
+          international_designator: obj.international_designator
+        })}`}</span>
+      );
+    });
+  };
+
   return (
     <Fragment>
       {jwt === "none" ? (
@@ -480,8 +519,7 @@ export default function SingleObservationForm() {
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
                 <option value="9999">9999</option>
-                <option value="T001">Location nickname 47.23, -12</option>
-                <option value="T002">Location nickname 47.34, -12</option>
+                {renderObservationStations()}
                 <option className="app__link" value="0000">
                   Add new location
                 </option>
