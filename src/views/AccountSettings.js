@@ -35,44 +35,19 @@ function UserSettings({ history }) {
 
   useEffect(() => {
     // TODO - pull station data from profileData when API is set up
-    const { user_name, email, user_location, user_bio } = profileData;
+    const {
+      user_name,
+      email,
+      user_location,
+      user_bio,
+      observation_stations
+    } = profileData;
     // Add the current values so that they appear in input fields when user is editing
     setNewUsername(user_name);
     setNewEmail(email);
     setNewLocation(user_location);
     setNewBio(user_bio);
-
-    // TODO - pull location data from profileData and update state with it instead
-    // used for table render
-    setNewStationData([
-      {
-        station_name: "my backyard",
-        notes: "",
-        latitude: "12345",
-        longitude: "-54321",
-        altitude: "100",
-        station_id: "T0001",
-        observation_count: "500"
-      },
-      {
-        station_name: "Dads house",
-        notes: "at the beach",
-        latitude: "78901",
-        longitude: "-10987",
-        altitude: "150",
-        station_id: "T0002",
-        observation_count: "250"
-      },
-      {
-        station_name: "Cascades camping",
-        notes: "",
-        latitude: "23232",
-        longitude: "-32322",
-        altitude: "200",
-        station_id: "T0003",
-        observation_count: "100"
-      }
-    ]);
+    setNewStationData(observation_stations); // used to render the saved locations table
   }, [profileData]);
 
   const submitEdit = async () => {
@@ -158,3 +133,33 @@ function UserSettings({ history }) {
 }
 
 export default withRouter(UserSettings);
+
+// const observation_stations = [
+//   {
+//     station_name: "my backyard",
+//     notes: "",
+//     latitude: "12345",
+//     longitude: "-54321",
+//     altitude: "100",
+//     station_id: "T0001",
+//     observation_count: "500"
+//   },
+//   {
+//     station_name: "Dads house",
+//     notes: "at the beach",
+//     latitude: "78901",
+//     longitude: "-10987",
+//     altitude: "150",
+//     station_id: "T0002",
+//     observation_count: "250"
+//   },
+//   {
+//     station_name: "Cascades camping",
+//     notes: "",
+//     latitude: "23232",
+//     longitude: "-32322",
+//     altitude: "200",
+//     station_id: "T0003",
+//     observation_count: "100"
+//   }
+// ]
