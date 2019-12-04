@@ -35,7 +35,7 @@ const observation_stations = [
     longitude: "-10987",
     altitude: "150",
     station_id: "T002",
-    observation_count: "250"
+    observation_count: "700"
   },
   {
     station_name: "Cascades camping",
@@ -416,12 +416,21 @@ export default function SingleObservationForm() {
 
   // Renders the users stations as options in the Station Location dropdown
   const renderObservationStations = () => {
+    // sort the stations by observation count, most first
+    observation_stations.sort(
+      (a, b) => b.observation_count - a.observation_count
+    );
+
     return observation_stations.map(station => (
       <option key={station.station_id} value={station.station_id}>
         {`${station.station_name} (${station.latitude}, ${station.longitude})`}
       </option>
     ));
   };
+
+  useEffect(() => {
+    setStation(observation_stations[0].station_id);
+  }, [setStation]);
 
   // Render results of search under the input field
   const renderObjectSearchResults = () => {
@@ -507,19 +516,17 @@ export default function SingleObservationForm() {
                   here
                 </a> */}
               </label>
-              {/* TO DO
-              style form according to mike designs
-              add the default station to the input field usign the hook when the component mounts
-              default to 9999 when user isnt logged in
-              */}
               <select
                 className="app__form__input"
                 onChange={event => setStation(event.target.value)}
                 value={station}
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
-                <option value="9999">9999</option>
                 {renderObservationStations()}
+                {/* Only render 9999 as an option when user is logged out or doesnt have any stations registered yet */}
+                {observation_stations.length === 0 ? (
+                  <option value="9999">9999</option>
+                ) : null}
                 <option className="app__link" value="0000">
                   Add new location
                 </option>
