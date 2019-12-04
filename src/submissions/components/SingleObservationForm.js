@@ -18,38 +18,9 @@ import ConditionBad from "../../assets/ConditionBad.svg";
 import ConditionTerrible from "../../assets/ConditionTerrible.svg";
 import ReactGA from "react-ga";
 
-const observation_stations = [
-  {
-    station_name: "my backyard",
-    notes: "",
-    latitude: "12345",
-    longitude: "-54321",
-    altitude: "100",
-    station_id: "T001",
-    observation_count: "500"
-  },
-  {
-    station_name: "Dads house",
-    notes: "at the beach",
-    latitude: "78901",
-    longitude: "-10987",
-    altitude: "150",
-    station_id: "T002",
-    observation_count: "700"
-  },
-  {
-    station_name: "Cascades camping",
-    notes: "",
-    latitude: "23232",
-    longitude: "-32322",
-    altitude: "200",
-    station_id: "T003",
-    observation_count: "100"
-  }
-];
-
 export default function SingleObservationForm() {
   // STATION CONDITIONS
+  const [observationStations, setObservationStations] = useState(``); // will be an array when call to getObservationStations is made
   const [station, setStation] = useState(`9999`); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
@@ -105,14 +76,38 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
   // SUBMISSION UI STATES
+  const { jwt } = useAuthState(); // used in handleSubmit function
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides success and error messages upon submissions which are displayed in UI
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
-  const { jwt } = useAuthState();
   // set to true if attempt to submit fails
   const [isError, setIsError] = useState(false);
+
+  // gets observations stations for this user
+  useEffect(() => {
+    const fetchObservationStations = async () => {
+      try {
+        let result = await axios.post(
+          `${API_ROOT}/getObservationStations`,
+          JSON.stringify({ jwt: jwt })
+        );
+        console.log(result);
+        // TODO organize the returned results by observation count then set returned data with setObservationStations hook
+        // sort the stations by observation count, most first
+        // profileData.observation_stations.sort(
+        //   (a, b) => b.observation_count - a.observation_count
+        // );
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if (observationStations === `` && jwt !== "none") {
+      fetchObservationStations();
+    }
+  }, [jwt, observationStations]);
 
   // Builds the IOD string
   useEffect(() => {
@@ -416,21 +411,20 @@ export default function SingleObservationForm() {
 
   // Renders the users stations as options in the Station Location dropdown
   const renderObservationStations = () => {
-    // sort the stations by observation count, most first
-    observation_stations.sort(
-      (a, b) => b.observation_count - a.observation_count
-    );
-
-    return observation_stations.map(station => (
-      <option key={station.station_id} value={station.station_id}>
-        {`${station.station_name} (${station.latitude}, ${station.longitude})`}
-      </option>
-    ));
+    if (observationStations.length !== 0) {
+      return observationStations.map(station => (
+        <option key={station.station_id} value={station.station_id}>
+          {`${station.station_name} (${station.latitude}, ${station.longitude})`}
+        </option>
+      ));
+    }
   };
 
   useEffect(() => {
-    setStation(observation_stations[0].station_id);
-  }, [setStation]);
+    if (observationStations.length !== 0) {
+      setStation(observationStations[0].station_id);
+    }
+  }, [setStation, observationStations]);
 
   // Render results of search under the input field
   const renderObjectSearchResults = () => {
@@ -524,7 +518,7 @@ export default function SingleObservationForm() {
               >
                 {renderObservationStations()}
                 {/* Only render 9999 as an option when user is logged out or doesnt have any stations registered yet */}
-                {observation_stations.length === 0 ? (
+                {observationStations.length === 0 ? (
                   <option value="9999">9999</option>
                 ) : null}
                 <option className="app__link" value="0000">
@@ -1360,3 +1354,33 @@ export default function SingleObservationForm() {
     </Fragment>
   );
 }
+
+// const observation_stations = [
+//   {
+//     station_name: "my backyard",
+//     notes: "",
+//     latitude: "12345",
+//     longitude: "-54321",
+//     altitude: "100",
+//     station_id: "T001",
+//     observation_count: "500"
+//   },
+//   {
+//     station_name: "Dads house",
+//     notes: "at the beach",
+//     latitude: "78901",
+//     longitude: "-10987",
+//     altitude: "150",
+//     station_id: "T002",
+//     observation_count: "700"
+//   },
+//   {
+//     station_name: "Cascades camping",
+//     notes: "",
+//     latitude: "23232",
+//     longitude: "-32322",
+//     altitude: "200",
+//     station_id: "T003",
+//     observation_count: "100"
+//   }
+// ];
