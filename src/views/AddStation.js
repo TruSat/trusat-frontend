@@ -3,6 +3,7 @@ import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
+import { checkJwt } from "../auth/auth-helpers";
 import Spinner from "../app/components/Spinner";
 import CircleCheck from "../assets/CircleCheck.svg";
 
@@ -34,7 +35,8 @@ export default function AddStation() {
     setIsError(false);
     setSuccessfullyAddedStation(``);
     setIsLoading(true);
-
+    // checks if jwt is valid and hasn't expired
+    checkJwt(jwt);
     // if no errors
     try {
       const result = await axios.post(
