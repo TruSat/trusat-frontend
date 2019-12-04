@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
-const geocoder = require("geocoder");
 
 export default function AddStation() {
   const { jwt } = useAuthState();
@@ -17,13 +16,9 @@ export default function AddStation() {
   // const [isDefault, setIsDefault] = useState(false);
   // submission state
   const [isLoading, setIsLoading] = useState(false);
+  const [successfullyAddedStation, setSuccessfullyAddedStation] = useState(``);
   const [errors, setErrors] = useState([]);
-
-  useEffect(() => {
-    geocoder.reverseGeocode(latitude, longitude, function(err, data) {
-      console.log(data);
-    });
-  }, [latitude, longitude]);
+  const [isError, setIsError] = useState(false);
 
   const resetFormValues = () => {
     setStationName(``);
@@ -35,10 +30,13 @@ export default function AddStation() {
   };
 
   const submitLocation = async () => {
+    setIsError(false);
+    setSuccessfullyAddedStation(``);
     setIsLoading(true);
+
     // if no errors
     try {
-      const result = axios.post(
+      const result = await axios.post(
         `${API_ROOT}/generateStation`,
         JSON.stringify({
           jwt: jwt,
@@ -49,8 +47,11 @@ export default function AddStation() {
           notes: notes
         })
       );
+      console.log(result);
+      setSuccessfullyAddedStation(result.data.station_id);
     } catch (error) {
       console.log(error);
+      setIsError(true);
     }
     setIsLoading(false);
     resetFormValues();
@@ -173,6 +174,15 @@ export default function AddStation() {
             <p>Make this my default observation location</p>
           </label>
         </div> */}
+        {successfullyAddedStation ? (
+          <p className="app__success-message">
+            You successfully added a new location which now has a station number
+            of {successfullyAddedStation}!
+          </p>
+        ) : null}
+        {isError ? (
+          <p className="app__error-message">Something went wrong...</p>
+        ) : null}
         {isLoading ? (
           <Spinner />
         ) : (
