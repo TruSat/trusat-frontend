@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
@@ -20,7 +20,7 @@ import ReactGA from "react-ga";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
-  const [station, setStation] = useState(``); // 4 chars
+  const [station, setStation] = useState(`9999`); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   const [date, setDate] = useState(``); // 8 chars
@@ -111,7 +111,7 @@ export default function SingleObservationForm() {
 
   //  return all the 'default values' upon submit
   const resetFormVariables = () => {
-    setStation(``); // 4 chars
+    setStation(`9999`); // 4 chars
     setCloudedOut(false);
     setObserverUnavailable(false);
     setDate(``); // 8 chars
@@ -196,8 +196,8 @@ export default function SingleObservationForm() {
 
   // Validates formats of form fields
   useEffect(() => {
-    // station is mandatory, must be 4 chars long, all numbers
-    if (station.length !== 4 || !numRegEx.test(station)) {
+    // station is mandatory, must be 4 chars longs
+    if (station.length !== 4) {
       setIsStationError(true);
     } else {
       setIsStationError(false);
@@ -457,7 +457,7 @@ export default function SingleObservationForm() {
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
-                {` `}
+                {/* {` `}
                 Don't have a station number? Submit location{" "}
                 <a
                   className="app__link"
@@ -466,21 +466,25 @@ export default function SingleObservationForm() {
                   href="https://docs.google.com/forms/d/1SoQivnx_dZPku0eZKlPXnNwggH2XDtb-e4GpAMSvYE8/viewform?edit_requested=true"
                 >
                   here
-                </a>
+                </a> */}
               </label>
               {/* TO DO
               style form according to mike designs
               add the default station to the input field usign the hook when the component mounts
-              add a link to add a station
-              set 9999 as the default so someone can create an IOD when not logged in */}
+              default to 9999 when user isnt logged in
+              */}
               <select
                 className="app__form__input"
                 onChange={event => setStation(event.target.value)}
-                value={timeUncertainty}
+                value={station}
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
-                <option value="0001">Location nickname 47.23, -12</option>
-                <option value="0002">Location nickname 47.34, -12</option>
+                <option value="9999">9999</option>
+                <option value="T001">Location nickname 47.23, -12</option>
+                <option value="T002">Location nickname 47.34, -12</option>
+                <option className="app__link" value="0000">
+                  Add new location
+                </option>
               </select>
               {/* <input
                 className="app__form__input"
@@ -1304,6 +1308,10 @@ export default function SingleObservationForm() {
           </Fragment>
         )}
       </form>
+      {/* when users chooses 'add new location' in station location dropdown, redirect them to add station view */}
+      {station === "0000" ? (
+        <Redirect to="/settings/stations"></Redirect>
+      ) : null}
     </Fragment>
   );
 }
