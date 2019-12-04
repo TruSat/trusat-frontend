@@ -1,6 +1,5 @@
 import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
 import Button from "../../app/components/Button";
 
@@ -15,8 +14,6 @@ export default function SavedLocations({
   setDeletedStations,
   submitEdit
 }) {
-  // TODO - add station data from profileData to the table values, reference ProfileSettings component
-  const { profileData } = useProfileState();
   const [isEditing, setIsEditing] = useState(false);
 
   const editStationName = ({ stationId, newName }) => {
@@ -119,7 +116,7 @@ export default function SavedLocations({
     <div className="saved-locations__wrapper">
       <h2 className="saved-locations__heading">
         <p>SAVED LOCATIONS</p>
-        {isEditing ? null : (
+        {newStationData.length === 0 || isEditing ? null : (
           <p
             className="profile-settings__edit-button-text"
             onClick={() => setIsEditing(true)}
@@ -133,20 +130,24 @@ export default function SavedLocations({
       </h2>
 
       <div className="profile-settings__station-text-wrapper">
-        <table className="table">
-          <thead className="table__header">
-            <tr className="table__header-row locations-table__header-row">
-              <th className="table__header-text">NAME</th>
-              <th className="table__header-text">LAT.,LON.</th>
-              <th className="table__header-text">ALT.</th>
-              <th className="table__header-text">STATION ID</th>
-              <th className="table__header-text">
-                {isEditing ? null : `# OF OBS.`}
-              </th>
-            </tr>
-          </thead>
-          <tbody>{renderLocations()}</tbody>
-        </table>
+        {newStationData.length !== 0 ? (
+          <table className="table">
+            <thead className="table__header">
+              <tr className="table__header-row locations-table__header-row">
+                <th className="table__header-text">NAME</th>
+                <th className="table__header-text">LAT.,LON.</th>
+                <th className="table__header-text">ALT.</th>
+                <th className="table__header-text">STATION ID</th>
+                <th className="table__header-text">
+                  {isEditing ? null : `# OF OBS.`}
+                </th>
+              </tr>
+            </thead>
+            <tbody>{renderLocations()}</tbody>
+          </table>
+        ) : (
+          <p>None found.</p>
+        )}
       </div>
       {isEditing ? (
         <div className="saved-locations__button-wrapper">
