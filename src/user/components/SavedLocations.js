@@ -16,7 +16,6 @@ export default function SavedLocations({
   submitEdit
 }) {
   const { profileData } = useProfileState();
-  console.log(profileData.observation_stations);
   const [isEditing, setIsEditing] = useState(false);
 
   const editStationName = ({ stationId, newName }) => {
@@ -57,6 +56,7 @@ export default function SavedLocations({
   const renderLocations = () => {
     return (
       <Fragment>
+        {/* When user clicks edit locations */}
         {isEditing
           ? newStationData.map(station => (
               <tr key={station.station_id}>
@@ -71,20 +71,19 @@ export default function SavedLocations({
                       })
                     }
                   />
-                  {isEditing && station.notes ? (
-                    <p style={{ marginTop: "1em" }}>
-                      <input
-                        className="edit-profile-settings-input"
-                        value={station.notes}
-                        onChange={event =>
-                          editStationNotes({
-                            newNotes: event.target.value,
-                            stationId: station.station_id
-                          })
-                        }
-                      />
-                    </p>
-                  ) : null}
+                  <p style={{ marginTop: "1em" }}>
+                    <input
+                      className="edit-profile-settings-input"
+                      value={station.notes}
+                      onChange={event =>
+                        editStationNotes({
+                          newNotes: event.target.value,
+                          stationId: station.station_id
+                        })
+                      }
+                      placeholder="station notes"
+                    />
+                  </p>
                 </td>
                 <td className="locations-table__table-data">
                   {station.latitude}, {station.longitude}
@@ -104,7 +103,8 @@ export default function SavedLocations({
                 </td>
               </tr>
             ))
-          : profileData.observation_stations.map(station => (
+          : // else render the stations in profileData that is pulled from database
+            profileData.observation_stations.map(station => (
               <tr key={station.station_id}>
                 <td className="locations-table__table-data">
                   <Fragment>
@@ -235,7 +235,11 @@ export default function SavedLocations({
             text="Cancel"
             color="white"
             addStyles="saved-locations__cancel-button"
-            onClick={() => setIsEditing(false)}
+            onClick={() => {
+              // reset values rendered during edit mode to those found in profileData
+              setNewStationData(profileData.observation_stations);
+              setIsEditing(false);
+            }}
           />
 
           <Button

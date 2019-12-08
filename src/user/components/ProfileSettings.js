@@ -106,6 +106,10 @@ export default function ProfileSettings({
             color="white"
             addStyles="account-settings__cancel-button"
             onClick={() => {
+              // reset values rendered during edit mode to those found in profileData
+              setNewUsername(profileData.user_name);
+              setNewLocation(profileData.user_location);
+              setNewBio(profileData.user_bio);
               setIsEditing(false);
             }}
           />
