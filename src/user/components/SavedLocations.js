@@ -16,7 +16,7 @@ export default function SavedLocations({
   submitEdit
 }) {
   const { profileData } = useProfileState();
-  //console.log(profileData.observation_stations);
+  console.log(profileData.observation_stations);
   const [isEditing, setIsEditing] = useState(false);
 
   const editStationName = ({ stationId, newName }) => {
@@ -55,71 +55,147 @@ export default function SavedLocations({
   };
 
   const renderLocations = () => {
-    return newStationData.map(station => (
-      <tr key={station.station_id}>
-        <td className="locations-table__table-data">
-          {isEditing ? (
-            <input
-              className="edit-profile-settings-input"
-              value={station.station_name}
-              onChange={event =>
-                editStationName({
-                  newName: event.target.value,
-                  stationId: station.station_id
-                })
-              }
-            />
-          ) : (
-            <Fragment>
-              <p className="locations-table__name-data">
-                {station.station_name}
-              </p>
-              <p>{station.notes ? station.notes : null}</p>
-            </Fragment>
-          )}
-          {isEditing && station.notes ? (
-            <p style={{ marginTop: "1em" }}>
-              <input
-                className="edit-profile-settings-input"
-                value={station.notes}
-                onChange={event =>
-                  editStationNotes({
-                    newNotes: event.target.value,
-                    stationId: station.station_id
-                  })
-                }
-              />
-            </p>
-          ) : null}
-        </td>
-        <td className="locations-table__table-data">
-          {station.latitude}, {station.longitude}
-        </td>
-        <td className="locations-table__table-data">{station.altitude}</td>
-        <td className="locations-table__table-data">{station.station_id}</td>
-        {isEditing ? null : (
-          <td className="locations-table__table-data">
-            {station.observation_count}
-          </td>
-        )}
-        {isEditing ? (
-          <td className="locations-table__table-data">
-            <img
-              src={DeleteStation}
-              alt="delete station"
-              onClick={() => deleteStation(station.station_id)}
-            ></img>
-          </td>
-        ) : null}
-      </tr>
-    ));
+    return (
+      <Fragment>
+        {isEditing
+          ? newStationData.map(station => (
+              <tr key={station.station_id}>
+                <td className="locations-table__table-data">
+                  <input
+                    className="edit-profile-settings-input"
+                    value={station.station_name}
+                    onChange={event =>
+                      editStationName({
+                        newName: event.target.value,
+                        stationId: station.station_id
+                      })
+                    }
+                  />
+                  {isEditing && station.notes ? (
+                    <p style={{ marginTop: "1em" }}>
+                      <input
+                        className="edit-profile-settings-input"
+                        value={station.notes}
+                        onChange={event =>
+                          editStationNotes({
+                            newNotes: event.target.value,
+                            stationId: station.station_id
+                          })
+                        }
+                      />
+                    </p>
+                  ) : null}
+                </td>
+                <td className="locations-table__table-data">
+                  {station.latitude}, {station.longitude}
+                </td>
+                <td className="locations-table__table-data">
+                  {station.altitude}
+                </td>
+                <td className="locations-table__table-data">
+                  {station.station_id}
+                </td>
+                <td className="locations-table__table-data">
+                  <img
+                    src={DeleteStation}
+                    alt="delete station"
+                    onClick={() => deleteStation(station.station_id)}
+                  ></img>
+                </td>
+              </tr>
+            ))
+          : profileData.observation_stations.map(station => (
+              <tr key={station.station_id}>
+                <td className="locations-table__table-data">
+                  <Fragment>
+                    <p className="locations-table__name-data">
+                      {station.station_name}
+                    </p>
+                    <p>{station.notes ? station.notes : null}</p>
+                  </Fragment>
+                </td>
+                <td className="locations-table__table-data">
+                  {station.latitude}, {station.longitude}
+                </td>
+                <td className="locations-table__table-data">
+                  {station.altitude}
+                </td>
+                <td className="locations-table__table-data">
+                  {station.station_id}
+                </td>
+
+                <td className="locations-table__table-data">
+                  {station.observation_count}
+                </td>
+              </tr>
+            ))}
+      </Fragment>
+    );
+    // return newStationData.map(station => (
+    //   <tr key={station.station_id}>
+    //     <td className="locations-table__table-data">
+    //       {isEditing ? (
+    //         <input
+    //           className="edit-profile-settings-input"
+    //           value={station.station_name}
+    //           onChange={event =>
+    //             editStationName({
+    //               newName: event.target.value,
+    //               stationId: station.station_id
+    //             })
+    //           }
+    //         />
+    //       ) : (
+    //         <Fragment>
+    //           <p className="locations-table__name-data">
+    //             {station.station_name}
+    //           </p>
+    //           <p>{station.notes ? station.notes : null}</p>
+    //         </Fragment>
+    //       )}
+    //       {isEditing && station.notes ? (
+    //         <p style={{ marginTop: "1em" }}>
+    //           <input
+    //             className="edit-profile-settings-input"
+    //             value={station.notes}
+    //             onChange={event =>
+    //               editStationNotes({
+    //                 newNotes: event.target.value,
+    //                 stationId: station.station_id
+    //               })
+    //             }
+    //           />
+    //         </p>
+    //       ) : null}
+    //     </td>
+    //     <td className="locations-table__table-data">
+    //       {station.latitude}, {station.longitude}
+    //     </td>
+    //     <td className="locations-table__table-data">{station.altitude}</td>
+    //     <td className="locations-table__table-data">{station.station_id}</td>
+    //     {isEditing ? null : (
+    //       <td className="locations-table__table-data">
+    //         {station.observation_count}
+    //       </td>
+    //     )}
+    //     {isEditing ? (
+    //       <td className="locations-table__table-data">
+    //         <img
+    //           src={DeleteStation}
+    //           alt="delete station"
+    //           onClick={() => deleteStation(station.station_id)}
+    //         ></img>
+    //       </td>
+    //     ) : null}
+    //   </tr>
+    // ));
   };
 
   return (
     <div className="saved-locations__wrapper">
       <h2 className="saved-locations__heading">
         <p>SAVED LOCATIONS</p>
-        {newStationData.length === 0 || isEditing ? null : (
+        {profileData.observation_stations.length === 0 || isEditing ? null : (
           <p
             className="profile-settings__edit-button-text"
             onClick={() => setIsEditing(true)}
@@ -133,7 +209,7 @@ export default function SavedLocations({
       </h2>
 
       <div className="profile-settings__station-text-wrapper">
-        {newStationData.length !== 0 ? (
+        {profileData.observation_stations.length !== 0 ? (
           <table className="table">
             <thead className="table__header">
               <tr className="table__header-row locations-table__header-row">
