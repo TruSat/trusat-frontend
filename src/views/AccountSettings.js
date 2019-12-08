@@ -29,10 +29,6 @@ function UserSettings({ history }) {
   const [newStationNotes, setNewStationNotes] = useState({});
   const [deletedStations, setDeletedStations] = useState([]);
 
-  console.log(`newStationNames = `, newStationNames);
-  console.log(`newStationNotes`, newStationNotes);
-  console.log(`deleted stations`, deletedStations);
-
   useEffect(() => {
     // TODO - pull station data from profileData when API is set up
     const {
@@ -133,33 +129,3 @@ function UserSettings({ history }) {
 }
 
 export default withRouter(UserSettings);
-
-// const observation_stations = [
-//   {
-//     station_name: "my backyard",
-//     notes: "",
-//     latitude: "12345",
-//     longitude: "-54321",
-//     altitude: "100",
-//     station_id: "T0001",
-//     observation_count: "500"
-//   },
-//   {
-//     station_name: "Dads house",
-//     notes: "at the beach",
-//     latitude: "78901",
-//     longitude: "-10987",
-//     altitude: "150",
-//     station_id: "T0002",
-//     observation_count: "250"
-//   },
-//   {
-//     station_name: "Cascades camping",
-//     notes: "",
-//     latitude: "23232",
-//     longitude: "-32322",
-//     altitude: "200",
-//     station_id: "T0003",
-//     observation_count: "100"
-//   }
-// ]
