@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
+import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
 import Button from "../../app/components/Button";
 
@@ -14,6 +15,8 @@ export default function SavedLocations({
   setDeletedStations,
   submitEdit
 }) {
+  const { profileData } = useProfileState();
+  //console.log(profileData.observation_stations);
   const [isEditing, setIsEditing] = useState(false);
 
   const editStationName = ({ stationId, newName }) => {
