@@ -30,7 +30,6 @@ function UserSettings({ history }) {
   const [deletedStations, setDeletedStations] = useState([]);
 
   useEffect(() => {
-    // TODO - pull station data from profileData when API is set up
     const {
       user_name,
       email,
@@ -43,7 +42,7 @@ function UserSettings({ history }) {
     setNewEmail(email);
     setNewLocation(user_location);
     setNewBio(user_bio);
-    setNewStationData(observation_stations); // used to render the saved locations table
+    setNewStationData(observation_stations); // used to render the saved locations table in edit mode
   }, [profileData]);
 
   const submitEdit = async () => {
