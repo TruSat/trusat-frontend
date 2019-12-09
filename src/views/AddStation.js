@@ -15,7 +15,6 @@ export default function AddStation() {
   const [longitude, setlongitude] = useState(``);
   const [altitude, setAltitude] = useState(``);
   const [notes, setNotes] = useState(``);
-  // const [isDefault, setIsDefault] = useState(false);
   // submission state
   const [isLoading, setIsLoading] = useState(false);
   const [successfullyAddedStation, setSuccessfullyAddedStation] = useState(``);
@@ -28,7 +27,6 @@ export default function AddStation() {
     setlongitude(``);
     setAltitude(``);
     setNotes(``);
-    // setIsDefault(false);
   };
 
   const submitLocation = async () => {
@@ -162,21 +160,6 @@ export default function AddStation() {
             <p style={{ textAlign: "right" }}>{140 - notes.length}</p>
           ) : null}
         </div>
-        {/* <div style={{ display: "flex", alignItems: "center" }}>
-          <input
-            id="default-checkbox"
-            className="app__form__checkbox"
-            type="checkbox"
-            value={isDefault}
-            onClick={() => setIsDefault(!isDefault)}
-          ></input>
-          <label
-            htmlFor="default-checkbox"
-            className="app__form__label station-form__label"
-          >
-            <p>Make this my default observation location</p>
-          </label>
-        </div> */}
         {successfullyAddedStation ? (
           <Fragment>
             <div className="app__success-message">
