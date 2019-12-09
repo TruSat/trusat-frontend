@@ -232,7 +232,16 @@ export const toolTipCopy = {
   flash_period:
     "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light.",
   iod:
-    "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format."
+    "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format.",
+  station_name:
+    "A title for this location to differentiate it from your other observation locations",
+  latitude: "Your location's angular distance north or south of the equator",
+  longitude:
+    "Your location's angular distance east or west of the meridian at Greenwich, England",
+
+  altitude: "Your location's vertical distance above or below sea level",
+  notes:
+    "An optional field to describe this location in more detail, for your own private reference"
 };
 
 export const emails = {

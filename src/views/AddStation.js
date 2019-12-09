@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import axios from "axios";
-import { API_ROOT } from "../app/app-helpers";
+import { API_ROOT, toolTipCopy } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
 import { checkJwt } from "../auth/auth-helpers";
@@ -77,7 +77,7 @@ export default function AddStation() {
         <div>
           <label className="app__form__label station-form__label">
             <p>Station name or label</p>
-            <QuestionMarkToolTip toolTipText={``} />
+            <QuestionMarkToolTip toolTipText={toolTipCopy.station_name} />
           </label>
           <input
             required
@@ -92,7 +92,7 @@ export default function AddStation() {
         <div>
           <label className="app__form__label station-form__label">
             <p>Latitude (degrees)</p>
-            <QuestionMarkToolTip toolTipText={``} />
+            <QuestionMarkToolTip toolTipText={toolTipCopy.latitude} />
           </label>
           <input
             required
@@ -111,7 +111,7 @@ export default function AddStation() {
         <div>
           <label className="app__form__label station-form__label">
             <p>Longitude (degrees)</p>
-            <QuestionMarkToolTip toolTipText={``} />
+            <QuestionMarkToolTip toolTipText={toolTipCopy.longitude} />
           </label>
           <input
             required
@@ -129,7 +129,7 @@ export default function AddStation() {
         <div>
           <label className="app__form__label station-form__label">
             <p>Altitude (meters)</p>
-            <QuestionMarkToolTip toolTipText={``} />
+            <QuestionMarkToolTip toolTipText={toolTipCopy.altitude} />
           </label>
           <input
             required
@@ -148,7 +148,7 @@ export default function AddStation() {
         <div>
           <label className="app__form__label station-form__label">
             <p>Notes (optional)</p>
-            <QuestionMarkToolTip toolTipText={``} />
+            <QuestionMarkToolTip toolTipText={toolTipCopy.notes} />
           </label>
           <textarea
             rows={4}
