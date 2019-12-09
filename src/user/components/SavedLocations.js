@@ -195,7 +195,9 @@ export default function SavedLocations({
     <div className="saved-locations__wrapper">
       <h2 className="saved-locations__heading">
         <p>SAVED LOCATIONS</p>
-        {profileData.observation_stations.length === 0 || isEditing ? null : (
+        {(profileData.observation_stations &&
+          profileData.observation_stations.length === 0) ||
+        isEditing ? null : (
           <p
             className="profile-settings__edit-button-text"
             onClick={() => setIsEditing(true)}
@@ -209,7 +211,8 @@ export default function SavedLocations({
       </h2>
 
       <div className="profile-settings__station-text-wrapper">
-        {profileData.observation_stations.length !== 0 ? (
+        {profileData.observation_stations &&
+        profileData.observation_stations.length !== 0 ? (
           <table className="table">
             <thead className="table__header">
               <tr className="table__header-row locations-table__header-row">
