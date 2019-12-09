@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
 import {
@@ -26,8 +26,8 @@ function UserSettings({ history }) {
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
 
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitError, setIsSubmitError] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
   const [newStationData, setNewStationData] = useState([]);
   const [newStationNames, setNewStationNames] = useState({});
@@ -50,9 +50,36 @@ function UserSettings({ history }) {
     setNewStationData(observation_stations); // used to render the saved locations table in edit mode
   }, [profileData]);
 
+  useEffect(() => {
+    const doFetch = async () => {
+      setIsError(false);
+      setIsLoading(true);
+      // checks if jwt is valid and hasn't expired
+      checkJwt(jwt);
+
+      try {
+        const result = await axios.get(
+          `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
+        );
+
+        console.log(`did a fetch`);
+
+        profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
+      } catch (error) {
+        setIsError(true);
+        console.log(error);
+      }
+      setIsLoading(false);
+    };
+
+    if (jwt !== "none" && userAddress) {
+      doFetch();
+    }
+  }, [jwt, userAddress, profileData, profileDispatch]);
+
   const submitEdit = async () => {
-    setIsSubmitError(false);
-    setIsSubmitting(true);
+    setIsError(false);
+    setIsLoading(true);
     // checks if jwt is valid and hasn't expired
     checkJwt(jwt);
     // Post the edits
@@ -71,40 +98,12 @@ function UserSettings({ history }) {
           deleted_stations: deletedStations
         })
       );
-
-      // console.log(`post is done`);
-
-      // const result = await axios.get(
-      //   `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
-      // );
-
-      // console.log(`fetch is done`);
-
-      // console.log(result.data);
-
-      //profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
+      // refresh the page to pull the latest data just posted
+      window.location.reload();
     } catch (error) {
-      setIsSubmitError(true);
+      setIsError(true);
     }
-    setIsSubmitting(false);
-    // After edit, kick user back to their profile and refresh browser to show changes
-    history.push(`/profile/${userAddress}`);
-    window.location.reload();
   };
-
-  // const fetchUpdatedData = async () => {
-  //   try {
-  //     const result = await axios.get(
-  //       `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
-  //     );
-
-  //     console.log(result);
-
-  //     //profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
 
   const logout = () => {
     localStorage.removeItem("trusat-jwt");
@@ -113,10 +112,18 @@ function UserSettings({ history }) {
     window.location.reload();
   };
 
-  return isSubmitError ? (
+  return isError ? (
     <p className="app__error-message">Something went wrong...</p>
-  ) : isSubmitting ? (
+  ) : isLoading ? (
     <Spinner />
+  ) : jwt === "none" ? (
+    <div className="app__error-message">
+      You need to login{" "}
+      <NavLink className="app__nav-link app__link" to="/login">
+        here
+      </NavLink>{" "}
+      to view your settings page
+    </div>
   ) : (
     <div className="account-settings__wrapper">
       <h1 className="account-settings__header">Account Settings</h1>
