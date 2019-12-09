@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import axios from "axios";
 import { API_ROOT } from "../app/app-helpers";
-import { useProfileState } from "../profile/profile-context";
+import {
+  useProfileState,
+  useProfileDispatch
+} from "../profile/profile-context";
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import SavedLocations from "../user/components/SavedLocations";
@@ -13,7 +16,9 @@ import Button from "../app/components/Button";
 import { checkJwt } from "../auth/auth-helpers";
 
 function UserSettings({ history }) {
+  const profileDispatch = useProfileDispatch();
   const { profileData } = useProfileState();
+
   const { jwt, userAddress } = useAuthState();
   // Profile settings
   const [newUsername, setNewUsername] = useState("");
@@ -21,8 +26,8 @@ function UserSettings({ history }) {
   const [newLocation, setNewLocation] = useState("");
   const [newBio, setNewBio] = useState("");
 
-  const [isLoading, setIsloading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitError, setIsSubmitError] = useState(false);
 
   const [newStationData, setNewStationData] = useState([]);
   const [newStationNames, setNewStationNames] = useState({});
@@ -46,8 +51,8 @@ function UserSettings({ history }) {
   }, [profileData]);
 
   const submitEdit = async () => {
-    setIsError(false);
-    setIsloading(true);
+    setIsSubmitError(false);
+    setIsSubmitting(true);
     // checks if jwt is valid and hasn't expired
     checkJwt(jwt);
     // Post the edits
@@ -66,13 +71,40 @@ function UserSettings({ history }) {
           deleted_stations: deletedStations
         })
       );
+
+      // console.log(`post is done`);
+
+      // const result = await axios.get(
+      //   `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
+      // );
+
+      // console.log(`fetch is done`);
+
+      // console.log(result.data);
+
+      //profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
     } catch (error) {
-      setIsError(true);
+      setIsSubmitError(true);
     }
+    setIsSubmitting(false);
     // After edit, kick user back to their profile and refresh browser to show changes
     history.push(`/profile/${userAddress}`);
     window.location.reload();
   };
+
+  // const fetchUpdatedData = async () => {
+  //   try {
+  //     const result = await axios.get(
+  //       `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
+  //     );
+
+  //     console.log(result);
+
+  //     //profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   const logout = () => {
     localStorage.removeItem("trusat-jwt");
@@ -81,9 +113,9 @@ function UserSettings({ history }) {
     window.location.reload();
   };
 
-  return isError ? (
+  return isSubmitError ? (
     <p className="app__error-message">Something went wrong...</p>
-  ) : isLoading ? (
+  ) : isSubmitting ? (
     <Spinner />
   ) : (
     <div className="account-settings__wrapper">
