@@ -93,12 +93,11 @@ export default function SingleObservationForm() {
           `${API_ROOT}/getObservationStations`,
           JSON.stringify({ jwt: jwt })
         );
-        console.log(result);
-        // TODO organize the returned results by observation count then set returned data with setObservationStations hook
-        // sort the stations by observation count, most first
-        // profileData.observation_stations.sort(
-        //   (a, b) => b.observation_count - a.observation_count
-        // );
+        // sort stations by most observations
+        const sortedStations = result.data.sort(
+          (a, b) => b.observation_count - a.observation_count
+        );
+        setObservationStations(sortedStations);
       } catch (err) {
         console.log(err);
       }
