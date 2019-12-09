@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
 import { useAuthState } from "../../auth/auth-context";
 import { useProfileState } from "../../profile/profile-context";
 import EditProfileSettingInput from "./EditProfileSettingInput";
@@ -20,7 +19,7 @@ export default function ProfileSettings({
   const { profileData } = useProfileState();
   const [isEditing, setIsEditing] = useState(false);
 
-  return userAddress ? (
+  return (
     <div className="profile-settings__profile-wrapper">
       <h2 className="profile-settings__heading">
         <p>PROFILE</p>
@@ -124,11 +123,5 @@ export default function ProfileSettings({
         </div>
       ) : null}
     </div>
-  ) : (
-    <Redirect
-      to={{
-        pathname: "/login"
-      }}
-    />
   );
 }
