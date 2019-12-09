@@ -75,7 +75,7 @@ function UserSettings({ history }) {
     if (jwt !== "none" && userAddress) {
       doFetch();
     }
-  }, [jwt, userAddress, profileData, profileDispatch]);
+  }, [jwt, userAddress, profileDispatch]);
 
   const submitEdit = async () => {
     setIsError(false);
