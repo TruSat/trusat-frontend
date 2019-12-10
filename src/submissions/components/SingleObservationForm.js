@@ -1307,7 +1307,14 @@ export default function SingleObservationForm() {
           <Fragment>
             <p className="app__error-message">Something went wrong!</p>
             {errorMessages.map(message => {
-              return <p className="app__error-message">{message}</p>;
+              return (
+                <p
+                  key={errorMessages.indexOf(message)}
+                  className="app__error-message"
+                >
+                  {message}
+                </p>
+              );
             })}
           </Fragment>
         ) : null}
@@ -1353,33 +1360,3 @@ export default function SingleObservationForm() {
     </Fragment>
   );
 }
-
-// const observation_stations = [
-//   {
-//     station_name: "my backyard",
-//     notes: "",
-//     latitude: "12345",
-//     longitude: "-54321",
-//     altitude: "100",
-//     station_id: "T001",
-//     observation_count: "500"
-//   },
-//   {
-//     station_name: "Dads house",
-//     notes: "at the beach",
-//     latitude: "78901",
-//     longitude: "-10987",
-//     altitude: "150",
-//     station_id: "T002",
-//     observation_count: "700"
-//   },
-//   {
-//     station_name: "Cascades camping",
-//     notes: "",
-//     latitude: "23232",
-//     longitude: "-32322",
-//     altitude: "200",
-//     station_id: "T003",
-//     observation_count: "100"
-//   }
-// ];
