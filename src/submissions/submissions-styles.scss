@@ -20,10 +20,19 @@ SUBMIT
   }
 }
 
-.submit__sub-header {
+.submit__sub-header-wrapper {
+  display: flex;
   font-size: 24px;
+  justify-content: space-between;
   line-height: 28px;
   margin: 1em 0em 0.5em 0em;
+  max-width: 800px;
+}
+
+.submit__form-link-text {
+  color: $secondary-theme-color;
+  font-size: $extra-small-font-size;
+  text-decoration: underline;
 }
 
 .submit__info-text {
