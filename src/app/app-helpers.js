@@ -235,9 +235,10 @@ export const toolTipCopy = {
     "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format.",
   station_name:
     "A title for this location to differentiate it from your other observation locations",
-  latitude: "Your location's angular distance north or south of the equator",
+  latitude:
+    "Your location's angular distance north or south of the equator (using WGS84 standard)",
   longitude:
-    "Your location's angular distance east or west of the meridian at Greenwich, England",
+    "Your location's angular distance east or west of the meridian at Greenwich, England (using WGS84 standard)",
 
   altitude: "Your location's vertical distance above or below sea level",
   notes:
