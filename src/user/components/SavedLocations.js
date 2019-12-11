@@ -90,7 +90,7 @@ export default function SavedLocations({
                   {station.latitude}, {station.longitude}
                 </td>
                 <td className="locations-table__table-data">
-                  {station.altitude}
+                  {station.elevation}
                 </td>
                 <td className="locations-table__table-data">
                   {station.station_id}
@@ -120,7 +120,7 @@ export default function SavedLocations({
                   {station.latitude}, {station.longitude}
                 </td>
                 <td className="locations-table__table-data">
-                  {station.altitude}
+                  {station.elevation}
                 </td>
                 <td className="locations-table__table-data">
                   {station.station_id}

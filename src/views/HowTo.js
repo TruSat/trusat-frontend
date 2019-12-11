@@ -61,7 +61,7 @@ export default function HowTo() {
           <div className="how-to__step-description">
             <p className="static-page__copy">
               Your location on Earth when you made this observation (Latitude,
-              Longitude, and Altitude)
+              Longitude, and Elevation)
             </p>
           </div>
         </div>

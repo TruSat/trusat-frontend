@@ -240,7 +240,8 @@ export const toolTipCopy = {
   longitude:
     "Your location's angular distance east or west of the meridian at Greenwich, England (using WGS84 standard)",
 
-  altitude: "Your location's vertical distance above or below sea level",
+  elevation_station:
+    "Your location's vertical distance above or below sea level",
   notes:
     "An optional field to describe this location in more detail, for your own private reference"
 };

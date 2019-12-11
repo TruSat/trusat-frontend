@@ -13,7 +13,7 @@ export default function AddStation() {
   const [stationName, setStationName] = useState(``);
   const [latitude, setLatitude] = useState(``);
   const [longitude, setlongitude] = useState(``);
-  const [altitude, setAltitude] = useState(``);
+  const [elevation, setElevation] = useState(``);
   const [notes, setNotes] = useState(``);
   // submission state
   const [isLoading, setIsLoading] = useState(false);
@@ -25,7 +25,7 @@ export default function AddStation() {
     setStationName(``);
     setLatitude(``);
     setlongitude(``);
-    setAltitude(``);
+    setElevation(``);
     setNotes(``);
   };
 
@@ -44,7 +44,7 @@ export default function AddStation() {
           station: stationName,
           latitude: latitude,
           longitude: longitude,
-          altitude: altitude,
+          elevation: elevation,
           notes: notes
         })
       );
@@ -130,18 +130,18 @@ export default function AddStation() {
         </div>
         <div>
           <label className="app__form__label station-form__label">
-            <p>Altitude (meters)</p>
-            <QuestionMarkToolTip toolTipText={toolTipCopy.altitude} />
+            <p>Elevation (meters)</p>
+            <QuestionMarkToolTip toolTipText={toolTipCopy.elevation_station} />
           </label>
           <input
             required
             type="number"
             className="app__form__input"
-            value={altitude}
+            value={elevation}
             onChange={event => {
               // limit to 10 chars
               if (event.target.value.length < 11) {
-                setAltitude(event.target.value);
+                setElevation(event.target.value);
               }
             }}
             placeholder="e.g. 394.4"
