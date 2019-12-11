@@ -21,7 +21,7 @@ import ReactGA from "react-ga";
 export default function SingleObservationForm() {
   // STATION CONDITIONS
   const [observationStations, setObservationStations] = useState(``); // will be an array when call to getObservationStations is made
-  const [station, setStation] = useState(`9999`); // 4 chars
+  const [station, setStation] = useState(`    `); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   const [date, setDate] = useState(``); // 8 chars
@@ -221,7 +221,7 @@ export default function SingleObservationForm() {
   // Validates formats of form fields
   useEffect(() => {
     // station is mandatory, must be 4 chars longs
-    if (station.length !== 4) {
+    if (station === `    `) {
       setIsStationError(true);
     } else {
       setIsStationError(false);
@@ -520,7 +520,7 @@ export default function SingleObservationForm() {
 
               {isStationError ? (
                 <p className="app__error-message">
-                  Station must be a numerical value of 4 characters
+                  Please add a station location using the dropdown
                 </p>
               ) : null}
             </div>
