@@ -31,7 +31,7 @@ SUBMIT
 
 .submit__form-link-text {
   color: $secondary-theme-color;
-  font-size: $extra-small-font-size;
+  //font-size: $small-font-size;
   text-decoration: underline;
 }
 
@@ -45,6 +45,7 @@ SUBMIT
   color: $secondary-theme-color;
   font-size: $medium-font-size;
   margin-bottom: 0.5em;
+  margin-top: 2em;
 }
 
 .submit__link-text {
