@@ -55,6 +55,7 @@ export const useTrusatGetApi = () => {
           setData(result.data);
         }
       } catch (error) {
+        console.log(error);
         if (!didCancel) {
           setIsError(true);
         }
@@ -193,7 +194,7 @@ export const toolTipCopy = {
   user: "user who made observation",
   observation_station:
     "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots.",
-  station_location: `If you don’t yet have a station number, please use “9999”, and tell us where you made your observation from by using the linked form`,
+  station_location: `Station codes are used to help identify the location of your observations. If you need to add one, use the 'Add new location' option from the dropdown.`,
   clouded_out:
     "Check this if you want to indicate an attempt to observe that was prevented by adverse weather.",
   observer_unavailable:
@@ -231,7 +232,18 @@ export const toolTipCopy = {
   flash_period:
     "The time between flashes, indicating the speed of a satellite’s rotation as its varying surfaces reflect more or less light.",
   iod:
-    "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format."
+    "IOD (Interactive Orbit Determination) is a standard format to abbreviate the observation data above into a machine-readable format.",
+  station_name:
+    "A title for this location to differentiate it from your other observation locations",
+  latitude:
+    "Your location's angular distance north or south of the equator (using WGS84 standard)",
+  longitude:
+    "Your location's angular distance east or west of the meridian at Greenwich, England (using WGS84 standard)",
+
+  elevation_station:
+    "Your location's vertical distance above or below sea level",
+  notes:
+    "An optional field to describe this location in more detail, for your own private reference"
 };
 
 export const emails = {

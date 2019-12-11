@@ -1,5 +1,5 @@
 import React, { useState, Fragment, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
@@ -20,7 +20,8 @@ import ReactGA from "react-ga";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
-  const [station, setStation] = useState(``); // 4 chars
+  const [observationStations, setObservationStations] = useState(``); // will be an array when call to getObservationStations is made
+  const [station, setStation] = useState(`9999`); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
   const [date, setDate] = useState(``); // 8 chars
@@ -75,14 +76,37 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
   // SUBMISSION UI STATES
+  const { jwt } = useAuthState(); // used in handleSubmit function
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides success and error messages upon submissions which are displayed in UI
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
-  const { jwt } = useAuthState();
   // set to true if attempt to submit fails
   const [isError, setIsError] = useState(false);
+
+  // gets observations stations for this user
+  useEffect(() => {
+    const fetchObservationStations = async () => {
+      try {
+        let result = await axios.post(
+          `${API_ROOT}/getObservationStations`,
+          JSON.stringify({ jwt: jwt })
+        );
+        // sort stations by most observations
+        const sortedStations = result.data.sort(
+          (a, b) => b.observation_count - a.observation_count
+        );
+        setObservationStations(sortedStations);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    // only do fetch if user is logged in and the form does not already have their stations
+    if (observationStations === `` && jwt !== "none") {
+      fetchObservationStations();
+    }
+  }, [jwt, observationStations]);
 
   // Builds the IOD string
   useEffect(() => {
@@ -111,7 +135,7 @@ export default function SingleObservationForm() {
 
   //  return all the 'default values' upon submit
   const resetFormVariables = () => {
-    setStation(``); // 4 chars
+    setStation(`    `); // 4 chars
     setCloudedOut(false);
     setObserverUnavailable(false);
     setDate(``); // 8 chars
@@ -196,8 +220,8 @@ export default function SingleObservationForm() {
 
   // Validates formats of form fields
   useEffect(() => {
-    // station is mandatory, must be 4 chars long, all numbers
-    if (station.length !== 4 || !numRegEx.test(station)) {
+    // station is mandatory, must be 4 chars longs
+    if (station.length !== 4) {
       setIsStationError(true);
     } else {
       setIsStationError(false);
@@ -296,53 +320,6 @@ export default function SingleObservationForm() {
     }
   }, [objectSearchTerm]);
 
-  // Render results of search under the input field
-  const renderObjectSearchResults = () => {
-    // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
-    const formatObject = ({ norad_number, international_designator }) => {
-      let formattedNorad;
-
-      if (norad_number.toString().length !== 5) {
-        // append leading zeros to norad numbers less than 5 chars in length
-        const leadingZeros = "0".repeat(5 - norad_number.toString().length);
-        formattedNorad = `${leadingZeros}${norad_number}`;
-      } else {
-        // use norad if 5 chars in length
-        formattedNorad = norad_number;
-      }
-
-      const formattedInternationalDesignator = `${international_designator
-        .substring(2)
-        .replace(/-/g, ` `)}${" ".repeat(
-        11 - international_designator.length
-      )}`;
-
-      return `${formattedNorad} ${formattedInternationalDesignator}`;
-    };
-
-    return objectSearchResults.map(obj => {
-      return (
-        <span
-          key={obj.norad_number}
-          className="object-position__search-result"
-          onClick={() => {
-            setObject(
-              formatObject({
-                norad_number: obj.norad_number,
-                international_designator: obj.international_designator
-              })
-            );
-            setObjectSearchTerm(``);
-            setObjectSearchResults([]);
-          }}
-        >{`${obj.name} = ${formatObject({
-          norad_number: obj.norad_number,
-          international_designator: obj.international_designator
-        })}`}</span>
-      );
-    });
-  };
-
   // Show behavior options when user chooses an Optical Behavior
   useEffect(() => {
     if (behavior !== ` `) {
@@ -431,6 +408,71 @@ export default function SingleObservationForm() {
     setIsLoading(false);
   };
 
+  // Renders the users stations as options in the Station Location dropdown
+  const renderObservationStations = () => {
+    if (observationStations.length !== 0) {
+      return observationStations.map(station => (
+        <option key={station.station_id} value={station.station_id}>
+          {`${station.station_name} (${station.latitude}, ${station.longitude})`}
+        </option>
+      ));
+    }
+  };
+
+  useEffect(() => {
+    if (observationStations.length !== 0) {
+      // sets the station with most obs as the default
+      setStation(observationStations[0].station_id);
+    }
+  }, [setStation, observationStations]);
+
+  // Render results of search under the input field
+  const renderObjectSearchResults = () => {
+    // need to inlude the norad number in this formatting as there is norad numbers less than 5 digits in length
+    const formatObject = ({ norad_number, international_designator }) => {
+      let formattedNorad;
+
+      if (norad_number.toString().length !== 5) {
+        // append leading zeros to norad numbers less than 5 chars in length
+        const leadingZeros = "0".repeat(5 - norad_number.toString().length);
+        formattedNorad = `${leadingZeros}${norad_number}`;
+      } else {
+        // use norad if 5 chars in length
+        formattedNorad = norad_number;
+      }
+
+      const formattedInternationalDesignator = `${international_designator
+        .substring(2)
+        .replace(/-/g, ` `)}${" ".repeat(
+        11 - international_designator.length
+      )}`;
+
+      return `${formattedNorad} ${formattedInternationalDesignator}`;
+    };
+
+    return objectSearchResults.map(obj => {
+      return (
+        <span
+          key={obj.norad_number}
+          className="object-position__search-result"
+          onClick={() => {
+            setObject(
+              formatObject({
+                norad_number: obj.norad_number,
+                international_designator: obj.international_designator
+              })
+            );
+            setObjectSearchTerm(``);
+            setObjectSearchResults([]);
+          }}
+        >{`${obj.name} = ${formatObject({
+          norad_number: obj.norad_number,
+          international_designator: obj.international_designator
+        })}`}</span>
+      );
+    });
+  };
+
   return (
     <Fragment>
       {jwt === "none" ? (
@@ -457,30 +499,25 @@ export default function SingleObservationForm() {
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
-                {` `}
-                Don't have a station number? Submit location{" "}
-                <a
-                  className="app__link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://docs.google.com/forms/d/1SoQivnx_dZPku0eZKlPXnNwggH2XDtb-e4GpAMSvYE8/viewform?edit_requested=true"
-                >
-                  here
-                </a>
               </label>
-              <input
+              <select
                 className="app__form__input"
-                required
-                type="number"
+                onChange={event => setStation(event.target.value)}
                 value={station}
-                onChange={event => {
-                  if (event.target.value.length < 5) {
-                    setStation(event.target.value);
-                  }
-                }}
-                placeholder="####"
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
-              />
+              >
+                {observationStations.length === 0 ? (
+                  <option className="app__link" value={``}>
+                    ----
+                  </option>
+                ) : (
+                  renderObservationStations()
+                )}
+                <option className="app__link" value="0000">
+                  Add new location
+                </option>
+              </select>
+
               {isStationError ? (
                 <p className="app__error-message">
                   Station must be a numerical value of 4 characters
@@ -1252,7 +1289,14 @@ export default function SingleObservationForm() {
           <Fragment>
             <p className="app__error-message">Something went wrong!</p>
             {errorMessages.map(message => {
-              return <p className="app__error-message">{message}</p>;
+              return (
+                <p
+                  key={errorMessages.indexOf(message)}
+                  className="app__error-message"
+                >
+                  {message}
+                </p>
+              );
             })}
           </Fragment>
         ) : null}
@@ -1291,6 +1335,10 @@ export default function SingleObservationForm() {
           </Fragment>
         )}
       </form>
+      {/* when users chooses 'add new location' in station location dropdown, redirect them to add station view */}
+      {station === "0000" ? (
+        <Redirect to="/settings/stations"></Redirect>
+      ) : null}
     </Fragment>
   );
 }

@@ -13,7 +13,16 @@ export default function Submit() {
       {/* Render multiple submission form */}
       {url === "/submit" || url === "/submit/multiple" ? (
         <Fragment>
-          <h2 className="submit__sub-header">Enter pre-formatted data</h2>
+          <div className="submit__sub-header-wrapper">
+            <h2>Enter pre-formatted data</h2>
+            <NavLink
+              className="app__nav-link submit__form-link-text"
+              to="/settings/stations"
+            >
+              Add a station location
+            </NavLink>
+          </div>
+
           <MultipleObservationForm />
           <div>
             <p className="submit__text">
@@ -30,9 +39,15 @@ export default function Submit() {
       ) : // Render single submission form
       url === "/submit/single" ? (
         <Fragment>
-          <h2 className="submit__sub-header">
-            Enter an individual observation
-          </h2>
+          <div className="submit__sub-header-wrapper">
+            <h2>Enter pre-formatted data</h2>
+            <NavLink
+              className="app__nav-link submit__form-link-text"
+              to="/settings/stations"
+            >
+              Add a station location
+            </NavLink>
+          </div>
           <SingleObservationForm />
         </Fragment>
       ) : (

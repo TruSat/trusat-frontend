@@ -139,8 +139,21 @@ APP
   padding: 0.5em 2em;
 }
 
+.app__orange-button--small {
+  align-self: flex-start;
+  background: $primary-highlight-color;
+  border: 1px solid $primary-highlight-color;
+  border-radius: 4px;
+  color: $primary-theme-color;
+  display: inline-block;
+  font-weight: 500;
+  line-height: 23px;
+  padding: 0.5em 2em;
+}
+
 .app__white-button--small:hover,
-.app__black-button--small:hover {
+.app__black-button--small:hover,
+.app__orange-button--small:hover {
   cursor: pointer;
 }
 

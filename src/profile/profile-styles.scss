@@ -179,3 +179,42 @@ PROFILE TABLE
 .profile-table__purpose-text {
   display: flex;
 }
+
+/* ----------
+AddStation
+---------- */
+.add-station {
+  margin: 3em auto;
+  max-width: 1000px;
+}
+
+.add-station__sub-header {
+  font-size: 20px;
+  line-height: 23px;
+  margin-bottom: 1em;
+}
+
+.station-form__label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.station-form__label p {
+  font-size: $small-font-size;
+}
+
+.station-form__textarea {
+  resize: none;
+}
+
+.station-form__button {
+  background: #004f85;
+  border-radius: 4px;
+  padding: 1em 2em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.station-form__button:hover {
+  cursor: pointer;
+}

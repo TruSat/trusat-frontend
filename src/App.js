@@ -12,6 +12,7 @@ import Submit from "./views/Submit";
 import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
 import AccountSettings from "./views/AccountSettings";
+import AddStation from "./views/AddStation";
 import About from "./views/About";
 import HowTo from "./views/HowTo";
 import HowToPhoto from "./views/HowToPhoto";
@@ -98,6 +99,7 @@ export default function App() {
           <Route exact path="/profile/:address" component={Profile} />
           <Route exact path="/settings" component={AccountSettings} />
           <Route path="/settings/metamask" component={MetamaskImport} />
+          <Route path="/settings/stations" component={AddStation}></Route>
           <Route path="/about" component={About} />
           <Route path="/how" component={HowTo} />
           <Route path="/photo" component={HowToPhoto} />
