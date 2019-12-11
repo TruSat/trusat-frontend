@@ -498,16 +498,6 @@ export default function SingleObservationForm() {
                 <QuestionMarkToolTip
                   toolTipText={toolTipCopy.station_location}
                 />
-                {/* {` `}
-                Don't have a station number? Submit location{" "}
-                <a
-                  className="app__link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href="https://docs.google.com/forms/d/1SoQivnx_dZPku0eZKlPXnNwggH2XDtb-e4GpAMSvYE8/viewform?edit_requested=true"
-                >
-                  here
-                </a> */}
               </label>
               <select
                 className="app__form__input"
@@ -524,19 +514,7 @@ export default function SingleObservationForm() {
                   Add new location
                 </option>
               </select>
-              {/* <input
-                className="app__form__input"
-                required
-                type="number"
-                value={station}
-                onChange={event => {
-                  if (event.target.value.length < 5) {
-                    setStation(event.target.value);
-                  }
-                }}
-                placeholder="####"
-                style={isStationError ? { border: "2px solid #FC7756" } : null}
-              /> */}
+
               {isStationError ? (
                 <p className="app__error-message">
                   Station must be a numerical value of 4 characters
