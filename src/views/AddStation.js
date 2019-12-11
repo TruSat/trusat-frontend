@@ -63,7 +63,9 @@ export default function AddStation() {
       <h1 className="static-page__main-header--small">Add a location</h1>
       {/* Prompt user to log in so they can create a station */}
       {jwt === "none" ? (
-        <p className="app__error-message">Please log in to add a station!!</p>
+        <p className="app__error-message">
+          You need to be logged in to add a station location.
+        </p>
       ) : (
         <h2 className="add-station__sub-header">
           You first need to set a station location
