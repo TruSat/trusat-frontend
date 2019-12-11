@@ -135,7 +135,7 @@ export default function SingleObservationForm() {
 
   //  return all the 'default values' upon submit
   const resetFormVariables = () => {
-    setStation(`9999`); // 4 chars
+    setStation(`    `); // 4 chars
     setCloudedOut(false);
     setObserverUnavailable(false);
     setDate(``); // 8 chars
@@ -421,6 +421,7 @@ export default function SingleObservationForm() {
 
   useEffect(() => {
     if (observationStations.length !== 0) {
+      // sets the station with most obs as the default
       setStation(observationStations[0].station_id);
     }
   }, [setStation, observationStations]);
@@ -505,11 +506,13 @@ export default function SingleObservationForm() {
                 value={station}
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
-                {renderObservationStations()}
-                {/* Only render 9999 as an option when user is logged out or doesnt have any stations registered yet */}
                 {observationStations.length === 0 ? (
-                  <option value="9999">9999</option>
-                ) : null}
+                  <option className="app__link" value={``}>
+                    ----
+                  </option>
+                ) : (
+                  renderObservationStations()
+                )}
                 <option className="app__link" value="0000">
                   Add new location
                 </option>
