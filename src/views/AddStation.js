@@ -61,10 +61,14 @@ export default function AddStation() {
   return (
     <div className="add-station">
       <h1 className="static-page__main-header--small">Add a location</h1>
-      <h2 className="add-station__sub-header">
-        You first need to set a station location
-      </h2>
-
+      {/* Prompt user to log in so they can create a station */}
+      {jwt === "none" ? (
+        <p className="app__error-message">Please log in to add a station!!</p>
+      ) : (
+        <h2 className="add-station__sub-header">
+          You first need to set a station location
+        </h2>
+      )}
       <form
         className="app__form"
         onSubmit={event => {
@@ -176,9 +180,14 @@ export default function AddStation() {
         {isLoading ? (
           <Spinner />
         ) : (
-          <button type="submit" className="station-form__button">
-            Add station
-          </button>
+          <Fragment>
+            {/* Only render button to submit form if user is logged in */}
+            {jwt === "none" ? null : (
+              <button type="submit" className="station-form__button">
+                Add station
+              </button>
+            )}
+          </Fragment>
         )}
       </form>
     </div>
