@@ -131,64 +131,6 @@ export default function SavedLocations({
             ))}
       </Fragment>
     );
-    // return newStationData.map(station => (
-    //   <tr key={station.station_id}>
-    //     <td className="locations-table__table-data">
-    //       {isEditing ? (
-    //         <input
-    //           className="edit-profile-settings-input"
-    //           value={station.station_name}
-    //           onChange={event =>
-    //             editStationName({
-    //               newName: event.target.value,
-    //               stationId: station.station_id
-    //             })
-    //           }
-    //         />
-    //       ) : (
-    //         <Fragment>
-    //           <p className="locations-table__name-data">
-    //             {station.station_name}
-    //           </p>
-    //           <p>{station.notes ? station.notes : null}</p>
-    //         </Fragment>
-    //       )}
-    //       {isEditing && station.notes ? (
-    //         <p style={{ marginTop: "1em" }}>
-    //           <input
-    //             className="edit-profile-settings-input"
-    //             value={station.notes}
-    //             onChange={event =>
-    //               editStationNotes({
-    //                 newNotes: event.target.value,
-    //                 stationId: station.station_id
-    //               })
-    //             }
-    //           />
-    //         </p>
-    //       ) : null}
-    //     </td>
-    //     <td className="locations-table__table-data">
-    //       {station.latitude}, {station.longitude}
-    //     </td>
-    //     <td className="locations-table__table-data">{station.altitude}</td>
-    //     <td className="locations-table__table-data">{station.station_id}</td>
-    //     {isEditing ? null : (
-    //       <td className="locations-table__table-data">
-    //         {station.observation_count}
-    //       </td>
-    //     )}
-    //     {isEditing ? (
-    //       <td className="locations-table__table-data">
-    //         <img
-    //           src={DeleteStation}
-    //           alt="delete station"
-    //           onClick={() => deleteStation(station.station_id)}
-    //         ></img>
-    //       </td>
-    //     ) : null}
-    //   </tr>
-    // ));
   };
 
   return (
