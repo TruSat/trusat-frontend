@@ -1,4 +1,5 @@
 import React, { useState, Fragment } from "react";
+import { QuestionMarkToolTip } from "../../app/app-helpers";
 import { NavLink } from "react-router-dom";
 import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
@@ -96,6 +97,7 @@ export default function SavedLocations({
                 </td>
                 <td className="locations-table__table-data">
                   <img
+                    className="locations-table__delete-symbol"
                     src={DeleteStation}
                     alt="delete station"
                     onClick={() => deleteStation(station.station_id)}
@@ -163,7 +165,16 @@ export default function SavedLocations({
                 <th className="table__header-text">ALT.</th>
                 <th className="table__header-text">STATION ID</th>
                 <th className="table__header-text">
-                  {isEditing ? null : `# OF OBS.`}
+                  {isEditing ? (
+                    <Fragment>
+                      DELETE{" "}
+                      <QuestionMarkToolTip
+                        toolTipText={`If you choose to delete a station you can no longer use this station ID in future. It will be effectively unusable for submissions.`}
+                      />
+                    </Fragment>
+                  ) : (
+                    `# OF OBS.`
+                  )}
                 </th>
               </tr>
             </thead>

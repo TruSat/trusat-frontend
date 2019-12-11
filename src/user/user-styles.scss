@@ -175,6 +175,10 @@ SAVED LOCATIONS
   padding: 0.5em 1em 0.5em 0em;
 }
 
+.locations-table__delete-symbol:hover {
+  cursor: pointer;
+}
+
 .saved-locations__button-wrapper {
   align-self: flex-end;
   margin-top: 1em;
