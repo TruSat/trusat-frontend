@@ -16,7 +16,7 @@ export default function Submit() {
           <div className="submit__sub-header-wrapper">
             <h2>Enter pre-formatted data</h2>
             <NavLink
-              className="app__nav-link submit__form-link-text"
+              className="app__nav-link submit__link-text"
               to="/settings/stations"
             >
               Add a station location
@@ -42,7 +42,7 @@ export default function Submit() {
           <div className="submit__sub-header-wrapper">
             <h2>Enter pre-formatted data</h2>
             <NavLink
-              className="app__nav-link submit__form-link-text"
+              className="app__nav-link submit__link-text"
               to="/settings/stations"
             >
               Add a station location

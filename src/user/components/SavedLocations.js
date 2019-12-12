@@ -169,7 +169,7 @@ export default function SavedLocations({
                     <Fragment>
                       DELETE{" "}
                       <QuestionMarkToolTip
-                        toolTipText={`If you choose to delete a station you can no longer use this station ID in future. It will be effectively unusable for submissions.`}
+                        toolTipText={`If you delete a station you can no longer use this station ID in the future. It will be effectively unusable for submissions.`}
                       />
                     </Fragment>
                   ) : (

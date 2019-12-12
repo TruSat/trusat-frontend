@@ -477,7 +477,7 @@ export default function SingleObservationForm() {
     <Fragment>
       {jwt === "none" ? (
         <p className="app__error-message">
-          Please log in to submit your observations!!
+          You need to be logged in to submit your observations.
         </p>
       ) : null}
       <form
