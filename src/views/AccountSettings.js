@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { withRouter, NavLink } from "react-router-dom";
 import axios from "axios";
-import { API_ROOT } from "../app/app-helpers";
+import { API_ROOT, axiosWithCache } from "../app/app-helpers";
 import {
   useProfileState,
   useProfileDispatch
@@ -58,11 +58,9 @@ function UserSettings({ history }) {
       checkJwt(jwt);
 
       try {
-        const result = await axios.get(
+        const result = await axiosWithCache.get(
           `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
         );
-
-        console.log(`did a fetch`);
 
         profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
       } catch (error) {
