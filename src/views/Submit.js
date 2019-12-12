@@ -40,7 +40,7 @@ export default function Submit() {
       url === "/submit/single" ? (
         <Fragment>
           <div className="submit__sub-header-wrapper">
-            <h2>Enter pre-formatted data</h2>
+            <h2>Enter an individual observation</h2>
             <NavLink
               className="app__nav-link submit__link-text"
               to="/settings/stations"
