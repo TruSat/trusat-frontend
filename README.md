@@ -47,20 +47,20 @@ And here are some examples:
 
 #### Branch creation to opening a PR
 
-- In command line, checkout the development branch, named “dev” with git checkout dev then git pull to ensure you have the latest development branch on your local machine
-- Referencing the branch naming convention outlined above determine the group and name for your branch then run git checkout -b {group}/{name-of-group} to create the new branch and check it out.
+- In command line, checkout the development branch, named “dev” with `git checkout dev` then `git pull` to ensure you have the latest development branch on your local machine
+- Referencing the branch naming convention outlined above determine the group and name for your branch then run `git checkout -b {group}/{name-of-group}` to create the new branch and check it out.
 - Commit early and commit often with clear and concise comments.
-- Run git push --set-upstream origin <your-new-branch> to add your new branch to the remote repo when you feel the work completed warrants a back up.
-- When ready to open a PR, use git push to add all your latest commits to the remote copy.
+- Run `git push --set-upstream origin <your-new-branch>` to add your new branch to the remote repo when you feel the work completed warrants a back up.
+- When ready to open a PR, use `git push` to add all your latest commits to the remote copy.
 - Do not open a PR without directing it to an open issue on GitHub. If an issue does not exist, create it and add a label. Here's an example:
 
 ```
 The "How To" page content is out of date when compared to the latest communication content found in the TruSat discuss forum
 ```
 
-- When ready click the green `New pull request` button on the `Pull requests` page for the repo on GitHub, making sure you are requesting to merge your branch into the development branch, and not master. The only branches that can open a PR to the “master” branch are those grouped as “hotfix”(or “dev”, which will be handled by the core contributors during a team review process)
+- When ready click the green "New pull request" button on the "Pull requests" page for the repo on GitHub, making sure you are requesting to merge your branch into the development branch, and not master. The only branches that can open a PR to the “master” branch are those grouped as “hotfix” or “dev”.
 - Assign at least one reviewer to your PR.
-- Add detailed comments as to what your PR achieves and make sure to reference the issue that will be closed by this PR by utilizing the number of the issue it will close. Bulleted lists are preferred. Eg:
+- Add detailed comments to outline what your PR achieves and make sure to reference the issue that will be closed by this PR by utilizing the issue number. Bulleted lists are preferred. For example:
 
 ```
 - Updates the “how to” view with the latest comms content
