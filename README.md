@@ -72,3 +72,7 @@ The "How To" page content is out of date when compared to the latest communicati
 
 - Do not open the PR if there are merge conflicts found. Instead - push a fix to your branch that clears the conflicts.
 - If no merge conflicts are found, open the PR.
+
+## License
+
+TruSat is open source software [licensed as Apache License 2.0](https://github.com/consensys-space/trusat-frontend/blob/master/LICENSE).
