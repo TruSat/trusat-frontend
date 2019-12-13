@@ -2,6 +2,8 @@
 
 TruSat is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space). Check out the project [here](https://trusat.org).
 
+![TruSat banner](https://trusat-assets.s3.amazonaws.com/readme-banner.jpg)
+
 ## Get Started
 
 This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). To get started clone the repo, `cd` into it and run the following commands:
@@ -49,7 +51,7 @@ And here are some examples:
 
 - In command line, checkout the development branch, named “dev” with `git checkout dev` then `git pull` to ensure you have the latest development branch on your local machine
 - Referencing the branch naming convention outlined above determine the group and name for your branch then run `git checkout -b {group}/{name-of-group}` to create the new branch and check it out.
-- Commit early and commit often with clear and concise comments.
+- Commit early and commit often with clear and concise comments. All commits should remain focused in scope so try to avoid submitting PR's that contain unrelated commits.
 - Run `git push --set-upstream origin <your-new-branch>` to add your new branch to the remote repo when you feel the work completed warrants a back up.
 - When ready to open a PR, use `git push` to add all your latest commits to the remote copy.
 - Do not open a PR without directing it to an open issue on GitHub. If an issue does not exist, create it and add a label. Here's an example:
