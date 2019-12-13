@@ -52,20 +52,20 @@ And here are some examples:
 - Commit early and commit often with clear and concise comments.
 - Run git push --set-upstream origin <your-new-branch> to add your new branch to the remote repo when you feel the work completed warrants a back up.
 - When ready to open a PR, use git push to add all your latest commits to the remote copy.
-- Do not open a PR without directing it to an open issue on GitHub. If an issue does not exist, create it and add a label, e.g " For example:
+- Do not open a PR without directing it to an open issue on GitHub. If an issue does not exist, create it and add a label. Here's an example:
 
 ```
-The "How To" page content is out of date when ccompared to the latest communication content found in the TruSat discuss forum”
+The "How To" page content is out of date when compared to the latest communication content found in the TruSat discuss forum
 ```
 
-- When ready click the green `New pull request` button on the `Pull requests` page for the repo on GitHub, making sure you are requesting to merge your branch into the development branch, and not master. The only branches that should request a merge request to the “master” branch are those grouped as “hotfix”(or “dev”, which will be handled by the core contributors)
+- When ready click the green `New pull request` button on the `Pull requests` page for the repo on GitHub, making sure you are requesting to merge your branch into the development branch, and not master. The only branches that can open a PR to the “master” branch are those grouped as “hotfix”(or “dev”, which will be handled by the core contributors during a team review process)
 - Assign at least one reviewer to your PR.
 - Add detailed comments as to what your PR achieves and make sure to reference the issue that will be closed by this PR by utilizing the number of the issue it will close. Bulleted lists are preferred. Eg:
 
 ```
 - Updates the “how to” view with the latest comms content
 - New styles added including a change of font to the headers which matches the latest changes to the "About" page.
-- This closes #32`.
+- This closes #32.
 ```
 
 - Do not open the PR if there are merge conflicts found. Instead - push a fix to your branch that clears the conflicts.
