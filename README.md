@@ -1,8 +1,8 @@
+![TruSat banner](https://trusat-assets.s3.amazonaws.com/readme-banner.jpg)
+
 # trusat-frontend
 
-TruSat is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space). Check out the project [here](https://trusat.org).
-
-![TruSat banner](https://trusat-assets.s3.amazonaws.com/readme-banner.jpg)
+[TruSat](https://trusat.org) is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space).
 
 ## Get Started
 
