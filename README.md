@@ -14,6 +14,39 @@ git checkout --track origin/dev
 yarn install && yarn start
 ```
 
+## Structure
+
+```
+.
+├── LICENSE
+├── README.md
+├── build
+├── firebase.json
+├── node_modules
+├── package.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   └── manifest.json
+├── src
+│   ├── App.js
+│   ├── App.test.js
+│   ├── app
+│   ├── assets
+│   ├── auth
+│   ├── catalog
+│   ├── index.js
+│   ├── objects
+│   ├── profile
+│   ├── serviceWorker.js
+│   ├── styles
+│   ├── submissions
+│   ├── user
+│   └── views
+├── yarn-error.log
+└── yarn.lock
+```
+
 ## Tests
 
 Run the tests with the following command:
