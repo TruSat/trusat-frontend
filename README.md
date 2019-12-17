@@ -47,6 +47,10 @@ yarn install && yarn start
 └── yarn.lock
 ```
 
+Inspired by this [post](https://marmelab.com/blog/2015/12/17/react-directory-structure.html), the files in the `src` directory are grouped by domain. For example, within the `submissions` directory you will find all components (and their accompanying styles) related to the domain of observation submissions. At the time of writing this includes the `MultipleObservationForm` and `SingleObservationForm` components.
+
+The `assets` directory contains all the `svg` files that are utilized by the front end. Other image files are hosted externally on AWS.
+
 ## Tests
 
 Run the tests with the following command:
