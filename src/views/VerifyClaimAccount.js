@@ -19,7 +19,7 @@ export default function VerifyClaimAccount({ match }) {
   );
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
   const [isSuccess, setIsSuccess] = useState(false);
   const { userAddress } = useAuthState();
   const authDispatch = useAuthDispatch();
@@ -64,7 +64,7 @@ export default function VerifyClaimAccount({ match }) {
   const verifyClaimAccount = async () => {
     setIsLoading(true);
     setIsSuccess(false);
-    setIsError(false);
+    setErrorMessage(``);
 
     if (inputsAreValid()) {
       const wallet = createWallet();
@@ -84,8 +84,8 @@ export default function VerifyClaimAccount({ match }) {
         const { address } = await jwt_decode(response.data.jwt);
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
         localStorage.setItem("trusat-jwt", response.data.jwt);
-      } catch (err) {
-        setIsError(true);
+      } catch (error) {
+        setErrorMessage(error.toString());
       }
       setPassword("");
       setRetypedPassword("");
@@ -188,8 +188,10 @@ export default function VerifyClaimAccount({ match }) {
           </NavLink>
         </div>
       ) : null}
-      {isError ? (
-        <p className="app__error-message">Something went wrong...</p>
+      {errorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {errorMessage}
+        </p>
       ) : null}
     </div>
   );

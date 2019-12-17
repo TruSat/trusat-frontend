@@ -27,7 +27,7 @@ function UserSettings({ history }) {
   const [newBio, setNewBio] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
 
   const [newStationData, setNewStationData] = useState([]);
   const [newStationNames, setNewStationNames] = useState({});
@@ -52,7 +52,7 @@ function UserSettings({ history }) {
 
   useEffect(() => {
     const doFetch = async () => {
-      setIsError(false);
+      setErrorMessage(``);
       setIsLoading(true);
       // checks if jwt is valid and hasn't expired
       checkJwt(jwt);
@@ -64,8 +64,7 @@ function UserSettings({ history }) {
 
         profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
       } catch (error) {
-        setIsError(true);
-        console.log(error);
+        setErrorMessage(``);
       }
       setIsLoading(false);
     };
@@ -76,7 +75,7 @@ function UserSettings({ history }) {
   }, [jwt, userAddress, profileDispatch]);
 
   const submitEdit = async () => {
-    setIsError(false);
+    setErrorMessage(``);
     setIsLoading(true);
     // checks if jwt is valid and hasn't expired
     checkJwt(jwt);
@@ -99,7 +98,7 @@ function UserSettings({ history }) {
       // refresh the page to pull the latest data just posted
       window.location.reload();
     } catch (error) {
-      setIsError(true);
+      setErrorMessage(error.toString());
     }
   };
 
@@ -110,8 +109,8 @@ function UserSettings({ history }) {
     window.location.reload();
   };
 
-  return isError ? (
-    <p className="app__error-message">Something went wrong...</p>
+  return errorMessage ? (
+    <p className="app__error-message">Something went wrong... {errorMessage}</p>
   ) : isLoading ? (
     <Spinner />
   ) : jwt === "none" ? (
