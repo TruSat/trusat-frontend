@@ -16,7 +16,7 @@ export default function Info() {
     <React.Fragment>
       {objectInfo.object_name ? null : (
         <p className="object-info__limited-info-message">
-          We have very limited information on this object.
+          The TruSat database has very limited information on this object.
         </p>
       )}
       <section className="object-info__header-section-wrapper">
