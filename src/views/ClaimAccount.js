@@ -6,7 +6,7 @@ import Spinner from "../app/components/Spinner";
 export default function ClaimAccount() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
   const [isSuccess, setIsSuccess] = useState(false);
   const [isNotSuccess, setIsNotSuccess] = useState(false);
 
@@ -23,11 +23,11 @@ export default function ClaimAccount() {
         })
       );
 
-      if (response.data.result === true && !isError) {
+      if (response.data.result === true && !errorMessage) {
         setIsSuccess(true);
       }
-    } catch (err) {
-      setIsError(true);
+    } catch (error) {
+      setErrorMessage(error.toString());
     }
     setEmail("");
     setIsLoading(false);
@@ -65,8 +65,10 @@ export default function ClaimAccount() {
           The email you provided does not have an account with TruSat!
         </p>
       ) : null}
-      {isError ? (
-        <p className="app__error-message">Something went wrong...</p>
+      {errorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {errorMessage}
+        </p>
       ) : null}
     </div>
   );

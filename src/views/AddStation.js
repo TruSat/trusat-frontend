@@ -18,8 +18,7 @@ export default function AddStation() {
   // submission state
   const [isLoading, setIsLoading] = useState(false);
   const [successfullyAddedStation, setSuccessfullyAddedStation] = useState(``);
-  const [errors, setErrors] = useState([]);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
 
   const resetFormValues = () => {
     setStationName(``);
@@ -30,7 +29,7 @@ export default function AddStation() {
   };
 
   const submitLocation = async () => {
-    setIsError(false);
+    setErrorMessage(``);
     setSuccessfullyAddedStation(``);
     setIsLoading(true);
     // checks if jwt is valid and hasn't expired
@@ -51,8 +50,7 @@ export default function AddStation() {
       console.log(result);
       setSuccessfullyAddedStation(result.data.station_id);
     } catch (error) {
-      console.log(error);
-      setIsError(true);
+      setErrorMessage(error.toString());
     }
     setIsLoading(false);
     resetFormValues();
@@ -176,8 +174,10 @@ export default function AddStation() {
             </div>
           </Fragment>
         ) : null}
-        {isError ? (
-          <p className="app__error-message">Something went wrong...</p>
+        {errorMessage ? (
+          <p className="app__error-message">
+            Something went wrong... {errorMessage}
+          </p>
         ) : null}
         {isLoading ? (
           <Spinner />

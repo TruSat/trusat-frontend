@@ -11,7 +11,7 @@ import {
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
-  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}`);
@@ -93,8 +93,10 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     <Spinner />
   ) : (
     <Fragment>
-      {isError ? (
-        <p className="app__error-message">Something went wrong ...</p>
+      {errorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {errorMessage}
+        </p>
       ) : (
         <table className="table">
           <thead className="table__header">

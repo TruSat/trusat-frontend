@@ -23,7 +23,7 @@ const isValidNumber = number => {
 
 export default function ObjectInfo({ match }) {
   const noradNumber = match.params.number;
-  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
   const { observationFilter } = useObjectsState();
   const objectsDispatch = useObjectsDispatch();
   const [isNumberError, setIsNumberError] = useState(false);
@@ -60,8 +60,10 @@ export default function ObjectInfo({ match }) {
     <Spinner />
   ) : (
     <Fragment>
-      {isError ? (
-        <p className="app__error-message">Something went wrong ...</p>
+      {errorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {errorMessage}
+        </p>
       ) : (
         <div className="object__wrapper">
           <div className="object-observations__filter-table-wrapper">
