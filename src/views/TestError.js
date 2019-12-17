@@ -4,10 +4,7 @@ import { API_ROOT, useTrusatGetApi } from "../app/app-helpers";
 import Spinner from "../app/components/Spinner";
 
 export default function Error() {
-  const [
-    { data, isLoading, isError, errorMessage },
-    doFetch
-  ] = useTrusatGetApi();
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   // const [isLoading, setIsLoading] = useState(false);
   // const [errorMessage, setErrorMessage] = useState(``);

@@ -39,14 +39,13 @@ export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState(``);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState(``);
 
   useEffect(() => {
     let didCancel = false;
 
     const fetchData = async () => {
-      setIsError(false);
+      setErrorMessage(``);
       setIsLoading(true);
 
       try {
@@ -58,7 +57,6 @@ export const useTrusatGetApi = () => {
       } catch (error) {
         console.log(error);
         if (!didCancel) {
-          setIsError(true);
           setErrorMessage(error.toString());
         }
       }
@@ -74,7 +72,7 @@ export const useTrusatGetApi = () => {
     };
   }, [url]);
 
-  return [{ data, isLoading, isError, errorMessage }, setUrl];
+  return [{ data, isLoading, errorMessage }, setUrl];
 };
 
 export const useTrusatPostApi = () => {

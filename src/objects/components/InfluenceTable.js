@@ -13,7 +13,7 @@ import Spinner from "../../app/components/Spinner";
 export default function InfluenceTable() {
   const { noradNumber } = useObjectsState();
   const [range, setRange] = useState({ start: 0, end: 10 });
-  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     if (noradNumber) {
@@ -67,8 +67,8 @@ export default function InfluenceTable() {
     ));
   };
 
-  return isError ? (
-    <p className="app__error-message">Something went wrong...</p>
+  return errorMessage ? (
+    <p className="app__error-message">Something went wrong... {errorMessage}</p>
   ) : isLoading ? (
     <Spinner />
   ) : (
