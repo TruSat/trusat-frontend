@@ -16,11 +16,7 @@ export default function Info() {
     <React.Fragment>
       {objectInfo.object_name ? null : (
         <p className="object-info__limited-info-message">
-          We have very limited information on this object. This almost certainly
-          means that it is an analyst object. The lack of fidelity may be due to
-          infrequent tracking, cross-tagging (observation association with
-          closely-spaced objects), or inability to associate the object with a
-          known launch.
+          We have very limited information on this object.
         </p>
       )}
       <section className="object-info__header-section-wrapper">
