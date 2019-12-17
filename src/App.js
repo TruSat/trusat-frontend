@@ -35,6 +35,7 @@ import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
+import TestError from "./views/TestError";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -136,6 +137,7 @@ export default function App() {
               return null;
             }}
           />
+          <Route path="/error" component={TestError}></Route>
           <Route component={NoMatch} />
         </Switch>
 
