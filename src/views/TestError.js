@@ -9,12 +9,15 @@ export default function Error() {
     doFetch
   ] = useTrusatGetApi();
 
+  // const [isLoading, setIsLoading] = useState(false);
   // const [errorMessage, setErrorMessage] = useState(``);
 
   useEffect(() => {
     doFetch(`/errorTest`);
 
     // async function fetchError() {
+    //   setIsLoading(true);
+
     //   try {
     //     const result = await axios.get(`${API_ROOT}/errorTest`);
     //     console.log(`result = `, result);
@@ -22,6 +25,8 @@ export default function Error() {
     //     console.log(`error = `, error);
     //     setErrorMessage(error.toString());
     //   }
+
+    //   setIsLoading(false);
     // }
 
     // fetchError();
@@ -34,7 +39,9 @@ export default function Error() {
         <Spinner />
       ) : errorMessage ? (
         <p className="app__error-message">{errorMessage}</p>
-      ) : null}
+      ) : (
+        <div>Success!</div>
+      )}
     </Fragment>
   );
 }
