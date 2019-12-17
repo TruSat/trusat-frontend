@@ -6,13 +6,16 @@
 
 ## Get Started
 
-This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). To get started clone the repo, `cd` into it and run the following commands:
+This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). You can clone the repo, checkout the `dev` branch, install all the dependencies and run the app in development mode with the following commands in your Terminal:
 
 ```
+git clone https://github.com/consensys-space/trusat-frontend.git trusat-frontend
+cd trusat-frontend
 git checkout --track origin/dev
-
 yarn install && yarn start
 ```
+
+Open http://localhost:3000 to view it in the browser. The page will automatically reload if you make changes to the code.
 
 ## Structure
 
