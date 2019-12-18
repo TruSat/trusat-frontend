@@ -18,9 +18,9 @@ export default function TestError() {
         const response = await axios.get(
           `https://api.consensys.space:8080/errorTest`
         );
-        console.log(response);
+        console.log(`response = `, response);
       } catch (error) {
-        console.log(error);
+        console.log(`error = `, JSON.stringify(error));
         setErrorMessage(error.toString());
       }
     }
@@ -31,7 +31,7 @@ export default function TestError() {
 
   return (
     <Fragment>
-      <div>This is a component for testing cookies</div>
+      <div>This is a component for testing error messaging</div>
       {isLoading ? (
         <Spinner />
       ) : errorMessage ? (
