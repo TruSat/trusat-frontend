@@ -3,20 +3,21 @@ import { useTrusatGetApi } from "../app/app-helpers";
 import axios from "axios";
 import Spinner from "../app/components/Spinner";
 
-export default function TestError() {
+export default function TestCookie() {
   // const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(``);
 
   useEffect(() => {
-    // doFetch(`/errorTest`);
+    // doFetch(`/cookieMonster`);
 
-    async function fetchErrorMessage() {
+    async function fetchCookie() {
       setIsLoading(true);
 
       try {
         const response = await axios.get(
-          `https://api.consensys.space:8080/errorTest`
+          `https://api.consensys.space:8080/cookieMonster`,
+          { withCredentials: true }
         );
         console.log(response);
       } catch (error) {
@@ -25,7 +26,7 @@ export default function TestError() {
       }
     }
 
-    fetchErrorMessage();
+    fetchCookie();
     setIsLoading(false);
   }, []);
 

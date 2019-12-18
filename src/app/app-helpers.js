@@ -57,7 +57,7 @@ export const useTrusatGetApi = () => {
       } catch (error) {
         console.log(JSON.stringify(error));
         if (!didCancel) {
-          setErrorMessage(JSON.stringify(error));
+          setErrorMessage(error.toString());
         }
       }
       setIsLoading(false);

@@ -36,6 +36,7 @@ import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
 import TestError from "./views/TestError";
+import TestCookie from "./views/TestCookie";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -110,7 +111,7 @@ export default function App() {
           <Route exact path="/claim" component={ClaimAccount} />
           <Route path="/claim/:jwt" component={VerifyClaimAccount} />
           <Route path="/whitepaper" component={Whitepaper} />
-          <Route path="/faq" component={FAQ}></Route>
+          <Route path="/faq" component={FAQ} />
           <Route path="/charter" component={Charter} />
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
@@ -137,7 +138,8 @@ export default function App() {
               return null;
             }}
           />
-          <Route path="/error" component={TestError}></Route>
+          <Route path="/error" component={TestError} />
+          <Route path="/cookie" component={TestCookie} />
           <Route component={NoMatch} />
         </Switch>
 
