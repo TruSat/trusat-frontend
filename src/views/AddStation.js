@@ -11,6 +11,7 @@ export default function AddStation() {
   const { jwt } = useAuthState();
   // form state
   const [stationName, setStationName] = useState(``);
+  const [latitudeSign, setLatitudeSign] = useState(``);
   const [latitude, setLatitude] = useState(``);
   const [longitudeSign, setlongitudeSign] = useState(``);
   const [longitude, setlongitude] = useState(``);
@@ -42,7 +43,7 @@ export default function AddStation() {
         JSON.stringify({
           jwt: jwt,
           station: stationName,
-          latitude: latitude,
+          latitude: `${latitudeSign}${latitude}`,
           longitude: `${longitudeSign}${longitude}`,
           elevation: elevation,
           notes: notes
@@ -97,19 +98,29 @@ export default function AddStation() {
             <p>Latitude (degrees)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.latitude} />
           </label>
-          <input
-            required
-            type="number"
-            className="app__form__input"
-            value={latitude}
-            onChange={event => {
-              // limit to 15 chars
-              if (event.target.value.length < 16) {
-                setLatitude(event.target.value);
-              }
-            }}
-            placeholder="e.g. 42.97473848"
-          ></input>
+          <div style={{ alignItems: "center", display: "flex" }}>
+            <select
+              className="app__form__input app__form__input--sign"
+              onChange={event => setLatitudeSign(event.target.value)}
+              value={latitudeSign}
+            >
+              <option value={``}>+</option>
+              <option value={`-`}>-</option>
+            </select>
+            <input
+              required
+              type="number"
+              className="app__form__input"
+              value={latitude}
+              onChange={event => {
+                // limit to 15 chars
+                if (event.target.value.length < 16) {
+                  setLatitude(event.target.value);
+                }
+              }}
+              placeholder="e.g. 42.97473848"
+            ></input>
+          </div>
         </div>
         <div>
           <label className="app__form__label station-form__label">
