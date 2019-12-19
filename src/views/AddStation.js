@@ -12,6 +12,7 @@ export default function AddStation() {
   // form state
   const [stationName, setStationName] = useState(``);
   const [latitude, setLatitude] = useState(``);
+  const [longitudeSign, setlongitudeSign] = useState(``);
   const [longitude, setlongitude] = useState(``);
   const [elevation, setElevation] = useState(``);
   const [notes, setNotes] = useState(``);
@@ -42,7 +43,7 @@ export default function AddStation() {
           jwt: jwt,
           station: stationName,
           latitude: latitude,
-          longitude: longitude,
+          longitude: `${longitudeSign}${longitude}`,
           elevation: elevation,
           notes: notes
         })
@@ -115,24 +116,35 @@ export default function AddStation() {
             <p>Longitude (degrees)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.longitude} />
           </label>
-          <input
-            required
-            type="number"
-            className="app__form__input"
-            value={longitude}
-            onChange={event => {
-              if (event.target.value.length < 16) {
-                setlongitude(event.target.value);
-              }
-            }}
-            placeholder="e.g. -25.3930"
-          ></input>
+          <div style={{ alignItems: "center", display: "flex" }}>
+            <select
+              className="app__form__input app__form__input--sign"
+              onChange={event => setlongitudeSign(event.target.value)}
+              value={longitudeSign}
+            >
+              <option value={``}>+</option>
+              <option value={`-`}>-</option>
+            </select>
+            <input
+              required
+              type="number"
+              className="app__form__input"
+              value={longitude}
+              onChange={event => {
+                if (event.target.value.length < 16) {
+                  setlongitude(event.target.value);
+                }
+              }}
+              placeholder="e.g. -25.3930"
+            ></input>
+          </div>
         </div>
         <div>
           <label className="app__form__label station-form__label">
             <p>Elevation (meters)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.elevation_station} />
           </label>
+
           <input
             required
             type="number"
