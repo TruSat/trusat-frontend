@@ -85,7 +85,7 @@ export default function VerifyClaimAccount({ match }) {
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
         localStorage.setItem("trusat-jwt", response.data.jwt);
       } catch (error) {
-        setErrorMessage(error.toString());
+        setErrorMessage(error.response.data);
       }
       setPassword("");
       setRetypedPassword("");

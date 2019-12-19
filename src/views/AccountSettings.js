@@ -98,7 +98,7 @@ function UserSettings({ history }) {
       // refresh the page to pull the latest data just posted
       window.location.reload();
     } catch (error) {
-      setErrorMessage(error.toString());
+      setErrorMessage(error.response.data);
     }
   };
 

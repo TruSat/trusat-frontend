@@ -27,7 +27,7 @@ export default function ClaimAccount() {
         setIsSuccess(true);
       }
     } catch (error) {
-      setErrorMessage(error.toString());
+      setErrorMessage(error.response.data);
     }
     setEmail("");
     setIsLoading(false);

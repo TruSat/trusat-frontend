@@ -50,7 +50,7 @@ export default function AddStation() {
       console.log(result);
       setSuccessfullyAddedStation(result.data.station_id);
     } catch (error) {
-      setErrorMessage(error.toString());
+      setErrorMessage(error.response.data);
     }
     setIsLoading(false);
     resetFormValues();
