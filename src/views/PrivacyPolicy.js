@@ -4,7 +4,7 @@ export default function PrivacyPolicy() {
   return (
     <div className="pdf__wrapper">
       <embed
-        src="https://trusat-assets.s3.amazonaws.com/trusat.org_privacy_policy.pdf"
+        src="https://trusat-assets.s3.amazonaws.com/Privacy+Policy+for+TruSat.org+_12-19-19.pdf"
         type="application/pdf"
         width="100%"
         height="850"
