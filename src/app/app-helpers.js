@@ -32,7 +32,8 @@ export const axiosWithCache = axios.create({
   adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
     enabledByDefault: true,
     cacheFlag: `useCache`
-  })
+  }),
+  withCredentials: true
 });
 
 export const useTrusatGetApi = () => {
@@ -52,12 +53,13 @@ export const useTrusatGetApi = () => {
         const result = await axiosWithCache(`${API_ROOT}${url}`);
 
         if (!didCancel) {
+          console.log(result);
           setData(result.data);
         }
       } catch (error) {
-        console.log(JSON.stringify(error));
         if (!didCancel) {
-          setErrorMessage(error.toString());
+          console.log(error);
+          setErrorMessage(error.response.data);
         }
       }
       setIsLoading(false);
