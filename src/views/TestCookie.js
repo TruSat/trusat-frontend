@@ -3,6 +3,25 @@ import { useTrusatGetApi } from "../app/app-helpers";
 import axios from "axios";
 import Spinner from "../app/components/Spinner";
 
+export default function TestCookie() {
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+
+  useEffect(() => {
+    doFetch(`/cookieMonster`);
+  }, [doFetch]);
+
+  return (
+    <Fragment>
+      <div>This is a component for testing cookies</div>
+      {isLoading ? (
+        <Spinner />
+      ) : errorMessage ? (
+        <p className="app__error-message">{errorMessage}</p>
+      ) : null}
+    </Fragment>
+  );
+}
+
 // export default function TestCookie() {
 //   // const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 //   const [isLoading, setIsLoading] = useState(false);
@@ -79,22 +98,3 @@ import Spinner from "../app/components/Spinner";
 //     </Fragment>
 //   );
 // }
-
-export default function TestCookie() {
-  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
-
-  useEffect(() => {
-    doFetch(`/cookieMonster`);
-  }, [doFetch]);
-
-  return (
-    <Fragment>
-      <div>This is a component for testing cookies</div>
-      {isLoading ? (
-        <Spinner />
-      ) : errorMessage ? (
-        <p className="app__error-message">{errorMessage}</p>
-      ) : null}
-    </Fragment>
-  );
-}
