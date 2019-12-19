@@ -11,7 +11,11 @@ export default function AddStation() {
   const { jwt } = useAuthState();
   // form state
   const [stationName, setStationName] = useState(``);
+  // const [latitudeSign, setLatitudeSign] = useState(`?`);
+  // const [isLatitudeSignError, setIsLatitudeSignError] = useState(false);
   const [latitude, setLatitude] = useState(``);
+  // const [longitudeSign, setlongitudeSign] = useState(`?`);
+  // const [isLongitudeSignError, setIsLongitudeSignError] = useState(false);
   const [longitude, setlongitude] = useState(``);
   const [elevation, setElevation] = useState(``);
   const [notes, setNotes] = useState(``);
@@ -41,6 +45,8 @@ export default function AddStation() {
         JSON.stringify({
           jwt: jwt,
           station: stationName,
+          // latitude: `${latitudeSign}${latitude}`,
+          // longitude: `${longitudeSign}${longitude}`,
           latitude: latitude,
           longitude: longitude,
           elevation: elevation,
@@ -96,43 +102,76 @@ export default function AddStation() {
             <p>Latitude (degrees)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.latitude} />
           </label>
-          <input
-            required
-            type="number"
-            className="app__form__input"
-            value={latitude}
-            onChange={event => {
-              // limit to 15 chars
-              if (event.target.value.length < 16) {
-                setLatitude(event.target.value);
-              }
-            }}
-            placeholder="e.g. 42.97473848"
-          ></input>
+          <div style={{ alignItems: "center", display: "flex" }}>
+            {/* <select
+              className="app__form__input app__form__input--sign"
+              onChange={event => setLatitudeSign(event.target.value)}
+              value={latitudeSign}
+            >
+              <option value={`?`}>?</option>
+              <option value={``}>+</option>
+              <option value={`-`}>-</option>
+            </select> */}
+            <input
+              required
+              type="number"
+              className="app__form__input"
+              value={latitude}
+              onChange={event => {
+                // limit to 15 chars
+                if (event.target.value.length < 16) {
+                  setLatitude(event.target.value);
+                }
+              }}
+              placeholder="e.g. 42.97473848"
+            ></input>
+          </div>
+          {/* {latitudeSign === "?" ? (
+            <p className="app__error-message">
+              Please choose + or - latitude value
+            </p>
+          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">
             <p>Longitude (degrees)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.longitude} />
           </label>
-          <input
-            required
-            type="number"
-            className="app__form__input"
-            value={longitude}
-            onChange={event => {
-              if (event.target.value.length < 16) {
-                setlongitude(event.target.value);
-              }
-            }}
-            placeholder="e.g. 25.3930"
-          ></input>
+          <div style={{ alignItems: "center", display: "flex" }}>
+            {/* <select
+              className="app__form__input app__form__input--sign"
+              onChange={event => setlongitudeSign(event.target.value)}
+              value={longitudeSign}
+            >
+              <option value={`?`}>?</option>
+              <option value={``}>+</option>
+              <option value={`-`}>-</option>
+            </select> */}
+            <input
+              required
+              type="number"
+              className="app__form__input"
+              value={longitude}
+              onChange={event => {
+                if (event.target.value.length < 16) {
+                  setlongitude(event.target.value);
+                }
+              }}
+              placeholder="e.g. -25.3930"
+            ></input>
+          </div>
+          {/* {longitudeSign === "?" ? (
+            <p className="app__error-message">
+              Please choose + or - longitude value
+            </p>
+          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">
             <p>Elevation (meters)</p>
             <QuestionMarkToolTip toolTipText={toolTipCopy.elevation_station} />
           </label>
+
           <input
             required
             type="number"
