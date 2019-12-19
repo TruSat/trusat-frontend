@@ -125,7 +125,7 @@ export default function AddStation() {
                 setlongitude(event.target.value);
               }
             }}
-            placeholder="e.g. 25.3930"
+            placeholder="e.g. -25.3930"
           ></input>
         </div>
         <div>
