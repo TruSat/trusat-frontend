@@ -41,7 +41,7 @@ export default function TestCookie() {
 //         console.log(response);
 //       } catch (error) {
 //         console.log(error);
-//         setErrorMessage(error.toString());
+//         setErrorMessage(error.response.data);
 //       }
 //     }
 
@@ -79,7 +79,7 @@ export default function TestCookie() {
 //         console.log(response);
 //       } catch (error) {
 //         console.log(error);
-//         setErrorMessage(error.toString());
+//         setErrorMessage(error.response.data);
 //       }
 //     }
 

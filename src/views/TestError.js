@@ -22,7 +22,7 @@ import Spinner from "../app/components/Spinner";
 //         console.log(`fetch success = `, response);
 //       } catch (error) {
 //         console.log(`fetch error = `, JSON.stringify(error));
-//         setErrorMessage(error.toString());
+//         setErrorMessage(error.response.data);
 //       }
 //     }
 
@@ -61,7 +61,7 @@ import Spinner from "../app/components/Spinner";
 //         console.log(`axios success = `, response);
 //       } catch (error) {
 //         console.log(`error = `, error.response.data);
-//         setErrorMessage(error.toString());
+//         setErrorMessage(error.response.data);
 //         console.log(`axios error = `, JSON.stringify(error));
 //       }
 //     }

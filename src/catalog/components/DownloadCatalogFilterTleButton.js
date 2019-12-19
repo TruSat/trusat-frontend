@@ -32,7 +32,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
       }
       setTextFile(window.URL.createObjectURL(dataToDownload));
     } catch (error) {
-      setErrorMessage(error.toString());
+      setErrorMessage(error.response.data);
     }
     setIsLoading(false);
   };
