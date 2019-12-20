@@ -61,7 +61,10 @@ export default function LoginForm() {
     });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
     // add login crednetials to local storage so user will stayed logged in until expiry
-    localStorage.setItem("trusat-login-credentials", loginCredentials);
+    localStorage.setItem(
+      "trusat-login-credentials",
+      JSON.stringify(loginCredentials)
+    );
 
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };

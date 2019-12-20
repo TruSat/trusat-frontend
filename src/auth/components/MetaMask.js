@@ -63,7 +63,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
         // Add login credentials to local storage
         localStorage.setItem(
           "trusat-login-credentials",
-          metamaskLoginCredentials
+          JSON.stringify(metamaskLoginCredentials)
         );
       }
     } else {

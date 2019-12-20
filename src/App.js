@@ -44,7 +44,9 @@ export default function App() {
   useEffect(() => {
     // get login credentials from local storage (address and expiry date for auth)
     const retrieveLoginCredentials = async () => {
-      const { address, exp } = localStorage.getItem("trusat-login-credentials");
+      const { address, exp } = JSON.parse(
+        localStorage.getItem("trusat-login-credentials")
+      );
       // checks if expiry date on auth is valid (hasn't expired)
       checkAuthExpiry(exp);
 

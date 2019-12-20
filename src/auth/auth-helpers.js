@@ -171,13 +171,13 @@ export const retrieveMetamaskLoginCredentials = async ({
 export const checkAuthExpiry = async exp => {
   // get UNIX current time
   const currentTime = Math.round(+new Date() / 1000);
-  // if auth ahsn't expire return from the function
-  // this allows rest of function calling checkAuthExpiry to continue
+
+  // if auth hasn't expired return from the function to all rest of function calling checkAuthExpiry to continue
   if (exp > currentTime) {
     return true;
     // otherwise remove trusat credentials and cookies from localstorage refresh browser
   } else {
-    localStorage.removeItem("trusat-auth-credentials");
+    localStorage.removeItem("trusat-login-credentials");
     localStorage.removeItem("trusat-allow-cookies"); // delete their previously chosen option
     window.location.reload();
   }
