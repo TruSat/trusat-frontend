@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { API_ROOT } from "../../app/app-helpers";
-import { checkJwt } from "../../auth/auth-helpers";
+import { checkAuthExpiry } from "../../auth/auth-helpers";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
@@ -15,7 +15,7 @@ export default function MultipleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
-  const { jwt } = useAuthState();
+  const { authExpiry } = useAuthState();
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = async () => {
@@ -25,12 +25,12 @@ export default function MultipleObservationForm() {
     setErrorMessages([]);
 
     // check if jwt is valid and hasn't expired before submission
-    await checkJwt(jwt);
+    await checkAuthExpiry(authExpiry);
 
     try {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
-        JSON.stringify({ jwt: jwt, multiple: pastedIODs })
+        JSON.stringify({ multiple: pastedIODs })
       );
       setPastedIODs("");
 

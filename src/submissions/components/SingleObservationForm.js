@@ -3,7 +3,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
-import { checkJwt } from "../../auth/auth-helpers";
+import { checkAuthExpiry } from "../../auth/auth-helpers";
 import {
   API_ROOT,
   QuestionMarkToolTip,
@@ -76,7 +76,7 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
   // SUBMISSION UI STATES
-  const { jwt } = useAuthState(); // used in handleSubmit function
+  const { authExpiry } = useAuthState(); // used in handleSubmit function
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides success and error messages upon submissions which are displayed in UI
@@ -365,7 +365,7 @@ export default function SingleObservationForm() {
     setSuccessCount(null);
     setErrorMessages([]);
     // check if jwt is valid and hasn't expired before submission
-    await checkJwt(jwt);
+    await checkAuthExpiry(authExpiry);
     // Only submit IOD if no validation errors found
     if (
       !isStationError &&
