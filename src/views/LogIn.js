@@ -10,9 +10,9 @@ export default function LogIn() {
   return (
     <div className="log-in__wrapper">
       <h1 className="log-in__header">
-        {userAddress ? "You're logged in" : "Log in"}
+        {userAddress !== "none" ? "You're logged in" : "Log in"}
       </h1>
-      {userAddress ? (
+      {userAddress !== "none" ? (
         <div className="login__success-wrapper">
           <NavLink className="app__nav-link" to={`/profile/${userAddress}`}>
             <span className="app__button--white">Go to Profile</span>
