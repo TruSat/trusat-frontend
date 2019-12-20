@@ -99,7 +99,7 @@ export default function VerifyClaimAccount({ match }) {
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
       {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret 
-      Or if JWT has expired after 24 hours
+      Or if auth session has expired after 24 hours
       */}
       {!isSuccess && !isExpired ? (
         <form

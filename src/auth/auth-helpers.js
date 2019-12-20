@@ -4,7 +4,6 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
 import aesjs from "aes-js";
-import jwt_decode from "jwt-decode";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export const createWallet = () => {
@@ -172,11 +171,11 @@ export const retrieveMetamaskLoginCredentials = async ({
 export const checkAuthExpiry = async exp => {
   // get UNIX current time
   const currentTime = Math.round(+new Date() / 1000);
-  // if jwt is of type string and has not expired, return from the function
-  // this allows rest of function calling checkJwt to continue
+  // if auth ahsn't expire return from the function
+  // this allows rest of function calling checkAuthExpiry to continue
   if (exp > currentTime) {
     return true;
-    // otherwise remove jwt from localstorage refresh browser
+    // otherwise remove trusat credentials and cookies from localstorage refresh browser
   } else {
     localStorage.removeItem("trusat-auth-credentials");
     localStorage.removeItem("trusat-allow-cookies"); // delete their previously chosen option

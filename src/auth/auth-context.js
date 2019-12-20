@@ -11,9 +11,6 @@ function authReducer(state, action) {
     case "SET_AUTH_TYPE": {
       return { ...state, authType: action.payload };
     }
-    case "SET_JWT": {
-      return { ...state, jwt: action.payload };
-    }
     case "SET_USER_ADDRESS": {
       return { ...state, userAddress: action.payload };
     }
@@ -30,8 +27,7 @@ function AuthProvider({ children }) {
   const [state, dispatch] = React.useReducer(authReducer, {
     isAuthenticating: false,
     authType: "",
-    jwt: "none",
-    userAddress: "",
+    userAddress: "none",
     authExpiry: ""
   });
 

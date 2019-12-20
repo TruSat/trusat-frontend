@@ -15,7 +15,7 @@ export default function MultipleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
-  const { authExpiry } = useAuthState();
+  const { address, authExpiry } = useAuthState();
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = async () => {
@@ -24,7 +24,7 @@ export default function MultipleObservationForm() {
     setSuccessCount(null);
     setErrorMessages([]);
 
-    // check if jwt is valid and hasn't expired before submission
+    // check if users auth session hasn't expired before submission
     await checkAuthExpiry(authExpiry);
 
     try {
@@ -57,7 +57,7 @@ export default function MultipleObservationForm() {
 
   return (
     <Fragment>
-      {jwt === "none" ? (
+      {address === "" ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -127,7 +127,7 @@ export default function MultipleObservationForm() {
                 </span>
               </NavLink>
 
-              {jwt === "none" ? null : (
+              {address === "" ? null : (
                 <button
                   type="submit"
                   className="submit__submit-button"
@@ -137,7 +137,7 @@ export default function MultipleObservationForm() {
                 </button>
               )}
             </div>
-            {jwt === "none" ? null : (
+            {address === "none" ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and

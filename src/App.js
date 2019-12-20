@@ -45,7 +45,7 @@ export default function App() {
     // get login credentials from local storage (address and expiry date for auth)
     const retrieveLoginCredentials = async () => {
       const { address, exp } = localStorage.getItem("trusat-login-credentials");
-      // checks if jwt is valid and hasn't expired
+      // checks if expiry date on auth is valid (hasn't expired)
       checkAuthExpiry(exp);
 
       authDispatch({

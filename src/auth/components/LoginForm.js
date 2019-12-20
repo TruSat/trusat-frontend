@@ -43,7 +43,7 @@ export default function LoginForm() {
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
-    // do not attempt to hit /profile unless a valid jwt is returned from retriveJwt
+    // do not attempt to hit /profile unless auth hasn't expired
     if (!loginCredentials) {
       setIsError(true);
       authDispatch({ type: "AUTHENTICATING", payload: false });
@@ -60,7 +60,7 @@ export default function LoginForm() {
       payload: loginCredentials.exp
     });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    // add jwt to local storage so user will stayed logged in until expiry
+    // add login crednetials to local storage so user will stayed logged in until expiry
     localStorage.setItem("trusat-login-credentials", loginCredentials);
 
     authDispatch({ type: "AUTHENTICATING", payload: false });

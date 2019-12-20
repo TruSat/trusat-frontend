@@ -59,7 +59,7 @@ function UserSettings({ history }) {
 
       try {
         const result = await axiosWithCache.get(
-          `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
+          `${API_ROOT}/profile?address=${userAddress}`
         );
 
         profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
@@ -69,22 +69,21 @@ function UserSettings({ history }) {
       setIsLoading(false);
     };
 
-    if (jwt !== "none" && userAddress) {
+    if (userAddress !== "none" && userAddress) {
       doFetch();
     }
-  }, [jwt, userAddress, profileDispatch]);
+  }, [userAddress, authExpiry, profileDispatch]);
 
   const submitEdit = async () => {
     setErrorMessage(``);
     setIsLoading(true);
-    // checks if jwt is valid and hasn't expired
+    // checks if auth is valid and hasn't expired
     checkAuthExpiry(authExpiry);
     // Post the edits
     try {
       await axios.post(
         `${API_ROOT}/editProfile`,
         JSON.stringify({
-          jwt: jwt,
           address: userAddress,
           username: newUsername,
           email: newEmail,
@@ -103,7 +102,7 @@ function UserSettings({ history }) {
   };
 
   const logout = () => {
-    localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-login-credentials");
     localStorage.removeItem("trusat-allow-cookies");
     history.push(`/`);
     window.location.reload();
@@ -113,7 +112,7 @@ function UserSettings({ history }) {
     <p className="app__error-message">Something went wrong... {errorMessage}</p>
   ) : isLoading ? (
     <Spinner />
-  ) : jwt === "none" ? (
+  ) : userAddress === "none" ? (
     <div className="app__error-message">
       You need to login{" "}
       <NavLink className="app__nav-link app__link" to="/login">
