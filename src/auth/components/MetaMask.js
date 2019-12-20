@@ -3,7 +3,7 @@ import { useAuthState, useAuthDispatch } from "../auth-context";
 import {
   retrieveNonce,
   metamaskSignMessage,
-  retrieveMetamaskJwt,
+  retrieveMetamaskLoginCredentials,
   handleMetamaskConnect
 } from "../auth-helpers";
 import Web3 from "web3";
@@ -44,16 +44,27 @@ export default function MetaMask({ buttonText, GAEvent }) {
 
     // Only hit /profile endpoint if a signed message is returned from metamaskSignedMessage
     if (typeof metamaskSignedMessage === "string") {
-      const jwt = await retrieveMetamaskJwt({ address, metamaskSignedMessage });
-      // only log user in and add jwt to local storage if jwt is valid
-      if (!jwt) {
+      const metamaskLoginCredentials = await retrieveMetamaskLoginCredentials({
+        address,
+        metamaskSignedMessage
+      });
+      // only log user in and add credentaisl to local storage if credentials are valid
+      if (!metamaskLoginCredentials) {
         setIsError(true);
       } else {
+        // Add address to auth state
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-        authDispatch({ type: "SET_JWT", payload: jwt });
+        // Add expiry date of auth to auth state
+        authDispatch({
+          type: "SET_AUTH_EXPIRY",
+          payload: metamaskLoginCredentials.exp
+        });
         authDispatch({ type: "SET_AUTH_TYPE", payload: "metamask" });
-        // Add jwt to local storage
-        localStorage.setItem("trusat-jwt", jwt);
+        // Add login credentials to local storage
+        localStorage.setItem(
+          "trusat-login-credentials",
+          metamaskLoginCredentials
+        );
       }
     } else {
       // When user cancels the sign or there is an error returned from metamaskSignMessage

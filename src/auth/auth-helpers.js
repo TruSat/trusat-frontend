@@ -114,10 +114,14 @@ export const signUp = async ({ email, address, signedMessage, secret }) => {
   }
 };
 
-// Used for email/password and burner login
-export const retrieveJwt = async ({ email, address, signedMessage }) => {
+// Used for email/password login
+export const retrieveLoginCredentials = async ({
+  email,
+  address,
+  signedMessage
+}) => {
   try {
-    const result = await axios.post(
+    const response = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         email: email,
@@ -125,7 +129,7 @@ export const retrieveJwt = async ({ email, address, signedMessage }) => {
         signedMessage: signedMessage.signature
       })
     );
-    return result.data.jwt;
+    return response.data;
   } catch (error) {
     return false;
   }
@@ -147,19 +151,19 @@ export const metamaskSignMessage = async ({ nonce, address }) => {
 };
 
 // used for metamask auth
-export const retrieveMetamaskJwt = async ({
+export const retrieveMetamaskLoginCredentials = async ({
   address,
   metamaskSignedMessage
 }) => {
   try {
-    const result = await axios.post(
+    const response = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: metamaskSignedMessage
       })
     );
-    return result.data.jwt;
+    return response.data;
   } catch (error) {
     return false;
   }

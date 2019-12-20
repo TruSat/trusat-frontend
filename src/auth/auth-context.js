@@ -17,6 +17,9 @@ function authReducer(state, action) {
     case "SET_USER_ADDRESS": {
       return { ...state, userAddress: action.payload };
     }
+    case "SET_AUTH_EXPIRY": {
+      return { ...state, authExpiry: action.payload };
+    }
     default: {
       throw new Error(`Unhandle action type: ${action.type}`);
     }
@@ -28,7 +31,8 @@ function AuthProvider({ children }) {
     isAuthenticating: false,
     authType: "",
     jwt: "none",
-    userAddress: ""
+    userAddress: "",
+    authExpiry: ""
   });
 
   return (

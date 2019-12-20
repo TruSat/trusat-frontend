@@ -6,7 +6,7 @@ import {
   isPrivateKey,
   retrieveNonce,
   signMessage,
-  retrieveJwt,
+  retrieveLoginCredentials,
   decryptSecret
 } from "../auth-helpers";
 
@@ -37,27 +37,31 @@ export default function LoginForm() {
     // sign the nonce
     const signedMessage = signMessage({ nonce, wallet });
     // get JSON web token that will be used to keep user logged in
-    const jwt = await retrieveJwt({
+    const loginCredentials = await retrieveLoginCredentials({
       // dont send email to backend on log in - not required for auth
       email: null,
       address: wallet.signingKey.address,
       signedMessage: signedMessage
     });
     // do not attempt to hit /profile unless a valid jwt is returned from retriveJwt
-    if (!jwt) {
+    if (!loginCredentials) {
       setIsError(true);
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
-
+    // Add address to auth state
     authDispatch({
       type: "SET_USER_ADDRESS",
       payload: wallet.signingKey.address
     });
+    // Add expiry date of auth to auth state
+    authDispatch({
+      type: "SET_AUTH_EXPIRY",
+      payload: loginCredentials.exp
+    });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
-    authDispatch({ type: "SET_JWT", payload: jwt });
     // add jwt to local storage so user will stayed logged in until expiry
-    localStorage.setItem("trusat-jwt", jwt);
+    localStorage.setItem("trusat-login-credentials", loginCredentials);
 
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };
