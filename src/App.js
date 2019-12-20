@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import jwt_decode from "jwt-decode";
-import { checkJwt } from "./auth/auth-helpers";
+import { checkAuthExpiry } from "./auth/auth-helpers";
 import { setCookies } from "./app/app-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
@@ -43,18 +42,19 @@ export default function App() {
   const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   useEffect(() => {
-    // get jwt from local storage which is decoded to return the user ethereum address
-    const retrieveJwtAndGetUserData = async () => {
-      const jwt = localStorage.getItem("trusat-jwt");
+    // get login credentials from local storage (address and expiry date for auth)
+    const retrieveLoginCredentials = async () => {
+      const { address, exp } = localStorage.getItem("trusat-login-credentials");
       // checks if jwt is valid and hasn't expired
-      checkJwt(jwt);
+      checkAuthExpiry(exp);
 
-      const { address } = await jwt_decode(jwt);
-
-      authDispatch({ type: "SET_JWT", payload: jwt });
       authDispatch({
         type: "SET_USER_ADDRESS",
         payload: address
+      });
+      authDispatch({
+        type: "SET_AUTH_EXPIRY",
+        payload: exp
       });
     };
 
@@ -71,8 +71,8 @@ export default function App() {
       retrieveCookieChoice();
     }
 
-    if (localStorage.getItem("trusat-jwt")) {
-      retrieveJwtAndGetUserData();
+    if (localStorage.getItem("trusat-login-credentials")) {
+      retrieveLoginCredentials();
     }
   }, [authDispatch]);
 
