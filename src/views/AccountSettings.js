@@ -13,13 +13,13 @@ import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
-import { checkJwt } from "../auth/auth-helpers";
+import { checkAuthExpiry } from "../auth/auth-helpers";
 
 function UserSettings({ history }) {
   const profileDispatch = useProfileDispatch();
   const { profileData } = useProfileState();
 
-  const { jwt, userAddress } = useAuthState();
+  const { userAddress, authExpiry } = useAuthState();
   // Profile settings
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -54,8 +54,8 @@ function UserSettings({ history }) {
     const doFetch = async () => {
       setErrorMessage(``);
       setIsLoading(true);
-      // checks if jwt is valid and hasn't expired
-      checkJwt(jwt);
+      // checks if auth is valid and hasn't expired
+      checkAuthExpiry(authExpiry);
 
       try {
         const result = await axiosWithCache.get(
@@ -78,7 +78,7 @@ function UserSettings({ history }) {
     setErrorMessage(``);
     setIsLoading(true);
     // checks if jwt is valid and hasn't expired
-    checkJwt(jwt);
+    checkAuthExpiry(authExpiry);
     // Post the edits
     try {
       await axios.post(
