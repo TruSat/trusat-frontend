@@ -92,7 +92,8 @@ function UserSettings({ history }) {
           new_station_names: newStationNames,
           new_station_notes: newStationNotes,
           deleted_stations: deletedStations
-        })
+        }),
+        { withCredentials: true }
       );
       // refresh the page to pull the latest data just posted
       window.location.reload();

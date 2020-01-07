@@ -30,7 +30,8 @@ export default function MultipleObservationForm() {
     try {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
-        JSON.stringify({ multiple: pastedIODs })
+        JSON.stringify({ multiple: pastedIODs }),
+        { withCredentials: true }
       );
       setPastedIODs("");
 

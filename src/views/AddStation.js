@@ -50,7 +50,8 @@ export default function AddStation() {
           longitude: longitude,
           elevation: elevation,
           notes: notes
-        })
+        }),
+        { withCredentials: true }
       );
       console.log(result);
       setSuccessfullyAddedStation(result.data.station_id);

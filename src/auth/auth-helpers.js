@@ -126,8 +126,10 @@ export const retrieveLoginCredentials = async ({
         email: email,
         address: address,
         signedMessage: signedMessage.signature
-      })
+      }),
+      { withCredentials: true }
     );
+
     return response.data;
   } catch (error) {
     return false;
@@ -160,7 +162,8 @@ export const retrieveMetamaskLoginCredentials = async ({
       JSON.stringify({
         address: address,
         signedMessage: metamaskSignedMessage
-      })
+      }),
+      { withCredentials: true }
     );
     return response.data;
   } catch (error) {
