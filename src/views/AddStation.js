@@ -3,12 +3,12 @@ import axios from "axios";
 import { API_ROOT, toolTipCopy } from "../app/app-helpers";
 import { useAuthState } from "../auth/auth-context";
 import { QuestionMarkToolTip } from "../app/app-helpers";
-import { checkJwt } from "../auth/auth-helpers";
+import { checkAuthExpiry } from "../auth/auth-helpers";
 import Spinner from "../app/components/Spinner";
 import CircleCheck from "../assets/CircleCheck.svg";
 
 export default function AddStation() {
-  const { jwt } = useAuthState();
+  const { userAddress, authExpiry } = useAuthState();
   // form state
   const [stationName, setStationName] = useState(``);
   // const [latitudeSign, setLatitudeSign] = useState(`?`);
@@ -36,14 +36,13 @@ export default function AddStation() {
     setErrorMessage(``);
     setSuccessfullyAddedStation(``);
     setIsLoading(true);
-    // checks if jwt is valid and hasn't expired
-    checkJwt(jwt);
+    // checks if auth is valid and hasn't expired
+    checkAuthExpiry(authExpiry);
     // if no errors
     try {
       const result = await axios.post(
         `${API_ROOT}/generateStation`,
         JSON.stringify({
-          jwt: jwt,
           station: stationName,
           // latitude: `${latitudeSign}${latitude}`,
           // longitude: `${longitudeSign}${longitude}`,
@@ -51,7 +50,8 @@ export default function AddStation() {
           longitude: longitude,
           elevation: elevation,
           notes: notes
-        })
+        }),
+        { withCredentials: true }
       );
       console.log(result);
       setSuccessfullyAddedStation(result.data.station_id);
@@ -66,7 +66,7 @@ export default function AddStation() {
     <div className="add-station">
       <h1 className="static-page__main-header--small">Add a location</h1>
       {/* Prompt user to log in so they can create a station */}
-      {jwt === "none" ? (
+      {userAddress === "none" ? (
         <p className="app__error-message">
           You need to be logged in to add a station location.
         </p>
@@ -223,7 +223,7 @@ export default function AddStation() {
         ) : (
           <Fragment>
             {/* Only render button to submit form if user is logged in */}
-            {jwt === "none" ? null : (
+            {userAddress === "none" ? null : (
               <button type="submit" className="station-form__button">
                 Add station
               </button>

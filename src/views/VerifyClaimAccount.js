@@ -80,10 +80,9 @@ export default function VerifyClaimAccount({ match }) {
           })
         );
         setIsSuccess(true);
-        authDispatch({ type: "SET_JWT", payload: response.data.jwt });
+        //authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         const { address } = await jwt_decode(response.data.jwt);
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-        localStorage.setItem("trusat-jwt", response.data.jwt);
       } catch (error) {
         setErrorMessage(error.response.data);
       }
@@ -99,7 +98,7 @@ export default function VerifyClaimAccount({ match }) {
     <div className="verify-claim-account__wrapper">
       <h1 className="verify-claim-account__header">Verify Claimed Account</h1>
       {/* Don't show the form when user has successfully claimed, i.e. they received an email containing a secret 
-      Or if JWT has expired after 24 hours
+      Or if auth session has expired after 24 hours
       */}
       {!isSuccess && !isExpired ? (
         <form

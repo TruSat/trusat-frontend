@@ -4,7 +4,6 @@ import { ethers } from "ethers";
 import Web3 from "web3";
 import pbkdf2 from "pbkdf2";
 import aesjs from "aes-js";
-import jwt_decode from "jwt-decode";
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export const createWallet = () => {
@@ -114,18 +113,24 @@ export const signUp = async ({ email, address, signedMessage, secret }) => {
   }
 };
 
-// Used for email/password and burner login
-export const retrieveJwt = async ({ email, address, signedMessage }) => {
+// Used for email/password login
+export const retrieveLoginCredentials = async ({
+  email,
+  address,
+  signedMessage
+}) => {
   try {
-    const result = await axios.post(
+    const response = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         email: email,
         address: address,
         signedMessage: signedMessage.signature
-      })
+      }),
+      { withCredentials: true }
     );
-    return result.data.jwt;
+
+    return response.data;
   } catch (error) {
     return false;
   }
@@ -147,36 +152,35 @@ export const metamaskSignMessage = async ({ nonce, address }) => {
 };
 
 // used for metamask auth
-export const retrieveMetamaskJwt = async ({
+export const retrieveMetamaskLoginCredentials = async ({
   address,
   metamaskSignedMessage
 }) => {
   try {
-    const result = await axios.post(
+    const response = await axios.post(
       `${API_ROOT}/login`,
       JSON.stringify({
         address: address,
         signedMessage: metamaskSignedMessage
-      })
+      }),
+      { withCredentials: true }
     );
-    return result.data.jwt;
+    return response.data;
   } catch (error) {
     return false;
   }
 };
 
-export const checkJwt = async jwt => {
-  const { exp } = await jwt_decode(jwt);
-
+export const checkAuthExpiry = async exp => {
   // get UNIX current time
   const currentTime = Math.round(+new Date() / 1000);
-  // if jwt is of type string and has not expired, return from the function
-  // this allows rest of function calling checkJwt to continue
-  if (typeof jwt === "string" && exp > currentTime) {
+
+  // if auth hasn't expired return from the function to all rest of function calling checkAuthExpiry to continue
+  if (exp > currentTime) {
     return true;
-    // otherwise remove jwt from localstorage refresh browser
+    // otherwise remove trusat credentials and cookies from localstorage refresh browser
   } else {
-    localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-login-credentials");
     localStorage.removeItem("trusat-allow-cookies"); // delete their previously chosen option
     window.location.reload();
   }

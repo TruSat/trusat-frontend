@@ -62,13 +62,10 @@ export default function TestCookie() {
 // }
 
 // export default function TestCookie() {
-//   // const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 //   const [isLoading, setIsLoading] = useState(false);
 //   const [errorMessage, setErrorMessage] = useState(``);
 
 //   useEffect(() => {
-//     // doFetch(`/cookieMonster`);
-
 //     async function fetchCookie() {
 //       setIsLoading(true);
 

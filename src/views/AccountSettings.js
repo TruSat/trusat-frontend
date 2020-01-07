@@ -13,13 +13,13 @@ import PrivacySettings from "../user/components/PrivacySettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
-import { checkJwt } from "../auth/auth-helpers";
+import { checkAuthExpiry } from "../auth/auth-helpers";
 
 function UserSettings({ history }) {
   const profileDispatch = useProfileDispatch();
   const { profileData } = useProfileState();
 
-  const { jwt, userAddress } = useAuthState();
+  const { userAddress, authExpiry } = useAuthState();
   // Profile settings
   const [newUsername, setNewUsername] = useState("");
   const [newEmail, setNewEmail] = useState("");
@@ -54,12 +54,12 @@ function UserSettings({ history }) {
     const doFetch = async () => {
       setErrorMessage(``);
       setIsLoading(true);
-      // checks if jwt is valid and hasn't expired
-      checkJwt(jwt);
+      // checks if auth is valid and hasn't expired
+      checkAuthExpiry(authExpiry);
 
       try {
         const result = await axiosWithCache.get(
-          `${API_ROOT}/profile?address=${userAddress}&jwt=${jwt}`
+          `${API_ROOT}/profile?address=${userAddress}`
         );
 
         profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
@@ -69,22 +69,21 @@ function UserSettings({ history }) {
       setIsLoading(false);
     };
 
-    if (jwt !== "none" && userAddress) {
+    if (userAddress !== "none" && userAddress) {
       doFetch();
     }
-  }, [jwt, userAddress, profileDispatch]);
+  }, [userAddress, authExpiry, profileDispatch]);
 
   const submitEdit = async () => {
     setErrorMessage(``);
     setIsLoading(true);
-    // checks if jwt is valid and hasn't expired
-    checkJwt(jwt);
+    // checks if auth is valid and hasn't expired
+    checkAuthExpiry(authExpiry);
     // Post the edits
     try {
       await axios.post(
         `${API_ROOT}/editProfile`,
         JSON.stringify({
-          jwt: jwt,
           address: userAddress,
           username: newUsername,
           email: newEmail,
@@ -93,7 +92,8 @@ function UserSettings({ history }) {
           new_station_names: newStationNames,
           new_station_notes: newStationNotes,
           deleted_stations: deletedStations
-        })
+        }),
+        { withCredentials: true }
       );
       // refresh the page to pull the latest data just posted
       window.location.reload();
@@ -103,7 +103,7 @@ function UserSettings({ history }) {
   };
 
   const logout = () => {
-    localStorage.removeItem("trusat-jwt");
+    localStorage.removeItem("trusat-login-credentials");
     localStorage.removeItem("trusat-allow-cookies");
     history.push(`/`);
     window.location.reload();
@@ -113,7 +113,7 @@ function UserSettings({ history }) {
     <p className="app__error-message">Something went wrong... {errorMessage}</p>
   ) : isLoading ? (
     <Spinner />
-  ) : jwt === "none" ? (
+  ) : userAddress === "none" ? (
     <div className="app__error-message">
       You need to login{" "}
       <NavLink className="app__nav-link app__link" to="/login">

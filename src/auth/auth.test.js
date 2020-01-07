@@ -6,7 +6,7 @@ import {
   signMessage,
   createSecret,
   decryptSecret,
-  checkJwt
+  checkAuthExpiry
 } from "./auth-helpers";
 
 // Make crypto object used in encryption helpers available to test suite
@@ -112,10 +112,9 @@ describe("Auth helpers", () => {
   });
 
   it("Can verify if a JWT is invalid", async () => {
-    // This JWT expired on 10/16/2019
-    const jwt =
-      "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhZGRyZXNzIjoiMHgyODRjMGIxNWRlYjIyZDM5Y2VhZDNjMGZjOWRhODNlMzVlYWFjZTM4IiwiZXhwIjoxNTcxMjQ3MzUwfQ.VlihvuVEE8Y6kn73_4pV_K8VlXDpocQouPx09h8GwtvHW_JiexbhPtv5FMZffFcbQ0vAz_VCA3EKFs2Euu-mLUT7GKD0gzcHeM15Noi7BXcobPkiAp18v4uSsi91yse4k6Ff_JG3F5hSUKVKy3CKJisL9uH2gG6jL8jwSQkecOSiAPNwa2kb-26way5nKhcNQVtRkgI9mZqMAqPAc_ivXfNfeJbKmRVG2MEtaUnc-OZvevHPQXvy48QhMZYfDHYasX2HTFZIPC35iErU3rbKTOi5qoCuFtoNfDu-lCjnzwhKguGZikSRUzRWPIn8MzSrjuYJu8fSn8595TkBf1zETA";
+    // timestamp from Jan 1st 2019 at 1am
+    const exp = "1546304400";
 
-    expect(await checkJwt(jwt)).not.toBe(true);
+    expect(await checkAuthExpiry(exp)).not.toBe(true);
   });
 });

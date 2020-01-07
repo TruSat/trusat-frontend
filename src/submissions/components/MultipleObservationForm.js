@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import { API_ROOT } from "../../app/app-helpers";
-import { checkJwt } from "../../auth/auth-helpers";
+import { checkAuthExpiry } from "../../auth/auth-helpers";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
 import CircleCheck from "../../assets/CircleCheck.svg";
@@ -15,7 +15,7 @@ export default function MultipleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
-  const { jwt } = useAuthState();
+  const { address, authExpiry } = useAuthState();
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = async () => {
@@ -24,13 +24,14 @@ export default function MultipleObservationForm() {
     setSuccessCount(null);
     setErrorMessages([]);
 
-    // check if jwt is valid and hasn't expired before submission
-    await checkJwt(jwt);
+    // check if users auth session hasn't expired before submission
+    await checkAuthExpiry(authExpiry);
 
     try {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
-        JSON.stringify({ jwt: jwt, multiple: pastedIODs })
+        JSON.stringify({ multiple: pastedIODs }),
+        { withCredentials: true }
       );
       setPastedIODs("");
 
@@ -57,7 +58,7 @@ export default function MultipleObservationForm() {
 
   return (
     <Fragment>
-      {jwt === "none" ? (
+      {address === "" ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -127,7 +128,7 @@ export default function MultipleObservationForm() {
                 </span>
               </NavLink>
 
-              {jwt === "none" ? null : (
+              {address === "" ? null : (
                 <button
                   type="submit"
                   className="submit__submit-button"
@@ -137,7 +138,7 @@ export default function MultipleObservationForm() {
                 </button>
               )}
             </div>
-            {jwt === "none" ? null : (
+            {address === "none" ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and

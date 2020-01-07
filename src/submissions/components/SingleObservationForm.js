@@ -3,7 +3,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
-import { checkJwt } from "../../auth/auth-helpers";
+import { checkAuthExpiry } from "../../auth/auth-helpers";
 import {
   API_ROOT,
   QuestionMarkToolTip,
@@ -76,7 +76,7 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
   // SUBMISSION UI STATES
-  const { jwt } = useAuthState(); // used in handleSubmit function
+  const { userAddress, authExpiry } = useAuthState(); // used in handleSubmit function
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides success and error messages upon submissions which are displayed in UI
@@ -89,10 +89,9 @@ export default function SingleObservationForm() {
   useEffect(() => {
     const fetchObservationStations = async () => {
       try {
-        let result = await axios.post(
-          `${API_ROOT}/getObservationStations`,
-          JSON.stringify({ jwt: jwt })
-        );
+        let result = await axios.post(`${API_ROOT}/getObservationStations`, {
+          withCredentials: true
+        });
         // sort stations by most observations
         const sortedStations = result.data.sort(
           (a, b) => b.observation_count - a.observation_count
@@ -103,10 +102,10 @@ export default function SingleObservationForm() {
       }
     };
     // only do fetch if user is logged in and the form does not already have their stations
-    if (jwt !== "none") {
+    if (userAddress !== "") {
       fetchObservationStations();
     }
-  }, [jwt, observationStations]);
+  }, [userAddress, observationStations]);
 
   // Builds the IOD string
   useEffect(() => {
@@ -364,8 +363,8 @@ export default function SingleObservationForm() {
     setIsError(false);
     setSuccessCount(null);
     setErrorMessages([]);
-    // check if jwt is valid and hasn't expired before submission
-    await checkJwt(jwt);
+    // check if authExpiry is valid and hasn't expired before submission
+    await checkAuthExpiry(authExpiry);
     // Only submit IOD if no validation errors found
     if (
       !isStationError &&
@@ -377,10 +376,9 @@ export default function SingleObservationForm() {
       !isDeclinationOrElevationError
     ) {
       try {
-        const result = await axios.post(
-          `${API_ROOT}/submitObservation`,
-          JSON.stringify({ jwt: jwt, multiple: IOD })
-        );
+        const result = await axios.post(`${API_ROOT}/submitObservation`, {
+          withCredentials: true
+        });
 
         if (result.data.success !== 0) {
           setSuccessCount(result.data.success);
@@ -475,7 +473,7 @@ export default function SingleObservationForm() {
 
   return (
     <Fragment>
-      {jwt === "none" ? (
+      {userAddress === "none" ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -1314,7 +1312,7 @@ export default function SingleObservationForm() {
                 </span>
               </NavLink>
 
-              {jwt === "none" ? null : (
+              {userAddress === "none" ? null : (
                 <button
                   className="submit__submit-button"
                   style={
@@ -1325,7 +1323,7 @@ export default function SingleObservationForm() {
                 </button>
               )}
             </div>
-            {jwt === "none" ? null : (
+            {userAddress === "none" ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and

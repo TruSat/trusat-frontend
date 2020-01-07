@@ -4,13 +4,11 @@ import ProfileHeader from "../profile/components/ProfileHeader";
 import ObjectsCollectedTable from "../profile/components/ObjectsCollectedTable";
 import ObservationsTable from "../profile/components/ObservationsTable";
 import Spinner from "../app/components/Spinner";
-import { useAuthState } from "../auth/auth-context";
 import { isAddress } from "../auth/auth-helpers";
 import { useProfileDispatch } from "../profile/profile-context";
 
 export default function Profile({ match }) {
   const addressFromRoute = match.params.address;
-  const { jwt } = useAuthState();
   const profileDispatch = useProfileDispatch();
 
   const [isAddressError, setIsAddressError] = useState(false);
@@ -20,15 +18,13 @@ export default function Profile({ match }) {
     if (!isAddress(addressFromRoute)) {
       setIsAddressError(true);
     } else {
-      if (typeof jwt === "string") {
-        doFetch(`/profile?address=${addressFromRoute}&jwt=${jwt}`);
-      }
+      doFetch(`/profile?address=${addressFromRoute}`);
     }
 
     if (data.length !== 0) {
       profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
     }
-  }, [jwt, addressFromRoute, doFetch, data, profileDispatch]);
+  }, [addressFromRoute, doFetch, data, profileDispatch]);
 
   return isAddressError ? (
     <p className="app__error-message">
