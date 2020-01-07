@@ -77,45 +77,6 @@ export const useTrusatGetApi = () => {
   return [{ data, isLoading, errorMessage }, setUrl];
 };
 
-// export const useTrusatPostApi = () => {
-//   const [data, setData] = useState([]);
-//   const [url, setUrl] = useState(``);
-//   const [postData, setPostData] = useState({});
-//   const [isLoading, setIsLoading] = useState(false);
-//   const [isError, setIsError] = useState(false);
-
-//   useEffect(() => {
-//     let didCancel = false;
-
-//     const fetchData = async () => {
-//       setIsError(false);
-//       setIsLoading(true);
-//       try {
-//         const result = await axios.post(`${API_ROOT}${url}`, postData);
-
-//         if (!didCancel) {
-//           setData(result.data);
-//         }
-//       } catch (error) {
-//         if (!didCancel) {
-//           setIsError(true);
-//         }
-//       }
-//       setIsLoading(false);
-//     };
-//     // Only fetch when url and postData comes through
-//     if (url && postData) {
-//       fetchData();
-//     }
-//     // Clean up function which prevents attempt to update state of unmounted component
-//     return () => {
-//       didCancel = true;
-//     };
-//   }, [url, postData]);
-
-//   return [{ data, isLoading, isError }, setUrl, setPostData];
-// };
-
 export const renderFlag = code => {
   if (!code) {
     return null;
