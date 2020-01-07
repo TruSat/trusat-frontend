@@ -83,7 +83,6 @@ export default function VerifyClaimAccount({ match }) {
         //authDispatch({ type: "SET_JWT", payload: response.data.jwt });
         const { address } = await jwt_decode(response.data.jwt);
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
-        // localStorage.setItem("trusat-jwt", response.data.jwt);
       } catch (error) {
         setErrorMessage(error.response.data);
       }
