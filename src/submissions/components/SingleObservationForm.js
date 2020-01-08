@@ -89,9 +89,13 @@ export default function SingleObservationForm() {
   useEffect(() => {
     const fetchObservationStations = async () => {
       try {
-        let result = await axios.post(`${API_ROOT}/getObservationStations`, {
-          withCredentials: true
-        });
+        let result = await axios.post(
+          `${API_ROOT}/getObservationStations`,
+          JSON.stringify({}),
+          {
+            withCredentials: true
+          }
+        );
         // sort stations by most observations
         const sortedStations = result.data.sort(
           (a, b) => b.observation_count - a.observation_count
@@ -101,8 +105,8 @@ export default function SingleObservationForm() {
         console.log(err);
       }
     };
-    // only do fetch if user is logged in and the form does not already have their stations
-    if (userAddress !== "") {
+    // only do fetch if form does not already have their stations
+    if (observationStations === ``) {
       fetchObservationStations();
     }
   }, [userAddress, observationStations]);
@@ -376,9 +380,13 @@ export default function SingleObservationForm() {
       !isDeclinationOrElevationError
     ) {
       try {
-        const result = await axios.post(`${API_ROOT}/submitObservation`, {
-          withCredentials: true
-        });
+        const result = await axios.post(
+          `${API_ROOT}/submitObservation`,
+          JSON.stringify({ multiple: IOD }),
+          {
+            withCredentials: true
+          }
+        );
 
         if (result.data.success !== 0) {
           setSuccessCount(result.data.success);
