@@ -9,9 +9,9 @@ export default function SignUp() {
   return (
     <div className="sign-up__wrapper">
       <h1 className="sign-up__header">
-        {userAddress ? "YOU'RE IN" : "SIGN UP"}
+        {userAddress !== "none" ? "YOU'RE IN" : "SIGN UP"}
       </h1>
-      {userAddress ? (
+      {userAddress !== "none" ? (
         <div className="login__success-wrapper">
           <NavLink className="app__nav-link" to={`/profile/${userAddress}`}>
             <span className="app__button--white">Go to Profile</span>
