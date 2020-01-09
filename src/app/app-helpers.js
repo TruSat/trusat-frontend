@@ -53,7 +53,6 @@ export const useTrusatGetApi = () => {
         const result = await axiosWithCache(`${API_ROOT}${url}`);
 
         if (!didCancel) {
-          console.log(result);
           setData(result.data);
         }
       } catch (error) {

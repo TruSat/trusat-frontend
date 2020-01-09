@@ -53,7 +53,6 @@ export default function AddStation() {
         }),
         { withCredentials: true }
       );
-      console.log(result);
       setSuccessfullyAddedStation(result.data.station_id);
     } catch (error) {
       setErrorMessage(error.response.data);

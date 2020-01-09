@@ -311,7 +311,6 @@ export default function SingleObservationForm() {
         const response = await axios(
           `${API_ROOT}/findObject?objectName=${objectSearchTerm}`
         );
-        console.log(response.data);
         setObjectSearchResults(response.data);
       } catch (err) {
         console.log(err);
