@@ -84,6 +84,14 @@ export default function SingleObservationForm() {
   const [errorMessages, setErrorMessages] = useState([]);
   // set to true if attempt to submit fails
   const [isError, setIsError] = useState(false);
+  const [
+    fetchObservationStationsError,
+    setFetchObservationStationsError
+  ] = useState(``);
+  const [
+    fetchObjectSearchResultsError,
+    setFetchObjectSearchResultsError
+  ] = useState(``);
 
   // gets observations stations for this user
   useEffect(() => {
@@ -101,8 +109,8 @@ export default function SingleObservationForm() {
           (a, b) => b.observation_count - a.observation_count
         );
         setObservationStations(sortedStations);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setFetchObservationStationsError(error.response.data);
       }
     };
     // only do fetch if form does not already have their stations
@@ -312,8 +320,8 @@ export default function SingleObservationForm() {
           `${API_ROOT}/findObject?objectName=${objectSearchTerm}`
         );
         setObjectSearchResults(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setFetchObjectSearchResultsError(error.response.data);
       }
     };
     // start searching when user has entered more than 2 chars
@@ -518,10 +526,16 @@ export default function SingleObservationForm() {
                 ) : (
                   renderObservationStations()
                 )}
+
                 <option className="app__link" value="0000">
                   Add new location
                 </option>
               </select>
+              {fetchObservationStationsError ? (
+                <p className="app__error-message">
+                  {fetchObservationStationsError}
+                </p>
+              ) : null}
 
               {isStationError ? (
                 <p className="app__error-message">
@@ -813,6 +827,11 @@ export default function SingleObservationForm() {
                 <p className="app__error-message">
                   Enter a valid Object or International Designation number then
                   select the Object you are submitting an observation for
+                </p>
+              ) : null}
+              {fetchObjectSearchResultsError ? (
+                <p className="app__error-message">
+                  {fetchObjectSearchResultsError}
                 </p>
               ) : null}
               {objectSearchResults.length !== 0 ? (
