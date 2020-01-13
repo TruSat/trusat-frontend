@@ -29,13 +29,11 @@ import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
-import PrivacyPolicy from "./views/PrivacyPolicy";
-import Terms from "./views/Terms";
+// import PrivacyPolicy from "./views/PrivacyPolicy";
+// import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
-import TestError from "./views/TestError";
-import TestCookie from "./views/TestCookie";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -140,8 +138,6 @@ export default function App() {
               return null;
             }}
           />
-          <Route path="/error" component={TestError} />
-          <Route path="/cookie" component={TestCookie} />
           <Route component={NoMatch} />
         </Switch>
 
