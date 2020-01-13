@@ -1,8 +1,6 @@
 import React from "react";
 
 export default function TablePaginator({ tableDataLength, range, setRange }) {
-  console.log(`range = `, range);
-
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
