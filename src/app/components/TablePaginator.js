@@ -1,6 +1,8 @@
 import React from "react";
 
 export default function TablePaginator({ tableDataLength, range, setRange }) {
+  console.log(`range = `, range);
+
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
@@ -31,7 +33,10 @@ export default function TablePaginator({ tableDataLength, range, setRange }) {
             }
           }}
         >
-          <p className="table-paginator__button-text">{`Next >`}</p>
+          {/* Don't show the "Next" arrow when at end of the range */}
+          {range.end >= tableDataLength ? null : (
+            <p className="table-paginator__button-text">{`Next >`}</p>
+          )}
         </button>
       </div>
     </div>
