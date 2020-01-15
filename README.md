@@ -26,6 +26,7 @@ We very much welcome contributions, especially those that tackle open issues. If
 
 ## Directory Structure
 
+```
 trusat-frontend
 ├── node_modules
 ├── public
@@ -193,3 +194,4 @@ trusat-frontend
 ├── package.json
 ├── README.md
 ├── yarn.lock
+```
