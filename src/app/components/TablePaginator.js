@@ -27,7 +27,7 @@ export default function TablePaginator({
           }}
         >
           <p className="table-paginator__button-text">
-            {dataStart === 0 && range.start === 0
+            {(dataStart === 0 || dataStart === undefined) && range.start === 0
               ? null
               : dataStart !== 0 && range.start === 0
               ? `<< Load Previous`
@@ -66,7 +66,9 @@ export default function TablePaginator({
         >
           {/* Change out "next" text when at end of the data currently being viewed */}
           {range.end >= tableDataLength ? (
-            <p className="table-paginator__button-text">{`Load Next 200 >>`}</p>
+            dataStart === undefined ? null : (
+              <p className="table-paginator__button-text">{`Load Next 200 >>`}</p>
+            )
           ) : (
             <p className="table-paginator__button-text">{`Next >`}</p>
           )}
