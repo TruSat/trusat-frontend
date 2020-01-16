@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import ObjectBadge from "../../app/components/ObjectBadge";
@@ -12,10 +12,12 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({ catalogFilter, range, setRange }) {
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+  // Incremented by 200 when user reaches end of the table data and "loads more"
+  const [dataStart, setDataStart] = useState(200);
 
   useEffect(() => {
-    doFetch(`/catalog/${catalogFilter}`);
-  }, [catalogFilter, doFetch]);
+    doFetch(`/catalog/${catalogFilter}/${dataStart}`);
+  }, [catalogFilter, dataStart, doFetch]);
 
   const renderCatalogRows = () => {
     const { start, end } = range;
@@ -126,6 +128,8 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           tableDataLength={data.length}
           range={range}
           setRange={setRange}
+          dataStart={dataStart}
+          setDataStart={setDataStart}
         />
       ) : null}
     </Fragment>
