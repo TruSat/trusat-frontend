@@ -27,7 +27,8 @@ function UserSettings({ history }) {
   const [newBio, setNewBio] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(``);
+  const [fetchProfileErrorMessage, setFetchProfileErrorMessage] = useState(``);
+  const [editProfileErrorMessage, setEditProfileErrorMessage] = useState(``);
 
   const [newStationData, setNewStationData] = useState([]);
   const [newStationNames, setNewStationNames] = useState({});
@@ -52,7 +53,7 @@ function UserSettings({ history }) {
 
   useEffect(() => {
     const doFetch = async () => {
-      setErrorMessage(``);
+      setFetchProfileErrorMessage(``);
       setIsLoading(true);
       // checks if auth is valid and hasn't expired
       checkAuthExpiry(authExpiry);
@@ -64,7 +65,7 @@ function UserSettings({ history }) {
 
         profileDispatch({ type: "SET_PROFILE_DATA", payload: result.data });
       } catch (error) {
-        setErrorMessage(``);
+        setFetchProfileErrorMessage(error.response.data);
       }
       setIsLoading(false);
     };
@@ -75,7 +76,7 @@ function UserSettings({ history }) {
   }, [userAddress, authExpiry, profileDispatch]);
 
   const submitEdit = async () => {
-    setErrorMessage(``);
+    setEditProfileErrorMessage(``);
     setIsLoading(true);
     // checks if auth is valid and hasn't expired
     checkAuthExpiry(authExpiry);
@@ -98,7 +99,7 @@ function UserSettings({ history }) {
       // refresh the page to pull the latest data just posted
       window.location.reload();
     } catch (error) {
-      setErrorMessage(error.response.data);
+      setEditProfileErrorMessage(error.response.data);
     }
   };
 
@@ -109,8 +110,10 @@ function UserSettings({ history }) {
     window.location.reload();
   };
 
-  return errorMessage ? (
-    <p className="app__error-message">Something went wrong... {errorMessage}</p>
+  return fetchProfileErrorMessage ? (
+    <p className="app__error-message">
+      Something went wrong... {fetchProfileErrorMessage}
+    </p>
   ) : isLoading ? (
     <Spinner />
   ) : userAddress === "none" ? (
@@ -124,6 +127,7 @@ function UserSettings({ history }) {
   ) : (
     <div className="account-settings__wrapper">
       <h1 className="account-settings__header">Account Settings</h1>
+
       <section className="profile-settings__wrapper">
         <ProfileSettings
           newUsername={newUsername}
@@ -148,6 +152,12 @@ function UserSettings({ history }) {
           submitEdit={submitEdit}
         />
       </section>
+
+      {editProfileErrorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {editProfileErrorMessage}
+        </p>
+      ) : null}
 
       <PrivacySettings />
 
