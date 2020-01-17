@@ -15,7 +15,7 @@ export default function MultipleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
-  const { address, authExpiry } = useAuthState();
+  const { userAddress, authExpiry } = useAuthState();
   const [isError, setIsError] = useState(false);
 
   const handleSubmit = async () => {
@@ -58,7 +58,7 @@ export default function MultipleObservationForm() {
 
   return (
     <Fragment>
-      {address === "" ? (
+      {userAddress === "none" ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -128,7 +128,7 @@ export default function MultipleObservationForm() {
                 </span>
               </NavLink>
 
-              {address === "" ? null : (
+              {userAddress === "none" ? null : (
                 <button
                   type="submit"
                   className="submit__submit-button"
@@ -138,7 +138,7 @@ export default function MultipleObservationForm() {
                 </button>
               )}
             </div>
-            {address === "none" ? null : (
+            {userAddress === "none" ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and
