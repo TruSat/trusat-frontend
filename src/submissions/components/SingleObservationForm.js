@@ -103,7 +103,7 @@ export default function SingleObservationForm() {
       }
     };
     // only do fetch if user is logged in and the form does not already have their stations
-    if (jwt !== "none") {
+    if (jwt !== "none" && observationStations.length === 0) {
       fetchObservationStations();
     }
   }, [jwt, observationStations]);
