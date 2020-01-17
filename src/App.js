@@ -40,6 +40,12 @@ export default function App() {
   const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   useEffect(() => {
+    // If JWT found in localstorage, delete and log user out as app will now use http only cookies for auth
+    if (localStorage.getItem("trusat-jwt")) {
+      localStorage.removeItem("trusat-jwt");
+      window.location.reload(); // refresh page.
+    }
+
     // get login credentials from local storage (address and expiry date for auth)
     const retrieveLoginCredentials = async () => {
       const { address, exp } = JSON.parse(
