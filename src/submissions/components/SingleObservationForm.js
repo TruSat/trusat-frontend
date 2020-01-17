@@ -113,8 +113,8 @@ export default function SingleObservationForm() {
         setFetchObservationStationsError(error.response.data);
       }
     };
-    // only do fetch if form does not already have their stations
-    if (observationStations === ``) {
+    // only do fetch if form does not already have their stations and user is logged in
+    if (userAddress !== "none" && observationStations === ``) {
       fetchObservationStations();
     }
   }, [userAddress, observationStations]);
