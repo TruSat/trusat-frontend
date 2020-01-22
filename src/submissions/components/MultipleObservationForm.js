@@ -31,7 +31,11 @@ export default function MultipleObservationForm() {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
         JSON.stringify({ multiple: pastedIODs }),
-        { withCredentials: true }
+        { withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
       );
       setPastedIODs("");
 

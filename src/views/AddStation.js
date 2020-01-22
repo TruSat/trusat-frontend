@@ -51,7 +51,11 @@ export default function AddStation() {
           elevation: elevation,
           notes: notes
         }),
-        { withCredentials: true }
+        { withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
       );
       setSuccessfullyAddedStation(result.data.station_id);
     } catch (error) {
