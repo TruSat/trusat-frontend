@@ -94,7 +94,11 @@ function UserSettings({ history }) {
           new_station_notes: newStationNotes,
           deleted_stations: deletedStations
         }),
-        { withCredentials: true }
+        { withCredentials: true,
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
       );
       // refresh the page to pull the latest data just posted
       window.location.reload();

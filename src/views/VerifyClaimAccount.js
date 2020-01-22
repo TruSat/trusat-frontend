@@ -77,7 +77,11 @@ export default function VerifyClaimAccount({ match }) {
             jwt: match.params.jwt,
             address: wallet.signingKey.address,
             secret: secret
-          })
+          }), {
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          }
         );
         setIsSuccess(true);
         const { address } = await jwt_decode(response.data.jwt);
