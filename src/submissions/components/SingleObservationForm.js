@@ -101,7 +101,10 @@ export default function SingleObservationForm() {
           `${API_ROOT}/getObservationStations`,
           JSON.stringify({}),
           {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+              'Content-Type': 'application/json',
+            }
           }
         );
         // sort stations by most observations
@@ -391,7 +394,10 @@ export default function SingleObservationForm() {
           `${API_ROOT}/submitObservation`,
           JSON.stringify({ multiple: IOD }),
           {
-            withCredentials: true
+            withCredentials: true,
+            headers: {
+              'Content-Type': 'application/json',
+            }
           }
         );
 

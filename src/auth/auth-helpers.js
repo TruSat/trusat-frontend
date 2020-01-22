@@ -44,7 +44,11 @@ export const retrieveNonce = async ({ email, address }) => {
         JSON.stringify({
           email: email,
           address: address
-        })
+        }), {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
       );
 
       return result.data.nonce;
@@ -104,7 +108,11 @@ export const signUp = async ({ email, address, signedMessage, secret }) => {
         address: address,
         signedMessage: signedMessage.signature,
         secret: secret
-      })
+      }), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
     );
     // returns true is successful - i.e. the user receives an email
     return result.data;
@@ -127,7 +135,11 @@ export const retrieveLoginCredentials = async ({
         address: address,
         signedMessage: signedMessage.signature
       }),
-      { withCredentials: true }
+      { withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
     );
 
     return response.data;
@@ -163,7 +175,11 @@ export const retrieveMetamaskLoginCredentials = async ({
         address: address,
         signedMessage: metamaskSignedMessage
       }),
-      { withCredentials: true }
+      { withCredentials: true,
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      }
     );
     return response.data;
   } catch (error) {

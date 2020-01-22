@@ -20,7 +20,11 @@ export default function ClaimAccount() {
         `${API_ROOT}/claimAccount`,
         JSON.stringify({
           email: email
-        })
+        }), {
+          headers: {
+            'Content-Type': 'application/json',
+          }
+        }
       );
 
       if (response.data.result === true && !errorMessage) {
