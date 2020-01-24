@@ -27,7 +27,11 @@ export default function UserSightingsTable() {
 
   const renderUserSightingsRows = () => {
     const { start, end } = range;
-    const rangeData = data.slice(start, end);
+    let rangeData = [];
+
+    if (data.user_sightings) {
+      rangeData = data.user_sightings.slice(start, end);
+    }
 
     return rangeData.map(obj => {
       return (
