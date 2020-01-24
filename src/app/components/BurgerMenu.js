@@ -25,7 +25,7 @@ export default function BurgerMenu() {
       onStateChange={state => handleStateChange(state)}
       closeMenu={closeMenu}
     >
-      {userAddress === "none" ? null : (
+      {userAddress === "none" ? (
         <NavLink
           onClick={() => closeMenu()}
           to={`/join`}
@@ -33,13 +33,13 @@ export default function BurgerMenu() {
         >
           Join
         </NavLink>
-      )}
+      ) : null}
 
-      {userAddress === "none" ? null : (
+      {userAddress === "none" ? (
         <NavLink onClick={() => closeMenu()} to={`/login`}>
           Log In
         </NavLink>
-      )}
+      ) : null}
       <br></br>
 
       <NavLink onClick={() => closeMenu()} to={`/`}>
