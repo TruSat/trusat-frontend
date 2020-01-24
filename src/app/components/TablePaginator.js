@@ -7,9 +7,12 @@ export default function TablePaginator({
   dataStart,
   setDataStart
 }) {
+  console.log(`dataStart = `, dataStart);
+
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
+        {/* Left nav button */}
         <button
           onClick={() => {
             if (range.start !== 0) {
@@ -32,6 +35,7 @@ export default function TablePaginator({
               : `< Previous`}
           </p>
         </button>
+        {/* Middle text to signify position of data being displayed */}
         <p className="table-paginator__middle-text">
           {dataStart
             ? `${dataStart + range.start} - ${
@@ -44,6 +48,7 @@ export default function TablePaginator({
           ${range.end > tableDataLength ? tableDataLength : range.end} of${" "}
           ${tableDataLength}`}
         </p>
+        {/* Right nav button */}
         <button
           onClick={() => {
             if (range.end < tableDataLength) {
