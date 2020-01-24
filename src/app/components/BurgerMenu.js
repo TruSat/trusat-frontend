@@ -25,7 +25,7 @@ export default function BurgerMenu() {
       onStateChange={state => handleStateChange(state)}
       closeMenu={closeMenu}
     >
-      {userAddress ? null : (
+      {userAddress === "none" ? null : (
         <NavLink
           onClick={() => closeMenu()}
           to={`/join`}
@@ -35,7 +35,7 @@ export default function BurgerMenu() {
         </NavLink>
       )}
 
-      {userAddress ? null : (
+      {userAddress === "none" ? null : (
         <NavLink onClick={() => closeMenu()} to={`/login`}>
           Log In
         </NavLink>
@@ -52,7 +52,7 @@ export default function BurgerMenu() {
         Catalog
       </NavLink>
 
-      {userAddress ? (
+      {userAddress !== "none" ? (
         <NavLink onClick={() => closeMenu()} to={`/profile/${userAddress}`}>
           <img className="app__nav__icon" src={IconUser} alt="icon"></img>
           My Profile
