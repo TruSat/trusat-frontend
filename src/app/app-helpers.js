@@ -23,7 +23,7 @@ export const deleteCookies = () => {
 };
 
 export const API_ROOT =
-  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:8080`;
+  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:5000`;
 
 export const axiosWithCache = axios.create({
   baseURL: "/",
@@ -58,7 +58,7 @@ export const useTrusatGetApi = () => {
       } catch (error) {
         if (!didCancel) {
           console.log(error);
-          setErrorMessage(error.response.data);
+          //setErrorMessage(error.response.data);
         }
       }
       setIsLoading(false);

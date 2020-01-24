@@ -103,12 +103,12 @@ export default function SingleObservationForm() {
           {
             withCredentials: true,
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json"
             }
           }
         );
         // sort stations by most observations
-        const sortedStations = result.data.sort(
+        const sortedStations = result.data.user_stations.sort(
           (a, b) => b.observation_count - a.observation_count
         );
         setObservationStations(sortedStations);
@@ -396,7 +396,7 @@ export default function SingleObservationForm() {
           {
             withCredentials: true,
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json"
             }
           }
         );
