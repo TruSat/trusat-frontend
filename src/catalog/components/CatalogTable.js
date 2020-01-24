@@ -10,10 +10,14 @@ import {
 } from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
-export default function CatalogTable({ catalogFilter, range, setRange }) {
+export default function CatalogTable({
+  catalogFilter,
+  range,
+  setRange,
+  dataStart,
+  setDataStart
+}) {
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
-  // Incremented by 200 when user reaches end of the table data and "loads more"
-  const [dataStart, setDataStart] = useState(0);
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}/${dataStart}`);
