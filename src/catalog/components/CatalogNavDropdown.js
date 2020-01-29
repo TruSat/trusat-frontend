@@ -10,7 +10,7 @@ const options = [
   { value: "all", label: "ALL" }
 ];
 
-function NavDropdown({ catalogFilter, history, setRange }) {
+function NavDropdown({ catalogFilter, history, setRange, setDataStart }) {
   const [selectedOption, setSelectedOption] = useState("");
 
   useEffect(() => {
@@ -21,6 +21,7 @@ function NavDropdown({ catalogFilter, history, setRange }) {
 
   const handleChange = newSelectedOption => {
     setRange({ start: 0, end: 10 });
+    setDataStart(0);
 
     history.push(`/catalog/${newSelectedOption.value}`);
   };
@@ -42,7 +43,7 @@ function NavDropdown({ catalogFilter, history, setRange }) {
     }),
 
     singleValue: (provided, state) => ({
-      color: "white",
+      color: "white"
     }),
 
     option: (provided, state) => ({

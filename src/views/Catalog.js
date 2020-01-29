@@ -10,6 +10,7 @@ import { NavLink } from "react-router-dom";
 
 function Catalog({ match }) {
   const catalogFilter = match.params.catalogFilter;
+  const [dataStart, setDataStart] = useState(0);
   // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });
 
@@ -30,11 +31,19 @@ function Catalog({ match }) {
         </div>
       </div>
 
-      <CatalogNavDropdown catalogFilter={catalogFilter} setRange={setRange} />
+      <CatalogNavDropdown
+        catalogFilter={catalogFilter}
+        setRange={setRange}
+        setDataStart={setDataStart}
+      />
 
       <section className="catalog__nav-bar-how-to-wrapper">
         <div>
-          <CatalogNavBar catalogFilter={catalogFilter} setRange={setRange} />
+          <CatalogNavBar
+            catalogFilter={catalogFilter}
+            setRange={setRange}
+            setDataStart={setDataStart}
+          />
           <FilterDescription catalogFilter={catalogFilter} />
         </div>
         {/* Shown on desktop */}
@@ -47,6 +56,8 @@ function Catalog({ match }) {
         catalogFilter={catalogFilter}
         range={range}
         setRange={setRange}
+        dataStart={dataStart}
+        setDataStart={setDataStart}
       />
       {/* Shown on mobile */}
       <section className="app__show-on-mobile">

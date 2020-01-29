@@ -6,7 +6,7 @@ import IconRocket from "../../assets/icon-rocket.svg";
 import IconLock from "../../assets/icon-lock.svg";
 import IconTrash from "../../assets/icon-trash.svg";
 
-function CatalogNavBar({ catalogFilter, setRange, history }) {
+function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   return (
     <div className="catalog-nav-bar__wrapper">
       <div
@@ -17,6 +17,7 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 10 });
+          setDataStart(0);
           ReactGA.event({
             category: "Catalog",
             action: "User chose a filter",
@@ -37,6 +38,7 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 10 });
+          setDataStart(0);
           ReactGA.event({
             category: "Catalog",
             action: "User chose a filter",
@@ -57,6 +59,7 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 10 });
+          setDataStart(0);
           ReactGA.event({
             category: "Catalog",
             action: "User chose a filter",
@@ -77,6 +80,7 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 10 });
+          setDataStart(0);
           ReactGA.event({
             category: "Catalog",
             action: "User chose a filter",
@@ -97,6 +101,7 @@ function CatalogNavBar({ catalogFilter, setRange, history }) {
         }
         onClick={() => {
           setRange({ start: 0, end: 10 });
+          setDataStart(0);
           ReactGA.event({
             category: "Catalog",
             action: "User chose a filter",

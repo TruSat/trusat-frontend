@@ -1,9 +1,18 @@
 import React from "react";
 
-export default function TablePaginator({ tableDataLength, range, setRange }) {
+export default function TablePaginator({
+  tableDataLength,
+  range,
+  setRange,
+  dataStart,
+  setDataStart
+}) {
+  console.log(`dataStart = `, dataStart);
+
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
+        {/* Left nav button */}
         <button
           onClick={() => {
             if (range.start !== 0) {
@@ -12,15 +21,34 @@ export default function TablePaginator({ tableDataLength, range, setRange }) {
                 end: currentRange.end - 10
               }));
             }
+
+            if (setDataStart && dataStart !== 0 && range.start === 0) {
+              setDataStart(dataStart - 200);
+            }
           }}
         >
-          <p className="table-paginator__button-text">{`< Previous`}</p>
+          <p className="table-paginator__button-text">
+            {(dataStart === 0 || dataStart === undefined) && range.start === 0
+              ? null
+              : dataStart !== 0 && range.start === 0
+              ? `<< Load Previous`
+              : `< Previous`}
+          </p>
         </button>
+        {/* Middle text to signify position of data being displayed */}
         <p className="table-paginator__middle-text">
-          {range.start + 1}-
-          {range.end > tableDataLength ? tableDataLength : range.end} of{" "}
-          {tableDataLength}
+          {dataStart
+            ? `${dataStart + range.start} - ${
+                range.end > tableDataLength
+                  ? tableDataLength
+                  : `${dataStart + range.end}`
+              } of${" "}
+          ${dataStart + tableDataLength}`
+            : `${range.start + 1}-
+          ${range.end > tableDataLength ? tableDataLength : range.end} of${" "}
+          ${tableDataLength}`}
         </p>
+        {/* Right nav button */}
         <button
           onClick={() => {
             if (range.end < tableDataLength) {
@@ -29,10 +57,22 @@ export default function TablePaginator({ tableDataLength, range, setRange }) {
                 end: currentRange.end + 10
               }));
             }
+
+            if (setDataStart && range.end >= tableDataLength) {
+              setDataStart(dataStart + 200);
+              setRange({
+                start: 0,
+                end: 10
+              });
+            }
           }}
         >
-          {/* Don't show the "Next" arrow when at end of the range */}
-          {range.end >= tableDataLength ? null : (
+          {/* Change out "next" text when at end of the data currently being viewed */}
+          {range.end >= tableDataLength ? (
+            dataStart === undefined ? null : (
+              <p className="table-paginator__button-text">{`Load Next 200 >>`}</p>
+            )
+          ) : (
             <p className="table-paginator__button-text">{`Next >`}</p>
           )}
         </button>
