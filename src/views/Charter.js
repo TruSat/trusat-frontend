@@ -205,6 +205,20 @@ export default function Charter() {
           B. This Charter may be amended by a consensus of the TruSat Partners.
         </p>
       </section>
+
+      <section className="static-page__section">
+        <p className="static-page__copy">
+          View the signed copy{" "}
+          <a
+            className="app__link"
+            href="https://trusat-assets.s3.amazonaws.com/TruSat+Charter+Epoch+1+Signed.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            here
+          </a>
+        </p>
+      </section>
     </div>
   );
 }

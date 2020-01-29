@@ -1,6 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import jwt_decode from "jwt-decode";
-import { checkJwt } from "./auth/auth-helpers";
+import { checkAuthExpiry } from "./auth/auth-helpers";
 import { setCookies } from "./app/app-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
@@ -30,8 +29,8 @@ import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
-import PrivacyPolicy from "./views/PrivacyPolicy";
-import Terms from "./views/Terms";
+// import PrivacyPolicy from "./views/PrivacyPolicy";
+// import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
@@ -41,18 +40,27 @@ export default function App() {
   const [isBannerOpen, setIsBannerOpen] = useState(true);
 
   useEffect(() => {
-    // get jwt from local storage which is decoded to return the user ethereum address
-    const retrieveJwtAndGetUserData = async () => {
-      const jwt = localStorage.getItem("trusat-jwt");
-      // checks if jwt is valid and hasn't expired
-      checkJwt(jwt);
+    // If JWT found in localstorage, delete and log user out as app will now use http only cookies for auth
+    if (localStorage.getItem("trusat-jwt")) {
+      localStorage.removeItem("trusat-jwt");
+      window.location.reload(); // refresh page.
+    }
 
-      const { address } = await jwt_decode(jwt);
+    // get login credentials from local storage (address and expiry date for auth)
+    const retrieveLoginCredentials = async () => {
+      const { address, exp } = JSON.parse(
+        localStorage.getItem("trusat-login-credentials")
+      );
+      // checks if expiry date on auth is valid (hasn't expired)
+      checkAuthExpiry(exp);
 
-      authDispatch({ type: "SET_JWT", payload: jwt });
       authDispatch({
         type: "SET_USER_ADDRESS",
         payload: address
+      });
+      authDispatch({
+        type: "SET_AUTH_EXPIRY",
+        payload: exp
       });
     };
 
@@ -69,8 +77,8 @@ export default function App() {
       retrieveCookieChoice();
     }
 
-    if (localStorage.getItem("trusat-jwt")) {
-      retrieveJwtAndGetUserData();
+    if (localStorage.getItem("trusat-login-credentials")) {
+      retrieveLoginCredentials();
     }
   }, [authDispatch]);
 
@@ -109,7 +117,7 @@ export default function App() {
           <Route exact path="/claim" component={ClaimAccount} />
           <Route path="/claim/:jwt" component={VerifyClaimAccount} />
           <Route path="/whitepaper" component={Whitepaper} />
-          <Route path="/faq" component={FAQ}></Route>
+          <Route path="/faq" component={FAQ} />
           <Route path="/charter" component={Charter} />
           {/* <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} /> */}

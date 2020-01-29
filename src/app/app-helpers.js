@@ -23,7 +23,7 @@ export const deleteCookies = () => {
 };
 
 export const API_ROOT =
-  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:8080`;
+  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:5000`;
 
 export const axiosWithCache = axios.create({
   baseURL: "/",
@@ -32,20 +32,21 @@ export const axiosWithCache = axios.create({
   adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
     enabledByDefault: true,
     cacheFlag: `useCache`
-  })
+  }),
+  withCredentials: true
 });
 
 export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
   const [url, setUrl] = useState(``);
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
 
   useEffect(() => {
     let didCancel = false;
 
     const fetchData = async () => {
-      setIsError(false);
+      setErrorMessage(``);
       setIsLoading(true);
 
       try {
@@ -55,9 +56,9 @@ export const useTrusatGetApi = () => {
           setData(result.data);
         }
       } catch (error) {
-        console.log(error);
         if (!didCancel) {
-          setIsError(true);
+          console.log(error);
+          //setErrorMessage(error.response.data);
         }
       }
       setIsLoading(false);
@@ -72,46 +73,7 @@ export const useTrusatGetApi = () => {
     };
   }, [url]);
 
-  return [{ data, isLoading, isError }, setUrl];
-};
-
-export const useTrusatPostApi = () => {
-  const [data, setData] = useState([]);
-  const [url, setUrl] = useState(``);
-  const [postData, setPostData] = useState({});
-  const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
-
-  useEffect(() => {
-    let didCancel = false;
-
-    const fetchData = async () => {
-      setIsError(false);
-      setIsLoading(true);
-      try {
-        const result = await axios.post(`${API_ROOT}${url}`, postData);
-
-        if (!didCancel) {
-          setData(result.data);
-        }
-      } catch (error) {
-        if (!didCancel) {
-          setIsError(true);
-        }
-      }
-      setIsLoading(false);
-    };
-    // Only fetch when url and postData comes through
-    if (url && postData) {
-      fetchData();
-    }
-    // Clean up function which prevents attempt to update state of unmounted component
-    return () => {
-      didCancel = true;
-    };
-  }, [url, postData]);
-
-  return [{ data, isLoading, isError }, setUrl, setPostData];
+  return [{ data, isLoading, errorMessage }, setUrl];
 };
 
 export const renderFlag = code => {

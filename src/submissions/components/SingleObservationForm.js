@@ -3,7 +3,7 @@ import { NavLink, Redirect } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "../../auth/auth-context";
 import Spinner from "../../app/components/Spinner";
-import { checkJwt } from "../../auth/auth-helpers";
+import { checkAuthExpiry } from "../../auth/auth-helpers";
 import {
   API_ROOT,
   QuestionMarkToolTip,
@@ -76,7 +76,7 @@ export default function SingleObservationForm() {
     setIsDeclinationOrElevationError
   ] = useState(false);
   // SUBMISSION UI STATES
-  const { jwt } = useAuthState(); // used in handleSubmit function
+  const { userAddress, authExpiry } = useAuthState(); // used in handleSubmit function
   const [showSubmitButton, setShowSubmitButton] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   // server provides success and error messages upon submissions which are displayed in UI
@@ -84,6 +84,14 @@ export default function SingleObservationForm() {
   const [errorMessages, setErrorMessages] = useState([]);
   // set to true if attempt to submit fails
   const [isError, setIsError] = useState(false);
+  const [
+    fetchObservationStationsError,
+    setFetchObservationStationsError
+  ] = useState(``);
+  const [
+    fetchObjectSearchResultsError,
+    setFetchObjectSearchResultsError
+  ] = useState(``);
 
   // gets observations stations for this user
   useEffect(() => {
@@ -91,22 +99,28 @@ export default function SingleObservationForm() {
       try {
         let result = await axios.post(
           `${API_ROOT}/getObservationStations`,
-          JSON.stringify({ jwt: jwt })
+          JSON.stringify({}),
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
         );
         // sort stations by most observations
-        const sortedStations = result.data.sort(
+        const sortedStations = result.data.user_stations.sort(
           (a, b) => b.observation_count - a.observation_count
         );
         setObservationStations(sortedStations);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setFetchObservationStationsError(error.response.data);
       }
     };
-    // only do fetch if user is logged in and the form does not already have their stations
-    if (jwt !== "none" && observationStations.length === 0) {
+    // only do fetch if form does not already have their stations and user is logged in
+    if (userAddress !== "none" && observationStations === ``) {
       fetchObservationStations();
     }
-  }, [jwt, observationStations]);
+  }, [userAddress, observationStations]);
 
   // Builds the IOD string
   useEffect(() => {
@@ -308,10 +322,9 @@ export default function SingleObservationForm() {
         const response = await axios(
           `${API_ROOT}/findObject?objectName=${objectSearchTerm}`
         );
-        console.log(response.data);
         setObjectSearchResults(response.data);
-      } catch (err) {
-        console.log(err);
+      } catch (error) {
+        setFetchObjectSearchResultsError(error.response.data);
       }
     };
     // start searching when user has entered more than 2 chars
@@ -364,8 +377,8 @@ export default function SingleObservationForm() {
     setIsError(false);
     setSuccessCount(null);
     setErrorMessages([]);
-    // check if jwt is valid and hasn't expired before submission
-    await checkJwt(jwt);
+    // check if authExpiry is valid and hasn't expired before submission
+    await checkAuthExpiry(authExpiry);
     // Only submit IOD if no validation errors found
     if (
       !isStationError &&
@@ -379,7 +392,13 @@ export default function SingleObservationForm() {
       try {
         const result = await axios.post(
           `${API_ROOT}/submitObservation`,
-          JSON.stringify({ jwt: jwt, multiple: IOD })
+          JSON.stringify({ multiple: IOD }),
+          {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json"
+            }
+          }
         );
 
         if (result.data.success !== 0) {
@@ -475,7 +494,7 @@ export default function SingleObservationForm() {
 
   return (
     <Fragment>
-      {jwt === "none" ? (
+      {userAddress === "none" ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -513,10 +532,16 @@ export default function SingleObservationForm() {
                 ) : (
                   renderObservationStations()
                 )}
+
                 <option className="app__link" value="0000">
                   Add new location
                 </option>
               </select>
+              {fetchObservationStationsError ? (
+                <p className="app__error-message">
+                  {fetchObservationStationsError}
+                </p>
+              ) : null}
 
               {isStationError ? (
                 <p className="app__error-message">
@@ -808,6 +833,11 @@ export default function SingleObservationForm() {
                 <p className="app__error-message">
                   Enter a valid Object or International Designation number then
                   select the Object you are submitting an observation for
+                </p>
+              ) : null}
+              {fetchObjectSearchResultsError ? (
+                <p className="app__error-message">
+                  {fetchObjectSearchResultsError}
                 </p>
               ) : null}
               {objectSearchResults.length !== 0 ? (
@@ -1314,7 +1344,7 @@ export default function SingleObservationForm() {
                 </span>
               </NavLink>
 
-              {jwt === "none" ? null : (
+              {userAddress === "none" ? null : (
                 <button
                   className="submit__submit-button"
                   style={
@@ -1325,7 +1355,7 @@ export default function SingleObservationForm() {
                 </button>
               )}
             </div>
-            {jwt === "none" ? null : (
+            {userAddress === "none" ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and

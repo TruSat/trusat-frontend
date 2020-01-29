@@ -12,22 +12,26 @@ import TablePaginator from "../../app/components/TablePaginator";
 import Spinner from "../../app/components/Spinner";
 
 export default function UserSightingsTable() {
-  const { jwt, userAddress } = useAuthState();
+  const { userAddress } = useAuthState();
   const { noradNumber, objectOrigin } = useObjectsState();
   const [range, setRange] = useState({ start: 0, end: 10 });
   const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    if ((noradNumber, jwt, userAddress)) {
+    if ((noradNumber, userAddress)) {
       doFetch(
-        `/object/userSightings?jwt=${jwt}&address=${userAddress}&norad_number=${noradNumber}`
+        `/object/userSightings?address=${userAddress}&norad_number=${noradNumber}`
       );
     }
-  }, [jwt, userAddress, noradNumber, doFetch]);
+  }, [userAddress, noradNumber, doFetch]);
 
   const renderUserSightingsRows = () => {
     const { start, end } = range;
-    const rangeData = data.slice(start, end);
+    let rangeData = [];
+
+    if (data.user_sightings) {
+      rangeData = data.user_sightings.slice(start, end);
+    }
 
     return rangeData.map(obj => {
       return (

@@ -5,7 +5,7 @@ import ReactGA from "react-ga";
 
 export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   const [isLoading, setIsLoading] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(``);
   const [textFile, setTextFile] = useState(null);
 
   useEffect(() => {
@@ -13,7 +13,7 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
   }, [catalogFilter]);
 
   const fetchData = async () => {
-    setIsError(false);
+    setErrorMessage(``);
     setIsLoading(true);
 
     try {
@@ -32,13 +32,13 @@ export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
       }
       setTextFile(window.URL.createObjectURL(dataToDownload));
     } catch (error) {
-      setIsError(true);
+      setErrorMessage(error.response.data);
     }
     setIsLoading(false);
   };
 
-  return isError ? (
-    <p className="app__error-message">Something went wrong ...</p>
+  return errorMessage ? (
+    <p className="app__error-message">Something went wrong... {errorMessage}</p>
   ) : isLoading ? (
     <Spinner />
   ) : (

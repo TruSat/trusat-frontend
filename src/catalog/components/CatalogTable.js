@@ -1,4 +1,4 @@
-import React, { useEffect, Fragment } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import Spinner from "../../app/components/Spinner";
 import ObjectBadge from "../../app/components/ObjectBadge";
@@ -10,12 +10,18 @@ import {
 } from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
-export default function CatalogTable({ catalogFilter, range, setRange }) {
-  const [{ data, isLoading, isError }, doFetch] = useTrusatGetApi();
+export default function CatalogTable({
+  catalogFilter,
+  range,
+  setRange,
+  dataStart,
+  setDataStart
+}) {
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    doFetch(`/catalog/${catalogFilter}`);
-  }, [catalogFilter, doFetch]);
+    doFetch(`/catalog/${catalogFilter}/${dataStart}`);
+  }, [catalogFilter, dataStart, doFetch]);
 
   const renderCatalogRows = () => {
     const { start, end } = range;
@@ -35,7 +41,7 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
             <div className="catalog-table__object-data-wrapper">
               {catalogFilter === "priorities" ? (
                 <p className="catalog-table__object-data-wrapper--priority-rank">
-                  {data.indexOf(obj) + 1}
+                  {dataStart + data.indexOf(obj) + 1}
                   &nbsp;
                 </p>
               ) : null}
@@ -93,8 +99,10 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
     <Spinner />
   ) : (
     <Fragment>
-      {isError ? (
-        <p className="app__error-message">Something went wrong ...</p>
+      {errorMessage ? (
+        <p className="app__error-message">
+          Something went wrong... {errorMessage}
+        </p>
       ) : (
         <table className="table">
           <thead className="table__header">
@@ -124,6 +132,8 @@ export default function CatalogTable({ catalogFilter, range, setRange }) {
           tableDataLength={data.length}
           range={range}
           setRange={setRange}
+          dataStart={dataStart}
+          setDataStart={setDataStart}
         />
       ) : null}
     </Fragment>
