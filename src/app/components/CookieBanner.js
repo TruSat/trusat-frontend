@@ -1,5 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { setCookies, deleteCookies } from "../app-helpers";
 import Button from "../../app/components/Button";
 
@@ -30,17 +30,9 @@ export default function CookieBanner({ isBannerOpen, setIsBannerOpen }) {
           text="No Thanks"
         ></Button>
       </div>
-      {/* <NavLink className="app__nav-link app__hide-on-mobile" to="/policy">
+      <NavLink className="app__nav-link " to="/policy">
         <p className="cookie-banner__link">Read our privacy policy</p>
-      </NavLink> */}
-      <a
-        className="cookie-banner__link app__hide-on-desktop"
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://trusat-assets.s3.amazonaws.com/Privacy+Policy+for+TruSat.org+_12-19-19.pdf"
-      >
-        Read our privacy policy
-      </a>
+      </NavLink>
     </div>
   ) : null;
 }
