@@ -111,21 +111,19 @@ function NavBar(props) {
                 : "nav-bar__link-wrapper--lowlight"
             }
           >
-            <a
+            <NavLink
               className={
-                path === `/whitepaper`
+                path === "/whitepaper"
                   ? "app__nav-link nav-bar__link--highlight"
                   : path === "/"
                   ? "app__nav-link nav-bar__link--lowlight--welcome"
                   : "app__nav-link nav-bar__link--lowlight"
               }
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
+              to="/whitepaper"
             >
               <img className="app__nav__icon" src={IconLight} alt="icon"></img>
-              WHITE PAPER
-            </a>
+              WHITEPAPER
+            </NavLink>
           </div>
         )}
 
