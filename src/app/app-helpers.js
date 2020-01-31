@@ -23,7 +23,7 @@ export const deleteCookies = () => {
 };
 
 export const API_ROOT =
-  process.env.REACT_APP_API_ROOT || `https://api.consensys.space:5000`;
+  process.env.REACT_APP_API_ROOT || `https://devvymcdevface.trusat.org`;
 
 export const axiosWithCache = axios.create({
   baseURL: "/",
