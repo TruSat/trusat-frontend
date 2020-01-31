@@ -1,5 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import SocialIcons from "../../app/components/SocialIcons";
 
 export default function Footer() {
@@ -7,34 +7,13 @@ export default function Footer() {
     <div className="footer">
       <div className="footer__content">
         <div className="footer__text-links-wrapper">
-          {/* <NavLink
-            className="app__nav-link footer__text-link app__hide-on-mobile"
-            to="/terms"
-          >
+          <NavLink className="app__nav-link footer__text-link " to="/terms">
             terms
-          </NavLink> */}
-          <a
-            className="app__link footer__text-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://trusat-assets.s3.amazonaws.com/trusat_terms_of_use.pdf"
-          >
-            terms
-          </a>
-          {/* <NavLink
-            className="app__nav-link footer__text-link app__hide-on-mobile"
-            to="/privacy"
-          >
+          </NavLink>
+
+          <NavLink className="app__nav-link footer__text-link " to="/privacy">
             privacy
-          </NavLink> */}
-          <a
-            className="app__link footer__text-link"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://trusat-assets.s3.amazonaws.com/Privacy+Policy+for+TruSat.org+_12-19-19.pdf"
-          >
-            privacy
-          </a>
+          </NavLink>
         </div>
         <SocialIcons />
       </div>

@@ -103,19 +103,11 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <NavLink
-                className="app__nav-link static-page__link static-page__link--highlight app__hide-on-mobile app__hide-on-tablet"
+                className="app__nav-link static-page__link static-page__link--highlight"
                 to="/whitepaper"
               >
                 The TruSat white paper
               </NavLink>
-              <a
-                className="static-page__link static-page__link--highlight app__show-on-tablet app__hide-on-desktop"
-                target="_blank"
-                rel="noopener noreferrer"
-                href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
-              >
-                The TruSat white paper
-              </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">

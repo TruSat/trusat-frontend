@@ -29,8 +29,8 @@ import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
 import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
-// import PrivacyPolicy from "./views/PrivacyPolicy";
-// import Terms from "./views/Terms";
+import PrivacyPolicy from "./views/PrivacyPolicy";
+import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
@@ -119,8 +119,8 @@ export default function App() {
           <Route path="/whitepaper" component={Whitepaper} />
           <Route path="/faq" component={FAQ} />
           <Route path="/charter" component={Charter} />
-          {/* <Route path="/privacy" component={PrivacyPolicy} />
-          <Route path="/terms" component={Terms} /> */}
+          <Route path="/privacy" component={PrivacyPolicy} />
+          <Route path="/terms" component={Terms} />
           {/* User is sent to this route when they complete a mail chimp sign up */}
           <Route
             path="/subscription-confirmed"

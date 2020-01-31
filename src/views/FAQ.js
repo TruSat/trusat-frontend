@@ -436,21 +436,9 @@ export default function FAQ() {
       <section className="static-page__section">
         <p className="static-page__copy">
           Curious for a technical deep dive into how TruSat works? Check out the{" "}
-          <NavLink
-            className="app__nav-link static-page__link app__hide-on-mobile app__hide-on-tablet"
-            to="/whitepaper"
-          >
+          <NavLink className="app__nav-link static-page__link" to="/whitepaper">
             TruSat white paper
           </NavLink>
-          <a
-            className="static-page__link app__show-on-tablet app__hide-on-desktop"
-            target="_blank"
-            and
-            rel="noopener noreferrer"
-            href="https://trusat-assets.s3.amazonaws.com/TruSat+White+Paper_v3.0.pdf"
-          >
-            The TruSat white paper.
-          </a>
         </p>
         <p className="static-page__copy">
           Have any other questions? Reach out to us at{" "}
