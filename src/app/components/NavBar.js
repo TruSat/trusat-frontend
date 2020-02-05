@@ -174,6 +174,30 @@ function NavBar(props) {
             HOW TO
           </NavLink>
         </div>
+
+        <div
+          className={
+            path === "/prize"
+              ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
+              : "nav-bar__link-wrapper--lowlight"
+          }
+        >
+          <NavLink
+            className={
+              path === "/prize"
+                ? "app__nav-link nav-bar__link--highlight"
+                : path === "/"
+                ? "app__nav-link nav-bar__link--lowlight--welcome"
+                : "app__nav-link nav-bar__link--lowlight"
+            }
+            to="/prize"
+          >
+            <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
+            PRIZE
+          </NavLink>
+        </div>
       </div>
 
       <div>

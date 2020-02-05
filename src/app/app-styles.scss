@@ -1265,6 +1265,7 @@ STATIC PAGE VIEW
 - /about
 - /howto
 - /charter
+- /prize
 ---------- */
 .static-page__wrapper {
   background: $primary-theme-color;
@@ -1569,6 +1570,37 @@ FAQ view
   font-family: $main-font;
   line-height: 27px;
   margin-bottom: 2em;
+}
+
+/* ----------
+PRIZE VIEW
+---------- */
+.prize {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3em 0;
+}
+
+.prize__section {
+  border: 1px solid red;
+  margin-bottom: 4em;
+  width: 100%;
+}
+
+.prize-problem-section__problem-wrapper {
+  border: 1px solid yellow;
+  display: flex;
+  align-items: center;
+  margin-bottom: 2em;
+}
+
+.prize-problem-section__problem-image {
+  height: auto;
+  margin-right: 1em;
+  width: 100px;
 }
 
 /* ----------

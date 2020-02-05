@@ -68,6 +68,11 @@ export default function BurgerMenu() {
         <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
         How To
       </NavLink>
+
+      <NavLink onClick={() => closeMenu()} to={`/prize`}>
+        <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
+        PRIZE
+      </NavLink>
     </Menu>
   );
 }

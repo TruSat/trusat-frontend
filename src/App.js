@@ -34,6 +34,7 @@ import Terms from "./views/Terms";
 import SubscriptionConfirmed from "./views/SubscriptionConfirmed";
 import TestPilotConfirmed from "./views/TestPilotConfirmed";
 import ChatIcon from "./app/components/ChatIcon";
+import Prize from "./views/Prize";
 
 export default function App() {
   const authDispatch = useAuthDispatch();
@@ -119,6 +120,7 @@ export default function App() {
           <Route path="/whitepaper" component={Whitepaper} />
           <Route path="/faq" component={FAQ} />
           <Route path="/charter" component={Charter} />
+          <Route path="/prize" component={Prize} />
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
           {/* User is sent to this route when they complete a mail chimp sign up */}
