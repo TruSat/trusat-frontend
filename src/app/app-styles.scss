@@ -1585,13 +1585,82 @@ PRIZE VIEW
 }
 
 .prize__section {
-  border: 1px solid red;
   margin-bottom: 4em;
   width: 100%;
 }
 
+.prize__section--centered {
+  text-align: center;
+}
+
+// mobile text
+.prize__header {
+  font-size: 32px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+
+.prize__copy-large {
+  font-size: 21px;
+  line-height: 1.2em;
+  margin-bottom: 1em;
+}
+
+.prize__copy-reg {
+  margin-bottom: 1em;
+  line-height: 1.2em;
+}
+
+// desktop text
+@media (min-width: 600px) {
+  .prize__header {
+    font-size: 36px;
+  }
+
+  .prize__copy-large {
+    font-size: 21px;
+  }
+
+  .prize__copy-reg {
+    font-size: 18px;
+  }
+}
+
+.prize-section__step-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.prize-section__step {
+  border-left: 1px solid white;
+  max-width: 200px;
+  padding: 1em;
+}
+
+.prize-section__step-header {
+  margin-bottom: 0.5em;
+  line-height: 1.2em;
+  font-weight: bold;
+}
+
+.prize-judging-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.prize-judging-section__wrapper {
+  width: 45%;
+}
+
+.prize__link {
+  color: $primary-text-color;
+  display: block;
+  margin-top: 1em;
+  text-decoration: none;
+}
+
 .prize-problem-section__problem-wrapper {
-  border: 1px solid yellow;
   display: flex;
   align-items: center;
   margin-bottom: 2em;
