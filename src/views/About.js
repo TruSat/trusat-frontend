@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
 import MailingListForm from "../app/components/MailingListForm";
+import Advisors from "../app/components/Advisors";
 
 export default function About() {
   return (
@@ -149,6 +150,7 @@ export default function About() {
           </div>
         </div>
         <Partners />
+        <Advisors />
         <div className="about__block-wrapper">
           <h2 className="static-page__sub-header about__sub-header--top">
             FOLLOW TRUSAT
