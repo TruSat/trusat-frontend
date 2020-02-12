@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
+import Advisors from "../app/components/Advisors";
 import RoundedButton from "../app/components/RoundedButton";
 import MailingListForm from "../app/components/MailingListForm";
 import ReactGA from "react-ga";
@@ -214,6 +215,7 @@ export default function Home() {
         {/* SECTION/GRADIENT THREE */}
         <section className="welcome__section--three">
           <Partners />
+          <Advisors />
         </section>
       </div>
       <div className="welcome__bottom-wrapper">
