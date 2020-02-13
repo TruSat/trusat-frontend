@@ -136,19 +136,15 @@ function NavBar(props) {
               : "nav-bar__link-wrapper--lowlight"
           }
         >
-          <NavLink
-            className={
-              path === "/about"
-                ? "app__nav-link nav-bar__link--highlight"
-                : path === "/"
-                ? "app__nav-link nav-bar__link--lowlight--welcome"
-                : "app__nav-link nav-bar__link--lowlight"
-            }
-            to="/about"
+          <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
+          <a
+            className="app__nav-link nav-bar__link--lowlight--welcome"
+            href="https://learn.trusat.org/"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
             ABOUT
-          </NavLink>
+          </a>
         </div>
 
         <div
@@ -160,19 +156,15 @@ function NavBar(props) {
               : "nav-bar__link-wrapper--lowlight"
           }
         >
-          <NavLink
-            className={
-              path === "/how"
-                ? "app__nav-link nav-bar__link--highlight"
-                : path === "/"
-                ? "app__nav-link nav-bar__link--lowlight--welcome"
-                : "app__nav-link nav-bar__link--lowlight"
-            }
-            to="/how"
+          <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
+          <a
+            className="app__nav-link nav-bar__link--lowlight--welcome"
+            href="https://learn.trusat.org/docs/high-level-guide"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
             HOW TO
-          </NavLink>
+          </a>
         </div>
       </div>
 
