@@ -143,9 +143,11 @@ export default function Home() {
                 record of orbital positions. This allows the world to measure
                 satellite behavior against international standards of
                 sustainability.{" "}
-                <NavLink
+                <a
                   className="app__nav-link app__link"
-                  to="/about"
+                  href="https://learn.trusat.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   onClick={() => {
                     ReactGA.event({
                       category: "Internal Link",
@@ -155,7 +157,7 @@ export default function Home() {
                   }}
                 >
                   Learn more
-                </NavLink>
+                </a>
               </p>
             </div>
             <div className="welcome__illustration-wrapper--right">

@@ -19,9 +19,14 @@ export default function HowToParticipate({ catalogFilter }) {
           SeeSat
         </a>
         . Learn how to see sats{" "}
-        <NavLink className="app__nav-link catalog__link--lowlight" to="/how">
+        <a
+          className="app__nav-link catalog__link--lowlight"
+          href="https://learn.trusat.org/docs/high-level-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           here
-        </NavLink>
+        </a>
         .
       </p>
 

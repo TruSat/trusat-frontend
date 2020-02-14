@@ -59,15 +59,29 @@ export default function BurgerMenu() {
         </NavLink>
       ) : null}
 
-      <NavLink onClick={() => closeMenu()} to={`/about`}>
+      <div>
         <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
-        About
-      </NavLink>
+        <a
+          className="app__nav-link nav-bar__link--lowlight--welcome"
+          href="https://learn.trusat.org/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          About
+        </a>
+      </div>
 
-      <NavLink onClick={() => closeMenu()} to={`/how`}>
+      <div>
         <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
-        How To
-      </NavLink>
+        <a
+          className="app__nav-link nav-bar__link--lowlight--welcome"
+          href="https://learn.trusat.org/docs/high-level-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          How To
+        </a>
+      </div>
     </Menu>
   );
 }

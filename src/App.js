@@ -12,9 +12,6 @@ import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
 import AccountSettings from "./views/AccountSettings";
 import AddStation from "./views/AddStation";
-import About from "./views/About";
-import HowTo from "./views/HowTo";
-import HowToPhoto from "./views/HowToPhoto";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import Join from "./views/Join";
@@ -25,9 +22,7 @@ import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "./app/components/CookieBanner";
 import Footer from "./app/components/Footer";
-import Charter from "./views/Charter";
 import Whitepaper from "./views/Whitepaper";
-import FAQ from "./views/FAQ";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
 import Terms from "./views/Terms";
@@ -108,17 +103,12 @@ export default function App() {
           <Route exact path="/settings" component={AccountSettings} />
           <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/settings/stations" component={AddStation}></Route>
-          <Route path="/about" component={About} />
-          <Route path="/how" component={HowTo} />
-          <Route path="/photo" component={HowToPhoto} />
           <Route path="/join" component={Join}></Route>
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/claim" component={ClaimAccount} />
           <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-          <Route path="/whitepaper" component={Whitepaper} />
-          <Route path="/faq" component={FAQ} />
-          <Route path="/charter" component={Charter} />
+          <Route path="/whitepaper" component={Whitepaper} />s
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
           {/* User is sent to this route when they complete a mail chimp sign up */}

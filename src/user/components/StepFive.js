@@ -42,7 +42,15 @@ export default function StepFive({ step }) {
           </p>
           <p className="metamask-import__copy">
             If you wish to take your TruSat identity with you to other browsers,
-            you can read more on our FAQ page
+            you can read more on our{" "}
+            <a
+              className="app__nav-link"
+              href="https://learn.trusat.org/docs/FAQ"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              ` FAQ page`
+            </a>{" "}
           </p>
         </div>
       ) : null}
