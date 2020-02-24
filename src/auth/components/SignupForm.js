@@ -25,7 +25,7 @@ export default function SignupForm({ setIsSuccess }) {
   );
   // used to prompt user to either log in or claim their account
   const [isAlreadySignedUp, setIsAlreadySignedUp] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(``);
 
   const handleFormValidation = () => {
     setShowInvalidPasswordError(false);
@@ -48,7 +48,7 @@ export default function SignupForm({ setIsSuccess }) {
     const inputsAreValid = handleFormValidation();
 
     if (inputsAreValid) {
-      setIsError(false);
+      setError(``);
       setIsSuccess(false);
       authDispatch({ type: "AUTHENTICATING", payload: true });
       // create a new wallet for user
@@ -63,6 +63,10 @@ export default function SignupForm({ setIsSuccess }) {
         setIsAlreadySignedUp(true);
         authDispatch({ type: "AUTHENTICATING", payload: false });
         return;
+      }
+      // if false in returned instead of nonce of type string
+      if (!nonce) {
+        setError("log in failed as a random nonce was not received");
       }
       // sign the nonce
       const signedMessage = signMessage({ nonce, wallet });
@@ -79,7 +83,9 @@ export default function SignupForm({ setIsSuccess }) {
       if (signUpSuccess) {
         setIsSuccess(true);
       } else {
-        setIsError(true);
+        setError(
+          `Sign up has failed to send your secret to your email, please try again later`
+        );
       }
 
       authDispatch({ type: "AUTHENTICATING", payload: false });
@@ -98,9 +104,7 @@ export default function SignupForm({ setIsSuccess }) {
           handleSignup();
         }}
       >
-        {isError ? (
-          <p className="app__error-message">Something went wrong ...</p>
-        ) : null}
+        {error ? <p className="app__error-message">{error}</p> : null}
 
         {isAlreadySignedUp ? (
           <Fragment>
