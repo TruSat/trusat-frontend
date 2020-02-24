@@ -13,7 +13,7 @@ const web3 = new Web3(Web3.givenProvider || window.ethereum);
 export default function MetaMask({ buttonText, GAEvent }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(``);
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
@@ -34,11 +34,16 @@ export default function MetaMask({ buttonText, GAEvent }) {
 
   // For both signup and login metamask flows
   const handleMetamaskAuth = async () => {
-    setIsError(false);
+    setError(``);
 
     const address = web3._provider.selectedAddress;
 
     const nonce = await retrieveNonce({ address });
+
+    // if false in returned instead of nonce of type string
+    if (!nonce) {
+      setError("log in failed as a random nonce was not received");
+    }
 
     const metamaskSignedMessage = await metamaskSignMessage({ nonce, address });
 
@@ -50,7 +55,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
       });
       // only log user in and add credentaisl to local storage if credentials are valid
       if (!metamaskLoginCredentials) {
-        setIsError(true);
+        setError(`Log in failed because your log in credentials are not valid`);
       } else {
         // Add address to auth state
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
@@ -80,9 +85,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
       <span className="app__button--white" onClick={handleClick}>
         {isAuthenticating ? "...Loading" : buttonText}
       </span>
-      {isError ? (
-        <p className="app__error-message">Something went wrong...</p>
-      ) : null}
+      {error ? <p className="app__error-message">{error}</p> : null}
     </Fragment>
   );
 }

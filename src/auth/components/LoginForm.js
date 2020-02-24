@@ -17,10 +17,10 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
-  const [isError, setIsError] = useState(false);
+  const [error, setError] = useState(``);
 
   const handleLogin = async () => {
-    setIsError(false);
+    setError(``);
     authDispatch({ type: "AUTHENTICATING", payload: true });
     // get private key from the secret using the users password
     const privateKey = decryptSecret(secret, password);
@@ -34,6 +34,10 @@ export default function LoginForm() {
     let wallet = new ethers.Wallet(privateKey);
     // get unique nonce from server for this user
     const nonce = await retrieveNonce({ address: wallet.signingKey.address });
+    // if false in returned instead of nonce of type string
+    if (!nonce) {
+      setError("log in failed as a random nonce was not received");
+    }
     // sign the nonce
     const signedMessage = signMessage({ nonce, wallet });
     // get JSON web token that will be used to keep user logged in
@@ -45,7 +49,7 @@ export default function LoginForm() {
     });
     // do not attempt to hit /profile unless auth hasn't expired
     if (!loginCredentials) {
-      setIsError(true);
+      setError(`Log in failed because your log in credentials are not valid`);
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
@@ -69,8 +73,8 @@ export default function LoginForm() {
     authDispatch({ type: "AUTHENTICATING", payload: false });
   };
 
-  return isError ? (
-    <p className="app__error-message">Something went wrong ...</p>
+  return error ? (
+    <p className="app__error-message">{error}</p>
   ) : (
     <form
       className="app__form"
