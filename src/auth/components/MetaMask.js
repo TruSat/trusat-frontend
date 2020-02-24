@@ -78,10 +78,10 @@ export default function MetaMask({ buttonText, GAEvent }) {
   return (
     <Fragment>
       <span className="app__button--white" onClick={handleClick}>
-        {isAuthenticating ? "Loading..." : buttonText}
+        {isAuthenticating ? "...Loading" : buttonText}
       </span>
       {isError ? (
-        <p className="app__error-message">Something went wrong ...</p>
+        <p className="app__error-message">Something went wrong...</p>
       ) : null}
     </Fragment>
   );
