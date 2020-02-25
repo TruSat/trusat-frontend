@@ -189,13 +189,13 @@ SAVED LOCATIONS
 }
 
 /* ----------
-PRIVACY SETTINGS
+DATA SETTINGS
 ---------- */
-.privacy-settings__wrapper {
+.data-settings__wrapper {
   margin-top: 3em;
 }
 
-.privacy-settings__heading,
+.data-settings__heading,
 .security-settings__heading {
   @include section-title;
   border: 1px solid $secondary-theme-color;
@@ -207,7 +207,7 @@ PRIVACY SETTINGS
   padding: 0.5em 0;
 }
 
-.privacy-settings__remove-text {
+.data-settings__remove-text {
   color: #a5a5a5;
   line-height: 19px;
   text-decoration: underline;
