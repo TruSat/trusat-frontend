@@ -8,16 +8,18 @@ export default function PrivacySettings() {
       <h2 className="data-settings__heading">
         <p>MY DATA</p>
       </h2>
-      <DownloadObservations />
-      <a
-        className="data-settings__remove-text"
-        href={`mailto:${emails.remove}`}
-      >
-        {toolTip(
-          `Remove my current and historical data from the system`,
-          `Click to email us at ${emails.remove} and we will and we will remove your current and historical data from the system`
-        )}
-      </a>
+      <div className="data-settings__button-wrapper">
+        <DownloadObservations />
+        <a
+          className="data-settings__remove-text"
+          href={`mailto:${emails.remove}`}
+        >
+          {toolTip(
+            `Remove my data from TruSat`,
+            `Click to email us at ${emails.remove} and we will and we will remove your current and historical data from the system`
+          )}
+        </a>
+      </div>
     </section>
   );
 }
