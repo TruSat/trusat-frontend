@@ -44,9 +44,10 @@ export const retrieveNonce = async ({ email, address }) => {
         JSON.stringify({
           email: email,
           address: address
-        }), {
+        }),
+        {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           }
         }
       );
@@ -108,9 +109,10 @@ export const signUp = async ({ email, address, signedMessage, secret }) => {
         address: address,
         signedMessage: signedMessage.signature,
         secret: secret
-      }), {
+      }),
+      {
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         }
       }
     );
@@ -135,9 +137,10 @@ export const retrieveLoginCredentials = async ({
         address: address,
         signedMessage: signedMessage.signature
       }),
-      { withCredentials: true,
+      {
+        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         }
       }
     );
@@ -175,9 +178,10 @@ export const retrieveMetamaskLoginCredentials = async ({
         address: address,
         signedMessage: metamaskSignedMessage
       }),
-      { withCredentials: true,
+      {
+        withCredentials: true,
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json"
         }
       }
     );

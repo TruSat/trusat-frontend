@@ -9,7 +9,7 @@ import {
 import { useAuthState } from "../auth/auth-context";
 import ProfileSettings from "../user/components/ProfileSettings";
 import SavedLocations from "../user/components/SavedLocations";
-import PrivacySettings from "../user/components/PrivacySettings";
+import DataSettings from "../user/components/DataSettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
@@ -94,9 +94,10 @@ function UserSettings({ history }) {
           new_station_notes: newStationNotes,
           deleted_stations: deletedStations
         }),
-        { withCredentials: true,
+        {
+          withCredentials: true,
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           }
         }
       );
@@ -163,7 +164,7 @@ function UserSettings({ history }) {
         </p>
       ) : null}
 
-      <PrivacySettings />
+      <DataSettings />
 
       {/* Only show prompt to make move to metamask if they dont have plugin installed */}
       {window.etherem ? null : <SecuritySettings />}
