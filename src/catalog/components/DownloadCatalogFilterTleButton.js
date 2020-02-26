@@ -1,71 +1,72 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { API_ROOT, axiosWithCache } from "../../app/app-helpers";
-import Spinner from "../../app/components/Spinner";
 import ReactGA from "react-ga";
 
-export default function DownloadCatalogFilterTleButton({ catalogFilter }) {
-  const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(``);
-  const [textFile, setTextFile] = useState(null);
+export default class DownloadCatalogFilterTleButton extends React.Component {
+  state = {
+    isLoading: false,
+    errorMessage: "",
+    textFile: null
+  };
 
-  useEffect(() => {
-    setTextFile(null);
-  }, [catalogFilter]);
+  linkRef = React.createRef();
 
-  const fetchData = async () => {
-    setErrorMessage(``);
-    setIsLoading(true);
+  fetchData = async () => {
+    this.setState({ errorMessage: "" });
+    this.setState({ isLoading: true });
 
     try {
       const result = await axiosWithCache(
-        `${API_ROOT}/tle/trusat_${catalogFilter}.txt`
+        `${API_ROOT}/tle/trusat_${this.props.catalogFilter}.txt`
       );
 
-      let textFile = null;
-
-      const dataToDownload = new Blob([result.data], {
-        type: "text/plain"
-      });
       // If replacing a previously generated file, revoke the object URL to avoid memory leaks.
-      if (textFile !== null) {
-        window.URL.revokeObjectURL(textFile);
+      if (this.state.textFile !== null) {
+        window.URL.revokeObjectURL(this.state.textFile);
       }
-      setTextFile(window.URL.createObjectURL(dataToDownload));
+
+      this.setState({ textFile: result.data });
+
+      const href = window.URL.createObjectURL(
+        new Blob([this.state.textFile], {
+          type: "text/csv"
+        })
+      );
+      this.linkRef.current.download = `trusat_${this.props.catalogFilter}_tles.txt`;
+      this.linkRef.current.href = href;
+      this.linkRef.current.click();
+      this.linkRef.current.href = "";
     } catch (error) {
-      setErrorMessage(error.response.data);
+      this.setState({ errorMessage: error.response.data });
     }
-    setIsLoading(false);
+    this.setState({ isLoading: false });
   };
 
-  return errorMessage ? (
-    <p className="app__error-message">Something went wrong... {errorMessage}</p>
-  ) : isLoading ? (
-    <Spinner />
-  ) : (
-    <Fragment>
-      <span
-        className="catalog__button catalog__get-data-button"
-        onClick={() => {
-          ReactGA.event({
-            category: "TLE usage",
-            action: `Clicked download predictions button`,
-            label: `Download TLEs from ${catalogFilter}`
-          });
-          fetchData();
-        }}
-      >
-        Download predictions
-      </span>
-
-      {textFile ? (
-        <a
-          className="catalog__link"
-          href={textFile}
-          download={`trusat_${catalogFilter}.txt`}
+  render() {
+    return (
+      <Fragment>
+        <span
+          className="catalog__button catalog__get-data-button"
+          onClick={() => {
+            ReactGA.event({
+              category: "TLE usage",
+              action: `Clicked download predictions button`,
+              label: `Download TLEs from ${this.props.catalogFilter}`
+            });
+            this.fetchData();
+          }}
         >
+          {this.state.isLoading ? `...Loading` : `Download predictions`}
+        </span>
+
+        {this.state.errorMessage ? (
+          <p>Something went wrong... {this.state.errorMessage}</p>
+        ) : null}
+
+        <a className="app__hide" ref={this.linkRef}>
           download
         </a>
-      ) : null}
-    </Fragment>
-  );
+      </Fragment>
+    );
+  }
 }
