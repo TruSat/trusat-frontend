@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { API_ROOT } from "../../app/app-helpers";
 import axios from "axios";
+import { useProfileState } from "../../profile/profile-context";
 
 export default function DownloadObservations() {
   const [csvFile, setCsvFile] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(``);
+  const { profileData } = useProfileState();
 
   const download = async () => {
     setIsLoading(true);
@@ -44,7 +46,9 @@ export default function DownloadObservations() {
   return (
     <div>
       <span className="download-observations" onClick={download}>
-        {isLoading ? `...Loading` : `Download my X Observations`}
+        {isLoading
+          ? `...Loading`
+          : `Download my ${profileData.observation_count} Observations`}
       </span>
       {errorMessage ? <p>Something went wrong... {errorMessage}</p> : null}
       {csvFile ? (
