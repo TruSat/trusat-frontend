@@ -3,7 +3,6 @@ import { QuestionMarkToolTip } from "../../app/app-helpers";
 import { NavLink } from "react-router-dom";
 import { useProfileState } from "../../profile/profile-context";
 import DeleteStation from "../../assets/DeleteStation.svg";
-import CloudDownload from "../../assets/CloudDownload.svg";
 import Button from "../../app/components/Button";
 
 export default function SavedLocations({
@@ -53,10 +52,6 @@ export default function SavedLocations({
     );
     // add stationID to an array of stations to be deleted
     setDeletedStations([...deletedStations, stationId]);
-  };
-
-  const downloadObservations = () => {
-    alert(`downloading!`);
   };
 
   const renderLocations = () => {
@@ -134,14 +129,6 @@ export default function SavedLocations({
                 <td className="locations-table__table-data">
                   {station.observation_count}
                 </td>
-
-                <td className="locations-table__table-data">
-                  <img
-                    onClick={downloadObservations}
-                    src={CloudDownload}
-                    alt="download"
-                  ></img>
-                </td>
               </tr>
             ))}
       </Fragment>
@@ -189,10 +176,6 @@ export default function SavedLocations({
                     `# OF OBS.`
                   )}
                 </th>
-
-                {!isEditing ? (
-                  <th className="table__header-text">DOWNLOAD</th>
-                ) : null}
               </tr>
             </thead>
             <tbody>{renderLocations()}</tbody>
