@@ -1,10 +1,8 @@
 import React from "react";
 import { API_ROOT } from "../../app/app-helpers";
 import axios from "axios";
-import { useProfileState } from "../../profile/profile-context";
 
 export default class DownloadObservations extends React.Component {
-  // const { profileData } = useProfileState();
   state = {
     isLoading: false,
     errorMessage: "",
@@ -14,6 +12,7 @@ export default class DownloadObservations extends React.Component {
   linkRef = React.createRef();
 
   download = async () => {
+    this.setState({ errorMessage: `` });
     this.setState({ isLoading: true });
 
     try {
@@ -57,7 +56,9 @@ export default class DownloadObservations extends React.Component {
     return (
       <div>
         <span className="download-observations" onClick={this.download}>
-          {this.state.isLoading ? `...Loading` : `Download my Observations`}
+          {this.state.isLoading
+            ? `...Loading`
+            : `Download my ${this.props.observationCount} Observations`}
         </span>
 
         {this.state.errorMessage ? (
