@@ -132,15 +132,19 @@ function NavBar(props) {
               : "nav-bar__link-wrapper--lowlight"
           }
         >
-          <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
-          <a
-            className="app__nav-link nav-bar__link--lowlight--welcome"
-            href="https://learn.trusat.org/"
-            target="_blank"
-            rel="noopener noreferrer"
+          <NavLink
+            className={
+              path === `/about`
+                ? "app__nav-link nav-bar__link--highlight"
+                : path === "/"
+                ? "app__nav-link nav-bar__link--lowlight--welcome"
+                : "app__nav-link nav-bar__link--lowlight"
+            }
+            to={`/about`}
           >
+            <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
             ABOUT
-          </a>
+          </NavLink>
         </div>
 
         <div
