@@ -12,6 +12,7 @@ export default class DownloadObservations extends React.Component {
   linkRef = React.createRef();
 
   download = async () => {
+    this.setState({ errorMessage: `` });
     this.setState({ isLoading: true });
 
     try {
