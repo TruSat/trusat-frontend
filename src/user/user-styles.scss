@@ -189,13 +189,15 @@ SAVED LOCATIONS
 }
 
 /* ----------
-PRIVACY SETTINGS
+DATA SETTINGS
 ---------- */
-.privacy-settings__wrapper {
+.data-settings__wrapper {
+  display: flex;
+  flex-direction: column;
   margin-top: 3em;
 }
 
-.privacy-settings__heading,
+.data-settings__heading,
 .security-settings__heading {
   @include section-title;
   border: 1px solid $secondary-theme-color;
@@ -207,10 +209,35 @@ PRIVACY SETTINGS
   padding: 0.5em 0;
 }
 
-.privacy-settings__remove-text {
-  color: #a5a5a5;
-  line-height: 19px;
-  text-decoration: underline;
+.data-settings__button-wrapper {
+  align-self: flex-start;
+  display: flex;
+  flex-direction: column;
+}
+
+.data-settings__remove-text {
+  border: 1px solid $primary-text-color;
+  border-radius: 4px;
+  color: $primary-text-color;
+  padding: 0.75em;
+  text-align: center;
+}
+
+/* ----------
+DownloadObservations
+---------- */
+.download-observations {
+  border: 1px solid $primary-text-color;
+  border-radius: 4px;
+  color: $primary-text-color;
+  display: inline-block;
+  margin: 0em 1em 1em 0em;
+  padding: 0.75em;
+  text-align: center;
+}
+
+.download-observations:hover {
+  cursor: pointer;
 }
 
 /* ----------

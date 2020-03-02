@@ -17,7 +17,14 @@ export default function SecuritySettings() {
           Making the move to MetaMask will set you up to interact with the
           Ethereum blockchain in future TruSat features. More info can be found
           on our
-          <NavLink to="/how" className="app__nav-link">{` FAQ page`}</NavLink>
+          <a
+            className="app__nav-link"
+            href="https://learn.trusat.org/docs/FAQ"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            ` FAQ page`
+          </a>
         </p>
         &nbsp;
         <p>

@@ -88,12 +88,14 @@ export default function About() {
           </h2>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink
+              <a
                 className="app__nav-link static-page__link static-page__link--highlight"
-                to="/faq"
+                href="https://learn.trusat.org/docs/FAQ"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 Frequently asked questions
-              </NavLink>
+              </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
@@ -103,12 +105,14 @@ export default function About() {
           </div>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink
+              <a
                 className="app__nav-link static-page__link static-page__link--highlight"
-                to="/whitepaper"
+                href="https://learn.trusat.org/docs/overview"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 The TruSat white paper
-              </NavLink>
+              </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
@@ -118,12 +122,14 @@ export default function About() {
           </div>
           <div className="about__block-pair">
             <div className="about__block--left">
-              <NavLink
+              <a
                 className="app__nav-link static-page__link static-page__link--highlight"
-                to="/charter"
+                href="https://learn.trusat.org/docs/trusat-charter"
+                target="_blank"
+                rel="noopener noreferrer"
               >
                 The TruSat Charter
-              </NavLink>
+              </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">

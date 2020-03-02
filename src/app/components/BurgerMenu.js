@@ -64,10 +64,17 @@ export default function BurgerMenu() {
         About
       </NavLink>
 
-      <NavLink onClick={() => closeMenu()} to={`/how`}>
+      <div>
         <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
-        How To
-      </NavLink>
+        <a
+          className="app__nav-link nav-bar__link--lowlight--welcome"
+          href="https://learn.trusat.org/docs/high-level-guide"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          How To
+        </a>
+      </div>
     </Menu>
   );
 }

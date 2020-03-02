@@ -31,9 +31,14 @@ export default function Submit() {
                 {emails.submit}
               </a>
             </p>
-            <NavLink className="app__nav-link" to="/how">
-              <p className="submit__link-text">Help</p>
-            </NavLink>
+            <a
+              className="app__nav-link submit__link-text"
+              href="https://learn.trusat.org/docs/high-level-guide"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Help
+            </a>
           </div>
         </Fragment>
       ) : // Render single submission form
