@@ -53,7 +53,7 @@ export default class DownloadObservations extends React.Component {
   };
 
   render() {
-    return (
+    return this.props.observationCount ? (
       <div>
         <span className="download-observations" onClick={this.download}>
           {this.state.isLoading
@@ -69,6 +69,6 @@ export default class DownloadObservations extends React.Component {
           download
         </a>
       </div>
-    );
+    ) : null;
   }
 }
