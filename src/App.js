@@ -110,7 +110,6 @@ export default function App() {
           <Route path="/signup" component={SignUp} />
           <Route exact path="/claim" component={ClaimAccount} />
           <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-          <Route path="/whitepaper" component={Whitepaper} />s
           <Route path="/privacy" component={PrivacyPolicy} />
           <Route path="/terms" component={Terms} />
           {/* User is sent to this route when they complete a mail chimp sign up */}
