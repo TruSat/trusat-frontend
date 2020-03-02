@@ -22,7 +22,6 @@ import ClaimAccount from "./views/ClaimAccount";
 import VerifyClaimAccount from "./views/VerifyClaimAccount";
 import CookieBanner from "./app/components/CookieBanner";
 import Footer from "./app/components/Footer";
-import Whitepaper from "./views/Whitepaper";
 import About from "./views/About";
 import ReactGA from "react-ga";
 import PrivacyPolicy from "./views/PrivacyPolicy";
