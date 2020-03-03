@@ -32,7 +32,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           type: "text/csv"
         })
       );
-      this.linkRef.current.download = `trusat_${this.props.catalogFilter}_tles.txt`;
+      this.linkRef.current.download = `trusat_${this.props.catalogFilter}.txt`;
       this.linkRef.current.href = href;
       this.linkRef.current.click();
       this.linkRef.current.href = "";
@@ -56,7 +56,10 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
             this.fetchData();
           }}
         >
-          {this.state.isLoading ? `...Loading` : `Download predictions`}
+          {this.state.isLoading
+            ? `...Loading`
+            : `Download ${this.props.catalogFilter.charAt(0).toUpperCase() +
+                this.props.catalogFilter.slice(1)} TLEs`}
         </span>
 
         {this.state.errorMessage ? (
