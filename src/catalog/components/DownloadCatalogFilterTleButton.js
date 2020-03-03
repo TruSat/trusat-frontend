@@ -32,7 +32,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           type: "text/csv"
         })
       );
-      this.linkRef.current.download = `trusat_${this.props.catalogFilter}_tles.txt`;
+      this.linkRef.current.download = `trusat_${this.props.catalogFilter}.txt`;
       this.linkRef.current.href = href;
       this.linkRef.current.click();
       this.linkRef.current.href = "";
