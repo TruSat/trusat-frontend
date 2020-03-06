@@ -1,8 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import Partners from "../app/components/Partners";
 import SocialIcons from "../app/components/SocialIcons";
-import MailingListForm from "../app/components/MailingListForm";
 import Advisors from "../app/components/Advisors";
 
 export default function About() {
@@ -162,16 +160,6 @@ export default function About() {
             FOLLOW TRUSAT
           </h2>
           <SocialIcons />
-
-          <div className="about__mailing-list-wrapper">
-            <p className="">
-              Join the mailing list to stay posted on the project
-            </p>
-            <MailingListForm
-              testPilots={false}
-              eventLabel={"About page subscribe button"}
-            />
-          </div>
         </div>
       </section>
     </div>

@@ -4,7 +4,6 @@ import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
 import Advisors from "../app/components/Advisors";
 import RoundedButton from "../app/components/RoundedButton";
-import MailingListForm from "../app/components/MailingListForm";
 import ReactGA from "react-ga";
 
 export default function Home() {
@@ -66,7 +65,7 @@ export default function Home() {
             </p>
             <NavLink
               className="app__nav-link"
-              to="/join"
+              to="/signup"
               onClick={() => {
                 ReactGA.event({
                   category: "Onboarding",
@@ -195,7 +194,7 @@ export default function Home() {
               </p>
               <NavLink
                 className="app__nav-link"
-                to="/join"
+                to="/signup"
                 onClick={() => {
                   ReactGA.event({
                     category: "Onboarding",
@@ -228,12 +227,6 @@ export default function Home() {
             <p className="welcome__small-copy--white">
               Join the mailing list to stay posted on the project
             </p>
-            <div className="welcome__mailing-list-wrapper">
-              <MailingListForm
-                testPilots={false}
-                eventLabel={"Welcome page subcribe button"}
-              />
-            </div>
           </section>
         </div>
       </div>
