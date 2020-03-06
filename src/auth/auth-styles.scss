@@ -3,12 +3,12 @@ SIGN UP OPTIONS
 ---------- */
 .sign-up-options__wrapper {
   display: flex;
-  margin-top: 2em;
+  margin: 2em 0em 2em 0em;
 }
 
 @media (min-width: 600px) {
   .sign-up-options__wrapper {
-    margin-top: 3em;
+    margin: 3em 0em;
   }
 }
 
@@ -24,7 +24,8 @@ SIGN UP OPTIONS
 SIGN UP
 ---------- */
 .sign-up__wrapper {
-  margin: 2em 1em;
+  margin: 2em 0em;
+  max-width: 1000px;
 }
 
 .sign-up__header {
@@ -33,7 +34,7 @@ SIGN UP
 
 @media (min-width: 600px) {
   .sign-up__wrapper {
-    margin: 4em;
+    margin: 2em auto;
   }
 
   .sign-up__header {
