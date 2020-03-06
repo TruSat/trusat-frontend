@@ -178,7 +178,7 @@ function NavBar(props) {
             </NavLink>
             <NavLink
               className="app__nav-link"
-              to="/join"
+              to="/signup"
               onClick={() => {
                 ReactGA.event({
                   category: "Onboarding",
