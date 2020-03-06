@@ -14,7 +14,6 @@ import AccountSettings from "./views/AccountSettings";
 import AddStation from "./views/AddStation";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
-import Join from "./views/Join";
 import ObjectInfo from "./views/ObjectInfo";
 import BurgerMenu from "./app/components/BurgerMenu";
 import MetamaskImport from "./views/MetamaskImport";
@@ -104,7 +103,6 @@ export default function App() {
           <Route exact path="/settings" component={AccountSettings} />
           <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/settings/stations" component={AddStation}></Route>
-          <Route path="/join" component={Join}></Route>
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/claim" component={ClaimAccount} />
