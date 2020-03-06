@@ -97,7 +97,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button text="Use MetaMask" color="white" />
+            <Button text="USE METAMASK" color="white" />
             {` `}
             <QuestionMarkToolTip
               toolTipText={
