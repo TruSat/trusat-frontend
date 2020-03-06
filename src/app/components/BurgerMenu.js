@@ -28,7 +28,7 @@ export default function BurgerMenu() {
       {userAddress === "none" ? (
         <NavLink
           onClick={() => closeMenu()}
-          to={`/join`}
+          to={`/signup`}
           className="app__nav-link--mobile-join"
         >
           Join
