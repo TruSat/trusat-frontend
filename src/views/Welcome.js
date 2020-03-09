@@ -225,7 +225,16 @@ export default function Home() {
           <section className="welcome__section--four">
             <h2 className="welcome__sub-header--white">Stay in the loop</h2>
             <p className="welcome__small-copy--white">
-              Join the mailing list to stay posted on the project
+              Join{" "}
+              <a
+                className="app__link"
+                href="https://discuss.trusat.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                TruSat chat
+              </a>{" "}
+              to stay posted on the project
             </p>
           </section>
         </div>
