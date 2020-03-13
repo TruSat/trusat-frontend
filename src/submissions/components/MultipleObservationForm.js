@@ -16,11 +16,11 @@ export default function MultipleObservationForm() {
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
   const { userAddress, authExpiry } = useAuthState();
-  const [isError, setIsError] = useState(false);
+  const [apiErrorMessage, setApiErrorMessage] = useState(``);
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    setIsError(false);
+    setApiErrorMessage(``);
     setSuccessCount(null);
     setErrorMessages([]);
 
@@ -31,9 +31,10 @@ export default function MultipleObservationForm() {
       const result = await axios.post(
         `${API_ROOT}/submitObservation`,
         JSON.stringify({ multiple: pastedIODs }),
-        { withCredentials: true,
+        {
+          withCredentials: true,
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           }
         }
       );
@@ -55,7 +56,7 @@ export default function MultipleObservationForm() {
         });
       }
     } catch (error) {
-      setIsError(true);
+      setApiErrorMessage(error.response.data);
     }
     setIsLoading(false);
   };
@@ -119,8 +120,10 @@ export default function MultipleObservationForm() {
           ) : null}
         </div>
 
-        {isError ? (
-          <p className="app__error-message">Something went wrong...</p>
+        {apiErrorMessage ? (
+          <p className="app__error-message">
+            Something went wrong...{apiErrorMessage}
+          </p>
         ) : isLoading ? (
           <Spinner />
         ) : (
