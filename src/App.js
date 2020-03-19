@@ -12,6 +12,7 @@ import Welcome from "./views/Welcome";
 import Profile from "./views/Profile";
 import AccountSettings from "./views/AccountSettings";
 import AddStation from "./views/AddStation";
+import Join from "./views/Join";
 import LogIn from "./views/LogIn";
 import SignUp from "./views/SignUp";
 import ObjectInfo from "./views/ObjectInfo";
@@ -103,6 +104,7 @@ export default function App() {
           <Route exact path="/settings" component={AccountSettings} />
           <Route path="/settings/metamask" component={MetamaskImport} />
           <Route path="/settings/stations" component={AddStation}></Route>
+          <Route path="/join" component={Join}></Route>
           <Route path="/login" component={LogIn} />
           <Route path="/signup" component={SignUp} />
           <Route exact path="/claim" component={ClaimAccount} />

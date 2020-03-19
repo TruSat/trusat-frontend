@@ -4,10 +4,6 @@ import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
-import IconWave from "../../assets/icon-wave.svg";
-import IconGlobe from "../../assets/icon-globe.svg";
-import IconSat from "../../assets/icon-satellite.svg";
-import IconLight from "../../assets/icon-light.svg";
 import IconUser from "../../assets/icon-user.svg";
 import IconQuestion from "../../assets/icon-question.svg";
 import ReactGA from "react-ga";
@@ -43,7 +39,6 @@ function NavBar(props) {
               }
               to="/"
             >
-              <img className="app__nav__icon" src={IconWave} alt="icon"></img>
               WELCOME
             </NavLink>
           </div>
@@ -68,7 +63,6 @@ function NavBar(props) {
             }
             to={`/catalog/${catalogFilter}`}
           >
-            <img className="app__nav__icon" src={IconSat} alt="icon"></img>
             CATALOG
           </NavLink>
         </div>
@@ -109,7 +103,6 @@ function NavBar(props) {
               : "nav-bar__link-wrapper--lowlight"
           }
         >
-          <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
           <a
             className="app__nav-link nav-bar__link--lowlight--welcome"
             href="https://learn.trusat.org/"
@@ -129,7 +122,6 @@ function NavBar(props) {
               : "nav-bar__link-wrapper--lowlight"
           }
         >
-          <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
           <a
             className="app__nav-link nav-bar__link--lowlight--welcome"
             href="https://discuss.trusat.org/"
@@ -159,7 +151,6 @@ function NavBar(props) {
             }
             to={`/about`}
           >
-            <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
             ABOUT
           </NavLink>
         </div>
@@ -175,7 +166,7 @@ function NavBar(props) {
             </NavLink>
             <NavLink
               className="app__nav-link"
-              to="/signup"
+              to="/join"
               onClick={() => {
                 ReactGA.event({
                   category: "Onboarding",
