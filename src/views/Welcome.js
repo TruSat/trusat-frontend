@@ -194,7 +194,7 @@ export default function Home() {
               </p>
               <NavLink
                 className="app__nav-link"
-                to="/signup"
+                to="/join"
                 onClick={() => {
                   ReactGA.event({
                     category: "Onboarding",
