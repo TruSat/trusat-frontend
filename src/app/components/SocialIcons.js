@@ -61,7 +61,7 @@ export default function SocialIcons() {
       <a
         target="_blank"
         rel="noopener noreferrer"
-        href="https://github.com/consensys-space"
+        href="https://github.com/trusat"
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
