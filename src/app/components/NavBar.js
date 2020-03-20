@@ -4,10 +4,6 @@ import { withRouter } from "react-router-dom";
 import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
-import IconWave from "../../assets/icon-wave.svg";
-import IconGlobe from "../../assets/icon-globe.svg";
-import IconSat from "../../assets/icon-satellite.svg";
-import IconLight from "../../assets/icon-light.svg";
 import IconUser from "../../assets/icon-user.svg";
 import IconQuestion from "../../assets/icon-question.svg";
 import ReactGA from "react-ga";
@@ -43,7 +39,6 @@ function NavBar(props) {
               }
               to="/"
             >
-              <img className="app__nav__icon" src={IconWave} alt="icon"></img>
               WELCOME
             </NavLink>
           </div>
@@ -68,7 +63,6 @@ function NavBar(props) {
             }
             to={`/catalog/${catalogFilter}`}
           >
-            <img className="app__nav__icon" src={IconSat} alt="icon"></img>
             CATALOG
           </NavLink>
         </div>
@@ -100,28 +94,43 @@ function NavBar(props) {
           </div>
         ) : null}
 
-        {/* // Whitepaper button only rendered when user is logged out */}
-        {userAddress !== "none" ? null : (
-          <div
-            className={
-              path === `/whitepaper`
-                ? "nav-bar__link-wrapper--highlight"
-                : path === "/"
-                ? "nav-bar__link-wrapper--lowlight--welcome"
-                : "nav-bar__link-wrapper--lowlight"
-            }
+        <div
+          className={
+            path === "/how"
+              ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
+              : "nav-bar__link-wrapper--lowlight"
+          }
+        >
+          <a
+            className="app__nav-link nav-bar__link--lowlight--welcome"
+            href="https://learn.trusat.org/docs/start-here"
+            target="_blank"
+            rel="noopener noreferrer"
           >
-            <img className="app__nav__icon" src={IconLight} alt="icon"></img>
-            <a
-              className="app__nav-link nav-bar__link--lowlight--welcome"
-              href="https://learn.trusat.org/docs/overview"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WHITEPAPER
-            </a>
-          </div>
-        )}
+            LEARNING HUB
+          </a>
+        </div>
+
+        <div
+          className={
+            path === "/forum"
+              ? "nav-bar__link-wrapper--highlight"
+              : path === "/"
+              ? "nav-bar__link-wrapper--lowlight--welcome"
+              : "nav-bar__link-wrapper--lowlight"
+          }
+        >
+          <a
+            className="app__nav-link nav-bar__link--lowlight--welcome"
+            href="https://discuss.trusat.org/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            FORUM
+          </a>
+        </div>
 
         <div
           className={
@@ -142,29 +151,8 @@ function NavBar(props) {
             }
             to={`/about`}
           >
-            <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
             ABOUT
           </NavLink>
-        </div>
-
-        <div
-          className={
-            path === "/how"
-              ? "nav-bar__link-wrapper--highlight"
-              : path === "/"
-              ? "nav-bar__link-wrapper--lowlight--welcome"
-              : "nav-bar__link-wrapper--lowlight"
-          }
-        >
-          <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
-          <a
-            className="app__nav-link nav-bar__link--lowlight--welcome"
-            href="https://learn.trusat.org/docs/high-level-guide"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            HOW TO
-          </a>
         </div>
       </div>
 

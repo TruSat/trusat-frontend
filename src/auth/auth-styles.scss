@@ -1,14 +1,62 @@
 /* ----------
+JOIN VIEW
+---------- */
+.join-view__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0em auto;
+  max-width: 800px;
+}
+
+.join-view__content-container {
+  margin: 2em 1em;
+  max-width: 350px;
+}
+
+@media (min-width: 600px) {
+  .join-view__wrapper {
+    margin: 2em auto;
+  }
+
+  .join-view__content-container {
+    margin: 2em auto;
+  }
+}
+
+.join-view__main-header {
+  font-size: $extra-large-font-size;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: 42px;
+  margin-bottom: 0.5em;
+}
+
+.join-view__sub-header {
+  font-size: $large-font-size;
+  line-height: $medium-line-height;
+  letter-spacing: -0.02em;
+  margin-bottom: 1em;
+}
+
+.join-view__button {
+  padding: 1em 2em;
+  font-weight: bold;
+  font-size: $large-font-size;
+  line-height: $medium-line-height;
+}
+
+/* ----------
 SIGN UP OPTIONS
 ---------- */
 .sign-up-options__wrapper {
   display: flex;
-  margin-top: 2em;
+  margin: 2em 0em 2em 0em;
 }
 
 @media (min-width: 600px) {
   .sign-up-options__wrapper {
-    margin-top: 3em;
+    margin: 3em 0em;
   }
 }
 
@@ -24,7 +72,8 @@ SIGN UP OPTIONS
 SIGN UP
 ---------- */
 .sign-up__wrapper {
-  margin: 2em 1em;
+  margin: 2em 0em;
+  max-width: 1000px;
 }
 
 .sign-up__header {
@@ -33,7 +82,7 @@ SIGN UP
 
 @media (min-width: 600px) {
   .sign-up__wrapper {
-    margin: 4em;
+    margin: 2em auto;
   }
 
   .sign-up__header {

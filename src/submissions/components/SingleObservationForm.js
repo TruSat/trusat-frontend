@@ -83,7 +83,7 @@ export default function SingleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
   // set to true if attempt to submit fails
-  const [isError, setIsError] = useState(false);
+  const [apiErrorMessage, setApiErrorMessage] = useState(``);
   const [
     fetchObservationStationsError,
     setFetchObservationStationsError
@@ -374,7 +374,7 @@ export default function SingleObservationForm() {
   // submit the IOD
   const handleSubmit = async () => {
     setIsLoading(true);
-    setIsError(false);
+    setApiErrorMessage(``);
     setSuccessCount(null);
     setErrorMessages([]);
     // check if authExpiry is valid and hasn't expired before submission
@@ -418,7 +418,7 @@ export default function SingleObservationForm() {
           });
         }
       } catch (error) {
-        setIsError(true);
+        setApiErrorMessage(error.response.data);
       }
     } else {
       alert(`Please clear all errors in the form and try again`);
@@ -1331,8 +1331,10 @@ export default function SingleObservationForm() {
           </Fragment>
         ) : null}
 
-        {isError ? (
-          <p className="app__error-message">Something went wrong...</p>
+        {apiErrorMessage ? (
+          <p className="app__error-message">
+            Something went wrong... {apiErrorMessage}
+          </p>
         ) : isLoading ? (
           <Spinner />
         ) : (
