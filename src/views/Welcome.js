@@ -65,7 +65,7 @@ export default function Home() {
             </p>
             <NavLink
               className="app__nav-link"
-              to="/signup"
+              to="/join"
               onClick={() => {
                 ReactGA.event({
                   category: "Onboarding",
@@ -78,7 +78,7 @@ export default function Home() {
                 <RoundedButton
                   addStyles="welcome__join-button"
                   color="orange"
-                  text="SIGN UP"
+                  text="JOIN"
                 />
               </div>
             </NavLink>
@@ -225,14 +225,14 @@ export default function Home() {
           <section className="welcome__section--four">
             <h2 className="welcome__sub-header--white">Stay in the loop</h2>
             <p className="welcome__small-copy--white">
-              Join{" "}
+              Join the{" "}
               <a
                 className="app__link"
                 href="https://discuss.trusat.org"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                TruSat chat
+                TruSat Forum
               </a>{" "}
               to stay posted on the project
             </p>
