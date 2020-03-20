@@ -5,13 +5,23 @@ JOIN VIEW
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 2em auto;
+  margin: 0em auto;
   max-width: 800px;
 }
 
 .join-view__content-container {
-  margin: 2em auto;
+  margin: 2em 1em;
   max-width: 350px;
+}
+
+@media (min-width: 600px) {
+  .join-view__wrapper {
+    margin: 2em auto;
+  }
+
+  .join-view__content-container {
+    margin: 2em auto;
+  }
 }
 
 .join-view__main-header {
