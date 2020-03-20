@@ -3,8 +3,30 @@ JOIN VIEW
 ---------- */
 .join-view__wrapper {
   display: flex;
-  justify-content: space-around;
-  margin-top: 3em;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 2em auto;
+  max-width: 800px;
+}
+
+.join-view__content-container {
+  margin: 2em auto;
+  max-width: 350px;
+}
+
+.join-view__main-header {
+  font-size: $extra-large-font-size;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  line-height: 42px;
+  margin-bottom: 0.5em;
+}
+
+.join-view__sub-header {
+  font-size: $large-font-size;
+  line-height: $medium-line-height;
+  letter-spacing: -0.02em;
+  margin-bottom: 1em;
 }
 
 .join-view__button {
