@@ -8,6 +8,9 @@ import {
 } from "../auth-helpers";
 import Web3 from "web3";
 import ReactGA from "react-ga";
+import Button from "../../app/components/Button";
+import { QuestionMarkToolTip } from "../../app/app-helpers";
+
 const web3 = new Web3(Web3.givenProvider || window.ethereum);
 
 export default function MetaMask({ buttonText, GAEvent }) {
@@ -82,9 +85,28 @@ export default function MetaMask({ buttonText, GAEvent }) {
 
   return (
     <Fragment>
-      <span className="app__button--white" onClick={handleClick}>
-        {isAuthenticating ? "...Loading" : buttonText}
-      </span>
+      {window.ethereum ? (
+        <span className="app__button--white" onClick={handleClick}>
+          {isAuthenticating ? "...Loading" : buttonText}
+        </span>
+      ) : (
+        // When app detects user does not have web3 injected by metamask
+        <Fragment>
+          <a
+            href="https://metamask.io"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button text="USE METAMASK" color="white" />
+            {` `}
+            <QuestionMarkToolTip
+              toolTipText={
+                "A browser plugin to replace email/password identification"
+              }
+            />
+          </a>
+        </Fragment>
+      )}
       {error ? <p className="app__error-message">{error}</p> : null}
     </Fragment>
   );

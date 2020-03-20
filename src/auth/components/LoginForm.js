@@ -125,6 +125,10 @@ export default function LoginForm() {
           {isAuthenticating ? `...Loading` : `Log in`}
         </button>
       </div>
+
+      <NavLink className="app__link" to="/claim" style={{ marginTop: "2em" }}>
+        Forgot your password?
+      </NavLink>
     </form>
   );
 }

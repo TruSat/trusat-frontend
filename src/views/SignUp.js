@@ -9,7 +9,7 @@ export default function SignUp() {
   return (
     <div className="sign-up__wrapper">
       <h1 className="sign-up__header">
-        {userAddress !== "none" ? "YOU'RE IN" : "SIGN UP"}
+        {userAddress !== "none" ? "YOU'RE IN" : "Sign Up"}
       </h1>
       {userAddress !== "none" ? (
         <div className="login__success-wrapper">

@@ -31,50 +31,62 @@ export default function BurgerMenu() {
           to={`/join`}
           className="app__nav-link--mobile-join"
         >
-          Join
+          JOIN
         </NavLink>
       ) : null}
 
       {userAddress === "none" ? (
         <NavLink onClick={() => closeMenu()} to={`/login`}>
-          Log In
+          LOG IN
         </NavLink>
       ) : null}
       <br></br>
 
       <NavLink onClick={() => closeMenu()} to={`/`}>
         <img className="app__nav__icon" src={IconWave} alt="icon"></img>
-        Welcome
+        WELCOME
       </NavLink>
 
       <NavLink onClick={() => closeMenu()} to={`/catalog/priorities`}>
         <img className="app__nav__icon" src={IconSat} alt="icon"></img>
-        Catalog
-      </NavLink>
-
-      {userAddress !== "none" ? (
-        <NavLink onClick={() => closeMenu()} to={`/profile/${userAddress}`}>
-          <img className="app__nav__icon" src={IconUser} alt="icon"></img>
-          My Profile
-        </NavLink>
-      ) : null}
-
-      <NavLink onClick={() => closeMenu()} to={`/about`}>
-        <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
-        About
+        CATALOG
       </NavLink>
 
       <div>
         <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
         <a
           className="app__nav-link nav-bar__link--lowlight--welcome"
-          href="https://learn.trusat.org/docs/high-level-guide"
+          href="https://learn.trusat.org"
           target="_blank"
           rel="noopener noreferrer"
         >
-          How To
+          LEARNING HUB
         </a>
       </div>
+
+      {userAddress !== "none" ? (
+        <NavLink onClick={() => closeMenu()} to={`/profile/${userAddress}`}>
+          <img className="app__nav__icon" src={IconUser} alt="icon"></img>
+          MY PROFILE
+        </NavLink>
+      ) : null}
+
+      <div>
+        <img className="app__nav__icon" src={IconQuestion} alt="icon"></img>
+        <a
+          className="app__nav-link nav-bar__link--lowlight--welcome"
+          href="https://discuss.trusat.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          FORUM
+        </a>
+      </div>
+
+      <NavLink onClick={() => closeMenu()} to={`/about`}>
+        <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
+        ABOUT
+      </NavLink>
     </Menu>
   );
 }

@@ -1,47 +1,46 @@
 import React from "react";
-import MailingListForm from "../app/components/MailingListForm";
-import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import TestPilots from "../app/components/TestPilots";
+import Button from "../app/components/Button";
+import { NavLink } from "react-router-dom";
 
 export default function Join() {
+  // See auth-styles.cscc in the "auth" directory for styles
   return (
-    <div className="join__wrapper">
-      <div className="join__header">
-        <img
-          className="join__image join__logo-image"
-          src={TrusatLogoBig}
-          alt="Trusat logo"
-        ></img>
-        <h2 className="join__trusat-tagline">
-          OPEN SOURCE SPACE SUSTAINABILITY
+    <div className="join-view__wrapper">
+      <section className="join-view__content-container">
+        <h1 className="join-view__main-header">
+          Join the community building TruSat
+        </h1>
+        <h2 className="join-view__sub-header">
+          TruSat is entirely open source, and depends on the efforts of people
+          like you.
         </h2>
-      </div>
-
-      <div className="join__content-wrapper">
-        <div className="join__image-wrapper">
-          <img
-            className="join__image"
-            src="https://trusat-assets.s3.amazonaws.com/JoinOpenSource.jpg"
-            alt="open source team"
-          ></img>
-        </div>
-        <div className="join__mailing-list-content-wrapper">
-          <h2 className="join__sub-header">Join the Community</h2>
-          <p className="join__copy">
-            Be the first to know about new features, opportunities to join the
-            software build, and what you can do to grow TruSat into a powerful
-            tool for space sustainability.
-          </p>
-          <MailingListForm
-            testPilots={false}
-            eventLabel={"Join page subscribe button"}
+        <a
+          href="https://learn.trusat.org/docs/contributing"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Button
+            text="Join the build"
+            color="orange"
+            addStyles="join-view__button"
           />
-        </div>
-      </div>
+        </a>
+      </section>
 
-      <div className="join__test-pilots-wrapper">
-        <TestPilots />
-      </div>
+      <section className="join-view__content-container">
+        <h1 className="join-view__main-header">Track satellites</h1>
+        <h2 className="join-view__sub-header">
+          Create an account to start supporting space sustainability with your
+          satellite observations
+        </h2>
+        <NavLink to="/signup">
+          <Button
+            text="Become an observer"
+            color="white"
+            addStyles="join-view__button"
+          />
+        </NavLink>
+      </section>
     </div>
   );
 }

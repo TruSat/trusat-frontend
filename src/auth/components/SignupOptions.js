@@ -19,12 +19,10 @@ export default function SignupOptions() {
       )}
 
       <div className="sign-up-options__metamask-button-wrapper app__hide-on-mobile">
-        {window.ethereum ? (
-          <React.Fragment>
-            <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
-            <MetaMask buttonText={`Sign up with MetaMask`} />
-          </React.Fragment>
-        ) : null}
+        <React.Fragment>
+          <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
+          <MetaMask buttonText={`Sign up with MetaMask`} />
+        </React.Fragment>
       </div>
     </div>
   );
