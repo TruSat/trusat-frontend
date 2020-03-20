@@ -105,7 +105,7 @@ function NavBar(props) {
         >
           <a
             className="app__nav-link nav-bar__link--lowlight--welcome"
-            href="https://learn.trusat.org/"
+            href="https://learn.trusat.org/docs/start-here"
             target="_blank"
             rel="noopener noreferrer"
           >
