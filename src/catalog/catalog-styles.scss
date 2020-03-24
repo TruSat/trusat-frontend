@@ -79,19 +79,6 @@ CATALOG NAV BAR
   display: none;
 }
 
-.catalog-nav-bar__more-link {
-  display: flex;
-  flex-direction: column;
-}
-
-.catalog-nav-bar__more-dropdown {
-  border: 1px solid $secondary-theme-color;
-  border-top: none;
-  display: flex;
-  height: 300px;
-  margin-right: 5em;
-}
-
 @media (min-width: 600px) {
   .catalog-nav-bar__wrapper {
     border-bottom: 1px solid $secondary-theme-color;
@@ -158,6 +145,50 @@ CATALOG NAV BAR
   .catalog-filter-label {
     padding-left: 4px;
   }
+}
+
+/* ----------
+CATALOG MORE DROPDOWN
+---------- */
+.catalog-more-dropdown {
+  border: 1px solid $secondary-theme-color;
+  border-top: none;
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: 5em;
+  padding: 1em;
+}
+
+.catalog-more-dropdown__more-text {
+  @include section-title;
+  border-bottom: 4px solid $primary-theme-color;
+  color: $primary-text-color;
+  font-weight: $regular-weight;
+  margin-right: 2em;
+  padding-bottom: 0.3em;
+  text-decoration: none;
+}
+
+.catalog-more-dropdown__more-text:hover {
+  cursor: pointer;
+}
+
+.catalog-more-dropdown__group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  margin: 1em;
+  max-width: 150px;
+}
+
+.catalog-more-dropdown__group-header {
+  font-style: bold;
+}
+
+.catalog-more-dropdown__link {
+  color: white;
+  font-size: $extra-small-font-size;
+  text-decoration: none;
 }
 
 /* ----------
