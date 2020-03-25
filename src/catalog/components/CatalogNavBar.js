@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import ReactGA from "react-ga";
 import { celestrakCategories } from "../../app/app-helpers";
 import IconArrowUp from "../../assets/icon-arrow-up.svg";
@@ -8,7 +8,7 @@ import IconLock from "../../assets/icon-lock.svg";
 import IconTrash from "../../assets/icon-trash.svg";
 
 function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
-  const [showMore, setShowMore] = useState(true);
+  const [showMore, setShowMore] = useState(false);
 
   const renderCelestrakCategories = () => {
     return celestrakCategories.map(group => (
@@ -18,12 +18,12 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
         </h1>
 
         {group.categories.map(category => (
-          <NavLink
-            to={`all/${category.path}`}
+          <p
+            onClick={() => history.push(`/catalog/${category.path}`)}
             className="catalog-more-dropdown__link"
           >
             {category.title}
-          </NavLink>
+          </p>
         ))}
       </div>
     ));

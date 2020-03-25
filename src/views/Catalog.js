@@ -14,6 +14,8 @@ function Catalog({ match }) {
   // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });
 
+  console.log(catalogFilter);
+
   return (
     <div className="catalog__wrapper">
       <div className="catalog__header-wrapper">

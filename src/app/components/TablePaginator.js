@@ -7,8 +7,6 @@ export default function TablePaginator({
   dataStart,
   setDataStart
 }) {
-  console.log(`dataStart = `, dataStart);
-
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
