@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { withRouter } from "react-router-dom";
 import ReactGA from "react-ga";
-import { celestrakCategories } from "../../app/app-helpers";
+import { celestrakCategories, useTrusatGetApi } from "../../app/app-helpers";
 import IconArrowUp from "../../assets/icon-arrow-up.svg";
 import IconRocket from "../../assets/icon-rocket.svg";
 import IconLock from "../../assets/icon-lock.svg";
@@ -9,9 +9,16 @@ import IconTrash from "../../assets/icon-trash.svg";
 
 function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   const [showMore, setShowMore] = useState(false);
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+
+  useEffect(() => {
+    doFetch(`/catalog/list`);
+
+    console.log(`data after call = `, data);
+  }, [doFetch]);
 
   const renderCelestrakCategories = () => {
-    return celestrakCategories.data.map(group => (
+    return data.map(group => (
       <div className="catalog-more-dropdown__group">
         <h1
           className="catalog-more-dropdown__group-header"
