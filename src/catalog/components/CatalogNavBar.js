@@ -19,7 +19,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   }, [data, doFetch]);
 
   const renderCelestrakCategories = () => {
-    return data.map(group => (
+    return data.data.map(group => (
       <div className="catalog-more-dropdown__group">
         <h1
           className="catalog-more-dropdown__group-header"
