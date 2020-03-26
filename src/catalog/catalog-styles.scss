@@ -185,6 +185,10 @@ CATALOG MORE DROPDOWN
   font-style: bold;
 }
 
+.catalog-more-dropdown__group-header:hover {
+  cursor: pointer;
+}
+
 .catalog-more-dropdown__link {
   color: white;
   font-size: $extra-small-font-size;

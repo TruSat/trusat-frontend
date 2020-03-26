@@ -23,14 +23,20 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
       <div className="catalog-more-dropdown__group">
         <h1
           className="catalog-more-dropdown__group-header"
-          onClick={() => history.push(`/catalog/${group.groupHeader.path}`)}
+          onClick={() => {
+            setShowMore(false);
+            history.push(`/catalog/${group.groupHeader.path}`);
+          }}
         >
           {group.groupHeader.title}
         </h1>
 
         {group.groupCategories.map(category => (
           <p
-            onClick={() => history.push(`/catalog/${category.path}`)}
+            onClick={() => {
+              setShowMore(false);
+              history.push(`/catalog/${category.path}`);
+            }}
             className="catalog-more-dropdown__link"
           >
             {category.title}
