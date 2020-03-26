@@ -11,13 +11,16 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   const [showMore, setShowMore] = useState(false);
 
   const renderCelestrakCategories = () => {
-    return celestrakCategories.map(group => (
+    return celestrakCategories.data.map(group => (
       <div className="catalog-more-dropdown__group">
-        <h1 className="catalog-more-dropdown__group-header">
-          {group.groupTitle}
+        <h1
+          className="catalog-more-dropdown__group-header"
+          onClick={() => history.push(`/catalog/${group.groupHeader.path}`)}
+        >
+          {group.groupHeader.title}
         </h1>
 
-        {group.categories.map(category => (
+        {group.groupCategories.map(category => (
           <p
             onClick={() => history.push(`/catalog/${category.path}`)}
             className="catalog-more-dropdown__link"
