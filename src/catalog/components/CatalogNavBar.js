@@ -6,6 +6,7 @@ import IconArrowUp from "../../assets/icon-arrow-up.svg";
 import IconRocket from "../../assets/icon-rocket.svg";
 import IconLock from "../../assets/icon-lock.svg";
 import IconTrash from "../../assets/icon-trash.svg";
+import Spinner from "../../app/components/Spinner";
 
 function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   const [showMore, setShowMore] = useState(false);
@@ -15,7 +16,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
     doFetch(`/catalog/list`);
 
     console.log(`data after call = `, data);
-  }, [doFetch]);
+  }, [data, doFetch]);
 
   const renderCelestrakCategories = () => {
     return data.map(group => (
@@ -144,7 +145,15 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
           onMouseEnter={() => setShowMore(true)}
           onMouseLeave={() => setShowMore(false)}
         >
-          {renderCelestrakCategories()}
+          {isLoading ? (
+            <Spinner />
+          ) : errorMessage ? (
+            <p className="app__error-message">
+              Something went wrong... {errorMessage}
+            </p>
+          ) : (
+            renderCelestrakCategories()
+          )}
         </section>
       ) : null}
     </React.Fragment>
