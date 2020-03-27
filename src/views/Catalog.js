@@ -44,7 +44,6 @@ function Catalog({ match }) {
             setRange={setRange}
             setDataStart={setDataStart}
           />
-          <FilterDescription catalogFilter={catalogFilter} />
         </div>
         {/* Shown on desktop */}
         <div className="app__show-on-desktop">

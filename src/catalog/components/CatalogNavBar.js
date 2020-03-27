@@ -7,6 +7,7 @@ import IconRocket from "../../assets/icon-rocket.svg";
 import IconLock from "../../assets/icon-lock.svg";
 import IconTrash from "../../assets/icon-trash.svg";
 import Spinner from "../../app/components/Spinner";
+import FilterDescription from "./FilterDescription";
 
 function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   const [showMore, setShowMore] = useState(false);
@@ -157,13 +158,18 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
             <Spinner />
           ) : errorMessage ? (
             <p className="app__error-message">
-              Something went wrong... {errorMessage}
+              Something went wrong loading the filter options... {errorMessage}
             </p>
           ) : (
             renderCelestrakCategories()
           )}
         </section>
       ) : null}
+
+      <FilterDescription
+        catalogFilter={catalogFilter}
+        celestrakCategories={data.data}
+      />
     </React.Fragment>
   );
 }
