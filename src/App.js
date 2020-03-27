@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { checkAuthExpiry } from "./auth/auth-helpers";
-import { setCookies } from "./app/app-helpers";
+import { setCookies, AnimatedRoutes, RouteTransition } from "./app/app-helpers";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { useAuthDispatch } from "./auth/auth-context";
 import ScrollToTop from "./app/components/ScrollToTop";
@@ -92,33 +92,69 @@ export default function App() {
             ReactGA.pageview(location.pathname + location.search);
           }}
         />
-
-        <Switch>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/catalog/:catalogFilter" component={Catalog} />
-          <Route path="/about" component={About} />
-          <Route path="/submit/:form" component={Submit} />
-          <Route path="/submit" component={Submit} />
-          <Route path="/object/:number" component={ObjectInfo} />
-          <Route exact path="/profile/:address" component={Profile} />
-          <Route exact path="/settings" component={AccountSettings} />
-          <Route path="/settings/metamask" component={MetamaskImport} />
-          <Route path="/settings/stations" component={AddStation}></Route>
-          <Route path="/join" component={Join}></Route>
-          <Route path="/login" component={LogIn} />
-          <Route path="/signup" component={SignUp} />
-          <Route exact path="/claim" component={ClaimAccount} />
-          <Route path="/claim/:jwt" component={VerifyClaimAccount} />
-          <Route path="/privacy" component={PrivacyPolicy} />
-          <Route path="/terms" component={Terms} />
-          {/* User is sent to this route when they complete a mail chimp sign up */}
-          <Route
+        <AnimatedRoutes exitBeforeEnter initial={false}>
+          <RouteTransition exact path="/">
+            <Welcome />
+          </RouteTransition>
+          <RouteTransition path="/catalog/:catalogFilter">
+            <Catalog />
+          </RouteTransition>
+          <RouteTransition path="/about">
+            <About />
+          </RouteTransition>
+          <RouteTransition path="/submit/:form">
+            <Submit />
+          </RouteTransition>
+          <RouteTransition path="/submit">
+            <Submit />
+          </RouteTransition>
+          <RouteTransition path="/object/:number">
+            <ObjectInfo />
+          </RouteTransition>
+          <RouteTransition exact path="/profile/:address">
+            <Profile />
+          </RouteTransition>
+          <RouteTransition exact path="/settings">
+            <AccountSettings />
+          </RouteTransition>
+          <RouteTransition path="/settings/metamask">
+            <MetamaskImport />
+          </RouteTransition>
+          <RouteTransition path="/settings/stations">
+            <AddStation />
+          </RouteTransition>
+          <RouteTransition path="/join">
+            <Join />
+          </RouteTransition>
+          <RouteTransition path="/login">
+            <LogIn />
+          </RouteTransition>
+          <RouteTransition path="/signup">
+            <SignUp />
+          </RouteTransition>
+          <RouteTransition exact path="/claim">
+            <ClaimAccount />
+          </RouteTransition>
+          <RouteTransition path="/claim/:jwt">
+            <VerifyClaimAccount />
+          </RouteTransition>
+          <RouteTransition path="/privacy">
+            <PrivacyPolicy />
+          </RouteTransition>
+          <RouteTransition path="/terms">
+            <Terms />
+          </RouteTransition>
+          {/* User is sent to this RouteTransition when they complete a mail chimp sign up */}
+          {/* <RouteTransition
             path="/subscription-confirmed"
             component={SubscriptionConfirmed}
           />
-          <Route path="/test-pilot-confirmed" component={TestPilotConfirmed} />
-          <Route component={NoMatch} />
-        </Switch>
+          <RouteTransition
+            path="/test-pilot-confirmed"
+            component={TestPilotConfirmed}
+          /> */}
+          <RouteTransition component={NoMatch} />
+        </AnimatedRoutes>
 
         {isBannerOpen ? (
           <CookieBanner
@@ -140,8 +176,8 @@ function NoMatch({ location }) {
   return (
     <div>
       <h3 className="app__error-message">
-        <code>{location.pathname}</code> is not a route in TruSat. Please check
-        that you entered the correct URL
+        <code>{location.pathname}</code> is not a RouteTransition in TruSat.
+        Please check that you entered the correct URL
       </h3>
     </div>
   );
