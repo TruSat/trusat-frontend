@@ -145,14 +145,12 @@ export default function App() {
             <Terms />
           </RouteTransition>
           {/* User is sent to this RouteTransition when they complete a mail chimp sign up */}
-          {/* <RouteTransition
-            path="/subscription-confirmed"
-            component={SubscriptionConfirmed}
-          />
-          <RouteTransition
-            path="/test-pilot-confirmed"
-            component={TestPilotConfirmed}
-          /> */}
+          <RouteTransition path="/subscription-confirmed">
+            <SubscriptionConfirmed />
+          </RouteTransition>
+          <RouteTransition path="/test-pilot-confirmed">
+            <TestPilotConfirmed />
+          </RouteTransition>
           <RouteTransition component={NoMatch} />
         </AnimatedRoutes>
 
