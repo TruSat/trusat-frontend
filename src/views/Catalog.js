@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { withRouter } from "react-router-dom";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
-import FilterDescription from "../catalog/components/FilterDescription";
 import CatalogTable from "../catalog/components/CatalogTable";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 import HowToParticipate from "../catalog/components/HowToParticipate";

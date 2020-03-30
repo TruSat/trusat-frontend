@@ -4,8 +4,6 @@ export default function FilterDescription({
   catalogFilter,
   celestrakCategories
 }) {
-  console.log(celestrakCategories);
-
   const filterDescriptions = [
     {
       filter: "priorities",
@@ -30,23 +28,23 @@ export default function FilterDescription({
   ];
 
   // Will return an array with 1 object if a featured filter was chosen
-  const description = filterDescriptions.filter(
+  const featuredDescription = filterDescriptions.filter(
     description => description.filter === catalogFilter
   );
 
   // if featured filter was chosen
-  return description.length === 1 ? (
+  return featuredDescription.length === 1 ? (
     // return detailed description of featured filter
     <p
-      key={`${description[0].filter} copy`}
+      key={`${featuredDescription[0].filter} copy`}
       className="catalog__filter-description"
     >
-      {description[0].copy}
+      {featuredDescription[0].copy}
     </p>
   ) : (
     // otherwise return generic description of regular filter found in "more" dropdown
     <p key={`${catalogFilter} copy`} className="catalog__filter-description">
-      {`All the objects classified as ${catalogFilter} in the TruSat Catalog`}
+      {`All the objects classified as "${catalogFilter}" in the TruSat Catalog`}
     </p>
   );
 }
