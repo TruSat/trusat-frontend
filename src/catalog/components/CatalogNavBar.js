@@ -14,7 +14,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    doFetch(`/catalog/list`);
+    doFetch("/catalog/list");
   }, [data, doFetch]);
 
   const renderCelestrakCategories = () => {

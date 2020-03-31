@@ -1,9 +1,6 @@
 import React from "react";
 
-export default function FilterDescription({
-  catalogFilter,
-  celestrakCategories
-}) {
+export default function FilterDescription({ catalogFilter }) {
   const filterDescriptions = [
     {
       filter: "priorities",
