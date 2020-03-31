@@ -65,8 +65,8 @@ export default function StepOne({ step, setStep }) {
                 setStep(2);
                 ReactGA.event({
                   category: "MetaMask",
-                  action: `Securing account with MetaMask flow`,
-                  label: `Finished Step ONE by adding MetaMask plugin`
+                  action: "Securing account with MetaMask flow",
+                  label: "Finished Step ONE by adding MetaMask plugin"
                 });
                 // if metamask plugin ISN'T found
               } else {

@@ -12,7 +12,7 @@ export default class DownloadObservations extends React.Component {
   linkRef = React.createRef();
 
   download = async () => {
-    this.setState({ errorMessage: `` });
+    this.setState({ errorMessage: "" });
     this.setState({ isLoading: true });
 
     try {
@@ -57,7 +57,7 @@ export default class DownloadObservations extends React.Component {
       <div>
         <span className="download-observations" onClick={this.download}>
           {this.state.isLoading
-            ? `...Loading`
+            ? "...Loading"
             : `Download my ${this.props.observationCount} Observations`}
         </span>
 
@@ -65,7 +65,7 @@ export default class DownloadObservations extends React.Component {
           <p>Something went wrong... {this.state.errorMessage}</p>
         ) : null}
 
-        <a className="app__hide" ref={this.linkRef}>
+        <a className="app__hide" href="/#" ref={this.linkRef}>
           download
         </a>
       </div>

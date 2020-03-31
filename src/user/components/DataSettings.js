@@ -20,7 +20,7 @@ export default function PrivacySettings() {
           href={`mailto:${emails.remove}`}
         >
           {toolTip(
-            `Remove my data from TruSat`,
+            "Remove my data from TruSat",
             `Click to email us at ${emails.remove} and we will and we will remove your current and historical data from the system`
           )}
         </a>

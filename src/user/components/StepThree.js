@@ -60,8 +60,9 @@ export default function StepThree({ privateKey, step, setStep }) {
                 window.ethereum.enable().catch(console.error);
                 ReactGA.event({
                   category: "MetaMask",
-                  action: `Securing account with MetaMask flow`,
-                  label: `Finished Step THREE by importing Private Key to MetaMask`
+                  action: "Securing account with MetaMask flow",
+                  label:
+                    "Finished Step THREE by importing Private Key to MetaMask"
                 });
                 setStep(4);
               }}
