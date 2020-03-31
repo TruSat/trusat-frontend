@@ -107,15 +107,6 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={toolTipCopy.latitude} />
           </label>
           <div style={{ alignItems: "center", display: "flex" }}>
-            {/* <select
-              className="app__form__input app__form__input--sign"
-              onChange={event => setLatitudeSign(event.target.value)}
-              value={latitudeSign}
-            >
-              <option value={`?`}>?</option>
-              <option value={``}>+</option>
-              <option value={`-`}>-</option>
-            </select> */}
             <input
               required
               type="number"
@@ -130,11 +121,6 @@ export default function AddStation() {
               placeholder="e.g. 42.97473848"
             ></input>
           </div>
-          {/* {latitudeSign === "?" ? (
-            <p className="app__error-message">
-              Please choose + or - latitude value
-            </p>
-          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">
@@ -142,15 +128,6 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={toolTipCopy.longitude} />
           </label>
           <div style={{ alignItems: "center", display: "flex" }}>
-            {/* <select
-              className="app__form__input app__form__input--sign"
-              onChange={event => setlongitudeSign(event.target.value)}
-              value={longitudeSign}
-            >
-              <option value={`?`}>?</option>
-              <option value={``}>+</option>
-              <option value={`-`}>-</option>
-            </select> */}
             <input
               required
               type="number"
@@ -164,11 +141,6 @@ export default function AddStation() {
               placeholder="e.g. -25.3930"
             ></input>
           </div>
-          {/* {longitudeSign === "?" ? (
-            <p className="app__error-message">
-              Please choose + or - longitude value
-            </p>
-          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">
