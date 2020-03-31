@@ -12,7 +12,6 @@ export default function Advisors() {
             alt="ConsenSys Space logo"
           ></img>
           Brad Young
-          {/* </a> */}
         </div>
       </div>
     </Fragment>
