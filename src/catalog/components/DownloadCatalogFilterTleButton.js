@@ -66,7 +66,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           <p>Something went wrong... {this.state.errorMessage}</p>
         ) : null}
 
-        <a className="app__hide" ref={this.linkRef}>
+        <a className="app__hide" href="/#" ref={this.linkRef}>
           download
         </a>
       </Fragment>
