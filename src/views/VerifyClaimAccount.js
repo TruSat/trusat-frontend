@@ -19,7 +19,7 @@ export default function VerifyClaimAccount({ match }) {
   );
   const [understandMessage, setUnderstandMessage] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(``);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const { userAddress } = useAuthState();
   const authDispatch = useAuthDispatch();
@@ -64,7 +64,7 @@ export default function VerifyClaimAccount({ match }) {
   const verifyClaimAccount = async () => {
     setIsLoading(true);
     setIsSuccess(false);
-    setErrorMessage(``);
+    setErrorMessage("");
 
     if (inputsAreValid()) {
       const wallet = createWallet();
@@ -77,9 +77,10 @@ export default function VerifyClaimAccount({ match }) {
             jwt: match.params.jwt,
             address: wallet.signingKey.address,
             secret: secret
-          }), {
+          }),
+          {
             headers: {
-              'Content-Type': 'application/json',
+              "Content-Type": "application/json"
             }
           }
         );

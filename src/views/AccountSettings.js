@@ -27,8 +27,8 @@ function UserSettings({ history }) {
   const [newBio, setNewBio] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
-  const [fetchProfileErrorMessage, setFetchProfileErrorMessage] = useState(``);
-  const [editProfileErrorMessage, setEditProfileErrorMessage] = useState(``);
+  const [fetchProfileErrorMessage, setFetchProfileErrorMessage] = useState("");
+  const [editProfileErrorMessage, setEditProfileErrorMessage] = useState("");
 
   const [newStationData, setNewStationData] = useState([]);
   const [newStationNames, setNewStationNames] = useState({});
@@ -53,7 +53,7 @@ function UserSettings({ history }) {
 
   useEffect(() => {
     const doFetch = async () => {
-      setFetchProfileErrorMessage(``);
+      setFetchProfileErrorMessage("");
       setIsLoading(true);
       // checks if auth is valid and hasn't expired
       checkAuthExpiry(authExpiry);
@@ -76,7 +76,7 @@ function UserSettings({ history }) {
   }, [userAddress, authExpiry, profileDispatch]);
 
   const submitEdit = async () => {
-    setEditProfileErrorMessage(``);
+    setEditProfileErrorMessage("");
     setIsLoading(true);
     // checks if auth is valid and hasn't expired
     checkAuthExpiry(authExpiry);
@@ -111,7 +111,7 @@ function UserSettings({ history }) {
   const logout = () => {
     localStorage.removeItem("trusat-login-credentials");
     localStorage.removeItem("trusat-allow-cookies");
-    history.push(`/`);
+    history.push("/");
     window.location.reload();
   };
 
