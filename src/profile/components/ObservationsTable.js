@@ -105,8 +105,8 @@ export default function ObservationsTable() {
               onClick={() => {
                 ReactGA.event({
                   category: "Internal Link",
-                  action: `Clicked Learn`,
-                  label: `Clicked Learn How on Profile Page`
+                  action: "Clicked Learn",
+                  label: "Clicked Learn How on Profile Page"
                 });
               }}
             >

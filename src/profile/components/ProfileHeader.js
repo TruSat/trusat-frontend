@@ -46,7 +46,7 @@ export default function ProfileHeader() {
             <p className="profile__header-info-data-value profile__header-info-data-value--lowlight">
               {profileData.user_location
                 ? profileData.user_location
-                : `Location Undisclosed`}
+                : "Location Undisclosed"}
             </p>
           </div>
 
@@ -73,7 +73,7 @@ export default function ProfileHeader() {
               <p className="profile__header-info-data-value">
                 {profileData.user_first_observation
                   ? profileData.user_first_observation
-                  : `?`}
+                  : "?"}
               </p>
               &nbsp; <p>1ST OBSERVATION</p>
             </div>
