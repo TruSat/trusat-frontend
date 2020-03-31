@@ -29,8 +29,8 @@ export default function TablePaginator({
             {(dataStart === 0 || dataStart === undefined) && range.start === 0
               ? null
               : dataStart !== 0 && range.start === 0
-              ? `<< Load Previous`
-              : `< Previous`}
+              ? "<< Load Previous"
+              : "< Previous"}
           </p>
         </button>
         {/* Middle text to signify position of data being displayed */}
@@ -71,12 +71,14 @@ export default function TablePaginator({
               <Fragment>
                 {/* Give user option to load more data if current dataset is 200 in length */}
                 {tableDataLength === 200 ? (
-                  <p className="table-paginator__button-text">{`Load Next 200 >>`}</p>
+                  <p className="table-paginator__button-text">
+                    Load Next 200 >>
+                  </p>
                 ) : null}
               </Fragment>
             )
           ) : (
-            <p className="table-paginator__button-text">{`Next >`}</p>
+            <p className="table-paginator__button-text">Next ></p>
           )}
         </button>
       </div>

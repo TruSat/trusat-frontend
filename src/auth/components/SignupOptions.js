@@ -21,7 +21,7 @@ export default function SignupOptions() {
       <div className="sign-up-options__metamask-button-wrapper app__hide-on-mobile">
         <React.Fragment>
           <p className="sign-up-options__metamask-button-wrapper-text">Or:</p>
-          <MetaMask buttonText={`Sign up with MetaMask`} />
+          <MetaMask buttonText={"Sign up with MetaMask"} />
         </React.Fragment>
       </div>
     </div>

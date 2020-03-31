@@ -57,7 +57,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           }}
         >
           {this.state.isLoading
-            ? `...Loading`
+            ? "...Loading"
             : `Download ${this.props.catalogFilter.charAt(0).toUpperCase() +
                 this.props.catalogFilter.slice(1)} TLEs`}
         </span>

@@ -16,7 +16,7 @@ const web3 = new Web3(Web3.givenProvider || window.ethereum);
 export default function MetaMask({ buttonText, GAEvent }) {
   const { isAuthenticating } = useAuthState();
   const authDispatch = useAuthDispatch();
-  const [error, setError] = useState(``);
+  const [error, setError] = useState("");
 
   const handleClick = async () => {
     if (window.ethereum.selectedAddress) {
@@ -25,8 +25,9 @@ export default function MetaMask({ buttonText, GAEvent }) {
       if (GAEvent) {
         ReactGA.event({
           category: "MetaMask",
-          action: `Securing account with MetaMask flow`,
-          label: `Finished the process by confirming connection in MetaMask and signing a message`
+          action: "Securing account with MetaMask flow",
+          label:
+            "Finished the process by confirming connection in MetaMask and signing a message"
         });
       }
       // if user has metamask but isn't signed into the plugin
@@ -37,7 +38,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
 
   // For both signup and login metamask flows
   const handleMetamaskAuth = async () => {
-    setError(``);
+    setError("");
 
     const address = web3._provider.selectedAddress;
 
@@ -58,7 +59,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
       });
       // only log user in and add credentaisl to local storage if credentials are valid
       if (!metamaskLoginCredentials) {
-        setError(`Log in failed because your log in credentials are not valid`);
+        setError("Log in failed because your log in credentials are not valid");
       } else {
         // Add address to auth state
         authDispatch({ type: "SET_USER_ADDRESS", payload: address });
@@ -77,7 +78,7 @@ export default function MetaMask({ buttonText, GAEvent }) {
     } else {
       // When user cancels the sign or there is an error returned from metamaskSignMessage
       alert(
-        `You must sign the message by clicking "Sign" on the MetaMask plugin in order to verify your identity!`
+        "You must sign the message by clicking 'Sign' on the MetaMask plugin in order to verify your identity!"
       );
     }
     authDispatch({ type: "AUTHENTICATING", payload: false });

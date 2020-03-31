@@ -142,13 +142,13 @@ function NavBar(props) {
         >
           <NavLink
             className={
-              path === `/about`
+              path === "/about"
                 ? "app__nav-link nav-bar__link--highlight"
                 : path === "/"
                 ? "app__nav-link nav-bar__link--lowlight--welcome"
                 : "app__nav-link nav-bar__link--lowlight"
             }
-            to={`/about`}
+            to={"/about"}
           >
             ABOUT
           </NavLink>

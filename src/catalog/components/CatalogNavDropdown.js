@@ -16,7 +16,7 @@ function NavDropdown({ catalogFilter, history, setRange, setDataStart }) {
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    doFetch(`/catalog/list`);
+    doFetch("/catalog/list");
 
     // only run when data has come down from the api call
     if (data.length !== 0) {

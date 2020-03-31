@@ -25,7 +25,7 @@ export default function Info() {
             <ObjectBadge
               noradNumber={noradNumber}
               size="large"
-              addStyles={`object-badge__wrapper--object-view`}
+              addStyles={"object-badge__wrapper--object-view"}
             />
           </div>
         ) : null}

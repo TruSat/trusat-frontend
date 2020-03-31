@@ -31,7 +31,7 @@ function ProfileProvider({ children }) {
 function useProfileState() {
   const context = React.useContext(ProfileStateContext);
   if (context === undefined) {
-    throw new Error(`useProfileState must be used with an ProfileProvider`);
+    throw new Error("useProfileState must be used with an ProfileProvider");
   }
   return context;
 }
@@ -40,7 +40,7 @@ function useProfileDispatch() {
   const context = React.useContext(ProfileDispatchContext);
   if (context === undefined) {
     throw new Error(
-      `useProfileDispatch must be used within an ProfileProvider`
+      "useProfileDispatch must be used within an ProfileProvider"
     );
   }
   return context;

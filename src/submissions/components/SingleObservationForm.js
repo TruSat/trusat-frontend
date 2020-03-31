@@ -20,7 +20,7 @@ import ReactGA from "react-ga";
 
 export default function SingleObservationForm() {
   // STATION CONDITIONS
-  const [observationStations, setObservationStations] = useState(``); // will be an array when call to getObservationStations is made
+  const [observationStations, setObservationStations] = useState(""); // will be an array when call to getObservationStations is made
   const [station, setStation] = useState(`    `); // 4 chars
   const [cloudedOut, setCloudedOut] = useState(false);
   const [observerUnavailable, setObserverUnavailable] = useState(false);
@@ -31,7 +31,7 @@ export default function SingleObservationForm() {
   const [isHiddenInputs, setIsHiddenInputs] = useState(false);
   // OBJECT POSITION
   const [objectSearchTerm, setObjectSearchTerm] = useState(``); // 15 chars
-  const [object, setObject] = useState(``); // 15 chars
+  const [object, setObject] = useState(""); // 15 chars
   const [objectSearchResults, setObjectSearchResults] = useState([]); // renders a list under input field
   // position format in the UI
   const [angleFormatCode, setAngleFormatCode] = useState(`2`); // 1 char
@@ -57,9 +57,9 @@ export default function SingleObservationForm() {
     `  `
   ); // 2 chars
   const [flashPeriod, setFlashPeriod] = useState(`      `); // 6 chars
-  const [remarks, setRemarks] = useState(``);
+  const [remarks, setRemarks] = useState("");
   // IOD STRING
-  const [IOD, setIOD] = useState(``);
+  const [IOD, setIOD] = useState("");
   // VALIDATION ERROR MESSAGING
   const numRegEx = /^\d+$/; // checks if string only contains numbers
   const [isStationError, setIsStationError] = useState(false);
@@ -83,15 +83,15 @@ export default function SingleObservationForm() {
   const [successCount, setSuccessCount] = useState(null);
   const [errorMessages, setErrorMessages] = useState([]);
   // set to true if attempt to submit fails
-  const [apiErrorMessage, setApiErrorMessage] = useState(``);
+  const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [
     fetchObservationStationsError,
     setFetchObservationStationsError
-  ] = useState(``);
+  ] = useState("");
   const [
     fetchObjectSearchResultsError,
     setFetchObjectSearchResultsError
-  ] = useState(``);
+  ] = useState("");
 
   // gets observations stations for this user
   useEffect(() => {
@@ -117,7 +117,7 @@ export default function SingleObservationForm() {
       }
     };
     // only do fetch if form does not already have their stations and user is logged in
-    if (userAddress !== "none" && observationStations === ``) {
+    if (userAddress !== "none" && observationStations === "") {
       fetchObservationStations();
     }
   }, [userAddress, observationStations]);
@@ -156,15 +156,15 @@ export default function SingleObservationForm() {
     setTime(`         `); // 9 chars
     setTimeUncertainty(`18`); // 2 chars
     setConditions(` `); // 1 char
-    setObject(``); // 15 chars
+    setObject(""); // 15 chars
     setTimeUncertainty(`18`);
     setAngleFormatCode(`2`);
     setEpochCode(`5`);
     setDeclinationOrElevationSign(`+`);
     setPositionalUncertainty(`18`);
     setIsHiddenInputs(false);
-    setObjectSearchTerm(``);
-    setObject(``);
+    setObjectSearchTerm("");
+    setObject("");
     setObjectSearchResults([]);
     setAngleFormatCode(`2`);
     setEpochCode(`5`);
@@ -178,7 +178,7 @@ export default function SingleObservationForm() {
     setVisualMagnitude(`   `); // 3 chars
     setVisualMagnitudeUncertainty(`  `); // 2 chars
     setFlashPeriod(`      `); // 6 chars
-    setRemarks(``);
+    setRemarks("");
   };
 
   // Updates IOD when user toggles `Clouded Out` or `Observer Unavailable`
@@ -526,7 +526,7 @@ export default function SingleObservationForm() {
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
                 {observationStations.length === 0 ? (
-                  <option className="app__link" value={``}>
+                  <option className="app__link" value={""}>
                     ----
                   </option>
                 ) : (
@@ -808,7 +808,7 @@ export default function SingleObservationForm() {
                   </span>
                   <span
                     className="object-position__x-button"
-                    onClick={() => setObject(``)}
+                    onClick={() => setObject("")}
                   >
                     X
                   </span>
@@ -1208,21 +1208,21 @@ export default function SingleObservationForm() {
                     }
                     value={visualMagnitudeUncertainty}
                   >
-                    <option value={`01`}>0.1</option>
-                    <option value={`02`}>0.2</option>
-                    <option value={`03`}>0.3</option>
-                    <option value={`04`}>0.4</option>
-                    <option value={`05`}>0.5</option>
-                    <option value={`06`}>0.6</option>
-                    <option value={`07`}>0.7</option>
-                    <option value={`08`}>0.8</option>
-                    <option value={`09`}>0.9</option>
-                    <option value={`10`}>1</option>
-                    <option value={`11`}>1.1</option>
-                    <option value={`12`}>1.2</option>
-                    <option value={`13`}>1.3</option>
-                    <option value={`14`}>1.4</option>
-                    <option value={`15`}>1.5</option>
+                    <option value={"01"}>0.1</option>
+                    <option value={"02"}>0.2</option>
+                    <option value={"03"}>0.3</option>
+                    <option value={"04"}>0.4</option>
+                    <option value={"05"}>0.5</option>
+                    <option value={"06"}>0.6</option>
+                    <option value={"07"}>0.7</option>
+                    <option value={"08"}>0.8</option>
+                    <option value={"09"}>0.9</option>
+                    <option value={"10"}>1</option>
+                    <option value={"11"}>1.1</option>
+                    <option value={"12"}>1.2</option>
+                    <option value={"13"}>1.3</option>
+                    <option value={"14"}>1.4</option>
+                    <option value={"15"}>1.5</option>
                   </select>
                 </div>
                 <div className="object-behavior__flash-period-wrapper">

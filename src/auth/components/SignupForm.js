@@ -25,7 +25,7 @@ export default function SignupForm({ setIsSuccess }) {
   );
   // used to prompt user to either log in or claim their account
   const [isAlreadySignedUp, setIsAlreadySignedUp] = useState(false);
-  const [error, setError] = useState(``);
+  const [error, setError] = useState("");
 
   const handleFormValidation = () => {
     setShowInvalidPasswordError(false);
@@ -48,7 +48,7 @@ export default function SignupForm({ setIsSuccess }) {
     const inputsAreValid = handleFormValidation();
 
     if (inputsAreValid) {
-      setError(``);
+      setError("");
       setIsSuccess(false);
       authDispatch({ type: "AUTHENTICATING", payload: true });
       // create a new wallet for user
@@ -84,7 +84,7 @@ export default function SignupForm({ setIsSuccess }) {
         setIsSuccess(true);
       } else {
         setError(
-          `Sign up has failed to send your secret to your email, please try again later`
+          "Sign up has failed to send your secret to your email, please try again later"
         );
       }
 
@@ -186,7 +186,7 @@ export default function SignupForm({ setIsSuccess }) {
           </NavLink>
 
           <button type="submit" className="app__form__button--white">
-            {isAuthenticating ? `...Loading` : `Sign Up`}
+            {isAuthenticating ? "...Loading" : "Sign Up"}
           </button>
         </div>
 

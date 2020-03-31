@@ -23,7 +23,7 @@ export const deleteCookies = () => {
 };
 
 export const API_ROOT =
-  process.env.REACT_APP_API_ROOT || `https://devvymcdevface.trusat.org`;
+  process.env.REACT_APP_API_ROOT || "https://devvymcdevface.trusat.org";
 
 export const axiosWithCache = axios.create({
   baseURL: "/",
@@ -31,22 +31,22 @@ export const axiosWithCache = axios.create({
   // cache will be enabled by default
   adapter: cacheAdapterEnhancer(axios.defaults.adapter, {
     enabledByDefault: true,
-    cacheFlag: `useCache`
+    cacheFlag: "useCache"
   }),
   withCredentials: true
 });
 
 export const useTrusatGetApi = () => {
   const [data, setData] = useState([]);
-  const [url, setUrl] = useState(``);
+  const [url, setUrl] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(``);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     let didCancel = false;
 
     const fetchData = async () => {
-      setErrorMessage(``);
+      setErrorMessage("");
       setIsLoading(true);
 
       try {
@@ -156,7 +156,8 @@ export const toolTipCopy = {
   user: "user who made observation",
   observation_station:
     "These are unique numbers used to pinpoint where you make observations from and they are issued to Test Pilots.",
-  station_location: `Station codes are used to help identify the location of your observations. If you need to add one, use the 'Add new location' option from the dropdown.`,
+  station_location:
+    "Station codes are used to help identify the location of your observations. If you need to add one, use the 'Add new location' option from the dropdown.",
   clouded_out:
     "Check this if you want to indicate an attempt to observe that was prevented by adverse weather.",
   observer_unavailable:
@@ -165,12 +166,18 @@ export const toolTipCopy = {
     "The UTC time you saw the satellite at the position specified below",
   time_uncertainty:
     "The margin of uncertainty, as a measure of time, for your estimated time of observation",
-  sky_conditions_excellent: `No Moon/clouds, great seeing, minimal air/light pollution.`,
-  sky_conditions_good: `No Moon/clouds, conditions could be better, but not much.`,
-  sky_conditions_fair: `Young/old Moon, some air/light pollution making fainter stars invisible.`,
-  sky_conditions_poor: `Gibbous Moon, haze, more air/light pollution making more stars invisible.`,
-  sky_conditions_bad: `Bright Moon, air/light pollution, some clouds; difficult.`,
-  sky_conditions_terrible: `Bright Moon, air/light pollution, looking through clouds.`,
+  sky_conditions_excellent:
+    "No Moon/clouds, great seeing, minimal air/light pollution.",
+  sky_conditions_good:
+    "No Moon/clouds, conditions could be better, but not much.",
+  sky_conditions_fair:
+    "Young/old Moon, some air/light pollution making fainter stars invisible.",
+  sky_conditions_poor:
+    "Gibbous Moon, haze, more air/light pollution making more stars invisible.",
+  sky_conditions_bad:
+    "Bright Moon, air/light pollution, some clouds; difficult.",
+  sky_conditions_terrible:
+    "Bright Moon, air/light pollution, looking through clouds.",
   position_format:
     "Different software may provide you with different formats for reporting position. This form supports the most common types.",
   epoch_code:
