@@ -28,7 +28,7 @@ export default function BurgerMenu() {
       {userAddress === "none" ? (
         <NavLink
           onClick={() => closeMenu()}
-          to={`/join`}
+          to={"/join"}
           className="app__nav-link--mobile-join"
         >
           JOIN
@@ -36,18 +36,18 @@ export default function BurgerMenu() {
       ) : null}
 
       {userAddress === "none" ? (
-        <NavLink onClick={() => closeMenu()} to={`/login`}>
+        <NavLink onClick={() => closeMenu()} to={"/login"}>
           LOG IN
         </NavLink>
       ) : null}
       <br></br>
 
-      <NavLink onClick={() => closeMenu()} to={`/`}>
+      <NavLink onClick={() => closeMenu()} to={"/"}>
         <img className="app__nav__icon" src={IconWave} alt="icon"></img>
         WELCOME
       </NavLink>
 
-      <NavLink onClick={() => closeMenu()} to={`/catalog/priorities`}>
+      <NavLink onClick={() => closeMenu()} to={"/catalog/priorities"}>
         <img className="app__nav__icon" src={IconSat} alt="icon"></img>
         CATALOG
       </NavLink>
@@ -83,7 +83,7 @@ export default function BurgerMenu() {
         </a>
       </div>
 
-      <NavLink onClick={() => closeMenu()} to={`/about`}>
+      <NavLink onClick={() => closeMenu()} to={"/about"}>
         <img className="app__nav__icon" src={IconGlobe} alt="icon"></img>
         ABOUT
       </NavLink>

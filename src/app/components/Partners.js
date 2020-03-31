@@ -15,8 +15,8 @@ export default function Partners() {
             onClick={() => {
               ReactGA.event({
                 category: "Outbound link",
-                action: `Clicked a partner link`,
-                label: `Clicked ConsenSys Space link`
+                action: "Clicked a partner link",
+                label: "Clicked ConsenSys Space link"
               });
             }}
           >
@@ -37,8 +37,8 @@ export default function Partners() {
             onClick={() => {
               ReactGA.event({
                 category: "Outbound link",
-                action: `Clicked a partner link`,
-                label: `Clicked SWF link`
+                action: "Clicked a partner link",
+                label: "Clicked SWF link"
               });
             }}
           >
@@ -59,8 +59,8 @@ export default function Partners() {
             onClick={() => {
               ReactGA.event({
                 category: "Outbound link",
-                action: `Clicked a partner link`,
-                label: `Clicked SWISE link`
+                action: "Clicked a partner link",
+                label: "Clicked SWISE link"
               });
             }}
           >
@@ -81,8 +81,8 @@ export default function Partners() {
             onClick={() => {
               ReactGA.event({
                 category: "Outbound link",
-                action: `Clicked a partner link`,
-                label: `Clicked Moriba Jah link`
+                action: "Clicked a partner link",
+                label: "Clicked Moriba Jah link"
               });
             }}
           >

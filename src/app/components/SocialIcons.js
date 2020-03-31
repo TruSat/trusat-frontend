@@ -11,8 +11,8 @@ export default function SocialIcons() {
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
-            action: `Clicked a social link`,
-            label: `Clicked Twiter link`
+            action: "Clicked a social link",
+            label: "Clicked Twiter link"
           });
         }}
       >
@@ -29,8 +29,8 @@ export default function SocialIcons() {
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
-            action: `Clicked a social link`,
-            label: `Clicked Facebook link`
+            action: "Clicked a social link",
+            label: "Clicked Facebook link"
           });
         }}
       >
@@ -47,8 +47,8 @@ export default function SocialIcons() {
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
-            action: `Clicked a social link`,
-            label: `Clicked Instagram link`
+            action: "Clicked a social link",
+            label: "Clicked Instagram link"
           });
         }}
       >
@@ -65,8 +65,8 @@ export default function SocialIcons() {
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
-            action: `Clicked a social link`,
-            label: `Clicked Github link`
+            action: "Clicked a social link",
+            label: "Clicked Github link"
           });
         }}
       >
