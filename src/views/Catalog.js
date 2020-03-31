@@ -18,9 +18,7 @@ function Catalog({ match }) {
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
-          {catalogFilter === "priorities" || catalogFilter === "all" ? (
-            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
-          ) : null}
+          <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
 
           <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button catalog__get-data-button">
