@@ -10,7 +10,7 @@ export default function LoginOptions() {
         <div className="log-in-options__metamask-button-wrapper app__hide-on-mobile">
           <React.Fragment>
             <p className="log-in-options__metamask-button-wrapper-text">Or:</p>
-            <MetaMask buttonText={`Log in with MetaMask`} />
+            <MetaMask buttonText={"Log in with MetaMask"} />
           </React.Fragment>
         </div>
       </div>
