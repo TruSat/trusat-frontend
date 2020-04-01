@@ -154,7 +154,6 @@ function NavBar(props) {
           </NavLink>
         </div>
       </div>
-
       <div>
         {/* Show Login and Join buttons when user is not logged in */}
         {userAddress === undefined ? (
