@@ -17,6 +17,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
     doFetch("/catalog/list");
   }, [data, doFetch]);
 
+  // renders the celestrak categories received from API to the "more" dropdown
   const renderCelestrakCategories = () => {
     return data.data.map(group => (
       <div

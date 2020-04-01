@@ -19,7 +19,7 @@ function NavDropdown({ catalogFilter, history, setRange, setDataStart }) {
     doFetch("/catalog/list");
 
     // only run when data has come down from the api call
-    if (data.length !== 0) {
+    if (data == true) {
       const celestrakCategories = [];
       // Adds all of the sub categories under Featured group header to the dropdown
       data.data
