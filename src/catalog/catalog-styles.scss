@@ -178,10 +178,11 @@ CATALOG MORE DROPDOWN
   flex-direction: column;
   line-height: 1.5;
   margin: 1em;
-  max-width: 150px;
+  width: 150px;
 }
 
 .catalog-more-dropdown__group-header {
+  font-size: $medium-font-size;
   font-style: bold;
 }
 
