@@ -52,10 +52,8 @@ export default function FilterDescription({
         );
 
         if (groupCategoryMatch.length !== 0) {
-          // TO DO - fix the bug where an array is returned with empty arrays for each filter than doesnt match
-          console.log(groupCategoryMatch);
-
-          return `${groupCategoryMatch[0].title} (${catalogFilter})`;
+          // "flat" reduce the array of arrays into a single array containing 1 object - the group category match
+          return `${groupCategoryMatch.flat(1)[0].title} (${catalogFilter})`;
         }
       }
     }
