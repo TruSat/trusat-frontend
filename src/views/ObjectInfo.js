@@ -29,7 +29,8 @@ export default function ObjectInfo({ match }) {
   const [isNumberError, setIsNumberError] = useState(false);
 
   useEffect(() => {
-    if (isValidNumber(noradNumber) && data.length === 0) {
+    // Only do fetch if noradNumber taken from URL is valid and the data array is empty
+    if (isValidNumber(noradNumber) && data == false) {
       doFetch(`/object/info?norad_number=${noradNumber}`);
     } else if (!isValidNumber(noradNumber)) {
       setIsNumberError(true);

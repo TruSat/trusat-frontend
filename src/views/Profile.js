@@ -21,7 +21,8 @@ export default function Profile({ match }) {
       doFetch(`/profile?address=${addressFromRoute}`);
     }
 
-    if (data.length !== 0) {
+    // Only add the data to app state when it is populated
+    if (data) {
       profileDispatch({ type: "SET_PROFILE_DATA", payload: data });
     }
   }, [addressFromRoute, doFetch, data, profileDispatch]);
