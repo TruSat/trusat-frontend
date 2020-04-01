@@ -32,7 +32,7 @@ export default function FilterDescription({
     description => description.filter === catalogFilter
   );
 
-  console.log(celestrakCategories);
+  //console.log(celestrakCategories);
 
   const getCelestrakCategoryName = () => {
     if (celestrakCategories) {
@@ -41,11 +41,22 @@ export default function FilterDescription({
       const groupHeaderMatch = celestrakCategories.filter(
         group => group.groupHeader.path === catalogFilter
       );
-      // return the "title" of the group header if the paths (url and API) match
+      // return the "title" of the groupHeader if the paths (groupHeader and catalogFilter) match
       if (groupHeaderMatch.length !== 0) {
-        return groupHeaderMatch[0].groupHeader.title;
+        return `${groupHeaderMatch[0].groupHeader.title} (${catalogFilter})`;
       } else {
-        return catalogFilter;
+        const groupCategoryMatch = celestrakCategories.map(group =>
+          group.groupCategories.filter(
+            groupCat => groupCat.path === catalogFilter
+          )
+        );
+
+        if (groupCategoryMatch.length !== 0) {
+          // TO DO - fix the bug where an array is returned with empty arrays for each filter than doesnt match
+          console.log(groupCategoryMatch);
+
+          return `${groupCategoryMatch[0].title} (${catalogFilter})`;
+        }
       }
     }
   };
