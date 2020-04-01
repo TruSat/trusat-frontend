@@ -27,7 +27,7 @@ function AuthProvider({ children }) {
   const [state, dispatch] = React.useReducer(authReducer, {
     isAuthenticating: false,
     authType: "",
-    userAddress: "none",
+    userAddress: undefined,
     authExpiry: ""
   });
 

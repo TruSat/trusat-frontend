@@ -70,7 +70,7 @@ export default function AddStation() {
     <div className="add-station">
       <h1 className="static-page__main-header--small">Add a location</h1>
       {/* Prompt user to log in so they can create a station */}
-      {userAddress === "none" ? (
+      {userAddress === undefined ? (
         <p className="app__error-message">
           You need to be logged in to add a station location.
         </p>
@@ -199,7 +199,7 @@ export default function AddStation() {
         ) : (
           <Fragment>
             {/* Only render button to submit form if user is logged in */}
-            {userAddress === "none" ? null : (
+            {userAddress === undefined ? null : (
               <button type="submit" className="station-form__button">
                 Add station
               </button>

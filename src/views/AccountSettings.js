@@ -70,7 +70,7 @@ function UserSettings({ history }) {
       setIsLoading(false);
     };
 
-    if (userAddress !== "none" && userAddress) {
+    if (userAddress !== undefined && userAddress) {
       doFetch();
     }
   }, [userAddress, authExpiry, profileDispatch]);
@@ -121,7 +121,7 @@ function UserSettings({ history }) {
     </p>
   ) : isLoading ? (
     <Spinner />
-  ) : userAddress === "none" ? (
+  ) : userAddress === undefined ? (
     <div className="app__error-message">
       You need to login{" "}
       <NavLink className="app__nav-link app__link" to="/login">
