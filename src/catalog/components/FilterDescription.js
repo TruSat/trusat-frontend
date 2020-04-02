@@ -1,6 +1,9 @@
 import React from "react";
 
-export default function FilterDescription({ catalogFilter }) {
+export default function FilterDescription({
+  catalogFilter,
+  celestrakCategories
+}) {
   const filterDescriptions = [
     {
       filter: "priorities",
@@ -29,7 +32,34 @@ export default function FilterDescription({ catalogFilter }) {
     description => description.filter === catalogFilter
   );
 
-  // if featured filter was chosen
+  //console.log(celestrakCategories);
+
+  const getCelestrakCategoryName = () => {
+    if (celestrakCategories) {
+      // check group headers for a match first
+      // returns an array containing one object if a match is found
+      const groupHeaderMatch = celestrakCategories.filter(
+        group => group.groupHeader.path === catalogFilter
+      );
+      // return the "title" of the groupHeader if the paths (groupHeader and catalogFilter) match
+      if (groupHeaderMatch.length !== 0) {
+        return `${groupHeaderMatch[0].groupHeader.title} (${catalogFilter})`;
+      } else {
+        const groupCategoryMatch = celestrakCategories.map(group =>
+          group.groupCategories.filter(
+            groupCat => groupCat.path === catalogFilter
+          )
+        );
+
+        if (groupCategoryMatch.length !== 0) {
+          // "flat" reduce the array of arrays into a single array containing 1 object - the group category match
+          return `${groupCategoryMatch.flat(1)[0].title} (${catalogFilter})`;
+        }
+      }
+    }
+  };
+
+  // if a NavBar "featured" filter was chosen
   return featuredDescription.length === 1 ? (
     // return detailed description of featured filter
     <p
@@ -39,9 +69,10 @@ export default function FilterDescription({ catalogFilter }) {
       {featuredDescription[0].copy}
     </p>
   ) : (
-    // otherwise return generic description of regular filter found in "more" dropdown
+    // otherwise return generic description of celestrak category filter found in "more" dropdown
     <p key={`${catalogFilter} copy`} className="catalog__filter-description">
-      {`All the objects classified as "${catalogFilter}" in the TruSat Catalog`}
+      All the objects classified as {getCelestrakCategoryName()} in the TruSat
+      Catalog
     </p>
   );
 }

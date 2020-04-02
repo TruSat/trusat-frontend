@@ -27,6 +27,8 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
         <h1
           className="catalog-more-dropdown__group-header"
           onClick={() => {
+            setRange({ start: 0, end: 10 });
+            setDataStart(0);
             setShowMore(false);
             history.push(`/catalog/${group.groupHeader.path}`);
           }}
@@ -38,6 +40,8 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
           <p
             key={`${category.path}`}
             onClick={() => {
+              setRange({ start: 0, end: 10 });
+              setDataStart(0);
               setShowMore(false);
               history.push(`/catalog/${category.path}`);
             }}
