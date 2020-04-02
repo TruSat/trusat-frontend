@@ -134,7 +134,7 @@ export default function CatalogTable({
         </table>
       ) : (
         <p className="app__error-message">
-          The TruSat catalog does not currently have any objects matching the
+          The catalog does not currently include any objects that match the
           filter chosen
         </p>
       )}
