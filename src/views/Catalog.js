@@ -12,13 +12,17 @@ function Catalog({ match }) {
   const [dataStart, setDataStart] = useState(0);
   // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });
+  const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   return (
     <div className="catalog__wrapper">
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
-          <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          <DownloadCatalogFilterTleButton
+            catalogFilter={catalogFilter}
+            showDownloadButton={showDownloadButton}
+          />
 
           <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button catalog__get-data-button">
@@ -54,6 +58,7 @@ function Catalog({ match }) {
         setRange={setRange}
         dataStart={dataStart}
         setDataStart={setDataStart}
+        setShowDownloadButton={setShowDownloadButton}
       />
       {/* Shown on mobile */}
       <section className="app__show-on-mobile">

@@ -43,7 +43,9 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
   };
 
   render() {
-    return (
+    // Only show the download button when data is returned from the /catalog endpoint
+    console.log(this.props);
+    return this.props.showDownloadButton ? (
       <Fragment>
         <span
           className="catalog__button catalog__get-data-button"
@@ -70,6 +72,6 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           download
         </a>
       </Fragment>
-    );
+    ) : null;
   }
 }
