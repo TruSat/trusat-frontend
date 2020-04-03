@@ -15,13 +15,14 @@ export default function CatalogTable({
   range,
   setRange,
   dataStart,
-  setDataStart
+  setDataStart,
+  setShowDownloadButton
 }) {
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}/${dataStart}`);
-  }, [catalogFilter, dataStart, doFetch]);
+  }, [catalogFilter, dataStart, doFetch, setShowDownloadButton]);
 
   const renderCatalogRows = () => {
     // Render rows if data is returned (some filters may not return any data)
@@ -30,6 +31,8 @@ export default function CatalogTable({
       const { start, end } = range;
       // get the data to be displayed using the range
       const rangeData = data.slice(start, end);
+      // show the download button after it is confirmed that data exists to be rendered in the table
+      setShowDownloadButton(true);
 
       return rangeData.map(obj => (
         <tr
@@ -100,7 +103,11 @@ export default function CatalogTable({
   };
 
   return isLoading ? (
-    <Spinner />
+    <Fragment>
+      {/* hide download TLEs button until it is confirmed that data exists to be rendered in the table */}
+      {setShowDownloadButton(false)}
+      <Spinner />
+    </Fragment>
   ) : (
     <Fragment>
       {errorMessage ? (
