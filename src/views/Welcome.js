@@ -32,7 +32,7 @@ export default function Home() {
             ></iframe>
           </div>
         </div>
-        <span></span>
+        <span class="welcome__hide-on-mobile"></span>
         <div>
           <h2>Space debris is a problem</h2>
           <div className="welcome-section-two__copy-container--top">
@@ -40,13 +40,19 @@ export default function Home() {
               In the next decade, the number of satellites in orbit will
               multiply by 2500%.
             </p>
-            <span></span>
-            <p>
-              This raises the risk of collisions and debris that threaten our
-              spacefaring future.
-            </p>
+            <span className="welcome__hide-on-mobile"></span>
+            <div>
+              <span className="welcome__hide-on-desktop" />
+              <p>
+                This raises the risk of collisions and debris that threaten our
+                spacefaring future.
+              </p>
+            </div>
           </div>
-          <h2>You are the solution</h2>
+          <div style={{ display: "flex" }}>
+            <img src="https://via.placeholder.com/100" alt="placeholder"></img>
+            <h2>You are the solution</h2>
+          </div>
           <p>
             TruSat is a citizen-powered public service, crowdsourcing
             observations of satellites to form an independent record of
