@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { withRouter } from "react-router-dom";
+import { useTrusatGetApi } from "../app/app-helpers";
+import Spinner from "../app/components/Spinner";
 import CatalogNavBar from "../catalog/components/CatalogNavBar";
 import CatalogTable from "../catalog/components/CatalogTable";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
@@ -14,15 +16,28 @@ function Catalog({ match }) {
   const [range, setRange] = useState({ start: 0, end: 10 });
   const [showDownloadButton, setShowDownloadButton] = useState(false);
 
+  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+
+  useEffect(() => {
+    setShowDownloadButton(false);
+
+    doFetch(`/catalog/${catalogFilter}/${dataStart}`);
+
+    if (data.length !== 0) {
+      // only show option to download TLEs if data for CatalogTable is available
+      setShowDownloadButton(true);
+    }
+  }, [catalogFilter, dataStart, doFetch, setShowDownloadButton, data]);
+
   return (
     <div className="catalog__wrapper">
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
-          <DownloadCatalogFilterTleButton
-            catalogFilter={catalogFilter}
-            showDownloadButton={showDownloadButton}
-          />
+          {/* show the download button after it is confirmed that data exists to be rendered in the table */}
+          {showDownloadButton ? (
+            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          ) : null}
 
           <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button catalog__get-data-button">
@@ -41,9 +56,12 @@ function Catalog({ match }) {
       <section className="catalog__nav-bar-how-to-wrapper">
         <div>
           <CatalogNavBar
+            isLoadingCatalog={isLoading}
             catalogFilter={catalogFilter}
             setRange={setRange}
+            dataStart={dataStart}
             setDataStart={setDataStart}
+            objectCount={data.length}
           />
         </div>
         {/* Shown on desktop */}
@@ -52,15 +70,30 @@ function Catalog({ match }) {
         </div>
       </section>
 
-      <CatalogTable
-        catalogFilter={catalogFilter}
-        range={range}
-        setRange={setRange}
-        dataStart={dataStart}
-        setDataStart={setDataStart}
-        setShowDownloadButton={setShowDownloadButton}
-      />
-      {/* Shown on mobile */}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <Fragment>
+          {errorMessage ? (
+            <p className="app__error-message">
+              Something went wrong... {errorMessage}
+            </p>
+          ) : (
+            <CatalogTable
+              catalogFilter={catalogFilter}
+              catalogData={data}
+              isLoading={isLoading}
+              errorMessage={errorMessage}
+              range={range}
+              setRange={setRange}
+              dataStart={dataStart}
+              setDataStart={setDataStart}
+              setShowDownloadButton={setShowDownloadButton}
+            />
+          )}
+        </Fragment>
+      )}
+      {/* Shown on mobile  */}
       <section className="app__show-on-mobile">
         <HowToParticipate catalogFilter={catalogFilter} />
       </section>

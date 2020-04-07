@@ -9,7 +9,15 @@ import IconTrash from "../../assets/icon-trash.svg";
 import Spinner from "../../app/components/Spinner";
 import FilterDescription from "./FilterDescription";
 
-function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
+function CatalogNavBar({
+  catalogFilter,
+  dataStart,
+  objectCount,
+  setRange,
+  setDataStart,
+  history,
+  isLoadingCatalog,
+}) {
   const [showMore, setShowMore] = useState(false);
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
 
@@ -19,7 +27,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
 
   // renders the celestrak categories received from API to the "more" dropdown
   const renderCelestrakCategories = () => {
-    return data.data.map(group => (
+    return data.data.map((group) => (
       <div
         key={`${group.groupHeader.path}`}
         className="catalog-more-dropdown__group"
@@ -36,7 +44,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
           {group.groupHeader.title}
         </h1>
 
-        {group.groupCategories.map(category => (
+        {group.groupCategories.map((category) => (
           <p
             key={`${category.path}`}
             onClick={() => {
@@ -69,7 +77,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
             ReactGA.event({
               category: "Catalog",
               action: "User chose a filter",
-              label: "priorities"
+              label: "priorities",
             });
             history.push("/catalog/priorities");
           }}
@@ -90,7 +98,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
             ReactGA.event({
               category: "Catalog",
               action: "User chose a filter",
-              label: "latest"
+              label: "latest",
             });
             history.push("/catalog/latest");
           }}
@@ -111,7 +119,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
             ReactGA.event({
               category: "Catalog",
               action: "User chose a filter",
-              label: "undisclosed"
+              label: "undisclosed",
             });
             history.push("/catalog/undisclosed");
           }}
@@ -132,7 +140,7 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
             ReactGA.event({
               category: "Catalog",
               action: "User chose a filter",
-              label: "debris"
+              label: "debris",
             });
             history.push("/catalog/debris");
           }}
@@ -171,10 +179,14 @@ function CatalogNavBar({ catalogFilter, setRange, setDataStart, history }) {
         </section>
       ) : null}
 
-      <FilterDescription
-        catalogFilter={catalogFilter}
-        celestrakCategories={data.data}
-      />
+      {isLoadingCatalog ? null : (
+        <FilterDescription
+          catalogFilter={catalogFilter}
+          celestrakCategories={data.data}
+          objectCount={objectCount}
+          dataStart={dataStart}
+        />
+      )}
     </React.Fragment>
   );
 }
