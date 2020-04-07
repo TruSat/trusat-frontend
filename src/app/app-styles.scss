@@ -827,6 +827,11 @@ WELCOME VIEW
   border: 1px solid white;
 }
 
+.welcome__section-three-content--right img {
+  height: auto;
+  width: 100%;
+}
+
 .welcome__section-three-content-right--bottom {
   border: 1px solid white;
   display: grid;
@@ -835,6 +840,10 @@ WELCOME VIEW
 
 .welcome__section-three-content-right--bottom span {
   border: 2px dotted red;
+}
+
+.welcome__section-three-content-right--bottom img {
+  width: auto;
 }
 
 // .welcome__content-wrapper {

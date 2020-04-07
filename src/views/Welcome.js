@@ -106,7 +106,7 @@ export default function Home() {
               <span></span>
               <div>
                 <img
-                  src="https://via.placeholder.com/25"
+                  src="https://via.placeholder.com/50"
                   alt="placeholder"
                 ></img>
                 <p>Track a sat to add it to your collection</p>
