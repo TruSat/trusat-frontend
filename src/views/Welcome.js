@@ -15,7 +15,6 @@ export default function Home() {
         <div></div>
         <div>canvas here</div>
       </section>
-
       {/* Section TWO */}
       <section className="welcome__section-two">
         <div>
@@ -70,8 +69,8 @@ export default function Home() {
           </div>
         </div>
       </section>
-
       {/* Section THREE  */}
+      {/* TODO - MObile styling */}
       <section className="welcome__section-three">
         <h2>Learn the sport of satellite tracking</h2>
         <div className="welcome__section-three-content">
