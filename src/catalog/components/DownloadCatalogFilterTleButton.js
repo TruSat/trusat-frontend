@@ -6,7 +6,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
   state = {
     isLoading: false,
     errorMessage: "",
-    textFile: null
+    textFile: null,
   };
 
   linkRef = React.createRef();
@@ -29,7 +29,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
 
       const href = window.URL.createObjectURL(
         new Blob([this.state.textFile], {
-          type: "text/csv"
+          type: "text/csv",
         })
       );
       this.linkRef.current.download = `trusat_${this.props.catalogFilter}.txt`;
@@ -43,9 +43,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
   };
 
   render() {
-    // Only show the download button when data is returned from the /catalog endpoint
-    console.log(this.props);
-    return this.props.showDownloadButton ? (
+    return (
       <Fragment>
         <span
           className="catalog__button catalog__get-data-button"
@@ -53,15 +51,17 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
             ReactGA.event({
               category: "TLE usage",
               action: `Clicked download predictions button`,
-              label: `Download TLEs from ${this.props.catalogFilter}`
+              label: `Download TLEs from ${this.props.catalogFilter}`,
             });
             this.fetchData();
           }}
         >
           {this.state.isLoading
             ? "...Loading"
-            : `Download ${this.props.catalogFilter.charAt(0).toUpperCase() +
-                this.props.catalogFilter.slice(1)} TLEs`}
+            : `Download ${
+                this.props.catalogFilter.charAt(0).toUpperCase() +
+                this.props.catalogFilter.slice(1)
+              } TLEs`}
         </span>
 
         {this.state.errorMessage ? (
@@ -72,6 +72,6 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
           download
         </a>
       </Fragment>
-    ) : null;
+    );
   }
 }
