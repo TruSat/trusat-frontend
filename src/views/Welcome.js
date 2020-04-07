@@ -5,15 +5,18 @@ import Partners from "../app/components/Partners";
 import Advisors from "../app/components/Advisors";
 import RoundedButton from "../app/components/RoundedButton";
 import ReactGA from "react-ga";
+import Button from "../app/components/Button";
 
 export default function Home() {
   return (
     <div className="welcome__wrapper">
+      {/* Section ONE */}
       <section className="welcome__section-one">
         <div></div>
         <div>canvas here</div>
       </section>
 
+      {/* Section TWO */}
       <section className="welcome__section-two">
         <div>
           <div className="welcome__iframe-wrapper">
@@ -64,6 +67,51 @@ export default function Home() {
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Section THREE  */}
+      <section className="welcome__section-three">
+        <h2>Learn the sport of satellite tracking</h2>
+        <div className="welcome__section-three-content">
+          <div className="welcome__section-three-content--left">
+            <div className="welcome__section-three-content-left--top">
+              <p>
+                By tracking satellites, you’ll join the global community of
+                citizen scientists whose observations feed the TruSat catalog.
+                All you need to start is a clear sky—no equipment required.
+              </p>
+              <span></span>
+            </div>
+
+            <div className="welcome__section-three-content-left--bottom">
+              <Button text="TRY A TUTORIAL" color="white"></Button>
+              <span></span>
+              <ul>
+                Learn about:
+                <li>How to track sats</li>
+                <li>Basics or orbital dynamics</li>
+                <li>Tips for reading the stars</li>
+                <li>Instructions for assembling a DIY sat-tracking mount.</li>
+              </ul>
+            </div>
+          </div>
+          <div className="welcome__section-three-content--right">
+            <img
+              src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
+              alt="mobile tracking"
+            ></img>
+            <div className="welcome__section-three-content-right--bottom">
+              <span></span>
+              <div>
+                <img
+                  src="https://via.placeholder.com/25"
+                  alt="placeholder"
+                ></img>
+                <p>Track a sat to add it to your collection</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

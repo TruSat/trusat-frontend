@@ -768,7 +768,6 @@ WELCOME VIEW
 
 @media (max-width: 800px) {
   .welcome__section-two {
-    border: 1px solid white;
     display: inline-block;
   }
 
@@ -788,6 +787,54 @@ WELCOME VIEW
   .welcome-section-two__copy-container--bottom {
     grid-template-columns: 4fr 9fr;
   }
+}
+
+.welcome__section-three {
+  border: 1px solid white;
+}
+
+.welcome__section-three-content {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 11fr 13fr;
+}
+
+.welcome__section-three-content--left {
+  border: 1px solid white;
+}
+
+.welcome__section-three-content-left--top {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 10fr 1fr;
+}
+
+.welcome__section-three-content-left--top span {
+  border: 2px dotted red;
+}
+
+.welcome__section-three-content-left--bottom {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 5fr 1fr 5fr;
+}
+
+.welcome__section-three-content-left--bottom span {
+  border: 2px dotted red;
+}
+
+.welcome__section-three-content--right {
+  border: 1px solid white;
+}
+
+.welcome__section-three-content-right--bottom {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 9fr 4fr;
+}
+
+.welcome__section-three-content-right--bottom span {
+  border: 2px dotted red;
 }
 
 // .welcome__content-wrapper {
