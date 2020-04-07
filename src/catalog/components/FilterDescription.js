@@ -2,52 +2,52 @@ import React from "react";
 
 export default function FilterDescription({
   catalogFilter,
-  celestrakCategories
+  celestrakCategories,
+  objectCount,
+  dataStart,
 }) {
   const filterDescriptions = [
     {
       filter: "priorities",
       copy:
-        "The satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it."
+        "The satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it.",
     },
     {
       filter: "undisclosed",
-      copy: "These satellites do not appear in public space object catalogs."
+      copy: "These satellites do not appear in public space object catalogs.",
     },
     {
       filter: "debris",
       copy:
-        "Old satellites, spent rocket stages, and the fragments from their disintegration and collisions."
+        "Old satellites, spent rocket stages, and the fragments from their disintegration and collisions.",
     },
     {
       filter: "latest",
       copy:
-        "The most recently launched objects in the catalog need fresh observations."
+        "The most recently launched objects in the catalog need fresh observations.",
     },
-    { filter: "all", copy: "All objects of the TruSat catalog." }
+    { filter: "all", copy: "All objects of the TruSat catalog." },
   ];
 
   // Will return an array with 1 object if a featured filter was chosen
   const featuredDescription = filterDescriptions.filter(
-    description => description.filter === catalogFilter
+    (description) => description.filter === catalogFilter
   );
-
-  //console.log(celestrakCategories);
 
   const getCelestrakCategoryName = () => {
     if (celestrakCategories) {
       // check group headers for a match first
       // returns an array containing one object if a match is found
       const groupHeaderMatch = celestrakCategories.filter(
-        group => group.groupHeader.path === catalogFilter
+        (group) => group.groupHeader.path === catalogFilter
       );
       // return the "title" of the groupHeader if the paths (groupHeader and catalogFilter) match
       if (groupHeaderMatch.length !== 0) {
         return `${groupHeaderMatch[0].groupHeader.title} (${catalogFilter})`;
       } else {
-        const groupCategoryMatch = celestrakCategories.map(group =>
+        const groupCategoryMatch = celestrakCategories.map((group) =>
           group.groupCategories.filter(
-            groupCat => groupCat.path === catalogFilter
+            (groupCat) => groupCat.path === catalogFilter
           )
         );
 
@@ -71,8 +71,19 @@ export default function FilterDescription({
   ) : (
     // otherwise return generic description of celestrak category filter found in "more" dropdown
     <p key={`${catalogFilter} copy`} className="catalog__filter-description">
-      All the objects classified as {getCelestrakCategoryName()} in the TruSat
-      Catalog
+      {objectCount === 0
+        ? `All objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
+        : null}
+
+      {objectCount === 200
+        ? `All objects from ${dataStart + 1} - ${
+            dataStart + objectCount
+          } classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
+        : null}
+
+      {objectCount !== 0 && objectCount < 200
+        ? `All ${objectCount} objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
+        : null}
     </p>
   );
 }
