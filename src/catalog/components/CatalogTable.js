@@ -1,42 +1,28 @@
-import React, { useEffect, Fragment } from "react";
+import React, { Fragment } from "react";
 import { NavLink } from "react-router-dom";
-import Spinner from "../../app/components/Spinner";
 import ObjectBadge from "../../app/components/ObjectBadge";
-import {
-  useTrusatGetApi,
-  renderFlag,
-  toolTip,
-  toolTipCopy
-} from "../../app/app-helpers";
+import { renderFlag, toolTip, toolTipCopy } from "../../app/app-helpers";
 import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({
   catalogFilter,
+  catalogData,
   range,
   setRange,
   dataStart,
   setDataStart,
-  setShowDownloadButton
 }) {
-  const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
-
-  useEffect(() => {
-    doFetch(`/catalog/${catalogFilter}/${dataStart}`);
-  }, [catalogFilter, dataStart, doFetch, setShowDownloadButton]);
-
   const renderCatalogRows = () => {
     // Render rows if data is returned (some filters may not return any data)
-    if (data.length !== 0) {
+    if (catalogData.length !== 0) {
       // get current range as determined by the TablePaginator component
       const { start, end } = range;
       // get the data to be displayed using the range
-      const rangeData = data.slice(start, end);
-      // show the download button after it is confirmed that data exists to be rendered in the table
-      setShowDownloadButton(true);
+      const rangeData = catalogData.slice(start, end);
 
-      return rangeData.map(obj => (
+      return rangeData.map((obj) => (
         <tr
-          key={data.indexOf(obj)}
+          key={catalogData.indexOf(obj)}
           className="table__body-row catalog-table__body-row"
         >
           <td className="table__table-data table__table-data--big_rows">
@@ -47,7 +33,7 @@ export default function CatalogTable({
               <div className="catalog-table__object-data-wrapper">
                 {catalogFilter === "priorities" ? (
                   <p className="catalog-table__object-data-wrapper--priority-rank">
-                    {dataStart + data.indexOf(obj) + 1}
+                    {dataStart + catalogData.indexOf(obj) + 1}
                     &nbsp;
                   </p>
                 ) : null}
@@ -102,21 +88,9 @@ export default function CatalogTable({
     }
   };
 
-  return isLoading ? (
+  return (
     <Fragment>
-      {/* hide download TLEs button until it is confirmed that data exists to be rendered in the table */}
-      {setShowDownloadButton(false)}
-      <Spinner />
-    </Fragment>
-  ) : (
-    <Fragment>
-      {errorMessage ? (
-        <p className="app__error-message">
-          Something went wrong... {errorMessage}
-        </p>
-      ) : null}
-      {/* // Only render the table headers if data is returned for a given filter */}
-      {data.length !== 0 ? (
+      {catalogData.length !== 0 ? (
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
@@ -146,9 +120,9 @@ export default function CatalogTable({
         </p>
       )}
 
-      {data.length > 10 ? (
+      {catalogData.length > 10 ? (
         <TablePaginator
-          tableDataLength={data.length}
+          tableDataLength={catalogData.length}
           range={range}
           setRange={setRange}
           dataStart={dataStart}
