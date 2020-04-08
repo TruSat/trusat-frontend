@@ -729,6 +729,22 @@ WELCOME VIEW
   border: 1px solid red;
 }
 
+.welcome__section-header {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 96px;
+  line-height: 117px;
+}
+
+.welcome__section-description {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 39px;
+}
+
 .welcome__iframe-wrapper {
   height: 0;
   overflow: hidden;
@@ -750,6 +766,14 @@ WELCOME VIEW
   grid-template-columns: 10fr 1fr 13fr;
 }
 
+.welcome__section-two h2 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 59px;
+}
+
 .welcome__section-two span {
   border: 2px dotted red;
 }
@@ -758,6 +782,23 @@ WELCOME VIEW
   border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
+}
+
+.welcome-section-two__copy--medium {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.welcome-section-two__copy--small {
+  font-family: Montserrat;
+  line-height: 20px;
+}
+
+.welcome-section-two__copy--medium strong {
+  font-weight: bold;
 }
 
 .welcome-section-two__copy-container--bottom {
@@ -793,6 +834,14 @@ WELCOME VIEW
   border: 1px solid white;
 }
 
+.welcome__section-three h2 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 96px;
+  line-height: 117px;
+}
+
 .welcome__section-three-content {
   border: 1px solid white;
   display: grid;
@@ -823,17 +872,35 @@ WELCOME VIEW
   border: 2px dotted red;
 }
 
+.welcome__section-three-content-left--bottom ul {
+  font-family: Montserrat;
+  font-weight: bold;
+  line-height: 20px;
+  list-style-type: circle;
+}
+
+.welcome__section-three-content-left--bottom li {
+  margin-left: 20px;
+  font-weight: normal;
+}
+
 .welcome__section-three-content--right {
   border: 1px solid white;
+  border: 2px solid yellow;
+  margin-top: -30%;
+  position: relative;
 }
 
 .welcome__section-three-content--right img {
   height: auto;
   width: 100%;
+  position: absolute;
+  z-index: -1;
 }
 
 .welcome__section-three-content-right--bottom {
   border: 1px solid white;
+  border: 3px solid pink;
   display: grid;
   grid-template-columns: 9fr 4fr;
 }
@@ -843,7 +910,13 @@ WELCOME VIEW
 }
 
 .welcome__section-three-content-right--bottom img {
+  // margin-left: -15%;
+  // margin-top: -15%;
   width: auto;
+}
+
+.welcome__section-three-content-right--bottom p {
+  line-height: 20px;
 }
 
 // .welcome__content-wrapper {

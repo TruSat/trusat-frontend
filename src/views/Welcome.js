@@ -15,6 +15,7 @@ export default function Home() {
         <div></div>
         <div>canvas here</div>
       </section>
+
       {/* Section TWO */}
       <section className="welcome__section-two">
         <div>
@@ -38,37 +39,38 @@ export default function Home() {
         <div>
           <h2>Space debris is a problem</h2>
           <div className="welcome-section-two__copy-container--top">
-            <p>
+            <p className="welcome-section-two__copy--medium">
               In the next decade, the number of satellites in orbit will
-              multiply by 2500%.
+              multiply by <strong>2500%.</strong>
             </p>
             <span className="welcome__hide-on-mobile"></span>
             <div>
               <span className="welcome__hide-on-desktop" />
-              <p>
+              <p className="welcome-section-two__copy--small">
                 This raises the risk of collisions and debris that threaten our
                 spacefaring future.
               </p>
             </div>
           </div>
           <div style={{ display: "flex" }}>
-            <img src="https://via.placeholder.com/100" alt="placeholder"></img>
+            <img src="https://via.placeholder.com/50" alt="placeholder"></img>
             <h2>You are the solution</h2>
           </div>
-          <p>
+          <p className="welcome-section-two__copy--medium">
             TruSat is a citizen-powered public service, crowdsourcing
             observations of satellites to form an independent record of
             satellite behavior.
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
-            <p>
+            <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}
             </p>
           </div>
         </div>
       </section>
+
       {/* Section THREE  */}
       {/* TODO - MObile styling */}
       <section className="welcome__section-three">
@@ -76,7 +78,7 @@ export default function Home() {
         <div className="welcome__section-three-content">
           <div className="welcome__section-three-content--left">
             <div className="welcome__section-three-content-left--top">
-              <p>
+              <p className="welcome__section-description">
                 By tracking satellites, you’ll join the global community of
                 citizen scientists whose observations feed the TruSat catalog.
                 All you need to start is a clear sky—no equipment required.
