@@ -37,6 +37,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
       this.linkRef.current.click();
       this.linkRef.current.href = "";
     } catch (error) {
+      console.log(error);
       this.setState({ errorMessage: error.response.data });
     }
     this.setState({ isLoading: false });
