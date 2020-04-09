@@ -8,20 +8,22 @@ export default function HistoryYearDropdown() {
   const { noradNumber, yearLaunched } = useObjectsState();
   const [yearChosen, setYearChosen] = useState(null);
   const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
+  // Used to render the rows of years from present year to the year of launch
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     if (noradNumber && yearChosen) {
       doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
     }
     if (yearChosen === null) {
-      setYearChosen(2020);
+      setYearChosen(currentYear);
     }
-  }, [noradNumber, yearLaunched, yearChosen, doFetch, data]);
+  }, [noradNumber, yearLaunched, yearChosen, doFetch, data, currentYear]);
 
   const renderMonthTables = () => {
     return Object.keys(data)
-      .filter(monthKey => data[monthKey])
-      .map(monthKey => (
+      .filter((monthKey) => data[monthKey])
+      .map((monthKey) => (
         <HistoryMonthTable
           key={monthKey}
           monthName={monthKey}
@@ -30,7 +32,6 @@ export default function HistoryYearDropdown() {
       ));
   };
 
-  const currentYear = new Date().getFullYear();
   const yearRows = [];
 
   for (let i = currentYear; i >= yearLaunched && i >= 1998; i--) {
