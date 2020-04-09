@@ -81,7 +81,7 @@ export default function FilterDescription({
           } classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
         : null} */}
 
-      {objectCount !== 0 && objectCount < 200
+      {objectCount !== 0
         ? `All ${objectCount} objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
         : `All objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`}
     </p>
