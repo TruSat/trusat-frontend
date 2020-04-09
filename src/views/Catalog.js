@@ -14,20 +14,23 @@ function Catalog({ match }) {
   const [dataStart, setDataStart] = useState(0);
   // Used by TablePaginator component rendered under the CatalogTable
   const [range, setRange] = useState({ start: 0, end: 10 });
-  const [showDownloadButton, setShowDownloadButton] = useState(false);
 
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+  const [objects, setObjects] = useState([]);
+  const [objectCount, setObjectCount] = useState(0);
+  const [tleCount, setTleCount] = useState(0);
 
   useEffect(() => {
-    setShowDownloadButton(false);
-
     doFetch(`/catalog/${catalogFilter}/${dataStart}`);
 
     if (data.length !== 0) {
-      // only show option to download TLEs if data for CatalogTable is available
-      setShowDownloadButton(true);
+      const { objects, object_count, tle_count } = data;
+
+      setObjects(objects);
+      setObjectCount(object_count);
+      setTleCount(tle_count);
     }
-  }, [catalogFilter, dataStart, doFetch, setShowDownloadButton, data]);
+  }, [catalogFilter, dataStart, doFetch, data]);
 
   return (
     <div className="catalog__wrapper">
@@ -35,7 +38,7 @@ function Catalog({ match }) {
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
           {/* show the download button after it is confirmed that data exists to be rendered in the table */}
-          {showDownloadButton ? (
+          {tleCount !== 0 ? (
             <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
           ) : null}
 
@@ -61,7 +64,7 @@ function Catalog({ match }) {
             setRange={setRange}
             dataStart={dataStart}
             setDataStart={setDataStart}
-            objectCount={data.length}
+            objectCount={objectCount}
           />
         </div>
         {/* Shown on desktop */}
@@ -81,14 +84,13 @@ function Catalog({ match }) {
           ) : (
             <CatalogTable
               catalogFilter={catalogFilter}
-              catalogData={data}
+              catalogObjects={objects}
               isLoading={isLoading}
               errorMessage={errorMessage}
               range={range}
               setRange={setRange}
               dataStart={dataStart}
               setDataStart={setDataStart}
-              setShowDownloadButton={setShowDownloadButton}
             />
           )}
         </Fragment>

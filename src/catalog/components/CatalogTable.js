@@ -6,7 +6,7 @@ import TablePaginator from "../../app/components/TablePaginator";
 
 export default function CatalogTable({
   catalogFilter,
-  catalogData,
+  catalogObjects,
   range,
   setRange,
   dataStart,
@@ -14,15 +14,15 @@ export default function CatalogTable({
 }) {
   const renderCatalogRows = () => {
     // Render rows if data is returned (some filters may not return any data)
-    if (catalogData.length !== 0) {
+    if (catalogObjects.length !== 0) {
       // get current range as determined by the TablePaginator component
       const { start, end } = range;
       // get the data to be displayed using the range
-      const rangeData = catalogData.slice(start, end);
+      const rangeData = catalogObjects.slice(start, end);
 
       return rangeData.map((obj) => (
         <tr
-          key={catalogData.indexOf(obj)}
+          key={catalogObjects.indexOf(obj)}
           className="table__body-row catalog-table__body-row"
         >
           <td className="table__table-data table__table-data--big_rows">
@@ -33,7 +33,7 @@ export default function CatalogTable({
               <div className="catalog-table__object-data-wrapper">
                 {catalogFilter === "priorities" ? (
                   <p className="catalog-table__object-data-wrapper--priority-rank">
-                    {dataStart + catalogData.indexOf(obj) + 1}
+                    {dataStart + catalogObjects.indexOf(obj) + 1}
                     &nbsp;
                   </p>
                 ) : null}
@@ -90,7 +90,7 @@ export default function CatalogTable({
 
   return (
     <Fragment>
-      {catalogData.length !== 0 ? (
+      {catalogObjects.length !== 0 ? (
         <table className="table">
           <thead className="table__header">
             <tr className="table__header-row">
@@ -120,9 +120,9 @@ export default function CatalogTable({
         </p>
       )}
 
-      {catalogData.length > 10 ? (
+      {catalogObjects.length > 10 ? (
         <TablePaginator
-          tableDataLength={catalogData.length}
+          tableDataLength={catalogObjects.length}
           range={range}
           setRange={setRange}
           dataStart={dataStart}
