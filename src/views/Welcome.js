@@ -35,7 +35,7 @@ export default function Home() {
             ></iframe>
           </div>
         </div>
-        <span class="welcome__hide-on-mobile"></span>
+        <span className="welcome__hide-on-mobile"></span>
         <div>
           <h2>Space debris is a problem</h2>
           <div className="welcome-section-two__copy-container--top">
@@ -71,14 +71,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section THREE  */}
-      {/* TODO - MObile styling */}
-      <section className="welcome__section-three">
+      {/* Section THREE - DESKTOP  */}
+      <section className="welcome__desktop-section-three welcome__hide-on-mobile">
         <h2>Learn the sport of satellite tracking</h2>
-        <div className="welcome__section-three-content">
-          <div className="welcome__section-three-content--left">
-            <div className="welcome__section-three-content-left--top">
-              <p className="welcome__section-description">
+        <div className="welcome__desktop-section-three-content">
+          <div className="welcome__desktop-section-three-content--left">
+            <div className="welcome__desktop-section-three-content-left--top">
+              <p className="welcome__desktop-section-description">
                 By tracking satellites, you’ll join the global community of
                 citizen scientists whose observations feed the TruSat catalog.
                 All you need to start is a clear sky—no equipment required.
@@ -86,7 +85,7 @@ export default function Home() {
               <span></span>
             </div>
 
-            <div className="welcome__section-three-content-left--bottom">
+            <div className="welcome__desktop-section-three-content-left--bottom">
               <Button text="TRY A TUTORIAL" color="white"></Button>
               <span></span>
               <ul>
@@ -98,12 +97,13 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="welcome__section-three-content--right">
+          <div className="welcome__desktop-section-three-content--right">
             <img
+              className="welcome__desktop-section-three-content-right-phone-image"
               src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
               alt="mobile tracking"
             ></img>
-            <div className="welcome__section-three-content-right--bottom">
+            <div className="welcome__desktop-section-three-content-right--bottom">
               <span></span>
               <div>
                 <img
@@ -114,6 +114,57 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Section 3 - MOBILE */}
+      <section className="welcome__mobile-section-three welcome__hide-on-desktop">
+        <div>
+          <h2>Learn the sport of satellite tracking</h2>
+        </div>
+
+        <div className="welcome__mobile-section-three-content--top">
+          <img
+            className="welcome__mobile-section-three-phone-image"
+            src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
+            alt="mobile tracking"
+          ></img>
+          <div className="welcome__mobile-section-three-top-content-div">
+            <span></span>
+            <div className="welcome__mobile-badge-image-copy-wrapper">
+              <div className="welcome__mobile-badge-wrapper">
+                <img
+                  className="welcome__mobile-badge-image"
+                  src="https://via.placeholder.com/50"
+                  alt="placeholder"
+                ></img>
+              </div>
+              <div className="welcome__mobile-badge-copy-wrapper">
+                <span></span>
+                <p>Track a sat to add it to your collection</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="welcome__mobile-section-three-content--middle">
+          <p>
+            By learning to track satellites, you’ll join the global community of
+            citizen scientists whose observations feed the TruSat catalog. All
+            you need to start is a clear sky—no equipment required.
+          </p>
+        </div>
+
+        <div className="welcome__mobile-section-three-content--bottom">
+          <Button text="TRY A TUTORIAL" color="white"></Button>
+          <span></span>
+          <ul>
+            Learn about:
+            <li>How to track sats</li>
+            <li>Basics or orbital dynamics</li>
+            <li>Tips for reading the stars</li>
+            <li>Instructions for assembling a DIY sat-tracking mount.</li>
+          </ul>
         </div>
       </section>
     </div>

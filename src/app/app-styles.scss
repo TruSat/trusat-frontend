@@ -701,6 +701,12 @@ WELCOME VIEW
   padding-top: 3.5em;
 }
 
+@media (max-width: 800px) {
+  .welcome__wrapper {
+    margin: 0em 1em 0em 1em;
+  }
+}
+
 .welcome__hide-on-desktop {
   display: none;
 }
@@ -830,11 +836,12 @@ WELCOME VIEW
   }
 }
 
-.welcome__section-three {
+// Welcome Section three DESKTOP
+.welcome__desktop-section-three {
   border: 1px solid white;
 }
 
-.welcome__section-three h2 {
+.welcome__desktop-section-three h2 {
   font-family: Montserrat;
   font-style: normal;
   font-weight: 200;
@@ -842,81 +849,155 @@ WELCOME VIEW
   line-height: 117px;
 }
 
-.welcome__section-three-content {
+.welcome__desktop-section-three-content {
   border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
 }
 
-.welcome__section-three-content--left {
+.welcome__desktop-section-three-content--left {
   border: 1px solid white;
 }
 
-.welcome__section-three-content-left--top {
+.welcome__desktop-section-three-content-left--top {
   border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr;
 }
 
-.welcome__section-three-content-left--top span {
+.welcome__desktop-section-three-content-left--top span {
   border: 2px dotted red;
 }
 
-.welcome__section-three-content-left--bottom {
+.welcome__desktop-section-three-content-left--bottom {
   border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
 }
 
-.welcome__section-three-content-left--bottom span {
+.welcome__desktop-section-three-content-left--bottom span {
   border: 2px dotted red;
 }
 
-.welcome__section-three-content-left--bottom ul {
+.welcome__desktop-section-three-content-left--bottom ul {
   font-family: Montserrat;
   font-weight: bold;
   line-height: 20px;
   list-style-type: circle;
 }
 
-.welcome__section-three-content-left--bottom li {
+.welcome__desktop-section-three-content-left--bottom li {
   margin-left: 20px;
   font-weight: normal;
 }
 
-.welcome__section-three-content--right {
+.welcome__desktop-section-three-content--right {
   border: 1px solid white;
-  border: 2px solid yellow;
   margin-top: -30%;
-  position: relative;
-}
-
-.welcome__section-three-content--right img {
-  height: auto;
-  width: 100%;
-  position: absolute;
   z-index: -1;
 }
 
-.welcome__section-three-content-right--bottom {
+.welcome__desktop-section-three-content-right-phone-image {
+  height: auto;
+  width: 100%;
+}
+
+.welcome__desktop-section-three-content-right--bottom {
   border: 1px solid white;
-  border: 3px solid pink;
   display: grid;
   grid-template-columns: 9fr 4fr;
 }
 
-.welcome__section-three-content-right--bottom span {
+.welcome__desktop-section-three-content-right--bottom span {
   border: 2px dotted red;
 }
 
-.welcome__section-three-content-right--bottom img {
-  // margin-left: -15%;
-  // margin-top: -15%;
+.welcome__desktop-section-three-content-right--bottom img {
+  margin-left: -15%;
+  margin-top: -15%;
   width: auto;
 }
 
-.welcome__section-three-content-right--bottom p {
+.welcome__desktop-section-three-content-right--bottom p {
   line-height: 20px;
+}
+
+// Welcome Section Three MOBILE
+.welcome__mobile-section-three {
+  border: 1px solid white;
+}
+
+.welcome__mobile-section-three h2 {
+  border: 1px solid white;
+  font-style: normal;
+  font-weight: 200;
+  font-size: 48px;
+  line-height: 59px;
+}
+
+.welcome__mobile-section-three-content--top {
+  border: 1px solid white;
+  //margin-top: -120px;
+  //z-index: -1;
+}
+
+.welcome__mobile-section-three-phone-image {
+  height: auto;
+  width: 100%;
+}
+
+.welcome__mobile-section-three-top-content-div {
+  display: grid;
+  grid-template-columns: 12fr 12fr;
+}
+
+.welcome__mobile-section-three-top-content-div span {
+  border: 2px dotted red;
+}
+
+.welcome__mobile-badge-image-copy-wrapper {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__mobile-badge-image-copy-wrapper img {
+  margin-left: -25px;
+  margin-top: -25px;
+}
+
+.welcome__mobile-badge-copy-wrapper {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 1fr 11fr;
+}
+
+.welcome__mobile-section-three-content--middle p {
+  //border: 1px solid white;
+  font-family: Montserrat;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.welcome__mobile-section-three-content--bottom {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 12fr 1fr 11fr;
+}
+
+.welcome__mobile-section-three-content--bottom span {
+  border: 2px dotted red;
+}
+
+.welcome__mobile-section-three-content--bottom ul {
+  border: 1px solid white;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.welcome__mobile-section-three-content--bottom li {
+  font-weight: normal;
 }
 
 // .welcome__content-wrapper {
