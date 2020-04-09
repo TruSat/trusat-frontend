@@ -14,7 +14,7 @@ export default function HistoryYearDropdown() {
       doFetch(`/object/history?year=${yearChosen}&norad_number=${noradNumber}`);
     }
     if (yearChosen === null) {
-      setYearChosen(2020);
+      setYearChosen(currentYear);
     }
   }, [noradNumber, yearLaunched, yearChosen, doFetch, data]);
 
