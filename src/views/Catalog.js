@@ -20,6 +20,8 @@ function Catalog({ match }) {
   const [objectCount, setObjectCount] = useState(0);
   const [tleCount, setTleCount] = useState(0);
 
+  console.log(`tleCount = `, tleCount);
+
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}/${dataStart}`);
 
@@ -37,10 +39,10 @@ function Catalog({ match }) {
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
-          {/* show the download button after it is confirmed that data exists to be rendered in the table */}
-          {tleCount !== 0 ? (
+          {/* show the download button after it is confirmed tles are available for download */}
+          {tleCount === 0 ? null : (
             <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
-          ) : null}
+          )}
 
           <NavLink className="app__nav-link" to="/submit">
             <span className="catalog__button catalog__get-data-button">
@@ -65,6 +67,7 @@ function Catalog({ match }) {
             dataStart={dataStart}
             setDataStart={setDataStart}
             objectCount={objectCount}
+            setTleCount={setTleCount}
           />
         </div>
         {/* Shown on desktop */}
