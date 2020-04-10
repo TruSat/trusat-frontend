@@ -44,7 +44,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
   };
 
   render() {
-    return (
+    return this.props.tleCount === 0 ? null : (
       <Fragment>
         <span
           className="catalog__button catalog__get-data-button"

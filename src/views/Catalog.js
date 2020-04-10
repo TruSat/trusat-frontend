@@ -38,8 +38,11 @@ function Catalog({ match }) {
         <h1 className="catalog__header">Catalog</h1>
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
           {/* show the download button after it is confirmed tles are available for download */}
-          {tleCount === 0 ? null : (
-            <DownloadCatalogFilterTleButton catalogFilter={catalogFilter} />
+          {isLoading ? null : (
+            <DownloadCatalogFilterTleButton
+              catalogFilter={catalogFilter}
+              tleCount={tleCount}
+            />
           )}
 
           <NavLink className="app__nav-link" to="/submit">
