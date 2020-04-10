@@ -9,23 +9,23 @@ export default function FilterDescription({
     {
       filter: "priorities",
       copy:
-        "The satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it.",
+        "satellites most in need of monitoring by the space sustainability community. This list is auto-generated. Open a satellite for details on when and where to see it.",
     },
     {
       filter: "undisclosed",
-      copy: "These satellites do not appear in public space object catalogs.",
+      copy: "satellites that do not appear in public space object catalogs.",
     },
     {
       filter: "debris",
       copy:
-        "Old satellites, spent rocket stages, and the fragments from their disintegration and collisions.",
+        "Old satellites, spent rocket stages, and fragments from their disintegration and collisions.",
     },
     {
       filter: "latest",
       copy:
-        "The most recently launched objects in the catalog need fresh observations.",
+        "most recently launched objects in the catalog that need fresh observations.",
     },
-    { filter: "all", copy: "All objects of the TruSat catalog." },
+    { filter: "all", copy: "objects of the TruSat catalog." },
   ];
 
   // Will return an array with 1 object if a featured filter was chosen
@@ -65,7 +65,9 @@ export default function FilterDescription({
       key={`${featuredDescription[0].filter} copy`}
       className="catalog__filter-description"
     >
-      {featuredDescription[0].copy}
+      {objectCount !== 0
+        ? `The ${objectCount} ${featuredDescription[0].copy}`
+        : null}
     </p>
   ) : (
     // otherwise return generic description of celestrak category filter found in "more" dropdown

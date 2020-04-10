@@ -10,6 +10,7 @@ import Spinner from "../../app/components/Spinner";
 import FilterDescription from "./FilterDescription";
 
 function CatalogNavBar({
+  isLoadingCatalog,
   catalogFilter,
   objectCount,
   setRange,
@@ -184,11 +185,13 @@ function CatalogNavBar({
         </section>
       ) : null}
 
-      <FilterDescription
-        catalogFilter={catalogFilter}
-        celestrakCategories={data.data}
-        objectCount={objectCount}
-      />
+      {isLoadingCatalog ? null : (
+        <FilterDescription
+          catalogFilter={catalogFilter}
+          celestrakCategories={data.data}
+          objectCount={objectCount}
+        />
+      )}
     </React.Fragment>
   );
 }
