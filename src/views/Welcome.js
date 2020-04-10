@@ -86,7 +86,11 @@ export default function Home() {
             </div>
 
             <div className="welcome__desktop-section-three-content-left--bottom">
-              <Button text="TRY A TUTORIAL" color="white"></Button>
+              <Button
+                text="TRY A TUTORIAL"
+                color="white"
+                addStyles={"welcome__button--desktop"}
+              ></Button>
               <span></span>
               <ul>
                 Learn about:
@@ -117,9 +121,9 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section 3 - MOBILE */}
+      {/* Section THREE - MOBILE */}
       <section className="welcome__mobile-section-three welcome__hide-on-desktop">
-        <div>
+        <div className="welcome__mobile-section-three-header-wrapper">
           <h2>Learn the sport of satellite tracking</h2>
         </div>
 
@@ -156,7 +160,11 @@ export default function Home() {
         </div>
 
         <div className="welcome__mobile-section-three-content--bottom">
-          <Button text="TRY A TUTORIAL" color="white"></Button>
+          <Button
+            text="SEE TUTORIALS"
+            color="white"
+            addStyles={"welcome__button--mobile"}
+          ></Button>
           <span></span>
           <ul>
             Learn about:
@@ -165,6 +173,36 @@ export default function Home() {
             <li>Tips for reading the stars</li>
             <li>Instructions for assembling a DIY sat-tracking mount.</li>
           </ul>
+        </div>
+      </section>
+
+      {/* Section FOUR */}
+      <section className="welcome__section-four">
+        <div className="welcome__section-four-top">
+          <h2>Join the mission</h2>
+          <div className="welcome__section-four-top--left">
+            <p>
+              For TruSat to remain an objective record of data, it requires that
+              no single entity controls it. To achieve this, TruSat needs a
+              diverse range of participants from around the world, like you.
+            </p>
+            <span></span>
+          </div>
+          <div className="welcome__section-four-top--right">
+            <span></span>
+            <img
+              src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+              alt="people"
+            ></img>
+          </div>
+        </div>
+        <div className="welcome__section-four-bottom">
+          <h2>Three ways to participate</h2>
+          <div>
+            <div>Make Observations</div>
+            <div>Contribute code</div>
+            <div>Support the mission</div>
+          </div>
         </div>
       </section>
     </div>
