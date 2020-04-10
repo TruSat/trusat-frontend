@@ -18,8 +18,10 @@ function NavDropdown({ catalogFilter, history, setRange, setDataStart }) {
   useEffect(() => {
     doFetch("/catalog/list");
 
+    console.log(`data = `, data);
+
     // only run when data has come down from the api call
-    if (data == true) {
+    if (Object.keys(data).length !== 0) {
       const celestrakCategories = [];
       // Adds all of the sub categories under Featured group header to the dropdown
       data.data
