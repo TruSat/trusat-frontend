@@ -11,12 +11,11 @@ import FilterDescription from "./FilterDescription";
 
 function CatalogNavBar({
   catalogFilter,
-  dataStart,
   objectCount,
   setRange,
   setDataStart,
   history,
-  isLoadingCatalog,
+  setTleCount,
 }) {
   const [showMore, setShowMore] = useState(false);
   const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
@@ -35,6 +34,7 @@ function CatalogNavBar({
         <h1
           className="catalog-more-dropdown__group-header"
           onClick={() => {
+            setTleCount(0); // hides the download TLEs button until it is confirmed that TLEs are available
             setRange({ start: 0, end: 10 });
             setDataStart(0);
             setShowMore(false);
@@ -48,6 +48,7 @@ function CatalogNavBar({
           <p
             key={`${category.path}`}
             onClick={() => {
+              setTleCount(0);
               setRange({ start: 0, end: 10 });
               setDataStart(0);
               setShowMore(false);
@@ -72,6 +73,7 @@ function CatalogNavBar({
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
+            setTleCount(0);
             setRange({ start: 0, end: 10 });
             setDataStart(0);
             ReactGA.event({
@@ -93,6 +95,7 @@ function CatalogNavBar({
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
+            setTleCount(0);
             setRange({ start: 0, end: 10 });
             setDataStart(0);
             ReactGA.event({
@@ -114,6 +117,7 @@ function CatalogNavBar({
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
+            setTleCount(0);
             setRange({ start: 0, end: 10 });
             setDataStart(0);
             ReactGA.event({
@@ -135,6 +139,7 @@ function CatalogNavBar({
               : "catalog-nav-bar__link--lowlight"
           }
           onClick={() => {
+            setTleCount(0);
             setRange({ start: 0, end: 10 });
             setDataStart(0);
             ReactGA.event({
@@ -179,14 +184,11 @@ function CatalogNavBar({
         </section>
       ) : null}
 
-      {isLoadingCatalog ? null : (
-        <FilterDescription
-          catalogFilter={catalogFilter}
-          celestrakCategories={data.data}
-          objectCount={objectCount}
-          dataStart={dataStart}
-        />
-      )}
+      <FilterDescription
+        catalogFilter={catalogFilter}
+        celestrakCategories={data.data}
+        objectCount={objectCount}
+      />
     </React.Fragment>
   );
 }
