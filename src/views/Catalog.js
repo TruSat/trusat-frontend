@@ -20,12 +20,10 @@ function Catalog({ match }) {
   const [objectCount, setObjectCount] = useState(0);
   const [tleCount, setTleCount] = useState(0);
 
-  console.log(`tleCount = `, tleCount);
-
   useEffect(() => {
     doFetch(`/catalog/${catalogFilter}/${dataStart}`);
 
-    if (data.length !== 0) {
+    if (Object.keys(data).length !== 0) {
       const { objects, object_count, tle_count } = data;
 
       setObjects(objects);
