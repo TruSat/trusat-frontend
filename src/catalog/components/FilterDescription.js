@@ -4,7 +4,6 @@ export default function FilterDescription({
   catalogFilter,
   celestrakCategories,
   objectCount,
-  dataStart,
 }) {
   const filterDescriptions = [
     {
@@ -71,16 +70,6 @@ export default function FilterDescription({
   ) : (
     // otherwise return generic description of celestrak category filter found in "more" dropdown
     <p key={`${catalogFilter} copy`} className="catalog__filter-description">
-      {/* {objectCount === 0
-        ? `All objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
-        : null}
-
-      {objectCount === 200
-        ? `All objects from ${dataStart + 1} - ${
-            dataStart + objectCount
-          } classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
-        : null} */}
-
       {objectCount !== 0
         ? `All ${objectCount} objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`
         : `All objects classified as ${getCelestrakCategoryName()} in the TruSat Catalog`}
