@@ -63,7 +63,7 @@ export default function MultipleObservationForm() {
 
   return (
     <Fragment>
-      {userAddress === "none" ? (
+      {userAddress === undefined ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -135,7 +135,7 @@ export default function MultipleObservationForm() {
                 </span>
               </NavLink>
 
-              {userAddress === "none" ? null : (
+              {userAddress === undefined ? null : (
                 <button
                   type="submit"
                   className="submit__submit-button"
@@ -145,7 +145,7 @@ export default function MultipleObservationForm() {
                 </button>
               )}
             </div>
-            {userAddress === "none" ? null : (
+            {userAddress === undefined ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and

@@ -22,7 +22,7 @@ function NavBar(props) {
 
       <div className="nav-bar__route-link-wrapper">
         {/* // Welcome button only rendered when user is logged out */}
-        {userAddress !== "none" ? null : (
+        {userAddress ? null : (
           <div
             className={
               path === "/"
@@ -67,7 +67,7 @@ function NavBar(props) {
         </div>
 
         {/* // My Profile button only rendered when user is logged in */}
-        {userAddress !== "none" ? (
+        {userAddress ? (
           <div
             className={
               path === `/profile/${userAddress}`
@@ -154,10 +154,9 @@ function NavBar(props) {
           </NavLink>
         </div>
       </div>
-
       <div>
-        {/* Show Join button when user is not logged in */}
-        {userAddress === "none" ? (
+        {/* Show Login and Join buttons when user is not logged in */}
+        {userAddress === undefined ? (
           <Fragment>
             <NavLink className="app__nav-link nav-bar__log-in-text" to="/login">
               <img className="app__nav__icon" src={IconUser} alt="icon"></img>

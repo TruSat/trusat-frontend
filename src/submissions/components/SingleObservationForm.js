@@ -117,7 +117,7 @@ export default function SingleObservationForm() {
       }
     };
     // only do fetch if form does not already have their stations and user is logged in
-    if (userAddress !== "none" && observationStations === "") {
+    if (userAddress && observationStations === "") {
       fetchObservationStations();
     }
   }, [userAddress, observationStations]);
@@ -494,7 +494,7 @@ export default function SingleObservationForm() {
 
   return (
     <Fragment>
-      {userAddress === "none" ? (
+      {userAddress === undefined ? (
         <p className="app__error-message">
           You need to be logged in to submit your observations.
         </p>
@@ -1346,7 +1346,7 @@ export default function SingleObservationForm() {
                 </span>
               </NavLink>
 
-              {userAddress === "none" ? null : (
+              {userAddress === undefined ? null : (
                 <button
                   className="submit__submit-button"
                   style={
@@ -1357,7 +1357,7 @@ export default function SingleObservationForm() {
                 </button>
               )}
             </div>
-            {userAddress === "none" ? null : (
+            {userAddress === undefined ? null : (
               <p className="submit__submit-warning">
                 Please keep in mind that this data will be automatically
                 recorded into TruSat's catalog of orbital positions, and
