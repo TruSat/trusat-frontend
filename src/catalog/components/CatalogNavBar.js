@@ -163,7 +163,7 @@ function CatalogNavBar({
               ? "catalog-more-dropdown__more-text"
               : "catalog-nav-bar__link--lowlight"
           }
-          onClick={() => setShowMore(true)}
+          onClick={() => setShowMore(!showMore)}
         >
           <span className="catalog-filter-label">MORE</span>
         </div>

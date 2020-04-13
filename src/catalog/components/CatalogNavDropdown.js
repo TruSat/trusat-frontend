@@ -17,9 +17,6 @@ function NavDropdown({ catalogFilter, history, setRange, setDataStart }) {
 
   useEffect(() => {
     doFetch("/catalog/list");
-
-    console.log(`data = `, data);
-
     // only run when data has come down from the api call
     if (Object.keys(data).length !== 0) {
       const celestrakCategories = [];
