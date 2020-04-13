@@ -197,11 +197,68 @@ export default function Home() {
           </div>
         </div>
         <div className="welcome__section-four-bottom">
-          <h2>Three ways to participate</h2>
-          <div>
-            <div>Make Observations</div>
-            <div>Contribute code</div>
-            <div>Support the mission</div>
+          <h2>Three ways to participate:</h2>
+          <div className="welcome__button-tile-row">
+            {/* tile 1 container */}
+            <div className="welcome__button-tile-container">
+              <span></span>
+              <div className="welcome__button-tile">
+                <h3>Make Observations</h3>
+                <ul>
+                  <li>
+                    Become a node in TruSat’s network of citizen observers
+                  </li>
+                  <li>
+                    Use your naked eye, or connect your camera with software.
+                  </li>
+                </ul>
+                <Button
+                  text="SIGN UP"
+                  color="white"
+                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                />
+              </div>
+              <span></span>
+            </div>
+            {/* tile 2 container */}
+            <div className="welcome__button-tile-container">
+              <span></span>
+              <div className="welcome__button-tile">
+                <h3> Contribute code</h3>
+                <ul>
+                  <li>100% open source</li>
+                  <li>Detailed specs for new features</li>
+                  <li>Full queue of issues to pitch in on</li>
+                  <li>Orbital mechanics utilities</li>
+                </ul>
+                <Button
+                  text="VIEW ON GITHUB"
+                  color="white"
+                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                />
+              </div>
+
+              <span></span>
+            </div>
+            {/* tile 3 container */}
+            <div className="welcome__button-tile-container">
+              <span></span>
+              <div className="welcome__button-tile">
+                <h3>Support the mission</h3>
+                <ul>
+                  <li>Propose features</li>
+                  <li>Create or translate content</li>
+                  <li>Submit bugs</li>
+                  <li>Spread the word</li>
+                </ul>
+                <Button
+                  text="LEARN MORE"
+                  color="white"
+                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                />
+              </div>
+              <span></span>
+            </div>
           </div>
         </div>
       </section>
