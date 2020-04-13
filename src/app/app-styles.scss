@@ -1118,12 +1118,27 @@ WELCOME VIEW
 
 .welcome__button-tile {
   border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  height: 303px;
+  justify-content: space-between;
+  margin: 2em 0 2em 0;
 }
 
 .welcome__button-tile h3 {
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
+}
+
+.welcome__button-tile ul {
+  line-height: 20px;
+  list-style-type: circle;
+  margin-top: 1em;
+}
+
+.welcome__button-tile li {
+  margin: 0.5em 0 0.5em 15px;
 }
 
 .welcome__button--desktop-wide {

@@ -203,15 +203,18 @@ export default function Home() {
             <div className="welcome__button-tile-container">
               <span></span>
               <div className="welcome__button-tile">
-                <h3>Make Observations</h3>
-                <ul>
-                  <li>
-                    Become a node in TruSat’s network of citizen observers
-                  </li>
-                  <li>
-                    Use your naked eye, or connect your camera with software.
-                  </li>
-                </ul>
+                <div>
+                  <h3>Make Observations</h3>
+                  <ul>
+                    <li>
+                      Become a node in TruSat’s network of citizen observers
+                    </li>
+                    <li>
+                      Use your naked eye, or connect your camera with software.
+                    </li>
+                  </ul>
+                </div>
+
                 <Button
                   text="SIGN UP"
                   color="white"
@@ -224,13 +227,15 @@ export default function Home() {
             <div className="welcome__button-tile-container">
               <span></span>
               <div className="welcome__button-tile">
-                <h3> Contribute code</h3>
-                <ul>
-                  <li>100% open source</li>
-                  <li>Detailed specs for new features</li>
-                  <li>Full queue of issues to pitch in on</li>
-                  <li>Orbital mechanics utilities</li>
-                </ul>
+                <div>
+                  <h3> Contribute code</h3>
+                  <ul>
+                    <li>100% open source</li>
+                    <li>Detailed specs for new features</li>
+                    <li>Full queue of issues to pitch in on</li>
+                    <li>Orbital mechanics utilities</li>
+                  </ul>
+                </div>
                 <Button
                   text="VIEW ON GITHUB"
                   color="white"
@@ -244,13 +249,15 @@ export default function Home() {
             <div className="welcome__button-tile-container">
               <span></span>
               <div className="welcome__button-tile">
-                <h3>Support the mission</h3>
-                <ul>
-                  <li>Propose features</li>
-                  <li>Create or translate content</li>
-                  <li>Submit bugs</li>
-                  <li>Spread the word</li>
-                </ul>
+                <div>
+                  <h3>Support the mission</h3>
+                  <ul>
+                    <li>Propose features</li>
+                    <li>Create or translate content</li>
+                    <li>Submit bugs</li>
+                    <li>Spread the word</li>
+                  </ul>
+                </div>
                 <Button
                   text="LEARN MORE"
                   color="white"
