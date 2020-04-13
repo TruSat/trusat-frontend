@@ -27,41 +27,43 @@ function CatalogNavBar({
 
   // renders the celestrak categories received from API to the "more" dropdown
   const renderCelestrakCategories = () => {
-    return data.data.map((group) => (
-      <div
-        key={`${group.groupHeader.path}`}
-        className="catalog-more-dropdown__group"
-      >
-        <h1
-          className="catalog-more-dropdown__group-header"
-          onClick={() => {
-            setTleCount(0); // hides the download TLEs button until it is confirmed that TLEs are available
-            setRange({ start: 0, end: 10 });
-            setDataStart(0);
-            setShowMore(false);
-            history.push(`/catalog/${group.groupHeader.path}`);
-          }}
+    if (data.length !== 0) {
+      return data.data.map((group) => (
+        <div
+          key={`${group.groupHeader.path}`}
+          className="catalog-more-dropdown__group"
         >
-          {group.groupHeader.title}
-        </h1>
-
-        {group.groupCategories.map((category) => (
-          <p
-            key={`${category.path}`}
+          <h1
+            className="catalog-more-dropdown__group-header"
             onClick={() => {
-              setTleCount(0);
+              setShowMore(false);
+              setTleCount(0); // hides the download TLEs button until it is confirmed that TLEs are available
               setRange({ start: 0, end: 10 });
               setDataStart(0);
-              setShowMore(false);
-              history.push(`/catalog/${category.path}`);
+              history.push(`/catalog/${group.groupHeader.path}`);
             }}
-            className="catalog-more-dropdown__link"
           >
-            {category.title}
-          </p>
-        ))}
-      </div>
-    ));
+            {group.groupHeader.title}
+          </h1>
+
+          {group.groupCategories.map((category) => (
+            <p
+              key={`${category.path}`}
+              onClick={() => {
+                setShowMore(false);
+                setTleCount(0);
+                setRange({ start: 0, end: 10 });
+                setDataStart(0);
+                history.push(`/catalog/${category.path}`);
+              }}
+              className="catalog-more-dropdown__link"
+            >
+              {category.title}
+            </p>
+          ))}
+        </div>
+      ));
+    }
   };
 
   return (
@@ -161,18 +163,13 @@ function CatalogNavBar({
               ? "catalog-more-dropdown__more-text"
               : "catalog-nav-bar__link--lowlight"
           }
-          onMouseEnter={() => setShowMore(true)}
-          onMouseLeave={() => setShowMore(false)}
+          onClick={() => setShowMore(true)}
         >
           <span className="catalog-filter-label">MORE</span>
         </div>
       </section>
       {showMore ? (
-        <section
-          className="catalog-more-dropdown"
-          onMouseEnter={() => setShowMore(true)}
-          onMouseLeave={() => setShowMore(false)}
-        >
+        <section className="catalog-more-dropdown">
           {isLoading ? (
             <Spinner />
           ) : errorMessage ? (
