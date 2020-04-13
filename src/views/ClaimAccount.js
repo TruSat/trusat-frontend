@@ -6,7 +6,7 @@ import Spinner from "../app/components/Spinner";
 export default function ClaimAccount() {
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [errorMessage, setErrorMessage] = useState(``);
+  const [errorMessage, setErrorMessage] = useState("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [isNotSuccess, setIsNotSuccess] = useState(false);
 
@@ -20,9 +20,10 @@ export default function ClaimAccount() {
         `${API_ROOT}/claimAccount`,
         JSON.stringify({
           email: email
-        }), {
+        }),
+        {
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           }
         }
       );

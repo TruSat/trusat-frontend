@@ -5,7 +5,6 @@ import JoinButton from "./JoinButton";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
 import IconUser from "../../assets/icon-user.svg";
-import IconQuestion from "../../assets/icon-question.svg";
 import ReactGA from "react-ga";
 
 function NavBar(props) {
@@ -143,13 +142,13 @@ function NavBar(props) {
         >
           <NavLink
             className={
-              path === `/about`
+              path === "/about"
                 ? "app__nav-link nav-bar__link--highlight"
                 : path === "/"
                 ? "app__nav-link nav-bar__link--lowlight--welcome"
                 : "app__nav-link nav-bar__link--lowlight"
             }
-            to={`/about`}
+            to={"/about"}
           >
             ABOUT
           </NavLink>

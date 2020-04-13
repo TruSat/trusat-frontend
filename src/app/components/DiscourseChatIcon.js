@@ -11,8 +11,8 @@ export default function DicordChatIcon() {
         onClick={() => {
           ReactGA.event({
             category: "Outbound link",
-            action: `Clicked a social link`,
-            label: `Clicked Discuss link`
+            action: "Clicked a social link",
+            label: "Clicked Discuss link"
           });
         }}
       >

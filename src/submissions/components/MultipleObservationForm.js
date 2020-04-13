@@ -10,17 +10,17 @@ import ReactGA from "react-ga";
 
 export default function MultipleObservationForm() {
   const [isLoading, setIsLoading] = useState(false);
-  const [pastedIODs, setPastedIODs] = useState(``);
+  const [pastedIODs, setPastedIODs] = useState("");
   // server provides a count of accepted IODs - i.e. correct format and not duplicates
   const [successCount, setSuccessCount] = useState(null);
   // server provides these so we can render more specific error messages
   const [errorMessages, setErrorMessages] = useState([]);
   const { userAddress, authExpiry } = useAuthState();
-  const [apiErrorMessage, setApiErrorMessage] = useState(``);
+  const [apiErrorMessage, setApiErrorMessage] = useState("");
 
   const handleSubmit = async () => {
     setIsLoading(true);
-    setApiErrorMessage(``);
+    setApiErrorMessage("");
     setSuccessCount(null);
     setErrorMessages([]);
 

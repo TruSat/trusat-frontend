@@ -6,7 +6,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
   state = {
     isLoading: false,
     errorMessage: "",
-    textFile: null
+    textFile: null,
   };
 
   linkRef = React.createRef();
@@ -29,7 +29,7 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
 
       const href = window.URL.createObjectURL(
         new Blob([this.state.textFile], {
-          type: "text/csv"
+          type: "text/csv",
         })
       );
       this.linkRef.current.download = `trusat_${this.props.catalogFilter}.txt`;
@@ -37,13 +37,14 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
       this.linkRef.current.click();
       this.linkRef.current.href = "";
     } catch (error) {
+      console.log(error);
       this.setState({ errorMessage: error.response.data });
     }
     this.setState({ isLoading: false });
   };
 
   render() {
-    return (
+    return this.props.tleCount === 0 ? null : (
       <Fragment>
         <span
           className="catalog__button catalog__get-data-button"
@@ -51,22 +52,24 @@ export default class DownloadCatalogFilterTleButton extends React.Component {
             ReactGA.event({
               category: "TLE usage",
               action: `Clicked download predictions button`,
-              label: `Download TLEs from ${this.props.catalogFilter}`
+              label: `Download TLEs from ${this.props.catalogFilter}`,
             });
             this.fetchData();
           }}
         >
           {this.state.isLoading
-            ? `...Loading`
-            : `Download ${this.props.catalogFilter.charAt(0).toUpperCase() +
-                this.props.catalogFilter.slice(1)} TLEs`}
+            ? "...Loading"
+            : `Download ${
+                this.props.catalogFilter.charAt(0).toUpperCase() +
+                this.props.catalogFilter.slice(1)
+              } TLEs`}
         </span>
 
         {this.state.errorMessage ? (
           <p>Something went wrong... {this.state.errorMessage}</p>
         ) : null}
 
-        <a className="app__hide" ref={this.linkRef}>
+        <a className="app__hide" href="/#" ref={this.linkRef}>
           download
         </a>
       </Fragment>

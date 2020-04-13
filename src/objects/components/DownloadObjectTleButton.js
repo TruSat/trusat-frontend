@@ -10,7 +10,8 @@ export default function DownloadObjectTleButton() {
   const [{ isLoading, isError, data }, doFetch] = useTrusatGetApi();
 
   useEffect(() => {
-    if (noradNumber && data.length === 0) {
+    // only make the fetch if data array is empty and component receives the noradNumber
+    if (noradNumber && data == false) {
       doFetch(`/tle/object?norad_number=${noradNumber}`);
     }
 
@@ -46,7 +47,7 @@ export default function DownloadObjectTleButton() {
         onClick={() => {
           ReactGA.event({
             category: "TLE usage",
-            action: `Clicked download predictions button`,
+            action: "Clicked download predictions button",
             label: `Downloaded TLE for sat ${noradNumber}`
           });
         }}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 export default function TablePaginator({
   tableDataLength,
@@ -7,8 +7,6 @@ export default function TablePaginator({
   dataStart,
   setDataStart
 }) {
-  console.log(`dataStart = `, dataStart);
-
   return (
     <div className="table-paginator">
       <div className="table-paginator__button-wrapper">
@@ -31,8 +29,8 @@ export default function TablePaginator({
             {(dataStart === 0 || dataStart === undefined) && range.start === 0
               ? null
               : dataStart !== 0 && range.start === 0
-              ? `<< Load Previous`
-              : `< Previous`}
+              ? "<< Load Previous"
+              : "< Previous"}
           </p>
         </button>
         {/* Middle text to signify position of data being displayed */}
@@ -70,10 +68,17 @@ export default function TablePaginator({
           {/* Change out "next" text when at end of the data currently being viewed */}
           {range.end >= tableDataLength ? (
             dataStart === undefined ? null : (
-              <p className="table-paginator__button-text">{`Load Next 200 >>`}</p>
+              <Fragment>
+                {/* Give user option to load more data if current dataset is 200 in length */}
+                {tableDataLength === 200 ? (
+                  <p className="table-paginator__button-text">
+                    Load Next 200 >>
+                  </p>
+                ) : null}
+              </Fragment>
             )
           ) : (
-            <p className="table-paginator__button-text">{`Next >`}</p>
+            <p className="table-paginator__button-text">Next ></p>
           )}
         </button>
       </div>

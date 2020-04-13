@@ -39,8 +39,8 @@ export default function SecuritySettings() {
           onClick={() => {
             ReactGA.event({
               category: "MetaMask",
-              action: `Securing account with MetaMask flow`,
-              label: `Started the process`
+              action: "Securing account with MetaMask flow",
+              label: "Started the process"
             });
           }}
         >

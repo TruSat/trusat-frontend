@@ -10,31 +10,31 @@ import CircleCheck from "../assets/CircleCheck.svg";
 export default function AddStation() {
   const { userAddress, authExpiry } = useAuthState();
   // form state
-  const [stationName, setStationName] = useState(``);
+  const [stationName, setStationName] = useState("");
   // const [latitudeSign, setLatitudeSign] = useState(`?`);
   // const [isLatitudeSignError, setIsLatitudeSignError] = useState(false);
-  const [latitude, setLatitude] = useState(``);
+  const [latitude, setLatitude] = useState("");
   // const [longitudeSign, setlongitudeSign] = useState(`?`);
   // const [isLongitudeSignError, setIsLongitudeSignError] = useState(false);
-  const [longitude, setlongitude] = useState(``);
-  const [elevation, setElevation] = useState(``);
-  const [notes, setNotes] = useState(``);
+  const [longitude, setlongitude] = useState("");
+  const [elevation, setElevation] = useState("");
+  const [notes, setNotes] = useState("");
   // submission state
   const [isLoading, setIsLoading] = useState(false);
-  const [successfullyAddedStation, setSuccessfullyAddedStation] = useState(``);
-  const [errorMessage, setErrorMessage] = useState(``);
+  const [successfullyAddedStation, setSuccessfullyAddedStation] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const resetFormValues = () => {
-    setStationName(``);
-    setLatitude(``);
-    setlongitude(``);
-    setElevation(``);
-    setNotes(``);
+    setStationName("");
+    setLatitude("");
+    setlongitude("");
+    setElevation("");
+    setNotes("");
   };
 
   const submitLocation = async () => {
-    setErrorMessage(``);
-    setSuccessfullyAddedStation(``);
+    setErrorMessage("");
+    setSuccessfullyAddedStation("");
     setIsLoading(true);
     // checks if auth is valid and hasn't expired
     checkAuthExpiry(authExpiry);
@@ -51,9 +51,10 @@ export default function AddStation() {
           elevation: elevation,
           notes: notes
         }),
-        { withCredentials: true,
+        {
+          withCredentials: true,
           headers: {
-            'Content-Type': 'application/json',
+            "Content-Type": "application/json"
           }
         }
       );
@@ -106,15 +107,6 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={toolTipCopy.latitude} />
           </label>
           <div style={{ alignItems: "center", display: "flex" }}>
-            {/* <select
-              className="app__form__input app__form__input--sign"
-              onChange={event => setLatitudeSign(event.target.value)}
-              value={latitudeSign}
-            >
-              <option value={`?`}>?</option>
-              <option value={``}>+</option>
-              <option value={`-`}>-</option>
-            </select> */}
             <input
               required
               type="number"
@@ -129,11 +121,6 @@ export default function AddStation() {
               placeholder="e.g. 42.97473848"
             ></input>
           </div>
-          {/* {latitudeSign === "?" ? (
-            <p className="app__error-message">
-              Please choose + or - latitude value
-            </p>
-          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">
@@ -141,15 +128,6 @@ export default function AddStation() {
             <QuestionMarkToolTip toolTipText={toolTipCopy.longitude} />
           </label>
           <div style={{ alignItems: "center", display: "flex" }}>
-            {/* <select
-              className="app__form__input app__form__input--sign"
-              onChange={event => setlongitudeSign(event.target.value)}
-              value={longitudeSign}
-            >
-              <option value={`?`}>?</option>
-              <option value={``}>+</option>
-              <option value={`-`}>-</option>
-            </select> */}
             <input
               required
               type="number"
@@ -163,11 +141,6 @@ export default function AddStation() {
               placeholder="e.g. -25.3930"
             ></input>
           </div>
-          {/* {longitudeSign === "?" ? (
-            <p className="app__error-message">
-              Please choose + or - longitude value
-            </p>
-          ) : null} */}
         </div>
         <div>
           <label className="app__form__label station-form__label">

@@ -17,10 +17,10 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
   const [secret, setSecret] = useState("");
   const [showPrivateKeyError, setShowPrivateKeyError] = useState(false);
-  const [error, setError] = useState(``);
+  const [error, setError] = useState("");
 
   const handleLogin = async () => {
-    setError(``);
+    setError("");
     authDispatch({ type: "AUTHENTICATING", payload: true });
     // get private key from the secret using the users password
     const privateKey = decryptSecret(secret, password);
@@ -49,7 +49,7 @@ export default function LoginForm() {
     });
     // do not attempt to hit /profile unless auth hasn't expired
     if (!loginCredentials) {
-      setError(`Log in failed because your log in credentials are not valid`);
+      setError("Log in failed because your log in credentials are not valid");
       authDispatch({ type: "AUTHENTICATING", payload: false });
       return;
     }
@@ -122,7 +122,7 @@ export default function LoginForm() {
           <span className="app__form__button--cancel">Cancel</span>
         </NavLink>
         <button className="app__form__button--white">
-          {isAuthenticating ? `...Loading` : `Log in`}
+          {isAuthenticating ? "...Loading" : "Log in"}
         </button>
       </div>
 

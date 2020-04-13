@@ -101,8 +101,8 @@ export default function StepTwo({ step, setStep, setPrivateKey }) {
                 onClick={() => {
                   ReactGA.event({
                     category: "MetaMask",
-                    action: `Securing account with MetaMask flow`,
-                    label: `Finished Step TWO by providing secret and password`
+                    action: "Securing account with MetaMask flow",
+                    label: "Finished Step TWO by providing secret and password"
                   });
                 }}
               >
