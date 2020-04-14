@@ -52,8 +52,22 @@ export default function Home() {
     <div className="welcome__wrapper">
       {/* Section ONE */}
       <section className="welcome__section-one">
-        <div></div>
-        <div>canvas here</div>
+        <span className="welcome__hide-on-mobile"></span>
+        <div>
+          <img
+            className="welcome__trusat-logo"
+            src={TrusatLogoBig}
+            alt="Trusat logo"
+          ></img>
+
+          <h2>Open source</h2>
+          <h2>space sustainability</h2>
+          <Button
+            text="JOIN"
+            color="orange"
+            addStyles="welcome__section-one-button"
+          ></Button>
+        </div>
       </section>
 
       {/* Section TWO */}
@@ -117,7 +131,7 @@ export default function Home() {
         <div className="welcome__desktop-section-three-content">
           <div className="welcome__desktop-section-three-content--left">
             <div className="welcome__desktop-section-three-content-left--top">
-              <p className="welcome__desktop-section-description">
+              <p>
                 By tracking satellites, you’ll join the global community of
                 citizen scientists whose observations feed the TruSat catalog.
                 All you need to start is a clear sky—no equipment required.
@@ -320,7 +334,7 @@ export default function Home() {
 
       {/* Section FOUR - MOBILE */}
       <section className="welcome__mobile-section-four welcome__hide-on-desktop">
-        <div class="welcome__mobile-section-four-top">
+        <div className="welcome__mobile-section-four-top">
           <h2>Join the mission</h2>
           <img
             src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
@@ -332,8 +346,8 @@ export default function Home() {
             diverse range of participants like you.
           </p>
         </div>
-        <div class="welcome__mobile-section-four-bottom">
-          <div class="welcome__mobile-section-four-bottom-header-wrapper">
+        <div className="welcome__mobile-section-four-bottom">
+          <div className="welcome__mobile-section-four-bottom-header-wrapper">
             <h2>Three ways to participate:</h2>
           </div>
           <div className="welcome__mobile-section-four-button-til-wrapper">
@@ -387,6 +401,63 @@ export default function Home() {
                 addStyles="welcome__button--mobile welcome__button--mobile-wide"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section FIVE   */}
+      <section className="welcome__section-five">
+        <div className="welcome__section-five-top">
+          <h2>Stay in the loop</h2>
+          <div className="welcome__section-five-top-image-button-wrapper">
+            <img
+              src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+              alt="faces"
+            ></img>
+            <span className="welcome__hide-on-mobile"></span>
+            <div className="welcome__section-five-top-button-wrapper">
+              <p>Join TruSat’s forum to receive updates on the project.</p>
+              <Button
+                text="JOIN THE FORUM"
+                color="white"
+                addStyles="welcome__button--desktop welcome__section-five-top-button"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="welcome__section-five-bottom">
+          <img
+            className="welcome__hide-on-mobile"
+            src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+            alt="earth"
+          ></img>
+          <span className="welcome__hide-on-mobile"></span>
+          <div>
+            <h2>More about TruSat</h2>
+            <ul>
+              <li>
+                <a className="app__link" href="/about">
+                  Overview
+                </a>
+              </li>
+              <li>
+                <a
+                  className="app__link"
+                  href="https://learn.trusat.org/docs/start-here.html"
+                >
+                  Deep dive
+                </a>
+              </li>
+              <li>
+                <a
+                  className="app__link"
+                  href="https://learn.trusat.org/docs/FAQ"
+                >
+                  Frequently asked questions
+                </a>
+              </li>
+            </ul>
           </div>
         </div>
       </section>

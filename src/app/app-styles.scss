@@ -698,7 +698,7 @@ WELCOME VIEW
   font-family: $display-font;
   max-width: 1080px;
   margin: 0 auto;
-  padding-top: 3.5em;
+  padding-top: 6em;
 }
 
 @media (max-width: 800px) {
@@ -711,6 +711,7 @@ WELCOME VIEW
   display: none;
 }
 
+// Welcome Section One MOBILE
 @media (max-width: 800px) {
   .welcome__hide-on-mobile {
     display: none;
@@ -722,7 +723,7 @@ WELCOME VIEW
 }
 
 .welcome__wrapper section {
-  margin-bottom: 2em;
+  margin-bottom: 6em;
 }
 
 // Welcome Section One
@@ -732,24 +733,53 @@ WELCOME VIEW
   grid-template-columns: 2fr 22fr;
 }
 
+.welcome__section-one span {
+  border: 2px dotted red;
+}
+
 .welcome__section-one div {
-  border: 1px solid red;
+  border: 1px solid white;
+  padding-bottom: 3em;
 }
 
-.welcome__section-header {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: 200;
-  font-size: 96px;
-  line-height: 117px;
+.welcome__section-one h2 {
+  font-size: 36px;
+  line-height: 44px;
 }
 
-.welcome__section-description {
-  font-family: Montserrat;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 32px;
-  line-height: 39px;
+.welcome__section-one h2:nth-of-type(1) {
+  margin-top: 0.5em;
+}
+
+.welcome__section-one h2:nth-of-type(2) {
+  margin-bottom: 2em;
+}
+
+.welcome__section-one-button {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 15px;
+  width: 120px;
+  text-align: center;
+}
+
+// Welcome Section One MOBILE
+@media (max-width: 800px) {
+  .welcome__section-one {
+    display: flex;
+    text-align: center;
+  }
+
+  .welcome__trusat-logo {
+    width: 100%;
+  }
+}
+
+// Welcome Secton Two
+.welcome__section-two {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 10fr 1fr 13fr;
 }
 
 .welcome__iframe-wrapper {
@@ -765,13 +795,6 @@ WELCOME VIEW
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-// Welcome Secton Two
-.welcome__section-two {
-  border: 1px solid white;
-  display: grid;
-  grid-template-columns: 10fr 1fr 13fr;
 }
 
 .welcome__section-two h2 {
@@ -815,6 +838,7 @@ WELCOME VIEW
   grid-template-columns: 9fr 4fr;
 }
 
+// Welcome Section Two MOBILE
 @media (max-width: 800px) {
   .welcome__section-two {
     display: inline-block;
@@ -880,6 +904,11 @@ WELCOME VIEW
   border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr;
+}
+
+.welcome__desktop-section-three-content-left--top p {
+  font-size: 32px;
+  line-height: 39px;
 }
 
 .welcome__desktop-section-three-content-left--top span {
@@ -1229,6 +1258,121 @@ WELCOME VIEW
 
 .welcome__button--mobile-wide {
   width: 100%;
+}
+
+// Welcome Section 5
+.welcome__section-five {
+  border: 1px solid white;
+}
+
+.welcome__section-five-top {
+  border: 1px solid white;
+}
+
+.welcome__section-five-top h2 {
+  font-weight: 200;
+  font-size: 96px;
+  line-height: 117px;
+  margin-bottom: 0.25em;
+}
+
+.welcome__section-five-top-image-button-wrapper {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 13fr 1fr 10fr;
+}
+
+.welcome__section-five-top img {
+  border: 1px solid white;
+  height: 309px;
+  width: 100%;
+}
+
+.welcome__section-five-top span {
+  border: 2px dotted red;
+}
+
+.welcome__section-five-top-button-wrapper {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+}
+
+.welcome__section-five-top-button-wrapper p {
+  font-size: 32px;
+  line-height: 39px;
+  margin-bottom: 1em;
+}
+
+.welcome__section-five-top-button {
+  width: 303px;
+}
+
+.welcome__section-five-bottom {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 5fr 1fr 18fr;
+  margin-top: 5em;
+}
+
+.welcome__section-five-bottom img {
+  width: 100%;
+}
+
+.welcome__section-five-bottom span {
+  border: 2px dotted red;
+}
+
+.welcome__section-five-bottom h2 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 59px;
+}
+
+.welcome__section-five-bottom ul {
+  font-size: 32px;
+  line-height: 39px;
+  list-style-type: circle;
+}
+
+.welcome__section-five-bottom li {
+  margin-left: 26px;
+  text-decoration: underline;
+}
+
+// Welcome Section Five Mobile
+@media (max-width: 800px) {
+  .welcome__section-five-top h2 {
+    font-weight: 200;
+    font-size: 48px;
+    line-height: 59px;
+  }
+
+  .welcome__section-five-top-image-button-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome__section-five-bottom {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .welcome__section-five-bottom h2 {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 29px;
+  }
+
+  .welcome__section-five-bottom ul {
+    font-size: 18px;
+    line-height: 24px;
+    list-style-type: circle;
+  }
+
+  .welcome__section-five-bottom li {
+    margin-left: 20px;
+  }
 }
 
 // .welcome__content-wrapper {
