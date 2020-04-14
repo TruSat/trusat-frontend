@@ -55,6 +55,12 @@ export default function Home() {
         <span className="welcome__hide-on-mobile"></span>
         <div>
           <img
+            className="welcome__section-one-globe welcome__hide-on-desktop"
+            src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+            alt="globe"
+          ></img>
+
+          <img
             className="welcome__trusat-logo"
             src={TrusatLogoBig}
             alt="Trusat logo"
@@ -62,11 +68,13 @@ export default function Home() {
 
           <h2>Open source</h2>
           <h2>space sustainability</h2>
-          <Button
-            text="JOIN"
-            color="orange"
-            addStyles="welcome__section-one-button"
-          ></Button>
+          <a href="/join">
+            <Button
+              text="JOIN"
+              color="orange"
+              addStyles="welcome__section-one-button"
+            ></Button>
+          </a>
         </div>
       </section>
 
@@ -140,11 +148,18 @@ export default function Home() {
             </div>
 
             <div className="welcome__desktop-section-three-content-left--bottom">
-              <Button
-                text="TRY A TUTORIAL"
-                color="white"
-                addStyles={"welcome__button--desktop"}
-              ></Button>
+              <a
+                href="https://learn.trusat.org/docs/high-level-guide"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  text="TRY A TUTORIAL"
+                  color="white"
+                  addStyles={"welcome__button--desktop"}
+                ></Button>
+              </a>
+
               <span></span>
               <ul>
                 Learn about:
@@ -271,11 +286,13 @@ export default function Home() {
                       </li>
                     </ul>
                   </div>
-                  <Button
-                    text="SIGN UP"
-                    color="white"
-                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                  />
+                  <a href="/signup">
+                    <Button
+                      text="SIGN UP"
+                      color="white"
+                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                    />
+                  </a>
                 </div>
               </div>
               <span></span>
@@ -295,11 +312,17 @@ export default function Home() {
                       <li>Orbital mechanics utilities</li>
                     </ul>
                   </div>
-                  <Button
-                    text="VIEW ON GITHUB"
-                    color="white"
-                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                  />
+                  <a
+                    href="https://github.com/TruSat"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      text="VIEW ON GITHUB"
+                      color="white"
+                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                    />
+                  </a>
                 </div>
               </div>
               <span></span>
@@ -319,11 +342,17 @@ export default function Home() {
                       <li>Spread the word</li>
                     </ul>
                   </div>
-                  <Button
-                    text="LEARN MORE"
-                    color="white"
-                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                  />
+                  <a
+                    href="https://learn.trusat.org"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Button
+                      text="LEARN MORE"
+                      color="white"
+                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                    />
+                  </a>
                 </div>
               </div>
               <span></span>
@@ -361,11 +390,17 @@ export default function Home() {
                   Use your naked eye, or connect your camera with software.
                 </li>
               </ul>
-              <Button
-                text="SIGN UP"
-                color="white"
-                addStyles="welcome__button--mobile welcome__button--mobile-wide"
-              />
+              <a
+                href="https//discuss.trusat.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  text="SIGN UP"
+                  color="white"
+                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                />
+              </a>
             </div>
             {/* tile 2 */}
             <div className="welcome__mobile-button-tile">

@@ -757,9 +757,8 @@ WELCOME VIEW
 
 .welcome__section-one-button {
   font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
-  width: 120px;
+  font-size: 16px;
+  line-height: 20px;
   text-align: center;
 }
 
@@ -770,8 +769,26 @@ WELCOME VIEW
     text-align: center;
   }
 
+  .welcome__section-one-globe {
+    margin-bottom: 1em;
+    width: 100%;
+  }
+
   .welcome__trusat-logo {
     width: 100%;
+  }
+
+  .welcome__section-one h2 {
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+  .welcome__section-one-button {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 15px;
+    width: 120px;
+    text-align: center;
   }
 }
 
