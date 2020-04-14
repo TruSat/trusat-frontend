@@ -8,6 +8,46 @@ import ReactGA from "react-ga";
 import Button from "../app/components/Button";
 
 export default function Home() {
+  const numberCircle = (num, size) => {
+    return (
+      <div
+        style={
+          size === "small"
+            ? {
+                alignItems: "center",
+                background: "#004F85",
+                borderRadius: "50px",
+                display: "flex",
+                fontWeight: "bold",
+                fontSize: "24px",
+                height: "48px",
+                lineHeight: "28px",
+                justifyContent: "center",
+                marginTop: "-25px",
+                marginLeft: "-62px",
+                width: "48px",
+              }
+            : {
+                alignItems: "center",
+                background: "#004F85",
+                borderRadius: "50px",
+                display: "flex",
+                fontWeight: "bold",
+                fontSize: "24px",
+                height: "92px",
+                lineHeight: "28px",
+                justifyContent: "center",
+                marginBottom: "-25px",
+                marginLeft: "-40px",
+                width: "92px",
+              }
+        }
+      >
+        {num}
+      </div>
+    );
+  };
+
   return (
     <div className="welcome__wrapper">
       {/* Section ONE */}
@@ -176,11 +216,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Section FOUR */}
-      <section className="welcome__section-four">
-        <div className="welcome__section-four-top">
+      {/* Section FOUR - DESKTOP */}
+      <section className="welcome__desktop-section-four welcome__hide-on-mobile">
+        <div className="welcome__desktop-section-four-top">
           <h2>Join the mission</h2>
-          <div className="welcome__section-four-top--left">
+          <div className="welcome__desktop-section-four-top--left">
             <p>
               For TruSat to remain an objective record of data, it requires that
               no single entity controls it. To achieve this, TruSat needs a
@@ -188,7 +228,7 @@ export default function Home() {
             </p>
             <span></span>
           </div>
-          <div className="welcome__section-four-top--right">
+          <div className="welcome__desktop-section-four-top--right">
             <span></span>
             <img
               src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
@@ -196,75 +236,156 @@ export default function Home() {
             ></img>
           </div>
         </div>
-        <div className="welcome__section-four-bottom">
+        <div className="welcome__desktop-section-four-bottom">
           <h2>Three ways to participate:</h2>
-          <div className="welcome__button-tile-row">
+          <div className="welcome__desktop-button-tile-row">
             {/* tile 1 container */}
-            <div className="welcome__button-tile-container">
+            <div className="welcome__desktop-button-tile-container">
               <span></span>
-              <div className="welcome__button-tile">
-                <div>
-                  <h3>Make Observations</h3>
-                  <ul>
-                    <li>
-                      Become a node in TruSat’s network of citizen observers
-                    </li>
-                    <li>
-                      Use your naked eye, or connect your camera with software.
-                    </li>
-                  </ul>
+              <div>
+                {numberCircle(1, "small")}
+                <div className="welcome__desktop-button-tile">
+                  <div>
+                    <h3>Make Observations</h3>
+                    <ul>
+                      <li>
+                        Become a node in TruSat’s network of citizen observers
+                      </li>
+                      <li>
+                        Use your naked eye, or connect your camera with
+                        software.
+                      </li>
+                    </ul>
+                  </div>
+                  <Button
+                    text="SIGN UP"
+                    color="white"
+                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                  />
                 </div>
-
-                <Button
-                  text="SIGN UP"
-                  color="white"
-                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                />
               </div>
               <span></span>
             </div>
             {/* tile 2 container */}
-            <div className="welcome__button-tile-container">
+            <div className="welcome__desktop-button-tile-container">
               <span></span>
-              <div className="welcome__button-tile">
-                <div>
-                  <h3> Contribute code</h3>
-                  <ul>
-                    <li>100% open source</li>
-                    <li>Detailed specs for new features</li>
-                    <li>Full queue of issues to pitch in on</li>
-                    <li>Orbital mechanics utilities</li>
-                  </ul>
+              <div>
+                {numberCircle(2, "small")}
+                <div className="welcome__desktop-button-tile">
+                  <div>
+                    <h3> Contribute code</h3>
+                    <ul>
+                      <li>100% open source</li>
+                      <li>Detailed specs for new features</li>
+                      <li>Full queue of issues to pitch in on</li>
+                      <li>Orbital mechanics utilities</li>
+                    </ul>
+                  </div>
+                  <Button
+                    text="VIEW ON GITHUB"
+                    color="white"
+                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                  />
                 </div>
-                <Button
-                  text="VIEW ON GITHUB"
-                  color="white"
-                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                />
               </div>
-
               <span></span>
             </div>
             {/* tile 3 container */}
-            <div className="welcome__button-tile-container">
+            <div className="welcome__desktop-button-tile-container">
               <span></span>
-              <div className="welcome__button-tile">
-                <div>
-                  <h3>Support the mission</h3>
-                  <ul>
-                    <li>Propose features</li>
-                    <li>Create or translate content</li>
-                    <li>Submit bugs</li>
-                    <li>Spread the word</li>
-                  </ul>
+              <div>
+                {numberCircle(3, "small")}
+                <div className="welcome__desktop-button-tile">
+                  <div>
+                    <h3>Support the mission</h3>
+                    <ul>
+                      <li>Propose features</li>
+                      <li>Create or translate content</li>
+                      <li>Submit bugs</li>
+                      <li>Spread the word</li>
+                    </ul>
+                  </div>
+                  <Button
+                    text="LEARN MORE"
+                    color="white"
+                    addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                  />
                 </div>
-                <Button
-                  text="LEARN MORE"
-                  color="white"
-                  addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                />
               </div>
               <span></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section FOUR - MOBILE */}
+      <section className="welcome__mobile-section-four welcome__hide-on-desktop">
+        <div class="welcome__mobile-section-four-top">
+          <h2>Join the mission</h2>
+          <img
+            src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+            alt="people"
+          ></img>
+          <p>
+            For TruSat to remain an objective record of data, it requires that
+            no single entity controls it. To achieve this, TruSat needs a
+            diverse range of participants like you.
+          </p>
+        </div>
+        <div class="welcome__mobile-section-four-bottom">
+          <div class="welcome__mobile-section-four-bottom-header-wrapper">
+            <h2>Three ways to participate:</h2>
+          </div>
+          <div className="welcome__mobile-section-four-button-til-wrapper">
+            {/* tile 1 */}
+            <div className="welcome__mobile-button-tile">
+              {numberCircle(1, "large")}
+              <h3>Make Observations</h3>
+              <ul>
+                <li>Become a node in TruSat’s network of citizen observers</li>
+                <li>
+                  Use your naked eye, or connect your camera with software.
+                </li>
+              </ul>
+              <Button
+                text="SIGN UP"
+                color="white"
+                addStyles="welcome__button--mobile welcome__button--mobile-wide"
+              />
+            </div>
+            {/* tile 2 */}
+            <div className="welcome__mobile-button-tile">
+              {numberCircle(2, "large")}
+              <h3> Contribute code</h3>
+              <ul>
+                <li>100% open source</li>
+                <li>Detailed specs for new features</li>
+                <li>Full queue of issues to pitch in on</li>
+                <li>Orbital mechanics utilities</li>
+              </ul>
+              <Button
+                text="VIEW ON GITHUB"
+                color="white"
+                addStyles="welcome__button--mobile welcome__button--mobile-wide"
+              />
+            </div>
+            {/* tile 3 */}
+            <div className="welcome__mobile-button-tile">
+              {numberCircle(3, "large")}
+              <div>
+                <h3>Support the mission</h3>
+                <ul>
+                  <li>Propose features</li>
+                  <li>Create or translate content</li>
+                  <li>Submit bugs</li>
+                  <li>Spread the word</li>
+                </ul>
+              </div>
+              <Button
+                text="LEARN MORE"
+                color="white"
+                addStyles="welcome__button--mobile welcome__button--mobile-wide"
+              />
             </div>
           </div>
         </div>
