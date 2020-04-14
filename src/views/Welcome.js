@@ -156,7 +156,9 @@ export default function Home() {
                 <Button
                   text="TRY A TUTORIAL"
                   color="white"
-                  addStyles={"welcome__button--desktop"}
+                  addStyles={
+                    "welcome__button--desktop welcome__desktop-section-three-button"
+                  }
                 ></Button>
               </a>
 
@@ -229,11 +231,18 @@ export default function Home() {
         </div>
 
         <div className="welcome__mobile-section-three-content--bottom">
-          <Button
-            text="SEE TUTORIALS"
-            color="white"
-            addStyles={"welcome__button--mobile"}
-          ></Button>
+          <a
+            href="https://learn.trusat.org/docs/high-level-guide"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button
+              text="SEE TUTORIALS"
+              color="white"
+              addStyles="welcome__button--mobile"
+            ></Button>
+          </a>
+
           <span></span>
           <ul>
             Learn about:
@@ -390,11 +399,7 @@ export default function Home() {
                   Use your naked eye, or connect your camera with software.
                 </li>
               </ul>
-              <a
-                href="https//discuss.trusat.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="/signup" target="_blank" rel="noopener noreferrer">
                 <Button
                   text="SIGN UP"
                   color="white"
@@ -412,11 +417,17 @@ export default function Home() {
                 <li>Full queue of issues to pitch in on</li>
                 <li>Orbital mechanics utilities</li>
               </ul>
-              <Button
-                text="VIEW ON GITHUB"
-                color="white"
-                addStyles="welcome__button--mobile welcome__button--mobile-wide"
-              />
+              <a
+                href="https://github.com/TruSat/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  text="VIEW ON GITHUB"
+                  color="white"
+                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                />
+              </a>
             </div>
             {/* tile 3 */}
             <div className="welcome__mobile-button-tile">
@@ -430,11 +441,18 @@ export default function Home() {
                   <li>Spread the word</li>
                 </ul>
               </div>
-              <Button
-                text="LEARN MORE"
-                color="white"
-                addStyles="welcome__button--mobile welcome__button--mobile-wide"
-              />
+              <a
+                href="https://learn.trusat.org/docs/start-here.html"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {" "}
+                <Button
+                  text="LEARN MORE"
+                  color="white"
+                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                />
+              </a>
             </div>
           </div>
         </div>
@@ -452,11 +470,22 @@ export default function Home() {
             <span className="welcome__hide-on-mobile"></span>
             <div className="welcome__section-five-top-button-wrapper">
               <p>Join TruSat’s forum to receive updates on the project.</p>
-              <Button
-                text="JOIN THE FORUM"
-                color="white"
-                addStyles="welcome__button--desktop welcome__section-five-top-button"
-              />
+              <a
+                href="https://discuss.trusat.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button
+                  text="JOIN THE FORUM"
+                  color="white"
+                  addStyles="welcome__button--desktop welcome__section-five-top-button welcome__hide-on-mobile"
+                />
+                <Button
+                  text="JOIN THE FORUM"
+                  color="white"
+                  addStyles="welcome__button--mobile welcome__section-five-top-button--mobile welcome__hide-on-desktop"
+                />
+              </a>
             </div>
           </div>
         </div>
