@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Button({ addStyles, color, text, onClick }) {
+export default function Button({ addStyles, color, text, onClick, github }) {
   return (
     <span
       className={`app__${color}-button--small ${addStyles}`}

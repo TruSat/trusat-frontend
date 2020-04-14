@@ -330,6 +330,7 @@ export default function Home() {
                       text="VIEW ON GITHUB"
                       color="white"
                       addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                      github={true}
                     />
                   </a>
                 </div>
