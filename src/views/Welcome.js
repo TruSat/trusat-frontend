@@ -485,12 +485,7 @@ export default function Home() {
                 <Button
                   text="JOIN THE FORUM"
                   color="white"
-                  addStyles="welcome__button--desktop welcome__section-five-top-button welcome__hide-on-mobile"
-                />
-                <Button
-                  text="JOIN THE FORUM"
-                  color="white"
-                  addStyles="welcome__button--mobile welcome__section-five-top-button--mobile welcome__hide-on-desktop"
+                  addStyles="welcome__button--desktop welcome__section-five-top-button"
                 />
               </a>
             </div>
@@ -531,6 +526,15 @@ export default function Home() {
             </ul>
           </div>
         </div>
+      </section>
+
+      <section className="welcome__blue-background">
+        <p
+          className="welcome__back-to-top"
+          onClick={() => window.scrollTo(0, 0)}
+        >
+          ^ Back to top
+        </p>
       </section>
     </div>
   );

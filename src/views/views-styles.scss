@@ -720,9 +720,8 @@ WELCOME VIEW
     flex-direction: column;
   }
 
-  .welcome__section-five-top-button--mobile {
-    max-width: 250px;
-    width: 50%;
+  .welcome__section-five-top-button {
+    width: 300px;
   }
 
   .welcome__section-five-bottom {
@@ -745,6 +744,19 @@ WELCOME VIEW
   .welcome__section-five-bottom li {
     margin-left: 20px;
   }
+}
+
+.welcome__back-to-top {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+  text-align: center;
+  text-decoration-line: underline;
+  text-align: center;
+}
+
+.welcome__back-to-top:hover {
+  cursor: pointer;
 }
 
 // .welcome__content-wrapper {
