@@ -114,9 +114,12 @@ export default function Home() {
               </p>
             </div>
           </div>
-          <div style={{ display: "flex" }}>
-            <img src="https://via.placeholder.com/50" alt="placeholder"></img>
-            <h2>You are the solution</h2>
+          <div className="welcome-section-two-face-image-header-wrapper">
+            <img
+              src="https://trusat-assets.s3.amazonaws.com/face.jpg"
+              alt="face"
+            ></img>
+            <h3>You are the solution</h3>
           </div>
           <p className="welcome-section-two__copy--medium">
             TruSat is a citizen-powered public service, crowdsourcing
@@ -175,15 +178,15 @@ export default function Home() {
           <div className="welcome__desktop-section-three-content--right">
             <img
               className="welcome__desktop-section-three-content-right-phone-image"
-              src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
+              src="https://trusat-assets.s3.amazonaws.com/hand-phone.jpg"
               alt="mobile tracking"
             ></img>
             <div className="welcome__desktop-section-three-content-right--bottom">
               <span></span>
               <div>
                 <img
-                  src="https://via.placeholder.com/50"
-                  alt="placeholder"
+                  src="https://trusat-assets.s3.amazonaws.com/badge1.jpg"
+                  alt="badge"
                 ></img>
                 <p>Track a sat to add it to your collection</p>
               </div>
@@ -201,7 +204,7 @@ export default function Home() {
         <div className="welcome__mobile-section-three-content--top">
           <img
             className="welcome__mobile-section-three-phone-image"
-            src="https://trusat-assets.s3.amazonaws.com/illustration-observation2-square-540px.jpg"
+            src="https://trusat-assets.s3.amazonaws.com/hand-phone.jpg"
             alt="mobile tracking"
           ></img>
           <div className="welcome__mobile-section-three-top-content-div">
@@ -210,8 +213,8 @@ export default function Home() {
               <div className="welcome__mobile-badge-wrapper">
                 <img
                   className="welcome__mobile-badge-image"
-                  src="https://via.placeholder.com/50"
-                  alt="placeholder"
+                  src="https://trusat-assets.s3.amazonaws.com/badge1.jpg"
+                  alt="badge"
                 ></img>
               </div>
               <div className="welcome__mobile-badge-copy-wrapper">
@@ -270,7 +273,7 @@ export default function Home() {
             <div className="welcome__desktop-section-four-top--right">
               <span></span>
               <img
-                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+                src="https://trusat-assets.s3.amazonaws.com/mission_people.jpg"
                 alt="people"
               ></img>
             </div>
@@ -379,7 +382,7 @@ export default function Home() {
           <div className="welcome__mobile-section-four-top">
             <h2>Join the mission</h2>
             <img
-              src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+              src="https://trusat-assets.s3.amazonaws.com/mission_people.jpg"
               alt="people"
             ></img>
             <p>
@@ -471,7 +474,7 @@ export default function Home() {
           <h2>Stay in the loop</h2>
           <div className="welcome__section-five-top-image-button-wrapper">
             <img
-              src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+              src="https://trusat-assets.s3.amazonaws.com/faces.jpg"
               alt="faces"
             ></img>
             <span className="welcome__hide-on-mobile"></span>

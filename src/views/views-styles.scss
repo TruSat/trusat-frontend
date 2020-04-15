@@ -122,13 +122,23 @@ WELCOME VIEW
   height: 100%;
 }
 
+// "Space debris is a problem
 .welcome__section-two h2 {
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
   font-size: 48px;
   line-height: 59px;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+// "You are the solution"
+.welcome__section-two h3 {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 59px;
 }
 
 .welcome__section-two span {
@@ -157,6 +167,17 @@ WELCOME VIEW
 
 .welcome-section-two__copy--medium strong {
   font-weight: bold;
+}
+
+.welcome-section-two-face-image-header-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid white;
+  margin-bottom: 1em;
+}
+
+.welcome-section-two-face-image-header-wrapper img {
+  margin-right: 0.5em;
 }
 
 .welcome-section-two__copy-container--bottom {
@@ -301,8 +322,8 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-right--bottom img {
-  margin-left: -15%;
-  margin-top: -15%;
+  margin-left: -45px;
+  margin-top: -50px;
   width: auto;
 }
 
@@ -359,8 +380,9 @@ WELCOME VIEW
 }
 
 .welcome__mobile-badge-image-copy-wrapper img {
-  margin-left: -25px;
-  margin-top: -25px;
+  margin-left: -20px;
+  margin-top: -22px;
+  width: 39px;
 }
 
 .welcome__mobile-badge-copy-wrapper {
@@ -463,7 +485,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--right img {
-  height: 358px;
+  //height: 358px;
   width: 100%;
   margin-top: -50px;
 }
@@ -559,7 +581,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-four-top img {
-  height: 162px;
+  //height: 162px;
   margin-top: -25px;
   position: relative;
   width: 100%;
@@ -646,7 +668,6 @@ WELCOME VIEW
 
 .welcome__section-five-top img {
   border: 1px solid white;
-  height: 309px;
   width: 100%;
 }
 
@@ -718,6 +739,10 @@ WELCOME VIEW
   .welcome__section-five-top-image-button-wrapper {
     display: flex;
     flex-direction: column;
+  }
+
+  .welcome__section-five-top-button-wrapper p {
+    margin-top: 0.5em;
   }
 
   .welcome__section-five-top-button {
