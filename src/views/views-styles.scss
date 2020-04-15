@@ -42,11 +42,11 @@ WELCOME VIEW
 }
 
 .welcome__section-one span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__section-one div {
-  border: 1px solid white;
+  //border: 1px solid white;
   padding-bottom: 3em;
 }
 
@@ -142,11 +142,11 @@ WELCOME VIEW
 }
 
 .welcome__section-two span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome-section-two__copy-container--top {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
   margin-bottom: 3em;
@@ -163,6 +163,7 @@ WELCOME VIEW
 .welcome-section-two__copy--small {
   font-family: Montserrat;
   line-height: 20px;
+  margin-top: 0.25em; // lines copt up with bigger copy to the left
 }
 
 .welcome-section-two__copy--medium strong {
@@ -172,16 +173,17 @@ WELCOME VIEW
 .welcome-section-two-face-image-header-wrapper {
   display: flex;
   align-items: center;
-  border: 1px solid white;
+  //border: 1px solid white;
   margin-bottom: 1em;
 }
 
 .welcome-section-two-face-image-header-wrapper img {
   margin-right: 0.5em;
+  width: 65px;
 }
 
 .welcome-section-two__copy-container--bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 9fr 4fr;
   margin-top: 1em;
@@ -198,6 +200,11 @@ WELCOME VIEW
   }
 
   .welcome__section-two h2 {
+    font-size: 27px;
+    line-height: 33px;
+  }
+
+  .welcome__section-two h3 {
     font-size: 27px;
     line-height: 33px;
   }
@@ -219,7 +226,7 @@ WELCOME VIEW
   }
 
   .welcome-section-two__copy-container--top span {
-    border: 2px dotted red;
+    //border: 2px dotted red;
   }
 
   .welcome-section-two__copy-container--bottom {
@@ -242,18 +249,18 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
 }
 
 .welcome__desktop-section-three-content--left {
   margin-top: 1em;
-  border: 1px solid white;
+  //border: 1px solid white;
 }
 
 .welcome__desktop-section-three-content-left--top {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr;
 }
@@ -264,11 +271,11 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-left--top span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-left--bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
   margin-top: 1em;
@@ -285,7 +292,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-left--bottom span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-left--bottom ul {
@@ -301,7 +308,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content--right {
-  border: 1px solid white;
+  //border: 1px solid white;
   margin-top: -30%;
   z-index: -1;
 }
@@ -312,23 +319,22 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-right--bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 9fr 4fr;
 }
 
 .welcome__desktop-section-three-content-right--bottom span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-right--bottom img {
-  margin-left: -45px;
+  margin-left: -44px;
   margin-top: -50px;
-  width: auto;
+  width: 85px;
 }
 
 .welcome__desktop-section-three-content-right--bottom p {
-  margin-top: 0.5em;
   line-height: 20px;
 }
 
@@ -344,7 +350,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-header-wrapper h2 {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-style: normal;
   font-weight: 200;
   font-size: 48px;
@@ -352,7 +358,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-content--top {
-  border: 1px solid white;
+  //border: 1px solid white;
   margin-top: 35px;
   position: relative;
   z-index: -1;
@@ -370,36 +376,36 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-top-content-div span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__mobile-badge-image-copy-wrapper {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: flex;
   flex-direction: column;
 }
 
 .welcome__mobile-badge-image-copy-wrapper img {
   margin-left: -20px;
-  margin-top: -22px;
+  margin-top: -20px;
   width: 39px;
 }
 
 .welcome__mobile-badge-copy-wrapper {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 1fr 11fr;
 }
 
 .welcome__mobile-section-three-content--middle p {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-family: Montserrat;
   font-size: 18px;
   line-height: 22px;
 }
 
 .welcome__mobile-section-three-content--bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 12fr 1fr 11fr;
   margin-top: 1em;
@@ -413,11 +419,11 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-content--bottom span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__mobile-section-three-content--bottom ul {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-weight: bold;
   font-size: 12px;
   line-height: 15px;
@@ -453,7 +459,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--left {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
   margin-top: 1em;
@@ -462,17 +468,17 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--left p {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-size: 32px;
   line-height: 39px;
 }
 
 .welcome__desktop-section-four-top--left span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-four-top--right {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 14fr;
   width: 100%;
@@ -481,7 +487,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--right span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-four-top--right img {
@@ -491,11 +497,11 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
 }
 
 .welcome__desktop-section-four-bottom h2 {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-weight: bold;
   font-size: 48px;
   line-height: 59px;
@@ -503,28 +509,39 @@ WELCOME VIEW
 }
 
 .welcome__desktop-button-tile-row {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 8fr 8fr;
 }
 
 .welcome__desktop-button-tile-container {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 1fr 7fr 2fr;
 }
 
 .welcome__desktop-button-tile-container span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__desktop-button-tile {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: flex;
   flex-direction: column;
   height: 303px;
   justify-content: space-between;
   margin: 0.75em 0 2em 0;
+}
+
+.welcome__github-button {
+  display: flex;
+  justify-content: center;
+  height: 48px; // squeezes github icon a little but makes buttons all same height
+}
+
+.welcome__github-button img {
+  margin-right: 0.25em;
+  width: 20px;
 }
 
 .welcome__desktop-button-tile h3 {
@@ -557,14 +574,13 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-four {
-  //border: 2px dotted red;
   border: 1px solid white;
   position: relative;
   margin-bottom: 0;
 }
 
 .welcome__mobile-section-four-top {
-  border: 1px solid white;
+  //border: 1px solid white;
   margin-bottom: 1em;
   position: relative;
 }
@@ -595,7 +611,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-four-bottom h2 {
-  border: 1px solid white;
+  //border: 1px solid white;
   font-size: 24px;
   font-weight: bold;
   line-height: 29px;
@@ -608,7 +624,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-button-tile {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
@@ -650,7 +666,7 @@ WELCOME VIEW
 }
 
 .welcome__section-five-top {
-  border: 1px solid white;
+  //border: 1px solid white;
 }
 
 .welcome__section-five-top h2 {
@@ -661,22 +677,22 @@ WELCOME VIEW
 }
 
 .welcome__section-five-top-image-button-wrapper {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 13fr 1fr 10fr;
 }
 
 .welcome__section-five-top img {
-  border: 1px solid white;
+  //border: 1px solid white;
   width: 100%;
 }
 
 .welcome__section-five-top span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__section-five-top-button-wrapper {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: flex;
   flex-direction: column;
 }
@@ -692,7 +708,7 @@ WELCOME VIEW
 }
 
 .welcome__section-five-bottom {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
   margin-top: 5em;
@@ -703,7 +719,7 @@ WELCOME VIEW
 }
 
 .welcome__section-five-bottom span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .welcome__section-five-bottom h2 {
@@ -746,7 +762,7 @@ WELCOME VIEW
   }
 
   .welcome__section-five-top-button {
-    width: 300px;
+    width: auto;
   }
 
   .welcome__section-five-bottom {

@@ -116,7 +116,7 @@ export default function Home() {
           </div>
           <div className="welcome-section-two-face-image-header-wrapper">
             <img
-              src="https://trusat-assets.s3.amazonaws.com/face.jpg"
+              src="https://trusat-assets.s3.amazonaws.com/face.png"
               alt="face"
             ></img>
             <h3>You are the solution</h3>
@@ -185,7 +185,7 @@ export default function Home() {
               <span></span>
               <div>
                 <img
-                  src="https://trusat-assets.s3.amazonaws.com/badge1.jpg"
+                  src="https://trusat-assets.s3.amazonaws.com/badge.png"
                   alt="badge"
                 ></img>
                 <p>Track a sat to add it to your collection</p>
@@ -210,10 +210,10 @@ export default function Home() {
           <div className="welcome__mobile-section-three-top-content-div">
             <span></span>
             <div className="welcome__mobile-badge-image-copy-wrapper">
-              <div className="welcome__mobile-badge-wrapper">
+              <div>
                 <img
                   className="welcome__mobile-badge-image"
-                  src="https://trusat-assets.s3.amazonaws.com/badge1.jpg"
+                  src="https://trusat-assets.s3.amazonaws.com/badge.png"
                   alt="badge"
                 ></img>
               </div>
@@ -242,7 +242,7 @@ export default function Home() {
             <Button
               text="SEE TUTORIALS"
               color="white"
-              addStyles="welcome__button--mobile"
+              addStyles="welcome__button--mobile welcome__button--desktop-wide"
             ></Button>
           </a>
 
@@ -329,13 +329,16 @@ export default function Home() {
                       href="https://github.com/TruSat"
                       target="_blank"
                       rel="noopener noreferrer"
+                      style={{ textDecoration: "none" }}
                     >
-                      <Button
-                        text="VIEW ON GITHUB"
-                        color="white"
-                        addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                        github={true}
-                      />
+                      <div className="app__button--white welcome__button--desktop welcome__github-button">
+                        <img
+                          className="welcome__github-icon"
+                          src="https://image.flaticon.com/icons/svg/25/25231.svg"
+                          alt="github"
+                        ></img>
+                        <p>VIEW ON GITHUB</p>
+                      </div>
                     </a>
                   </div>
                 </div>
@@ -412,7 +415,7 @@ export default function Home() {
                   <Button
                     text="SIGN UP"
                     color="white"
-                    addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                    addStyles="welcome__button--mobile welcome__button--desktop-wide"
                   />
                 </a>
               </div>
@@ -430,12 +433,16 @@ export default function Home() {
                   href="https://github.com/TruSat/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ textDecoration: "none" }}
                 >
-                  <Button
-                    text="VIEW ON GITHUB"
-                    color="white"
-                    addStyles="welcome__button--mobile welcome__button--mobile-wide"
-                  />
+                  <div className="app__button--white  welcome__button--mobile welcome__button--mobile-wide welcome__github-button">
+                    <img
+                      className="welcome__github-icon"
+                      src="https://image.flaticon.com/icons/svg/25/25231.svg"
+                      alt="github"
+                    ></img>
+                    <p>VIEW ON GITHUB</p>
+                  </div>
                 </a>
               </div>
               {/* tile 3 */}
@@ -474,7 +481,7 @@ export default function Home() {
           <h2>Stay in the loop</h2>
           <div className="welcome__section-five-top-image-button-wrapper">
             <img
-              src="https://trusat-assets.s3.amazonaws.com/faces.jpg"
+              src="https://trusat-assets.s3.amazonaws.com/face-set.png"
               alt="faces"
             ></img>
             <span className="welcome__hide-on-mobile"></span>
