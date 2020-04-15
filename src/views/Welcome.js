@@ -51,7 +51,7 @@ export default function Home() {
   return (
     <div className="welcome__wrapper">
       {/* Section ONE */}
-      <section className="welcome__section-one">
+      <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
         <div>
           <img
@@ -79,7 +79,7 @@ export default function Home() {
       </section>
 
       {/* Section TWO */}
-      <section className="welcome__section-two">
+      <section className="welcome__section welcome__section-two">
         <div>
           <div className="welcome__iframe-wrapper">
             <iframe
@@ -134,7 +134,7 @@ export default function Home() {
       </section>
 
       {/* Section THREE - DESKTOP  */}
-      <section className="welcome__desktop-section-three welcome__hide-on-mobile">
+      <section className="welcome__section welcome__desktop-section-three welcome__hide-on-mobile">
         <h2>Learn the sport of satellite tracking</h2>
         <div className="welcome__desktop-section-three-content">
           <div className="welcome__desktop-section-three-content--left">
@@ -193,7 +193,7 @@ export default function Home() {
       </section>
 
       {/* Section THREE - MOBILE */}
-      <section className="welcome__mobile-section-three welcome__hide-on-desktop">
+      <section className="welcome__section welcome__mobile-section-three welcome__hide-on-desktop">
         <div className="welcome__mobile-section-three-header-wrapper">
           <h2>Learn the sport of satellite tracking</h2>
         </div>
@@ -255,212 +255,218 @@ export default function Home() {
       </section>
 
       {/* Section FOUR - DESKTOP */}
-      <section className="welcome__desktop-section-four welcome__hide-on-mobile">
-        <div className="welcome__desktop-section-four-top">
-          <h2>Join the mission</h2>
-          <div className="welcome__desktop-section-four-top--left">
-            <p>
-              For TruSat to remain an objective record of data, it requires that
-              no single entity controls it. To achieve this, TruSat needs a
-              diverse range of participants from around the world, like you.
-            </p>
-            <span></span>
+      <div class="welcome__blue-background welcome__hide-on-mobile">
+        <section className="welcome__section welcome__desktop-section-four ">
+          <div className="welcome__desktop-section-four-top">
+            <h2>Join the mission</h2>
+            <div className="welcome__desktop-section-four-top--left">
+              <p>
+                For TruSat to remain an objective record of data, it requires
+                that no single entity controls it. To achieve this, TruSat needs
+                a diverse range of participants from around the world, like you.
+              </p>
+              <span></span>
+            </div>
+            <div className="welcome__desktop-section-four-top--right">
+              <span></span>
+              <img
+                src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
+                alt="people"
+              ></img>
+            </div>
           </div>
-          <div className="welcome__desktop-section-four-top--right">
-            <span></span>
+          <div className="welcome__desktop-section-four-bottom">
+            <h2>Three ways to participate:</h2>
+            <div className="welcome__desktop-button-tile-row">
+              {/* tile 1 container */}
+              <div className="welcome__desktop-button-tile-container">
+                <span></span>
+                <div>
+                  {numberCircle(1, "small")}
+                  <div className="welcome__desktop-button-tile">
+                    <div>
+                      <h3>Make Observations</h3>
+                      <ul>
+                        <li>
+                          Become a node in TruSat’s network of citizen observers
+                        </li>
+                        <li>
+                          Use your naked eye, or connect your camera with
+                          software.
+                        </li>
+                      </ul>
+                    </div>
+                    <a href="/signup">
+                      <Button
+                        text="SIGN UP"
+                        color="white"
+                        addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <span></span>
+              </div>
+              {/* tile 2 container */}
+              <div className="welcome__desktop-button-tile-container">
+                <span></span>
+                <div>
+                  {numberCircle(2, "small")}
+                  <div className="welcome__desktop-button-tile">
+                    <div>
+                      <h3> Contribute code</h3>
+                      <ul>
+                        <li>100% open source</li>
+                        <li>Detailed specs for new features</li>
+                        <li>Full queue of issues to pitch in on</li>
+                        <li>Orbital mechanics utilities</li>
+                      </ul>
+                    </div>
+                    <a
+                      href="https://github.com/TruSat"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        text="VIEW ON GITHUB"
+                        color="white"
+                        addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                        github={true}
+                      />
+                    </a>
+                  </div>
+                </div>
+                <span></span>
+              </div>
+              {/* tile 3 container */}
+              <div className="welcome__desktop-button-tile-container">
+                <span></span>
+                <div>
+                  {numberCircle(3, "small")}
+                  <div className="welcome__desktop-button-tile">
+                    <div>
+                      <h3>Support the mission</h3>
+                      <ul>
+                        <li>Propose features</li>
+                        <li>Create or translate content</li>
+                        <li>Submit bugs</li>
+                        <li>Spread the word</li>
+                      </ul>
+                    </div>
+                    <a
+                      href="https://learn.trusat.org"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button
+                        text="LEARN MORE"
+                        color="white"
+                        addStyles="welcome__button--desktop welcome__button--desktop-wide"
+                      />
+                    </a>
+                  </div>
+                </div>
+                <span></span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      {/* Section FOUR - MOBILE */}
+      <div class="welcome__blue-background welcome__hide-on-desktop">
+        <section className="welcome__section welcome__mobile-section-four">
+          <div className="welcome__mobile-section-four-top">
+            <h2>Join the mission</h2>
             <img
               src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
               alt="people"
             ></img>
+            <p>
+              For TruSat to remain an objective record of data, it requires that
+              no single entity controls it. To achieve this, TruSat needs a
+              diverse range of participants like you.
+            </p>
           </div>
-        </div>
-        <div className="welcome__desktop-section-four-bottom">
-          <h2>Three ways to participate:</h2>
-          <div className="welcome__desktop-button-tile-row">
-            {/* tile 1 container */}
-            <div className="welcome__desktop-button-tile-container">
-              <span></span>
-              <div>
-                {numberCircle(1, "small")}
-                <div className="welcome__desktop-button-tile">
-                  <div>
-                    <h3>Make Observations</h3>
-                    <ul>
-                      <li>
-                        Become a node in TruSat’s network of citizen observers
-                      </li>
-                      <li>
-                        Use your naked eye, or connect your camera with
-                        software.
-                      </li>
-                    </ul>
-                  </div>
-                  <a href="/signup">
-                    <Button
-                      text="SIGN UP"
-                      color="white"
-                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                    />
-                  </a>
-                </div>
-              </div>
-              <span></span>
+          <div className="welcome__mobile-section-four-bottom">
+            <div className="welcome__mobile-section-four-bottom-header-wrapper">
+              <h2>Three ways to participate:</h2>
             </div>
-            {/* tile 2 container */}
-            <div className="welcome__desktop-button-tile-container">
-              <span></span>
-              <div>
-                {numberCircle(2, "small")}
-                <div className="welcome__desktop-button-tile">
-                  <div>
-                    <h3> Contribute code</h3>
-                    <ul>
-                      <li>100% open source</li>
-                      <li>Detailed specs for new features</li>
-                      <li>Full queue of issues to pitch in on</li>
-                      <li>Orbital mechanics utilities</li>
-                    </ul>
-                  </div>
-                  <a
-                    href="https://github.com/TruSat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      text="VIEW ON GITHUB"
-                      color="white"
-                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                      github={true}
-                    />
-                  </a>
-                </div>
-              </div>
-              <span></span>
-            </div>
-            {/* tile 3 container */}
-            <div className="welcome__desktop-button-tile-container">
-              <span></span>
-              <div>
-                {numberCircle(3, "small")}
-                <div className="welcome__desktop-button-tile">
-                  <div>
-                    <h3>Support the mission</h3>
-                    <ul>
-                      <li>Propose features</li>
-                      <li>Create or translate content</li>
-                      <li>Submit bugs</li>
-                      <li>Spread the word</li>
-                    </ul>
-                  </div>
-                  <a
-                    href="https://learn.trusat.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Button
-                      text="LEARN MORE"
-                      color="white"
-                      addStyles="welcome__button--desktop welcome__button--desktop-wide"
-                    />
-                  </a>
-                </div>
-              </div>
-              <span></span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Section FOUR - MOBILE */}
-      <section className="welcome__mobile-section-four welcome__hide-on-desktop">
-        <div className="welcome__mobile-section-four-top">
-          <h2>Join the mission</h2>
-          <img
-            src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
-            alt="people"
-          ></img>
-          <p>
-            For TruSat to remain an objective record of data, it requires that
-            no single entity controls it. To achieve this, TruSat needs a
-            diverse range of participants like you.
-          </p>
-        </div>
-        <div className="welcome__mobile-section-four-bottom">
-          <div className="welcome__mobile-section-four-bottom-header-wrapper">
-            <h2>Three ways to participate:</h2>
-          </div>
-          <div className="welcome__mobile-section-four-button-til-wrapper">
-            {/* tile 1 */}
-            <div className="welcome__mobile-button-tile">
-              {numberCircle(1, "large")}
-              <h3>Make Observations</h3>
-              <ul>
-                <li>Become a node in TruSat’s network of citizen observers</li>
-                <li>
-                  Use your naked eye, or connect your camera with software.
-                </li>
-              </ul>
-              <a href="/signup" target="_blank" rel="noopener noreferrer">
-                <Button
-                  text="SIGN UP"
-                  color="white"
-                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
-                />
-              </a>
-            </div>
-            {/* tile 2 */}
-            <div className="welcome__mobile-button-tile">
-              {numberCircle(2, "large")}
-              <h3> Contribute code</h3>
-              <ul>
-                <li>100% open source</li>
-                <li>Detailed specs for new features</li>
-                <li>Full queue of issues to pitch in on</li>
-                <li>Orbital mechanics utilities</li>
-              </ul>
-              <a
-                href="https://github.com/TruSat/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  text="VIEW ON GITHUB"
-                  color="white"
-                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
-                />
-              </a>
-            </div>
-            {/* tile 3 */}
-            <div className="welcome__mobile-button-tile">
-              {numberCircle(3, "large")}
-              <div>
-                <h3>Support the mission</h3>
+            <div className="welcome__mobile-section-four-button-til-wrapper">
+              {/* tile 1 */}
+              <div className="welcome__mobile-button-tile">
+                {numberCircle(1, "large")}
+                <h3>Make Observations</h3>
                 <ul>
-                  <li>Propose features</li>
-                  <li>Create or translate content</li>
-                  <li>Submit bugs</li>
-                  <li>Spread the word</li>
+                  <li>
+                    Become a node in TruSat’s network of citizen observers
+                  </li>
+                  <li>
+                    Use your naked eye, or connect your camera with software.
+                  </li>
                 </ul>
+                <a href="/signup" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    text="SIGN UP"
+                    color="white"
+                    addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                  />
+                </a>
               </div>
-              <a
-                href="https://learn.trusat.org/docs/start-here.html"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {" "}
-                <Button
-                  text="LEARN MORE"
-                  color="white"
-                  addStyles="welcome__button--mobile welcome__button--mobile-wide"
-                />
-              </a>
+              {/* tile 2 */}
+              <div className="welcome__mobile-button-tile">
+                {numberCircle(2, "large")}
+                <h3> Contribute code</h3>
+                <ul>
+                  <li>100% open source</li>
+                  <li>Detailed specs for new features</li>
+                  <li>Full queue of issues to pitch in on</li>
+                  <li>Orbital mechanics utilities</li>
+                </ul>
+                <a
+                  href="https://github.com/TruSat/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    text="VIEW ON GITHUB"
+                    color="white"
+                    addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                  />
+                </a>
+              </div>
+              {/* tile 3 */}
+              <div className="welcome__mobile-button-tile">
+                {numberCircle(3, "large")}
+                <div>
+                  <h3>Support the mission</h3>
+                  <ul>
+                    <li>Propose features</li>
+                    <li>Create or translate content</li>
+                    <li>Submit bugs</li>
+                    <li>Spread the word</li>
+                  </ul>
+                </div>
+                <a
+                  href="https://learn.trusat.org/docs/start-here.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {" "}
+                  <Button
+                    text="LEARN MORE"
+                    color="white"
+                    addStyles="welcome__button--mobile welcome__button--mobile-wide"
+                  />
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* Section FIVE   */}
-      <section className="welcome__section-five">
+      <section className="welcome__section welcome__section-five">
         <div className="welcome__section-five-top">
           <h2>Stay in the loop</h2>
           <div className="welcome__section-five-top-image-button-wrapper">

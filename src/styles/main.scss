@@ -5,6 +5,7 @@
 @import "./base/base";
 @import "./helpers/mixins";
 
+@import "../views/views-styles.scss";
 @import "../app/app-styles.scss";
 @import "../auth/auth-styles.scss";
 @import "../catalog/catalog-styles.scss";
