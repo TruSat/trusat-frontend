@@ -33,7 +33,7 @@ function NavBar(props) {
             <NavLink
               className={
                 path === "/"
-                  ? "app__nav-link nav-bar__link--highlight--welcome"
+                  ? "app__nav-link nav-bar__link--highlight"
                   : "app__nav-link nav-bar__link--lowlight"
               }
               to="/"
@@ -170,7 +170,7 @@ function NavBar(props) {
                 ReactGA.event({
                   category: "Onboarding",
                   action: "Clicked join button",
-                  label: "Nav Bar join button"
+                  label: "Nav Bar join button",
                 });
               }}
             >
