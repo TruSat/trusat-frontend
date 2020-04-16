@@ -51,17 +51,10 @@ export default function Home() {
   return (
     <div className="welcome__wrapper">
       <TrusatGlobeCanvas />
-
       {/* Section ONE */}
       <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
         <div>
-          <img
-            className="welcome__section-one-globe welcome__hide-on-desktop"
-            src="https://trusat-assets.s3.amazonaws.com/illustration-posat2-square-540px.jpg"
-            alt="globe"
-          ></img>
-
           <img
             className="welcome__trusat-logo"
             src={TrusatLogoBig}
