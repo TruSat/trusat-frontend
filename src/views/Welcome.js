@@ -1,11 +1,11 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Partners from "../app/components/Partners";
 import Advisors from "../app/components/Advisors";
 import RoundedButton from "../app/components/RoundedButton";
 import ReactGA from "react-ga";
 import Button from "../app/components/Button";
+import TrusatGlobeCanvas from "../app/components/TrusatGlobeCanvas";
 
 export default function Home() {
   const numberCircle = (num, size) => {
@@ -50,6 +50,8 @@ export default function Home() {
 
   return (
     <div className="welcome__wrapper">
+      <TrusatGlobeCanvas />
+
       {/* Section ONE */}
       <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
