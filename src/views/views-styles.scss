@@ -6,6 +6,11 @@ WELCOME VIEW
   padding-top: 6em;
 }
 
+// replaces canvas on mobile render
+.welcome__globe-image {
+  margin: 0 auto;
+}
+
 .welcome__section {
   margin: 0 auto;
   margin-bottom: 6em;
@@ -44,7 +49,7 @@ WELCOME VIEW
 
 // Welcome Section One
 .welcome__section-one {
-  //border: 1px solid white;
+  border: 1px solid white;
   display: grid;
   grid-template-columns: 2fr 22fr;
   position: relative;
@@ -82,8 +87,7 @@ WELCOME VIEW
 // Welcome Section One MOBILE
 @media (max-width: 800px) {
   #globe-canvas-container {
-    position: relative;
-    margin-top: 0;
+    display: none;
   }
 
   .welcome__section-one {
@@ -111,7 +115,7 @@ WELCOME VIEW
 
 // Welcome Secton Two
 .welcome__section-two {
-  //border: 1px solid white;
+  border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr 13fr;
   position: relative;
@@ -246,7 +250,7 @@ WELCOME VIEW
 
 // Welcome Section three DESKTOP
 .welcome__desktop-section-three {
-  //border: 1px solid white;
+  border: 1px solid white;
   margin-bottom: 3em; // over-rides welcome__section class
 }
 
@@ -350,7 +354,7 @@ WELCOME VIEW
 
 // Welcome Section Three MOBILE
 .welcome__mobile-section-three {
-  //border: 1px solid white;
+  border: 1px solid white;
   margin-bottom: 2em; // over-rides welcome__section class
 }
 
@@ -454,7 +458,7 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four {
-  //border: 1px solid white;
+  border: 1px solid white;
   margin-bottom: 0em;
 }
 
@@ -584,7 +588,7 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-four {
-  //border: 1px solid white;
+  border: 1px solid white;
   position: relative;
   margin-bottom: 0;
 }
@@ -671,7 +675,7 @@ WELCOME VIEW
 
 // Welcome Section 5
 .welcome__section-five {
-  //border: 1px solid white;
+  border: 1px solid white;
   margin-top: 3em;
 }
 
