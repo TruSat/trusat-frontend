@@ -1,4 +1,4 @@
-import Globe from "../assets/trusat-earth-with_shadows.png";
+import Globe from "../assets/earth-shadows-400px.jpg";
 
 export default (p) => {
   var canvasDiv = document.getElementById("globe-canvas-container");
