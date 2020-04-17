@@ -102,7 +102,7 @@ export default function Home() {
               In the next decade, the number of satellites in orbit will
               multiply by <strong>2500%.</strong>
             </p>
-            <span className="welcome__hide-on-mobile"></span>
+            <span className="welcome__hide-on-mobile border-left"></span>
             <div>
               <span className="welcome__hide-on-desktop" />
               <p className="welcome-section-two__copy--small">
@@ -125,6 +125,7 @@ export default function Home() {
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
+            <span class="border-left"></span>
             <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}

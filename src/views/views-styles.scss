@@ -199,7 +199,7 @@ WELCOME VIEW
 .welcome-section-two__copy-container--bottom {
   //border: 1px solid white;
   display: grid;
-  grid-template-columns: 9fr 4fr;
+  grid-template-columns: 8fr 1fr 4fr;
   margin-top: 1em;
 }
 
@@ -1249,4 +1249,8 @@ FAQ view
   font-family: $main-font;
   line-height: 27px;
   margin-bottom: 2em;
+}
+
+.border-left {
+  border-left: 1px solid $tertiary-color;
 }
