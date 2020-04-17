@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
-import JoinButton from "./JoinButton";
+import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
 import IconUser from "../../assets/icon-user.svg";
@@ -174,7 +174,11 @@ function NavBar(props) {
                 });
               }}
             >
-              <JoinButton path={path} />
+              <Button
+                text="JOIN"
+                color="orange"
+                addStyles="nav-bar__join-button"
+              />
             </NavLink>
           </Fragment>
         ) : (

@@ -912,20 +912,6 @@ JOIN VIEW
   }
 }
 
-.join__mailing-list-content-wrapper {
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-  margin-top: 1em;
-}
-
-@media (min-width: 600px) {
-  .join__mailing-list-content-wrapper {
-    margin-top: 0;
-    width: 50%;
-  }
-}
-
 .join__image-wrapper {
   position: relative;
 }
@@ -1107,15 +1093,6 @@ ABOUT VIEW
 
 .about__sub-header--top {
   margin-top: 1em;
-}
-
-.about__mailing-list-wrapper {
-  margin-top: 2em;
-}
-
-.about__ul {
-  list-style: disc outside;
-  margin-left: 1.1em;
 }
 
 /* ----------
