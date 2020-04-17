@@ -118,11 +118,11 @@ export default function LoginForm() {
         </div>
       ) : null}
 
-      <div className="app__form__button-wrapper">
+      <div className="app__form-button-wrapper">
         <NavLink className="app__nav-link" to="/">
-          <span className="app__form__button--cancel">Cancel</span>
+          <span className="app__form-button--cancel">Cancel</span>
         </NavLink>
-        <button className="app__form__button--white">
+        <button className="app__form-button--white">
           {isAuthenticating ? "...Loading" : "Log in"}
         </button>
       </div>
