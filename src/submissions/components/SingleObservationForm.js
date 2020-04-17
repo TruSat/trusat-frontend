@@ -7,7 +7,7 @@ import { checkAuthExpiry } from "../../auth/auth-helpers";
 import {
   API_ROOT,
   QuestionMarkToolTip,
-  toolTipCopy
+  toolTipCopy,
 } from "../../app/app-helpers";
 import CircleCheck from "../../assets/CircleCheck.svg";
 import ConditionExcellent from "../../assets/ConditionExcellent.svg";
@@ -69,11 +69,11 @@ export default function SingleObservationForm() {
   const [isObjectError, setIsObjectError] = useState(false);
   const [
     isRightAscensionOrAzimuthError,
-    setIsRightAscensionOrAzimuthError
+    setIsRightAscensionOrAzimuthError,
   ] = useState(false);
   const [
     isDeclinationOrElevationError,
-    setIsDeclinationOrElevationError
+    setIsDeclinationOrElevationError,
   ] = useState(false);
   // SUBMISSION UI STATES
   const { userAddress, authExpiry } = useAuthState(); // used in handleSubmit function
@@ -86,11 +86,11 @@ export default function SingleObservationForm() {
   const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [
     fetchObservationStationsError,
-    setFetchObservationStationsError
+    setFetchObservationStationsError,
   ] = useState("");
   const [
     fetchObjectSearchResultsError,
-    setFetchObjectSearchResultsError
+    setFetchObjectSearchResultsError,
   ] = useState("");
 
   // gets observations stations for this user
@@ -103,8 +103,8 @@ export default function SingleObservationForm() {
           {
             withCredentials: true,
             headers: {
-              "Content-Type": "application/json"
-            }
+              "Content-Type": "application/json",
+            },
           }
         );
         // sort stations by most observations
@@ -144,7 +144,7 @@ export default function SingleObservationForm() {
     visualMagnitudeSign,
     visualMagnitude,
     visualMagnitudeUncertainty,
-    flashPeriod
+    flashPeriod,
   ]);
 
   //  return all the 'default values' upon submit
@@ -312,7 +312,7 @@ export default function SingleObservationForm() {
     object,
     rightAscensionOrAzimuth,
     declinationOrElevationSign,
-    declinationOrElevation
+    declinationOrElevation,
   ]);
 
   // Search for objects in the database
@@ -368,7 +368,7 @@ export default function SingleObservationForm() {
     isDateAndTimeError,
     isObjectError,
     isRightAscensionOrAzimuthError,
-    isDeclinationOrElevationError
+    isDeclinationOrElevationError,
   ]);
 
   // submit the IOD
@@ -396,8 +396,8 @@ export default function SingleObservationForm() {
           {
             withCredentials: true,
             headers: {
-              "Content-Type": "application/json"
-            }
+              "Content-Type": "application/json",
+            },
           }
         );
 
@@ -406,7 +406,7 @@ export default function SingleObservationForm() {
           ReactGA.event({
             category: "Submissions",
             action: "User clicked submit on SingleObservationForm",
-            label: "Submission Success"
+            label: "Submission Success",
           });
           resetFormVariables();
         } else if (result.data.error_messages.length !== 0) {
@@ -414,7 +414,7 @@ export default function SingleObservationForm() {
           ReactGA.event({
             category: "Submissions",
             action: "User clicked submit on SingleObservationForm",
-            label: "Submission Failure"
+            label: "Submission Failure",
           });
         }
       } catch (error) {
@@ -430,7 +430,7 @@ export default function SingleObservationForm() {
   // Renders the users stations as options in the Station Location dropdown
   const renderObservationStations = () => {
     if (observationStations.length !== 0) {
-      return observationStations.map(station => (
+      return observationStations.map((station) => (
         <option key={station.station_id} value={station.station_id}>
           {`${station.station_name} (${station.latitude}, ${station.longitude})`}
         </option>
@@ -469,7 +469,7 @@ export default function SingleObservationForm() {
       return `${formattedNorad} ${formattedInternationalDesignator}`;
     };
 
-    return objectSearchResults.map(obj => {
+    return objectSearchResults.map((obj) => {
       return (
         <span
           key={obj.norad_number}
@@ -478,7 +478,7 @@ export default function SingleObservationForm() {
             setObject(
               formatObject({
                 norad_number: obj.norad_number,
-                international_designator: obj.international_designator
+                international_designator: obj.international_designator,
               })
             );
             setObjectSearchTerm(``);
@@ -486,7 +486,7 @@ export default function SingleObservationForm() {
           }}
         >{`${obj.name} = ${formatObject({
           norad_number: obj.norad_number,
-          international_designator: obj.international_designator
+          international_designator: obj.international_designator,
         })}`}</span>
       );
     });
@@ -501,7 +501,7 @@ export default function SingleObservationForm() {
       ) : null}
       <form
         className="single-observation-form"
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           handleSubmit();
         }}
@@ -521,7 +521,7 @@ export default function SingleObservationForm() {
               </label>
               <select
                 className="app__form__input"
-                onChange={event => setStation(event.target.value)}
+                onChange={(event) => setStation(event.target.value)}
                 value={station}
                 style={isStationError ? { border: "2px solid #FC7756" } : null}
               >
@@ -608,7 +608,7 @@ export default function SingleObservationForm() {
                     type="number"
                     placeholder="YYYYMMDD"
                     value={date}
-                    onChange={event => {
+                    onChange={(event) => {
                       // limit input to 8 chars
                       if (event.target.value.length < 9) {
                         setDate(event.target.value);
@@ -623,7 +623,7 @@ export default function SingleObservationForm() {
                   <input
                     type="number"
                     className="app__form__input"
-                    onChange={event => {
+                    onChange={(event) => {
                       // limit input to 9 chars
                       if (event.target.value.length < 10) {
                         setTime(event.target.value);
@@ -666,7 +666,7 @@ export default function SingleObservationForm() {
                 </label>
                 <select
                   className="app__form__input"
-                  onChange={event => setTimeUncertainty(event.target.value)}
+                  onChange={(event) => setTimeUncertainty(event.target.value)}
                   value={timeUncertainty}
                 >
                   <option value="15">0.001 seconds</option>
@@ -818,7 +818,7 @@ export default function SingleObservationForm() {
                   type="text"
                   required
                   className="app__form__input object-position__object-input"
-                  onChange={event => {
+                  onChange={(event) => {
                     // limit input to 15 chars
                     if (event.target.value.length < 16) {
                       setObjectSearchTerm(event.target.value);
@@ -858,7 +858,7 @@ export default function SingleObservationForm() {
                 <select
                   className="app__form__input"
                   selected={angleFormatCode}
-                  onChange={event => setAngleFormatCode(event.target.value)}
+                  onChange={(event) => setAngleFormatCode(event.target.value)}
                   // default is 2
                   value={angleFormatCode}
                 >
@@ -884,7 +884,7 @@ export default function SingleObservationForm() {
                       ? "0"
                       : epochCode
                   }
-                  onChange={event => setEpochCode(event.target.value)}
+                  onChange={(event) => setEpochCode(event.target.value)}
                 >
                   <option value="0">blank = of date</option>
                   <option
@@ -974,7 +974,7 @@ export default function SingleObservationForm() {
                   <input
                     className="app__form__input"
                     type="number"
-                    onChange={event => {
+                    onChange={(event) => {
                       // limit input to 7 chars
                       if (event.target.value.length < 8) {
                         setRightAscensionOrAzimuth(event.target.value);
@@ -1032,7 +1032,7 @@ export default function SingleObservationForm() {
                   <div className="object-position__declination-elevation-wrapper-inner">
                     <select
                       className="app__form__input app__form__input--sign object-position__declination-elevation-sign"
-                      onChange={event =>
+                      onChange={(event) =>
                         setDeclinationOrElevationSign(event.target.value)
                       }
                       value={declinationOrElevationSign}
@@ -1044,7 +1044,7 @@ export default function SingleObservationForm() {
                     <input
                       className="app__form__input object-position__declination-elevation"
                       type="number"
-                      onChange={event => {
+                      onChange={(event) => {
                         // limit input to 6 chars
                         if (event.target.value.length < 7) {
                           setDeclinationOrElevation(event.target.value);
@@ -1093,7 +1093,7 @@ export default function SingleObservationForm() {
                 </label>
                 <select
                   value={positionalUncertainty}
-                  onChange={event =>
+                  onChange={(event) =>
                     setPositionalUncertainty(event.target.value)
                   }
                   className="app__form__input"
@@ -1123,7 +1123,7 @@ export default function SingleObservationForm() {
               </label>
               <select
                 className="object-behavior__behavior-select app__form__input"
-                onChange={event => setBehavior(event.target.value)}
+                onChange={(event) => setBehavior(event.target.value)}
                 value={behavior}
               >
                 <option value={` `}>Not specified</option>
@@ -1165,7 +1165,7 @@ export default function SingleObservationForm() {
                   <div className="object-behavior__brightness">
                     <select
                       className="app__form__input app__form__input--sign"
-                      onChange={event =>
+                      onChange={(event) =>
                         setVisualMagnitudeSign(event.target.value)
                       }
                       value={visualMagnitudeSign}
@@ -1176,7 +1176,9 @@ export default function SingleObservationForm() {
                     <select
                       className="object-behavior__brightness-select app__form__input"
                       type="number"
-                      onChange={event => setVisualMagnitude(event.target.value)}
+                      onChange={(event) =>
+                        setVisualMagnitude(event.target.value)
+                      }
                       value={visualMagnitude}
                     >
                       <option value={`   `} disabled hidden>
@@ -1203,7 +1205,7 @@ export default function SingleObservationForm() {
                   </label>
                   <select
                     className="object-behavior__brightness-uncertainty-select app__form__input"
-                    onChange={event =>
+                    onChange={(event) =>
                       setVisualMagnitudeUncertainty(event.target.value)
                     }
                     value={visualMagnitudeUncertainty}
@@ -1234,7 +1236,7 @@ export default function SingleObservationForm() {
                   </label>
                   <select
                     className="object-behavior__flash-period-select app__form__input"
-                    onChange={event => setFlashPeriod(event.target.value)}
+                    onChange={(event) => setFlashPeriod(event.target.value)}
                     value={flashPeriod}
                   >
                     <option value={`      `}>Not specified</option>
@@ -1264,7 +1266,7 @@ export default function SingleObservationForm() {
               <textarea
                 placeholder="Brief comments placed here will be recorded with the observation record."
                 value={remarks}
-                onChange={event => setRemarks(event.target.value)}
+                onChange={(event) => setRemarks(event.target.value)}
                 className="app__form__input"
                 maxLength={140}
               ></textarea>
@@ -1318,7 +1320,7 @@ export default function SingleObservationForm() {
         {errorMessages.length > 0 ? (
           <Fragment>
             <p className="app__error-message">Something went wrong!</p>
-            {errorMessages.map(message => {
+            {errorMessages.map((message) => {
               return (
                 <p
                   key={errorMessages.indexOf(message)}
@@ -1339,7 +1341,7 @@ export default function SingleObservationForm() {
           <Spinner />
         ) : (
           <Fragment>
-            <div className="single-observation-form__button-wrapper">
+            <div className="single-observation-form-button-wrapper">
               <NavLink className="app__nav-link" to="/submit">
                 <span className="submit__single-observation-nav-button">
                   Or enter pre-formatted data
