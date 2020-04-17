@@ -495,7 +495,7 @@ textarea.app__form__input {
   transform: scale(2);
 }
 
-.app__form__button-wrapper {
+.app__form-button-wrapper {
   align-items: center;
   display: flex;
   justify-content: space-between;
@@ -503,7 +503,7 @@ textarea.app__form__input {
   text-align: center;
 }
 
-.app__form__button--cancel {
+.app__form-button--cancel {
   border: 1px solid #c4c4c4;
   border-radius: 4px;
   display: inline-block;
@@ -513,11 +513,11 @@ textarea.app__form__input {
   padding: 1em 2em;
 }
 
-.app__form__button--cancel:hover {
+.app__form-button--cancel:hover {
   cursor: pointer;
 }
 
-.app__form__button--white {
+.app__form-button--white {
   background: $primary-text-color;
   border-radius: 4px;
   color: $primary-theme-color;
@@ -528,7 +528,7 @@ textarea.app__form__input {
   padding: 1em 2em;
 }
 
-.app__form__button--white:hover {
+.app__form-button--white:hover {
   cursor: pointer;
 }
 
