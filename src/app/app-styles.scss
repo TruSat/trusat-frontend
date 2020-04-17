@@ -170,28 +170,6 @@ TOOLTIP
 }
 
 /* ----------
-ROUNDED BUTTON
----------- */
-.app__rounded-button--orange {
-  align-self: flex-start;
-  background: $primary-highlight-color;
-  border-radius: 8px;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  color: $primary-theme-color;
-  font-weight: bold;
-  line-height: 20px;
-  padding: 0.75em 2em;
-}
-
-.app__rounded-button--orange:hover {
-  background: $primary-text-color;
-}
-
-.app__rounded-button--orange:hover {
-  cursor: pointer;
-}
-
-/* ----------
 MOBILE HEADER 
 ---------- */
 .mobile-header {
@@ -275,18 +253,10 @@ NAV BAR
   }
 
   .nav-bar__join-button {
-    background: $primary-highlight-color;
-    border-radius: 4px;
-    color: $primary-theme-color;
     font-size: $small-font-size;
     font-weight: bold;
     margin-right: 1em;
     padding: 0.5em 2em;
-  }
-
-  .nav-bar__join-button:hover {
-    background-color: $primary-text-color;
-    cursor: pointer;
   }
 
   .nav-bar__button--lowlight {
@@ -348,29 +318,13 @@ NAV BAR
     color: $primary-text-color;
   }
 
-  .nav-bar__join-button--welcome {
-    background: $primary-highlight-color;
-    border-radius: 4px;
-    color: $primary-theme-color;
-    font-size: $small-font-size;
-    font-weight: 700;
-    margin-right: 1em;
-    padding: 0.5em 2em;
-  }
-
-  .nav-bar__join-button--welcome:hover {
-    background-color: $primary-text-color;
-    color: $primary-theme-color;
-    cursor: pointer;
-  }
-
   .nav-bar__link--highlight--welcome:hover {
     cursor: default;
   }
 
-  .nav-bar__join-button:hover {
-    cursor: pointer;
-  }
+  // .nav-bar__join-button:hover {
+  //   cursor: pointer;
+  // }
 }
 
 @media (min-width: 1000px) {
@@ -728,14 +682,6 @@ PARTNERS
   width: 100%;
 }
 
-.welcome__mailing-list-wrapper {
-  padding: 0 1.5em 0 0;
-}
-
-.welcome__partners-wrapper {
-  margin: 1em 0em 1em 0em;
-}
-
 /* ----------
 ADVISORS
 ---------- */
@@ -743,90 +689,6 @@ ADVISORS
   height: 160px;
   border-radius: 50%;
   width: 160px;
-}
-
-/* ----------
-MAILING LIST FORM
----------- */
-.mailing-list__input-button-wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  height: 40px;
-  margin: 1em 0;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input-button-wrapper {
-    margin-bottom: 0;
-  }
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input-button-wrapper {
-    flex-wrap: nowrap;
-    max-width: 600px;
-  }
-}
-
-.mailing-list__input {
-  background: transparent;
-  border: 1px solid $primary-text-color;
-  color: $primary-text-color;
-  font-family: roboto;
-  font-size: 20px;
-  height: 41px;
-  max-width: 400px;
-  padding-left: 0.5em;
-  width: 100%;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__input {
-    border-right: none;
-  }
-}
-
-.mailing-list__input::placeholder {
-  color: $primary-text-color;
-}
-
-.mailing-list__input--test-pilots {
-  border: 1px solid $tertiary-color--light;
-}
-
-.mailing-list__button {
-  background: $primary-highlight-color;
-  border: 1px solid $primary-highlight-color;
-  border-radius: 8px;
-  color: $primary-theme-color;
-  font-weight: bold;
-  height: 41px;
-  line-height: 1.25%;
-  margin: 0.5em 0;
-  min-width: 170px; // stops button text squeezing on re-size
-  padding: 0.5em 2em;
-}
-
-.mailing-list__button:hover {
-  background: $primary-text-color;
-  border: 1px solid $primary-text-color;
-}
-
-@media (min-width: 400px) {
-  .mailing-list__button {
-    margin: 0em;
-    margin-left: -8px;
-  }
-}
-
-.mailing-list__button:hover {
-  cursor: pointer;
-}
-
-.mailing-list__button--test-pilots {
-  background-color: $secondary-theme-color;
-  border: 1px solid $secondary-theme-color;
-  color: $primary-theme-color;
 }
 
 /* ----------

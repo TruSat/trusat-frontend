@@ -255,7 +255,7 @@ export default function Home() {
       </section>
 
       {/* Section FOUR - DESKTOP */}
-      <div class="welcome__blue-background welcome__hide-on-mobile">
+      <div className="welcome__blue-background welcome__hide-on-mobile">
         <section className="welcome__section welcome__desktop-section-four ">
           <div className="welcome__desktop-section-four-top">
             <h2>Join the mission</h2>
@@ -377,7 +377,7 @@ export default function Home() {
       </div>
 
       {/* Section FOUR - MOBILE */}
-      <div class="welcome__blue-background welcome__hide-on-desktop">
+      <div className="welcome__blue-background welcome__hide-on-desktop">
         <section className="welcome__section welcome__mobile-section-four">
           <div className="welcome__mobile-section-four-top">
             <h2>Join the mission</h2>
