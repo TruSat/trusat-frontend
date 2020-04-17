@@ -49,7 +49,7 @@ WELCOME VIEW
 
 // Welcome Section One
 .welcome__section-one {
-  border: 1px solid white;
+  // border: 1px solid white;
   display: grid;
   grid-template-columns: 2fr 22fr;
   position: relative;
@@ -115,7 +115,7 @@ WELCOME VIEW
 
 // Welcome Secton Two
 .welcome__section-two {
-  border: 1px solid white;
+  // border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr 13fr;
   position: relative;
@@ -250,8 +250,8 @@ WELCOME VIEW
 
 // Welcome Section three DESKTOP
 .welcome__desktop-section-three {
-  border: 1px solid white;
-  margin-bottom: 3em; // over-rides welcome__section class
+  // border: 1px solid white;
+  margin-bottom: 6em; // over-rides welcome__section class
 }
 
 .welcome__desktop-section-three h2 {
@@ -354,7 +354,7 @@ WELCOME VIEW
 
 // Welcome Section Three MOBILE
 .welcome__mobile-section-three {
-  border: 1px solid white;
+  // border: 1px solid white;
   margin-bottom: 2em; // over-rides welcome__section class
 }
 
@@ -458,8 +458,8 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four {
-  border: 1px solid white;
-  margin-bottom: 0em;
+  // border: 1px solid white;
+  margin-bottom: 4em;
 }
 
 .welcome__desktop-section-four-top {
@@ -675,7 +675,7 @@ WELCOME VIEW
 
 // Welcome Section 5
 .welcome__section-five {
-  border: 1px solid white;
+  // border: 1px solid white;
   margin-top: 3em;
 }
 
