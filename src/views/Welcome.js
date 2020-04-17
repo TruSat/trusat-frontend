@@ -125,7 +125,7 @@ export default function Home() {
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
-            <span class="border-left"></span>
+            <span class="welcome__hide-on-mobile border-left"></span>
             <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}

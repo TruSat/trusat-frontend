@@ -529,9 +529,16 @@ WELCOME VIEW
 }
 
 .welcome__desktop-button-tile-container {
-  //border: 1px solid white;
+  border: 1px solid $secondary-theme-color;
   display: grid;
   grid-template-columns: 1fr 7fr 2fr;
+}
+
+.welcome__desktop-button-tile-container:nth-child(1) {
+  border-radius: 8px 0 0 8px;
+}
+.welcome__desktop-button-tile-container:nth-child(3) {
+  border-radius: 0 8px 8px 0;
 }
 
 .welcome__desktop-button-tile-container span {
