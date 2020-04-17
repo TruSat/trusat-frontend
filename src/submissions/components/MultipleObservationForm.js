@@ -34,8 +34,8 @@ export default function MultipleObservationForm() {
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       setPastedIODs("");
@@ -45,14 +45,14 @@ export default function MultipleObservationForm() {
         ReactGA.event({
           category: "Submissions",
           action: "User clicked submit on MultipleObservationForm",
-          label: "Submission Success"
+          label: "Submission Success",
         });
       } else if (result.data.error_messages.length !== 0) {
         setErrorMessages(result.data.error_messages);
         ReactGA.event({
           category: "Submissions",
           action: "User clicked submit on MultipleObservationForm",
-          label: "Submission Failure"
+          label: "Submission Failure",
         });
       }
     } catch (error) {
@@ -70,7 +70,7 @@ export default function MultipleObservationForm() {
       ) : null}
       <form
         className="multiple-observation-form"
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           handleSubmit();
         }}
@@ -91,7 +91,7 @@ export default function MultipleObservationForm() {
                 2007 O 20081122
                 2007 C 200811231130`}
             value={pastedIODs}
-            onChange={event => setPastedIODs(event.target.value)}
+            onChange={(event) => setPastedIODs(event.target.value)}
             rows="10"
             cols="80"
           />
@@ -113,7 +113,7 @@ export default function MultipleObservationForm() {
           {errorMessages.length > 0 ? (
             <Fragment>
               <p className="app__error-message">Something went wrong!</p>
-              {errorMessages.map(message => {
+              {errorMessages.map((message) => {
                 return <p className="app__error-message">{message}</p>;
               })}
             </Fragment>
@@ -128,7 +128,7 @@ export default function MultipleObservationForm() {
           <Spinner />
         ) : (
           <Fragment>
-            <div className="multiple-observation-form__button-wrapper">
+            <div className="multiple-observation-form-button-wrapper">
               <NavLink className="app__nav-link" to="/submit/single">
                 <span className="submit__single-observation-nav-button app__hide-on-mobile app__hide-on-tablet">
                   Or enter individual observation

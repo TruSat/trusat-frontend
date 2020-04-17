@@ -43,7 +43,6 @@ trusat-frontend
             ├── NavBar.js
             ├── ObjectBadge.js
             ├── Partners.js
-            ├── RoundedButton.js
             ├── ScrollToTop.js
             ├── SocialIcons.js
             ├── Spinner.js

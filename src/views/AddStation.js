@@ -49,13 +49,13 @@ export default function AddStation() {
           latitude: latitude,
           longitude: longitude,
           elevation: elevation,
-          notes: notes
+          notes: notes,
         }),
         {
           withCredentials: true,
           headers: {
-            "Content-Type": "application/json"
-          }
+            "Content-Type": "application/json",
+          },
         }
       );
       setSuccessfullyAddedStation(result.data.station_id);
@@ -81,7 +81,7 @@ export default function AddStation() {
       )}
       <form
         className="app__form"
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           submitLocation();
         }}
@@ -96,7 +96,7 @@ export default function AddStation() {
             type="text"
             className="app__form__input"
             value={stationName}
-            onChange={event => setStationName(event.target.value)}
+            onChange={(event) => setStationName(event.target.value)}
             maxLength={30}
             placeholder="e.g. Crater Lake Campground"
           ></input>
@@ -112,7 +112,7 @@ export default function AddStation() {
               type="number"
               className="app__form__input"
               value={latitude}
-              onChange={event => {
+              onChange={(event) => {
                 // limit to 15 chars
                 if (event.target.value.length < 16) {
                   setLatitude(event.target.value);
@@ -133,7 +133,7 @@ export default function AddStation() {
               type="number"
               className="app__form__input"
               value={longitude}
-              onChange={event => {
+              onChange={(event) => {
                 if (event.target.value.length < 16) {
                   setlongitude(event.target.value);
                 }
@@ -153,7 +153,7 @@ export default function AddStation() {
             type="number"
             className="app__form__input"
             value={elevation}
-            onChange={event => {
+            onChange={(event) => {
               // limit to 10 chars
               if (event.target.value.length < 11) {
                 setElevation(event.target.value);
@@ -171,7 +171,7 @@ export default function AddStation() {
             rows={4}
             className="app__form__input station-form__textarea"
             value={notes}
-            onChange={event => setNotes(event.target.value)}
+            onChange={(event) => setNotes(event.target.value)}
             placeholder="e.g. equipment description"
             maxLength={140}
           ></textarea>
@@ -200,7 +200,7 @@ export default function AddStation() {
           <Fragment>
             {/* Only render button to submit form if user is logged in */}
             {userAddress === "none" ? null : (
-              <button type="submit" className="station-form__button">
+              <button type="submit" className="station-form-button">
                 Add station
               </button>
             )}
