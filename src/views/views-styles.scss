@@ -6,6 +6,32 @@ WELCOME VIEW
   padding-top: 6em;
 }
 
+.welcome__hero {
+  position: absolute;
+  height: 544px; // var maxHeight from SketchTrusatGlobe.js - height of nav
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .welcome__hero {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.welcome__header-gradient {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e5e5e5+58,081122+100&0+58,1+100 */
+  background: -moz-linear-gradient(top,  rgba(229,229,229,0) 50%, rgba(8,17,34,1) 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e5e5e5', endColorstr='#081122',GradientType=0 ); /* IE6-9 */
+}
+
 // replaces canvas on mobile render
 .welcome__globe-image {
   margin: 0 auto;
@@ -42,7 +68,7 @@ WELCOME VIEW
 // The globe canvas
 #globe-canvas-container {
   position: absolute;
-  margin-top: -96px;
+  margin-top: -6em;
   z-index: -1;
   width: 100%;
 }
