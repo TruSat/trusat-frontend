@@ -539,7 +539,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="welcome__blue-background">
+      <section className="welcome__blue-background welcome__hide-on-desktop">
         <p
           className="welcome__back-to-top"
           onClick={() => window.scrollTo(0, 0)}

@@ -33,6 +33,7 @@ WELCOME VIEW
 // replaces canvas on mobile render
 .welcome__globe-image {
   margin: 0 auto;
+  width: 100%;
 }
 
 .welcome__section {
@@ -491,7 +492,7 @@ WELCOME VIEW
 .welcome__desktop-section-four {
   // border: 1px solid white;
   margin-top: 3em;
-  margin-bottom: 4em;
+  margin-bottom: 6em;
 }
 
 .welcome__desktop-section-four-top {
@@ -544,6 +545,7 @@ WELCOME VIEW
 
 .welcome__desktop-section-four-bottom {
   //border: 1px solid white;
+  margin-top: 3em;
 }
 
 .welcome__desktop-section-four-bottom h2 {
@@ -704,7 +706,7 @@ WELCOME VIEW
 .welcome__button--mobile {
   font-weight: bold;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   text-align: center;
 }
 
@@ -715,7 +717,7 @@ WELCOME VIEW
 // Welcome Section 5
 .welcome__section-five {
   // border: 1px solid white;
-  margin-top: 3em;
+  margin-top: 6em;
 }
 
 .welcome__section-five-top {
@@ -764,7 +766,7 @@ WELCOME VIEW
   //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
-  margin-top: 5em;
+  margin-top: 9em;
 }
 
 .welcome__section-five-bottom img {
@@ -777,21 +779,26 @@ WELCOME VIEW
 
 .welcome__section-five-bottom h2 {
   font-weight: bold;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 32px;
+  line-height: 39px;
 }
 
 .welcome__section-five-bottom ul {
   font-size: 32px;
-  line-height: 39px;
+  line-height: 48px;
   list-style-type: circle;
   margin-top: 0.25em;
 }
 
 .welcome__section-five-bottom li {
   margin-left: 26px;
-  text-decoration: underline;
 }
+
+.welcome__section-five-bottom li a {
+  text-decoration: none;
+}
+
+
 
 // Welcome Section Five Mobile
 @media (max-width: 800px) {
@@ -843,7 +850,7 @@ WELCOME VIEW
 .welcome__back-to-top {
   font-weight: bold;
   font-size: 16px;
-  line-height: 19px;
+  line-height: 20px;
   text-align: center;
   text-decoration-line: underline;
   text-align: center;
@@ -893,7 +900,7 @@ JOIN VIEW
 .join__trusat-tagline {
   font-size: 16px;
   letter-spacing: 0.08em;
-  line-height: 19px;
+  line-height: 20px;
   margin: 1em 0;
   position: relative;
 }
