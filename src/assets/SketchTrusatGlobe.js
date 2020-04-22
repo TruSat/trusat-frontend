@@ -3,8 +3,9 @@ import Globe from "../assets/earth-shadows-400px.jpg";
 export default (p) => {
   var canvasDiv = document.getElementById("globe-canvas-container");
   var width = canvasDiv.offsetWidth; //Get width of container
-  var height;
+
   var mobileBreakpoint = 600;
+  var maxHeight = 640;
 
   var scrollPos = 0;
 
@@ -26,11 +27,15 @@ export default (p) => {
     if (width < mobileBreakpoint) {
       // if user is on mobile
       height = 450; // set height to 450px
+    } else if (width*height > maxHeight) {
+      height = maxHeight; // otherwise, make height proportional to width
     } else {
       height = width * 0.5625; // otherwise, make height proportional to width
     }
     return height;
   };
+
+  var height = p.getHeight(width);
 
   p.getEarthPosition = (width) => {
     if (width < mobileBreakpoint) {
