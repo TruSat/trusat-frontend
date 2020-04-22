@@ -24,8 +24,6 @@ WELCOME VIEW
   width: 100%;
   position: absolute;
   bottom: 0;
-
-  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#e5e5e5+58,081122+100&0+58,1+100 */
   background: -moz-linear-gradient(top,  rgba(229,229,229,0) 50%, rgba(8,17,34,1) 100%); /* FF3.6-15 */
   background: -webkit-linear-gradient(top,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -79,6 +77,8 @@ WELCOME VIEW
   display: grid;
   grid-template-columns: 2fr 22fr;
   position: relative;
+  margin-top: 3em;
+  margin-bottom: 12em;
 }
 
 .welcome__section-one span {
@@ -88,6 +88,10 @@ WELCOME VIEW
 .welcome__section-one div {
   //border: 1px solid white;
   padding-bottom: 3em;
+}
+
+.welcome__trusat-logo {
+  width: 400px;
 }
 
 .welcome__section-one h2 {
@@ -277,7 +281,7 @@ WELCOME VIEW
 // Welcome Section three DESKTOP
 .welcome__desktop-section-three {
   // border: 1px solid white;
-  margin-bottom: 6em; // over-rides welcome__section class
+  margin-bottom: 9em; // over-rides welcome__section class
 }
 
 .welcome__desktop-section-three h2 {
@@ -318,7 +322,7 @@ WELCOME VIEW
   //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .welcome__button--desktop {
@@ -340,6 +344,7 @@ WELCOME VIEW
   font-weight: bold;
   line-height: 20px;
   list-style-type: circle;
+  margin-right: -400px;
 }
 
 .welcome__desktop-section-three-content-left--bottom li {
@@ -485,6 +490,7 @@ WELCOME VIEW
 
 .welcome__desktop-section-four {
   // border: 1px solid white;
+  margin-top: 3em;
   margin-bottom: 4em;
 }
 
