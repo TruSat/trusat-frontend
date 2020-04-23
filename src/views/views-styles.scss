@@ -56,13 +56,20 @@ $welcome__mobile__line-height-small: 22px;
   display: none;
 }
 
+@media (max-width: 1080px) {
+  .welcome__section {
+    padding: 0 60px;
+  }
+}
+
 @media (max-width: 800px) {
   .welcome__wrapper {
     padding-top: 3em;
   }
 
   .welcome__section {
-    margin: 0em 1em 4em 1em; // the space to left, right and bottom of section
+    margin: 0em 0em 4em 0em; // the space to left, right and bottom of section
+    padding: 0 30px;
   }
 
   .welcome__hide-on-mobile {
@@ -72,6 +79,13 @@ $welcome__mobile__line-height-small: 22px;
   .welcome__hide-on-desktop {
     display: block;
   }
+}
+
+@media (max-width: 600px) {
+  .welcome__section {
+    padding: 0 20px;
+  }
+
 }
 
 // The globe canvas
@@ -597,6 +611,13 @@ $welcome__mobile__line-height-small: 22px;
   //border: 1px solid white;
   margin-top: 3em;
 }
+
+@media (max-width: 960px) {
+  .welcome__desktop-section-four-bottom {
+    padding-top: 10em; //Fixes a tablet-sized layout quirk
+  }
+}
+
 
 .welcome__desktop-section-four-bottom h2 {
   //border: 1px solid white;
