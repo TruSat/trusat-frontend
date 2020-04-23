@@ -243,6 +243,15 @@ export default function Home() {
         </div>
 
         <div className="welcome__mobile-section-three-content--bottom">
+          <div className="welcome__mobile-section-three-content--bottom-list-title">
+          Learn about:
+          </div>
+          <ul>
+            <li>How to track sats</li>
+            <li>Basics or orbital dynamics</li>
+            <li>Tips for reading the stars</li>
+            <li>Instructions for assembling a DIY sat-tracking mount.</li>
+          </ul>
           <a
             href="https://learn.trusat.org/docs/high-level-guide"
             target="_blank"
@@ -254,15 +263,6 @@ export default function Home() {
               addStyles="welcome__button--mobile welcome__button--desktop-wide"
             ></Button>
           </a>
-
-          <span></span>
-          <ul>
-            Learn about:
-            <li>How to track sats</li>
-            <li>Basics or orbital dynamics</li>
-            <li>Tips for reading the stars</li>
-            <li>Instructions for assembling a DIY sat-tracking mount.</li>
-          </ul>
         </div>
       </section>
 
@@ -513,7 +513,7 @@ export default function Home() {
 
         <div className="welcome__section-five-spacer">
           <span></span>
-          <span class="welcome__border-left hide-on-mobile">
+          <span class="welcome__border-left welcome__hide-on-mobile">
           </span>
         </div>
 
@@ -553,7 +553,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="welcome__blue-background welcome__hide-on-desktop">
+      <section className="welcome__blue-background welcome__back-to-top-container welcome__hide-on-desktop">
         <p
           className="welcome__back-to-top"
           onClick={() => window.scrollTo(0, 0)}

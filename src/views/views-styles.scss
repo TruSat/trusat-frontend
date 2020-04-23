@@ -431,7 +431,7 @@ $welcome__mobile__line-height-small: 22px;
 // Welcome Section Three MOBILE
 .welcome__mobile-section-three {
   // border: 1px solid white;
-  margin-bottom: 2em; // over-rides welcome__section class
+  margin-bottom: 6em; // over-rides welcome__section class
 }
 
 .welcome__mobile-section-three-header-wrapper {
@@ -486,6 +486,10 @@ $welcome__mobile__line-height-small: 22px;
   padding-left: 5px;
 }
 
+.welcome__mobile-section-three-content--middle {
+  margin-top: 2em;
+}
+
 .welcome__mobile-section-three-content--middle p {
   //border: 1px solid white;
   font-family: Montserrat;
@@ -495,10 +499,16 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__mobile-section-three-content--bottom {
   //border: 1px solid white;
-  display: grid;
-  grid-template-columns: 12fr 1fr 11fr;
-  margin-top: 1em;
+  // display: grid;
+  // grid-template-columns: 12fr 1fr 11fr;
+  margin-top: 2em;
 }
+
+.welcome__mobile-section-three-content--bottom-list-title {
+  font-weight: bold;
+  margin-bottom: $welcome__mobile__line-height-small*0.33;
+}
+
 
 .welcome__mobile-section-three-content--bottom span {
   //border: 2px dotted red;
@@ -508,11 +518,15 @@ $welcome__mobile__line-height-small: 22px;
   //border: 1px solid white;
   font-weight: bold;
   font-size: $welcome__mobile__font-size-small;
-  line-height: $welcome__mobile__line-height-medium;
+  line-height: $welcome__mobile__line-height-small;
+  list-style-type: circle;
+  margin-bottom: 2em;
 }
 
 .welcome__mobile-section-three-content--bottom li {
   font-weight: normal;
+  margin-bottom: $welcome__mobile__line-height-small*0.33;
+  margin-left: 1em;
 }
 
 // Welcome Section Four - DESKTOP
@@ -658,21 +672,21 @@ $welcome__mobile__line-height-small: 22px;
 // Welcome Section Four - MOBILE
 @media (max-width: 800px) {
   .welcome__blue-background {
-    //border: 2px dotted yellow;
-    padding-bottom: 2em;
-    padding-top: 2em;
+    margin-bottom: 5em;
+    padding-bottom: 6em;
+    padding-top: 1.5em;
   }
 }
 
 .welcome__mobile-section-four {
-  border: 1px solid white;
   position: relative;
   margin-bottom: 0;
+  margin-top: 3em;
 }
 
 .welcome__mobile-section-four-top {
   //border: 1px solid white;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   position: relative;
 }
 
@@ -881,14 +895,26 @@ $welcome__mobile__line-height-small: 22px;
   }
 
   .welcome__section-five-bottom ul {
-    font-size: $welcome__mobile__font-size-medium;
-    line-height: $welcome__mobile__font-size-medium*1.3333;
+    font-size: $welcome__mobile__font-size-small;
+    line-height: $welcome__mobile__font-size-small*1.3333;
     list-style-type: circle;
   }
 
   .welcome__section-five-bottom li {
     margin-left: 20px;
   }
+
+  .welcome__section-five-spacer {
+    height: 6em;
+  }
+}
+
+.welcome__blue-background.welcome__back-to-top-container {
+  margin-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 160px;
+  margin-bottom: -100px;
+  z-index: 0
 }
 
 .welcome__back-to-top {
