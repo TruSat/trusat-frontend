@@ -612,9 +612,16 @@ $welcome__mobile__line-height-small: 22px;
   margin-top: 3em;
 }
 
-@media (max-width: 960px) {
+
+//These fix a tablet-sized layout quirk
+@media (max-width: 1080px) {
   .welcome__desktop-section-four-bottom {
-    padding-top: 10em; //Fixes a tablet-sized layout quirk
+    padding-top: 6em; 
+  }
+}
+@media (max-width: 900px) {
+  .welcome__desktop-section-four-bottom {
+    padding-top: 15em;
   }
 }
 
