@@ -489,8 +489,8 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__mobile-section-three-content--middle p {
   //border: 1px solid white;
   font-family: Montserrat;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: $welcome__mobile__font-size-medium;
+  line-height: $welcome__mobile__line-height-medium;
 }
 
 .welcome__mobile-section-three-content--bottom {
@@ -500,13 +500,6 @@ $welcome__mobile__line-height-small: 22px;
   margin-top: 1em;
 }
 
-.welcome__buttom--mobile {
-  font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
-}
-
 .welcome__mobile-section-three-content--bottom span {
   //border: 2px dotted red;
 }
@@ -514,8 +507,8 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__mobile-section-three-content--bottom ul {
   //border: 1px solid white;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: $welcome__mobile__font-size-small;
+  line-height: $welcome__mobile__line-height-medium;
 }
 
 .welcome__mobile-section-three-content--bottom li {
@@ -703,16 +696,16 @@ $welcome__mobile__line-height-small: 22px;
 }
 
 .welcome__mobile-section-four-top p {
-  font-size: 18px;
-  line-height: 22px;
+  font-size: $welcome__mobile__font-size-medium;;
+  line-height: $welcome__mobile__line-height-medium;;
   margin-top: 1em;
 }
 
 .welcome__mobile-section-four-bottom h2 {
   //border: 1px solid white;
-  font-size: 24px;
+  font-size: $welcome__mobile__font-size-big;;
   font-weight: bold;
-  line-height: 29px;
+  line-height: $welcome__mobile__line-height-big;;
 }
 
 .welcome__mobile-section-four-button-til-wrapper {
@@ -731,13 +724,13 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__mobile-button-tile h3 {
   font-weight: bold;
-  font-size: 32px;
-  line-height: 39px;
+  font-size: $welcome__mobile__font-size-big;
+  line-height: $welcome__mobile__line-height-big;
 }
 
 .welcome__mobile-button-tile ul {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $welcome__mobile__font-size-small;
+  line-height: $welcome__mobile__line-height-small;
   list-style-type: circle;
   margin: 1em 0 2em 0;
 }
@@ -748,8 +741,8 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__button--mobile {
   font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $welcome__mobile__font-size-small;
+  line-height: $welcome__mobile__line-height-small;
   text-align: center;
 }
 
@@ -859,8 +852,8 @@ $welcome__mobile__line-height-small: 22px;
 
   .welcome__section-five-top h2 {
     font-weight: 200;
-    font-size: 48px;
-    line-height: 59px;
+    font-size: 60px;
+    line-height: 72px;
   }
 
   .welcome__section-five-top-image-button-wrapper {
