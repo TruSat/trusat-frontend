@@ -79,7 +79,11 @@ WELCOME VIEW
   grid-template-columns: 2fr 22fr;
   position: relative;
   margin-top: 3em;
-  margin-bottom: 12em;
+  margin-bottom: 2em;
+}
+
+.welcome__section-one-spacer {
+  height: 10em;
 }
 
 .welcome__section-one span {
@@ -146,10 +150,28 @@ WELCOME VIEW
 
 // Welcome Secton Two
 .welcome__section-two {
-  // border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr 13fr;
+  margin-bottom: 0;
+}
+
+.welcome-section-two__video-container {
   position: relative;
+}
+
+.welcome-section-two__video-container--bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.welcome-section-two__video-container--bottom {
+  display: absolute ;
+  border-right: 1px solid $tertiary-color;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .welcome__iframe-wrapper {
@@ -232,6 +254,11 @@ WELCOME VIEW
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
   margin-top: 1em;
+}
+
+.welcome-section-two__copy-container--bottom__spacer {
+  height: 6em;
+  display: block;
 }
 
 // Welcome Section Two MOBILE
@@ -762,12 +789,20 @@ WELCOME VIEW
   width: 250px;
 }
 
+.welcome__section-five-spacer {
+  display: grid;
+  grid-template-columns: 5fr 19fr;
+  padding-top: 2em;
+  height: 12em;
+}
+
+
 .welcome__section-five-bottom {
   //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
-  margin-top: 9em;
 }
+
 
 .welcome__section-five-bottom img {
   width: 100%;
@@ -1274,6 +1309,6 @@ FAQ view
   margin-bottom: 2em;
 }
 
-.border-left {
+.welcome__border-left {
   border-left: 1px solid $tertiary-color;
 }

@@ -76,25 +76,31 @@ export default function Home() {
             ></Button>
           </a>
         </div>
+        <div class="welcome__section-one-spacer welcome__hide-on-mobile">
+        </div>
       </section>
 
       {/* Section TWO */}
       <section className="welcome__section welcome__section-two">
-        <div>
-          <div className="welcome__iframe-wrapper">
-            <iframe
-              className="welcome__iframe"
-              title="TruSat explainer video"
-              src="https://www.youtube.com/embed/H-J7zngl6xE"
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen="allowfullscreen"
-              mozallowullscreen="mozallowfullscreen"
-              msallowfullscreen="msallowfullscreen"
-              oallowfullscreen="oallowfullscreen"
-              webkitallowfullscreen="webkitallowfullscreen"
-              modestbranding="1"
-            ></iframe>
+        <div className="welcome-section-two__video-container">
+          <div className="welcome-section-two__video-container--bottom welcome__hide-on-mobile">
+          </div>
+          <div className="welcome-section-two__video-container--top">
+            <div className="welcome__iframe-wrapper">
+              <iframe
+                className="welcome__iframe"
+                title="TruSat explainer video"
+                src="https://www.youtube.com/embed/H-J7zngl6xE"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen="allowfullscreen"
+                mozallowullscreen="mozallowfullscreen"
+                msallowfullscreen="msallowfullscreen"
+                oallowfullscreen="oallowfullscreen"
+                webkitallowfullscreen="webkitallowfullscreen"
+                modestbranding="1"
+              ></iframe>
+            </div>
           </div>
         </div>
         <span className="welcome__hide-on-mobile"></span>
@@ -105,7 +111,7 @@ export default function Home() {
               In the next decade, the number of satellites in orbit will
               multiply by <strong>2500%.</strong>
             </p>
-            <span className="welcome__hide-on-mobile border-left"></span>
+            <span className="welcome__hide-on-mobile welcome__border-left"></span>
             <div>
               <span className="welcome__hide-on-desktop" />
               <p className="welcome-section-two__copy--small">
@@ -128,10 +134,11 @@ export default function Home() {
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
-            <span class="welcome__hide-on-mobile border-left"></span>
+            <span class="welcome__hide-on-mobile welcome__border-left"></span>
             <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}
+              <span className="welcome-section-two__copy-container--bottom__spacer welcome__hide-on-mobile"></span>
             </p>
           </div>
         </div>
@@ -501,6 +508,12 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="welcome__section-five-spacer">
+          <span></span>
+          <span class="welcome__border-left hide-on-mobile">
+          </span>
         </div>
 
         <div className="welcome__section-five-bottom">
