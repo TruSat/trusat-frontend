@@ -66,8 +66,7 @@ export default function Home() {
             alt="Trusat logo"
           ></img>
 
-          <h2>Open source</h2>
-          <h2>space sustainability</h2>
+          <h2>Open source<br/>space sustainability</h2>
           <a href="/join">
             <Button
               text="JOIN"
@@ -105,6 +104,7 @@ export default function Home() {
         </div>
         <span className="welcome__hide-on-mobile"></span>
         <div>
+          <span className="welcome-setion-two__top-spacer welcome__hide-on-desktop"></span>
           <h2>Space debris is a problem</h2>
           <div className="welcome-section-two__copy-container--top">
             <p className="welcome-section-two__copy--medium">
@@ -215,6 +215,7 @@ export default function Home() {
             src="https://trusat-assets.s3.amazonaws.com/hand-phone.jpg"
             alt="mobile tracking"
           ></img>
+
           <div className="welcome__mobile-section-three-top-content-div">
             <span></span>
             <div className="welcome__mobile-badge-image-copy-wrapper">
@@ -226,11 +227,11 @@ export default function Home() {
                 ></img>
               </div>
               <div className="welcome__mobile-badge-copy-wrapper">
-                <span></span>
                 <p>Track a sat to add it to your collection</p>
               </div>
             </div>
           </div>
+
         </div>
 
         <div className="welcome__mobile-section-three-content--middle">

@@ -1,6 +1,16 @@
 /* ----------
 WELCOME VIEW
 ----------- */
+
+$welcome__mobile__font-size-big: 32px;
+$welcome__mobile__font-size-medium: 24px;
+$welcome__mobile__font-size-small: 16px;
+
+$welcome__mobile__line-height-big: 40px;
+$welcome__mobile__line-height-medium: 32px;
+$welcome__mobile__line-height-small: 22px;
+
+
 .welcome__wrapper {
   font-family: $display-font;
   padding-top: 6em;
@@ -102,6 +112,7 @@ WELCOME VIEW
 .welcome__section-one h2 {
   font-size: 36px;
   line-height: 44px;
+  margin-bottom: 2em;
 }
 
 .welcome__section-one h2:nth-of-type(1) {
@@ -135,14 +146,15 @@ WELCOME VIEW
   }
 
   .welcome__section-one h2 {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: $welcome__mobile__font-size-medium;
+    line-height: $welcome__mobile__line-height-medium;
+    margin-bottom: 1em;
   }
 
   .welcome__section-one-button {
     font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: $welcome__mobile__font-size-small;
+    line-height: $welcome__mobile__font-size-small;
     width: 120px;
     text-align: center;
   }
@@ -212,6 +224,10 @@ WELCOME VIEW
   //border: 2px dotted red;
 }
 
+.welcome-setion-two__top-spacer  {
+  height: 2em;
+}
+
 .welcome-section-two__copy-container--top {
   //border: 1px solid white;
   display: grid;
@@ -263,6 +279,7 @@ WELCOME VIEW
 
 // Welcome Section Two MOBILE
 @media (max-width: 800px) {
+
   .welcome__section-two {
     display: inline-block;
   }
@@ -272,24 +289,24 @@ WELCOME VIEW
   }
 
   .welcome__section-two h2 {
-    font-size: 27px;
-    line-height: 33px;
+    font-size: $welcome__mobile__font-size-big;
+    line-height: $welcome__mobile__line-height-big;
   }
 
   .welcome__section-two h3 {
-    font-size: 27px;
-    line-height: 33px;
+    font-size: $welcome__mobile__font-size-big;
+    line-height: $welcome__mobile__line-height-big;
   }
 
   .welcome-section-two__copy--medium {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: $welcome__mobile__font-size-medium;
+    line-height: $welcome__mobile__line-height-medium;
     margin-bottom: 0.5em;
   }
 
   .welcome-section-two__copy--small {
-    font-size: 12px;
-    line-height: 15px;
+    font-size: $welcome__mobile__font-size-small;
+    line-height: $welcome__mobile__line-height-small;
   }
 
   .welcome-section-two__copy-container--top div {
@@ -418,16 +435,17 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-header-wrapper {
-  position: absolute;
+  // position: absolute;
   z-index: 1;
+  margin-bottom: -4em;
 }
 
 .welcome__mobile-section-three-header-wrapper h2 {
   //border: 1px solid white;
   font-style: normal;
   font-weight: 200;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 60px;
+  line-height: 70px;
 }
 
 .welcome__mobile-section-three-content--top {
@@ -443,8 +461,8 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-top-content-div {
-  display: grid;
-  grid-template-columns: 12fr 12fr;
+  // display: grid;
+  // grid-template-columns: 12fr 12fr;
   margin-bottom: 1em;
 }
 
@@ -453,21 +471,19 @@ WELCOME VIEW
 }
 
 .welcome__mobile-badge-image-copy-wrapper {
-  //border: 1px solid white;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 22fr;
+  padding-top: 0.5em;
 }
 
 .welcome__mobile-badge-image-copy-wrapper img {
-  margin-left: -20px;
-  margin-top: -20px;
+  margin-left: -12px;
+  margin-top: -28px;
   width: 39px;
 }
 
 .welcome__mobile-badge-copy-wrapper {
-  //border: 1px solid white;
-  display: grid;
-  grid-template-columns: 1fr 11fr;
+  padding-left: 5px;
 }
 
 .welcome__mobile-section-three-content--middle p {
@@ -674,13 +690,13 @@ WELCOME VIEW
 
 .welcome__mobile-section-four-top h2 {
   font-weight: 200;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 60px;
+  line-height: 72px;
+  margin-bottom: -30px;
 }
 
 .welcome__mobile-section-four-top img {
   //height: 162px;
-  margin-top: -25px;
   position: relative;
   width: 100%;
   z-index: -1;
@@ -867,13 +883,13 @@ WELCOME VIEW
 
   .welcome__section-five-bottom h2 {
     font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: $welcome__mobile__font-size-medium;
+    line-height: $welcome__mobile__line-height-medium;
   }
 
   .welcome__section-five-bottom ul {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: $welcome__mobile__font-size-medium;
+    line-height: $welcome__mobile__font-size-medium*1.3333;
     list-style-type: circle;
   }
 
@@ -884,8 +900,8 @@ WELCOME VIEW
 
 .welcome__back-to-top {
   font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $welcome__mobile__font-size-small;
+  line-height: $welcome__mobile__line-height-small;
   text-align: center;
   text-decoration-line: underline;
   text-align: center;
