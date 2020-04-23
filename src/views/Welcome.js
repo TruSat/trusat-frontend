@@ -291,6 +291,7 @@ export default function Home() {
             <h2>Three ways to participate:</h2>
             <div className="welcome__desktop-button-tile-row">
               {/* tile 1 container */}
+              <span></span>
               <div className="welcome__desktop-button-tile-container">
                 <span></span>
                 <div>
@@ -319,6 +320,7 @@ export default function Home() {
                 </div>
                 <span></span>
               </div>
+              <span></span>
               {/* tile 2 container */}
               <div className="welcome__desktop-button-tile-container">
                 <span></span>
@@ -353,6 +355,7 @@ export default function Home() {
                 </div>
                 <span></span>
               </div>
+              <span></span>
               {/* tile 3 container */}
               <div className="welcome__desktop-button-tile-container">
                 <span></span>
