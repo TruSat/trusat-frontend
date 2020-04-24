@@ -78,22 +78,37 @@ export default function About() {
 
         <div className="about__block-wrapper">
           <h2 className="static-page__sub-header static-page__sub-header--margin_fix">
-            LINKS
+            RESOURCES
           </h2>
           <div className="about__block-pair">
             <div className="about__block--left">
               <a
                 className="app__nav-link static-page__link static-page__link--highlight"
                 href="https://learn.trusat.org/docs/FAQ"
-                target="_blank"
                 rel="noopener noreferrer"
               >
-                Frequently asked questions
+                F.A.Q.
               </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                Learn the ins and outs of TruSat.
+                Frequently asked questions about the project
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <a
+                className="app__nav-link static-page__link static-page__link--highlight"
+                href="https://learn.trusat.org/docs/guide"
+                rel="noopener noreferrer"
+              >
+                Satellite tracking guide
+              </a>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                Guides, tutorials, and resources to teach the art and science of satellite tracking
               </p>
             </div>
           </div>
@@ -102,10 +117,9 @@ export default function About() {
               <a
                 className="app__nav-link static-page__link static-page__link--highlight"
                 href="https://learn.trusat.org/docs/overview"
-                target="_blank"
                 rel="noopener noreferrer"
               >
-                The TruSat white paper
+                White paper
               </a>
             </div>
             <div className="about__block--right">
@@ -119,10 +133,9 @@ export default function About() {
               <a
                 className="app__nav-link static-page__link static-page__link--highlight"
                 href="https://learn.trusat.org/docs/trusat-charter"
-                target="_blank"
                 rel="noopener noreferrer"
               >
-                The TruSat Charter
+                Charter
               </a>
             </div>
             <div className="about__block--right">
@@ -134,17 +147,65 @@ export default function About() {
           <div className="about__block-pair">
             <div className="about__block--left">
               <a
-                className="static-page__link static-page__link--highlight"
-                target="_blank"
+                className="app__nav-link static-page__link static-page__link--highlight"
+                href="https://learn.trusat.org/docs/participate"
                 rel="noopener noreferrer"
-                href="https://discuss.trusat.org/"
               >
-                TruSat chat
+                How to participate
               </a>
             </div>
             <div className="about__block--right">
               <p className="static-page__copy">
-                A community forum to discuss the project and get help.
+                A list of ways you can help TruSat fulfill its vision
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <a
+                className="static-page__link static-page__link--highlight"
+                rel="noopener noreferrer"
+                href="https://discuss.trusat.org/"
+              >
+                Forum
+              </a>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                A community forum to discuss the project and get help
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <a
+                className="static-page__link static-page__link--highlight"
+                rel="noopener noreferrer"
+                href="https://discord.gg/HfT62G"
+                target="_blank"
+              >
+                Discord chat
+              </a>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                A chat channel where you can join TruSat contributors to discuss the project's development.
+              </p>
+            </div>
+          </div>
+          <div className="about__block-pair">
+            <div className="about__block--left">
+              <a
+                className="static-page__link static-page__link--highlight"
+                rel="noopener noreferrer"
+                href="https://github.com/orgs/TruSat/projects/1"
+              >
+                Project planning
+              </a>
+            </div>
+            <div className="about__block--right">
+              <p className="static-page__copy">
+                The planning tool TruSat contributors use to manage the project's development.
               </p>
             </div>
           </div>
