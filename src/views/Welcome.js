@@ -291,13 +291,11 @@ export default function Home() {
             <h2>Three ways to participate:</h2>
             <div className="welcome__desktop-button-tile-row">
               {/* tile 1 container */}
-              <span></span>
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(1, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3>Make Observations</h3>
                       <ul>
                         <li>
@@ -318,16 +316,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
-              <span></span>
               {/* tile 2 container */}
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(2, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3> Contribute code</h3>
                       <ul>
                         <li>100% open source</li>
@@ -353,16 +348,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
-              <span></span>
               {/* tile 3 container */}
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(3, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3>Support the mission</h3>
                       <ul>
                         <li>Propose features</li>
@@ -384,7 +376,6 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
             </div>
           </div>
