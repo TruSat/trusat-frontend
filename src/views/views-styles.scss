@@ -42,7 +42,7 @@ $welcome__mobile__line-height-small: 22px;
 
 // replaces canvas on mobile render
 .welcome__globe-image {
-  margin: 0 auto;
+  margin: -30px auto 0;
   width: 100%;
 }
 
@@ -152,7 +152,12 @@ $welcome__mobile__line-height-small: 22px;
 
   .welcome__section-one {
     display: flex;
+    margin: 0 0 4em;
     text-align: center;
+  }
+
+  .welcome__section-one-logo-container {
+    margin: 0 auto;
   }
 
   .welcome__trusat-logo {

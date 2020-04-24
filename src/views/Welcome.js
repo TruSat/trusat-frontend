@@ -52,14 +52,14 @@ export default function Home() {
         <div class="welcome__header-gradient"></div>
         <img
           className="welcome__globe-image welcome__hide-on-desktop"
-          src="https://trusat-assets.s3.amazonaws.com/earth-shadows-400px.jpg"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg"
           alt="globe"
         ></img>
       </div>
       {/* Section ONE */}
       <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
-        <div>
+        <div class="welcome__section-one-logo-container">
           <img
             className="welcome__trusat-logo"
             src={TrusatLogoBig}
