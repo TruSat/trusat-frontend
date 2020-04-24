@@ -46,9 +46,9 @@ export default function Home() {
 
   return (
     <div className="welcome__wrapper">
-      <div class="welcome__hero">
+      <div className="welcome__hero">
         <TrusatGlobeCanvas />
-        <div class="welcome__header-gradient"></div>
+        <div className="welcome__header-gradient"></div>
         <img
           className="welcome__globe-image welcome__hide-on-desktop"
           src="https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg"
@@ -58,7 +58,7 @@ export default function Home() {
       {/* Section ONE */}
       <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
-        <div class="welcome__section-one-logo-container">
+        <div className="welcome__section-one-logo-container">
           <img
             className="welcome__trusat-logo"
             src={TrusatLogoBig}
@@ -78,7 +78,7 @@ export default function Home() {
             ></Button>
           </a>
         </div>
-        <div class="welcome__section-one-spacer welcome__hide-on-mobile"></div>
+        <div className="welcome__section-one-spacer welcome__hide-on-mobile"></div>
       </section>
 
       {/* Section TWO */}
@@ -135,7 +135,7 @@ export default function Home() {
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
-            <span class="welcome__hide-on-mobile welcome__border-left"></span>
+            <span className="welcome__hide-on-mobile welcome__border-left"></span>
             <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}
@@ -507,7 +507,7 @@ export default function Home() {
 
         <div className="welcome__section-five-spacer">
           <span></span>
-          <span class="welcome__border-left welcome__hide-on-mobile"></span>
+          <span className="welcome__border-left welcome__hide-on-mobile"></span>
         </div>
 
         <div className="welcome__section-five-bottom">
