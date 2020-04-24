@@ -513,7 +513,7 @@ $welcome__line-height-small--mobile: 22px;
   padding-bottom: 3em;
   padding-top: 3em;
   position: relative;
-  z-index: 1;
+  z-index: -1;
 }
 
 .welcome__desktop-section-four {
@@ -881,12 +881,12 @@ $welcome__line-height-small--mobile: 22px;
   }
 }
 
-.welcome__blue-background.welcome__back-to-top-container {
+.welcome__blue-background .welcome__back-to-top-container {
   margin-bottom: 0;
   padding-top: 40px;
   padding-bottom: 160px;
   margin-bottom: -100px;
-  z-index: 0;
+  //z-index: -1;
 }
 
 .welcome__back-to-top {
