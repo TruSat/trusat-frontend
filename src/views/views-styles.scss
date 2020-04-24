@@ -365,9 +365,6 @@ $welcome__line-height-small--mobile: 22px;
   line-height: 39px;
 }
 
-.welcome__desktop-section-three-content-left--top span {
-}
-
 .welcome__desktop-section-three-content-left--bottom {
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
@@ -506,6 +503,7 @@ $welcome__line-height-small--mobile: 22px;
 // Welcome Section Four - DESKTOP
 .welcome__blue-background {
   background-color: #17294a;
+  font-family: $display-font;
   padding-bottom: 3em;
   padding-top: 3em;
   position: relative;
