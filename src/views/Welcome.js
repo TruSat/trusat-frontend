@@ -2,6 +2,7 @@ import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
 import Button from "../app/components/Button";
 import TrusatGlobeCanvas from "../app/components/TrusatGlobeCanvas";
+import ReactGA from "react-ga";
 
 export default function Home() {
   const numberCircle = (num, size) => {
@@ -70,7 +71,16 @@ export default function Home() {
             <br />
             space sustainability
           </h2>
-          <a href="/join">
+          <a
+            href="/join"
+            onClick={() => {
+              ReactGA.event({
+                category: "Onboarding",
+                action: "Clicked join button",
+                label: "Top of Welcome page join button",
+              });
+            }}
+          >
             <Button
               text="JOIN"
               color="orange"
@@ -164,6 +174,13 @@ export default function Home() {
                 href="https://learn.trusat.org/docs/guide"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked Try A Tutorial button",
+                    label: "On Welcome page -- Desktop",
+                  });
+                }}
               >
                 <Button
                   text="TRY A TUTORIAL"
@@ -256,6 +273,13 @@ export default function Home() {
             href="https://learn.trusat.org/docs/guide"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              ReactGA.event({
+                category: "Onboarding",
+                action: "Clicked See Tutorials button",
+                label: "On Welcome page -- Mobile",
+              });
+            }}
           >
             <Button
               text="SEE TUTORIALS"
@@ -307,7 +331,16 @@ export default function Home() {
                         </li>
                       </ul>
                     </div>
-                    <a href="/signup">
+                    <a
+                      href="/signup"
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked Sign Up button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
+                    >
                       <Button
                         text="SIGN UP"
                         color="white"
@@ -336,6 +369,13 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ textDecoration: "none" }}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked View on Github button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
                     >
                       <div className="app__button--white welcome__button--desktop welcome__github-button">
                         <img
@@ -367,6 +407,13 @@ export default function Home() {
                       href="https://learn.trusat.org/docs/participate#3-support-the-mission"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked Learn More button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
                     >
                       <Button
                         text="LEARN MORE"
@@ -414,7 +461,18 @@ export default function Home() {
                     Use your naked eye, or connect your camera with software.
                   </li>
                 </ul>
-                <a href="/signup" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Sign Up button",
+                      label: "On Welcome page -- Desktop",
+                    });
+                  }}
+                >
                   <Button
                     text="SIGN UP"
                     color="white"
@@ -437,6 +495,13 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked View on Github button",
+                      label: "On Welcome page -- Mobile",
+                    });
+                  }}
                 >
                   <div className="app__button--white  welcome__button--mobile welcome__button--mobile-wide welcome__github-button">
                     <img
@@ -464,6 +529,13 @@ export default function Home() {
                   href="https://learn.trusat.org/docs/start-here.htmlhttps://learn.trusat.org/docs/participate#3-support-the-mission"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Learn More button",
+                      label: "On Welcome page -- Mobile",
+                    });
+                  }}
                 >
                   {" "}
                   <Button
@@ -494,6 +566,13 @@ export default function Home() {
                 href="https://discuss.trusat.org"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked Join The Forum button",
+                    label: "On Welcome page",
+                  });
+                }}
               >
                 <Button
                   text="JOIN THE FORUM"
@@ -521,7 +600,17 @@ export default function Home() {
             <h2>More about TruSat</h2>
             <ul>
               <li>
-                <a className="app__link" href="/about">
+                <a
+                  className="app__link"
+                  href="/about"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Overview link",
+                      label: "On Welcome page",
+                    });
+                  }}
+                >
                   Overview
                 </a>
               </li>
@@ -529,6 +618,13 @@ export default function Home() {
                 <a
                   className="app__link"
                   href="https://learn.trusat.org/docs/start-here.html"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Deep Dive link",
+                      label: "On Welcome page",
+                    });
+                  }}
                 >
                   Deep dive
                 </a>
@@ -537,6 +633,13 @@ export default function Home() {
                 <a
                   className="app__link"
                   href="https://learn.trusat.org/docs/FAQ"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked FAQ link",
+                      label: "On Welcome page",
+                    });
+                  }}
                 >
                   Frequently asked questions
                 </a>
