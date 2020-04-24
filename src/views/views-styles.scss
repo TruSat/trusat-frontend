@@ -108,7 +108,6 @@ $welcome__line-height-small--mobile: 22px;
 
 // Welcome Section One
 .welcome__section-one {
-  // border: 1px solid white;
   display: grid;
   grid-template-columns: 2fr 22fr;
   position: relative;
@@ -120,12 +119,7 @@ $welcome__line-height-small--mobile: 22px;
   height: 10em;
 }
 
-.welcome__section-one span {
-  //border: 2px dotted red;
-}
-
 .welcome__section-one div {
-  //border: 1px solid white;
   padding-bottom: 3em;
 }
 
@@ -249,16 +243,11 @@ $welcome__line-height-small--mobile: 22px;
   line-height: 59px;
 }
 
-.welcome__section-two span {
-  //border: 2px dotted red;
-}
-
 .welcome-setion-two__top-spacer {
   height: 2em;
 }
 
 .welcome-section-two__copy-container--top {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
   margin-bottom: 3em;
@@ -275,7 +264,7 @@ $welcome__line-height-small--mobile: 22px;
 .welcome-section-two__copy--small {
   font-family: Montserrat;
   line-height: 20px;
-  margin-top: 0.25em; // lines copt up with bigger copy to the left
+  margin-top: 0.25em; // lines copy up with bigger copy to the left
 }
 
 .welcome-section-two__copy--medium strong {
@@ -285,7 +274,6 @@ $welcome__line-height-small--mobile: 22px;
 .welcome-section-two-face-image-header-wrapper {
   display: flex;
   align-items: center;
-  //border: 1px solid white;
   margin-bottom: 1em;
 }
 
@@ -295,7 +283,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome-section-two__copy-container--bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
   margin-top: 1em;
@@ -342,10 +329,6 @@ $welcome__line-height-small--mobile: 22px;
     grid-template-columns: 4fr 9fr;
   }
 
-  .welcome-section-two__copy-container--top span {
-    //border: 2px dotted red;
-  }
-
   .welcome-section-two__copy-container--bottom {
     grid-template-columns: 4fr 9fr;
   }
@@ -353,7 +336,6 @@ $welcome__line-height-small--mobile: 22px;
 
 // Welcome Section three DESKTOP
 .welcome__desktop-section-three {
-  // border: 1px solid white;
   margin-bottom: 9em; // over-rides welcome__section class
 }
 
@@ -366,18 +348,15 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-three-content {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
 }
 
 .welcome__desktop-section-three-content--left {
   margin-top: 1em;
-  //border: 1px solid white;
 }
 
 .welcome__desktop-section-three-content-left--top {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr;
 }
@@ -388,11 +367,9 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-three-content-left--top span {
-  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-left--bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
   margin-top: 2em;
@@ -406,10 +383,6 @@ $welcome__line-height-small--mobile: 22px;
 
 .welcome__desktop-section-three-button {
   width: 100%;
-}
-
-.welcome__desktop-section-three-content-left--bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-left--bottom ul {
@@ -426,7 +399,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-three-content--right {
-  //border: 1px solid white;
   margin-top: -30%;
   z-index: -1;
 }
@@ -437,13 +409,8 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-three-content-right--bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 9fr 4fr;
-}
-
-.welcome__desktop-section-three-content-right--bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-right--bottom img {
@@ -458,18 +425,15 @@ $welcome__line-height-small--mobile: 22px;
 
 // Welcome Section Three MOBILE
 .welcome__mobile-section-three {
-  // border: 1px solid white;
   margin-bottom: 6em; // over-rides welcome__section class
 }
 
 .welcome__mobile-section-three-header-wrapper {
-  // position: absolute;
   z-index: 1;
   margin-bottom: -4em;
 }
 
 .welcome__mobile-section-three-header-wrapper h2 {
-  //border: 1px solid white;
   font-style: normal;
   font-weight: 200;
   font-size: 60px;
@@ -477,7 +441,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-three-content--top {
-  //border: 1px solid white;
   margin-top: 35px;
   position: relative;
   z-index: -1;
@@ -489,13 +452,7 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-three-top-content-div {
-  // display: grid;
-  // grid-template-columns: 12fr 12fr;
   margin-bottom: 1em;
-}
-
-.welcome__mobile-section-three-top-content-div span {
-  //border: 2px dotted red;
 }
 
 .welcome__mobile-badge-image-copy-wrapper {
@@ -519,16 +476,12 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-three-content--middle p {
-  //border: 1px solid white;
   font-family: Montserrat;
   font-size: $welcome__font-size-medium--mobile;
   line-height: $welcome__line-height-medium--mobile;
 }
 
 .welcome__mobile-section-three-content--bottom {
-  //border: 1px solid white;
-  // display: grid;
-  // grid-template-columns: 12fr 1fr 11fr;
   margin-top: 2em;
 }
 
@@ -538,11 +491,9 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-three-content--bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__mobile-section-three-content--bottom ul {
-  //border: 1px solid white;
   font-weight: bold;
   font-size: $welcome__font-size-small--mobile;
   line-height: $welcome__line-height-small--mobile;
@@ -559,7 +510,6 @@ $welcome__line-height-small--mobile: 22px;
 // Welcome Section Four - DESKTOP
 .welcome__blue-background {
   background-color: #17294a;
-  //border: 1px solid yellow;
   padding-bottom: 3em;
   padding-top: 3em;
   position: relative;
@@ -567,7 +517,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-four {
-  // border: 1px solid white;
   margin-top: 3em;
   margin-bottom: 6em;
 }
@@ -583,7 +532,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-four-top--left {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
   margin-top: 1em;
@@ -592,17 +540,11 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-four-top--left p {
-  //border: 1px solid white;
   font-size: 32px;
   line-height: 39px;
 }
 
-.welcome__desktop-section-four-top--left span {
-  //border: 2px dotted red;
-}
-
 .welcome__desktop-section-four-top--right {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 14fr;
   width: 100%;
@@ -610,18 +552,12 @@ $welcome__line-height-small--mobile: 22px;
   z-index: -1;
 }
 
-.welcome__desktop-section-four-top--right span {
-  //border: 2px dotted red;
-}
-
 .welcome__desktop-section-four-top--right img {
-  //height: 358px;
   width: 100%;
   margin-top: -50px;
 }
 
 .welcome__desktop-section-four-bottom {
-  //border: 1px solid white;
   margin-top: 3em;
 }
 
@@ -638,7 +574,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-section-four-bottom h2 {
-  //border: 1px solid white;
   font-weight: bold;
   font-size: 48px;
   line-height: 59px;
@@ -646,7 +581,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-button-tile-row {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 8fr 8fr;
   min-width: 0;
@@ -673,7 +607,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-button-tile {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -682,7 +615,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__desktop-button-tile .welcome__button--desktop {
-  // margin-top: 2em;
   padding: 0.75em 0.5em;
 }
 
@@ -710,7 +642,6 @@ $welcome__line-height-small--mobile: 22px;
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  // white-space: pre-wrap;
 }
 
 .welcome__desktop-button-tile ul {
@@ -745,7 +676,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-four-top {
-  //border: 1px solid white;
   margin-bottom: 3em;
   position: relative;
 }
@@ -763,7 +693,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-four-top img {
-  //height: 162px;
   position: relative;
   width: 100%;
   z-index: -1;
@@ -776,7 +705,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-section-four-bottom h2 {
-  //border: 1px solid white;
   font-size: $welcome__font-size-big--mobile;
   font-weight: bold;
   line-height: $welcome__line-height-big--mobile;
@@ -789,7 +717,6 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__mobile-button-tile {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
@@ -829,12 +756,7 @@ $welcome__line-height-small--mobile: 22px;
 
 // Welcome Section 5
 .welcome__section-five {
-  // border: 1px solid white;
   margin-top: 6em;
-}
-
-.welcome__section-five-top {
-  //border: 1px solid white;
 }
 
 .welcome__section-five-top h2 {
@@ -845,22 +767,18 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__section-five-top-image-button-wrapper {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 13fr 1fr 10fr;
 }
 
 .welcome__section-five-top img {
-  //border: 1px solid white;
   width: 100%;
 }
 
 .welcome__section-five-top span {
-  //border: 2px dotted red;
 }
 
 .welcome__section-five-top-button-wrapper {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
 }
@@ -883,17 +801,12 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 .welcome__section-five-bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
 }
 
 .welcome__section-five-bottom img {
   width: 100%;
-}
-
-.welcome__section-five-bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__section-five-bottom h2 {
