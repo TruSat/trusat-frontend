@@ -638,6 +638,7 @@ $welcome__mobile__line-height-small: 22px;
   //border: 1px solid white;
   display: grid;
   grid-template-columns: 1fr 7fr 1fr 7fr 1fr 7fr;
+  min-width: 0;
 }
 
 .welcome__desktop-button-tile-container {
@@ -645,18 +646,17 @@ $welcome__mobile__line-height-small: 22px;
   // border: 1px solid $secondary-theme-color;
   border-radius: 4px;
   display: grid;
-  grid-template-columns: 1fr 7fr 1fr;
+  grid-template-columns: minmax(30px, 1fr) 5fr minmax(30px, 1fr);
   box-shadow:
   0 1.9px 2px rgba(0, 0, 0, 0.028),
   0 6.5px 6.7px rgba(0, 0, 0, 0.042),
   0 29px 30px rgba(0, 0, 0, 0.07);
+  min-width: 0;
 }
 
-.welcome__desktop-button-tile-container:nth-child(1) {
-  border-radius: 8px 0 0 8px;
-}
-.welcome__desktop-button-tile-container:nth-child(3) {
-  border-radius: 0 8px 8px 0;
+.welcome__desktop-button-tile-container div,
+.welcome__desktop-button-tile-container span {
+  // border: 1px solid red;
 }
 
 .welcome__desktop-button-tile-container span {
@@ -670,6 +670,9 @@ $welcome__mobile__line-height-small: 22px;
   height: 303px;
   justify-content: space-between;
   margin: 0.75em 0 2em 0;
+  // overflow-wrap: break-word;
+  // word-wrap: break-word;
+  // hyphens: auto;
 }
 
 .welcome__github-button {
@@ -687,6 +690,7 @@ $welcome__mobile__line-height-small: 22px;
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
+  // white-space: pre-wrap;
 }
 
 .welcome__desktop-button-tile ul {
