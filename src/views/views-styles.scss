@@ -501,21 +501,18 @@ $welcome__line-height-small--mobile: 22px;
 }
 
 // Welcome Section Four - DESKTOP
+// JoinTheMission Component styles!
 .welcome__blue-background {
   background-color: #17294a;
   font-family: $display-font;
   padding-bottom: 3em;
   padding-top: 3em;
   position: relative;
-  z-index: -1;
 }
 
 .welcome__desktop-section-four {
   margin-top: 3em;
   margin-bottom: 6em;
-}
-
-.welcome__desktop-section-four-top {
   position: relative;
 }
 
@@ -523,6 +520,7 @@ $welcome__line-height-small--mobile: 22px;
   font-weight: 200;
   font-size: 96px;
   line-height: 117px;
+  position: relative;
 }
 
 .welcome__desktop-section-four-top--left {
@@ -530,7 +528,6 @@ $welcome__line-height-small--mobile: 22px;
   grid-template-columns: 11fr 13fr;
   margin-top: 1em;
   position: absolute;
-  z-index: 1;
 }
 
 .welcome__desktop-section-four-top--left p {
@@ -542,8 +539,6 @@ $welcome__line-height-small--mobile: 22px;
   display: grid;
   grid-template-columns: 10fr 14fr;
   width: 100%;
-  position: relative;
-  z-index: -1;
 }
 
 .welcome__desktop-section-four-top--right img {
