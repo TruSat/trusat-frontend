@@ -1,7 +1,6 @@
 /* ----------
 WELCOME VIEW
 ----------- */
-
 $welcome__font-size-big--mobile: 32px;
 $welcome__font-size-medium--mobile: 24px;
 $welcome__font-size-small--mobile: 16px;
@@ -488,9 +487,6 @@ $welcome__line-height-small--mobile: 22px;
 .welcome__mobile-section-three-content--bottom-list-title {
   font-weight: bold;
   margin-bottom: $welcome__line-height-small--mobile * 0.33;
-}
-
-.welcome__mobile-section-three-content--bottom span {
 }
 
 .welcome__mobile-section-three-content--bottom ul {
