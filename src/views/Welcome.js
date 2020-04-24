@@ -1,6 +1,5 @@
 import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import ReactGA from "react-ga";
 import Button from "../app/components/Button";
 import TrusatGlobeCanvas from "../app/components/TrusatGlobeCanvas";
 
@@ -66,7 +65,11 @@ export default function Home() {
             alt="Trusat logo"
           ></img>
 
-          <h2>Open source<br/>space sustainability</h2>
+          <h2>
+            Open source
+            <br />
+            space sustainability
+          </h2>
           <a href="/join">
             <Button
               text="JOIN"
@@ -75,15 +78,13 @@ export default function Home() {
             ></Button>
           </a>
         </div>
-        <div class="welcome__section-one-spacer welcome__hide-on-mobile">
-        </div>
+        <div class="welcome__section-one-spacer welcome__hide-on-mobile"></div>
       </section>
 
       {/* Section TWO */}
       <section className="welcome__section welcome__section-two">
         <div className="welcome-section-two__video-container">
-          <div className="welcome-section-two__video-container--bottom welcome__hide-on-mobile">
-          </div>
+          <div className="welcome-section-two__video-container--bottom welcome__hide-on-mobile"></div>
           <div className="welcome-section-two__video-container--top">
             <div className="welcome__iframe-wrapper">
               <iframe
@@ -160,7 +161,7 @@ export default function Home() {
 
             <div className="welcome__desktop-section-three-content-left--bottom">
               <a
-                href="https://learn.trusat.org/docs/high-level-guide"
+                href="https://learn.trusat.org/docs/guide"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -231,7 +232,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-
         </div>
 
         <div className="welcome__mobile-section-three-content--middle">
@@ -244,7 +244,7 @@ export default function Home() {
 
         <div className="welcome__mobile-section-three-content--bottom">
           <div className="welcome__mobile-section-three-content--bottom-list-title">
-          Learn about:
+            Learn about:
           </div>
           <ul>
             <li>How to track sats</li>
@@ -253,7 +253,7 @@ export default function Home() {
             <li>Instructions for assembling a DIY sat-tracking mount.</li>
           </ul>
           <a
-            href="https://learn.trusat.org/docs/high-level-guide"
+            href="https://learn.trusat.org/docs/guide"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -364,7 +364,7 @@ export default function Home() {
                       </ul>
                     </div>
                     <a
-                      href="https://learn.trusat.org"
+                      href="https://learn.trusat.org/docs/participate#3-support-the-mission"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
@@ -461,7 +461,7 @@ export default function Home() {
                   </ul>
                 </div>
                 <a
-                  href="https://learn.trusat.org/docs/start-here.html"
+                  href="https://learn.trusat.org/docs/start-here.htmlhttps://learn.trusat.org/docs/participate#3-support-the-mission"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -507,8 +507,7 @@ export default function Home() {
 
         <div className="welcome__section-five-spacer">
           <span></span>
-          <span class="welcome__border-left welcome__hide-on-mobile">
-          </span>
+          <span class="welcome__border-left welcome__hide-on-mobile"></span>
         </div>
 
         <div className="welcome__section-five-bottom">
