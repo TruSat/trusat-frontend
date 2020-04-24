@@ -1,7 +1,4 @@
 import React from "react";
-import Partners from "../app/components/Partners";
-import SocialIcons from "../app/components/SocialIcons";
-import Advisors from "../app/components/Advisors";
 
 export default function About() {
   return (
