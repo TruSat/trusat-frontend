@@ -8,8 +8,7 @@ export default function About() {
     <div className="static-page__wrapper">
       <section className="static-page__section about__about-trusat-section">
         <h1 className="static-page__main-header--small">
-          TruSat is a citizen-powered, open source system for creating a
-          globally-accessible, trusted record of satellite orbital positions.
+          TruSat is a citizen-powered, open source system for creating a trusted record of satellite orbital behavior.
         </h1>
         <p className="static-page__copy about__deck">
           TruSat is primarily designed to enable the assessment of satellite
