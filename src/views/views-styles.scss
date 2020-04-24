@@ -2,14 +2,13 @@
 WELCOME VIEW
 ----------- */
 
-$welcome__mobile__font-size-big: 32px;
-$welcome__mobile__font-size-medium: 24px;
-$welcome__mobile__font-size-small: 16px;
+$welcome__font-size-big--mobile: 32px;
+$welcome__font-size-medium--mobile: 24px;
+$welcome__font-size-small--mobile: 16px;
 
-$welcome__mobile__line-height-big: 40px;
-$welcome__mobile__line-height-medium: 32px;
-$welcome__mobile__line-height-small: 22px;
-
+$welcome__line-height-big--mobile: 40px;
+$welcome__line-height-medium--mobile: 32px;
+$welcome__line-height-small--mobile: 22px;
 
 .welcome__wrapper {
   font-family: $display-font;
@@ -34,9 +33,21 @@ $welcome__mobile__line-height-small: 22px;
   width: 100%;
   position: absolute;
   bottom: 0;
-  background: -moz-linear-gradient(top,  rgba(229,229,229,0) 50%, rgba(8,17,34,1) 100%); /* FF3.6-15 */
-  background: -webkit-linear-gradient(top,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom,  rgba(229,229,229,0) 50%,rgba(8,17,34,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  background: -moz-linear-gradient(
+    top,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e5e5e5', endColorstr='#081122',GradientType=0 ); /* IE6-9 */
 }
 
@@ -85,7 +96,6 @@ $welcome__mobile__line-height-small: 22px;
   .welcome__section {
     padding: 0 20px;
   }
-
 }
 
 // The globe canvas
@@ -165,15 +175,15 @@ $welcome__mobile__line-height-small: 22px;
   }
 
   .welcome__section-one h2 {
-    font-size: $welcome__mobile__font-size-medium;
-    line-height: $welcome__mobile__line-height-medium;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
     margin-bottom: 1em;
   }
 
   .welcome__section-one-button {
     font-weight: bold;
-    font-size: $welcome__mobile__font-size-small;
-    line-height: $welcome__mobile__font-size-small;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__font-size-small--mobile;
     width: 120px;
     text-align: center;
   }
@@ -197,7 +207,7 @@ $welcome__mobile__line-height-small: 22px;
 }
 
 .welcome-section-two__video-container--bottom {
-  display: absolute ;
+  display: absolute;
   border-right: 1px solid $tertiary-color;
   width: 50%;
   height: 100%;
@@ -243,7 +253,7 @@ $welcome__mobile__line-height-small: 22px;
   //border: 2px dotted red;
 }
 
-.welcome-setion-two__top-spacer  {
+.welcome-setion-two__top-spacer {
   height: 2em;
 }
 
@@ -298,7 +308,6 @@ $welcome__mobile__line-height-small: 22px;
 
 // Welcome Section Two MOBILE
 @media (max-width: 800px) {
-
   .welcome__section-two {
     display: inline-block;
   }
@@ -308,24 +317,24 @@ $welcome__mobile__line-height-small: 22px;
   }
 
   .welcome__section-two h2 {
-    font-size: $welcome__mobile__font-size-big;
-    line-height: $welcome__mobile__line-height-big;
+    font-size: $welcome__font-size-big--mobile;
+    line-height: $welcome__line-height-big--mobile;
   }
 
   .welcome__section-two h3 {
-    font-size: $welcome__mobile__font-size-big;
-    line-height: $welcome__mobile__line-height-big;
+    font-size: $welcome__font-size-big--mobile;
+    line-height: $welcome__line-height-big--mobile;
   }
 
   .welcome-section-two__copy--medium {
-    font-size: $welcome__mobile__font-size-medium;
-    line-height: $welcome__mobile__line-height-medium;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
     margin-bottom: 0.5em;
   }
 
   .welcome-section-two__copy--small {
-    font-size: $welcome__mobile__font-size-small;
-    line-height: $welcome__mobile__line-height-small;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__line-height-small--mobile;
   }
 
   .welcome-section-two__copy-container--top div {
@@ -512,8 +521,8 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__mobile-section-three-content--middle p {
   //border: 1px solid white;
   font-family: Montserrat;
-  font-size: $welcome__mobile__font-size-medium;
-  line-height: $welcome__mobile__line-height-medium;
+  font-size: $welcome__font-size-medium--mobile;
+  line-height: $welcome__line-height-medium--mobile;
 }
 
 .welcome__mobile-section-three-content--bottom {
@@ -525,9 +534,8 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__mobile-section-three-content--bottom-list-title {
   font-weight: bold;
-  margin-bottom: $welcome__mobile__line-height-small*0.33;
+  margin-bottom: $welcome__line-height-small--mobile * 0.33;
 }
-
 
 .welcome__mobile-section-three-content--bottom span {
   //border: 2px dotted red;
@@ -536,15 +544,15 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__mobile-section-three-content--bottom ul {
   //border: 1px solid white;
   font-weight: bold;
-  font-size: $welcome__mobile__font-size-small;
-  line-height: $welcome__mobile__line-height-small;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   list-style-type: circle;
   margin-bottom: 2em;
 }
 
 .welcome__mobile-section-three-content--bottom li {
   font-weight: normal;
-  margin-bottom: $welcome__mobile__line-height-small*0.33;
+  margin-bottom: $welcome__line-height-small--mobile * 0.33;
   margin-left: 1em;
 }
 
@@ -617,11 +625,10 @@ $welcome__mobile__line-height-small: 22px;
   margin-top: 3em;
 }
 
-
 //These fix a tablet-sized layout quirk
 @media (max-width: 1080px) {
   .welcome__desktop-section-four-bottom {
-    padding-top: 6em; 
+    padding-top: 6em;
   }
 }
 @media (max-width: 900px) {
@@ -629,7 +636,6 @@ $welcome__mobile__line-height-small: 22px;
     padding-top: 15em;
   }
 }
-
 
 .welcome__desktop-section-four-bottom h2 {
   //border: 1px solid white;
@@ -649,24 +655,22 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__desktop-button-tile-container {
   background-color: rgb(0, 79, 133);
   border-radius: 4px;
-  box-shadow:
-  0 1.9px 2px rgba(0, 0, 0, 0.028),
-  0 6.5px 6.7px rgba(0, 0, 0, 0.042),
-  0 29px 30px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 1.9px 2px rgba(0, 0, 0, 0.028),
+    0 6.5px 6.7px rgba(0, 0, 0, 0.042), 0 29px 30px rgba(0, 0, 0, 0.07);
   min-width: 0;
   padding: 0 10%;
 }
 
 .welcome__desktop-button-tile-container:nth-child(1) {
   margin-right: 10%;
-} 
+}
 .welcome__desktop-button-tile-container:nth-child(2) {
   margin-left: 5%;
   margin-right: 5%;
-} 
+}
 .welcome__desktop-button-tile-container:nth-child(3) {
   margin-left: 10%;
-} 
+}
 
 .welcome__desktop-button-tile {
   //border: 1px solid white;
@@ -676,8 +680,6 @@ $welcome__mobile__line-height-small: 22px;
   height: 280px;
   margin: 0.75em 0 2em 0;
 }
-
-
 
 .welcome__desktop-button-tile .welcome__button--desktop {
   // margin-top: 2em;
@@ -768,16 +770,16 @@ $welcome__mobile__line-height-small: 22px;
 }
 
 .welcome__mobile-section-four-top p {
-  font-size: $welcome__mobile__font-size-medium;;
-  line-height: $welcome__mobile__line-height-medium;;
+  font-size: $welcome__font-size-medium--mobile;
+  line-height: $welcome__line-height-medium--mobile;
   margin-top: 1em;
 }
 
 .welcome__mobile-section-four-bottom h2 {
   //border: 1px solid white;
-  font-size: $welcome__mobile__font-size-big;;
+  font-size: $welcome__font-size-big--mobile;
   font-weight: bold;
-  line-height: $welcome__mobile__line-height-big;;
+  line-height: $welcome__line-height-big--mobile;
 }
 
 .welcome__mobile-section-four-button-til-wrapper {
@@ -799,13 +801,13 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__mobile-button-tile h3 {
   font-weight: bold;
-  font-size: $welcome__mobile__font-size-big;
-  line-height: $welcome__mobile__line-height-big;
+  font-size: $welcome__font-size-big--mobile;
+  line-height: $welcome__line-height-big--mobile;
 }
 
 .welcome__mobile-button-tile ul {
-  font-size: $welcome__mobile__font-size-small;
-  line-height: $welcome__mobile__line-height-small;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   list-style-type: circle;
   margin: 1em 0 2em 0;
 }
@@ -816,8 +818,8 @@ $welcome__mobile__line-height-small: 22px;
 
 .welcome__button--mobile {
   font-weight: bold;
-  font-size: $welcome__mobile__font-size-small;
-  line-height: $welcome__mobile__line-height-small;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   text-align: center;
 }
 
@@ -880,13 +882,11 @@ $welcome__mobile__line-height-small: 22px;
   height: 12em;
 }
 
-
 .welcome__section-five-bottom {
   //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
 }
-
 
 .welcome__section-five-bottom img {
   width: 100%;
@@ -916,8 +916,6 @@ $welcome__mobile__line-height-small: 22px;
 .welcome__section-five-bottom li a {
   text-decoration: none;
 }
-
-
 
 // Welcome Section Five Mobile
 @media (max-width: 800px) {
@@ -951,13 +949,13 @@ $welcome__mobile__line-height-small: 22px;
 
   .welcome__section-five-bottom h2 {
     font-weight: bold;
-    font-size: $welcome__mobile__font-size-medium;
-    line-height: $welcome__mobile__line-height-medium;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
   }
 
   .welcome__section-five-bottom ul {
-    font-size: $welcome__mobile__font-size-small;
-    line-height: $welcome__mobile__font-size-small*1.3333;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__font-size-small--mobile * 1.3333;
     list-style-type: circle;
   }
 
@@ -975,13 +973,13 @@ $welcome__mobile__line-height-small: 22px;
   padding-top: 40px;
   padding-bottom: 160px;
   margin-bottom: -100px;
-  z-index: 0
+  z-index: 0;
 }
 
 .welcome__back-to-top {
   font-weight: bold;
-  font-size: $welcome__mobile__font-size-small;
-  line-height: $welcome__mobile__line-height-small;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   text-align: center;
   text-decoration-line: underline;
   text-align: center;
