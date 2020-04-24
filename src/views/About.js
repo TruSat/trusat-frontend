@@ -152,14 +152,6 @@ export default function About() {
             </div>
           </div>
         </div>
-        <Partners />
-        <Advisors />
-        <div className="about__block-wrapper">
-          <h2 className="static-page__sub-header about__sub-header--top">
-            FOLLOW TRUSAT
-          </h2>
-          <SocialIcons />
-        </div>
       </section>
     </div>
   );
