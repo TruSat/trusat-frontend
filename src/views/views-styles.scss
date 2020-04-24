@@ -1,14 +1,60 @@
 /* ----------
 WELCOME VIEW
 ----------- */
+
+$welcome__font-size-big--mobile: 32px;
+$welcome__font-size-medium--mobile: 24px;
+$welcome__font-size-small--mobile: 16px;
+
+$welcome__line-height-big--mobile: 40px;
+$welcome__line-height-medium--mobile: 32px;
+$welcome__line-height-small--mobile: 22px;
+
 .welcome__wrapper {
   font-family: $display-font;
   padding-top: 6em;
 }
 
+.welcome__hero {
+  position: absolute;
+  height: 544px; // var maxHeight from SketchTrusatGlobe.js - height of nav
+  width: 100%;
+}
+
+@media (max-width: 800px) {
+  .welcome__hero {
+    position: relative;
+    height: 100%;
+  }
+}
+
+.welcome__header-gradient {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background: -moz-linear-gradient(
+    top,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(229, 229, 229, 0) 50%,
+    rgba(8, 17, 34, 1) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00e5e5e5', endColorstr='#081122',GradientType=0 ); /* IE6-9 */
+}
+
 // replaces canvas on mobile render
 .welcome__globe-image {
-  margin: 0 auto;
+  margin: -30px auto 0;
+  width: 100%;
 }
 
 .welcome__section {
@@ -21,13 +67,20 @@ WELCOME VIEW
   display: none;
 }
 
+@media (max-width: 1080px) {
+  .welcome__section {
+    padding: 0 60px;
+  }
+}
+
 @media (max-width: 800px) {
   .welcome__wrapper {
     padding-top: 3em;
   }
 
   .welcome__section {
-    margin: 0em 1em 4em 1em; // the space to left, right and bottom of section
+    margin: 0em 0em 4em 0em; // the space to left, right and bottom of section
+    padding: 0 30px;
   }
 
   .welcome__hide-on-mobile {
@@ -39,34 +92,45 @@ WELCOME VIEW
   }
 }
 
+@media (max-width: 600px) {
+  .welcome__section {
+    padding: 0 20px;
+  }
+}
+
 // The globe canvas
 #globe-canvas-container {
   position: absolute;
-  margin-top: -250px;
+  margin-top: -6em;
   z-index: -1;
   width: 100%;
 }
 
 // Welcome Section One
 .welcome__section-one {
-  border: 1px solid white;
   display: grid;
   grid-template-columns: 2fr 22fr;
   position: relative;
+  margin-top: 3em;
+  margin-bottom: 2em;
 }
 
-.welcome__section-one span {
-  //border: 2px dotted red;
+.welcome__section-one-spacer {
+  height: 10em;
 }
 
 .welcome__section-one div {
-  //border: 1px solid white;
   padding-bottom: 3em;
+}
+
+.welcome__trusat-logo {
+  width: 400px;
 }
 
 .welcome__section-one h2 {
   font-size: 36px;
   line-height: 44px;
+  margin-bottom: 2em;
 }
 
 .welcome__section-one h2:nth-of-type(1) {
@@ -92,7 +156,12 @@ WELCOME VIEW
 
   .welcome__section-one {
     display: flex;
+    margin: 0 0 4em;
     text-align: center;
+  }
+
+  .welcome__section-one-logo-container {
+    margin: 0 auto;
   }
 
   .welcome__trusat-logo {
@@ -100,14 +169,15 @@ WELCOME VIEW
   }
 
   .welcome__section-one h2 {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
+    margin-bottom: 1em;
   }
 
   .welcome__section-one-button {
     font-weight: bold;
-    font-size: 12px;
-    line-height: 15px;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__font-size-small--mobile;
     width: 120px;
     text-align: center;
   }
@@ -115,10 +185,28 @@ WELCOME VIEW
 
 // Welcome Secton Two
 .welcome__section-two {
-  border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr 13fr;
+  margin-bottom: 0;
+}
+
+.welcome-section-two__video-container {
   position: relative;
+}
+
+.welcome-section-two__video-container--bottom {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.welcome-section-two__video-container--bottom {
+  display: absolute;
+  border-right: 1px solid $tertiary-color;
+  width: 50%;
+  height: 100%;
+  top: 0;
+  left: 0;
 }
 
 .welcome__iframe-wrapper {
@@ -155,12 +243,11 @@ WELCOME VIEW
   line-height: 59px;
 }
 
-.welcome__section-two span {
-  //border: 2px dotted red;
+.welcome-setion-two__top-spacer {
+  height: 2em;
 }
 
 .welcome-section-two__copy-container--top {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 1fr 4fr;
   margin-bottom: 3em;
@@ -177,7 +264,7 @@ WELCOME VIEW
 .welcome-section-two__copy--small {
   font-family: Montserrat;
   line-height: 20px;
-  margin-top: 0.25em; // lines copt up with bigger copy to the left
+  margin-top: 0.25em; // lines copy up with bigger copy to the left
 }
 
 .welcome-section-two__copy--medium strong {
@@ -187,7 +274,6 @@ WELCOME VIEW
 .welcome-section-two-face-image-header-wrapper {
   display: flex;
   align-items: center;
-  //border: 1px solid white;
   margin-bottom: 1em;
 }
 
@@ -197,10 +283,14 @@ WELCOME VIEW
 }
 
 .welcome-section-two__copy-container--bottom {
-  //border: 1px solid white;
   display: grid;
-  grid-template-columns: 9fr 4fr;
+  grid-template-columns: 8fr 1fr 4fr;
   margin-top: 1em;
+}
+
+.welcome-section-two__copy-container--bottom__spacer {
+  height: 6em;
+  display: block;
 }
 
 // Welcome Section Two MOBILE
@@ -214,33 +304,29 @@ WELCOME VIEW
   }
 
   .welcome__section-two h2 {
-    font-size: 27px;
-    line-height: 33px;
+    font-size: $welcome__font-size-big--mobile;
+    line-height: $welcome__line-height-big--mobile;
   }
 
   .welcome__section-two h3 {
-    font-size: 27px;
-    line-height: 33px;
+    font-size: $welcome__font-size-big--mobile;
+    line-height: $welcome__line-height-big--mobile;
   }
 
   .welcome-section-two__copy--medium {
-    font-size: 18px;
-    line-height: 22px;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
     margin-bottom: 0.5em;
   }
 
   .welcome-section-two__copy--small {
-    font-size: 12px;
-    line-height: 15px;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__line-height-small--mobile;
   }
 
   .welcome-section-two__copy-container--top div {
     display: grid;
     grid-template-columns: 4fr 9fr;
-  }
-
-  .welcome-section-two__copy-container--top span {
-    //border: 2px dotted red;
   }
 
   .welcome-section-two__copy-container--bottom {
@@ -250,8 +336,7 @@ WELCOME VIEW
 
 // Welcome Section three DESKTOP
 .welcome__desktop-section-three {
-  border: 1px solid white;
-  margin-bottom: 3em; // over-rides welcome__section class
+  margin-bottom: 9em; // over-rides welcome__section class
 }
 
 .welcome__desktop-section-three h2 {
@@ -263,18 +348,15 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
 }
 
 .welcome__desktop-section-three-content--left {
   margin-top: 1em;
-  //border: 1px solid white;
 }
 
 .welcome__desktop-section-three-content-left--top {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 1fr;
 }
@@ -285,14 +367,12 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-left--top span {
-  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-left--bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 5fr;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
 .welcome__button--desktop {
@@ -305,15 +385,12 @@ WELCOME VIEW
   width: 100%;
 }
 
-.welcome__desktop-section-three-content-left--bottom span {
-  //border: 2px dotted red;
-}
-
 .welcome__desktop-section-three-content-left--bottom ul {
   font-family: Montserrat;
   font-weight: bold;
   line-height: 20px;
   list-style-type: circle;
+  margin-right: -400px;
 }
 
 .welcome__desktop-section-three-content-left--bottom li {
@@ -322,7 +399,6 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content--right {
-  //border: 1px solid white;
   margin-top: -30%;
   z-index: -1;
 }
@@ -333,13 +409,8 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-three-content-right--bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 9fr 4fr;
-}
-
-.welcome__desktop-section-three-content-right--bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__desktop-section-three-content-right--bottom img {
@@ -354,25 +425,22 @@ WELCOME VIEW
 
 // Welcome Section Three MOBILE
 .welcome__mobile-section-three {
-  border: 1px solid white;
-  margin-bottom: 2em; // over-rides welcome__section class
+  margin-bottom: 6em; // over-rides welcome__section class
 }
 
 .welcome__mobile-section-three-header-wrapper {
-  position: absolute;
   z-index: 1;
+  margin-bottom: -4em;
 }
 
 .welcome__mobile-section-three-header-wrapper h2 {
-  //border: 1px solid white;
   font-style: normal;
   font-weight: 200;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 60px;
+  line-height: 70px;
 }
 
 .welcome__mobile-section-three-content--top {
-  //border: 1px solid white;
   margin-top: 35px;
   position: relative;
   z-index: -1;
@@ -384,73 +452,64 @@ WELCOME VIEW
 }
 
 .welcome__mobile-section-three-top-content-div {
-  display: grid;
-  grid-template-columns: 12fr 12fr;
   margin-bottom: 1em;
 }
 
-.welcome__mobile-section-three-top-content-div span {
-  //border: 2px dotted red;
-}
-
 .welcome__mobile-badge-image-copy-wrapper {
-  //border: 1px solid white;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 2fr 22fr;
+  padding-top: 0.5em;
 }
 
 .welcome__mobile-badge-image-copy-wrapper img {
-  margin-left: -20px;
-  margin-top: -20px;
+  margin-left: -12px;
+  margin-top: -28px;
   width: 39px;
 }
 
 .welcome__mobile-badge-copy-wrapper {
-  //border: 1px solid white;
-  display: grid;
-  grid-template-columns: 1fr 11fr;
+  padding-left: 5px;
+}
+
+.welcome__mobile-section-three-content--middle {
+  margin-top: 2em;
 }
 
 .welcome__mobile-section-three-content--middle p {
-  //border: 1px solid white;
   font-family: Montserrat;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: $welcome__font-size-medium--mobile;
+  line-height: $welcome__line-height-medium--mobile;
 }
 
 .welcome__mobile-section-three-content--bottom {
-  //border: 1px solid white;
-  display: grid;
-  grid-template-columns: 12fr 1fr 11fr;
-  margin-top: 1em;
+  margin-top: 2em;
 }
 
-.welcome__buttom--mobile {
+.welcome__mobile-section-three-content--bottom-list-title {
   font-weight: bold;
-  font-size: 16px;
-  line-height: 20px;
-  text-align: center;
+  margin-bottom: $welcome__line-height-small--mobile * 0.33;
 }
 
 .welcome__mobile-section-three-content--bottom span {
-  //border: 2px dotted red;
 }
 
 .welcome__mobile-section-three-content--bottom ul {
-  //border: 1px solid white;
   font-weight: bold;
-  font-size: 12px;
-  line-height: 15px;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
+  list-style-type: circle;
+  margin-bottom: 2em;
 }
 
 .welcome__mobile-section-three-content--bottom li {
   font-weight: normal;
+  margin-bottom: $welcome__line-height-small--mobile * 0.33;
+  margin-left: 1em;
 }
 
 // Welcome Section Four - DESKTOP
 .welcome__blue-background {
   background-color: #17294a;
-  //border: 1px solid yellow;
   padding-bottom: 3em;
   padding-top: 3em;
   position: relative;
@@ -458,8 +517,8 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four {
-  border: 1px solid white;
-  margin-bottom: 0em;
+  margin-top: 3em;
+  margin-bottom: 6em;
 }
 
 .welcome__desktop-section-four-top {
@@ -473,7 +532,6 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--left {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 11fr 13fr;
   margin-top: 1em;
@@ -482,17 +540,11 @@ WELCOME VIEW
 }
 
 .welcome__desktop-section-four-top--left p {
-  //border: 1px solid white;
   font-size: 32px;
   line-height: 39px;
 }
 
-.welcome__desktop-section-four-top--left span {
-  //border: 2px dotted red;
-}
-
 .welcome__desktop-section-four-top--right {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 10fr 14fr;
   width: 100%;
@@ -500,22 +552,28 @@ WELCOME VIEW
   z-index: -1;
 }
 
-.welcome__desktop-section-four-top--right span {
-  //border: 2px dotted red;
-}
-
 .welcome__desktop-section-four-top--right img {
-  //height: 358px;
   width: 100%;
   margin-top: -50px;
 }
 
 .welcome__desktop-section-four-bottom {
-  //border: 1px solid white;
+  margin-top: 3em;
+}
+
+//These fix a tablet-sized layout quirk
+@media (max-width: 1080px) {
+  .welcome__desktop-section-four-bottom {
+    padding-top: 6em;
+  }
+}
+@media (max-width: 900px) {
+  .welcome__desktop-section-four-bottom {
+    padding-top: 15em;
+  }
 }
 
 .welcome__desktop-section-four-bottom h2 {
-  //border: 1px solid white;
   font-weight: bold;
   font-size: 48px;
   line-height: 59px;
@@ -523,34 +581,56 @@ WELCOME VIEW
 }
 
 .welcome__desktop-button-tile-row {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 8fr 8fr 8fr;
+  min-width: 0;
 }
 
 .welcome__desktop-button-tile-container {
-  //border: 1px solid white;
-  display: grid;
-  grid-template-columns: 1fr 7fr 2fr;
+  background-color: rgb(0, 79, 133);
+  border-radius: 4px;
+  box-shadow: 0 1.9px 2px rgba(0, 0, 0, 0.028),
+    0 6.5px 6.7px rgba(0, 0, 0, 0.042), 0 29px 30px rgba(0, 0, 0, 0.07);
+  min-width: 0;
+  padding: 0 10%;
 }
 
-.welcome__desktop-button-tile-container span {
-  //border: 2px dotted red;
+.welcome__desktop-button-tile-container:nth-child(1) {
+  margin-right: 10%;
+}
+.welcome__desktop-button-tile-container:nth-child(2) {
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.welcome__desktop-button-tile-container:nth-child(3) {
+  margin-left: 10%;
 }
 
 .welcome__desktop-button-tile {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
-  height: 303px;
   justify-content: space-between;
+  height: 280px;
   margin: 0.75em 0 2em 0;
+}
+
+.welcome__desktop-button-tile .welcome__button--desktop {
+  padding: 0.75em 0.5em;
+}
+
+@media (max-width: 1080px) {
+  .welcome__desktop-button-tile {
+    height: 320px;
+  }
 }
 
 .welcome__github-button {
   display: flex;
-  justify-content: center;
   height: 48px; // squeezes github icon a little but makes buttons all same height
+  justify-content: center;
+  line-height: 1.6em;
+  padding: 1em 0.5em;
+  width: 100%;
 }
 
 .welcome__github-button img {
@@ -565,13 +645,15 @@ WELCOME VIEW
 }
 
 .welcome__desktop-button-tile ul {
+  flex-grow: 2;
   line-height: 20px;
   list-style-type: circle;
   margin-top: 1em;
+  margin-left: 0;
 }
 
 .welcome__desktop-button-tile li {
-  margin: 0.5em 0 0.5em 15px;
+  margin: 0.5em 0 0.5em 0;
 }
 
 .welcome__button--desktop-wide {
@@ -581,21 +663,20 @@ WELCOME VIEW
 // Welcome Section Four - MOBILE
 @media (max-width: 800px) {
   .welcome__blue-background {
-    //border: 2px dotted yellow;
-    padding-bottom: 2em;
-    padding-top: 2em;
+    margin-bottom: 5em;
+    padding-bottom: 6em;
+    padding-top: 1.5em;
   }
 }
 
 .welcome__mobile-section-four {
-  border: 1px solid white;
   position: relative;
   margin-bottom: 0;
+  margin-top: 3em;
 }
 
 .welcome__mobile-section-four-top {
-  //border: 1px solid white;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   position: relative;
 }
 
@@ -606,29 +687,27 @@ WELCOME VIEW
 
 .welcome__mobile-section-four-top h2 {
   font-weight: 200;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 60px;
+  line-height: 72px;
+  margin-bottom: -30px;
 }
 
 .welcome__mobile-section-four-top img {
-  //height: 162px;
-  margin-top: -25px;
   position: relative;
   width: 100%;
   z-index: -1;
 }
 
 .welcome__mobile-section-four-top p {
-  font-size: 18px;
-  line-height: 22px;
+  font-size: $welcome__font-size-medium--mobile;
+  line-height: $welcome__line-height-medium--mobile;
   margin-top: 1em;
 }
 
 .welcome__mobile-section-four-bottom h2 {
-  //border: 1px solid white;
-  font-size: 24px;
+  font-size: $welcome__font-size-big--mobile;
   font-weight: bold;
-  line-height: 29px;
+  line-height: $welcome__line-height-big--mobile;
 }
 
 .welcome__mobile-section-four-button-til-wrapper {
@@ -638,22 +717,24 @@ WELCOME VIEW
 }
 
 .welcome__mobile-button-tile {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
   margin-top: 2em;
   width: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2em;
 }
 
 .welcome__mobile-button-tile h3 {
   font-weight: bold;
-  font-size: 32px;
-  line-height: 39px;
+  font-size: $welcome__font-size-big--mobile;
+  line-height: $welcome__line-height-big--mobile;
 }
 
 .welcome__mobile-button-tile ul {
-  font-size: 16px;
-  line-height: 20px;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   list-style-type: circle;
   margin: 1em 0 2em 0;
 }
@@ -664,8 +745,8 @@ WELCOME VIEW
 
 .welcome__button--mobile {
   font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   text-align: center;
 }
 
@@ -675,12 +756,7 @@ WELCOME VIEW
 
 // Welcome Section 5
 .welcome__section-five {
-  border: 1px solid white;
-  margin-top: 3em;
-}
-
-.welcome__section-five-top {
-  //border: 1px solid white;
+  margin-top: 6em;
 }
 
 .welcome__section-five-top h2 {
@@ -691,22 +767,18 @@ WELCOME VIEW
 }
 
 .welcome__section-five-top-image-button-wrapper {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 13fr 1fr 10fr;
 }
 
 .welcome__section-five-top img {
-  //border: 1px solid white;
   width: 100%;
 }
 
 .welcome__section-five-top span {
-  //border: 2px dotted red;
 }
 
 .welcome__section-five-top-button-wrapper {
-  //border: 1px solid white;
   display: flex;
   flex-direction: column;
 }
@@ -721,37 +793,41 @@ WELCOME VIEW
   width: 250px;
 }
 
+.welcome__section-five-spacer {
+  display: grid;
+  grid-template-columns: 5fr 19fr;
+  padding-top: 2em;
+  height: 12em;
+}
+
 .welcome__section-five-bottom {
-  //border: 1px solid white;
   display: grid;
   grid-template-columns: 5fr 1fr 18fr;
-  margin-top: 5em;
 }
 
 .welcome__section-five-bottom img {
   width: 100%;
 }
 
-.welcome__section-five-bottom span {
-  //border: 2px dotted red;
-}
-
 .welcome__section-five-bottom h2 {
   font-weight: bold;
-  font-size: 48px;
-  line-height: 59px;
+  font-size: 32px;
+  line-height: 39px;
 }
 
 .welcome__section-five-bottom ul {
   font-size: 32px;
-  line-height: 39px;
+  line-height: 48px;
   list-style-type: circle;
   margin-top: 0.25em;
 }
 
 .welcome__section-five-bottom li {
   margin-left: 26px;
-  text-decoration: underline;
+}
+
+.welcome__section-five-bottom li a {
+  text-decoration: none;
 }
 
 // Welcome Section Five Mobile
@@ -762,8 +838,8 @@ WELCOME VIEW
 
   .welcome__section-five-top h2 {
     font-weight: 200;
-    font-size: 48px;
-    line-height: 59px;
+    font-size: 60px;
+    line-height: 72px;
   }
 
   .welcome__section-five-top-image-button-wrapper {
@@ -786,25 +862,37 @@ WELCOME VIEW
 
   .welcome__section-five-bottom h2 {
     font-weight: bold;
-    font-size: 24px;
-    line-height: 29px;
+    font-size: $welcome__font-size-medium--mobile;
+    line-height: $welcome__line-height-medium--mobile;
   }
 
   .welcome__section-five-bottom ul {
-    font-size: 18px;
-    line-height: 24px;
+    font-size: $welcome__font-size-small--mobile;
+    line-height: $welcome__font-size-small--mobile * 1.3333;
     list-style-type: circle;
   }
 
   .welcome__section-five-bottom li {
     margin-left: 20px;
   }
+
+  .welcome__section-five-spacer {
+    height: 6em;
+  }
+}
+
+.welcome__blue-background.welcome__back-to-top-container {
+  margin-bottom: 0;
+  padding-top: 40px;
+  padding-bottom: 160px;
+  margin-bottom: -100px;
+  z-index: 0;
 }
 
 .welcome__back-to-top {
   font-weight: bold;
-  font-size: 16px;
-  line-height: 19px;
+  font-size: $welcome__font-size-small--mobile;
+  line-height: $welcome__line-height-small--mobile;
   text-align: center;
   text-decoration-line: underline;
   text-align: center;
@@ -854,7 +942,7 @@ JOIN VIEW
 .join__trusat-tagline {
   font-size: 16px;
   letter-spacing: 0.08em;
-  line-height: 19px;
+  line-height: 20px;
   margin: 1em 0;
   position: relative;
 }
@@ -1226,4 +1314,8 @@ FAQ view
   font-family: $main-font;
   line-height: 27px;
   margin-bottom: 2em;
+}
+
+.welcome__border-left {
+  border-left: 1px solid $tertiary-color;
 }

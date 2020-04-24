@@ -9,7 +9,6 @@ import {
   retrieveLoginCredentials,
   decryptSecret,
 } from "../auth-helpers";
-import Button from "../../app/components/Button";
 
 export default function LoginForm() {
   const { isAuthenticating } = useAuthState();

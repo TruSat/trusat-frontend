@@ -21,7 +21,7 @@ export default function HowToParticipate({ catalogFilter }) {
         . Learn how to see sats{" "}
         <a
           className="app__nav-link catalog__link--lowlight"
-          href="https://learn.trusat.org/docs/high-level-guide"
+          href="https://learn.trusat.org/docs/guide"
           target="_blank"
           rel="noopener noreferrer"
         >

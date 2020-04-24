@@ -1,8 +1,8 @@
 import React from "react";
 import TrusatLogoBig from "../assets/TrusatLogoBig.svg";
-import ReactGA from "react-ga";
 import Button from "../app/components/Button";
 import TrusatGlobeCanvas from "../app/components/TrusatGlobeCanvas";
+import ReactGA from "react-ga";
 
 export default function Home() {
   const numberCircle = (num, size) => {
@@ -47,25 +47,40 @@ export default function Home() {
 
   return (
     <div className="welcome__wrapper">
-      <TrusatGlobeCanvas />
-      <img
-        className="welcome__globe-image welcome__hide-on-desktop"
-        src="https://trusat-assets.s3.amazonaws.com/earth-shadows-400px.jpg"
-        alt="globe"
-      ></img>
+      <div className="welcome__hero">
+        <TrusatGlobeCanvas />
+        <div className="welcome__header-gradient"></div>
+        <img
+          className="welcome__globe-image welcome__hide-on-desktop"
+          src="https://trusat-assets.s3.amazonaws.com/illustration-cover-840px.jpg"
+          alt="globe"
+        ></img>
+      </div>
       {/* Section ONE */}
       <section className="welcome__section welcome__section-one">
         <span className="welcome__hide-on-mobile"></span>
-        <div>
+        <div className="welcome__section-one-logo-container">
           <img
             className="welcome__trusat-logo"
             src={TrusatLogoBig}
             alt="Trusat logo"
           ></img>
 
-          <h2>Open source</h2>
-          <h2>space sustainability</h2>
-          <a href="/join">
+          <h2>
+            Open source
+            <br />
+            space sustainability
+          </h2>
+          <a
+            href="/join"
+            onClick={() => {
+              ReactGA.event({
+                category: "Onboarding",
+                action: "Clicked join button",
+                label: "Top of Welcome page join button",
+              });
+            }}
+          >
             <Button
               text="JOIN"
               color="orange"
@@ -73,36 +88,41 @@ export default function Home() {
             ></Button>
           </a>
         </div>
+        <div className="welcome__section-one-spacer welcome__hide-on-mobile"></div>
       </section>
 
       {/* Section TWO */}
       <section className="welcome__section welcome__section-two">
-        <div>
-          <div className="welcome__iframe-wrapper">
-            <iframe
-              className="welcome__iframe"
-              title="TruSat explainer video"
-              src="https://www.youtube.com/embed/H-J7zngl6xE"
-              frameBorder="0"
-              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen="allowfullscreen"
-              mozallowullscreen="mozallowfullscreen"
-              msallowfullscreen="msallowfullscreen"
-              oallowfullscreen="oallowfullscreen"
-              webkitallowfullscreen="webkitallowfullscreen"
-              modestbranding="1"
-            ></iframe>
+        <div className="welcome-section-two__video-container">
+          <div className="welcome-section-two__video-container--bottom welcome__hide-on-mobile"></div>
+          <div className="welcome-section-two__video-container--top">
+            <div className="welcome__iframe-wrapper">
+              <iframe
+                className="welcome__iframe"
+                title="TruSat explainer video"
+                src="https://www.youtube.com/embed/H-J7zngl6xE"
+                frameBorder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen="allowfullscreen"
+                mozallowullscreen="mozallowfullscreen"
+                msallowfullscreen="msallowfullscreen"
+                oallowfullscreen="oallowfullscreen"
+                webkitallowfullscreen="webkitallowfullscreen"
+                modestbranding="1"
+              ></iframe>
+            </div>
           </div>
         </div>
         <span className="welcome__hide-on-mobile"></span>
         <div>
+          <span className="welcome-setion-two__top-spacer welcome__hide-on-desktop"></span>
           <h2>Space debris is a problem</h2>
           <div className="welcome-section-two__copy-container--top">
             <p className="welcome-section-two__copy--medium">
               In the next decade, the number of satellites in orbit will
               multiply by <strong>2500%.</strong>
             </p>
-            <span className="welcome__hide-on-mobile"></span>
+            <span className="welcome__hide-on-mobile welcome__border-left"></span>
             <div>
               <span className="welcome__hide-on-desktop" />
               <p className="welcome-section-two__copy--small">
@@ -125,9 +145,11 @@ export default function Home() {
           </p>
           <div className="welcome-section-two__copy-container--bottom">
             <span></span>
+            <span className="welcome__hide-on-mobile welcome__border-left"></span>
             <p className="welcome-section-two__copy--small">
               This transparency promotes sustainable practices by satellite
               operators. Explore the catalog{" "}
+              <span className="welcome-section-two__copy-container--bottom__spacer welcome__hide-on-mobile"></span>
             </p>
           </div>
         </div>
@@ -149,9 +171,16 @@ export default function Home() {
 
             <div className="welcome__desktop-section-three-content-left--bottom">
               <a
-                href="https://learn.trusat.org/docs/high-level-guide"
+                href="https://learn.trusat.org/docs/guide"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked Try A Tutorial button",
+                    label: "On Welcome page -- Desktop",
+                  });
+                }}
               >
                 <Button
                   text="TRY A TUTORIAL"
@@ -204,6 +233,7 @@ export default function Home() {
             src="https://trusat-assets.s3.amazonaws.com/hand-phone.jpg"
             alt="mobile tracking"
           ></img>
+
           <div className="welcome__mobile-section-three-top-content-div">
             <span></span>
             <div className="welcome__mobile-badge-image-copy-wrapper">
@@ -215,7 +245,6 @@ export default function Home() {
                 ></img>
               </div>
               <div className="welcome__mobile-badge-copy-wrapper">
-                <span></span>
                 <p>Track a sat to add it to your collection</p>
               </div>
             </div>
@@ -231,10 +260,26 @@ export default function Home() {
         </div>
 
         <div className="welcome__mobile-section-three-content--bottom">
+          <div className="welcome__mobile-section-three-content--bottom-list-title">
+            Learn about:
+          </div>
+          <ul>
+            <li>How to track sats</li>
+            <li>Basics or orbital dynamics</li>
+            <li>Tips for reading the stars</li>
+            <li>Instructions for assembling a DIY sat-tracking mount.</li>
+          </ul>
           <a
-            href="https://learn.trusat.org/docs/high-level-guide"
+            href="https://learn.trusat.org/docs/guide"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => {
+              ReactGA.event({
+                category: "Onboarding",
+                action: "Clicked See Tutorials button",
+                label: "On Welcome page -- Mobile",
+              });
+            }}
           >
             <Button
               text="SEE TUTORIALS"
@@ -242,15 +287,6 @@ export default function Home() {
               addStyles="welcome__button--mobile welcome__button--desktop-wide"
             ></Button>
           </a>
-
-          <span></span>
-          <ul>
-            Learn about:
-            <li>How to track sats</li>
-            <li>Basics or orbital dynamics</li>
-            <li>Tips for reading the stars</li>
-            <li>Instructions for assembling a DIY sat-tracking mount.</li>
-          </ul>
         </div>
       </section>
 
@@ -280,11 +316,10 @@ export default function Home() {
             <div className="welcome__desktop-button-tile-row">
               {/* tile 1 container */}
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(1, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3>Make Observations</h3>
                       <ul>
                         <li>
@@ -296,7 +331,16 @@ export default function Home() {
                         </li>
                       </ul>
                     </div>
-                    <a href="/signup">
+                    <a
+                      href="/signup"
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked Sign Up button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
+                    >
                       <Button
                         text="SIGN UP"
                         color="white"
@@ -305,15 +349,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
               {/* tile 2 container */}
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(2, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3> Contribute code</h3>
                       <ul>
                         <li>100% open source</li>
@@ -327,6 +369,13 @@ export default function Home() {
                       target="_blank"
                       rel="noopener noreferrer"
                       style={{ textDecoration: "none" }}
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked View on Github button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
                     >
                       <div className="app__button--white welcome__button--desktop welcome__github-button">
                         <img
@@ -339,15 +388,13 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
               {/* tile 3 container */}
               <div className="welcome__desktop-button-tile-container">
-                <span></span>
                 <div>
                   {numberCircle(3, "small")}
                   <div className="welcome__desktop-button-tile">
-                    <div>
+                    <div className="welcome__desktop-button-tile-copy">
                       <h3>Support the mission</h3>
                       <ul>
                         <li>Propose features</li>
@@ -357,9 +404,16 @@ export default function Home() {
                       </ul>
                     </div>
                     <a
-                      href="https://learn.trusat.org"
+                      href="https://learn.trusat.org/docs/participate#3-support-the-mission"
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={() => {
+                        ReactGA.event({
+                          category: "Onboarding",
+                          action: "Clicked Learn More button",
+                          label: "On Welcome page -- Desktop",
+                        });
+                      }}
                     >
                       <Button
                         text="LEARN MORE"
@@ -369,7 +423,6 @@ export default function Home() {
                     </a>
                   </div>
                 </div>
-                <span></span>
               </div>
             </div>
           </div>
@@ -408,7 +461,18 @@ export default function Home() {
                     Use your naked eye, or connect your camera with software.
                   </li>
                 </ul>
-                <a href="/signup" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="/signup"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Sign Up button",
+                      label: "On Welcome page -- Desktop",
+                    });
+                  }}
+                >
                   <Button
                     text="SIGN UP"
                     color="white"
@@ -431,6 +495,13 @@ export default function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{ textDecoration: "none" }}
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked View on Github button",
+                      label: "On Welcome page -- Mobile",
+                    });
+                  }}
                 >
                   <div className="app__button--white  welcome__button--mobile welcome__button--mobile-wide welcome__github-button">
                     <img
@@ -455,9 +526,16 @@ export default function Home() {
                   </ul>
                 </div>
                 <a
-                  href="https://learn.trusat.org/docs/start-here.html"
+                  href="https://learn.trusat.org/docs/start-here.htmlhttps://learn.trusat.org/docs/participate#3-support-the-mission"
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Learn More button",
+                      label: "On Welcome page -- Mobile",
+                    });
+                  }}
                 >
                   {" "}
                   <Button
@@ -488,6 +566,13 @@ export default function Home() {
                 href="https://discuss.trusat.org"
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => {
+                  ReactGA.event({
+                    category: "Onboarding",
+                    action: "Clicked Join The Forum button",
+                    label: "On Welcome page",
+                  });
+                }}
               >
                 <Button
                   text="JOIN THE FORUM"
@@ -497,6 +582,11 @@ export default function Home() {
               </a>
             </div>
           </div>
+        </div>
+
+        <div className="welcome__section-five-spacer">
+          <span></span>
+          <span className="welcome__border-left welcome__hide-on-mobile"></span>
         </div>
 
         <div className="welcome__section-five-bottom">
@@ -510,7 +600,17 @@ export default function Home() {
             <h2>More about TruSat</h2>
             <ul>
               <li>
-                <a className="app__link" href="/about">
+                <a
+                  className="app__link"
+                  href="/about"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Overview link",
+                      label: "On Welcome page",
+                    });
+                  }}
+                >
                   Overview
                 </a>
               </li>
@@ -518,6 +618,13 @@ export default function Home() {
                 <a
                   className="app__link"
                   href="https://learn.trusat.org/docs/start-here.html"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked Deep Dive link",
+                      label: "On Welcome page",
+                    });
+                  }}
                 >
                   Deep dive
                 </a>
@@ -526,6 +633,13 @@ export default function Home() {
                 <a
                   className="app__link"
                   href="https://learn.trusat.org/docs/FAQ"
+                  onClick={() => {
+                    ReactGA.event({
+                      category: "Onboarding",
+                      action: "Clicked FAQ link",
+                      label: "On Welcome page",
+                    });
+                  }}
                 >
                   Frequently asked questions
                 </a>
@@ -535,7 +649,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="welcome__blue-background">
+      <section className="welcome__blue-background welcome__back-to-top-container welcome__hide-on-desktop">
         <p
           className="welcome__back-to-top"
           onClick={() => window.scrollTo(0, 0)}

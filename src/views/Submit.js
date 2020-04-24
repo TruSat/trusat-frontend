@@ -33,7 +33,7 @@ export default function Submit() {
             </p>
             <a
               className="app__nav-link submit__link-text"
-              href="https://learn.trusat.org/docs/high-level-guide"
+              href="https://learn.trusat.org/docs/guide"
               target="_blank"
               rel="noopener noreferrer"
             >

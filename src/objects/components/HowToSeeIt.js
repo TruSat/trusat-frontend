@@ -11,7 +11,7 @@ export default function HowToSeeIt() {
       <p className="object-info__link-text">
         <a
           className="object-info__link-text app__link--lowlight"
-          href="https://learn.trusat.org/docs/high-level-guide"
+          href="https://learn.trusat.org/docs/guide"
           target="_blank"
           rel="noopener noreferrer"
         >
