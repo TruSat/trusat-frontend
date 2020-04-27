@@ -131,8 +131,6 @@ export default function Home() {
             <div className="welcome__desktop-section-three-content-left--bottom">
               <a
                 href="https://learn.trusat.org/docs/guide"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => {
                   ReactGA.event({
                     category: "Onboarding",
@@ -264,8 +262,6 @@ export default function Home() {
               <p>Join TruSat’s forum to receive updates on the project.</p>
               <a
                 href="https://discuss.trusat.org"
-                target="_blank"
-                rel="noopener noreferrer"
                 onClick={() => {
                   ReactGA.event({
                     category: "Onboarding",

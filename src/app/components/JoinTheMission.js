@@ -162,8 +162,6 @@ export default function JoinTheMission({ view }) {
                     </div>
                     <a
                       href="https://learn.trusat.org/docs/participate#3-support-the-mission"
-                      target="_blank"
-                      rel="noopener noreferrer"
                       onClick={() => {
                         ReactGA.event({
                           category: "Onboarding",
@@ -284,8 +282,6 @@ export default function JoinTheMission({ view }) {
                 </div>
                 <a
                   href="https://learn.trusat.org/docs/start-here.htmlhttps://learn.trusat.org/docs/participate#3-support-the-mission"
-                  target="_blank"
-                  rel="noopener noreferrer"
                   onClick={() => {
                     ReactGA.event({
                       category: "Onboarding",
