@@ -7,7 +7,7 @@ import {
   retrieveNonce,
   signMessage,
   retrieveLoginCredentials,
-  decryptSecret
+  decryptSecret,
 } from "../auth-helpers";
 
 export default function LoginForm() {
@@ -45,7 +45,7 @@ export default function LoginForm() {
       // dont send email to backend on log in - not required for auth
       email: null,
       address: wallet.signingKey.address,
-      signedMessage: signedMessage
+      signedMessage: signedMessage,
     });
     // do not attempt to hit /profile unless auth hasn't expired
     if (!loginCredentials) {
@@ -56,12 +56,12 @@ export default function LoginForm() {
     // Add address to auth state
     authDispatch({
       type: "SET_USER_ADDRESS",
-      payload: wallet.signingKey.address
+      payload: wallet.signingKey.address,
     });
     // Add expiry date of auth to auth state
     authDispatch({
       type: "SET_AUTH_EXPIRY",
-      payload: loginCredentials.exp
+      payload: loginCredentials.exp,
     });
     authDispatch({ type: "SET_AUTH_TYPE", payload: "email" });
     // add login crednetials to local storage so user will stayed logged in until expiry
@@ -78,7 +78,7 @@ export default function LoginForm() {
   ) : (
     <form
       className="app__form"
-      onSubmit={event => {
+      onSubmit={(event) => {
         event.preventDefault();
         handleLogin();
       }}
@@ -88,7 +88,7 @@ export default function LoginForm() {
         required
         type="email"
         className="app__form__input"
-        onChange={event => setEmail(event.target.value)}
+        onChange={(event) => setEmail(event.target.value)}
         value={email}
       />
 
@@ -97,7 +97,7 @@ export default function LoginForm() {
         required
         type="password"
         className="app__form__input"
-        onChange={event => setPassword(event.target.value)}
+        onChange={(event) => setPassword(event.target.value)}
         value={password}
       />
 
@@ -106,7 +106,7 @@ export default function LoginForm() {
         required
         type="text"
         className="app__form__input"
-        onChange={event => setSecret(event.target.value)}
+        onChange={(event) => setSecret(event.target.value)}
         value={secret}
       />
 
@@ -117,11 +117,11 @@ export default function LoginForm() {
         </div>
       ) : null}
 
-      <div className="app__form__button-wrapper">
+      <div className="app__form-button-wrapper">
         <NavLink className="app__nav-link" to="/">
-          <span className="app__form__button--cancel">Cancel</span>
+          <span className="app__form-button--cancel">Cancel</span>
         </NavLink>
-        <button className="app__form__button--white">
+        <button className="app__form-button--white">
           {isAuthenticating ? "...Loading" : "Log in"}
         </button>
       </div>

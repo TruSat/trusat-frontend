@@ -2,7 +2,19 @@
 
 # trusat-frontend
 
-[TruSat](https://trusat.org) is an open-source space sustainability tool created by the team at [ConsenSys Space](https://consensys.space).
+## An open-source space sustainability tool
+
+<img align="right" width="250" height="250" src="https://trusat-assets.s3.amazonaws.com/trusat-posat-animation-540x540.gif">
+
+
+[TruSat](https://trusat.org) is a citizen-powered satellite catalog, crowdsourcing observations of satellites to form an independent record of objects orbiting Earth.
+
+This repo contains the frontend code for TruSat’s [catalog app](https://trusat.org/catalog/priorities), providing citizen-scientists with orbit predictions to help them spot satellites and capture data. Anyone can submit their own satellite observations to automatically update the catalog’s orbit predictions.
+
+- Visit [TruSat.org](https://trusat.org) to see the live app
+- View the [docs](http://learn.trusat.org/) to learn more about the project
+- Join the [Discord](https://discord.gg/HfT62G) to follow the development discussion
+
 
 ## Get Started
 
@@ -16,6 +28,9 @@ yarn install && yarn start
 ```
 
 Open http://localhost:3000 to view it in the browser. The page will automatically reload if you make changes to the code.
+
+<img src="https://trusat-assets.s3.amazonaws.com/trusat-readmes-catalog_comp-200424.jpg">
+
 
 ## Structure
 
@@ -43,7 +58,6 @@ trusat-frontend
             ├── NavBar.js
             ├── ObjectBadge.js
             ├── Partners.js
-            ├── RoundedButton.js
             ├── ScrollToTop.js
             ├── SocialIcons.js
             ├── Spinner.js

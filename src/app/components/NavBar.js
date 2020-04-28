@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { useAuthState } from "../../auth/auth-context";
 import { withRouter } from "react-router-dom";
-import JoinButton from "./JoinButton";
+import Button from "./Button";
 import { NavLink } from "react-router-dom";
 import TrusatLogoSmallWhite from "../../assets/TrusatLogoSmallWhite.svg";
 import IconUser from "../../assets/icon-user.svg";
@@ -33,7 +33,7 @@ function NavBar(props) {
             <NavLink
               className={
                 path === "/"
-                  ? "app__nav-link nav-bar__link--highlight--welcome"
+                  ? "app__nav-link nav-bar__link--highlight"
                   : "app__nav-link nav-bar__link--lowlight"
               }
               to="/"
@@ -170,11 +170,15 @@ function NavBar(props) {
                 ReactGA.event({
                   category: "Onboarding",
                   action: "Clicked join button",
-                  label: "Nav Bar join button"
+                  label: "Nav Bar join button",
                 });
               }}
             >
-              <JoinButton path={path} />
+              <Button
+                text="JOIN"
+                color="orange"
+                addStyles="nav-bar__join-button"
+              />
             </NavLink>
           </Fragment>
         ) : (

@@ -6,7 +6,7 @@ import {
   retrieveNonce,
   signMessage,
   signUp,
-  createSecret
+  createSecret,
 } from "../auth-helpers";
 import { useAuthState, useAuthDispatch } from "../auth-context";
 
@@ -56,7 +56,7 @@ export default function SignupForm({ setIsSuccess }) {
       // get unique nonce from server which will be signed by the users private key
       const nonce = await retrieveNonce({
         email: email,
-        address: wallet.signingKey.address
+        address: wallet.signingKey.address,
       });
       // undefined is returned if user has already signed up with this email address
       if (nonce === undefined) {
@@ -77,7 +77,7 @@ export default function SignupForm({ setIsSuccess }) {
         email: email,
         address: wallet.signingKey.address,
         signedMessage: signedMessage,
-        secret: secret
+        secret: secret,
       });
       // If secret is emailed, direct user to their email account to verify ownership
       if (signUpSuccess) {
@@ -99,7 +99,7 @@ export default function SignupForm({ setIsSuccess }) {
       <form
         className="app__form"
         name="auth-form"
-        onSubmit={event => {
+        onSubmit={(event) => {
           event.preventDefault();
           handleSignup();
         }}
@@ -132,7 +132,7 @@ export default function SignupForm({ setIsSuccess }) {
           required
           className="app__form__input"
           type="email"
-          onChange={event => setEmail(event.target.value)}
+          onChange={(event) => setEmail(event.target.value)}
           value={email}
         />
 
@@ -141,7 +141,7 @@ export default function SignupForm({ setIsSuccess }) {
           required
           className="app__form__input"
           type="password"
-          onChange={event => setPassword(event.target.value)}
+          onChange={(event) => setPassword(event.target.value)}
           value={password}
         />
         {showInvalidPasswordError ? (
@@ -171,7 +171,7 @@ export default function SignupForm({ setIsSuccess }) {
           required
           className="app__form__input"
           type="password"
-          onChange={event => setRetypedPassword(event.target.value)}
+          onChange={(event) => setRetypedPassword(event.target.value)}
           value={retypedPassword}
         />
         {showUnmatchedPasswordError ? (
@@ -180,12 +180,12 @@ export default function SignupForm({ setIsSuccess }) {
           </div>
         ) : null}
 
-        <div className="app__form__button-wrapper">
+        <div className="app__form-button-wrapper">
           <NavLink className="app__nav-link" to="/">
-            <span className="app__form__button--cancel">Cancel</span>
+            <span className="app__form-button--cancel">Cancel</span>
           </NavLink>
 
-          <button type="submit" className="app__form__button--white">
+          <button type="submit" className="app__form-button--white">
             {isAuthenticating ? "...Loading" : "Sign Up"}
           </button>
         </div>
