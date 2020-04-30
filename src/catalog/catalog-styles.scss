@@ -4,15 +4,21 @@ CATALOG
 .catalog__wrapper {
   border: 1px solid red;
   margin: 2em 1em;
-  max-width: 1000px;
+  max-width: 1400px;
 }
 
 .catalog__header-wrapper {
   border: 1px solid red;
   align-items: center;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+  //display: flex;
+  //flex-direction: row;
+  display: grid;
+  grid-template-columns: 10fr 1fr 5fr;
+  //justify-content: space-between;
+}
+
+.catalog__header-wrapper span {
+  border: 2px dotted red;
 }
 
 .catalog__header {
@@ -21,7 +27,6 @@ CATALOG
 
 .catalog__header-buttons-wrapper {
   border: 1px solid red;
-  margin-top: 3.25em;
 }
 
 @media (min-width: 600px) {
@@ -43,22 +48,29 @@ CATALOG
 
 // wrap on ipad view
 .catalog__nav-bar-how-to-wrapper {
-  border: 1px solid red;
-  display: flex;
-  flex-wrap: wrap;
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 10fr 1fr 5fr;
+  // display: flex;
+  // flex-wrap: wrap;
   margin-bottom: 3em;
+}
+
+.catalog__nav-bar-how-to-wrapper span {
+  border: 2px dotted red;
 }
 
 @media (min-width: 800px) {
   .catalog__nav-bar-how-to-wrapper {
-    flex-wrap: nowrap;
+    // display: grid;
+    // grid-template-columns: 10fr 1fr 5fr;
   }
 }
 
 @media (min-width: 800px) {
   .catalog__nav-bar-how-to-wrapper {
-    display: flex;
-    flex-wrap: no-wrap;
+    // display: flex;
+    // flex-wrap: no-wrap;
     margin-bottom: 3em;
   }
 }
@@ -90,7 +102,6 @@ CATALOG NAV BAR
     display: flex;
     flex: 1;
     justify-content: column;
-    margin: 0em 5em 0em 0;
   }
 }
 
@@ -231,7 +242,7 @@ HOW TO PARTICIPATE
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
-    width: 230px;
+    //width: 230px;
   }
 
   .catalog__button {
@@ -267,7 +278,7 @@ HOW TO PARTICIPATE
 
 @media (min-width: 600px) {
   .catalog__get-data-button {
-    margin-left: 1em;
+    //margin-left: 1em;
   }
 }
 
@@ -291,6 +302,16 @@ HOW TO PARTICIPATE
 .catalog__link--lowlight:hover {
   color: $primary-text-color;
   text-decoration: underline;
+}
+
+.catalog__table-activity-wrapper {
+  border: 1px solid white;
+  display: grid;
+  grid-template-columns: 10fr 1fr 5fr;
+}
+
+.catalog__table-activity-wrapper span {
+  border: 2px dotted red;
 }
 
 /* ----------
@@ -393,4 +414,5 @@ ACTIVITY MONITOR
 ---------- */
 .activity-monitor {
   border: 2px dotted yellow;
+  //width: 230px;
 }

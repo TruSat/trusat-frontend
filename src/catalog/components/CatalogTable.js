@@ -89,7 +89,7 @@ export default function CatalogTable({
   };
 
   return (
-    <Fragment>
+    <div>
       {catalogObjects.length !== 0 ? (
         <table className="table">
           <thead className="table__header">
@@ -129,6 +129,6 @@ export default function CatalogTable({
           setDataStart={setDataStart}
         />
       ) : null}
-    </Fragment>
+    </div>
   );
 }

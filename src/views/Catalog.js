@@ -37,6 +37,8 @@ function Catalog({ match }) {
     <div className="catalog__wrapper">
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
+        {/* Grid spacing */}
+        <span />
         <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
           {/* show the download button after it is confirmed tles are available for download */}
           {isLoading ? null : (
@@ -74,13 +76,12 @@ function Catalog({ match }) {
             setTleCount={setTleCount}
           />
         </div>
+        <span />
         {/* Shown on desktop */}
         <div className="app__show-on-desktop">
           <HowToParticipate catalogFilter={catalogFilter} />
         </div>
       </section>
-
-      <ActivityMonitor />
 
       {isLoading ? (
         <Spinner />
@@ -91,16 +92,20 @@ function Catalog({ match }) {
               Something went wrong... {errorMessage}
             </p>
           ) : (
-            <CatalogTable
-              catalogFilter={catalogFilter}
-              catalogObjects={objects}
-              isLoading={isLoading}
-              errorMessage={errorMessage}
-              range={range}
-              setRange={setRange}
-              dataStart={dataStart}
-              setDataStart={setDataStart}
-            />
+            <div className="catalog__table-activity-wrapper">
+              <CatalogTable
+                catalogFilter={catalogFilter}
+                catalogObjects={objects}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                range={range}
+                setRange={setRange}
+                dataStart={dataStart}
+                setDataStart={setDataStart}
+              />
+              <span />
+              <ActivityMonitor />
+            </div>
           )}
         </Fragment>
       )}
