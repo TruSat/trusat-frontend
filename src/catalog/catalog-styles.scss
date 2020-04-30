@@ -2,11 +2,13 @@
 CATALOG
 ---------- */
 .catalog__wrapper {
+  border: 1px solid red;
   margin: 2em 1em;
   max-width: 1000px;
 }
 
 .catalog__header-wrapper {
+  border: 1px solid red;
   align-items: center;
   display: flex;
   flex-direction: row;
@@ -18,13 +20,14 @@ CATALOG
 }
 
 .catalog__header-buttons-wrapper {
+  border: 1px solid red;
   margin-top: 3.25em;
 }
 
 @media (min-width: 600px) {
   .catalog__wrapper {
     margin: 0 auto;
-    padding: 0 2em;
+    //padding: 0 2em;
   }
   .catalog__header {
     @include view-title--desktop;
@@ -40,6 +43,7 @@ CATALOG
 
 // wrap on ipad view
 .catalog__nav-bar-how-to-wrapper {
+  border: 1px solid red;
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 3em;
@@ -76,6 +80,7 @@ CATALOG NAV DROPDOWN
 CATALOG NAV BAR
 ---------- */
 .catalog-nav-bar__wrapper {
+  border: 1px solid white;
   display: none;
 }
 
@@ -381,4 +386,11 @@ CATALOG TABLE
   .table-paginator {
     margin: 2.5em;
   }
+}
+
+/* ----------
+ACTIVITY MONITOR
+---------- */
+.activity-monitor {
+  border: 2px dotted yellow;
 }

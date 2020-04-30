@@ -7,6 +7,7 @@ import CatalogTable from "../catalog/components/CatalogTable";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 import HowToParticipate from "../catalog/components/HowToParticipate";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
+import ActivityMonitor from "../catalog/components/ActivityMonitor";
 import { NavLink } from "react-router-dom";
 
 function Catalog({ match }) {
@@ -53,6 +54,7 @@ function Catalog({ match }) {
         </div>
       </div>
 
+      {/* Mobile Navigation of Catalog */}
       <CatalogNavDropdown
         catalogFilter={catalogFilter}
         setRange={setRange}
@@ -61,6 +63,7 @@ function Catalog({ match }) {
 
       <section className="catalog__nav-bar-how-to-wrapper">
         <div>
+          {/* Desktop navigation of Catalog */}
           <CatalogNavBar
             isLoadingCatalog={isLoading}
             catalogFilter={catalogFilter}
@@ -76,6 +79,8 @@ function Catalog({ match }) {
           <HowToParticipate catalogFilter={catalogFilter} />
         </div>
       </section>
+
+      <ActivityMonitor />
 
       {isLoading ? (
         <Spinner />
