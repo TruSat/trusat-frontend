@@ -38,8 +38,8 @@ function Catalog({ match }) {
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
         {/* Grid spacing */}
-        <span />
-        <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
+        <span className="app__show-on-desktop" />
+        <div className="catalog__header-buttons-wrapper app__show-on-desktop">
           {/* show the download button after it is confirmed tles are available for download */}
           {isLoading ? null : (
             <DownloadCatalogFilterTleButton
@@ -56,12 +56,16 @@ function Catalog({ match }) {
         </div>
       </div>
 
-      {/* Mobile Navigation of Catalog */}
-      <CatalogNavDropdown
-        catalogFilter={catalogFilter}
-        setRange={setRange}
-        setDataStart={setDataStart}
-      />
+      {/* Shown on mobile  */}
+      <section className="app__show-on-mobile">
+        <HowToParticipate catalogFilter={catalogFilter} />
+        {/* Mobile Navigation of Catalog */}
+        <CatalogNavDropdown
+          catalogFilter={catalogFilter}
+          setRange={setRange}
+          setDataStart={setDataStart}
+        />
+      </section>
 
       <section className="catalog__nav-bar-how-to-wrapper">
         <div>
@@ -76,6 +80,7 @@ function Catalog({ match }) {
             setTleCount={setTleCount}
           />
         </div>
+        {/* Grid spacing */}
         <span />
         {/* Shown on desktop */}
         <div className="app__show-on-desktop">
@@ -103,16 +108,13 @@ function Catalog({ match }) {
                 dataStart={dataStart}
                 setDataStart={setDataStart}
               />
-              <span />
+              {/* Grid spacing */}
+              <span className="app__show-on-desktop" />
               <ActivityMonitor />
             </div>
           )}
         </Fragment>
       )}
-      {/* Shown on mobile  */}
-      <section className="app__show-on-mobile">
-        <HowToParticipate catalogFilter={catalogFilter} />
-      </section>
     </div>
   );
 }

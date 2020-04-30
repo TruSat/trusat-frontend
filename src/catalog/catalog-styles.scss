@@ -2,23 +2,18 @@
 CATALOG
 ---------- */
 .catalog__wrapper {
-  border: 1px solid red;
+  //border: 1px solid white;
   margin: 2em 1em;
   max-width: 1400px;
 }
 
 .catalog__header-wrapper {
-  border: 1px solid red;
+  //border: 1px solid red;
   align-items: center;
-  //display: flex;
-  //flex-direction: row;
-  display: grid;
-  grid-template-columns: 10fr 1fr 5fr;
-  //justify-content: space-between;
 }
 
 .catalog__header-wrapper span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
 .catalog__header {
@@ -26,51 +21,66 @@ CATALOG
 }
 
 .catalog__header-buttons-wrapper {
-  border: 1px solid red;
+  display: none;
 }
 
+// iPad / Desktop
 @media (min-width: 600px) {
   .catalog__wrapper {
     margin: 0 auto;
-    //padding: 0 2em;
+    padding: 0em 1em;
   }
+
+  .catalog__header-wrapper {
+    //border: 1px solid red;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 16fr 1fr 7fr;
+  }
+
+  .catalog__header-buttons-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    //border: 1px solid red;
+  }
+
   .catalog__header {
     @include view-title--desktop;
     margin: 0.5em 0;
   }
 }
 
+// Tablet
 @media (max-width: 600px) {
   .catalog__nav-bar-how-to-wrapper {
     flex-wrap: nowrap;
   }
 }
 
-// wrap on ipad view
 .catalog__nav-bar-how-to-wrapper {
-  border: 1px solid white;
-  display: grid;
-  grid-template-columns: 10fr 1fr 5fr;
-  // display: flex;
-  // flex-wrap: wrap;
+  //border: 1px solid yellow;
+  display: flex;
+  flex-direction: column-reverse; // flips the "what is this" section above the NavBar on ipad
   margin-bottom: 3em;
 }
 
 .catalog__nav-bar-how-to-wrapper span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog__nav-bar-how-to-wrapper {
-    // display: grid;
-    // grid-template-columns: 10fr 1fr 5fr;
+    //border: 1px solid yellow;
+    display: grid;
+    grid-template-columns: 16fr 1fr 7fr;
+    margin-bottom: 3em;
   }
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog__nav-bar-how-to-wrapper {
-    // display: flex;
-    // flex-wrap: no-wrap;
     margin-bottom: 3em;
   }
 }
@@ -82,6 +92,7 @@ CATALOG NAV DROPDOWN
   margin: 1em 0;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .catalog-nav-dropdown__wrapper {
     display: none;
@@ -92,10 +103,11 @@ CATALOG NAV DROPDOWN
 CATALOG NAV BAR
 ---------- */
 .catalog-nav-bar__wrapper {
-  border: 1px solid white;
+  //border: 1px solid white;
   display: none;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .catalog-nav-bar__wrapper {
     border-bottom: 1px solid $secondary-theme-color;
@@ -147,6 +159,7 @@ CATALOG NAV BAR
   left: -1px;
 }
 
+// Ipad
 @media (max-width: 1000px) {
   .catalog__icon {
     display: none;
@@ -157,6 +170,7 @@ CATALOG NAV BAR
   display: inline-block;
 }
 
+// Desktop
 @media (min-width: 1000px) {
   .catalog-filter-label {
     padding-left: 4px;
@@ -225,6 +239,7 @@ CATALOG FILTER DESCRIPTION
   margin: 0.5em 0em 1em 0em;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .catalog__filter-description {
     @include body-text--large-desktop;
@@ -236,13 +251,23 @@ CATALOG FILTER DESCRIPTION
 HOW TO PARTICIPATE
 ---------- */
 .catalog__how-to-wrapper {
-  margin: 5em 0;
+  border: 1px solid red;
+  margin-bottom: 2em;
+  margin-top: 2em;
 }
 
-@media (min-width: 600px) {
+// iPad
+@media (min-width: 600px) and (max-width: 800px) {
+  .catalog__how-to-wrapper {
+    margin-top: 0;
+    margin-bottom: 4em;
+  }
+}
+
+// Desktop
+@media (min-width: 800px) {
   .catalog__how-to-wrapper {
     margin: 0;
-    //width: 230px;
   }
 
   .catalog__button {
@@ -276,9 +301,9 @@ HOW TO PARTICIPATE
   color: $primary-text-color;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .catalog__get-data-button {
-    //margin-left: 1em;
   }
 }
 
@@ -305,22 +330,41 @@ HOW TO PARTICIPATE
 }
 
 .catalog__table-activity-wrapper {
-  border: 1px solid white;
-  display: grid;
-  grid-template-columns: 10fr 1fr 5fr;
+  //border: 1px solid yellow;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .catalog__table-activity-wrapper span {
-  border: 2px dotted red;
+  //border: 2px dotted red;
+}
+
+// Desktop
+@media (min-width: 800px) {
+  .catalog__table-activity-wrapper {
+    //border: 1px solid yellow;
+    display: grid;
+    grid-template-columns: 16fr 1fr 7fr;
+  }
+
+  .catalog__table-activity-wrapper span {
+    //border: 2px dotted red;
+  }
 }
 
 /* ----------
 CATALOG TABLE
 ---------- */
+.catalog-table-wrapper {
+  //border: 1px solid red;
+  width: 100%;
+}
+
 .table__table-data--big_rows {
   padding: 1.5em 1em 1.5em 0em;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .table__body-row:first-of-type td {
     padding-top: 1.5em;
@@ -336,6 +380,7 @@ CATALOG TABLE
   min-width: 1.25em;
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog-table__object-data-wrapper--priority-rank {
     flex-basis: 3.75em;
@@ -351,6 +396,7 @@ CATALOG TABLE
   // border: 1px solid white;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .catalog-table__object-data-wrapper--object-name {
     font-size: $small-font-size;
@@ -358,6 +404,7 @@ CATALOG TABLE
   }
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog-table__object-data-wrapper--object-name {
     flex-basis: 15em;
@@ -367,6 +414,7 @@ CATALOG TABLE
   }
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog-table__table-data--purpose-wrapper {
     padding-right: 3em;
@@ -375,6 +423,7 @@ CATALOG TABLE
   }
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog-table__table-data--origin-wrapper {
     padding-right: 3em;
@@ -385,6 +434,7 @@ CATALOG TABLE
   padding-right: 0;
 }
 
+// Desktop
 @media (min-width: 800px) {
   .catalog-table__table-data--username-wrapper {
     min-width: 7.5em;
@@ -403,6 +453,7 @@ CATALOG TABLE
   margin: 1.5em;
 }
 
+// Tablet
 @media (min-width: 600px) {
   .table-paginator {
     margin: 2.5em;
@@ -414,5 +465,5 @@ ACTIVITY MONITOR
 ---------- */
 .activity-monitor {
   border: 2px dotted yellow;
-  //width: 230px;
+  width: 100%;
 }

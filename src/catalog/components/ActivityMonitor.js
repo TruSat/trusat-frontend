@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useTrusatGetApi } from "../../app/app-helpers";
+import Spinner from "../../app/components/Spinner";
 
 const data = {
   total_sat_count: 4282,
@@ -21,8 +23,18 @@ const data = {
 };
 
 export default function ActivityMonitor() {
-  return (
-    <div class="activity-monitor">
+  // const [{ data, isLoading, errorMessage }, doFetch] = useTrusatGetApi();
+
+  // useEffect(() => {
+  //   if (data.length === 0) {
+  //     doFetch("/catalogActivity");
+  //   }
+
+  //   console.log(data);
+  // });
+
+  return data ? (
+    <div className="activity-monitor">
       <section>
         <h1>STATS</h1>
         <div>
@@ -36,17 +48,23 @@ export default function ActivityMonitor() {
       </section>
       <section>
         <h1>RECENT OBSERVATIONS</h1>
-        {data.recent_obs.map((ob) => (
-          <div>
+        {data.recent_obs.map((ob, postion) => (
+          <div key={postion}>
             <p>{ob.sat_name}</p>
             <p>{ob.user_name}</p>
           </div>
         ))}
       </section>
-      <section>COMMUNITY GOAL</section>
-      <p>{data.current_month_obs_count} OBSERVATIONS IN *Insert Month name*</p>
-      <div>GRAPHIC HERE</div>
-      <p>1 MONTH RECORD: {data.record_month_obs_count}</p>
+      <section>
+        <h1>COMMUNITY GOAL</h1>
+        <p>
+          {data.current_month_obs_count} OBSERVATIONS IN *Insert Month name*
+        </p>
+        <div>GRAPHIC HERE</div>
+        <p>1 MONTH RECORD: {data.record_month_obs_count}</p>
+      </section>
     </div>
+  ) : (
+    <Spinner />
   );
 }
