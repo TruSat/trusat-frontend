@@ -251,7 +251,7 @@ CATALOG FILTER DESCRIPTION
 HOW TO PARTICIPATE
 ---------- */
 .catalog__how-to-wrapper {
-  border: 1px solid red;
+  //border: 1px solid red;
   margin-bottom: 2em;
   margin-top: 2em;
 }
@@ -279,7 +279,7 @@ HOW TO PARTICIPATE
   }
 }
 
-.catalog__how-to-text {
+.catalog__sub-header {
   border-bottom: 1px solid $secondary-theme-color;
   @include section-title;
   margin-bottom: 1em;
@@ -298,7 +298,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__link {
-  color: $primary-text-color;
+  color: $primary-highlight-color;
 }
 
 // Tablet
@@ -320,7 +320,7 @@ HOW TO PARTICIPATE
 }
 
 .catalog__link--lowlight {
-  color: $secondary-theme-color;
+  color: $primary-highlight-color;
   text-decoration: underline;
 }
 
@@ -466,4 +466,58 @@ ACTIVITY MONITOR
 .activity-monitor {
   border: 2px dotted yellow;
   width: 100%;
+}
+
+.activity-monitor__section {
+  border: 1px solid red;
+  margin-bottom: 2em;
+}
+
+.activity-monitor__stats-wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.activity-monitor__stat-wrapper {
+  display: flex;
+}
+
+.activity-monitor__stat-wrapper img {
+  margin-right: 0.5em;
+}
+
+.activity-monitor__stat-number {
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.activity-monitor__stat-title {
+  color: #848890;
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 14px;
+}
+
+.activity-monitor__recent-obs-row {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1em;
+}
+
+.activity-monitor__recent-obs-sat-name {
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 125%;
+  text-transform: uppercase;
+}
+
+.activity-monitor__recent-obs-user-name {
+  font-family: Montserrat;
+  font-size: 12px;
+  line-height: 125%;
 }
