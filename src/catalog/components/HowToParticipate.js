@@ -11,7 +11,7 @@ export default function HowToParticipate({ catalogFilter }) {
         orbit predictions to help you spot satellites. Submit your own
         observations to automatically update the catalog.{` `}
         <a
-          className="catalog__link--lowlight app__link app__nav-link"
+          className="catalog__link"
           href="https://learn.trusat.org/docs/guide"
           target="_blank"
           rel="noopener noreferrer"

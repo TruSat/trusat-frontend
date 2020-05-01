@@ -301,6 +301,10 @@ HOW TO PARTICIPATE
   color: $primary-highlight-color;
 }
 
+.catalog__link:hover {
+  color: $primary-text-color;
+}
+
 // Tablet
 @media (min-width: 600px) {
   .catalog__get-data-button {
@@ -317,6 +321,14 @@ HOW TO PARTICIPATE
 .catalog__sidebar-text {
   color: $secondary-theme-color;
   line-height: 20px;
+  margin-bottom: 1em;
+}
+
+// Tablet
+@media (min-width: 600px) {
+  .catalog__sidebar-text {
+    margin-bottom: none;
+  }
 }
 
 .catalog__link--lowlight {
@@ -464,12 +476,20 @@ CATALOG TABLE
 ACTIVITY MONITOR
 ---------- */
 .activity-monitor {
-  border: 2px dotted yellow;
+  //border: 2px dotted yellow;
+  margin-top: 3em;
   width: 100%;
 }
 
+// Desktop
+@media (min-width: 800px) {
+  .activity-monitor {
+    margin-top: 0;
+  }
+}
+
 .activity-monitor__section {
-  border: 1px solid red;
+  //border: 1px solid red;
   margin-bottom: 2em;
 }
 
@@ -520,4 +540,43 @@ ACTIVITY MONITOR
   font-family: Montserrat;
   font-size: 12px;
   line-height: 125%;
+}
+
+.activity-monitor__community-stats-container {
+  align-items: flex-end;
+  color: #848890;
+  display: flex;
+  font-family: Roboto;
+  font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 1em;
+}
+
+.activity-monitor__current-month-number {
+  color: $primary-highlight-color;
+  font-family: Roboto;
+  font-weight: 300;
+  font-size: 24px;
+  //line-height: 28px;
+  margin-right: 0.25em;
+}
+
+.activity-monitor__community-graphic-wrapper {
+  border-right: 2px solid #848890;
+}
+
+.activity-monitor__community-graphic {
+  border: 1px solid #848890;
+  border-right: none;
+  height: 84px;
+  margin-bottom: 1em;
+}
+
+.activity-monitor__community-stats-container--bottom {
+  justify-content: flex-end;
+}
+
+.activity-monitor__one-month-record-number {
+  color: white;
+  margin-right: 1em;
 }

@@ -141,11 +141,33 @@ export default function ActivityMonitor() {
 
       <section className="activity-monitor__section">
         <h2 className="catalog__sub-header">COMMUNITY GOAL</h2>
-        <p>
-          {data.current_month_obs_count} OBSERVATIONS IN *Insert Month name*
-        </p>
-        <div>GRAPHIC HERE</div>
-        <p>1 MONTH RECORD: {data.record_month_obs_count}</p>
+        <div className="activity-monitor__community-stats-container">
+          <p className="activity-monitor__current-month-number">
+            {data.current_month_obs_count}
+          </p>
+          OBSERVATIONS IN {`APRIL`}
+        </div>
+        <div className="activity-monitor__community-graphic-wrapper">
+          <div className="activity-monitor__community-graphic">
+            <div
+              // Sets width of orange graphic based on data it receives
+              style={{
+                height: "100%",
+                background: "#EC7E5F",
+                width: `${
+                  (data.current_month_obs_count / data.record_month_obs_count) *
+                  100
+                }%`,
+              }}
+            ></div>
+          </div>
+          <div className="activity-monitor__community-stats-container activity-monitor__community-stats-container--bottom">
+            1 MONTH RECORD:{" "}
+            <p className="activity-monitor__one-month-record-number">
+              {data.record_month_obs_count}
+            </p>
+          </div>
+        </div>
       </section>
     </div>
   ) : (
