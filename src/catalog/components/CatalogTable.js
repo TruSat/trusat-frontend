@@ -1,4 +1,4 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { NavLink } from "react-router-dom";
 import ObjectBadge from "../../app/components/ObjectBadge";
 import { renderFlag, toolTip, toolTipCopy } from "../../app/app-helpers";
@@ -89,7 +89,7 @@ export default function CatalogTable({
   };
 
   return (
-    <Fragment>
+    <div className="catalog-table-wrapper">
       {catalogObjects.length !== 0 ? (
         <table className="table">
           <thead className="table__header">
@@ -129,6 +129,6 @@ export default function CatalogTable({
           setDataStart={setDataStart}
         />
       ) : null}
-    </Fragment>
+    </div>
   );
 }

@@ -5,29 +5,19 @@ import DownloadCatalogFilterTleButton from "./DownloadCatalogFilterTleButton";
 export default function HowToParticipate({ catalogFilter }) {
   return (
     <div className="catalog__how-to-wrapper">
-      <h2 className="catalog__how-to-text">WHAT IS THIS?</h2>
+      <h2 className="catalog__sub-header">WHAT IS THIS?</h2>
       <p className="catalog__sidebar-text">
-        This catalog is TruSat's first app. It shows active satellite trackers
-        where satellites are going next, so trackers can add new observations.
-        The dataset was seeded by{" "}
+        This catalog is an independent record of satellite behavior. It provides
+        orbit predictions to help you spot satellites. Submit your own
+        observations to automatically update the catalog.{` `}
         <a
-          className="catalog__link--lowlight"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.satobs.org/seesat/seesatindex.html"
-        >
-          SeeSat
-        </a>
-        . Learn how to see sats{" "}
-        <a
-          className="app__nav-link catalog__link--lowlight"
+          className="catalog__link"
           href="https://learn.trusat.org/docs/guide"
           target="_blank"
           rel="noopener noreferrer"
         >
-          here
+          Learn more.
         </a>
-        .
       </p>
 
       <div className="catalog__button-wrapper app__hide-on-desktop">

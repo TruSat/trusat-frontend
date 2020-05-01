@@ -7,6 +7,7 @@ import CatalogTable from "../catalog/components/CatalogTable";
 import CatalogNavDropdown from "../catalog/components/CatalogNavDropdown";
 import HowToParticipate from "../catalog/components/HowToParticipate";
 import DownloadCatalogFilterTleButton from "../catalog/components/DownloadCatalogFilterTleButton";
+import ActivityMonitor from "../catalog/components/ActivityMonitor";
 import { NavLink } from "react-router-dom";
 
 function Catalog({ match }) {
@@ -36,7 +37,9 @@ function Catalog({ match }) {
     <div className="catalog__wrapper">
       <div className="catalog__header-wrapper">
         <h1 className="catalog__header">Catalog</h1>
-        <div className="catalog__header-buttons-wrapper app__hide-on-mobile">
+        {/* Grid spacing */}
+        <span className="app__show-on-desktop" />
+        <div className="catalog__header-buttons-wrapper app__show-on-desktop">
           {/* show the download button after it is confirmed tles are available for download */}
           {isLoading ? null : (
             <DownloadCatalogFilterTleButton
@@ -53,14 +56,20 @@ function Catalog({ match }) {
         </div>
       </div>
 
-      <CatalogNavDropdown
-        catalogFilter={catalogFilter}
-        setRange={setRange}
-        setDataStart={setDataStart}
-      />
+      {/* Shown on mobile  */}
+      <section className="app__show-on-mobile">
+        <HowToParticipate catalogFilter={catalogFilter} />
+        {/* Mobile Navigation of Catalog */}
+        <CatalogNavDropdown
+          catalogFilter={catalogFilter}
+          setRange={setRange}
+          setDataStart={setDataStart}
+        />
+      </section>
 
       <section className="catalog__nav-bar-how-to-wrapper">
         <div>
+          {/* Desktop navigation of Catalog */}
           <CatalogNavBar
             isLoadingCatalog={isLoading}
             catalogFilter={catalogFilter}
@@ -71,6 +80,8 @@ function Catalog({ match }) {
             setTleCount={setTleCount}
           />
         </div>
+        {/* Grid spacing */}
+        <span />
         {/* Shown on desktop */}
         <div className="app__show-on-desktop">
           <HowToParticipate catalogFilter={catalogFilter} />
@@ -86,23 +97,24 @@ function Catalog({ match }) {
               Something went wrong... {errorMessage}
             </p>
           ) : (
-            <CatalogTable
-              catalogFilter={catalogFilter}
-              catalogObjects={objects}
-              isLoading={isLoading}
-              errorMessage={errorMessage}
-              range={range}
-              setRange={setRange}
-              dataStart={dataStart}
-              setDataStart={setDataStart}
-            />
+            <div className="catalog__table-activity-wrapper">
+              <CatalogTable
+                catalogFilter={catalogFilter}
+                catalogObjects={objects}
+                isLoading={isLoading}
+                errorMessage={errorMessage}
+                range={range}
+                setRange={setRange}
+                dataStart={dataStart}
+                setDataStart={setDataStart}
+              />
+              {/* Grid spacing */}
+              <span className="app__show-on-desktop" />
+              <ActivityMonitor />
+            </div>
           )}
         </Fragment>
       )}
-      {/* Shown on mobile  */}
-      <section className="app__show-on-mobile">
-        <HowToParticipate catalogFilter={catalogFilter} />
-      </section>
     </div>
   );
 }
