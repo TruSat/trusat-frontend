@@ -35,6 +35,16 @@ export default function HowToParticipate({ catalogFilter }) {
             Submit observations
           </span>
         </NavLink>
+        <div className="app__nav-link">
+            <a
+          className="catalog__button catalog__get-data-button"
+          href="https://keeptrack.space/?trusat"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See orbits
+        </a>
+          </div>
       </div>
     </div>
   );

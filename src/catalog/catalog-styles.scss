@@ -223,6 +223,10 @@ HOW TO PARTICIPATE
   margin: 5em 0;
 }
 
+.catalog__button-wrapper {
+  margin-top: 2em;
+}
+
 @media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
@@ -253,6 +257,7 @@ HOW TO PARTICIPATE
   margin-bottom: 1em;
   padding: 0.5em 1em;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
 }
 
