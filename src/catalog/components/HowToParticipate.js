@@ -7,25 +7,21 @@ export default function HowToParticipate({ catalogFilter }) {
     <div className="catalog__how-to-wrapper">
       <h2 className="catalog__how-to-text">WHAT IS THIS?</h2>
       <p className="catalog__sidebar-text">
-        This catalog is TruSat's first app. It shows active satellite trackers
-        where satellites are going next, so trackers can add new observations.
-        The dataset was seeded by{" "}
-        <a
-          className="catalog__link--lowlight"
-          target="_blank"
-          rel="noopener noreferrer"
-          href="http://www.satobs.org/seesat/seesatindex.html"
-        >
-          SeeSat
-        </a>
-        . Learn how to see sats{" "}
+          This is an independent record of orbit predictions to help you spot satellites.{" "} 
+          <NavLink
+              className="app__nav-link catalog__link--lowlight"
+              to="/submit"
+            >
+              Submit
+            </NavLink>
+            {" "}your own observations to update the catalog.{" "}
         <a
           className="app__nav-link catalog__link--lowlight"
-          href="https://learn.trusat.org/docs/guide"
+          href="https://learn.trusat.org/docs/start-here.html"
           target="_blank"
           rel="noopener noreferrer"
         >
-          here
+          Learn more
         </a>
         .
       </p>
