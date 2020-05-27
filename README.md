@@ -6,7 +6,6 @@
 
 <img align="right" width="250" height="250" src="https://trusat-assets.s3.amazonaws.com/trusat-posat-animation-540x540.gif">
 
-
 [TruSat](https://trusat.org) is a citizen-powered satellite catalog, crowdsourcing observations of satellites to form an independent record of objects orbiting Earth.
 
 This repo contains the frontend code for TruSat’s [catalog app](https://trusat.org/catalog/priorities), providing citizen-scientists with orbit predictions to help them spot satellites and capture data. Anyone can submit their own satellite observations to automatically update the catalog’s orbit predictions.
@@ -15,22 +14,19 @@ This repo contains the frontend code for TruSat’s [catalog app](https://trusat
 - View the [docs](http://learn.trusat.org/) to learn more about the project
 - Join the [Discord](https://discord.gg/HfT62G) to follow the development discussion
 
-
 ## Get Started
 
-This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). You can clone the repo, checkout the `dev` branch, install all the dependencies and run the app in development mode with the following commands in your Terminal:
+This repo was bootstrapped with [create-react-app](https://github.com/facebook/create-react-app). You can clone the repo, install all the dependencies and run the app in development mode with the following commands in your Terminal:
 
 ```
 git clone https://github.com/TruSat/trusat-frontend.git trusat-frontend
 cd trusat-frontend
-git checkout --track origin/dev
 yarn install && yarn start
 ```
 
 Open http://localhost:3000 to view it in the browser. The page will automatically reload if you make changes to the code.
 
 <img src="https://trusat-assets.s3.amazonaws.com/trusat-readmes-catalog_comp-200424.jpg">
-
 
 ## Structure
 
@@ -242,7 +238,6 @@ And here are some examples:
 
 #### Branch creation to opening a PR
 
-- In command line, checkout the development branch, named “dev” with `git checkout dev` then `git pull` to ensure you have the latest development branch on your local machine
 - Referencing the branch naming convention outlined above determine the group and name for your branch then run `git checkout -b {group}/{name-of-group}` to create the new branch and check it out.
 - Commit early and commit often with clear and concise comments. All commits should remain focused in scope so try to avoid submitting PR's that contain unrelated commits.
 - Run `git push --set-upstream origin <your-new-branch>` to add your new branch to the remote repo when you feel the work completed warrants a back up.
