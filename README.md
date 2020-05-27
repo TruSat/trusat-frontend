@@ -28,175 +28,160 @@ Open http://localhost:3000 to view it in the browser. The page will automaticall
 
 <img src="https://trusat-assets.s3.amazonaws.com/trusat-readmes-catalog_comp-200424.jpg">
 
-## Structure
+## src directory
 
 ```
-trusat-frontend
-├── node_modules
-├── public
-│   ├── favicon.ico
-│   ├── index.html
-│   └── manifest.json
-└── src
-    ├── app
-        ├── components
-            ├── App.css
-            ├── BurgerMenu.js
-            ├── Button.js
-            ├── ChatIcon.js
-            ├── CookieBanner.js
-            ├── CopyText.js
-            ├── DiscourseChatIcon.js
-            ├── Footer.js
-            ├── JoinButton.js
-            ├── MailingListForm.js
-            ├── MobileHeader.js
-            ├── NavBar.js
-            ├── ObjectBadge.js
-            ├── Partners.js
-            ├── ScrollToTop.js
-            ├── SocialIcons.js
-            ├── Spinner.js
-            ├── TablePaginator.js
-            ├── TestPilots.js
-        ├── app-helpers.js
-        ├── app-styles.scss
-    ├── assets
-        ├── Arrow.svg
-        ├── CircleCheck.svg
-        ├── ConditionBad.svg
-        ├── ConditionExcellent.svg
-        ├── ConditionFair.svg
-        ├── ConditionGood.svg
-        ├── ConditionPoor.svg
-        ├── ConditionTerrible.svg
-        ├── DeleteStation.svg
-        ├── Globe.svg
-        ├── icon-arrow-up.svg
-        ├── icon-chat.svg
-        ├── icon-eye.svg
-        ├── icon-globe.svg
-        ├── icon-light.svg
-        ├── icon-location.svg
-        ├── icon-lock.svg
-        ├── icon-lowlight.svg
-        ├── icon-question.svg
-        ├── icon-relaxing.svg
-        ├── icon-rocket.svg
-        ├── icon-satellite.svg
-        ├── icon-time.svg
-        ├── icon-trash.svg
-        ├── icon-user.svg
-        ├── icon-wave.svg
-        ├── ProfileAvatar.svg
-        ├── QuestionMark.svg
-        ├── SatSymbol.svg
-        ├── SketchLarge.js
-        ├── SketchSmall.js
-        ├── TrusatLogoBig.svg
-        ├── TrusatLogoSmallBlack.svg
-        ├── TrusatLogoSmallWhite.svg
-    ├── auth
-        ├── components
-            ├── LoginForm.js
-            ├── LoginOptions.js
-            ├── MetaMask.js
-            ├── SignupForm.js
-            ├── SignupOptions.js
-        ├── auth-context.js
-        ├── auth-helpers.js
-        ├── auth-styles.scss
-        ├── auth.test.js
-    ├── catalog
-        ├── components
-            ├── CatalogNavBar.js
-            ├── CatalogNavDropdown.js
-            ├── CatalogTable.js
-            ├── DownloadCatalogFilterTleButton.js
-            ├── FilterDescription.js
-            ├── HowToParticipate.js
-        ├── catalog-styles.scss
-    ├── objects
-        ├── components
-            ├── DownloadObjectTleButton.js
-            ├── FilterDescription.js
-            ├── HistoryMonthTable.js
-            ├── HistoryYearDropdown.js
-            ├── HowToSeeIt.js
-            ├── InfluenceTable.js
-            ├── Info.js
-            ├── ObservationsFilter.js
-            ├── UserSightingsTable.js
-        ├── objects-context.js
-        ├── objects-styles.scss
-    ├── profile
-        ├── components
-            ├── ObjectsCollectedTable.js
-            ├── ObservationsTable.js
-            ├── ProfileHeader.js
-        ├── profile-context.js
-        ├── profile-styles.scss
-    ├── styles
-        ├── base
-            ├── _base.scss
-            ├── _reset.scss
-            ├── _typography.scss
-        ├── helpers
-            ├── _mixins.scss
-            ├── _variables.scss
-        ├── main.scss
-    ├── submissions
-        ├── components
-            ├── MultipleObservationForm.js
-            ├── SingleObservationForm.js
-        ├── submission-styles.scss
-    ├── user
-        ├── components
-            ├── EditProfileSettingInput.js
-            ├── PrivacySettings.js
-            ├── ProfileSettings.js
-            ├── SavedLocations.js
-            ├── SecuritySettings.js
-            ├── StepFive.js
-            ├── StepFour.js
-            ├── StepOne.js
-            ├── StepThree.js
-            ├── StepTwo.js
-        ├── user-styles.scss
-    ├── views
-        ├── About.js
-        ├── AccountSettings.js
-        ├── AddStation.js
-        ├── Catalog.js
-        ├── Charter.js
-        ├── ClaimAccount.js
-        ├── FAQ.js
-        ├── HowTo.js
-        ├── HowToPhoto.js
-        ├── Join.js
-        ├── LogIn.js
-        ├── MetamaskImport.js
-        ├── ObjectInfo.js
-        ├── PrivacyPolicy.js
-        ├── Profile.js
-        ├── SignUp.js
-        ├── Submit.js
-        ├── SubscriptionConfirmed.js
-        ├── Terms.js
-        ├── TestPilotConfirmed.js
-        ├── VerifyClaimAccount.js
-        ├── Welcome.js
-        ├── Whitepaper.js
-    ├── App.js
-    ├── App.test.js
-    ├── index.js
-    ├── serviceWorker.js
-├── .gitignore
-├── firebase.json
-├── LICENSE
-├── package.json
-├── README.md
-├── yarn.lock
+.
+├── App.js
+├── App.test.js
+├── app
+│   ├── app-helpers.js
+│   ├── app-styles.scss
+│   └── components
+│       ├── BurgerMenu.js
+│       ├── Button.js
+│       ├── ChatIcon.js
+│       ├── CookieBanner.js
+│       ├── CopyText.js
+│       ├── DiscourseChatIcon.js
+│       ├── Footer.js
+│       ├── JoinTheMission.js
+│       ├── MobileHeader.js
+│       ├── NavBar.js
+│       ├── ObjectBadge.js
+│       ├── ScrollToTop.js
+│       ├── SocialIcons.js
+│       ├── Spinner.js
+│       ├── TablePaginator.js
+│       └── TrusatGlobeCanvas.js
+├── assets
+│   ├── Arrow.svg
+│   ├── CircleCheck.svg
+│   ├── ConditionBad.svg
+│   ├── ConditionExcellent.svg
+│   ├── ConditionFair.svg
+│   ├── ConditionGood.svg
+│   ├── ConditionPoor.svg
+│   ├── ConditionTerrible.svg
+│   ├── DeleteStation.svg
+│   ├── Globe.svg
+│   ├── ProfileAvatar.svg
+│   ├── QuestionMark.svg
+│   ├── SatSymbol.svg
+│   ├── SketchLarge.js
+│   ├── SketchSmall.js
+│   ├── SketchTrusatGlobe.js
+│   ├── TrusatLogoBig.svg
+│   ├── TrusatLogoSmallBlack.svg
+│   ├── TrusatLogoSmallWhite.svg
+│   ├── earth-shadows-400px.jpg
+│   ├── icon-arrow-up.svg
+│   ├── icon-chat.svg
+│   ├── icon-eye.svg
+│   ├── icon-globe.svg
+│   ├── icon-light.svg
+│   ├── icon-location.svg
+│   ├── icon-lock.svg
+│   ├── icon-lowlight.svg
+│   ├── icon-question.svg
+│   ├── icon-relaxing.svg
+│   ├── icon-rocket.svg
+│   ├── icon-satellite.svg
+│   ├── icon-time.svg
+│   ├── icon-trash.svg
+│   ├── icon-user.svg
+│   └── icon-wave.svg
+├── auth
+│   ├── auth-context.js
+│   ├── auth-helpers.js
+│   ├── auth-styles.scss
+│   ├── auth.test.js
+│   └── components
+│       ├── LoginForm.js
+│       ├── LoginOptions.js
+│       ├── MetaMask.js
+│       ├── SignupForm.js
+│       └── SignupOptions.js
+├── catalog
+│   ├── catalog-styles.scss
+│   └── components
+│       ├── CatalogNavBar.js
+│       ├── CatalogNavDropdown.js
+│       ├── CatalogTable.js
+│       ├── DownloadCatalogFilterTleButton.js
+│       ├── FilterDescription.js
+│       └── HowToParticipate.js
+├── index.js
+├── objects
+│   ├── components
+│   │   ├── DownloadObjectTleButton.js
+│   │   ├── FilterDescription.js
+│   │   ├── HistoryMonthTable.js
+│   │   ├── HistoryYearDropdown.js
+│   │   ├── HowToSeeIt.js
+│   │   ├── InfluenceTable.js
+│   │   ├── Info.js
+│   │   ├── ObservationsFilter.js
+│   │   └── UserSightingsTable.js
+│   ├── objects-context.js
+│   └── objects-styles.scss
+├── profile
+│   ├── components
+│   │   ├── ObjectsCollectedTable.js
+│   │   ├── ObservationsTable.js
+│   │   └── ProfileHeader.js
+│   ├── profile-context.js
+│   ├── profile-styles.scss
+│   └── styles
+├── serviceWorker.js
+├── styles
+│   ├── base
+│   │   ├── _base.scss
+│   │   ├── _reset.scss
+│   │   └── _typography.scss
+│   ├── helpers
+│   │   ├── _mixins.scss
+│   │   └── _variables.scss
+│   └── main.scss
+├── submissions
+│   ├── components
+│   │   ├── MultipleObservationForm.js
+│   │   └── SingleObservationForm.js
+│   └── submissions-styles.scss
+├── user
+│   ├── components
+│   │   ├── DataSettings.js
+│   │   ├── DownloadObservations.js
+│   │   ├── EditProfileSettingInput.js
+│   │   ├── ProfileSettings.js
+│   │   ├── SavedLocations.js
+│   │   ├── SecuritySettings.js
+│   │   ├── StepFive.js
+│   │   ├── StepFour.js
+│   │   ├── StepOne.js
+│   │   ├── StepThree.js
+│   │   └── StepTwo.js
+│   └── user-styles.scss
+└── views
+    ├── About.js
+    ├── AccountSettings.js
+    ├── AddStation.js
+    ├── Catalog.js
+    ├── ClaimAccount.js
+    ├── Join.js
+    ├── LogIn.js
+    ├── MetamaskImport.js
+    ├── ObjectInfo.js
+    ├── PrivacyPolicy.js
+    ├── Profile.js
+    ├── SignUp.js
+    ├── Submit.js
+    ├── SubscriptionConfirmed.js
+    ├── Terms.js
+    ├── TestPilotConfirmed.js
+    ├── VerifyClaimAccount.js
+    ├── Welcome.js
+    └── views-styles.scss
 ```
 
 Inspired by this [post](https://marmelab.com/blog/2015/12/17/react-directory-structure.html), the files in the `src` directory are grouped by domain. For example, within the `submissions` directory you will find all components (and their accompanying styles) related to the domain of observation submissions. At the time of writing this includes the `MultipleObservationForm` and `SingleObservationForm` components.
