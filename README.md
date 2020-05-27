@@ -233,7 +233,7 @@ And here are some examples:
 The "How To" page content is out of date when compared to the latest communication content found in the TruSat discuss forum
 ```
 
-- When ready click the green "New pull request" button on the "Pull requests" page for the repo on GitHub, making sure you are requesting to merge your branch into the development branch, and not master. The only branches that can open a PR to the “master” branch are those grouped as “hotfix” or “dev”.
+- When ready click the green "New pull request" button on the "Pull requests" page for the repo on GitHub, making sure you are requesting to merge your branch into the `master` branch.
 - Assign at least one reviewer to your PR.
 - Add detailed comments to outline what your PR achieves and make sure to reference the issue that will be closed by this PR by utilizing the issue number. Bulleted lists are preferred. For example:
 
