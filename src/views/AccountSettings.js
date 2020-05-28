@@ -13,7 +13,7 @@ import DataSettings from "../user/components/DataSettings";
 import SecuritySettings from "../user/components/SecuritySettings";
 import Spinner from "../app/components/Spinner";
 import Button from "../app/components/Button";
-import { checkAuthExpiry } from "../auth/auth-helpers";
+import { checkAuthExpiry, logout } from "../auth/auth-helpers";
 
 function UserSettings({ history }) {
   const profileDispatch = useProfileDispatch();
@@ -108,12 +108,7 @@ function UserSettings({ history }) {
     }
   };
 
-  const logout = () => {
-    localStorage.removeItem("trusat-login-credentials");
-    localStorage.removeItem("trusat-allow-cookies");
-    history.push("/");
-    window.location.reload();
-  };
+  const logoutCallback = history => logout(history);
 
   return fetchProfileErrorMessage ? (
     <p className="app__error-message">
@@ -172,7 +167,7 @@ function UserSettings({ history }) {
         color="white"
         text="logout"
         addStyles="account-settings__log-out-button"
-        onClick={logout}
+        onClick={logoutCallback}
       ></Button>
     </div>
   );
