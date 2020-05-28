@@ -21,7 +21,7 @@ export default function BurgerMenu() {
     setMenuOpen(false);
   };
 
-  const logoutCallback = () => {
+  const logoutAndClose = () => {
     closeMenu();
     logout();
   };
@@ -49,7 +49,7 @@ export default function BurgerMenu() {
       ) : null}
 
       {userAddress !== "none" ? (
-        <NavLink onClick={() => logoutCallback()} to={"/"}>
+        <NavLink onClick={() => logoutAndClose()} to={"/"}>
           LOG OUT
         </NavLink>
       ) : null}

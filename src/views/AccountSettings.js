@@ -108,7 +108,7 @@ function UserSettings({ history }) {
     }
   };
 
-  const logoutCallback = history => logout(history);
+  const logoutAndClose = history => logout(history);
 
   return fetchProfileErrorMessage ? (
     <p className="app__error-message">
@@ -167,7 +167,7 @@ function UserSettings({ history }) {
         color="white"
         text="logout"
         addStyles="account-settings__log-out-button"
-        onClick={logoutCallback}
+        onClick={logoutAndClose}
       ></Button>
     </div>
   );
