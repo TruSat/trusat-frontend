@@ -256,16 +256,11 @@ HOW TO PARTICIPATE
   margin-top: 2em;
 }
 
-// iPad
-@media (min-width: 600px) and (max-width: 800px) {
-  .catalog__how-to-wrapper {
-    margin-top: 0;
-    margin-bottom: 4em;
-  }
+.catalog__button-wrapper {
+  margin-top: 2em;
 }
 
-// Desktop
-@media (min-width: 800px) {
+@media (min-width: 600px) {
   .catalog__how-to-wrapper {
     margin: 0;
   }
@@ -294,6 +289,7 @@ HOW TO PARTICIPATE
   margin-bottom: 1em;
   padding: 0.5em 1em;
   text-align: center;
+  text-decoration: none;
   white-space: nowrap;
 }
 

@@ -53,6 +53,17 @@ function Catalog({ match }) {
               Submit observations
             </span>
           </NavLink>
+
+          <span className="app__nav-link">
+            <a
+          className="catalog__button catalog__get-data-button"
+          href="https://keeptrack.space/?trusat"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          See orbits
+        </a>
+          </span>
         </div>
       </div>
 
