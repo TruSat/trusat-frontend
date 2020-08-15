@@ -265,3 +265,12 @@ export const decryptSecret = (secret, password) => {
   }
   return privateKey;
 };
+
+export const logout = history => {
+  localStorage.removeItem("trusat-login-credentials");
+  localStorage.removeItem("trusat-allow-cookies");
+  if (history) {
+    history.push("/");
+  }
+  window.location.reload();
+};

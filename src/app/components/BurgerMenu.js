@@ -7,6 +7,7 @@ import IconGlobe from "../../assets/icon-globe.svg";
 import IconSat from "../../assets/icon-satellite.svg";
 import IconUser from "../../assets/icon-user.svg";
 import IconQuestion from "../../assets/icon-question.svg";
+import { logout } from "../../auth/auth-helpers";
 
 export default function BurgerMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -19,6 +20,12 @@ export default function BurgerMenu() {
   const closeMenu = () => {
     setMenuOpen(false);
   };
+
+  const logoutAndClose = () => {
+    closeMenu();
+    logout();
+  };
+
   return (
     <Menu
       isOpen={menuOpen}
@@ -38,6 +45,12 @@ export default function BurgerMenu() {
       {userAddress === "none" ? (
         <NavLink onClick={() => closeMenu()} to={"/login"}>
           LOG IN
+        </NavLink>
+      ) : null}
+
+      {userAddress !== "none" ? (
+        <NavLink onClick={() => logoutAndClose()} to={"/"}>
+          LOG OUT
         </NavLink>
       ) : null}
       <br></br>
